@@ -15,6 +15,7 @@ export type BaseTileProps = {
   children: React.ReactElement | React.ReactElement[]
   variant?: keyof typeof variants
   className?: string
+  footerCenterElement?: React.ReactElement
 ***REMOVED*** & ImageProps
 
 /**
@@ -28,13 +29,14 @@ export function BaseTile({
   className = '',
   startImage,
   endImage,
+  footerCenterElement,
 ***REMOVED***: BaseTileProps) {
   return (
     <div className={clsx('flex overflow-hidden', variants[variant], className)***REMOVED***>
 ***REMOVED***startImage***REMOVED***
       <div className="flex w-full flex-col justify-between p-4">
         <div>{children***REMOVED***</div>
-        <TileFooter />
+        <TileFooter>{footerCenterElement***REMOVED***</TileFooter>
       </div>
 ***REMOVED***endImage***REMOVED***
     </div>
