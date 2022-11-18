@@ -3,6 +3,7 @@ import { Button ***REMOVED*** from '@/components/Elements/Button'
 import { Spacer ***REMOVED*** from '@/components/Elements/Spacer'
 import { Spinner ***REMOVED*** from '@/components/Elements/Spinner'
 import { BaseTile ***REMOVED*** from '@/components/Tiles/BaseTile'
+import LiveBadge from '@/components/Tiles/LiveBadge'
 import SuccessStoryTile from '@/components/Tiles/SuccessStoryTile'
 
 export default function Home() {
@@ -24,6 +25,7 @@ export default function Home() {
       </BaseTile>
       <Spacer size="lg" />
       <BaseTile
+        footerCenterElement={<LiveBadge />***REMOVED***
         startImage={
           <img src="https://www.stadt-muenster.de/fileadmin/user_upload/stadt-muenster/obm/pics/vorschau-lewe-lambertikirchplatz-m.jpg" />
       ***REMOVED***
