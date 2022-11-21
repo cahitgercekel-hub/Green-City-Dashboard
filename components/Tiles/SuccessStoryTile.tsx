@@ -1,4 +1,5 @@
 import { Button ***REMOVED*** from '../Elements/Button'
+import { Spacer ***REMOVED*** from '../Elements/Spacer'
 import { BaseTile, ImageProps ***REMOVED*** from './BaseTile'
 
 export type SuccessStoryTileProps = {
@@ -20,7 +21,8 @@ export default function SuccessStoryTile({
       variant="successStory"
 ***REMOVED***...props***REMOVED***
     >
-      <h1>Erfolgsgeschichte</h1>
+      <h1 className="text-lg font-semibold text-blue-900">Erfolgsgeschichte</h1>
+      <Spacer />
       <>{children***REMOVED***</>
     </BaseTile>
   )

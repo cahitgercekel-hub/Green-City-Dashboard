@@ -8,7 +8,7 @@ type TileFooterProps = {
  */
 export default function TileFooter({ children ***REMOVED***: TileFooterProps) {
   return (
-    <div className="flex w-full justify-between">
+    <div className="mt-4 flex w-full items-center justify-between">
       <div>Sharing</div>
 ***REMOVED***children***REMOVED***
       <div>Info</div>

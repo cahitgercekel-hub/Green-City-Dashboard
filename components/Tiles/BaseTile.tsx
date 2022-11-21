@@ -32,13 +32,21 @@ export function BaseTile({
   footerCenterElement,
 ***REMOVED***: BaseTileProps) {
   return (
-    <div className={clsx('flex overflow-hidden', variants[variant], className)***REMOVED***>
-***REMOVED***startImage***REMOVED***
-      <div className="flex w-full flex-col justify-between p-4">
-        <div>{children***REMOVED***</div>
-        <TileFooter>{footerCenterElement***REMOVED***</TileFooter>
+    <div className="pb-8">
+      <div
+        className={clsx(
+          'flex h-fit overflow-hidden',
+          variants[variant],
+          className,
+    ***REMOVED******REMOVED***
+      >
+  ***REMOVED***startImage***REMOVED***
+        <div className="flex w-full flex-col justify-between p-8">
+          <div>{children***REMOVED***</div>
+          <TileFooter>{footerCenterElement***REMOVED***</TileFooter>
+        </div>
+  ***REMOVED***endImage***REMOVED***
       </div>
-***REMOVED***endImage***REMOVED***
     </div>
   )
 ***REMOVED***
