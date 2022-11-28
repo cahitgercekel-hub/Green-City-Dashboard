@@ -21,7 +21,7 @@ export default function SuccessStoryTile({
       variant="successStory"
 ***REMOVED***...props***REMOVED***
     >
-      <h1 className="text-lg font-semibold text-blue-900">Erfolgsgeschichte</h1>
+      <h1 className="text-lg font-semibold text-primary">Erfolgsgeschichte</h1>
       <Spacer />
       <>{children***REMOVED***</>
     </BaseTile>
