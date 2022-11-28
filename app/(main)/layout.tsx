@@ -5,7 +5,7 @@ export default function Layout({ children ***REMOVED***: { children: React.React
   return (
     <>
       <Navbar />
-      <div className="container mx-auto p-8">{children***REMOVED***</div>
+      <div>{children***REMOVED***</div>
       <Footer />
     </>
   )

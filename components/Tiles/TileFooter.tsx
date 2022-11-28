@@ -18,7 +18,7 @@ export default function TileFooter({ children ***REMOVED***: TileFooterProps) {
   return (
     <div className="mt-6 flex w-full items-center justify-between">
       <div className="flex flex-1 space-x-1 text-primary">
-        <Link href={'#'***REMOVED***>
+        <Link href={'/embed/123'***REMOVED***>
           <SquaresPlusIcon className="h-5 stroke-2" />
         </Link>
         <Link href={'#'***REMOVED***>
