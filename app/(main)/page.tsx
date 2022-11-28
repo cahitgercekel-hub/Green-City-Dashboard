@@ -1,5 +1,7 @@
 import Progress from '@/components/Charts/Progress'
 import { Spacer ***REMOVED*** from '@/components/Elements/Spacer'
+import Slider from '@/components/Inputs/Slider'
+import ToggleGroup from '@/components/Inputs/ToggleGroup'
 import { BaseTile ***REMOVED*** from '@/components/Tiles/BaseTile'
 import LiveBadge from '@/components/Tiles/LiveBadge'
 import SuccessStoryTile from '@/components/Tiles/SuccessStoryTile'
@@ -36,7 +38,28 @@ export default function Home() {
             quo! Expedita porro magni beatae ad veritatis explicabo numquam
             quidem nisi eius! Nihil.
           </div>
-          <Progress progress={42***REMOVED*** />
+          <Slider
+            defaultValue={[2]***REMOVED***
+            labels={['2000', '2010', '2020', '2030']***REMOVED***
+            max={6***REMOVED***
+            min={0***REMOVED***
+          />
+          <ToggleGroup
+            items={[
+        ***REMOVED***
+                element: '2020',
+                value: '2020',
+            ***REMOVED***,
+        ***REMOVED***
+                element: '2021',
+                value: '2021',
+            ***REMOVED***,
+        ***REMOVED***
+                element: '2022',
+                value: '2022',
+            ***REMOVED***,
+            ]***REMOVED***
+          />
         </BaseTile>
 
         <BaseTile footerCenterElement={<LiveBadge />***REMOVED***>
