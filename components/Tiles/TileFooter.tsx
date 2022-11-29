@@ -1,23 +1,33 @@
 import Link from 'next/link'
 import {
   ArrowDownTrayIcon,
-  InformationCircleIcon,
   ShareIcon,
   SquaresPlusIcon,
 ***REMOVED*** from '@heroicons/react/24/outline'
+import MoreDetails from '../Elements/MoreDetails'
+import clsx from 'clsx'
+
+const variants = {
+  primary: 'text-primary',
+  inverse: 'text-white',
+***REMOVED***
 
 type TileFooterProps = {
   children?: React.ReactElement
+  variant?: keyof typeof variants
 ***REMOVED***
 
 /**
  * A footer for all tiles with sharing, export and embed button as well as a more information link
  * @returns TileFooter
  */
-export default function TileFooter({ children ***REMOVED***: TileFooterProps) {
+export default function TileFooter({
+  children,
+  variant = 'primary',
+***REMOVED***: TileFooterProps) {
   return (
     <div className="mt-6 flex w-full items-center justify-between">
-      <div className="flex flex-1 space-x-1 text-primary">
+      <div className={clsx('flex flex-1 space-x-1', variants[variant])***REMOVED***>
         <Link href={'/embed/123'***REMOVED***>
           <SquaresPlusIcon className="h-5 stroke-2" />
         </Link>
@@ -30,10 +40,7 @@ export default function TileFooter({ children ***REMOVED***: TileFooterProps) {
       </div>
       <div className="flex flex-1 justify-center">{children***REMOVED***</div>
       <div className="flex flex-1 justify-end">
-        <Link className="flex items-center space-x-1 text-primary" href={'#'***REMOVED***>
-          <InformationCircleIcon className="h-5" />
-          <span className="text-sm font-semibold underline">Mehr Details</span>
-        </Link>
+        <MoreDetails link="#" variant={variant***REMOVED*** />
       </div>
     </div>
   )

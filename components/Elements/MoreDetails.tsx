@@ -1,0 +1,28 @@
+import { InformationCircleIcon ***REMOVED*** from '@heroicons/react/24/outline'
+import clsx from 'clsx'
+import Link from 'next/link'
+
+const variants = {
+  primary: 'text-primary',
+  inverse: 'text-white',
+***REMOVED***
+
+export type MoreDetailsProps = {
+  link: string
+  variant?: keyof typeof variants
+***REMOVED***
+
+export default function MoreDetails({
+  link,
+  variant = 'primary',
+***REMOVED***: MoreDetailsProps) {
+  return (
+    <Link
+      className={clsx('flex items-center space-x-1', variants[variant])***REMOVED***
+      href={link***REMOVED***
+    >
+      <InformationCircleIcon className="h-5" />
+      <span className="text-sm font-semibold underline">Mehr Details</span>
+    </Link>
+  )
+***REMOVED***
