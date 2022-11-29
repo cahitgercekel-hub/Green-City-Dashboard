@@ -7,7 +7,7 @@ const nextConfig = {
     remotePatterns: [
 ***REMOVED***
         protocol: 'https',
-        hostname: 'doinggeoandethics.files.wordpress.com',
+        hostname: process.env.NEXT_PUBLIC_DIRECTUS_URL.split('https://')[1],
     ***REMOVED***,
     ],
 ***REMOVED***,
