@@ -5,6 +5,7 @@ import { Button ***REMOVED*** from '../Elements/Button'
 import MoreDetails from '../Elements/MoreDetails'
 import Title from '../Elements/Title'
 import Link from 'next/link'
+import Collapsible from '../Elements/Collapsible'
 
 export default function Navbar() {
   return (
@@ -26,7 +27,14 @@ export default function Navbar() {
                   Münster
                 </span>
               </Title>
-              <MoreDetails className="mt-4" link="#" />
+              <Collapsible trigger={<MoreDetails className="mt-4" link="#" />***REMOVED***>
+                <div>
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                  Reiciendis, cupiditate! Tempora cum maiores soluta rem enim
+                  beatae, quis illum, sunt, quaerat minima nemo odit.
+                  Consequatur harum laboriosam doloremque impedit sed.
+                </div>
+              </Collapsible>
             </div>
             <div className="flex h-fit space-x-2">
               <Link href={'/klima'***REMOVED***>

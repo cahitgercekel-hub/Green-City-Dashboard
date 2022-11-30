@@ -8,13 +8,13 @@ const variants = {
 ***REMOVED***
 
 export type MoreDetailsProps = {
-  link: string
+  link?: string
   variant?: keyof typeof variants
   className?: string
 ***REMOVED***
 
 export default function MoreDetails({
-  link,
+  link = '',
   variant = 'primary',
   className,
 ***REMOVED***: MoreDetailsProps) {
