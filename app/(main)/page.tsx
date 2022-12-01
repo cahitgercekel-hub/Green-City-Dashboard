@@ -1,24 +1,22 @@
-import Progress from '@/components/Charts/Progress'
 import WeatherTile from '@/components/Tiles/Climate/WeatherTile'
 import Collapsible from '@/components/Elements/Collapsible'
 import MoreDetails from '@/components/Elements/MoreDetails'
 import { Spacer ***REMOVED*** from '@/components/Elements/Spacer'
 import StairStepBackground from '@/components/Layout/StairStepBackground'
 import Title from '@/components/Elements/Title'
-import Slider from '@/components/Inputs/Slider'
-import ToggleGroup from '@/components/Inputs/ToggleGroup'
 import InsightsContainer from '@/components/Insights/InsightsContainer'
 import ChartTile from '@/components/Tiles/Mobility/Bicycle/ChartTile'
-import { BaseTile ***REMOVED*** from '@/components/Tiles/Base/BaseTile'
-import LiveBadge from '@/components/Tiles/Base/LiveBadge'
 import SuccessStoryTile from '@/components/Tiles/Base/SuccessStoryTile'
+import CO2EmissionsTile from '@/components/Tiles/Climate/CO2EmissionsTile'
+import Container from '@/components/Layout/Container'
+import Columns from '@/components/Layout/Columns'
 
 export default function Home() {
   return (
     <div>
       <InsightsContainer />
       <StairStepBackground variant="secondary">
-        <div className="container mx-auto p-12">
+        <Container>
           <Title size="lg">Daten im Fokus</Title>
           <Collapsible trigger={<MoreDetails className="mt-4" />***REMOVED***>
             <div>
@@ -28,84 +26,14 @@ export default function Home() {
               eligendi, tenetur sed accusantium nesciunt.
             </div>
           </Collapsible>
-        </div>
+        </Container>
       </StairStepBackground>
-      <div className="container mx-auto p-12">
-        <div className="gap-8 lg:columns-2">
+      <Container>
+        <Columns>
           <ChartTile />
           <WeatherTile />
-          <BaseTile footerCenterElement={<LiveBadge />***REMOVED***>
-            <h1 className="text-6xl font-bold text-green-500">Hello World</h1>
-            <div>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia
-              cumque repellat officia sunt quibusdam ut, hic eaque quo! Expedita
-              porro magni beatae ad veritatis explicabo numquam quidem nisi
-              eius! Nihil. Lorem ipsum dolor sit amet consectetur adipisicing
-              elit. Mollitia cumque repellat officia sunt quibusdam ut, hic
-              eaque quo! Expedita porro magni beatae ad veritatis explicabo
-              numquam quidem nisi eius! Nihil. Lorem ipsum dolor sit amet
-              consectetur adipisicing elit. Mollitia cumque repellat officia
-              sunt quibusdam ut, hic eaque quo! Expedita porro magni beatae ad
-              veritatis explicabo numquam quidem nisi eius! Nihil.
-            </div>
-            <Slider
-              defaultValue={[2]***REMOVED***
-              labels={['2000', '2010', '2020', '2030']***REMOVED***
-              max={6***REMOVED***
-              min={0***REMOVED***
-            />
-            <ToggleGroup
-              items={[
-          ***REMOVED***
-                  element: '2020',
-                  value: '2020',
-              ***REMOVED***,
-          ***REMOVED***
-                  element: '2021',
-                  value: '2021',
-              ***REMOVED***,
-          ***REMOVED***
-                  element: '2022',
-                  value: '2022',
-              ***REMOVED***,
-              ]***REMOVED***
-            />
-          </BaseTile>
-
-          <BaseTile footerCenterElement={<LiveBadge />***REMOVED***>
-            <h1 className="text-6xl font-bold text-green-500">Hello World</h1>
-            <div>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia
-              cumque repellat officia sunt quibusdam ut, hic eaque quo! Expedita
-              porro magni beatae ad veritatis explicabo numquam quidem nisi
-              eius! Nihil. Lorem ipsum dolor sit amet consectetur adipisicing
-              elit. Mollitia cumque repellat officia sunt quibusdam ut, hic
-              eaque quo! Expedita porro magni beatae ad veritatis explicabo
-              numquam quidem nisi eius! Nihil. Lorem ipsum dolor sit amet
-              consectetur adipisicing elit. Mollitia cumque repellat officia
-              sunt quibusdam ut, hic eaque quo! Expedita porro magni beatae ad
-              veritatis explicabo numquam quidem nisi eius! Nihil.
-            </div>
-            <Progress progress={42***REMOVED*** />
-          </BaseTile>
-
-          <BaseTile>
-            <h1 className="text-6xl font-bold text-green-500">Hello World</h1>
-            <div>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia
-              cumque repellat officia sunt quibusdam ut, hic eaque quo! Expedita
-              porro magni beatae ad veritatis explicabo numquam quidem nisi
-              eius! Nihil.
-            </div>
-            <Progress progress={33***REMOVED*** />
-          </BaseTile>
-
-          <BaseTile footerCenterElement={<LiveBadge />***REMOVED***>
-            <h1 className="text-6xl font-bold text-green-500">Hello World</h1>
-            <div>Lorem ipsum</div>
-            <Progress progress={42***REMOVED*** />
-          </BaseTile>
-        </div>
+        </Columns>
+        <CO2EmissionsTile />
         <Spacer />
         <SuccessStoryTile
           endImage={
@@ -119,7 +47,7 @@ export default function Home() {
             Nihil.
           </div>
         </SuccessStoryTile>
-      </div>
+      </Container>
     </div>
   )
 ***REMOVED***
