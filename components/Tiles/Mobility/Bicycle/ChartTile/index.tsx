@@ -1,7 +1,7 @@
 'use client'
 
 import Slider from '@/components/Inputs/Slider'
-import MobilityTile from '@/components/Tiles/MobilityTile'
+import MobilityTile from '@/components/Tiles/Base/MobilityTile'
 ***REMOVED***
 import { useState ***REMOVED*** from 'react'
 import BicycleProgress from './BicycleProgress'

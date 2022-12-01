@@ -1,12 +1,12 @@
 'use client'
 
 import Slider from '@/components/Inputs/Slider'
-import ClimateTile from '@/components/Tiles/ClimateTile'
 import useWeather from '@/hooks/useWeather'
 import { conditionMapping ***REMOVED*** from '@/lib/brightsky'
 import { CloudIcon ***REMOVED*** from '@heroicons/react/24/outline'
 import { addHours, format ***REMOVED*** from 'date-fns'
 import { useState ***REMOVED*** from 'react'
+import ClimateTile from '../../Base/ClimateTile'
 import Phenomenon from './Phenomenon'
 
 export default function WeatherTile() {
