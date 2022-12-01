@@ -2,10 +2,10 @@ import clsx from 'clsx'
 import TileFooter from './TileFooter'
 
 const variants = {
-  primary: 'bg-primary-100 rounded-3xl',
-  mobility: 'bg-green-100 rounded-3xl',
-  successStory: 'bg-secondary rounded-3xl',
-  climate: 'bg-sky-100 rounded-3xl',
+  primary: 'bg-primary-100',
+  mobility: 'bg-green-100',
+  successStory: 'bg-primary-100',
+  climate: 'bg-sky-100',
 ***REMOVED***
 
 export type ImageProps =
@@ -37,7 +37,7 @@ export function BaseTile({
     <div className="pb-8">
       <div
         className={clsx(
-          'flex h-fit overflow-hidden',
+          'flex h-fit overflow-hidden rounded-3xl',
           variants[variant],
           className,
     ***REMOVED******REMOVED***
@@ -45,11 +45,7 @@ export function BaseTile({
   ***REMOVED***startImage***REMOVED***
         <div className="flex w-full flex-col justify-between p-12">
           <div>{children***REMOVED***</div>
-          <TileFooter
-            variant={variant === 'successStory' ? 'inverse' : 'primary'***REMOVED***
-          >
-      ***REMOVED***footerCenterElement***REMOVED***
-          </TileFooter>
+          <TileFooter>{footerCenterElement***REMOVED***</TileFooter>
         </div>
   ***REMOVED***endImage***REMOVED***
       </div>

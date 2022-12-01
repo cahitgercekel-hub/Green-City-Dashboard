@@ -4,6 +4,7 @@ const directusUrl =
   process.env.NEXT_PUBLIC_DIRECTUS_URL || 'http://localhost:8055'
 
 export const insightsCollectionName = 'klima_insights'
+export const successStoriesCollectionName = 'klima_success_stories'
 
 export type Insights = {
   id: ID
@@ -13,12 +14,30 @@ export type Insights = {
   image: string
 ***REMOVED***
 
+export type SuccessStory = {
+  id: ID
+  status: 'draft' | 'archived' | 'published'
+  text: string
+  link: string
+  image?: string
+  image_position: 'left' | 'right'
+***REMOVED***
+
 // Map your collections to its respective types. The SDK will
 // infer its types based on usage later.
 type DirectusCollection = {
   klima_insights: Insights
+  klima_success_stories: SuccessStory
 ***REMOVED***
 
 const directus = new Directus<DirectusCollection>(directusUrl)
 
 export default directus
+
+export function directusImage(image?: string) {
+  if (!image) {
+    return undefined
+***REMOVED***
+
+  return `${process.env.NEXT_PUBLIC_DIRECTUS_URL***REMOVED***/assets/${image***REMOVED***`
+***REMOVED***

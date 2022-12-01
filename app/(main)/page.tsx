@@ -6,12 +6,26 @@ import StairStepBackground from '@/components/Layout/StairStepBackground'
 import Title from '@/components/Elements/Title'
 import InsightsContainer from '@/components/Insights/InsightsContainer'
 import ChartTile from '@/components/Tiles/Mobility/Bicycle/ChartTile'
-import SuccessStoryTile from '@/components/Tiles/Base/SuccessStoryTile'
 import CO2EmissionsTile from '@/components/Tiles/Climate/CO2EmissionsTile'
 import Container from '@/components/Layout/Container'
 import Columns from '@/components/Layout/Columns'
+import SuccessStoryTile from '@/components/Tiles/SuccessStory'
+import directus, {
+  directusImage,
+  successStoriesCollectionName,
+***REMOVED*** from '@/lib/directus'
 
-export default function Home() {
+export default async function Home() {
+  const { data: successStories ***REMOVED*** = await directus
+    .items(successStoriesCollectionName)
+    .readByQuery({
+      filter: {
+        status: 'published',
+    ***REMOVED***,
+      limit: 2,
+  ***REMOVED***)
+  console.log(successStories)
+
   return (
     <div>
       <InsightsContainer />
@@ -35,18 +49,22 @@ export default function Home() {
         </Columns>
         <CO2EmissionsTile />
         <Spacer />
-        <SuccessStoryTile
-          endImage={
-            <img src="https://www.stadt-muenster.de/fileadmin/user_upload/stadt-muenster/obm/pics/vorschau-lewe-lambertikirchplatz-m.jpg" />
-        ***REMOVED***
-        >
-          <div>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia
-            cumque repellat officia sunt quibusdam ut, hic eaque quo! Expedita
-            porro magni beatae ad veritatis explicabo numquam quidem nisi eius!
-            Nihil.
-          </div>
-        </SuccessStoryTile>
+  ***REMOVED***successStories && successStories[0] && (
+          <SuccessStoryTile
+            image={directusImage(successStories[0].image)***REMOVED***
+            imagePosition={successStories[0].image_position***REMOVED***
+            link={successStories[0].link***REMOVED***
+            text={successStories[0].text***REMOVED***
+          ></SuccessStoryTile>
+    ***REMOVED******REMOVED***
+  ***REMOVED***successStories && successStories[1] && (
+          <SuccessStoryTile
+            image={directusImage(successStories[1].image)***REMOVED***
+            imagePosition={successStories[1].image_position***REMOVED***
+            link={successStories[1].link***REMOVED***
+            text={successStories[1].text***REMOVED***
+          ></SuccessStoryTile>
+    ***REMOVED******REMOVED***
       </Container>
     </div>
   )
