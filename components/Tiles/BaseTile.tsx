@@ -5,6 +5,7 @@ const variants = {
   primary: 'bg-primary-100 rounded-3xl',
   mobility: 'bg-green-100 rounded-3xl',
   successStory: 'bg-secondary rounded-lg',
+  climate: 'bg-sky-100 rounded-3xl',
 ***REMOVED***
 
 export type ImageProps =
@@ -42,7 +43,7 @@ export function BaseTile({
     ***REMOVED******REMOVED***
       >
   ***REMOVED***startImage***REMOVED***
-        <div className="flex w-full flex-col justify-between p-8">
+        <div className="flex w-full flex-col justify-between p-12">
           <div>{children***REMOVED***</div>
           <TileFooter
             variant={variant === 'successStory' ? 'inverse' : 'primary'***REMOVED***
