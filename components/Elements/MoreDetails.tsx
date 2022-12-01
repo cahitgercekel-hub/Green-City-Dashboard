@@ -14,21 +14,26 @@ export type MoreDetailsProps = {
 ***REMOVED***
 
 export default function MoreDetails({
-  link = '',
+  link,
   variant = 'primary',
   className,
 ***REMOVED***: MoreDetailsProps) {
-  return (
-    <Link
+  const Details = (
+    <div
       className={clsx(
-        'flex items-center space-x-1',
+        'flex cursor-pointer items-center space-x-1',
         variants[variant],
         className,
   ***REMOVED******REMOVED***
-      href={link***REMOVED***
     >
       <InformationCircleIcon className="h-5" />
       <span className="text-sm font-semibold underline">Mehr Details</span>
-    </Link>
+    </div>
   )
+
+  if (!link) {
+    return Details
+***REMOVED***
+
+  return <Link href={link***REMOVED***>{Details***REMOVED***</Link>
 ***REMOVED***
