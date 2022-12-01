@@ -60,7 +60,7 @@ export default function Phenomenon({
 ***REMOVED***: PhenomenonProps) {
   const { title, unit, icon, decimals ***REMOVED*** = phenomena[phenomenon]
 
-  const props = useSpring({ val: value, from: { val: 0 ***REMOVED*** ***REMOVED***)
+  const props = useSpring({ val: value, config: { duration: 100 ***REMOVED*** ***REMOVED***)
 
   const Icon = icon
   return (
@@ -71,6 +71,7 @@ export default function Phenomenon({
         <span className={clsx('text-sky-500', sizes[size])***REMOVED***>
           <>
             <animated.span>
+        ***REMOVED***/* @ts-ignore */***REMOVED***
         ***REMOVED***props.val.to(val => val.toFixed(decimals || 0))***REMOVED***
             </animated.span>{' '***REMOVED***
       ***REMOVED***unit***REMOVED***

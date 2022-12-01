@@ -24,7 +24,6 @@ export default async function Home() {
     ***REMOVED***,
       limit: 2,
   ***REMOVED***)
-  console.log(successStories)
 
   return (
     <div>
