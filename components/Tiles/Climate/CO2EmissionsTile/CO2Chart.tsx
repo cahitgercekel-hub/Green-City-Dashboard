@@ -27,6 +27,7 @@ export default function CO2Chart({ showFuture = false ***REMOVED***: CO2ChartPro
           e.Wärme,
         ]),
   ***REMOVED***,
+      showSymbol: false,
   ***REMOVED***,
     {
       type: 'line',
@@ -37,6 +38,7 @@ export default function CO2Chart({ showFuture = false ***REMOVED***: CO2ChartPro
           e.Strom,
         ]),
   ***REMOVED***,
+      showSymbol: false,
   ***REMOVED***,
     {
       type: 'line',
@@ -47,6 +49,7 @@ export default function CO2Chart({ showFuture = false ***REMOVED***: CO2ChartPro
           e.Verkehr,
         ]),
   ***REMOVED***,
+      showSymbol: false,
   ***REMOVED***,
   ]
 
@@ -61,6 +64,9 @@ export default function CO2Chart({ showFuture = false ***REMOVED***: CO2ChartPro
       ***REMOVED***,
         //@ts-ignore
         series: series,
+        legend: {
+          show: true,
+      ***REMOVED***,
     ***REMOVED******REMOVED***
     />
   )
