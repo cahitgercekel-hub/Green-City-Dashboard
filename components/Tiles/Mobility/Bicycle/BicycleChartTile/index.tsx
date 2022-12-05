@@ -8,7 +8,7 @@ import { useBicycleCount ***REMOVED*** from '@/hooks/useBicycleCount'
 import { useState ***REMOVED*** from 'react'
 import BicycleRow from './BicycleRow'
 
-export default function ChartTile() {
+export default function BicycleChartTile() {
   const lastDays = new Array(7)
     .fill(undefined)
     .map((e, i) => subDays(new Date(), i + 1))
