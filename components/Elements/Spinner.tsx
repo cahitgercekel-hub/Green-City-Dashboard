@@ -1,20 +1,26 @@
-import clsx from 'clsx'
+import type { VariantProps ***REMOVED*** from 'class-variance-authority'
+import { cva, cx ***REMOVED*** from 'class-variance-authority'
 
-const sizes = {
-  sm: 'h-4 w-4',
-  md: 'h-8 w-8',
-  lg: 'h-16 w-16',
-  xl: 'h-24 w-24',
-***REMOVED***
+const spinner = cva('animate-spin', {
+  variants: {
+    variant: {
+      primary: 'text-green-500',
+      light: 'text-slate-300',
+  ***REMOVED***,
+    size: {
+      sm: 'h-4 w-4',
+      md: 'h-8 w-8',
+      lg: 'h-16 w-16',
+      xl: 'h-24 w-24',
+  ***REMOVED***,
+***REMOVED***,
+  defaultVariants: {
+    variant: 'primary',
+    size: 'md',
+***REMOVED***,
+***REMOVED***)
 
-const variants = {
-  light: 'text-slate-300',
-  primary: 'text-green-500',
-***REMOVED***
-
-export type SpinnerProps = {
-  size?: keyof typeof sizes
-  variant?: keyof typeof variants
+export type SpinnerProps = VariantProps<typeof spinner> & {
   className?: string
 ***REMOVED***
 
@@ -23,20 +29,11 @@ export type SpinnerProps = {
  * @param SpinnerProps size and variant of the spinner
  * @returns Animated spinner
  */
-export function Spinner({
-  size = 'md',
-  variant = 'primary',
-  className = '',
-***REMOVED***: SpinnerProps) {
+export function Spinner({ size, variant, className = '' ***REMOVED***: SpinnerProps) {
   return (
     <>
       <svg
-        className={clsx(
-          'animate-spin',
-          sizes[size],
-          variants[variant],
-          className,
-    ***REMOVED******REMOVED***
+        className={cx(spinner({ size, variant ***REMOVED***), className)***REMOVED***
         data-testid="loading"
         fill="none"
         viewBox="0 0 24 24"

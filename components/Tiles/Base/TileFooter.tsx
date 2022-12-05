@@ -4,30 +4,33 @@ import {
   ShareIcon,
   SquaresPlusIcon,
 ***REMOVED*** from '@heroicons/react/24/outline'
-import clsx from 'clsx'
 import MoreDetails from '@/components/Elements/MoreDetails'
+import { cva, VariantProps ***REMOVED*** from 'class-variance-authority'
 
-const variants = {
-  primary: 'text-primary',
-  inverse: 'text-white',
-***REMOVED***
+const tileFooterStyle = cva('flex flex-1 space-x-1', {
+  variants: {
+    variant: {
+      primary: 'text-primary',
+      inverse: 'text-white',
+  ***REMOVED***,
+***REMOVED***,
+  defaultVariants: {
+    variant: 'primary',
+***REMOVED***,
+***REMOVED***)
 
-type TileFooterProps = {
+type TileFooterProps = VariantProps<typeof tileFooterStyle> & {
   children?: React.ReactElement
-  variant?: keyof typeof variants
 ***REMOVED***
 
 /**
  * A footer for all tiles with sharing, export and embed button as well as a more information link
  * @returns TileFooter
  */
-export default function TileFooter({
-  children,
-  variant = 'primary',
-***REMOVED***: TileFooterProps) {
+export default function TileFooter({ children, variant ***REMOVED***: TileFooterProps) {
   return (
     <div className="mt-6 flex w-full items-center justify-between">
-      <div className={clsx('flex flex-1 space-x-1', variants[variant])***REMOVED***>
+      <div className={tileFooterStyle({ variant ***REMOVED***)***REMOVED***>
         <Link href={'/embed/123'***REMOVED***>
           <SquaresPlusIcon className="h-5 stroke-2" />
         </Link>
