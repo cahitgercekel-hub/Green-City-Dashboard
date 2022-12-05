@@ -62,6 +62,7 @@ export default function CO2Chart({ showFuture = false ***REMOVED***: CO2ChartPro
       ***REMOVED***,
         yAxis: {
           type: 'value',
+          min: 'dataMin',
       ***REMOVED***,
         series: series,
         legend: {
