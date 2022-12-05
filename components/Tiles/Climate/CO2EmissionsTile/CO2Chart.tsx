@@ -1,6 +1,7 @@
 import useCO2Data from '@/hooks/useCO2Data'
 import { parse ***REMOVED*** from 'date-fns'
 import { ReactECharts ***REMOVED*** from '@/components/Charts/ReactECharts'
+import { SeriesOption ***REMOVED*** from 'echarts'
 
 type CO2ChartProps = {
   showFuture?: boolean
@@ -17,7 +18,7 @@ export default function CO2Chart({ showFuture = false ***REMOVED***: CO2ChartPro
         ]
       : baseData
 
-  const series = [
+  const series: SeriesOption[] = [
     {
       type: 'line',
       name: 'Wärme',
@@ -62,7 +63,6 @@ export default function CO2Chart({ showFuture = false ***REMOVED***: CO2ChartPro
         yAxis: {
           type: 'value',
       ***REMOVED***,
-        //@ts-ignore
         series: series,
         legend: {
           show: true,
