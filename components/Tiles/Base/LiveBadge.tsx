@@ -1,15 +1,23 @@
-import clsx from 'clsx'
+import { cva, VariantProps ***REMOVED*** from 'class-variance-authority'
 
-const variants = {
-  primary: 'bg-primary-500',
-  mobility: 'bg-green-500',
-  successStory: 'bg-secondary',
-  climate: 'bg-sky-500',
-***REMOVED***
+const liveBadgeStyle = cva(
+  'flex w-fit items-center space-x-1 rounded-lg px-2 py-1 text-white',
+  {
+    variants: {
+      variant: {
+        primary: 'bg-primary-500',
+        mobility: 'bg-green-500',
+        successStory: 'bg-secondary',
+        climate: 'bg-sky-500',
+    ***REMOVED***,
+  ***REMOVED***,
+    defaultVariants: {
+      variant: 'primary',
+  ***REMOVED***,
+***REMOVED***,
+)
 
-type LiveBadgeProps = {
-  variant?: keyof typeof variants
-***REMOVED***
+type LiveBadgeProps = VariantProps<typeof liveBadgeStyle>
 
 function PulsatingCircle() {
   return (
@@ -41,14 +49,9 @@ function PulsatingCircle() {
   )
 ***REMOVED***
 
-export default function LiveBadge({ variant = 'primary' ***REMOVED***: LiveBadgeProps) {
+export default function LiveBadge({ variant ***REMOVED***: LiveBadgeProps) {
   return (
-    <div
-      className={clsx(
-        'flex w-fit items-center space-x-1 rounded-lg px-2 py-1 text-white',
-        variants[variant],
-  ***REMOVED******REMOVED***
-    >
+    <div className={liveBadgeStyle({ variant ***REMOVED***)***REMOVED***>
       <div className="flex h-4 w-4  items-center justify-center">
         <PulsatingCircle />
       </div>

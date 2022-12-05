@@ -1,26 +1,33 @@
-import clsx from 'clsx'
+import type { VariantProps ***REMOVED*** from 'class-variance-authority'
+import { cva ***REMOVED*** from 'class-variance-authority'
 
-const variants = {
-  primary: 'bg-primary-50',
-  secondary: 'bg-secondary-500 bg-opacity-20',
-***REMOVED***
+const phenomenonStyle = cva('flex-[3_3_0%]', {
+  variants: {
+    variant: {
+      primary: 'bg-primary-50',
+      secondary: 'bg-secondary-500 bg-opacity-20',
+  ***REMOVED***,
+***REMOVED***,
+  defaultVariants: {
+    variant: 'primary',
+***REMOVED***,
+***REMOVED***)
 
-export type StairStepBackgroundProps = {
-  variant?: keyof typeof variants
+export type StairStepBackgroundProps = VariantProps<typeof phenomenonStyle> & {
   children: React.ReactNode
 ***REMOVED***
 
 export default function StairStepBackground({
-  variant = 'primary',
+  variant,
   children,
 ***REMOVED***: StairStepBackgroundProps) {
   return (
     <div>
       <div className="hidden h-12 w-full md:flex">
         <div className="flex-[2_2_0%]"></div>
-        <div className={clsx('flex-[3_3_0%]', variants[variant])***REMOVED***></div>
+        <div className={phenomenonStyle({ variant ***REMOVED***)***REMOVED***></div>
       </div>
-      <div className={variants[variant]***REMOVED***>{children***REMOVED***</div>
+      <div className={phenomenonStyle({ variant ***REMOVED***)***REMOVED***>{children***REMOVED***</div>
     </div>
   )
 ***REMOVED***

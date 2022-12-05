@@ -1,12 +1,10 @@
-import clsx from 'clsx'
-
 export default function BicycleProgress({ progress ***REMOVED***: { progress: number ***REMOVED***) {
   return (
     <div className="flex w-full">
       <div>S</div>
       <div className="flex flex-1">
         <div
-          className={clsx('h-2 bg-green-500 transition-all')***REMOVED***
+          className={'h-2 bg-green-500 transition-all'***REMOVED***
           style={{ width: `${progress***REMOVED***%` ***REMOVED******REMOVED***
         ></div>
         <div>E</div>

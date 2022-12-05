@@ -1,38 +1,49 @@
-import clsx from 'clsx'
 import * as React from 'react'
+import type { VariantProps ***REMOVED*** from 'class-variance-authority'
+import { cva, cx ***REMOVED*** from 'class-variance-authority'
 
 import { Spinner ***REMOVED*** from '@/components/Elements/Spinner'
 
-const variants = {
-  primary: 'border-primary',
-  inverse: 'bg-white text-green hover:bg-green:text-white',
-  danger: 'bg-red-600 text-white hover:bg-red-50:text-red-600',
-***REMOVED***
-
-const sizes = {
-  sm: 'py-1 px-3 text-sm',
-  md: 'py-2 px-4 text-md',
-  lg: 'py-3 px-5 text-lg',
-***REMOVED***
+const button = cva(
+  'flex items-center justify-center rounded-full border-2 font-medium focus:outline-none disabled:cursor-not-allowed disabled:opacity-70',
+  {
+    variants: {
+      variant: {
+        primary: 'border-primary',
+        inverse: 'bg-white text-green hover:bg-green:text-white',
+        danger: 'bg-red-600 text-white hover:bg-red-50:text-red-600',
+    ***REMOVED***,
+      size: {
+        sm: 'py-1 px-3 text-sm',
+        md: 'py-2 px-4 text-md',
+        lg: 'py-3 px-5 text-lg',
+    ***REMOVED***,
+  ***REMOVED***,
+    defaultVariants: {
+      variant: 'primary',
+      size: 'md',
+  ***REMOVED***,
+***REMOVED***,
+)
 
 type IconProps =
   | { startIcon: React.ReactElement; endIcon?: never ***REMOVED***
   | { endIcon: React.ReactElement; startIcon?: never ***REMOVED***
   | { endIcon?: undefined; startIcon?: undefined ***REMOVED***
 
-export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
-  variant?: keyof typeof variants
-  size?: keyof typeof sizes
-  isLoading?: boolean
-***REMOVED*** & IconProps
+export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> &
+  VariantProps<typeof button> &
+  IconProps & {
+    isLoading?: boolean
+***REMOVED***
 
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
       type = 'button',
       className = '',
-      variant = 'primary',
-      size = 'md',
+      variant,
+      size,
       isLoading = false,
       startIcon,
       endIcon,
@@ -42,12 +53,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ) => {
     return (
       <button
-        className={clsx(
-          'flex items-center justify-center rounded-full border-2 font-medium focus:outline-none disabled:cursor-not-allowed disabled:opacity-70',
-          variants[variant],
-          sizes[size],
-          className,
-    ***REMOVED******REMOVED***
+        className={cx(button({ variant, size ***REMOVED***), className)***REMOVED***
         ref={ref***REMOVED***
         type={type***REMOVED***
   ***REMOVED***...props***REMOVED***

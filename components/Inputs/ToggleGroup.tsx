@@ -1,57 +1,130 @@
 'use client'
 
 import * as ToggleGroupPrimitive from '@radix-ui/react-toggle-group'
-import clsx from 'clsx'
+import { cva, cx, VariantProps ***REMOVED*** from 'class-variance-authority'
 import { useState ***REMOVED*** from 'react'
 
-const variants = {
-  primary: 'border-primary',
-  mobility: 'border-green-500',
-  successStory: 'border-secondary',
-  climate: 'border-sky-500',
+type variants = {
+  primary: string
+  mobility: string
+  successStory: string
+  climate: string
 ***REMOVED***
 
-const background = {
-  primary: 'bg-primary',
-  mobility: 'bg-green-500',
-  successStory: 'bg-secondary',
-  climate: 'bg-sky-500',
-***REMOVED***
+const toggleGroupStyle = cva<{
+  variant: variants
+***REMOVED***>('flex h-fit w-fit overflow-hidden rounded-full border-2 bg-white', {
+  variants: {
+    variant: {
+      primary: 'border-primary',
+      mobility: 'border-green-500',
+      successStory: 'border-secondary',
+      climate: 'border-sky-500',
+  ***REMOVED***,
+***REMOVED***,
+  defaultVariants: {
+    variant: 'primary',
+***REMOVED***,
+***REMOVED***)
 
-const lastBorder = {
-  primary: 'border-r-primary',
-  mobility: 'border-r-green-500',
-  successStory: 'border-r-secondary',
-  climate: 'border-r-sky-500',
+const toggleGroupBackgroundStyle = cva<{
+  variant: variants
+  isLast: {
+    true: string
 ***REMOVED***
+***REMOVED***>('px-4 transition-all duration-300 md:py-2 md:px-8', {
+  variants: {
+    variant: {
+      primary: 'bg-primary',
+      mobility: 'bg-green-500',
+      successStory: 'bg-secondary',
+      climate: 'bg-sky-500',
+  ***REMOVED***,
+    isLast: {
+      true: 'border-r-2',
+  ***REMOVED***,
+***REMOVED***,
+  compoundVariants: [
+    {
+      variant: 'primary',
+      isLast: true,
+      className: 'border-r-primary',
+  ***REMOVED***,
+    {
+      variant: 'mobility',
+      isLast: true,
+      className: 'border-r-green-500',
+  ***REMOVED***,
+    {
+      variant: 'successStory',
+      isLast: true,
+      className: 'border-r-secondary',
+  ***REMOVED***,
+    {
+      variant: 'climate',
+      isLast: true,
+      className: 'border-r-sky-500',
+  ***REMOVED***,
+  ],
+  defaultVariants: {
+    variant: 'primary',
+***REMOVED***,
+***REMOVED***)
 
-const textColor = {
-  primary: 'text-primary',
-  mobility: 'text-green-500',
-  successStory: 'text-secondary',
-  climate: 'text-sky-500',
-***REMOVED***
+const selectedStyle = cva('px-4 transition-all duration-300 md:py-2 md:px-8', {
+  variants: {
+    variant: {
+      primary: null,
+      mobility: null,
+      successStory: null,
+      climate: null,
+  ***REMOVED***,
+    selected: {
+      true: 'bg-opacity-100 text-white',
+      false: 'bg-opacity-0',
+  ***REMOVED***,
+***REMOVED***,
+  compoundVariants: [
+    {
+      selected: false,
+      variant: 'primary',
+      className: 'text-primary',
+  ***REMOVED***,
+    {
+      selected: false,
+      variant: 'mobility',
+      className: 'text-green-500',
+  ***REMOVED***,
+    {
+      selected: false,
+      variant: 'successStory',
+      className: 'text-secondary',
+  ***REMOVED***,
+    {
+      selected: false,
+      variant: 'climate',
+      className: 'text-sky-500',
+  ***REMOVED***,
+  ],
+  defaultVariants: {
+    variant: 'primary',
+    selected: false,
+***REMOVED***,
+***REMOVED***)
 
-type ToggleGroupProps = {
+type ToggleGroupProps = VariantProps<typeof toggleGroupStyle> & {
   items: {
     element: string | React.ReactElement
     value: string
 ***REMOVED***[]
-  variant?: keyof typeof variants
 ***REMOVED***
 
-export default function ToggleGroup({
-  items,
-  variant = 'primary',
-***REMOVED***: ToggleGroupProps) {
+export default function ToggleGroup({ items, variant ***REMOVED***: ToggleGroupProps) {
   const [value, setValue] = useState(items[0].value)
 
   return (
     <ToggleGroupPrimitive.Root
-      className={clsx(
-        'flex h-fit w-fit overflow-hidden rounded-full border-2 bg-white',
-        variants[variant],
-  ***REMOVED******REMOVED***
+      className={toggleGroupStyle({ variant ***REMOVED***)***REMOVED***
       onValueChange={value => {
         if (value) {
           setValue(value)
@@ -62,13 +135,15 @@ export default function ToggleGroup({
     >
 ***REMOVED***items.map((e, i) => (
         <ToggleGroupPrimitive.Item
-          className={clsx(
-            'px-4 transition-all duration-300 md:py-2 md:px-8',
-            background[variant],
-            i !== items.length - 1 && `border-r-2 ${lastBorder[variant]***REMOVED***`,
-            value === e.value
-              ? 'bg-opacity-100 text-white'
-              : `bg-opacity-0 ${textColor[variant]***REMOVED***`,
+          className={cx(
+            toggleGroupBackgroundStyle({
+              variant,
+              isLast: i !== items.length - 1,
+          ***REMOVED***),
+            selectedStyle({
+              variant,
+              selected: value === e.value,
+          ***REMOVED***),
       ***REMOVED******REMOVED***
           key={i***REMOVED***
           value={e.value***REMOVED***
