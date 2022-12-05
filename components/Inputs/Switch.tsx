@@ -19,10 +19,15 @@ const borderVariants = {
 type SwitchProps = {
   label?: string
   variant?: keyof typeof variants
-***REMOVED***
+***REMOVED*** & SwitchPrimitive.SwitchProps
 
-export default function Switch({ label, variant = 'primary' ***REMOVED***: SwitchProps) {
-  const [checked, setChecked] = useState(false)
+export default function Switch({
+  label,
+  variant = 'primary',
+  ...props
+***REMOVED***: SwitchProps) {
+  const [checked, setChecked] = useState(props.defaultChecked)
+
   return (
     <div className="flex items-center space-x-4">
       <SwitchPrimitive.Root
@@ -30,7 +35,13 @@ export default function Switch({ label, variant = 'primary' ***REMOVED***: Switc
           'w-12 rounded-full bg-white p-1 outline outline-2',
           borderVariants[variant],
     ***REMOVED******REMOVED***
-        onCheckedChange={setChecked***REMOVED***
+  ***REMOVED***...props***REMOVED***
+        onCheckedChange={val => {
+          if (props.onCheckedChange) {
+            props.onCheckedChange(val)
+        ***REMOVED***
+          setChecked(val)
+      ***REMOVED******REMOVED***
       >
         <SwitchPrimitive.Thumb asChild>
           <div

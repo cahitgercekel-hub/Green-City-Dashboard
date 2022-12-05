@@ -27,8 +27,9 @@ export default function MobilityTile({
       variant="mobility"
 ***REMOVED***...props***REMOVED***
     >
-      <h1 className="text-6xl font-light text-green-500">{title***REMOVED***</h1>
-      <h3 className="text-xl">{subtitle***REMOVED***</h3>
+      <span className="text-6xl font-light text-green-500">{title***REMOVED***</span>
+      <br />
+      <span className="text-xl">{subtitle***REMOVED***</span>
       <Spacer />
       <>{children***REMOVED***</>
     </BaseTile>
