@@ -3,5 +3,5 @@ export type ContainerProps = {
 ***REMOVED***
 
 export default function Container({ children ***REMOVED***: ContainerProps) {
-  return <div className="container mx-auto p-12">{children***REMOVED***</div>
+  return <div className="container mx-auto p-4 md:p-12">{children***REMOVED***</div>
 ***REMOVED***
