@@ -14,6 +14,7 @@ import directus, {
   directusImage,
   successStoriesCollectionName,
 ***REMOVED*** from '@/lib/directus'
+import AnimatedPage from '@/components/Layout/AnimatedPage'
 
 export default async function Home() {
   const { data: successStories ***REMOVED*** = await directus
@@ -26,7 +27,7 @@ export default async function Home() {
   ***REMOVED***)
 
   return (
-    <div>
+    <AnimatedPage>
       <InsightsContainer />
       <StairStepBackground variant="secondary">
         <Container>
@@ -65,6 +66,6 @@ export default async function Home() {
           ></SuccessStoryTile>
     ***REMOVED******REMOVED***
       </Container>
-    </div>
+    </AnimatedPage>
   )
 ***REMOVED***

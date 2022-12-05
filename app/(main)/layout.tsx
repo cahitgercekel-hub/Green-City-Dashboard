@@ -1,11 +1,12 @@
 import Footer from '@/components/Layout/Footer'
 import Navbar from '@/components/Layout/Navbar'
+import Providers from '@/components/Layout/Providers'
 
 export default function Layout({ children ***REMOVED***: { children: React.ReactNode ***REMOVED***) {
   return (
     <>
       <Navbar />
-      <div>{children***REMOVED***</div>
+      <Providers>{children***REMOVED***</Providers>
       <Footer />
     </>
   )

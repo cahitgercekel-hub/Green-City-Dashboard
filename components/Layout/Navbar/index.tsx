@@ -43,11 +43,15 @@ export default function Navbar() {
               <Link href={'/klima'***REMOVED***>
                 <Button>Klima in Münster</Button>
               </Link>
-              <Button>Energien</Button>
+              <Link href={'/energie'***REMOVED***>
+                <Button>Energien</Button>
+              </Link>
               <Link href={'/mobilitaet'***REMOVED***>
                 <Button>Mobilität</Button>
               </Link>
-              <Button>Gebäude</Button>
+              <Link href={'/gebaeude'***REMOVED***>
+                <Button>Gebäude</Button>
+              </Link>
             </div>
           </div>
         </Container>
