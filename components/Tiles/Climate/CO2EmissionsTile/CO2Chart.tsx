@@ -59,6 +59,23 @@ export default function CO2Chart({ showFuture = false ***REMOVED***: CO2ChartPro
       option={{
         xAxis: {
           type: 'time',
+          show: true,
+          axisPointer: {
+            show: true,
+            lineStyle: {
+              color: '#7581BD',
+              width: 2,
+              type: 'solid',
+          ***REMOVED***,
+            label: {
+              show: true,
+              position: 'insideTop',
+          ***REMOVED***,
+            handle: {
+              show: true,
+              color: '#7581BD',
+          ***REMOVED***,
+        ***REMOVED***,
       ***REMOVED***,
         yAxis: {
           type: 'value',
@@ -67,6 +84,7 @@ export default function CO2Chart({ showFuture = false ***REMOVED***: CO2ChartPro
         series: series,
         legend: {
           show: true,
+          bottom: 0,
       ***REMOVED***,
     ***REMOVED******REMOVED***
     />
