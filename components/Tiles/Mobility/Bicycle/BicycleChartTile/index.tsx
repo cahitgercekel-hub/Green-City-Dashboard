@@ -16,7 +16,7 @@ export default function BicycleChartTile() {
 
   const [date, setDate] = useState<Date>(lastDays[lastDays.length - 1])
 
-  const data = useBicycleCount(date)
+  const { data, min, max ***REMOVED*** = useBicycleCount(date)
 
   return (
     <MobilityTile live subtitle="im Stadtgebiet" title="Radler:innen">
@@ -27,8 +27,8 @@ export default function BicycleChartTile() {
               <BicycleRow
                 count={e.count***REMOVED***
                 key={e.id***REMOVED***
-                max={Math.max(...data.map(e => e.count))***REMOVED***
-                min={Math.min(...data.map(e => e.count))***REMOVED***
+                max={max***REMOVED***
+                min={min***REMOVED***
                 name={e.name***REMOVED***
               />
         ***REMOVED***)***REMOVED***

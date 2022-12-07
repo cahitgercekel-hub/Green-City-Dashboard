@@ -1,6 +1,23 @@
 import { isEqual ***REMOVED*** from 'date-fns'
 import { useEffect, useState ***REMOVED*** from 'react'
 
+type BicycleAPIResponse = {
+  name: string
+  id: string
+  data: {
+    counts: number
+    date: string
+    isoDate: string
+    status: number
+***REMOVED***[]
+***REMOVED***
+
+type BicycleStationData = {
+  count: number
+  id: string
+  name: string
+***REMOVED***
+
 const counter = [
   { name: 'Wolbecker Str.', id: '100020113' ***REMOVED***, // wolbecker
   { name: 'Promenade', id: '100031297' ***REMOVED***, // promenade
@@ -25,26 +42,12 @@ export function useBicycleCount(timestamp: Date) {
   timestamp.setUTCSeconds(0)
   timestamp.setUTCMilliseconds(0)
 
-  const [data, setData] = useState<
-    {
-      name: string
-      id: string
-      data: {
-        counts: number
-        date: string
-        isoDate: string
-        status: number
-    ***REMOVED***[]
-  ***REMOVED***[]
-  >()
+  const [data, setData] = useState<BicycleAPIResponse[]>()
 
-  const [filteredData, setFilteredData] = useState<
-    {
-      count: number
-      id: string
-      name: string
-  ***REMOVED***[]
-  >()
+  const [filteredData, setFilteredData] = useState<BicycleStationData[]>()
+
+  const [totalMin, setTotalMin] = useState(0)
+  const [totalMax, setTotalMax] = useState(0)
 
   useEffect(() => {
     const fetchPromise = Promise.all(
@@ -73,5 +76,26 @@ export function useBicycleCount(timestamp: Date) {
     setFilteredData(filtered)
 ***REMOVED***, [timestamp, data])
 
-  return filteredData
+  useEffect(() => {
+    if (!data) {
+      return
+  ***REMOVED***
+
+    const min = Math.min(
+      ...data.map(e =>
+        Math.min(...e.data.map(x => x.counts).filter(y => y !== null)),
+  ***REMOVED***,
+***REMOVED***
+
+    const max = Math.max(
+      ...data.map(e =>
+        Math.max(...e.data.map(x => x.counts).filter(y => y !== null)),
+  ***REMOVED***,
+***REMOVED***
+
+    setTotalMin(min)
+    setTotalMax(max)
+***REMOVED***, [data])
+
+  return { min: totalMin, max: totalMax, data: filteredData ***REMOVED***
 ***REMOVED***
