@@ -13,6 +13,7 @@ const nextConfig = {
 
     return config
 ***REMOVED***,
+  reactStrictMode: true,
   experimental: {
     appDir: true,
 ***REMOVED***,
