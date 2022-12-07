@@ -1,7 +1,12 @@
+'use client'
+
 import { cva, cx, VariantProps ***REMOVED*** from 'class-variance-authority'
+import { useState ***REMOVED*** from 'react'
+import { useTransition ***REMOVED*** from 'react-spring'
+import EmbedOverlay from './EmbedOverlay'
 import TileFooter from './TileFooter'
 
-const baseTileStyle = cva('flex h-fit overflow-hidden rounded-3xl', {
+const baseTileStyle = cva('relative flex h-fit overflow-hidden rounded-3xl', {
   variants: {
     variant: {
       primary: 'bg-primary-100',
@@ -39,15 +44,34 @@ export function BaseTile({
   endImage,
   footerCenterElement,
 ***REMOVED***: BaseTileProps) {
+  const [showOverlay, setShowOverlay] = useState(false)
+
+  const transitions = useTransition(showOverlay, {
+    from: { opacity: 0 ***REMOVED***,
+    enter: { opacity: 1 ***REMOVED***,
+    leave: { opacity: 0 ***REMOVED***,
+***REMOVED***)
+
   return (
     <div className="pb-4 md:pb-8">
       <div className={cx(baseTileStyle({ variant ***REMOVED***), className)***REMOVED***>
   ***REMOVED***startImage***REMOVED***
         <div className="flex w-full flex-col justify-between p-8 md:p-12">
           <div>{children***REMOVED***</div>
-          <TileFooter>{footerCenterElement***REMOVED***</TileFooter>
+          <TileFooter onEmbedClick={() => setShowOverlay(true)***REMOVED***>
+      ***REMOVED***footerCenterElement***REMOVED***
+          </TileFooter>
         </div>
   ***REMOVED***endImage***REMOVED***
+  ***REMOVED***transitions(
+          (styles, render) =>
+            render && (
+              <EmbedOverlay
+                onClose={() => setShowOverlay(false)***REMOVED***
+                style={styles***REMOVED***
+              />
+        ***REMOVED***,
+    ***REMOVED******REMOVED***
       </div>
     </div>
   )
