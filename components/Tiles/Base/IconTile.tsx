@@ -4,7 +4,7 @@ import { SVGProps ***REMOVED*** from 'react'
 import { BaseTile ***REMOVED*** from './BaseTile'
 import LiveBadge from './LiveBadge'
 
-const iconTileTitleStyle = cva('text-6xl font-light', {
+const iconTileTitleStyle = cva('text-4xl md:text-6xl font-light', {
   variants: {
     variant: {
       primary: 'text-primary',
@@ -50,8 +50,7 @@ export default function IconTile({
         <span className={iconTileTitleStyle({ variant ***REMOVED***)***REMOVED***>{title***REMOVED***</span>
         <Icon className="h-10 w-12" />
       </div>
-      <br />
-      <span className="text-xl">{subtitle***REMOVED***</span>
+      <span className="text-lg md:text-xl">{subtitle***REMOVED***</span>
       <Spacer />
       <>{children***REMOVED***</>
     </BaseTile>

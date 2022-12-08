@@ -56,7 +56,7 @@ export function BaseTile({
     <div className="pb-4 md:pb-8">
       <div className={cx(baseTileStyle({ variant ***REMOVED***), className)***REMOVED***>
   ***REMOVED***startImage***REMOVED***
-        <div className="flex w-full flex-col justify-between p-8 md:p-12">
+        <div className="flex w-full flex-col justify-between p-6 md:p-12">
           <div>{children***REMOVED***</div>
           <TileFooter onEmbedClick={() => setShowOverlay(true)***REMOVED***>
       ***REMOVED***footerCenterElement***REMOVED***
