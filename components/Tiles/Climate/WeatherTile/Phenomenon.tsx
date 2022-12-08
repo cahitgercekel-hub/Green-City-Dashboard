@@ -1,14 +1,15 @@
-import { BeakerIcon, CloudIcon, SunIcon ***REMOVED*** from '@heroicons/react/24/outline'
-import { Duration ***REMOVED*** from 'date-fns'
+import { CloudIcon ***REMOVED*** from '@heroicons/react/24/outline'
 import { animated, useSpring ***REMOVED*** from 'react-spring'
 import type { VariantProps ***REMOVED*** from 'class-variance-authority'
 import { cva ***REMOVED*** from 'class-variance-authority'
+import { Sun, Temperature, Water, Wind ***REMOVED*** from '@/components/Icons'
+import { SVGProps ***REMOVED*** from 'react'
 
 type PhenomenaType = {
   [key: string]: {
     title: string
     unit: string
-    icon: any // TODO: change any
+    icon: (_props: SVGProps<SVGSVGElement>) => JSX.Element
     decimals?: number
 ***REMOVED***
 ***REMOVED***
@@ -17,37 +18,37 @@ const phenomena: PhenomenaType = {
   temperature: {
     title: 'Temperatur',
     unit: '°C',
-    icon: BeakerIcon,
+    icon: Temperature,
     decimals: 1,
 ***REMOVED***,
   precipitation: {
     title: 'Niederschlag',
     unit: 'mm',
-    icon: BeakerIcon,
+    icon: Water,
 ***REMOVED***,
   cloudcover: {
-    title: 'Wolkenbedeckung',
+    title: 'Wolken&shy;bedeckung',
     unit: '%',
     icon: CloudIcon,
 ***REMOVED***,
   windspeed: {
-    title: 'Windgeschwindigkeit',
+    title: 'Wind&shy;geschwindigkeit',
     unit: 'km/h',
-    icon: BeakerIcon,
+    icon: Wind,
     decimals: 1,
 ***REMOVED***,
   sunhours: {
     title: 'Sonnenstunden',
     unit: 'h',
-    icon: SunIcon,
+    icon: Sun,
 ***REMOVED***,
 ***REMOVED***
 
 const phenomenonStyle = cva('text-climate', {
   variants: {
     size: {
-      md: 'text-2xl',
-      xl: 'text-5xl',
+      md: 'text-lg md:text-2xl',
+      xl: 'text-2xl md:text-5xl',
   ***REMOVED***,
 ***REMOVED***,
   defaultVariants: {
@@ -57,7 +58,7 @@ const phenomenonStyle = cva('text-climate', {
 
 type PhenomenonProps = VariantProps<typeof phenomenonStyle> & {
   phenomenon: keyof typeof phenomena
-  value: number | Duration
+  value: number
 ***REMOVED***
 
 export default function Phenomenon({
@@ -72,13 +73,15 @@ export default function Phenomenon({
   const Icon = icon
   return (
     <div className="my-2 flex items-center space-x-2">
-      <Icon className="h-8 text-climate" />
+      <Icon className="h-10 w-8 text-primary" />
       <div>
-        <p className="text-sm font-semibold text-primary">{title***REMOVED***</p>
+        <p
+          className="text-sm font-semibold text-primary"
+          dangerouslySetInnerHTML={{ __html: title ***REMOVED******REMOVED***
+        ></p>
         <span className={phenomenonStyle({ size ***REMOVED***)***REMOVED***>
           <>
             <animated.span>
-        ***REMOVED***/* @ts-ignore */***REMOVED***
         ***REMOVED***props.val.to(val => val.toFixed(decimals || 0))***REMOVED***
             </animated.span>{' '***REMOVED***
       ***REMOVED***unit***REMOVED***
