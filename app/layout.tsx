@@ -1,7 +1,7 @@
 import '@/styles/globals.css'
 import { Inter ***REMOVED*** from '@next/font/google'
 
-const inter = Inter({ subsets: ['latin'] ***REMOVED***)
+const inter = Inter({ subsets: ['latin'], variable: '--font-inter' ***REMOVED***)
 
 export default function RootLayout({
   children,

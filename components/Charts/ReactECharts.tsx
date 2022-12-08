@@ -47,7 +47,13 @@ export function ReactECharts({
     // Update chart
     if (chartRef.current !== null) {
       const chart = getInstanceByDom(chartRef.current)
-      chart!.setOption(option, settings)
+      const myOption: EChartsOption = {
+        textStyle: {
+          fontFamily: 'var(--font-inter)',
+      ***REMOVED***,
+        ...option,
+    ***REMOVED***
+      chart!.setOption(myOption, settings)
   ***REMOVED***
 ***REMOVED***, [option, settings, theme]) // Whenever theme changes we need to add option and setting due to it being deleted in cleanup function
 
