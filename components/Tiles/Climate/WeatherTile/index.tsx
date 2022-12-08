@@ -36,11 +36,11 @@ export default function WeatherTile() {
           <div className="mb-8 flex">
             <div className="flex flex-1 flex-col justify-between">
               <span>
-                <CloudIcon className="h-24 text-sky-500" />
+                <CloudIcon className="h-24 text-climate" />
               </span>
               <p className="my-4 text-xl">
                 In Münster ist es gerade{' '***REMOVED***
-                <span className="text-sky-500">
+                <span className="text-climate">
             ***REMOVED***conditionMapping[weather?.condition]***REMOVED***
                 </span>
               </p>

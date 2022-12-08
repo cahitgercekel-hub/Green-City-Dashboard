@@ -8,6 +8,10 @@ import {
   SeriesOption,
 ***REMOVED*** from 'echarts'
 import { useEffect, useState ***REMOVED*** from 'react'
+import resolveConfig from 'tailwindcss/resolveConfig'
+import tailwindConfig from '@/tailwind.config.js'
+
+const { theme ***REMOVED*** = resolveConfig(tailwindConfig)
 
 type StadtradelnData = {
   [key: string]: {
@@ -19,6 +23,8 @@ type StadtradelnData = {
 ***REMOVED***
 ***REMOVED***
 
+console.log()
+
 const colors: {
   [key: keyof StadtradelnData]: {
     color: string
@@ -26,19 +32,22 @@ const colors: {
 ***REMOVED***
 ***REMOVED*** = {
   muenster: {
-    color: '#34c17b',
+    // @ts-ignore
+    color: theme?.colors?.mobility.DEFAULT || '#34c17b',
     symbol: `image://${
       require('@/assets/icons/Bicycle/BicycleIconGreen.svg').default.src
   ***REMOVED***`,
 ***REMOVED***,
   konstanz: {
-    color: '#6060d6',
+    // @ts-ignore
+    color: theme?.colors?.buildings.DEFAULT || '#6060d6',
     symbol: `image://${
       require('@/assets/icons/Bicycle/BicycleIconPurple.svg').default.src
   ***REMOVED***`,
 ***REMOVED***,
   mannheim: {
-    color: '#f28443',
+    // @ts-ignore
+    color: theme?.colors?.energy.DEFAULT || '#f28443',
     symbol: `image://${
       require('@/assets/icons/Bicycle/BicycleIconOrange.svg').default.src
   ***REMOVED***`,

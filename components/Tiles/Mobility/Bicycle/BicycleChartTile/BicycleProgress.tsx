@@ -4,7 +4,7 @@ export default function BicycleProgress({ progress ***REMOVED***: { progress: nu
       <div>S</div>
       <div className="flex flex-1">
         <div
-          className={'h-2 bg-green-500 transition-all'***REMOVED***
+          className={'h-2 bg-mobility transition-all'***REMOVED***
           style={{ width: `${progress***REMOVED***%` ***REMOVED******REMOVED***
         ></div>
         <div>E</div>

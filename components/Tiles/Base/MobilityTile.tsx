@@ -27,7 +27,7 @@ export default function MobilityTile({
       variant="mobility"
 ***REMOVED***...props***REMOVED***
     >
-      <span className="text-6xl font-light text-green-500">{title***REMOVED***</span>
+      <span className="text-6xl font-light text-mobility">{title***REMOVED***</span>
       <br />
       <span className="text-xl">{subtitle***REMOVED***</span>
       <Spacer />

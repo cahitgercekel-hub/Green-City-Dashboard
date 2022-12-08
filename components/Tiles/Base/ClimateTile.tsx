@@ -27,7 +27,7 @@ export default function ClimateTile({
       variant="climate"
 ***REMOVED***...props***REMOVED***
     >
-      <span className="text-6xl font-light text-sky-500">{title***REMOVED***</span>
+      <span className="text-6xl font-light text-climate">{title***REMOVED***</span>
       <br />
       <span className="text-xl">{subtitle***REMOVED***</span>
       <Spacer />
