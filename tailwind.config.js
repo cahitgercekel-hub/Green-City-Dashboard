@@ -30,5 +30,4 @@ module.exports = {
     ***REMOVED***,
   ***REMOVED***,
 ***REMOVED***,
-  plugins: [require('@tailwindcss/typography')],
 ***REMOVED***
