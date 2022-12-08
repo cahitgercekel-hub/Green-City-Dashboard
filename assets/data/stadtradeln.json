@@ -1,0 +1,26 @@
+{
+  "muenster": {
+    "name": "Münster",
+    "data": [
+***REMOVED*** "year": 2020, "km": 914414 ***REMOVED***,
+***REMOVED*** "year": 2021, "km": 1393450 ***REMOVED***,
+***REMOVED*** "year": 2022, "km": 1948616 ***REMOVED***
+    ]
+***REMOVED***,
+  "konstanz": {
+    "name": "Konstanz",
+    "data": [
+***REMOVED*** "year": 2020, "km": 145838 ***REMOVED***,
+***REMOVED*** "year": 2021, "km": 198751 ***REMOVED***,
+***REMOVED*** "year": 2022, "km": 256476 ***REMOVED***
+    ]
+***REMOVED***,
+  "mannheim": {
+    "name": "Mannheim",
+    "data": [
+***REMOVED*** "year": 2020, "km": 461836 ***REMOVED***,
+***REMOVED*** "year": 2021, "km": 547516 ***REMOVED***,
+***REMOVED*** "year": 2022, "km": 764025 ***REMOVED***
+    ]
+***REMOVED***
+***REMOVED***

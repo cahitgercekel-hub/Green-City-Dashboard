@@ -1,0 +1,162 @@
+import stadtradelnData from '@/assets/data/stadtradeln.json'
+import { ReactECharts ***REMOVED*** from '@/components/Charts/ReactECharts'
+import { Spinner ***REMOVED*** from '@/components/Elements/Spinner'
+import {
+  BarSeriesOption,
+  LineSeriesOption,
+  PictorialBarSeriesOption,
+  SeriesOption,
+***REMOVED*** from 'echarts'
+import { useEffect, useState ***REMOVED*** from 'react'
+
+type StadtradelnData = {
+  [key: string]: {
+    name: string
+    data: {
+      year: number
+      km: number
+  ***REMOVED***[]
+***REMOVED***
+***REMOVED***
+
+const colors: {
+  [key: keyof StadtradelnData]: {
+    color: string
+    symbol: string
+***REMOVED***
+***REMOVED*** = {
+  muenster: {
+    color: '#34c17b',
+    symbol: `image://${
+      require('@/assets/icons/Bicycle/BicycleIconGreen.svg').default.src
+  ***REMOVED***`,
+***REMOVED***,
+  konstanz: {
+    color: '#6060d6',
+    symbol: `image://${
+      require('@/assets/icons/Bicycle/BicycleIconPurple.svg').default.src
+  ***REMOVED***`,
+***REMOVED***,
+  mannheim: {
+    color: '#f28443',
+    symbol: `image://${
+      require('@/assets/icons/Bicycle/BicycleIconOrange.svg').default.src
+  ***REMOVED***`,
+***REMOVED***,
+***REMOVED***
+
+type ChartProps = {
+  compare: boolean
+***REMOVED***
+
+const getSeries = (data: StadtradelnData) => {
+  const lineSeries: LineSeriesOption[] = Object.keys(data).map(k => ({
+    data: data[k].data.map(({ year, km ***REMOVED***) => [year, km]),
+    type: 'line',
+    areaStyle: {
+      color: '#34c17b',
+      opacity: 0.08,
+  ***REMOVED***,
+    lineStyle: {
+      opacity: 0,
+  ***REMOVED***,
+    symbol: 'none',
+    itemStyle: {***REMOVED***,
+    smooth: 0.2,
+***REMOVED***))
+
+  const barSeries: BarSeriesOption[] = Object.keys(data).map(k => ({
+    data: data[k].data.map(({ year, km ***REMOVED***) => [year, km]),
+    type: 'bar',
+    barWidth: 3,
+    zlevel: 10,
+    itemStyle: {
+      color: colors[k].color,
+  ***REMOVED***,
+    barGap: 2,
+    xAxisIndex: 1,
+    label: {
+      formatter: () => 'X',
+      position: 'top',
+  ***REMOVED***,
+***REMOVED***))
+
+  const barIcons: PictorialBarSeriesOption[] = Object.keys(data).map(k => ({
+    data: data[k].data.map(({ year, km ***REMOVED***) => [year, km]),
+    type: 'pictorialBar',
+    symbol: colors[k].symbol,
+    symbolSize: [32, 32],
+    symbolOffset: [0, -30],
+    symbolRotate: 15,
+    barWidth: 3,
+    barGap: 2,
+    symbolPosition: 'end',
+    xAxisIndex: 1,
+    zlevel: 20,
+***REMOVED***))
+
+  return [...lineSeries, ...barSeries, ...barIcons]
+***REMOVED***
+
+export default function Chart({ compare ***REMOVED***: ChartProps) {
+  const [data, setData] = useState<StadtradelnData>()
+  const [series, setSeries] = useState<SeriesOption[]>()
+
+  useEffect(() => {
+    if (compare) {
+      setData(stadtradelnData)
+  ***REMOVED*** else {
+      setData({ muenster: stadtradelnData.muenster ***REMOVED***)
+  ***REMOVED***
+***REMOVED***, [compare])
+
+  useEffect(() => {
+    if (!data) {
+      return
+  ***REMOVED***
+
+    setSeries(getSeries(data))
+***REMOVED***, [data])
+
+  if (!data) {
+    return <Spinner />
+***REMOVED***
+
+  return (
+    <ReactECharts
+      option={{
+        xAxis: [
+    ***REMOVED***
+            // hidden xaxis for lines
+            type: 'category',
+            axisTick: undefined,
+            boundaryGap: false,
+            position: 'bottom',
+            show: false,
+        ***REMOVED***,
+    ***REMOVED***
+            // xaxis for bars
+            type: 'category',
+            axisTick: undefined,
+            position: 'bottom',
+            name: 'Jahr',
+        ***REMOVED***,
+        ],
+        yAxis: {
+          type: 'value',
+          interval: 250000,
+          name: 'km',
+          max: 2000000,
+          axisLabel: {
+            formatter: (value: number) =>
+              value.toFixed(0).replace(/\B(?=(\d{3***REMOVED***)+(?!\d))/g, '.'),
+        ***REMOVED***,
+      ***REMOVED***,
+        series,
+    ***REMOVED******REMOVED***
+      settings={{
+        notMerge: true,
+    ***REMOVED******REMOVED***
+    />
+  )
+***REMOVED***
