@@ -1,4 +1,7 @@
 import '@/styles/globals.css'
+import { Inter ***REMOVED*** from '@next/font/google'
+
+const inter = Inter({ subsets: ['latin'] ***REMOVED***)
 
 export default function RootLayout({
   children,
@@ -6,7 +9,7 @@ export default function RootLayout({
   children: React.ReactNode
 ***REMOVED***) {
   return (
-    <html>
+    <html className={inter.className***REMOVED*** lang="de">
 ***REMOVED***/*
         <head /> will contain the components returned by the nearest parent
         head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
