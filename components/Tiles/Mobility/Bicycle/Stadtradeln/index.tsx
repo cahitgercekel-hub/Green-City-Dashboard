@@ -11,7 +11,7 @@ export default function StadtradelnTile() {
   return (
     <MobilityTile subtitle="auf der Überholspur" title="Stadtradeln">
       <div className="rounded bg-white p-2">
-        <div className="h-96 ">
+        <div className="flex h-96 w-full items-center justify-center">
           <Chart compare={compare***REMOVED*** />
         </div>
         <div className="flex items-center space-x-4 p-4">
