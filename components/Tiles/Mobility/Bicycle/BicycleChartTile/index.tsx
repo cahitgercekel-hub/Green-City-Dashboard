@@ -2,7 +2,7 @@
 
 import { Spacer ***REMOVED*** from '@/components/Elements/Spacer'
 import Slider from '@/components/Inputs/Slider'
-import MobilityTile from '@/components/Tiles/Base/MobilityTile'
+import MobilityTile from '@/components/Tiles/Mobility/MobilityTile'
 import { useBicycleCount ***REMOVED*** from '@/hooks/useBicycleCount'
 ***REMOVED***
 import { useState ***REMOVED*** from 'react'
