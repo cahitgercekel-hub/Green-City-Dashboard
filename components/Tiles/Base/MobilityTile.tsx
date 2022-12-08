@@ -1,4 +1,5 @@
 import { Spacer ***REMOVED*** from '@/components/Elements/Spacer'
+import SvgBicycleIcon from '@/components/Icons/BicycleIcon'
 import { BaseTile, BaseTileProps ***REMOVED*** from './BaseTile'
 import LiveBadge from './LiveBadge'
 
@@ -27,7 +28,10 @@ export default function MobilityTile({
       variant="mobility"
 ***REMOVED***...props***REMOVED***
     >
-      <span className="text-6xl font-light text-mobility">{title***REMOVED***</span>
+      <div className="flex justify-between">
+        <span className="text-6xl font-light text-mobility">{title***REMOVED***</span>
+        <SvgBicycleIcon className="h-10 w-10" />
+      </div>
       <br />
       <span className="text-xl">{subtitle***REMOVED***</span>
       <Spacer />
