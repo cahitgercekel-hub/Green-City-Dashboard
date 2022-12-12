@@ -13,13 +13,24 @@ import SuccessStoryTile from '@/components/Tiles/SuccessStory'
 import directus, {
   directusImage,
   successStoriesCollectionName,
+  surveyCollectionName,
 ***REMOVED*** from '@/lib/directus'
 import AnimatedPage from '@/components/Layout/AnimatedPage'
 import StadtradelnTile from '@/components/Tiles/Mobility/Bicycle/Stadtradeln'
+import SurveyTile from '@/components/Tiles/Survey'
 
 export default async function Home() {
   const { data: successStories ***REMOVED*** = await directus
     .items(successStoriesCollectionName)
+    .readByQuery({
+      filter: {
+        status: 'published',
+    ***REMOVED***,
+      limit: 2,
+  ***REMOVED***)
+
+  const { data: surveys ***REMOVED*** = await directus
+    .items(surveyCollectionName)
     .readByQuery({
       filter: {
         status: 'published',
@@ -48,6 +59,15 @@ export default async function Home() {
           <BicycleChartTile />
           <WeatherTile />
           <StadtradelnTile />
+    ***REMOVED***surveys && surveys[0] && (
+            <SurveyTile
+              answer={{
+                percent: surveys[0].answer_percent,
+                text: surveys[0].answer_text,
+            ***REMOVED******REMOVED***
+              question={surveys[0].question***REMOVED***
+            />
+      ***REMOVED******REMOVED***
         </Columns>
         <CO2EmissionsTile />
         <Spacer />
@@ -59,6 +79,17 @@ export default async function Home() {
             text={successStories[0].text***REMOVED***
           ></SuccessStoryTile>
     ***REMOVED******REMOVED***
+        <Columns>
+    ***REMOVED***surveys && surveys[1] && (
+            <SurveyTile
+              answer={{
+                percent: surveys[1].answer_percent,
+                text: surveys[1].answer_text,
+            ***REMOVED******REMOVED***
+              question={surveys[1].question***REMOVED***
+            />
+      ***REMOVED******REMOVED***
+        </Columns>
   ***REMOVED***successStories && successStories[1] && (
           <SuccessStoryTile
             image={directusImage(successStories[1].image)***REMOVED***

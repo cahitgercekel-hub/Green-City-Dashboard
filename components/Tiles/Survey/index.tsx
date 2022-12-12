@@ -1,0 +1,56 @@
+'use client'
+
+import { Button ***REMOVED*** from '@/components/Elements/Button'
+import { Spacer ***REMOVED*** from '@/components/Elements/Spacer'
+import Title from '@/components/Elements/Title'
+import { useState ***REMOVED*** from 'react'
+import { animated, useTransition ***REMOVED*** from 'react-spring'
+import { BaseTile ***REMOVED*** from '../Base/BaseTile'
+import SurveyAnswer, { SurveyAnswerProps ***REMOVED*** from './Answer'
+
+export type SurveyTileProps = {
+  question: string
+  answer: SurveyAnswerProps
+***REMOVED***
+export default function SurveyTile({ question, answer ***REMOVED***: SurveyTileProps) {
+  const [showAnswer, setShowAnswer] = useState(false)
+
+  const transitions = useTransition(showAnswer, {
+    from: { opacity: 0, y: 80 ***REMOVED***,
+    enter: { opacity: 1, y: 0 ***REMOVED***,
+    leave: { opacity: 0, y: 80 ***REMOVED***,
+    initial: false,
+***REMOVED***)
+
+  const RevealAnswerButton = (
+    <Button
+      className="transition-all"
+      onClick={() => setShowAnswer(!showAnswer)***REMOVED***
+      variant={'inverse'***REMOVED***
+    >
+***REMOVED***showAnswer ? 'zurück zur Frage' : 'Antwort aufdecken'***REMOVED***
+    </Button>
+  )
+  return (
+    <BaseTile footerCenterElement={RevealAnswerButton***REMOVED*** variant="secondary">
+      <div className="text-white">
+        <p>
+          <span className="font-semibold">Befragungsergebnisse:</span>{' '***REMOVED***
+          Bürgerumfrage 2022
+        </p>
+        <Spacer />
+        <div className="relative min-h-[12rem]">
+    ***REMOVED***transitions((styles, renderAnswer) =>
+            renderAnswer ? (
+              <SurveyAnswer {...answer***REMOVED*** {...styles***REMOVED*** />
+        ***REMOVED*** : (
+              <animated.div className="absolute top-0 left-0" style={styles***REMOVED***>
+                <Title variant={'inverse'***REMOVED***>{question***REMOVED***</Title>
+              </animated.div>
+        ***REMOVED***,
+      ***REMOVED******REMOVED***
+        </div>
+      </div>
+    </BaseTile>
+  )
+***REMOVED***
