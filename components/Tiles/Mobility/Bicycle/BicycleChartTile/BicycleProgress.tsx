@@ -1,22 +1,18 @@
 import { BicycleEnd, BicycleStart ***REMOVED*** from '@/components/Icons'
+import * as ProgressPrimitive from '@radix-ui/react-progress'
 
 export default function BicycleProgress({ progress ***REMOVED***: { progress: number ***REMOVED***) {
   return (
     <div className="flex w-full">
-      <div className="h-8 w-8">
-        <BicycleStart />
-      </div>
-      <div className="flex flex-1 -translate-x-[4px]">
-        <div
-          className={
-            'mt-2 h-2 -translate-y-[1px] rounded-b-sm bg-mobility transition-all'
-        ***REMOVED***
+      <BicycleStart className="h-8 w-8 translate-x-[2px] translate-y-[0.7px]" />
+      <ProgressPrimitive.Root className="w-[calc(100%-4rem)]" value={progress***REMOVED***>
+        <ProgressPrimitive.Indicator
+          className="relative mt-2 flex h-2 rounded-b-sm bg-mobility transition-all"
           style={{ width: `${progress***REMOVED***%` ***REMOVED******REMOVED***
-        ></div>
-        <div className="h-8 w-8">
-          <BicycleEnd />
-        </div>
-      </div>
+        >
+          <BicycleEnd className="absolute top-0 -right-8 h-8 w-8 -translate-y-[7.5px] -translate-x-[5px]" />
+        </ProgressPrimitive.Indicator>
+      </ProgressPrimitive.Root>
     </div>
   )
 ***REMOVED***
