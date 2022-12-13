@@ -1,6 +1,8 @@
 export { default as BicycleEnd ***REMOVED*** from './BicycleEnd'
 export { default as BicycleIcon ***REMOVED*** from './BicycleIcon'
 export { default as BicycleStart ***REMOVED*** from './BicycleStart'
+export { default as BusCombustionIcon ***REMOVED*** from './BusCombustionIcon'
+export { default as BusElectroIcon ***REMOVED*** from './BusElectroIcon'
 export { default as MuensterIcon ***REMOVED*** from './MuensterIcon'
 export { default as Sun ***REMOVED*** from './Sun'
 export { default as SunLarge ***REMOVED*** from './SunLarge'
