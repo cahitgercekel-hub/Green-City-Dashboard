@@ -1,11 +1,8 @@
 import ClimateTile from '../ClimateTile'
 
-// https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/monthly/kl/historical/monatswerte_KL_03404_18530101_19911231_hist.zip
-// https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/monthly/kl/historical/monatswerte_KL_01766_19891001_20211231_hist.zip
-// @ts-ignore
-// import climHistory from '@/assets/data/climate/klima_history.csv'
-
-// https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/monthly/kl/recent/monatswerte_KL_01766_akt.zip
+//@ts-ignore
+import rawClimateData from '@/assets/data/climate_muenster.csv'
+import RadarChart from './RadarChart'
 
 type DWDMonthlyClimateMeasurement = {
   STATIONS_ID: number
@@ -27,24 +24,41 @@ type DWDMonthlyClimateMeasurement = {
   eor: string
 ***REMOVED***
 
+const climateData = rawClimateData as DWDMonthlyClimateMeasurement[]
+
+const climateTemperature = climateData.map(e => ({
+  year: e.MESS_DATUM_BEGINN.toString().substring(0, 4),
+  month: e.MESS_DATUM_BEGINN.toString().substring(4, 6),
+  value: e.MO_TT,
+***REMOVED***))
+
+const climateYears = climateTemperature.reduce(
+  (
+    a: {
+      [key: string]: {
+        [key: string]: number
+    ***REMOVED***
+  ***REMOVED***,
+    o,
+  ) => ({
+    ...a,
+    [o.year]: {
+      // @ts-ignore
+      ...a[o.year],
+      [o.month]: o.value,
+  ***REMOVED***,
+***REMOVED***),
+  {***REMOVED***,
+)
+
 export default function ClimateDevelopmentTile() {
-  //   console.log(climRecent)
-
-  //   const dwdHistoryData = climHistory as DWDMonthlyClimateMeasurement[]
-
-  //   const historyData = dwdHistoryData.map(e => {
-  //     const year = e.MESS_DATUM_BEGINN.toString().substring(0, 4)
-  //     const month = e.MESS_DATUM_BEGINN.toString().substring(4, 6)
-  //     const value = e.MO_TT // Monthly temperature averages in 2m above ground
-  //     return { year, month, value ***REMOVED***
-  // ***REMOVED***)
-
-  //   const minYear = Math.min(...historyData.map(e => Number(e.year)))
-  //   console.log(minYear)
-
   return (
     <ClimateTile dataSource="DWD" live title={'Klima'***REMOVED***>
-      <p>Hello World</p>
+      <div className="h-96 w-full rounded bg-white">
+        <div className="h-full w-full">
+          <RadarChart data={climateYears***REMOVED*** />
+        </div>
+      </div>
     </ClimateTile>
   )
 ***REMOVED***
