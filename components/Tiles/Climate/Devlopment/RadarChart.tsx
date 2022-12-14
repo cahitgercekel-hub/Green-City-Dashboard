@@ -1,30 +1,52 @@
 'use client'
 
 import { ReactECharts ***REMOVED*** from '@/components/Charts/ReactECharts'
-import { SeriesOption ***REMOVED*** from 'echarts'
+import { useEffect, useState ***REMOVED*** from 'react'
 
 export default function RadarChart({
   data,
 ***REMOVED***: {
   data: {
     [x: string]: {
-      [key: string]: number
+      [key: number]: number
   ***REMOVED***
 ***REMOVED***
 ***REMOVED***) {
-  const series: SeriesOption = {
-    name: 'Climate',
-    type: 'radar',
-    data: Object.keys(data).map(y => {
+  const [years, setYears] = useState<string[]>([])
+  const [seriesData, setSeriesData] = useState<any[]>([])
+  const [counter, setCounter] = useState(0)
+
+  useEffect(() => {
+    const timer = setInterval(
+      () => setCounter(prevCounter => prevCounter + 1),
+      200,
+***REMOVED***
+
+    return () => clearInterval(timer)
+***REMOVED***, [])
+
+  useEffect(() => {
+    const allYears = Object.keys(data)
+    if (counter >= allYears.length) {
+      setCounter(0)
+      setYears([])
+      return
+  ***REMOVED***
+    const newYear = allYears[counter]
+    setYears([...years, newYear])
+***REMOVED***, [counter])
+
+  useEffect(() => {
+    const mySeriesData = years?.slice(-10).map(y => {
       const year = data[y]
       return {
         value: Object.keys(year)
-          .map(m => year[m])
+          .map(m => year[Number(m)])
           .reverse(),
         name: y,
         areaStyle: {
-          color: 'blue',
-          opacity: 0.01,
+          color: '#14b3d9',
+          opacity: 0.1,
       ***REMOVED***,
         lineStyle: {
           width: 0,
@@ -33,32 +55,58 @@ export default function RadarChart({
           opacity: 0,
       ***REMOVED***,
     ***REMOVED***
-  ***REMOVED***),
-***REMOVED***
+  ***REMOVED***)
+    setSeriesData(mySeriesData)
+***REMOVED***, [years])
 
   return (
-    <ReactECharts
-      option={{
-        radar: {
-          shape: 'circle',
+    <div className="relative h-full w-full">
+      <div className="absolute flex h-full w-full items-center justify-center">
+        <p className="z-10 text-2xl">{years[years.length - 1]***REMOVED***</p>
+      </div>
 
-          indicator: [
-      ***REMOVED*** name: 'Jan' ***REMOVED***,
-      ***REMOVED*** name: 'Feb' ***REMOVED***,
-      ***REMOVED*** name: 'Mar' ***REMOVED***,
-      ***REMOVED*** name: 'Apr' ***REMOVED***,
-      ***REMOVED*** name: 'May' ***REMOVED***,
-      ***REMOVED*** name: 'Jun' ***REMOVED***,
-      ***REMOVED*** name: 'Jul' ***REMOVED***,
-      ***REMOVED*** name: 'Aug' ***REMOVED***,
-      ***REMOVED*** name: 'Sep' ***REMOVED***,
-      ***REMOVED*** name: 'Oct' ***REMOVED***,
-      ***REMOVED*** name: 'Nov' ***REMOVED***,
-      ***REMOVED*** name: 'Dec' ***REMOVED***,
-          ].reverse(),
-      ***REMOVED***,
-        series: series,
-    ***REMOVED******REMOVED***
-    />
+      <ReactECharts
+        option={{
+          animation: false,
+          radar: {
+            splitLine: {
+              show: false,
+          ***REMOVED***,
+            splitArea: {
+              areaStyle: {
+                color: ['#14b3d91f'],
+            ***REMOVED***,
+          ***REMOVED***,
+            axisLine: {
+              show: false,
+          ***REMOVED***,
+            axisTick: {
+              show: false,
+          ***REMOVED***,
+            shape: 'circle',
+            indicator: [
+        ***REMOVED*** name: 'Jan', min: -10, max: 25 ***REMOVED***,
+        ***REMOVED*** name: 'Feb', min: -10, max: 25 ***REMOVED***,
+        ***REMOVED*** name: 'Mar', min: -10, max: 25 ***REMOVED***,
+        ***REMOVED*** name: 'Apr', min: -10, max: 25 ***REMOVED***,
+        ***REMOVED*** name: 'May', min: -10, max: 25 ***REMOVED***,
+        ***REMOVED*** name: 'Jun', min: -10, max: 25 ***REMOVED***,
+        ***REMOVED*** name: 'Jul', min: -10, max: 25 ***REMOVED***,
+        ***REMOVED*** name: 'Aug', min: -10, max: 25 ***REMOVED***,
+        ***REMOVED*** name: 'Sep', min: -10, max: 25 ***REMOVED***,
+        ***REMOVED*** name: 'Oct', min: -10, max: 25 ***REMOVED***,
+        ***REMOVED*** name: 'Nov', min: -10, max: 25 ***REMOVED***,
+        ***REMOVED*** name: 'Dec', min: -10, max: 25 ***REMOVED***,
+            ].reverse(),
+        ***REMOVED***,
+          series: {
+            name: 'Climate',
+            type: 'radar',
+            data: seriesData,
+        ***REMOVED***,
+      ***REMOVED******REMOVED***
+        renderer="canvas"
+      />
+    </div>
   )
 ***REMOVED***
