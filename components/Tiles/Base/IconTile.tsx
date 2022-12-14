@@ -1,5 +1,5 @@
 import { Spacer ***REMOVED*** from '@/components/Elements/Spacer'
-import { cva, VariantProps ***REMOVED*** from 'class-variance-authority'
+import { cva, cx, VariantProps ***REMOVED*** from 'class-variance-authority'
 import { SVGProps ***REMOVED*** from 'react'
 import { BaseTile ***REMOVED*** from './BaseTile'
 import LiveBadge from './LiveBadge'
@@ -54,8 +54,10 @@ export default function IconTile({
       footerCenterElement={live ? <LiveBadge variant={variant***REMOVED*** /> : undefined***REMOVED***
       variant={variant***REMOVED***
     >
-      <div className="flex justify-between">
-        <span className={iconTileTitleStyle({ variant ***REMOVED***)***REMOVED***>{title***REMOVED***</span>
+      <div
+        className={cx('flex justify-between', iconTileTitleStyle({ variant ***REMOVED***))***REMOVED***
+      >
+        <span>{title***REMOVED***</span>
         <Icon className="h-10 w-12" />
       </div>
       <span className="text-lg md:text-xl">{subtitle***REMOVED***</span>

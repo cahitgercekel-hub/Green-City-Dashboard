@@ -7,6 +7,12 @@ import Title from '../../Elements/Title'
 import Link from 'next/link'
 import Collapsible from '../../Elements/Collapsible'
 import Container from '../Container'
+import {
+  BicycleIcon,
+  BuildingIcon,
+  EnergyIcon,
+  MuensterIcon,
+***REMOVED*** from '@/components/Icons'
 
 export default function Navbar() {
   return (
@@ -41,16 +47,30 @@ export default function Navbar() {
             </div>
             <div className="flex h-fit flex-wrap space-x-2">
               <Link href={'/klima'***REMOVED***>
-                <Button>Klima in Münster</Button>
+                <Button
+                  startIcon={<MuensterIcon className="h-6 text-primary" />***REMOVED***
+                >
+                  Klima in Münster
+                </Button>
               </Link>
               <Link href={'/energie'***REMOVED***>
-                <Button>Energien</Button>
+                <Button startIcon={<EnergyIcon className="h-6 text-primary" />***REMOVED***>
+                  Energien
+                </Button>
               </Link>
               <Link href={'/mobilitaet'***REMOVED***>
-                <Button>Mobilität</Button>
+                <Button
+                  startIcon={<BicycleIcon className="h-6 text-primary" />***REMOVED***
+                >
+                  Mobilität
+                </Button>
               </Link>
               <Link href={'/gebaeude'***REMOVED***>
-                <Button>Gebäude</Button>
+                <Button
+                  startIcon={<BuildingIcon className="h-6 text-primary" />***REMOVED***
+                >
+                  Gebäude
+                </Button>
               </Link>
             </div>
           </div>
