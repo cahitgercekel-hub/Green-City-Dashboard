@@ -42,6 +42,7 @@ export default async function Home() {
 
   return (
     <AnimatedPage>
+***REMOVED***/* @ts-expect-error Server Component */***REMOVED***
       <InsightsContainer />
       <StairStepBackground variant="secondary">
         <Container>
