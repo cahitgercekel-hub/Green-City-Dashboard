@@ -72,7 +72,7 @@ const climateYears = climateTemperature.reduce(
 
 export default function ClimateDevelopmentTile() {
   return (
-    <ClimateTile dataSource="DWD" live title={'Klima'***REMOVED***>
+    <ClimateTile dataSource="DWD" embedId="klima" live title={'Klima'***REMOVED***>
       <div className="h-96 w-full">
         <div className="h-full w-full">
           <RadarChart data={climateYears***REMOVED*** />

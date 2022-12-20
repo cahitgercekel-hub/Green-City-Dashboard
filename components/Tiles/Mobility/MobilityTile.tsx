@@ -1,11 +1,13 @@
 import SvgBicycleIcon from '@/components/Icons/BicycleIcon'
+import { EmbedTileProps ***REMOVED*** from '../Base/BaseTile'
 import IconTile, { DataSourceProps ***REMOVED*** from '../Base/IconTile'
 
-export type MobilityTileProps = DataSourceProps & {
-  children: React.ReactElement | React.ReactElement[]
-  title: string
-  subtitle?: string
-  live?: boolean
+export type MobilityTileProps = DataSourceProps &
+  EmbedTileProps & {
+    children: React.ReactElement | React.ReactElement[]
+    title: string
+    subtitle?: string
+    live?: boolean
 ***REMOVED***
 
 /**
@@ -20,11 +22,13 @@ export default function MobilityTile({
   subtitle,
   dataSource,
   dataRetrieval,
+  embedId,
 ***REMOVED***: MobilityTileProps) {
   return (
     <IconTile
       dataRetrieval={dataRetrieval***REMOVED***
       dataSource={dataSource***REMOVED***
+      embedId={embedId***REMOVED***
       icon={SvgBicycleIcon***REMOVED***
       live={live***REMOVED***
       subtitle={subtitle***REMOVED***

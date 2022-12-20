@@ -1,6 +1,7 @@
 'use client'
 
 import Title from '@/components/Elements/Title'
+import embedRegistry from '@/utils/embedRegistry'
 import {
   CheckIcon,
   ClipboardDocumentIcon,
@@ -11,10 +12,15 @@ import { animated, AnimatedProps, useTransition ***REMOVED*** from 'react-spring
 
 type EmbedOverlayProps = AnimatedProps<ComponentPropsWithRef<'div'>> & {
   onClose?: () => void
+  embedId: keyof typeof embedRegistry
 ***REMOVED***
 
-export default function EmbedOverlay({ onClose, ...props ***REMOVED***: EmbedOverlayProps) {
-  const link = `${window.location.origin***REMOVED***/embed/123`
+export default function EmbedOverlay({
+  onClose,
+  embedId,
+  ...props
+***REMOVED***: EmbedOverlayProps) {
+  const link = `${window.location.origin***REMOVED***/embed/${embedId***REMOVED***`
 
   const iframeSrc = `<iframe src="${link***REMOVED***" style="border:none; width:100%; height:100%" title="Klimadashboard Münster"></iframe>`
 
@@ -42,7 +48,7 @@ export default function EmbedOverlay({ onClose, ...props ***REMOVED***: EmbedOve
   return (
     <animated.div
 ***REMOVED***...props***REMOVED***
-      className="absolute top-0 left-0 h-full w-full bg-primary bg-opacity-90 p-8 backdrop-blur md:p-12"
+      className="absolute top-0 left-0 z-20 h-full w-full bg-primary bg-opacity-90 p-8 backdrop-blur md:p-12"
     >
       <div className="flex w-full justify-end">
         <XMarkIcon
@@ -50,13 +56,15 @@ export default function EmbedOverlay({ onClose, ...props ***REMOVED***: EmbedOve
           onClick={onClose***REMOVED***
         />
       </div>
-      <div className="my-auto flex w-full items-center">
-        <div className="flex-1">
+      <div className="my-auto flex h-full w-full items-center">
+        <div className="h-full flex-1 flex-col content-between">
           <Title variant={'secondary'***REMOVED***>
             Klimakachel auf Ihre Website einbauen
           </Title>
           <div className="flex rounded bg-white p-4">
-            <pre className="m-4 flex-1 whitespace-pre-wrap">{iframeSrc***REMOVED***</pre>
+            <pre className="m-4 flex-1 whitespace-pre-wrap break-all text-sm">
+        ***REMOVED***iframeSrc***REMOVED***
+            </pre>
             <div className="relative w-7">
         ***REMOVED***transitions((styles, isSuccess) => (
                 <animated.div
