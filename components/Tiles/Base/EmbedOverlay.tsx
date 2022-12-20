@@ -25,6 +25,10 @@ export default function EmbedOverlay({
   const iframeSrc = `<iframe src="${link***REMOVED***" style="border:none; width:100%; height:100%" title="Klimadashboard Münster"></iframe>`
 
   const copyToClipboard = async () => {
+    // if (!window.navigator) {
+    //   return
+    // ***REMOVED***
+
     await navigator.clipboard.writeText(iframeSrc)
     setSuccess(true)
 ***REMOVED***
