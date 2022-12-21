@@ -4,10 +4,12 @@ import Providers from '@/components/Layout/Providers'
 
 export default function Layout({ children ***REMOVED***: { children: React.ReactNode ***REMOVED***) {
   return (
-    <>
+    <div className="flex h-screen flex-col">
       <Navbar />
-      <Providers>{children***REMOVED***</Providers>
+      <div className="flex-1">
+        <Providers>{children***REMOVED***</Providers>
+      </div>
       <Footer />
-    </>
+    </div>
   )
 ***REMOVED***
