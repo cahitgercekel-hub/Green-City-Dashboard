@@ -5,8 +5,8 @@ import { cva, cx, VariantProps ***REMOVED*** from 'class-variance-authority'
 import { useState ***REMOVED*** from 'react'
 import { useTransition ***REMOVED*** from 'react-spring'
 import EmbedOverlay from './EmbedOverlay'
+import ShareOverlay from './ShareOverlay'
 import TileFooter from './TileFooter'
-// import 'share-api-polyfill'
 
 const baseTileStyle = cva(
   'relative flex flex-col md:flex-row h-fit overflow-hidden rounded-3xl',
@@ -41,6 +41,12 @@ export type BaseTileProps = VariantProps<typeof baseTileStyle> &
     footerCenterElement?: React.ReactElement
 ***REMOVED***
 
+const transitionOpts = {
+  from: { opacity: 0 ***REMOVED***,
+  enter: { opacity: 1 ***REMOVED***,
+  leave: { opacity: 0 ***REMOVED***,
+***REMOVED***
+
 /**
  * A basic configruable tile
  * @param BaseTileProps basic properties of the tile
@@ -55,45 +61,27 @@ export function BaseTile({
   footerCenterElement,
   embedId,
 ***REMOVED***: BaseTileProps) {
-  const [showOverlay, setShowOverlay] = useState(false)
+  const [showEmbedOverlay, setShowEmbedOverlay] = useState(false)
+  const [showShareOverlay, setShowShareOverlay] = useState(false)
 
-  const transitions = useTransition(showOverlay, {
-    from: { opacity: 0 ***REMOVED***,
-    enter: { opacity: 1 ***REMOVED***,
-    leave: { opacity: 0 ***REMOVED***,
-***REMOVED***)
+  const embedTransitions = useTransition(showEmbedOverlay, transitionOpts)
+  const shareTransitions = useTransition(showShareOverlay, transitionOpts)
 
   const openShareDialog = async () => {
-    // if (typeof navigator === 'undefined') {
-    //   return
-    // ***REMOVED***
-    // try {
-    //   await navigator.share(
-    //     {
-    //       title: 'Web Share API Polyfill',
-    //       text: 'A polyfill for the Share API. Use it to share in both desktops and mobile devices.',
-    //       url: `${window.location.origin***REMOVED***/share/${embedId***REMOVED***`,
-    //   ***REMOVED***,
-    //     // @ts-ignore
-    //     {
-    //       language: 'de',
-    //       copy: true,
-    //       email: true,
-    //       print: false,
-    //       sms: false,
-    //       messenger: false,
-    //       facebook: false,
-    //       whatsapp: false,
-    //       twitter: false,
-    //       linkedin: false,
-    //       telegram: false,
-    //       skype: false,
-    //       pinterest: false,
-    //   ***REMOVED***,
-    //   )
-    // ***REMOVED*** catch (e) {
-    //   console.log('Could not share', e)
-    // ***REMOVED***
+    if (navigator && navigator.share) {
+    ***REMOVED***
+        await navigator.share({
+          title: 'Klimadashboard Münster',
+          url: `${window.location.origin***REMOVED***/share/${embedId***REMOVED***`,
+      ***REMOVED***)
+    ***REMOVED*** catch (e) {
+        console.log('Could not share', e)
+    ***REMOVED*** finally {
+        return
+    ***REMOVED***
+  ***REMOVED***
+
+    setShowShareOverlay(true)
 ***REMOVED***
 
   return (
@@ -103,7 +91,7 @@ export function BaseTile({
         <div className="flex w-full flex-col justify-between p-6 md:p-12">
           <div>{children***REMOVED***</div>
           <TileFooter
-            onEmbedClick={() => setShowOverlay(true)***REMOVED***
+            onEmbedClick={() => setShowEmbedOverlay(true)***REMOVED***
             onShareClick={openShareDialog***REMOVED***
             variant={variant === 'secondary' ? 'inverse' : 'primary'***REMOVED***
           >
@@ -112,12 +100,23 @@ export function BaseTile({
         </div>
   ***REMOVED***endImage***REMOVED***
   ***REMOVED***embedId &&
-          transitions(
+          embedTransitions(
             (styles, render) =>
               render && (
                 <EmbedOverlay
                   embedId={embedId***REMOVED***
-                  onClose={() => setShowOverlay(false)***REMOVED***
+                  onClose={() => setShowEmbedOverlay(false)***REMOVED***
+                  style={styles***REMOVED***
+                />
+          ***REMOVED***,
+      ***REMOVED******REMOVED***
+  ***REMOVED***embedId &&
+          shareTransitions(
+            (styles, render) =>
+              render && (
+                <ShareOverlay
+                  embedId={embedId***REMOVED***
+                  onClose={() => setShowShareOverlay(false)***REMOVED***
                   style={styles***REMOVED***
                 />
           ***REMOVED***,
