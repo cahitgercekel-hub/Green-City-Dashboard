@@ -6,7 +6,7 @@ import Chart from './Chart'
 import stadtradelnData from '@/assets/data/stadtradeln.json'
 import { animated, useSpring ***REMOVED*** from 'react-spring'
 import { ProgressCircle ***REMOVED*** from '@/components/Charts/Progress/ProgressCircle'
-import AnimatedRollingElement from '@/components/Elements/AnimatedRollingElement'
+import AnimatedRollingElement from '@/components/Elements/Animated/AnimatedRollingElement'
 
 type StadtradelnData = {
   name: string

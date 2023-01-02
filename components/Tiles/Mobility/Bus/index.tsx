@@ -1,6 +1,6 @@
 'use client'
 
-import AnimatedNumber from '@/components/Elements/AnimatedNumber'
+import AnimatedNumber from '@/components/Elements/Animated/AnimatedNumber'
 import { Spacer ***REMOVED*** from '@/components/Elements/Spacer'
 import { BusCombustionIcon, BusElectroIcon ***REMOVED*** from '@/components/Icons'
 import { useBusData ***REMOVED*** from '@/hooks/useBusData'
