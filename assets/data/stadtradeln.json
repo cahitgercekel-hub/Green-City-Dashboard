@@ -2,25 +2,239 @@
   "muenster": {
     "name": "Münster",
     "data": [
-***REMOVED*** "year": 2020, "km": 914414 ***REMOVED***,
-***REMOVED*** "year": 2021, "km": 1393450 ***REMOVED***,
-***REMOVED*** "year": 2022, "km": 1948616 ***REMOVED***
+***REMOVED***
+        "year": 2020,
+        "km": 914414
+    ***REMOVED***,
+***REMOVED***
+        "year": 2021,
+        "km": 1393450
+    ***REMOVED***,
+***REMOVED***
+        "year": 2022,
+        "km": 1948616
+    ***REMOVED***
     ]
 ***REMOVED***,
-  "konstanz": {
-    "name": "Konstanz",
+  "braunschweig": {
+    "name": "Braunschweig",
     "data": [
-***REMOVED*** "year": 2020, "km": 145838 ***REMOVED***,
-***REMOVED*** "year": 2021, "km": 198751 ***REMOVED***,
-***REMOVED*** "year": 2022, "km": 256476 ***REMOVED***
+***REMOVED***
+        "year": 2020,
+        "km": 1229179
+    ***REMOVED***,
+***REMOVED***
+        "year": 2021,
+        "km": 1295379
+    ***REMOVED***,
+***REMOVED***
+        "year": 2022,
+        "km": 1332200
+    ***REMOVED***
+    ]
+***REMOVED***,
+  "augsburg": {
+    "name": "Augsburg",
+    "data": [
+***REMOVED***
+        "year": 2020,
+        "km": 899975
+    ***REMOVED***,
+***REMOVED***
+        "year": 2021,
+        "km": 793011
+    ***REMOVED***,
+***REMOVED***
+        "year": 2022,
+        "km": 947356
+    ***REMOVED***
+    ]
+***REMOVED***,
+  "kiel": {
+    "name": "Kiel",
+    "data": [
+***REMOVED***
+        "year": 2020,
+        "km": 879404
+    ***REMOVED***,
+***REMOVED***
+        "year": 2021,
+        "km": 832695
+    ***REMOVED***,
+***REMOVED***
+        "year": 2022,
+        "km": 941406
+    ***REMOVED***
+    ]
+***REMOVED***,
+  "ulm": {
+    "name": "Ulm",
+    "data": [
+***REMOVED***
+        "year": 2020,
+        "km": 370228
+    ***REMOVED***,
+***REMOVED***
+        "year": 2021,
+        "km": 521978
+    ***REMOVED***,
+***REMOVED***
+        "year": 2022,
+        "km": 814772
+    ***REMOVED***
+    ]
+***REMOVED***,
+  "bielefeld": {
+    "name": "Bielefeld",
+    "data": [
+***REMOVED***
+        "year": 2020,
+        "km": 759712
+    ***REMOVED***,
+***REMOVED***
+        "year": 2021,
+        "km": 974809
+    ***REMOVED***,
+***REMOVED***
+        "year": 2022,
+        "km": 811242
+    ***REMOVED***
     ]
 ***REMOVED***,
   "mannheim": {
     "name": "Mannheim",
     "data": [
-***REMOVED*** "year": 2020, "km": 461836 ***REMOVED***,
-***REMOVED*** "year": 2021, "km": 547516 ***REMOVED***,
-***REMOVED*** "year": 2022, "km": 764025 ***REMOVED***
+***REMOVED***
+        "year": 2020,
+        "km": 461836
+    ***REMOVED***,
+***REMOVED***
+        "year": 2021,
+        "km": 547516
+    ***REMOVED***,
+***REMOVED***
+        "year": 2022,
+        "km": 764025
+    ***REMOVED***
+    ]
+***REMOVED***,
+  "luebeck": {
+    "name": "Lübeck",
+    "data": [
+***REMOVED***
+        "year": 2020,
+        "km": 354166
+    ***REMOVED***,
+***REMOVED***
+        "year": 2021,
+        "km": 582187
+    ***REMOVED***,
+***REMOVED***
+        "year": 2022,
+        "km": 700816
+    ***REMOVED***
+    ]
+***REMOVED***,
+  "bonn": {
+    "name": "Bonn",
+    "data": [
+***REMOVED***
+        "year": 2020,
+        "km": 506421
+    ***REMOVED***,
+***REMOVED***
+        "year": 2021,
+        "km": 774431
+    ***REMOVED***,
+***REMOVED***
+        "year": 2022,
+        "km": 651259
+    ***REMOVED***
+    ]
+***REMOVED***,
+  "potsdam": {
+    "name": "Potsdam",
+    "data": [
+***REMOVED***
+        "year": 2020,
+        "km": 631827
+    ***REMOVED***,
+***REMOVED***
+        "year": 2021,
+        "km": 627424
+    ***REMOVED***,
+***REMOVED***
+        "year": 2022,
+        "km": 649039
+    ***REMOVED***
+    ]
+***REMOVED***,
+  "aachen": {
+    "name": "Aachen",
+    "data": [
+***REMOVED***
+        "year": 2020,
+        "km": 450878
+    ***REMOVED***,
+***REMOVED***
+        "year": 2021,
+        "km": 589504
+    ***REMOVED***,
+***REMOVED***
+        "year": 2022,
+        "km": 527352
+    ***REMOVED***
+    ]
+***REMOVED***,
+  "osnabrueck": {
+    "name": "Osnabrück",
+    "data": [
+***REMOVED***
+        "year": 2020,
+        "km": 411560
+    ***REMOVED***,
+***REMOVED***
+        "year": 2021,
+        "km": 378417
+    ***REMOVED***,
+***REMOVED***
+        "year": 2022,
+        "km": 487499
+    ***REMOVED***
+    ]
+***REMOVED***,
+  "wuppertal": {
+    "name": "Wuppertal",
+    "data": [
+***REMOVED***
+        "year": 2020,
+        "km": 297885
+    ***REMOVED***,
+***REMOVED***
+        "year": 2021,
+        "km": 376315
+    ***REMOVED***,
+***REMOVED***
+        "year": 2022,
+        "km": 385339
+    ***REMOVED***
+    ]
+***REMOVED***,
+  "heidelberg": {
+    "name": "Heidelberg",
+    "data": [
+***REMOVED***
+        "year": 2020,
+        "km": 213532
+    ***REMOVED***,
+***REMOVED***
+        "year": 2021,
+        "km": 361825
+    ***REMOVED***,
+***REMOVED***
+        "year": 2022,
+        "km": 474029
+    ***REMOVED***
     ]
 ***REMOVED***
 ***REMOVED***

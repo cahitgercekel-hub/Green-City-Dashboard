@@ -3,7 +3,7 @@ import type { VariantProps ***REMOVED*** from 'class-variance-authority'
 import { cva ***REMOVED*** from 'class-variance-authority'
 import { Sun, Temperature, Water, Wind ***REMOVED*** from '@/components/Icons'
 import { SVGProps ***REMOVED*** from 'react'
-import AnimatedNumber from '@/components/Elements/AnimatedNumber'
+import AnimatedNumber from '@/components/Elements/Animated/AnimatedNumber'
 
 type PhenomenaType = {
   [key: string]: {

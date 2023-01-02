@@ -6,7 +6,7 @@ interface Props {
   progress: number
 ***REMOVED***
 
-function Progress({ progress ***REMOVED***: Props) {
+function ProgressBar({ progress ***REMOVED***: Props) {
   return (
     <div className="rounded-full border-2 border-primary p-[.25rem]">
       <ProgressPrimitive.Root
@@ -22,4 +22,4 @@ function Progress({ progress ***REMOVED***: Props) {
   )
 ***REMOVED***
 
-export default Progress
+export default ProgressBar
