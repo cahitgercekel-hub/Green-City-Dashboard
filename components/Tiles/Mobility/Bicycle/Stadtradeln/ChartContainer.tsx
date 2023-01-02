@@ -4,6 +4,8 @@ import Switch from '@/components/Inputs/Switch'
 import { useEffect, useState ***REMOVED*** from 'react'
 import Chart from './Chart'
 import stadtradelnData from '@/assets/data/stadtradeln.json'
+import { animated, useSpring ***REMOVED*** from 'react-spring'
+import { ProgressCircle ***REMOVED*** from '@/components/Charts/Progress/ProgressCircle'
 
 type StadtradelnData = {
   name: string
@@ -18,12 +20,22 @@ const otherCities = Object.keys(stadtradelnData)
   // @ts-ignore
   .map(k => stadtradelnData[k] as StadtradelnData)
 
-const COMPARE_INTERVAL = 3000
+const COMPARE_INTERVAL = 5000
+
+const AnimatedProgressCircle = animated(ProgressCircle)
 
 export default function ChartContainer() {
   const [compare, setCompare] = useState(false)
   const [otherData, setOtherData] = useState<StadtradelnData>()
   const [otherIndex, setOtherIndex] = useState(0)
+
+  const [springs, api] = useSpring(() => ({
+    from: { progress: 0 ***REMOVED***,
+    to: { progress: 100 ***REMOVED***,
+    config: {
+      duration: COMPARE_INTERVAL,
+  ***REMOVED***,
+***REMOVED***))
 
   useEffect(() => {
     if (!compare) {
@@ -31,9 +43,20 @@ export default function ChartContainer() {
       return
   ***REMOVED***
 
-    const timer = setInterval(() => {
+    const restartProgress = () => {
       setOtherIndex(prevIndex => prevIndex + 1)
-  ***REMOVED***, COMPARE_INTERVAL)
+      api.stop()
+      api.set({ progress: 0 ***REMOVED***)
+      api.start({
+        progress: 100,
+        config: {
+          duration: COMPARE_INTERVAL,
+      ***REMOVED***,
+    ***REMOVED***)
+  ***REMOVED***
+
+    restartProgress()
+    const timer = setInterval(restartProgress, COMPARE_INTERVAL)
 
     return () => clearInterval(timer)
 ***REMOVED***, [compare])
@@ -65,7 +88,7 @@ export default function ChartContainer() {
         <div className="h-1 w-12 rounded bg-mobility" />
         <p className="text-primary">geradelte Kilometer in Münster</p>
       </div>
-      <div className="flex w-full flex-col items-center rounded border border-dashed border-primary p-4 lg:flex-row lg:space-x-2">
+      <div className="flex w-full flex-col items-center justify-between rounded border border-dashed border-primary p-4 lg:flex-row lg:space-x-2">
         <Switch
           defaultChecked={compare***REMOVED***
           label="Städtevergleich"
@@ -73,10 +96,13 @@ export default function ChartContainer() {
           variant={'mobility'***REMOVED***
         />
   ***REMOVED***otherData && (
-          <div className="flex items-center space-x-4">
-            <div className="h-1 w-12 rounded bg-buildings" />
-            <p className="text-primary">{otherData.name***REMOVED***</p>
-          </div>
+          <>
+            <div className="flex items-center space-x-4">
+              <div className="h-1 w-12 rounded bg-buildings" />
+              <p className="text-primary">{otherData.name***REMOVED***</p>
+            </div>
+            <AnimatedProgressCircle {...springs***REMOVED*** />
+          </>
     ***REMOVED******REMOVED***
       </div>
     </div>
