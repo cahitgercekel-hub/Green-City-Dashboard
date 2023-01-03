@@ -134,7 +134,7 @@ export function BaseTile({
                   embedId={embedId***REMOVED***
                   onClose={() => setShowMoreInfo(false)***REMOVED***
                   style={styles***REMOVED***
-                />
+                ></MoreInfoOverlay>
           ***REMOVED***,
       ***REMOVED******REMOVED***
       </div>
