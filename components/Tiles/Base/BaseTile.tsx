@@ -6,6 +6,7 @@ import { useState ***REMOVED*** from 'react'
 import { useTransition ***REMOVED*** from 'react-spring'
 import EmbedOverlay from './EmbedOverlay'
 import ShareOverlay from './ShareOverlay'
+import MoreInfoOverlay from './MoreInfoOverlay'
 import TileFooter from './TileFooter'
 
 const baseTileStyle = cva(
@@ -39,6 +40,7 @@ export type BaseTileProps = VariantProps<typeof baseTileStyle> &
     children: React.ReactElement | React.ReactElement[]
     className?: string
     footerCenterElement?: React.ReactElement
+    moreInfo?: React.ReactNode
 ***REMOVED***
 
 const transitionOpts = {
@@ -60,12 +62,16 @@ export function BaseTile({
   endImage,
   footerCenterElement,
   embedId,
+  moreInfo,
 ***REMOVED***: BaseTileProps) {
   const [showEmbedOverlay, setShowEmbedOverlay] = useState(false)
   const [showShareOverlay, setShowShareOverlay] = useState(false)
+  const [showMoreInfo, setShowMoreInfo] = useState(false)
 
   const embedTransitions = useTransition(showEmbedOverlay, transitionOpts)
   const shareTransitions = useTransition(showShareOverlay, transitionOpts)
+
+  const moreInfoTransitions = useTransition(showMoreInfo, transitionOpts)
 
   const openShareDialog = async () => {
     if (navigator && navigator.share) {
@@ -92,6 +98,7 @@ export function BaseTile({
           <div>{children***REMOVED***</div>
           <TileFooter
             onEmbedClick={() => setShowEmbedOverlay(true)***REMOVED***
+            onMoreInfoClick={() => setShowMoreInfo(true)***REMOVED***
             onShareClick={openShareDialog***REMOVED***
             variant={variant === 'secondary' ? 'inverse' : 'primary'***REMOVED***
           >
@@ -121,6 +128,17 @@ export function BaseTile({
                 />
           ***REMOVED***,
       ***REMOVED******REMOVED***
+  ***REMOVED***moreInfoTransitions(
+          (styles, render) =>
+            render && (
+              <MoreInfoOverlay
+                onClose={() => setShowMoreInfo(false)***REMOVED***
+                style={styles***REMOVED***
+              >
+          ***REMOVED***moreInfo***REMOVED***
+              </MoreInfoOverlay>
+        ***REMOVED***,
+    ***REMOVED******REMOVED***
       </div>
     </div>
   )
