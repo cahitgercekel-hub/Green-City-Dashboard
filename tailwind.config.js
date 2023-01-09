@@ -28,12 +28,6 @@ module.exports = {
           light: '#f2f2fa',
       ***REMOVED***,
     ***REMOVED***,
-      margin: {
-        '60px': '60px',
-    ***REMOVED***,
-      height: {
-        '320px': '320px',
-    ***REMOVED***,
   ***REMOVED***,
 ***REMOVED***,
 ***REMOVED***
