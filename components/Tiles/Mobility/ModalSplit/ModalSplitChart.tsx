@@ -47,45 +47,45 @@ export default function ModalSplitChart() {
     return acc + cur
 ***REMOVED***, 0)
 
-  // const chartData: any[] | undefined = []
-  // Object.keys(totals).forEach(key => {
-  //   chartData.push({
-  //     value: calculatePercentage(totals[key as keyof typeof totals]),
-  //     name: key,
-  //     label: {
-  //       alignTo: 'labelLine',
-  //       formatter: [`  {${key***REMOVED***|***REMOVED***`, ' {name|{b***REMOVED******REMOVED*** ', ' {percent|{c***REMOVED***%***REMOVED***'].join(
-  //         '\n',
-  //   ***REMOVED***,
-  //       rich: {
-  //         [key]: {
-  //           height: 50,
-  //           width: 50,
-  //           backgroundColor: {
-  //             image: `${
-  //               require('@/assets/icons/ModalSplit/ModalsplitCar.svg').default
-  //                 .src
-  //           ***REMOVED***`,
-  //         ***REMOVED***,
-  //       ***REMOVED***,
-  //         percent: {
-  //           // @ts-ignore
-  //           color: theme?.colors?.energy.DEFAULT || '#f28443',
-  //           align: 'center',
-  //           padding: [10, 0, 0, 5],
-  //           fontWeight: 'bold',
-  //           fontSize: 18,
-  //       ***REMOVED***,
-  //         name: {
-  //           //@ts-ignore
-  //           color: theme?.colors?.primary.DEFAULT || '#005b79',
-  //           fontWeight: 'bold',
-  //           padding: [5, 0, 0, 10],
-  //       ***REMOVED***,
-  //     ***REMOVED***,
-  //   ***REMOVED***,
-  // ***REMOVED***)
-  // ***REMOVED***)
+  const chartData: any[] | undefined = []
+  Object.keys(totals).forEach(key => {
+    chartData.push({
+      value: calculatePercentage(totals[key as keyof typeof totals]),
+      name: key,
+      label: {
+        alignTo: 'labelLine',
+        formatter: [`  {${key***REMOVED***|***REMOVED***`, ' {name|{b***REMOVED******REMOVED*** ', ' {percent|{c***REMOVED***%***REMOVED***'].join(
+          '\n',
+    ***REMOVED***,
+        rich: {
+          [key]: {
+            height: 50,
+            width: 50,
+            backgroundColor: {
+              image: `${
+                require('@/assets/icons/ModalSplit/ModalsplitCar.svg').default
+                  .src
+            ***REMOVED***`,
+          ***REMOVED***,
+        ***REMOVED***,
+          percent: {
+            // @ts-ignore
+            color: theme?.colors?.energy.DEFAULT || '#f28443',
+            align: 'center',
+            // padding: [10, 0, 0, 5],
+            fontWeight: 'bold',
+            fontSize: 18,
+        ***REMOVED***,
+          name: {
+            //@ts-ignore
+            color: theme?.colors?.primary.DEFAULT || '#005b79',
+            fontWeight: 'bold',
+            // padding: [5, 0, 0, 10],
+        ***REMOVED***,
+      ***REMOVED***,
+    ***REMOVED***,
+  ***REMOVED***)
+***REMOVED***)
 
   return (
     <ReactECharts
@@ -148,7 +148,7 @@ export default function ModalSplitChart() {
                       // @ts-ignore
                       color: theme?.colors?.energy.DEFAULT || '#f28443',
                       align: 'center',
-                      padding: [5, 0, 0, 5],
+                      // padding: [5, 0, 0, 5],
                       // fontWeight: 'bold',
                       fontSize: 22,
                   ***REMOVED***,
@@ -156,7 +156,7 @@ export default function ModalSplitChart() {
                       //@ts-ignore
                       color: theme?.colors?.primary.DEFAULT || '#005b79',
                       fontWeight: 'bold',
-                      padding: [5, 0, 0, 10],
+                      // padding: [5, 0, 0, 10],
                   ***REMOVED***,
                 ***REMOVED***,
               ***REMOVED***,
@@ -187,7 +187,7 @@ export default function ModalSplitChart() {
                       color: theme?.colors?.climate.DEFAULT || '#14b3d9',
 
                       align: 'center',
-                      padding: [5, 0, 0, 0],
+                      // padding: [5, 0, 0, 0],
                       // fontWeight: 'bold',
                       fontSize: 22,
                   ***REMOVED***,
@@ -195,7 +195,7 @@ export default function ModalSplitChart() {
                       //@ts-ignore
                       color: theme?.colors?.primary.DEFAULT || '#005b79',
                       fontWeight: 'bold',
-                      padding: [0, 0, 0, 5],
+                      // padding: [0, 0, 0, 5],
                   ***REMOVED***,
                 ***REMOVED***,
               ***REMOVED***,
@@ -225,14 +225,14 @@ export default function ModalSplitChart() {
                       // @ts-ignore
                       color: theme?.colors?.mobility.DEFAULT || '#34c17b',
                       align: 'left',
-                      padding: [5, 0, 0, 0],
+                      // padding: [5, 0, 0, 0],
                       // fontWeight: 'bold',
                       fontSize: 22,
                   ***REMOVED***,
                     name: {
                       //@ts-ignore
                       color: theme?.colors?.primary.DEFAULT || '#005b79',
-                      padding: [0, 0, 0, 10],
+                      // padding: [0, 0, 0, 10],
                       fontWeight: 'bold',
                   ***REMOVED***,
                 ***REMOVED***,
@@ -253,7 +253,7 @@ export default function ModalSplitChart() {
                       height: 50,
                       width: 50,
                       align: 'left',
-                      padding: [5, 0, 0, 0],
+                      // padding: [5, 0, 0, 0],
                       backgroundColor: {
                         image: `${
                           require('@/assets/icons/ModalSplit/ModalsplitShoe.svg')
@@ -265,7 +265,7 @@ export default function ModalSplitChart() {
                       //@ts-ignore
                       color: theme?.colors?.buildings.DEFAULT || '#6060d6',
                       align: 'left',
-                      padding: [10, 0, 0, 0],
+                      // padding: [10, 0, 0, 0],
                       // fontWeight: 'bold',
                       fontSize: 22,
                   ***REMOVED***,
