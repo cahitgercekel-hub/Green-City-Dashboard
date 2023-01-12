@@ -217,6 +217,199 @@ export default function ModalSplitChart() {
             ],
         ***REMOVED***,
         ],
+        media: [
+    ***REMOVED***
+            query: {
+              maxWidth: 500,
+          ***REMOVED***,
+            option: {
+              title: {
+                text: total.toLocaleString('de-DE') + ' km',
+                left: 'center',
+                top: 'center',
+                padding: 2,
+                textStyle: {
+                  fontWeight: 500,
+                  fontSize: 14,
+                  fontFamily: '',
+                  // @ts-ignore
+                  color: theme?.colors?.primary.DEFAULT || '#005b79',
+              ***REMOVED***,
+            ***REMOVED***,
+              series: [
+          ***REMOVED***
+                  type: 'pie',
+                  radius: ['50%', '45%'],
+                  labelLine: {
+                    length: 25,
+                    lineStyle: {
+                      color: 'black',
+                  ***REMOVED***,
+                ***REMOVED***,
+                  data: [
+              ***REMOVED***
+                      value: calculatePercentage(totals.MIV),
+                      name: 'KFZ',
+                      label: {
+                        alignTo: 'labelLine',
+                        formatter: [
+                          '{Auto|***REMOVED***',
+                          '{name|{b***REMOVED******REMOVED*** ',
+                          '{percent|{c***REMOVED***%***REMOVED***',
+                        ].join('\n'),
+                        rich: {
+                          Auto: {
+                            height: 15,
+                            width: 15,
+                            align: 'left',
+                            backgroundColor: {
+                              image: `${
+                                require('@/assets/icons/ModalSplit/ModalsplitCar.svg')
+                                  .default.src
+                            ***REMOVED***`,
+                          ***REMOVED***,
+                        ***REMOVED***,
+                          percent: {
+                            // @ts-ignore
+                            color: theme?.colors?.energy.DEFAULT || '#f28443',
+                            align: 'left',
+                            fontSize: 14,
+                        ***REMOVED***,
+                          name: {
+                            //@ts-ignore
+                            color: theme?.colors?.primary.DEFAULT || '#005b79',
+                            fontWeight: 'bold',
+                            align: 'left',
+                        ***REMOVED***,
+                      ***REMOVED***,
+                    ***REMOVED***,
+                  ***REMOVED***,
+              ***REMOVED***
+                      value: calculatePercentage(totals.ÖPNV),
+                      name: 'ÖPNV',
+                      label: {
+                        formatter: [
+                          '{Bus|***REMOVED***',
+                          '{name|{b***REMOVED******REMOVED*** ',
+                          '{percent|{c***REMOVED***%***REMOVED***',
+                        ].join('\n'),
+                        rich: {
+                          Bus: {
+                            height: 15,
+                            width: 15,
+                            align: 'left',
+                            backgroundColor: {
+                              image: `${
+                                require('@/assets/icons/ModalSplit/ModalsplitBus.svg')
+                                  .default.src
+                            ***REMOVED***`,
+                          ***REMOVED***,
+                        ***REMOVED***,
+                          percent: {
+                            //@ts-ignore
+                            color: theme?.colors?.climate.DEFAULT || '#14b3d9',
+                            align: 'left',
+                            fontSize: 14,
+                        ***REMOVED***,
+                          name: {
+                            //@ts-ignore
+                            color: theme?.colors?.primary.DEFAULT || '#005b79',
+                            fontWeight: 'bold',
+                            align: 'left',
+                        ***REMOVED***,
+                      ***REMOVED***,
+                    ***REMOVED***,
+                  ***REMOVED***,
+              ***REMOVED***
+                      value: calculatePercentage(totals.Rad),
+                      name: 'Fahrrad',
+                      label: {
+                        formatter: [
+                          '{Rad|***REMOVED***',
+                          '{name|{b***REMOVED******REMOVED*** ',
+                          '{percent|{c***REMOVED***%***REMOVED***',
+                        ].join('\n'),
+                        rich: {
+                          Rad: {
+                            height: 15,
+                            width: 15,
+                            align: 'left',
+                            backgroundColor: {
+                              image: `${
+                                require('@/assets/icons/ModalSplit/ModalsplitBicycle.svg')
+                                  .default.src
+                            ***REMOVED***`,
+                          ***REMOVED***,
+                        ***REMOVED***,
+                          percent: {
+                            // @ts-ignore
+                            color: theme?.colors?.mobility.DEFAULT || '#34c17b',
+                            align: 'left',
+                            fontSize: 14,
+                        ***REMOVED***,
+                          name: {
+                            //@ts-ignore
+                            color: theme?.colors?.primary.DEFAULT || '#005b79',
+                            fontWeight: 'bold',
+                            align: 'left',
+                        ***REMOVED***,
+                      ***REMOVED***,
+                    ***REMOVED***,
+                  ***REMOVED***,
+              ***REMOVED***
+                      value: calculatePercentage(totals.Fuß),
+                      name: 'Fußgänger:innen',
+                      label: {
+                        alignTo: 'labelLine',
+                        formatter: [
+                          '{Schuh|***REMOVED***',
+                          '{name|{b***REMOVED******REMOVED*** ',
+                          '{percent|{c***REMOVED***%***REMOVED***',
+                        ].join('\n'),
+                        rich: {
+                          Schuh: {
+                            height: 15,
+                            width: 15,
+                            align: 'left',
+                            backgroundColor: {
+                              image: `${
+                                require('@/assets/icons/ModalSplit/ModalsplitShoe.svg')
+                                  .default.src
+                            ***REMOVED***`,
+                          ***REMOVED***,
+                        ***REMOVED***,
+                          percent: {
+                            color:
+                              //@ts-ignore
+                              theme?.colors?.buildings.DEFAULT || '#6060d6',
+                            align: 'left',
+                            fontSize: 14,
+                        ***REMOVED***,
+                          name: {
+                            //@ts-ignore
+                            color: theme?.colors?.primary.DEFAULT || '#005b79',
+                            fontWeight: 'bold',
+                            align: 'left',
+                        ***REMOVED***,
+                      ***REMOVED***,
+                    ***REMOVED***,
+                  ***REMOVED***,
+                  ],
+                  color: [
+                    //@ts-ignore
+                    theme?.colors?.energy.DEFAULT || '#f28443',
+                    //@ts-ignore
+                    theme?.colors?.climate.DEFAULT || '#14b3d9',
+                    //@ts-ignore
+                    theme?.colors?.mobility.DEFAULT || '#34c17b',
+                    //@ts-ignore
+                    theme?.colors?.buildings.DEFAULT || '#6060d6',
+                  ],
+              ***REMOVED***,
+              ],
+          ***REMOVED***,
+        ***REMOVED***,
+        ],
     ***REMOVED******REMOVED***
     />
   )
