@@ -1,40 +1,16 @@
 import { MuensterIcon ***REMOVED*** from '@/components/Icons'
-import { EmbedTileProps ***REMOVED*** from '../Base/BaseTile'
-import IconTile, { DataSourceProps ***REMOVED*** from '../Base/IconTile'
+import IconTile, { IconTileProps ***REMOVED*** from '../Base/IconTile'
 
-export type ClimateTileProps = DataSourceProps &
-  EmbedTileProps & {
-    children: React.ReactElement | React.ReactElement[]
-    title: string | React.ReactElement
-    subtitle?: string
-    live?: boolean
-***REMOVED***
+export type ClimateTileProps = Omit<IconTileProps, 'variant' | 'icon'>
 
 /**
- * A tile that shows mobility information
- * @param MobilityTileProps properties of the mobility tile
- * @returns Mobility Tile
+ * A tile that shows climate information
+ * @param ClimateTileProps properties of the climate tile
+ * @returns Climate Tile
  */
-export default function ClimateTile({
-  children,
-  live,
-  title,
-  subtitle,
-  dataSource,
-  dataRetrieval,
-  embedId,
-***REMOVED***: ClimateTileProps) {
+export default function ClimateTile({ children, ...props ***REMOVED***: ClimateTileProps) {
   return (
-    <IconTile
-      dataRetrieval={dataRetrieval***REMOVED***
-      dataSource={dataSource***REMOVED***
-      embedId={embedId***REMOVED***
-      icon={MuensterIcon***REMOVED***
-      live={live***REMOVED***
-      subtitle={subtitle***REMOVED***
-      title={title***REMOVED***
-      variant="climate"
-    >
+    <IconTile {...props***REMOVED*** icon={MuensterIcon***REMOVED*** variant="climate">
       <>{children***REMOVED***</>
     </IconTile>
   )
