@@ -2,14 +2,16 @@ import { CloudIcon ***REMOVED*** from '@heroicons/react/24/outline'
 import type { VariantProps ***REMOVED*** from 'class-variance-authority'
 import { cva ***REMOVED*** from 'class-variance-authority'
 import { Sun, Temperature, Water, Wind ***REMOVED*** from '@/components/Icons'
-import { SVGProps ***REMOVED*** from 'react'
+import { ForwardRefExoticComponent, SVGProps ***REMOVED*** from 'react'
 import AnimatedNumber from '@/components/Elements/Animated/AnimatedNumber'
 
 type PhenomenaType = {
   [key: string]: {
     title: string
     unit: string
-    icon: (_props: SVGProps<SVGSVGElement>) => JSX.Element
+    icon:
+      | ForwardRefExoticComponent<SVGProps<SVGSVGElement>>
+      | ((_props: SVGProps<SVGSVGElement>) => JSX.Element)
     decimals?: number
 ***REMOVED***
 ***REMOVED***
