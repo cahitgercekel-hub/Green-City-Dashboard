@@ -2,13 +2,14 @@ import { ArrowsUpDownIcon ***REMOVED*** from '@heroicons/react/24/outline'
 import { cva, cx, VariantProps ***REMOVED*** from 'class-variance-authority'
 import Collapsible from '../Elements/Collapsible'
 import Title from '../Elements/Title'
-import { BicycleIcon, MuensterIcon ***REMOVED*** from '../Icons'
+import { BicycleIcon, BuildingIcon, MuensterIcon ***REMOVED*** from '../Icons'
 
 const sectionHeaderStyle = cva('', {
   variants: {
     variant: {
       climate: 'text-climate border-climate',
       mobility: 'text-mobility border-mobility',
+      building: 'text-buildings border-buildings',
   ***REMOVED***,
 ***REMOVED***,
 ***REMOVED***)
@@ -25,6 +26,10 @@ export default function SectionHeader({
   if (variant === 'mobility') {
     title = 'Mobilität'
     Icon = BicycleIcon
+***REMOVED***
+  if (variant === 'building') {
+    title = 'Gebäude'
+    Icon = BuildingIcon
 ***REMOVED***
 
   return (
