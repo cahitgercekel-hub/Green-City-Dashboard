@@ -34,10 +34,10 @@ export default function SurveyTile({ question, answer ***REMOVED***: SurveyTileP
   return (
     <BaseTile footerCenterElement={RevealAnswerButton***REMOVED*** variant="secondary">
       <div className="text-white">
-        <p>
+        <Title as="h5" variant={'inverse'***REMOVED***>
           <span className="font-semibold">Befragungsergebnisse:</span>{' '***REMOVED***
           Bürgerumfrage 2022
-        </p>
+        </Title>
         <Spacer />
         <div className="relative min-h-[12rem]">
     ***REMOVED***transitions((styles, renderAnswer) =>
@@ -45,7 +45,9 @@ export default function SurveyTile({ question, answer ***REMOVED***: SurveyTileP
               <SurveyAnswer {...answer***REMOVED*** {...styles***REMOVED*** />
         ***REMOVED*** : (
               <animated.div className="absolute top-0 left-0" style={styles***REMOVED***>
-                <Title variant={'inverse'***REMOVED***>{question***REMOVED***</Title>
+                <Title as="h3" className="font-medium" variant={'inverse'***REMOVED***>
+            ***REMOVED***question***REMOVED***
+                </Title>
               </animated.div>
         ***REMOVED***,
       ***REMOVED******REMOVED***

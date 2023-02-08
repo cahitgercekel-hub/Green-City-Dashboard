@@ -41,18 +41,18 @@ export default function TileFooter({
     <div className="mt-6 flex w-full items-center justify-between">
       <div className={tileFooterStyle({ variant ***REMOVED***)***REMOVED***>
         <SquaresPlusIcon
-          className="h-5 cursor-pointer stroke-2"
+          className="h-6 cursor-pointer stroke-2"
           onClick={onEmbedClick***REMOVED***
         />
         <ShareIcon
-          className="h-5 cursor-pointer stroke-2"
+          className="h-6 cursor-pointer stroke-2"
           onClick={onShareClick***REMOVED***
         />
         <Link href={'#'***REMOVED***>
-          <ArrowDownTrayIcon className="h-5 stroke-2" />
+          <ArrowDownTrayIcon className="h-6 stroke-2" />
         </Link>
       </div>
-      <div className="flex flex-1 justify-center">{children***REMOVED***</div>
+      <div className="flex flex-[2_2_0%] justify-center">{children***REMOVED***</div>
       <div className="flex flex-1 justify-end" onClick={onMoreInfoClick***REMOVED***>
         <MoreDetails link="#" variant={variant***REMOVED*** />
       </div>

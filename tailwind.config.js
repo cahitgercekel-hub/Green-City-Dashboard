@@ -3,6 +3,9 @@ module.exports = {
   content: ['./app/**/*.{js,ts,jsx,tsx***REMOVED***', './components/**/*.{js,ts,jsx,tsx***REMOVED***'],
   theme: {
     extend: {
+      borderRadius: {
+        KD: '3rem'
+    ***REMOVED***,
       colors: {
         primary: {
           DEFAULT: '#005b79',

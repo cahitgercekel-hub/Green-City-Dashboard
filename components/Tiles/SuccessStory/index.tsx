@@ -25,14 +25,18 @@ export default function SuccessStoryTile({
 ***REMOVED***: SuccessStoryTileProps) {
   const Content = (
     <>
-      <Title size="sm">Erfolgsgeschichte</Title>
+      <Title as="h5" className="font-semibold" variant={'primary'***REMOVED***>
+        Erfolgsgeschichte
+      </Title>
       <Spacer size="sm" />
-      <p className="text-3xl text-primary">{text***REMOVED***</p>
+      <Title as="h3" variant={'primary'***REMOVED***>
+  ***REMOVED***text***REMOVED***
+      </Title>
       <Spacer />
       <Link href={link***REMOVED***>
-        <span className="text-sm font-semibold text-primary underline">
+        <Title as="h6" className="font-medium underline" variant={'primary'***REMOVED***>
           Hier können Sie aktiv werden
-        </span>
+        </Title>
       </Link>
     </>
   )

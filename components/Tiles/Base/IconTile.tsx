@@ -1,10 +1,11 @@
 import { Spacer ***REMOVED*** from '@/components/Elements/Spacer'
+import Title from '@/components/Elements/Title'
 import { cva, cx, VariantProps ***REMOVED*** from 'class-variance-authority'
 import { ForwardRefExoticComponent, SVGProps ***REMOVED*** from 'react'
 import { BaseTile, EmbedTileProps ***REMOVED*** from './BaseTile'
 import LiveBadge from './LiveBadge'
 
-const iconTileTitleStyle = cva('text-4xl md:text-6xl font-light', {
+const iconTileTitleStyle = cva('', {
   variants: {
     variant: {
       primary: 'text-primary',
@@ -68,7 +69,7 @@ export default function IconTile({
               iconTileTitleStyle({ variant ***REMOVED***),
         ***REMOVED******REMOVED***
           >
-            <span>{title***REMOVED***</span>
+            <Title as={'h1'***REMOVED***>{title***REMOVED***</Title>
             <Icon className="h-10 w-12" />
           </div>
     ***REMOVED******REMOVED***
@@ -86,10 +87,10 @@ export default function IconTile({
       <>{children***REMOVED***</>
       <Spacer />
       <div className="flex space-x-2 text-xs text-primary">
-        <span className="font-semibold">
+        <Title as="h7" className="font-semibold">
           Datenstand: {dataRetrieval ?? (live ? 'live' : 'undefined')***REMOVED***
-        </span>
-        <span>Quelle: {dataSource***REMOVED***</span>
+        </Title>
+        <Title as="h7">Quelle: {dataSource***REMOVED***</Title>
       </div>
     </BaseTile>
   )
