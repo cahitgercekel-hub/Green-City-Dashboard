@@ -1,7 +1,7 @@
 import { cva, cx, VariantProps ***REMOVED*** from 'class-variance-authority'
 import SortTiles from '../Elements/SortTiles'
 import Title from '../Elements/Title'
-import { BicycleIcon, BuildingIcon, MuensterIcon ***REMOVED*** from '../Icons'
+import { BicycleIcon, BuildingIcon, EnergyIcon, MuensterIcon ***REMOVED*** from '../Icons'
 
 const sectionHeaderStyle = cva('', {
   variants: {
@@ -9,6 +9,7 @@ const sectionHeaderStyle = cva('', {
       climate: 'text-climate border-climate',
       mobility: 'text-mobility border-mobility',
       building: 'text-buildings border-buildings',
+      energy: 'text-energy border-energy',
   ***REMOVED***,
 ***REMOVED***,
 ***REMOVED***)
@@ -29,6 +30,10 @@ export default function SectionHeader({
   if (variant === 'building') {
     title = 'Gebäude'
     Icon = BuildingIcon
+***REMOVED***
+  if (variant === 'energy') {
+    title = 'Energie'
+    Icon = EnergyIcon
 ***REMOVED***
 
   return (
