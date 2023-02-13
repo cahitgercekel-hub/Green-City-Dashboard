@@ -2,7 +2,7 @@ import { cx, VariantProps ***REMOVED*** from 'class-variance-authority'
 import { cva ***REMOVED*** from 'class-variance-authority'
 import { HTMLAttributes ***REMOVED*** from 'react'
 
-const TitleStyle = cva('', {
+const TitleStyle = cva('block', {
   variants: {
     as: {
       h1: 'text-7xl leading-[5.5rem]',
@@ -37,7 +37,11 @@ export default function Title({
   ...props
 ***REMOVED***: TitleProps) {
   return (
-    <span {...props***REMOVED*** className={cx(TitleStyle({ as, variant ***REMOVED***), className)***REMOVED***>
+    <span
+***REMOVED***...props***REMOVED***
+      className={cx(TitleStyle({ as, variant ***REMOVED***), className)***REMOVED***
+      style={{ hyphens: 'auto' ***REMOVED******REMOVED***
+    >
 ***REMOVED***children***REMOVED***
     </span>
   )

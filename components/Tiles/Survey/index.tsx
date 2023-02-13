@@ -39,12 +39,20 @@ export default function SurveyTile({ question, answer ***REMOVED***: SurveyTileP
           Bürgerumfrage 2022
         </Title>
         <Spacer />
-        <div className="relative min-h-[12rem]">
+        <div className="relative h-fit">
+          <div className="opacity-0">
+            <Title as="h3" className="font-medium" variant={'inverse'***REMOVED***>
+        ***REMOVED***question***REMOVED***
+            </Title>
+          </div>
     ***REMOVED***transitions((styles, renderAnswer) =>
             renderAnswer ? (
               <SurveyAnswer {...answer***REMOVED*** {...styles***REMOVED*** />
         ***REMOVED*** : (
-              <animated.div className="absolute top-0 left-0" style={styles***REMOVED***>
+              <animated.div
+                className="absolute top-0 left-0 h-full w-full"
+                style={styles***REMOVED***
+              >
                 <Title as="h3" className="font-medium" variant={'inverse'***REMOVED***>
             ***REMOVED***question***REMOVED***
                 </Title>

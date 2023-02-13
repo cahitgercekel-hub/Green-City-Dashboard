@@ -4,7 +4,7 @@ import type { VariantProps ***REMOVED*** from 'class-variance-authority'
 import { cva, cx ***REMOVED*** from 'class-variance-authority'
 import Title from './Title'
 
-const style = cva('flex cursor-pointer items-center space-x-1', {
+const style = cva('flex cursor-pointer items-center gap-1', {
   variants: {
     variant: {
       primary: 'text-primary',

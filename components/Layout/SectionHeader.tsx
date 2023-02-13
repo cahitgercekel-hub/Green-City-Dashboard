@@ -1,6 +1,5 @@
-import { ArrowsUpDownIcon ***REMOVED*** from '@heroicons/react/24/outline'
 import { cva, cx, VariantProps ***REMOVED*** from 'class-variance-authority'
-import Collapsible from '../Elements/Collapsible'
+import SortTiles from '../Elements/SortTiles'
 import Title from '../Elements/Title'
 import { BicycleIcon, BuildingIcon, MuensterIcon ***REMOVED*** from '../Icons'
 
@@ -47,19 +46,7 @@ export default function SectionHeader({
     ***REMOVED***title***REMOVED***
         </Title>
       </div>
-      <Collapsible
-        trigger={
-          <div className="flex items-center space-x-2 text-primary">
-            <ArrowsUpDownIcon className="h-4 w-4" />
-
-            <span className="underline underline-offset-2">
-              Kacheln sortieren
-            </span>
-          </div>
-      ***REMOVED***
-      >
-        <div>Hello World</div>
-      </Collapsible>
+      <SortTiles />
     </div>
   )
 ***REMOVED***
