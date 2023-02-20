@@ -8,6 +8,27 @@ import Providers from '@/components/Layout/Providers'
 import directus, { collectionsName ***REMOVED*** from '@/lib/directus'
 import { notFound ***REMOVED*** from 'next/navigation'
 
+// ISR
+export async function generateStaticParams() {
+  const { data ***REMOVED*** = await directus.items(collectionsName).readByQuery({
+    fields: ['id'],
+    filter: {
+      status: 'published',
+  ***REMOVED***,
+***REMOVED***)
+
+  if (!data) {
+    return
+***REMOVED***
+
+  return data.map(({ id ***REMOVED***) => ({
+    id,
+***REMOVED***))
+***REMOVED***
+
+// revalidate each minute
+export const revalidate = 60
+
 const getCollection = async (collectionId: string) => {
   const data = await directus.items(collectionsName).readOne(collectionId, {
     fields: ['title', 'description'],
