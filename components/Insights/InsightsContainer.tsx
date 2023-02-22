@@ -5,7 +5,7 @@ import InsightsTile from './InsightsTile'
 
 const getInsightsData = async () => {
   const { data ***REMOVED*** = await directus.items(collectionsName).readByQuery({
-    fields: ['id', 'title', 'image'],
+    fields: ['slug', 'title', 'image'],
     filter: {
       status: 'published',
   ***REMOVED***,
@@ -15,14 +15,6 @@ const getInsightsData = async () => {
   return data
 ***REMOVED***
 
-// const getTile = async (relationId: number) => {
-//   const { data ***REMOVED*** = await directus.items(tileCollectionRelation).readByQuery({
-//     f
-// ***REMOVED***)
-
-//   return data
-// ***REMOVED***
-
 async function InsightsContainer() {
   const insights = await getInsightsData()
 
@@ -31,11 +23,11 @@ async function InsightsContainer() {
       <div className="absolute top-0 left-0 -z-10 h-1/3 w-full bg-primary-light"></div>
       <Container>
         <div className="flex w-full flex-col items-center justify-between gap-6 lg:flex-row ">
-    ***REMOVED***insights?.map(({ id, title, image ***REMOVED***) => (
-            <div className="flex-1 self-stretch" key={id***REMOVED***>
+    ***REMOVED***insights?.map(({ slug, title, image ***REMOVED***) => (
+            <div className="flex-1 self-stretch" key={slug***REMOVED***>
               <InsightsTile
                 image={`${process.env.NEXT_PUBLIC_DIRECTUS_URL***REMOVED***/assets/${image***REMOVED***`***REMOVED***
-                link={`/sammlung/${id***REMOVED***`***REMOVED***
+                link={`/sammlung/${slug***REMOVED***`***REMOVED***
                 title={title***REMOVED***
               />
             </div>

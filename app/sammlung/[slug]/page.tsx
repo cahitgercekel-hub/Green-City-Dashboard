@@ -12,7 +12,7 @@ import { notFound ***REMOVED*** from 'next/navigation'
 // ISR
 export async function generateStaticParams() {
   const { data ***REMOVED*** = await directus.items(collectionsName).readByQuery({
-    fields: ['id'],
+    fields: ['slug'],
     filter: {
       status: 'published',
   ***REMOVED***,
@@ -22,16 +22,19 @@ export async function generateStaticParams() {
     return
 ***REMOVED***
 
-  return data.map(({ id ***REMOVED***) => ({
-    id,
+  return data.map(({ slug ***REMOVED***) => ({
+    slug,
 ***REMOVED***))
 ***REMOVED***
 
 // revalidate each minute
 export const revalidate = 60
 
-const getCollection = async (collectionId: string) => {
-  const data = await directus.items(collectionsName).readOne(collectionId, {
+const getCollection = async (collectionSlug: string) => {
+  const { data ***REMOVED*** = await directus.items(collectionsName).readByQuery({
+    filter: {
+      slug: collectionSlug,
+  ***REMOVED***,
     fields: ['title', 'description', 'tiles.tiles_id', 'surveys.*'],
 ***REMOVED***)
 
@@ -57,21 +60,21 @@ const getSurvey = async (surveyID: string) => {
 export default async function Collection({
   params,
 ***REMOVED***: {
-  params: { id: string ***REMOVED***
+  params: { slug: string ***REMOVED***
 ***REMOVED***) {
-  const { id ***REMOVED*** = params
+  const { slug ***REMOVED*** = params
 
-  if (!id) {
+  if (!slug) {
     return notFound()
 ***REMOVED***
 
-  const collection = await getCollection(id)
+  const collection = await getCollection(slug)
 
-  if (!collection) {
+  if (!collection || !collection[0]) {
     return notFound()
 ***REMOVED***
 
-  const { tiles, surveys ***REMOVED*** = collection
+  const { tiles, surveys ***REMOVED*** = collection[0]
 
   const tileIDs = tiles.map(({ tiles_id ***REMOVED***) => tiles_id)
   const surveyIDs = surveys.map(({ survey_id ***REMOVED***) => survey_id)

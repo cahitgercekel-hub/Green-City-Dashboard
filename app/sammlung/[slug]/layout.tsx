@@ -11,7 +11,7 @@ import { notFound ***REMOVED*** from 'next/navigation'
 // ISR
 export async function generateStaticParams() {
   const { data ***REMOVED*** = await directus.items(collectionsName).readByQuery({
-    fields: ['id'],
+    fields: ['slug'],
     filter: {
       status: 'published',
   ***REMOVED***,
@@ -21,16 +21,19 @@ export async function generateStaticParams() {
     return
 ***REMOVED***
 
-  return data.map(({ id ***REMOVED***) => ({
-    id,
+  return data.map(({ slug ***REMOVED***) => ({
+    slug,
 ***REMOVED***))
 ***REMOVED***
 
 // revalidate each minute
 export const revalidate = 60
 
-const getCollection = async (collectionId: string) => {
-  const data = await directus.items(collectionsName).readOne(collectionId, {
+const getCollection = async (collectionSlug: string) => {
+  const { data ***REMOVED*** = await directus.items(collectionsName).readByQuery({
+    filter: {
+      slug: collectionSlug,
+  ***REMOVED***,
     fields: ['title', 'description'],
 ***REMOVED***)
 
@@ -42,21 +45,21 @@ export default async function Layout({
   params,
 ***REMOVED***: {
   children: React.ReactNode
-  params: { id: string ***REMOVED***
+  params: { slug: string ***REMOVED***
 ***REMOVED***) {
-  const { id ***REMOVED*** = params
+  const { slug ***REMOVED*** = params
 
-  if (!id) {
+  if (!slug) {
     return notFound()
 ***REMOVED***
 
-  const collection = await getCollection(id)
+  const collection = await getCollection(slug)
 
   if (!collection) {
     return notFound()
 ***REMOVED***
 
-  const { title, description ***REMOVED*** = collection
+  const { title, description ***REMOVED*** = collection[0]
 
   return (
     <div className="flex h-screen flex-col">
