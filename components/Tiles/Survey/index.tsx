@@ -19,7 +19,7 @@ export default function SurveyTile({ question, answer ***REMOVED***: SurveyTileP
     from: { opacity: 0, y: 80 ***REMOVED***,
     enter: { opacity: 1, y: 0 ***REMOVED***,
     leave: { opacity: 0, y: 80 ***REMOVED***,
-    initial: false,
+    initial: { opacity: 0, y: 0 ***REMOVED***,
 ***REMOVED***)
 
   const RevealAnswerButton = (
