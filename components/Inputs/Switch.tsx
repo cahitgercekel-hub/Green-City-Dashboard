@@ -8,7 +8,10 @@ const switchThumbStyle = cva(
   {
     variants: {
       variant: {
-        primary: 'bg-zinc-800',
+        primary: 'bg-primary',
+        mobility: 'bg-mobility',
+        successStory: 'bg-secondary',
+        climate: 'bg-climate',
     ***REMOVED***,
       checked: {
         true: 'translate-x-full',
@@ -37,7 +40,10 @@ const switchBorderStyle = cva(
   {
     variants: {
       variant: {
-        primary: 'border-zinc-800',
+        primary: 'border-primary',
+        mobility: 'border-mobility',
+        successStory: 'border-secondary',
+        climate: 'border-climate',
     ***REMOVED***,
   ***REMOVED***,
     defaultVariants: {
@@ -57,8 +63,8 @@ export default function Switch({ label, variant, ...props ***REMOVED***: SwitchP
   return (
     <div className="flex items-center space-x-4">
       <SwitchPrimitive.Root
-  ***REMOVED***...props***REMOVED***
         className={switchBorderStyle({ variant ***REMOVED***)***REMOVED***
+  ***REMOVED***...props***REMOVED***
         onCheckedChange={val => {
           if (props.onCheckedChange) {
             props.onCheckedChange(val)
