@@ -1,6 +1,7 @@
 'use client'
 
 import { ReactECharts ***REMOVED*** from '@/components/Charts/ReactECharts'
+import Title from '@/components/Elements/Title'
 import { useEffect, useState ***REMOVED*** from 'react'
 
 export type AvgTempData = {
@@ -60,13 +61,18 @@ export default function RadarChart({ data ***REMOVED***: { data: AvgTempData ***
   return (
     <div className="relative h-full w-full">
       <div className="absolute flex h-full w-full items-center justify-center">
-        <p className="z-10 text-2xl">{years[years.length - 1]***REMOVED***</p>
+        <Title as={'h3'***REMOVED*** className="z-10 text-2xl">
+    ***REMOVED***years[years.length - 1]***REMOVED***
+        </Title>
       </div>
 
       <ReactECharts
         option={{
           animation: false,
           radar: {
+            axisLabel: {
+              fontSize: '20px',
+          ***REMOVED***,
             splitLine: {
               show: false,
           ***REMOVED***,
@@ -83,18 +89,18 @@ export default function RadarChart({ data ***REMOVED***: { data: AvgTempData ***
           ***REMOVED***,
             shape: 'circle',
             indicator: [
-        ***REMOVED*** name: 'Jan', min: -5, max: 5 ***REMOVED***,
-        ***REMOVED*** name: 'Feb', min: -5, max: 5 ***REMOVED***,
-        ***REMOVED*** name: 'Mar', min: -5, max: 5 ***REMOVED***,
-        ***REMOVED*** name: 'Apr', min: -5, max: 5 ***REMOVED***,
-        ***REMOVED*** name: 'May', min: -5, max: 5 ***REMOVED***,
-        ***REMOVED*** name: 'Jun', min: -5, max: 5 ***REMOVED***,
-        ***REMOVED*** name: 'Jul', min: -5, max: 5 ***REMOVED***,
-        ***REMOVED*** name: 'Aug', min: -5, max: 5 ***REMOVED***,
-        ***REMOVED*** name: 'Sep', min: -5, max: 5 ***REMOVED***,
-        ***REMOVED*** name: 'Oct', min: -5, max: 5 ***REMOVED***,
-        ***REMOVED*** name: 'Nov', min: -5, max: 5 ***REMOVED***,
-        ***REMOVED*** name: 'Dec', min: -5, max: 5 ***REMOVED***,
+        ***REMOVED*** name: 'JAN', min: -5, max: 5 ***REMOVED***,
+        ***REMOVED*** name: 'FEB', min: -5, max: 5 ***REMOVED***,
+        ***REMOVED*** name: 'MÄR', min: -5, max: 5 ***REMOVED***,
+        ***REMOVED*** name: 'APR', min: -5, max: 5 ***REMOVED***,
+        ***REMOVED*** name: 'MAI', min: -5, max: 5 ***REMOVED***,
+        ***REMOVED*** name: 'JUN', min: -5, max: 5 ***REMOVED***,
+        ***REMOVED*** name: 'JUL', min: -5, max: 5 ***REMOVED***,
+        ***REMOVED*** name: 'AUG', min: -5, max: 5 ***REMOVED***,
+        ***REMOVED*** name: 'SEP', min: -5, max: 5 ***REMOVED***,
+        ***REMOVED*** name: 'OKT', min: -5, max: 5 ***REMOVED***,
+        ***REMOVED*** name: 'NOV', min: -5, max: 5 ***REMOVED***,
+        ***REMOVED*** name: 'DEZ', min: -5, max: 5 ***REMOVED***,
             ].reverse(),
         ***REMOVED***,
           series: {
@@ -103,7 +109,7 @@ export default function RadarChart({ data ***REMOVED***: { data: AvgTempData ***
             data: seriesData,
         ***REMOVED***,
       ***REMOVED******REMOVED***
-        renderer="canvas"
+        renderer="svg"
       />
     </div>
   )

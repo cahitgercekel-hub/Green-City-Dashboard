@@ -1,9 +1,9 @@
 import { CloudIcon ***REMOVED*** from '@heroicons/react/24/outline'
-import type { VariantProps ***REMOVED*** from 'class-variance-authority'
-import { cva ***REMOVED*** from 'class-variance-authority'
 import { Sun, Temperature, Water, Wind ***REMOVED*** from '@/components/Icons'
 import { ForwardRefExoticComponent, SVGProps ***REMOVED*** from 'react'
 import AnimatedNumber from '@/components/Elements/Animated/AnimatedNumber'
+import Title from '@/components/Elements/Title'
+import { cx ***REMOVED*** from 'class-variance-authority'
 
 type PhenomenaType = {
   [key: string]: {
@@ -46,21 +46,10 @@ const phenomena: PhenomenaType = {
 ***REMOVED***,
 ***REMOVED***
 
-const phenomenonStyle = cva('text-climate', {
-  variants: {
-    size: {
-      md: 'text-lg md:text-2xl',
-      xl: 'text-2xl md:text-5xl',
-  ***REMOVED***,
-***REMOVED***,
-  defaultVariants: {
-    size: 'md',
-***REMOVED***,
-***REMOVED***)
-
-type PhenomenonProps = VariantProps<typeof phenomenonStyle> & {
+type PhenomenonProps = {
   phenomenon: keyof typeof phenomena
   value: number
+  size?: 'md' | 'xl'
 ***REMOVED***
 
 export default function Phenomenon({
@@ -70,20 +59,26 @@ export default function Phenomenon({
 ***REMOVED***: PhenomenonProps) {
   const { title, unit, icon, decimals ***REMOVED*** = phenomena[phenomenon]
 
+  const valueSize: 'h1' | 'h3' = size === 'xl' ? 'h1' : 'h3'
+
   const Icon = icon
   return (
-    <div className="my-2 flex items-center space-x-2">
-      <Icon className="h-10 w-8 text-primary" />
+    <div className="my-2 flex items-center gap-3">
+      <Icon
+        className={cx(
+          size === 'md' ? 'aspect-square' : 'w-6',
+          'h-14 text-primary',
+    ***REMOVED******REMOVED***
+      />
       <div>
-        <p
-          className="text-sm font-semibold text-primary"
+        <Title
+          as={'h5'***REMOVED***
           dangerouslySetInnerHTML={{ __html: title ***REMOVED******REMOVED***
-        ></p>
-        <span className={phenomenonStyle({ size ***REMOVED***)***REMOVED***>
-          <>
-            <AnimatedNumber decimals={decimals***REMOVED***>{value***REMOVED***</AnimatedNumber> {unit***REMOVED***
-          </>
-        </span>
+          variant={'primary'***REMOVED***
+        ></Title>
+        <Title as={valueSize***REMOVED*** variant="climate">
+          <AnimatedNumber decimals={decimals***REMOVED***>{value***REMOVED***</AnimatedNumber> {unit***REMOVED***
+        </Title>
       </div>
     </div>
   )

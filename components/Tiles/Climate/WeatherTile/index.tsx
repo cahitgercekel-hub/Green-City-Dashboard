@@ -1,5 +1,6 @@
 'use client'
 
+import Title from '@/components/Elements/Title'
 import { SunLarge ***REMOVED*** from '@/components/Icons'
 import Slider from '@/components/Inputs/Slider'
 import useWeather from '@/hooks/useWeather'
@@ -35,24 +36,24 @@ export default function WeatherTile() {
     >
       <div>
   ***REMOVED***weather && (
-          <div className="mb-8 flex space-x-4">
+          <div className="mb-8 flex gap-4">
             <div className="flex flex-1 flex-col justify-between">
               <span>
-                <SunLarge className="h-24 text-primary" />
+                <SunLarge className="h-36 text-primary" />
               </span>
-              <p className="my-4 text-xl">
+              <Title as={'h4'***REMOVED*** className="my-4 w-3/4">
                 In Münster ist es gerade{' '***REMOVED***
                 <span className="text-climate">
             ***REMOVED***conditionMapping[weather?.condition]***REMOVED***
                 </span>
-              </p>
+              </Title>
               <Phenomenon
                 phenomenon="temperature"
                 size="xl"
                 value={weather?.temperature***REMOVED***
               />
             </div>
-            <div className="flex flex-1 flex-col justify-between">
+            <div className="flex flex-1 flex-col gap-6">
               <Phenomenon
                 phenomenon="precipitation"
                 value={weather?.precipitation***REMOVED***
@@ -62,7 +63,7 @@ export default function WeatherTile() {
                 value={weather?.cloud_cover***REMOVED***
               />
               <Phenomenon phenomenon="windspeed" value={weather?.wind_speed***REMOVED*** />
-        ***REMOVED***/* <Phenomenon phenomenon="sunhours" value={weather?.sunshine***REMOVED*** /> */***REMOVED***
+              <Phenomenon phenomenon="sunhours" value={weather?.sunshine***REMOVED*** />
             </div>
           </div>
     ***REMOVED******REMOVED***
