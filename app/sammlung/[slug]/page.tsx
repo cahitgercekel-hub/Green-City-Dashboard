@@ -25,10 +25,6 @@ export async function generateStaticParams() {
 ***REMOVED***))
 ***REMOVED***
 
-// revalidate each minute
-export const revalidate = 60
-export const dynamicParams = false
-
 const getCollection = async (collectionSlug: string) => {
   const { data ***REMOVED*** = await directus.items(collectionsName).readByQuery({
     filter: {
