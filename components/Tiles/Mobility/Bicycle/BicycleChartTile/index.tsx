@@ -1,6 +1,7 @@
 'use client'
 
 import { Spacer ***REMOVED*** from '@/components/Elements/Spacer'
+import Title from '@/components/Elements/Title'
 import Slider from '@/components/Inputs/Slider'
 import MobilityTile from '@/components/Tiles/Mobility/MobilityTile'
 import { useBicycleCount ***REMOVED*** from '@/hooks/useBicycleCount'
@@ -59,12 +60,12 @@ export default function BicycleChartTile() {
           />
     ***REMOVED******REMOVED***
         <Spacer size={'sm'***REMOVED*** />
-        <p className="font-medium">
+        <Title as="h5">
           An verschiedenen Zählstellen in der Stadt wird die Anzahl an
           vorbeiradelnden Radfahrer*innen gemessen. Seit Jahren werden es stetig
           mehr. Diese Zahlen sind wichtig für die Stadtplanung und weisen u.a.
           auf einen Ausbaubedarf bei Radwegen und Velorouten hin.
-        </p>
+        </Title>
       </>
     </MobilityTile>
   )

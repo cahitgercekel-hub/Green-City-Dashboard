@@ -3,6 +3,8 @@ import BuildingTile from '../BuildingsTile'
 import EcoProfitData from '@/assets/data/ecoprofit.json'
 import { format ***REMOVED*** from 'date-fns'
 import AnimatedNumber from '@/components/Elements/Animated/AnimatedNumber'
+import Title from '@/components/Elements/Title'
+import { Spacer ***REMOVED*** from '@/components/Elements/Spacer'
 
 interface IEcoProfitData {
   companiesTotal: number
@@ -27,40 +29,36 @@ export default function EcoProfitTile() {
       dataSource="Stadt Münster"
       embedId={'ecoProfit'***REMOVED***
     >
-      <div className="flex flex-col gap-4 font-medium md:gap-8">
-        <div>
-          <p className="mb-2 text-2xl font-light text-buildings md:text-5xl">
-            <AnimatedNumber className="font-medium">
-        ***REMOVED***companiesTotal***REMOVED***
-            </AnimatedNumber>{' '***REMOVED***
-            Unternehmen
-          </p>
-          <p>
-            Haben bereits am Ökoprofit-Projekt teilgenommen und gemeinsam{' '***REMOVED***
-            <span className="text-buildings">
-              <AnimatedNumber decimals={1***REMOVED***>{savingsEuro***REMOVED***</AnimatedNumber> Mio
-              Euro
-            </span>{' '***REMOVED***
-            und{' '***REMOVED***
-            <span className="text-buildings">
-              <AnimatedNumber>{savingsCO2***REMOVED***</AnimatedNumber> t CO2
-            </span>{' '***REMOVED***
-            eingespart.
-          </p>
-        </div>
-        <div>
-          <p className="mb-2 text-2xl font-light text-buildings md:text-5xl">
-            <AnimatedNumber className="font-medium">
-        ***REMOVED***companiesStartupConsulting***REMOVED***
-            </AnimatedNumber>{' '***REMOVED***
-            Unternehmen
-          </p>
-          <p>
-            Haben zudem bereits die &quot;Startberatung Energieeffizienz&quot;
-            in Anspruch genommen.
-          </p>
-        </div>
-      </div>
+      <Title as={'h1'***REMOVED*** variant={'building'***REMOVED***>
+        <AnimatedNumber className="font-medium">
+    ***REMOVED***companiesTotal***REMOVED***
+        </AnimatedNumber>{' '***REMOVED***
+        Unternehmen
+      </Title>
+      <Spacer />
+      <Title as="subtitle">
+        Haben bereits am Ökoprofit-Projekt teilgenommen und gemeinsam{' '***REMOVED***
+        <span className="text-buildings">
+          <AnimatedNumber decimals={1***REMOVED***>{savingsEuro***REMOVED***</AnimatedNumber> Mio Euro
+        </span>{' '***REMOVED***
+        und{' '***REMOVED***
+        <span className="text-buildings">
+          <AnimatedNumber>{savingsCO2***REMOVED***</AnimatedNumber> t CO2
+        </span>{' '***REMOVED***
+        eingespart.
+      </Title>
+      <Spacer size={'lg'***REMOVED*** />
+      <Title as={'h1'***REMOVED*** variant={'building'***REMOVED***>
+        <AnimatedNumber className="font-medium">
+    ***REMOVED***companiesStartupConsulting***REMOVED***
+        </AnimatedNumber>{' '***REMOVED***
+        Unternehmen
+      </Title>
+      <Spacer />
+      <Title as="subtitle">
+        Haben zudem bereits die &quot;Startberatung Energieeffizienz&quot; in
+        Anspruch genommen.
+      </Title>
     </BuildingTile>
   )
 ***REMOVED***

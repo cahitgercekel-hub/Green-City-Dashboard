@@ -18,7 +18,7 @@ export default function PhotovoltTile() {
     ***REMOVED***
     >
       <div>
-        <Title as={'h5'***REMOVED***>
+        <Title as={'subtitle'***REMOVED***>
           Haben die Müsteraner:innen bereits mit ca.{' '***REMOVED***
           <span className="text-energy">5.000 PV-Anlagen</span> in Münster
           produziert. In diesem Moment werden{' '***REMOVED***
