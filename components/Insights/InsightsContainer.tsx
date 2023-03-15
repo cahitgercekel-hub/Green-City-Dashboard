@@ -1,4 +1,4 @@
-import directus, { collectionsName ***REMOVED*** from '@/lib/directus'
+import directus, { collectionsName, directusImage ***REMOVED*** from '@/lib/directus'
 import withSuspense from '@/utils/withSuspense'
 import Container from '../Layout/Container'
 import InsightsTile from './InsightsTile'
@@ -26,7 +26,7 @@ async function InsightsContainer() {
     ***REMOVED***insights?.map(({ slug, title, image ***REMOVED***) => (
             <div className="flex-1 self-stretch" key={slug***REMOVED***>
               <InsightsTile
-                image={`${process.env.NEXT_PUBLIC_DIRECTUS_URL***REMOVED***/assets/${image***REMOVED***`***REMOVED***
+                image={directusImage(image)***REMOVED***
                 link={`/sammlung/${slug***REMOVED***`***REMOVED***
                 title={title***REMOVED***
               />

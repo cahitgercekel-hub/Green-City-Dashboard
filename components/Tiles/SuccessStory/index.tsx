@@ -4,6 +4,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 
 import { BaseTile ***REMOVED*** from '../Base/BaseTile'
+import { directusImage ***REMOVED*** from '@/lib/directus'
 
 export type SuccessStoryTileProps = {
   text: string
@@ -51,7 +52,7 @@ export default function SuccessStoryTile({
         alt={'Image'***REMOVED***
         className="object-cover object-top transition-all group-hover:scale-105"
         fill
-        src={image***REMOVED***
+        src={directusImage(image)***REMOVED***
       />
     </div>
   )

@@ -16,6 +16,10 @@ type TilesBucket = {
 ***REMOVED***
 
 const isFullWidth = async (tile: BaseTile) => {
+  if (tile.collection === 'successStory') {
+    return true
+***REMOVED***
+
   const data = await directus.items(tile.collection).readOne(tile.item, {
     fields: ['full_width'],
 ***REMOVED***)

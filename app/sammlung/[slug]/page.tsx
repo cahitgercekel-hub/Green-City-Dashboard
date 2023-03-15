@@ -1,11 +1,16 @@
 import Columns from '@/components/Layout/Columns'
-import SurveyTile from '@/components/Tiles/Survey'
-import directus, { collectionsName, surveyCollectionName ***REMOVED*** from '@/lib/directus'
-import embedRegistry from '@/utils/embedRegistry'
-import { tileIdRegistry ***REMOVED*** from '@/utils/tileIdRegistry'
+import directus, {
+  collectionsName,
+  successStoriesCollectionName,
+  surveyCollectionName,
+  tileCollectionName,
+***REMOVED*** from '@/lib/directus'
 import { ID ***REMOVED*** from '@directus/sdk'
 import { notFound ***REMOVED*** from 'next/navigation'
 import getTilesBucket, { BaseTile ***REMOVED*** from '@/utils/fullWidthBucket'
+import TileFactory, { TileType ***REMOVED*** from '@/utils/TileFactory'
+import { SurveyTileProps ***REMOVED*** from '@/components/Tiles/Survey'
+import { SuccessStoryTileProps ***REMOVED*** from '@/components/Tiles/SuccessStory'
 
 // ISR
 export async function generateStaticParams() {
@@ -39,12 +44,30 @@ const getCollection = async (collectionSlug: string) => {
   return data
 ***REMOVED***
 
-const getTileComponent = async (tile: BaseTile) => {
-  if (tile.collection === 'survey') {
-    return await getSurveyTile(tile.item)
+const getTileType = async (tileID: string) => {
+  const data = await directus.items(tileCollectionName).readOne(tileID)
+
+  return data?.tile_id
 ***REMOVED***
-  const Tile = getDataTile(tile.item)
-  return <Tile key={tile.item***REMOVED*** />
+
+const getTileComponent = async (tile: BaseTile) => {
+  let props:
+    | { surveyData?: SurveyTileProps; successStoryData?: SuccessStoryTileProps ***REMOVED***
+    | undefined
+  let type: TileType
+  if (tile.collection === 'survey') {
+    const surveyData = await getSurveyData(tile.item)
+    props = { surveyData ***REMOVED***
+    type = 'survey'
+***REMOVED*** else if (tile.collection === 'successStory') {
+    const successStoryData = await getSuccessStoryData(tile.item)
+    props = { successStoryData ***REMOVED***
+    type = 'successStory'
+***REMOVED*** else {
+    type = (await getTileType(tile.item as string)) as TileType
+***REMOVED***
+
+  return <TileFactory key={tile.item***REMOVED*** type={type***REMOVED*** {...props***REMOVED*** />
 ***REMOVED***
 
 const getTileComponents = async (tiles: BaseTile[]) => {
@@ -55,25 +78,28 @@ const getTileComponents = async (tiles: BaseTile[]) => {
   )
 ***REMOVED***
 
-const getDataTile = (tileID: keyof typeof tileIdRegistry) => {
-  return embedRegistry[tileIdRegistry[tileID]]
+const getSuccessStoryData = async (
+  surveyID: ID,
+): Promise<SuccessStoryTileProps> => {
+  const data = await directus
+    .items(successStoriesCollectionName)
+    .readOne(surveyID)
+  return {
+    link: data?.link ?? '',
+    text: data?.text ?? '',
+    image: data?.image,
+    imagePosition: data?.image_position,
 ***REMOVED***
-
-const getSurveyTile = async (surveyID: ID) => {
+***REMOVED***
+const getSurveyData = async (surveyID: ID): Promise<SurveyTileProps> => {
   const data = await directus.items(surveyCollectionName).readOne(surveyID)
-  if (!data) {
-    return <div key={surveyID***REMOVED*** />
+  return {
+    answer: {
+      text: data?.answer_text ?? '',
+      percent: data?.answer_percent ?? 0,
+  ***REMOVED***,
+    question: data?.question ?? '',
 ***REMOVED***
-  return (
-    <SurveyTile
-      answer={{
-        percent: data.answer_percent,
-        text: data.answer_text,
-    ***REMOVED******REMOVED***
-      key={surveyID***REMOVED***
-      question={data.question***REMOVED***
-    ></SurveyTile>
-  )
 ***REMOVED***
 
 export default async function Collection({
