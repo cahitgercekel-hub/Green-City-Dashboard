@@ -1,5 +1,5 @@
 import '@/styles/globals.css'
-import { Inter ***REMOVED*** from '@next/font/google'
+import { Inter ***REMOVED*** from 'next/font/google'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' ***REMOVED***)
 
