@@ -1,4 +1,4 @@
-import { MuensterIcon ***REMOVED*** from '@/components/Icons'
+import { BicycleIcon ***REMOVED*** from '@/components/Icons'
 import IconTile, { IconTileProps ***REMOVED*** from '../Base/IconTile'
 
 export type MobilityTileProps = Omit<IconTileProps, 'variant' | 'icon'>
@@ -13,7 +13,7 @@ export default function MobilityTile({
   ...props
 ***REMOVED***: MobilityTileProps) {
   return (
-    <IconTile {...props***REMOVED*** icon={MuensterIcon***REMOVED*** variant="mobility">
+    <IconTile {...props***REMOVED*** icon={BicycleIcon***REMOVED*** variant="mobility">
       <>{children***REMOVED***</>
     </IconTile>
   )

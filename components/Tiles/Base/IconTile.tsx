@@ -36,6 +36,7 @@ export type IconTileProps = VariantProps<typeof iconTileTitleStyle> &
       | ForwardRefExoticComponent<SVGProps<SVGSVGElement>>
       | ((_props: SVGProps<SVGSVGElement>) => JSX.Element)
     live?: boolean
+    moreInfo?: string
 ***REMOVED***
 
 /**
@@ -53,6 +54,7 @@ export default function IconTile({
   dataRetrieval,
   dataSource,
   embedId,
+  moreInfo,
 ***REMOVED***: IconTileProps) {
   const Icon = icon
 
@@ -60,12 +62,13 @@ export default function IconTile({
     <BaseTile
       embedId={embedId***REMOVED***
       footerCenterElement={live ? <LiveBadge variant={variant***REMOVED*** /> : undefined***REMOVED***
+      moreInfo={moreInfo***REMOVED***
       variant={variant***REMOVED***
     >
       <>
   ***REMOVED***title && (
           <div className={'flex justify-between'***REMOVED***>
-            <div className="flex flex-wrap items-center justify-start gap-4">
+            <div className="flex flex-wrap items-center justify-start gap-x-4">
               <Title
                 as={'h1'***REMOVED***
                 className={cx('min-w-max', iconTileTitleStyle({ variant ***REMOVED***))***REMOVED***
@@ -83,7 +86,10 @@ export default function IconTile({
           ***REMOVED******REMOVED***
             </div>
             <Icon
-              className={cx('h-10 w-12', iconTileTitleStyle({ variant ***REMOVED***))***REMOVED***
+              className={cx(
+                'h-[50px] w-auto flex-shrink-0 opacity-40',
+                iconTileTitleStyle({ variant ***REMOVED***),
+          ***REMOVED******REMOVED***
             />
           </div>
     ***REMOVED******REMOVED***
@@ -92,7 +98,7 @@ export default function IconTile({
       <>
   ***REMOVED***!title && !subtitle && (
           <div className={cx('relative', iconTileTitleStyle({ variant ***REMOVED***))***REMOVED***>
-            <Icon className=" absolute top-0 right-0 h-10 w-12" />
+            <Icon className=" absolute top-0 right-0 h-[50px] w-auto opacity-40" />
           </div>
     ***REMOVED******REMOVED***
       </>

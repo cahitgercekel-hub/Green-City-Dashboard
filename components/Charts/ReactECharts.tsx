@@ -3,6 +3,8 @@ import { getInstanceByDom, init ***REMOVED*** from 'echarts'
 import type { CSSProperties ***REMOVED*** from 'react'
 import type { ECharts, EChartsOption, SetOptionOpts ***REMOVED*** from 'echarts'
 
+import './chart-style.css'
+
 export interface ReactEChartsProps {
   option: EChartsOption
   style?: CSSProperties

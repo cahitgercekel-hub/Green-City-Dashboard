@@ -112,7 +112,7 @@ export default function CollectionNavbar({ title, description ***REMOVED***: Pro
               </Link>
             </div>
           </div>
-          <Spacer size={'lg'***REMOVED*** />
+          <Spacer size={'xl'***REMOVED*** />
           <div className="flex w-full flex-col-reverse gap-2 md:flex-row">
             <Title as={'h5'***REMOVED*** className="flex-[2_2_0%]" variant="primary">
         ***REMOVED***description***REMOVED***

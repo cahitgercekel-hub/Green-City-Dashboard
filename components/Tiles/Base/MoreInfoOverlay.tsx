@@ -4,6 +4,7 @@ import { ComponentPropsWithRef ***REMOVED*** from 'react'
 import { AnimatedProps ***REMOVED*** from 'react-spring'
 import React from 'react'
 import BaseOverlay from './BaseOverlay'
+import Title from '@/components/Elements/Title'
 
 type MoreInfoOverlayProps = AnimatedProps<ComponentPropsWithRef<'div'>> & {
   onClose?: () => void
@@ -17,7 +18,9 @@ export default function MoreInfoOverlay({
 ***REMOVED***: MoreInfoOverlayProps) {
   return (
     <BaseOverlay onClose={onClose***REMOVED*** {...props***REMOVED***>
-***REMOVED***children***REMOVED***
+      <Title as="h6" variant={'inverse'***REMOVED***>
+  ***REMOVED***children***REMOVED***
+      </Title>
     </BaseOverlay>
   )
 ***REMOVED***

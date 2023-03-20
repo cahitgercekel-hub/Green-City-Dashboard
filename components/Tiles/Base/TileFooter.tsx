@@ -54,7 +54,7 @@ export default function TileFooter({
       </div>
       <div className="flex flex-[2_2_0%] justify-center">{children***REMOVED***</div>
       <div className="flex flex-1 justify-end" onClick={onMoreInfoClick***REMOVED***>
-        <MoreDetails link="#" variant={variant***REMOVED*** />
+        <MoreDetails variant={variant***REMOVED*** />
       </div>
     </div>
   )
