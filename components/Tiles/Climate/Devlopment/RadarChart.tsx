@@ -10,6 +10,18 @@ export type AvgTempData = {
 ***REMOVED***
 ***REMOVED***
 
+const zero = {
+  value: new Array(12).fill(0),
+  name: '0',
+  lineStyle: {
+    color: '#14b3d9',
+    width: 4,
+***REMOVED***,
+  itemStyle: {
+    opacity: 0,
+***REMOVED***,
+***REMOVED***
+
 export default function RadarChart({ data ***REMOVED***: { data: AvgTempData ***REMOVED***) {
   const [years, setYears] = useState<string[]>([])
   const [seriesData, setSeriesData] = useState<any[]>([])
@@ -20,7 +32,6 @@ export default function RadarChart({ data ***REMOVED***: { data: AvgTempData ***
       () => setCounter(prevCounter => prevCounter + 1),
       200,
 ***REMOVED***
-
     return () => clearInterval(timer)
 ***REMOVED***, [])
 
@@ -74,7 +85,7 @@ export default function RadarChart({ data ***REMOVED***: { data: AvgTempData ***
               fontSize: '20px',
           ***REMOVED***,
             splitLine: {
-              show: false,
+              show: true,
           ***REMOVED***,
             splitArea: {
               areaStyle: {
@@ -103,11 +114,13 @@ export default function RadarChart({ data ***REMOVED***: { data: AvgTempData ***
         ***REMOVED*** name: 'DEZ', min: -5, max: 5 ***REMOVED***,
             ].reverse(),
         ***REMOVED***,
-          series: {
-            name: 'Climate',
-            type: 'radar',
-            data: seriesData,
-        ***REMOVED***,
+          series: [
+      ***REMOVED***
+              name: 'Climate',
+              type: 'radar',
+              data: [zero, ...seriesData],
+          ***REMOVED***,
+          ],
       ***REMOVED******REMOVED***
         renderer="svg"
       />

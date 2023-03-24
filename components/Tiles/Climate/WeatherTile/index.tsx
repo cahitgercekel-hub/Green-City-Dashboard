@@ -38,7 +38,7 @@ export default function WeatherTile() {
       <div>
   ***REMOVED***weather && (
           <div className="mb-8 flex gap-4">
-            <div className="flex flex-1 flex-col justify-between">
+            <div className="flex flex-1 flex-col justify-between gap-2">
               <span>
                 <SunLarge className="h-36 text-primary" />
               </span>
@@ -54,7 +54,7 @@ export default function WeatherTile() {
                 value={weather?.temperature***REMOVED***
               />
             </div>
-            <div className="flex flex-1 flex-col gap-6">
+            <div className="flex flex-1 flex-col justify-between gap-6">
               <Phenomenon
                 phenomenon="precipitation"
                 value={weather?.precipitation***REMOVED***
@@ -64,7 +64,7 @@ export default function WeatherTile() {
                 value={weather?.cloud_cover***REMOVED***
               />
               <Phenomenon phenomenon="windspeed" value={weather?.wind_speed***REMOVED*** />
-              <Phenomenon phenomenon="sunhours" value={weather?.sunshine***REMOVED*** />
+        ***REMOVED***/* <Phenomenon phenomenon="sunhours" value={weather?.sunshine***REMOVED*** /> */***REMOVED***
             </div>
           </div>
     ***REMOVED******REMOVED***
