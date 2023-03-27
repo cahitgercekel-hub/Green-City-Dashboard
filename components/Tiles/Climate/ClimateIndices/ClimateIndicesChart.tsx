@@ -2,8 +2,25 @@
 
 import { ReactECharts ***REMOVED*** from '@/components/Charts/ReactECharts'
 import climateIndicesData from '@/assets/data/climate_indices.json'
-import { SeriesOption ***REMOVED*** from 'echarts'
+import { LineSeriesOption ***REMOVED*** from 'echarts'
 import { parse ***REMOVED*** from 'date-fns'
+import Switch from '@/components/Inputs/Switch'
+import { Sun, Temperature ***REMOVED*** from '@/components/Icons'
+import Title from '@/components/Elements/Title'
+import { Cog6ToothIcon, MoonIcon ***REMOVED*** from '@heroicons/react/24/outline'
+import { ForwardRefExoticComponent, SVGProps, useState ***REMOVED*** from 'react'
+import IconFactory from '@/components/Elements/IconFactory'
+import resolveConfig from 'tailwindcss/resolveConfig'
+import tailwindConfig from '@/tailwind.config.js'
+
+const { theme ***REMOVED*** = resolveConfig(tailwindConfig)
+
+type IndicesTypes =
+  | 'eistage'
+  | 'frosttage'
+  | 'heisse_tage'
+  | 'sommertage'
+  | 'tropennaechte'
 
 type ClimateIndex = {
   dwd_station_id: number
@@ -16,7 +33,6 @@ type ClimateIndex = {
   tropennaechte: number
 ***REMOVED***
 
-const SCATTER_SYMBOL_SIZE = 7
 const data = climateIndicesData as ClimateIndex[]
 const getSeries = (property: keyof ClimateIndex) =>
   data.map(e => [
@@ -24,61 +40,166 @@ const getSeries = (property: keyof ClimateIndex) =>
     e[property],
   ])
 
-export default function ClimateIndicesChart() {
-  const series: SeriesOption[] = [
-    {
-      name: 'Eistage',
-      type: 'scatter',
-      symbolSize: SCATTER_SYMBOL_SIZE,
-      data: getSeries('eistage'),
-  ***REMOVED***,
-    {
-      name: 'Frosttage',
-      type: 'scatter',
-      symbolSize: SCATTER_SYMBOL_SIZE,
-      data: getSeries('frosttage'),
-  ***REMOVED***,
-    {
+/**
+ * All the indices that are on the chart
+ */
+const indices: Record<
+  IndicesTypes,
+  {
+    title: string
+    icon:
+      | ForwardRefExoticComponent<SVGProps<SVGSVGElement>>
+      | ((_props: SVGProps<SVGSVGElement>) => JSX.Element)
+    seriesOption: LineSeriesOption
+***REMOVED***
+> = {
+  heisse_tage: {
+    title: 'Heiße Tage (>= 30°C)',
+    icon: Temperature,
+    seriesOption: {
       name: 'Heiße Tage',
-      type: 'scatter',
-      symbolSize: SCATTER_SYMBOL_SIZE,
       data: getSeries('heisse_tage'),
+      // @ts-ignore
+      color: theme?.colors?.energy.DEFAULT || '#6060d6',
   ***REMOVED***,
-    {
+***REMOVED***,
+  sommertage: {
+    title: 'Sommertage (>= 25°C)',
+    icon: Sun,
+    seriesOption: {
       name: 'Sommertage',
-      type: 'scatter',
-      symbolSize: SCATTER_SYMBOL_SIZE,
       data: getSeries('sommertage'),
+      // @ts-ignore
+      color: theme?.colors?.mobility.DEFAULT || '#6060d6',
   ***REMOVED***,
-    {
+***REMOVED***,
+  tropennaechte: {
+    title: 'Tropennächte (>= 20°C)',
+    icon: MoonIcon,
+    seriesOption: {
       name: 'Tropennächte',
-      type: 'scatter',
-      symbolSize: SCATTER_SYMBOL_SIZE,
       data: getSeries('tropennaechte'),
+      // @ts-ignore
+      color: theme?.colors?.buildings.DEFAULT || '#6060d6',
   ***REMOVED***,
-  ]
+***REMOVED***,
+  frosttage: {
+    title: 'Frosttage (mind. < 0°C)',
+    seriesOption: {
+      name: 'Frosttage',
+      data: getSeries('frosttage'),
+      // @ts-ignore
+      color: theme?.colors?.primary.DEFAULT || '#6060d6',
+  ***REMOVED***,
+    icon: Temperature,
+***REMOVED***,
+  eistage: {
+    title: 'Eistage (max. < 0°C)',
+    icon: Cog6ToothIcon,
+    seriesOption: {
+      name: 'Eistage',
+      data: getSeries('eistage'),
+      // @ts-ignore
+      color: theme?.colors?.climate.DEFAULT || '#6060d6',
+  ***REMOVED***,
+***REMOVED***,
+***REMOVED***
+
+/**
+ *
+ * @param type: the type of the icon
+ * @param onChange: on toggle change
+ * @returns Toggle with Icon and text
+ */
+function ClimateIndiceToggle({
+  type,
+  onChange,
+***REMOVED***: {
+  type: IndicesTypes
+  onChange?: (_checked: boolean) => void
+***REMOVED***) {
+  const Icon = indices[type].icon
+  return (
+    <div className="flex w-fit items-center gap-4">
+      <Switch onCheckedChange={onChange***REMOVED*** variant={type***REMOVED*** />
+      <IconFactory className="aspect-square h-8" icon={Icon***REMOVED*** variant={type***REMOVED*** />
+      <Title as="h5" variant={type***REMOVED***>
+  ***REMOVED***indices[type].title***REMOVED***
+      </Title>
+    </div>
+  )
+***REMOVED***
+
+/**
+ *
+ * @returns The Climate Indices Chart
+ */
+export default function ClimateIndicesChart() {
+  const [seriesVisible, setSeriesVisible] = useState<
+    Record<IndicesTypes, boolean>
+  >({
+    eistage: false,
+    frosttage: false,
+    heisse_tage: false,
+    sommertage: false,
+    tropennaechte: false,
+***REMOVED***)
+
+  const series: LineSeriesOption[] = Object.keys(indices)
+    .filter(e => seriesVisible[e as IndicesTypes])
+    .map(e => ({
+      ...indices[e as IndicesTypes].seriesOption,
+      type: 'line',
+      itemStyle: {
+        opacity: 0,
+    ***REMOVED***,
+  ***REMOVED***))
 
   return (
-    <ReactECharts
-      option={{
-        series,
-        xAxis: {
-          type: 'time',
-      ***REMOVED***,
-        yAxis: {
-          type: 'value',
-          min: 1,
-      ***REMOVED***,
-        legend: {
-          show: true,
-          bottom: 0,
-          icon: 'circle',
-      ***REMOVED***,
-        textStyle: {
-          fontSize: 12,
-      ***REMOVED***,
-    ***REMOVED******REMOVED***
-      renderer="canvas"
-    />
+    <div className="flex h-full w-full items-center gap-4 p-5">
+      <div className="h-full flex-1">
+        <Title as="h7">Anzahl der Tage</Title>
+        <ReactECharts
+          option={{
+            series,
+            xAxis: {
+              type: 'time',
+          ***REMOVED***,
+            yAxis: {
+              type: 'value',
+              interval: 5,
+          ***REMOVED***,
+            animation: true,
+        ***REMOVED******REMOVED***
+          settings={{
+            notMerge: true,
+        ***REMOVED******REMOVED***
+        />
+      </div>
+      <div className="flex h-full flex-col justify-evenly">
+        <ClimateIndiceToggle
+          onChange={c => setSeriesVisible({ ...seriesVisible, heisse_tage: c ***REMOVED***)***REMOVED***
+          type="heisse_tage"
+        />
+        <ClimateIndiceToggle
+          onChange={c => setSeriesVisible({ ...seriesVisible, sommertage: c ***REMOVED***)***REMOVED***
+          type="sommertage"
+        />
+        <ClimateIndiceToggle
+          onChange={c =>
+            setSeriesVisible({ ...seriesVisible, tropennaechte: c ***REMOVED***)
+        ***REMOVED***
+          type="tropennaechte"
+        />
+        <ClimateIndiceToggle
+          onChange={c => setSeriesVisible({ ...seriesVisible, frosttage: c ***REMOVED***)***REMOVED***
+          type="frosttage"
+        />
+        <ClimateIndiceToggle
+          onChange={c => setSeriesVisible({ ...seriesVisible, eistage: c ***REMOVED***)***REMOVED***
+          type="eistage"
+        />
+      </div>
+    </div>
   )
 ***REMOVED***

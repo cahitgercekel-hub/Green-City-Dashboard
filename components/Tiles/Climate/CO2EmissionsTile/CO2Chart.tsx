@@ -22,7 +22,7 @@ export default function CO2Chart({ showFuture = false ***REMOVED***: CO2ChartPro
         ]
       : baseData
 
-  const prepareData = (key: keyof typeof data[0]) =>
+  const prepareData = (key: keyof (typeof data)[0]) =>
     withFuture(
       data.map(e => [
         parse(`01-01-${e.Jahr***REMOVED***`, 'dd-MM-yyyy', new Date()).getTime(),
@@ -96,14 +96,9 @@ export default function CO2Chart({ showFuture = false ***REMOVED***: CO2ChartPro
           show: true,
           bottom: 0,
           icon: 'circle',
-          textStyle: {
-            minMargin: 100,
-        ***REMOVED***,
-      ***REMOVED***,
-        textStyle: {
-          fontSize: 12,
       ***REMOVED***,
     ***REMOVED******REMOVED***
+      renderer="svg"
     />
   )
 ***REMOVED***
