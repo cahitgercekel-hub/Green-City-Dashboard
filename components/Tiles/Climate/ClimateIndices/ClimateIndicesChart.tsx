@@ -5,11 +5,9 @@ import climateIndicesData from '@/assets/data/climate_indices.json'
 import { LineSeriesOption ***REMOVED*** from 'echarts'
 import { parse ***REMOVED*** from 'date-fns'
 import Switch from '@/components/Inputs/Switch'
-import { Sun, Temperature ***REMOVED*** from '@/components/Icons'
+import { Eis, Frost, Heiss, Sommer, Tropen ***REMOVED*** from '@/components/Icons'
 import Title from '@/components/Elements/Title'
-import { Cog6ToothIcon, MoonIcon ***REMOVED*** from '@heroicons/react/24/outline'
 import { ForwardRefExoticComponent, SVGProps, useState ***REMOVED*** from 'react'
-import IconFactory from '@/components/Elements/IconFactory'
 import resolveConfig from 'tailwindcss/resolveConfig'
 import tailwindConfig from '@/tailwind.config.js'
 
@@ -55,7 +53,7 @@ const indices: Record<
 > = {
   heisse_tage: {
     title: 'Heiße Tage (>= 30°C)',
-    icon: Temperature,
+    icon: Heiss,
     seriesOption: {
       name: 'Heiße Tage',
       data: getSeries('heisse_tage'),
@@ -65,7 +63,7 @@ const indices: Record<
 ***REMOVED***,
   sommertage: {
     title: 'Sommertage (>= 25°C)',
-    icon: Sun,
+    icon: Sommer,
     seriesOption: {
       name: 'Sommertage',
       data: getSeries('sommertage'),
@@ -75,7 +73,7 @@ const indices: Record<
 ***REMOVED***,
   tropennaechte: {
     title: 'Tropennächte (>= 20°C)',
-    icon: MoonIcon,
+    icon: Tropen,
     seriesOption: {
       name: 'Tropennächte',
       data: getSeries('tropennaechte'),
@@ -91,11 +89,11 @@ const indices: Record<
       // @ts-ignore
       color: theme?.colors?.primary.DEFAULT || '#6060d6',
   ***REMOVED***,
-    icon: Temperature,
+    icon: Frost,
 ***REMOVED***,
   eistage: {
     title: 'Eistage (max. < 0°C)',
-    icon: Cog6ToothIcon,
+    icon: Eis,
     seriesOption: {
       name: 'Eistage',
       data: getSeries('eistage'),
@@ -122,7 +120,7 @@ function ClimateIndiceToggle({
   return (
     <div className="flex w-fit items-center gap-4">
       <Switch onCheckedChange={onChange***REMOVED*** variant={type***REMOVED*** />
-      <IconFactory className="aspect-square h-8" icon={Icon***REMOVED*** variant={type***REMOVED*** />
+      <Icon className="aspect-square h-8" />
       <Title as="h5" variant={type***REMOVED***>
   ***REMOVED***indices[type].title***REMOVED***
       </Title>
