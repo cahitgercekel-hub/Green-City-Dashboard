@@ -9,6 +9,7 @@ import {
 import { useEffect, useState ***REMOVED*** from 'react'
 import resolveConfig from 'tailwindcss/resolveConfig'
 import tailwindConfig from '@/tailwind.config.js'
+import Title from '@/components/Elements/Title'
 
 const { theme ***REMOVED*** = resolveConfig(tailwindConfig)
 
@@ -117,46 +118,52 @@ export default function Chart({ data, other ***REMOVED***: ChartProps) {
 ***REMOVED***
 
   return (
-    <ReactECharts
-      option={{
-        grid: {
-          left: '20%',
-          right: '10%',
-          top: '20%',
-          bottom: '10%',
-      ***REMOVED***,
-        xAxis: [
-    ***REMOVED***
-            // hidden xaxis for lines
-            type: 'category',
-            axisTick: undefined,
-            boundaryGap: false,
-            position: 'bottom',
-            show: false,
-        ***REMOVED***,
-    ***REMOVED***
-            // xaxis for bars
-            type: 'category',
-            axisTick: undefined,
-            position: 'bottom',
-            name: 'Jahr',
-        ***REMOVED***,
-        ],
-        yAxis: {
-          type: 'value',
-          interval: 250000,
-          name: 'km',
-          max: 2000000,
-          axisLabel: {
-            formatter: (value: number) =>
-              value.toFixed(0).replace(/\B(?=(\d{3***REMOVED***)+(?!\d))/g, '.'),
-        ***REMOVED***,
-      ***REMOVED***,
-        series,
-    ***REMOVED******REMOVED***
-      settings={{
-        notMerge: true,
-    ***REMOVED******REMOVED***
-    />
+    <div className="relative h-full w-full">
+      <Title as="h5" className="absolute top-[3rem] left-[6.7rem]">
+        km
+      </Title>
+      <div className="absolute top-0 left-0 h-full w-full">
+        <ReactECharts
+          option={{
+            grid: {
+              left: '20%',
+              right: '10%',
+              top: '20%',
+              bottom: '10%',
+          ***REMOVED***,
+            xAxis: [
+        ***REMOVED***
+                // hidden xaxis for lines
+                type: 'category',
+                axisTick: undefined,
+                boundaryGap: false,
+                position: 'bottom',
+                show: false,
+            ***REMOVED***,
+        ***REMOVED***
+                // xaxis for bars
+                type: 'category',
+                axisTick: undefined,
+                position: 'bottom',
+                name: 'Jahr',
+            ***REMOVED***,
+            ],
+            yAxis: {
+              type: 'value',
+              interval: 250_000,
+              max: 2_000_000,
+              axisLabel: {
+                formatter: (value: number) =>
+                  value.toFixed(0).replace(/\B(?=(\d{3***REMOVED***)+(?!\d))/g, '.'),
+            ***REMOVED***,
+          ***REMOVED***,
+            series,
+        ***REMOVED******REMOVED***
+          settings={{
+            notMerge: true,
+        ***REMOVED******REMOVED***
+        />
+      </div>
+    </div>
   )
 ***REMOVED***
