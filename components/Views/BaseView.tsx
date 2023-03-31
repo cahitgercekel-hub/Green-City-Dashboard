@@ -1,5 +1,6 @@
 import { GoToButton ***REMOVED*** from '../Elements/GoToButton'
 import { Spacer ***REMOVED*** from '../Elements/Spacer'
+import SectionHeader from '../Layout/SectionHeader'
 
 interface ViewProps {
   type: 'climate' | 'mobility' | 'energy' | 'building'
@@ -9,7 +10,7 @@ interface ViewProps {
 export default function BaseView({ type, children ***REMOVED***: ViewProps) {
   return (
     <>
-***REMOVED***/* <SectionHeader variant={type***REMOVED*** /> */***REMOVED***
+      <SectionHeader variant={type***REMOVED*** />
 ***REMOVED***children***REMOVED***
       <Spacer size={'sm'***REMOVED*** />
       <GoToButton type={type***REMOVED*** />
