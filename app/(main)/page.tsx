@@ -1,4 +1,3 @@
-import { Spacer ***REMOVED*** from '@/components/Elements/Spacer'
 import InsightsContainer from '@/components/Insights/InsightsContainer'
 import Container from '@/components/Layout/Container'
 
@@ -9,76 +8,18 @@ import BuildingsView from '@/components/Views/BuildingsView'
 import EnergyView from '@/components/Views/EnergyView'
 
 export default async function Home() {
-  // const { data: successStories ***REMOVED*** = await directus
-  //   .items(successStoriesCollectionName)
-  //   .readByQuery({
-  //     filter: {
-  //       status: 'published',
-  //   ***REMOVED***,
-  //     limit: 2,
-  // ***REMOVED***)
-
-  // const { data: surveys ***REMOVED*** = await directus
-  //   .items(surveyCollectionName)
-  //   .readByQuery({
-  //     filter: {
-  //       status: 'published',
-  //   ***REMOVED***,
-  //     limit: 2,
-  // ***REMOVED***)
-
   return (
-    <AnimatedPage>
-      <InsightsContainer />
-      <Container>
-        <ClimateView />
-  ***REMOVED***/* <Columns>
-    ***REMOVED***surveys && surveys[0] && (
-            <SurveyTile
-              answer={{
-                percent: surveys[0].answer_percent,
-                text: surveys[0].answer_text,
-            ***REMOVED******REMOVED***
-              question={surveys[0].question***REMOVED***
-            />
-      ***REMOVED******REMOVED***
-        </Columns> */***REMOVED***
-
-        <MobilityView />
-
-  ***REMOVED***/* <Columns>
-    ***REMOVED***surveys && surveys[1] && (
-            <SurveyTile
-              answer={{
-                percent: surveys[1].answer_percent,
-                text: surveys[1].answer_text,
-            ***REMOVED******REMOVED***
-              question={surveys[1].question***REMOVED***
-            />
-      ***REMOVED******REMOVED***
-        </Columns> */***REMOVED***
-        <Spacer />
-  ***REMOVED***/* {successStories && successStories[0] && (
-          <SuccessStoryTile
-            image={directusImage(successStories[0].image)***REMOVED***
-            imagePosition={successStories[0].image_position***REMOVED***
-            link={successStories[0].link***REMOVED***
-            text={successStories[0].text***REMOVED***
-          ></SuccessStoryTile>
-    ***REMOVED******REMOVED*** */***REMOVED***
-
-        <BuildingsView />
-  ***REMOVED***/* {successStories && successStories[1] && (
-          <SuccessStoryTile
-            image={directusImage(successStories[1].image)***REMOVED***
-            imagePosition={successStories[1].image_position***REMOVED***
-            link={successStories[1].link***REMOVED***
-            text={successStories[1].text***REMOVED***
-          ></SuccessStoryTile>
-    ***REMOVED******REMOVED*** */***REMOVED***
-        <EnergyView />
-      </Container>
-    </AnimatedPage>
+    <div className="-translate-y-52">
+      <AnimatedPage>
+        <InsightsContainer />
+        <Container>
+          <ClimateView />
+          <MobilityView />
+          <BuildingsView />
+          <EnergyView />
+        </Container>
+      </AnimatedPage>
+    </div>
   )
 ***REMOVED***
 
