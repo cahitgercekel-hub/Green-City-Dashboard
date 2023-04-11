@@ -5,11 +5,11 @@ import tailwindConfig from '@/tailwind.config.js'
 import useGarbageData from '@/hooks/useGarbageData'
 import { ReactECharts ***REMOVED*** from '@/components/Charts/ReactECharts'
 import { SeriesOption ***REMOVED*** from 'echarts'
-import { TrashIcon ***REMOVED*** from '@heroicons/react/24/outline'
 import Title from '@/components/Elements/Title'
 import Slider from '@/components/Inputs/Slider'
 import { useState ***REMOVED*** from 'react'
 import AnimatedNumber from '@/components/Elements/Animated/AnimatedNumber'
+import { TrashGesamt, TrashWertstoffe ***REMOVED*** from '@/components/Icons'
 
 const { theme ***REMOVED*** = resolveConfig(tailwindConfig)
 
@@ -109,7 +109,7 @@ export default function GarbageChart() {
       </div>
       <div className="flex h-full flex-col justify-evenly">
         <div className="flex w-48 items-center gap-2">
-          <TrashIcon className="h-14 text-mobility" />
+          <TrashGesamt className="h-14" />
           <div>
             <Title as={'h5'***REMOVED*** variant={'primary'***REMOVED***>
               Gesamt
@@ -124,7 +124,7 @@ export default function GarbageChart() {
           </div>
         </div>
         <div className="flex w-48 items-center gap-2">
-          <TrashIcon className="h-14 text-energy" />
+          <TrashWertstoffe className="h-14 text-energy" />
           <div>
             <Title as={'h5'***REMOVED*** variant={'primary'***REMOVED***>
               Wertstoffe
