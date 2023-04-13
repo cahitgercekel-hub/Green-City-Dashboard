@@ -53,6 +53,7 @@ export default function WindEnergyTile() {
               labels={['2005', '2010', '2015', '2020', 'jetzt']***REMOVED***
               max={4***REMOVED***
               min={0***REMOVED***
+              variant={'energy'***REMOVED***
             />
           </div>
         </div>
