@@ -13,6 +13,7 @@ export default function MobilityTile({
   ...props
 ***REMOVED***: MobilityTileProps) {
   return (
+    // @ts-expect-error Server Component
     <IconTile {...props***REMOVED*** icon={BicycleIcon***REMOVED*** variant="mobility">
       <>{children***REMOVED***</>
     </IconTile>

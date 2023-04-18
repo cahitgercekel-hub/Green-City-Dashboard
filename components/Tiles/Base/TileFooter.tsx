@@ -24,6 +24,8 @@ type TileFooterProps = VariantProps<typeof tileFooterStyle> & {
   onMoreInfoClick?: () => void
   onShareClick?: () => void
   children?: React.ReactElement
+  dataURL?: string
+  hasMoreDetails?: boolean
 ***REMOVED***
 
 /**
@@ -36,6 +38,8 @@ export default function TileFooter({
   onShareClick,
   children,
   variant,
+  dataURL,
+  hasMoreDetails,
 ***REMOVED***: TileFooterProps) {
   return (
     <div className="mt-6 flex w-full items-center justify-between">
@@ -48,14 +52,19 @@ export default function TileFooter({
           className="h-6 cursor-pointer stroke-2"
           onClick={onShareClick***REMOVED***
         />
-        <Link href={'#'***REMOVED***>
-          <ArrowDownTrayIcon className="h-6 stroke-2" />
-        </Link>
+  ***REMOVED***dataURL && (
+          <Link href={dataURL***REMOVED*** target="_blank">
+            <ArrowDownTrayIcon className="h-6 stroke-2" />
+          </Link>
+    ***REMOVED******REMOVED***
       </div>
       <div className="flex flex-[2_2_0%] justify-center">{children***REMOVED***</div>
-      <div className="flex flex-1 justify-end" onClick={onMoreInfoClick***REMOVED***>
-        <MoreDetails variant={variant***REMOVED*** />
-      </div>
+***REMOVED***hasMoreDetails && (
+        <div className="flex flex-1 justify-end" onClick={onMoreInfoClick***REMOVED***>
+          <MoreDetails variant={variant***REMOVED*** />
+        </div>
+  ***REMOVED******REMOVED***
+***REMOVED***!hasMoreDetails && <div className="flex flex-1 justify-end"></div>***REMOVED***
     </div>
   )
 ***REMOVED***

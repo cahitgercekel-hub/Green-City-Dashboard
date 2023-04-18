@@ -50,7 +50,7 @@ export default function SurveyTile({ question, answer ***REMOVED***: SurveyTileP
               <SurveyAnswer {...answer***REMOVED*** {...styles***REMOVED*** />
         ***REMOVED*** : (
               <animated.div
-                className="absolute top-0 left-0 h-full w-full"
+                className="absolute left-0 top-0 h-full w-full"
                 style={styles***REMOVED***
               >
                 <Title as="h3" className="font-medium" variant={'inverse'***REMOVED***>
