@@ -3,14 +3,14 @@
 import AnimatedCopyIcon from '@/components/Elements/Animated/AnimatedCopyIcon'
 import { Spacer ***REMOVED*** from '@/components/Elements/Spacer'
 import Title from '@/components/Elements/Title'
-import embedRegistry from '@/utils/embedRegistry'
 import { ComponentPropsWithRef ***REMOVED*** from 'react'
 import { AnimatedProps ***REMOVED*** from 'react-spring'
 import BaseOverlay from './BaseOverlay'
+import { TileType ***REMOVED*** from '@/utils/TileFactory'
 
 type EmbedOverlayProps = AnimatedProps<ComponentPropsWithRef<'div'>> & {
   onClose?: () => void
-  embedId: keyof typeof embedRegistry
+  embedId: TileType
 ***REMOVED***
 
 export default function EmbedOverlay({

@@ -1,9 +1,12 @@
+import 'server-only'
+
 import { Spacer ***REMOVED*** from '@/components/Elements/Spacer'
 import Title from '@/components/Elements/Title'
 import { cva, cx, VariantProps ***REMOVED*** from 'class-variance-authority'
 import { ForwardRefExoticComponent, SVGProps ***REMOVED*** from 'react'
 import { BaseTile, EmbedTileProps ***REMOVED*** from './BaseTile'
 import LiveBadge from './LiveBadge'
+import directus, { tileCollectionName ***REMOVED*** from '@/lib/directus'
 
 const iconTileTitleStyle = cva('', {
   variants: {
@@ -36,7 +39,16 @@ export type IconTileProps = VariantProps<typeof iconTileTitleStyle> &
       | ForwardRefExoticComponent<SVGProps<SVGSVGElement>>
       | ((_props: SVGProps<SVGSVGElement>) => JSX.Element)
     live?: boolean
-    moreInfo?: string
+***REMOVED***
+
+async function getTileData(id: string) {
+  const { data ***REMOVED*** = await directus.items(tileCollectionName).readByQuery({
+    filter: {
+      tile_id: id,
+  ***REMOVED***,
+***REMOVED***)
+
+  return data?.[0]
 ***REMOVED***
 
 /**
@@ -44,7 +56,7 @@ export type IconTileProps = VariantProps<typeof iconTileTitleStyle> &
  * @param IconTileProps properties of the Icon tile
  * @returns Mobility Tile
  */
-export default function IconTile({
+export default async function IconTile({
   children,
   live,
   title,
@@ -54,15 +66,17 @@ export default function IconTile({
   dataRetrieval,
   dataSource,
   embedId,
-  moreInfo,
 ***REMOVED***: IconTileProps) {
   const Icon = icon
+
+  const data = await getTileData(embedId!)
 
   return (
     <BaseTile
       embedId={embedId***REMOVED***
       footerCenterElement={live ? <LiveBadge variant={variant***REMOVED*** /> : undefined***REMOVED***
-      moreInfo={moreInfo***REMOVED***
+      moreInfo={data?.details***REMOVED***
+      source={data?.data_url***REMOVED***
       variant={variant***REMOVED***
     >
       <>
@@ -98,7 +112,7 @@ export default function IconTile({
       <>
   ***REMOVED***!title && !subtitle && (
           <div className={cx('relative', iconTileTitleStyle({ variant ***REMOVED***))***REMOVED***>
-            <Icon className=" absolute top-0 right-0 h-[50px] w-auto opacity-40" />
+            <Icon className=" absolute right-0 top-0 h-[50px] w-auto opacity-40" />
           </div>
     ***REMOVED******REMOVED***
       </>

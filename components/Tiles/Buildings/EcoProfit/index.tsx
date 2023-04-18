@@ -27,7 +27,7 @@ export default function EcoProfitTile() {
     <BuildingTile
       dataRetrieval={format(new Date(updatedAt), 'dd.MM.yyyy')***REMOVED***
       dataSource="Stadt Münster"
-      embedId={'ecoProfit'***REMOVED***
+      embedId={'building-ecoProfit'***REMOVED***
     >
       <Title as={'h1'***REMOVED*** variant={'building'***REMOVED***>
         <AnimatedNumber className="font-medium">

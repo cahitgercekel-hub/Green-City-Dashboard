@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useEffect, useRef ***REMOVED*** from 'react'
 import { getInstanceByDom, init ***REMOVED*** from 'echarts'
 import type { CSSProperties ***REMOVED*** from 'react'

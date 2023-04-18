@@ -1,3 +1,5 @@
+'use client'
+
 import { useEffect, useState ***REMOVED*** from 'react'
 
 const getBusData = async () => {

@@ -1,6 +1,5 @@
 'use client'
 
-import embedRegistry from '@/utils/embedRegistry'
 import { cva, cx, VariantProps ***REMOVED*** from 'class-variance-authority'
 import { useState ***REMOVED*** from 'react'
 import { useTransition ***REMOVED*** from 'react-spring'
@@ -8,6 +7,10 @@ import EmbedOverlay from './EmbedOverlay'
 import ShareOverlay from './ShareOverlay'
 import MoreInfoOverlay from './MoreInfoOverlay'
 import TileFooter from './TileFooter'
+import { TileType ***REMOVED*** from '@/utils/TileFactory'
+import ReactMarkdown from 'react-markdown'
+import Title from '@/components/Elements/Title'
+import remarkGfm from 'remark-gfm'
 
 const baseTileStyle = cva(
   'relative flex flex-col md:flex-row h-fit overflow-hidden rounded-KD ',
@@ -34,7 +37,7 @@ export type ImageProps =
   | { endImage: React.ReactElement; startImage?: never ***REMOVED***
   | { endImage?: undefined; startImage?: undefined ***REMOVED***
 
-export type EmbedTileProps = { embedId?: keyof typeof embedRegistry ***REMOVED***
+export type EmbedTileProps = { embedId?: TileType ***REMOVED***
 
 export type BaseTileProps = VariantProps<typeof baseTileStyle> &
   EmbedTileProps &
@@ -43,6 +46,7 @@ export type BaseTileProps = VariantProps<typeof baseTileStyle> &
     className?: string
     footerCenterElement?: React.ReactElement
     moreInfo?: React.ReactNode
+    source?: string
 ***REMOVED***
 
 const transitionOpts = {
@@ -65,6 +69,7 @@ export function BaseTile({
   footerCenterElement,
   embedId,
   moreInfo,
+  source,
 ***REMOVED***: BaseTileProps) {
   const [showEmbedOverlay, setShowEmbedOverlay] = useState(false)
   const [showShareOverlay, setShowShareOverlay] = useState(false)
@@ -99,6 +104,8 @@ export function BaseTile({
         <div className="flex w-full flex-col justify-between p-6 md:p-16">
           <div>{children***REMOVED***</div>
           <TileFooter
+            dataURL={source***REMOVED***
+            hasMoreDetails={!!moreInfo***REMOVED***
             onEmbedClick={() => setShowEmbedOverlay(true)***REMOVED***
             onMoreInfoClick={() => setShowMoreInfo(true)***REMOVED***
             onShareClick={openShareDialog***REMOVED***
@@ -137,7 +144,23 @@ export function BaseTile({
                 onClose={() => setShowMoreInfo(false)***REMOVED***
                 style={styles***REMOVED***
               >
-          ***REMOVED***moreInfo***REMOVED***
+          ***REMOVED***typeof moreInfo === 'string' ? (
+                  <ReactMarkdown
+                    components={{
+                      h1: props => <Title as={'h2'***REMOVED*** {...props***REMOVED*** />,
+                      h2: props => <Title as={'h3'***REMOVED*** {...props***REMOVED*** />,
+                      h3: props => <Title as={'h4'***REMOVED*** {...props***REMOVED*** />,
+                      h4: props => <Title as={'h5'***REMOVED*** {...props***REMOVED*** />,
+                      h5: props => <Title as={'h6'***REMOVED*** {...props***REMOVED*** />,
+                      h6: props => <Title as={'h7'***REMOVED*** {...props***REMOVED*** />,
+                  ***REMOVED******REMOVED***
+                    remarkPlugins={[remarkGfm]***REMOVED***
+                  >
+              ***REMOVED***moreInfo***REMOVED***
+                  </ReactMarkdown>
+            ***REMOVED*** : (
+                  <div>{moreInfo***REMOVED***</div>
+            ***REMOVED******REMOVED***
               </MoreInfoOverlay>
         ***REMOVED***,
     ***REMOVED******REMOVED***

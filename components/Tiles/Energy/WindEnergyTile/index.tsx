@@ -9,7 +9,7 @@ export default function WindEnergyTile() {
   return (
     <EnergyTile
       dataSource={'Stadtwerke Münster'***REMOVED***
-      embedId="windenergy"
+      embedId="energy-wind"
       live
       title={
         <span>
