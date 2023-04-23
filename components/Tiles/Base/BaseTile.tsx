@@ -155,6 +155,7 @@ export function BaseTile({
                       h6: props => <Title as={'h7'***REMOVED*** {...props***REMOVED*** />,
                       ul: props => <ul className="list-disc px-6" {...props***REMOVED*** />,
                       p: props => <p className="mb-2" {...props***REMOVED*** />,
+                      a: props => <a className="underline" {...props***REMOVED*** />,
                   ***REMOVED******REMOVED***
                     remarkPlugins={[remarkGfm]***REMOVED***
                   >
