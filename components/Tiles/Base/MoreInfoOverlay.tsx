@@ -18,9 +18,11 @@ export default function MoreInfoOverlay({
 ***REMOVED***: MoreInfoOverlayProps) {
   return (
     <BaseOverlay onClose={onClose***REMOVED*** {...props***REMOVED***>
-      <Title as="h6" variant={'inverse'***REMOVED***>
-  ***REMOVED***children***REMOVED***
-      </Title>
+      <div className="h-full overflow-scroll">
+        <Title as="h6" variant={'inverse'***REMOVED***>
+    ***REMOVED***children***REMOVED***
+        </Title>
+      </div>
     </BaseOverlay>
   )
 ***REMOVED***

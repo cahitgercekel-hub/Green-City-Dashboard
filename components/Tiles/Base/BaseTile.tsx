@@ -153,6 +153,8 @@ export function BaseTile({
                       h4: props => <Title as={'h5'***REMOVED*** {...props***REMOVED*** />,
                       h5: props => <Title as={'h6'***REMOVED*** {...props***REMOVED*** />,
                       h6: props => <Title as={'h7'***REMOVED*** {...props***REMOVED*** />,
+                      ul: props => <ul className="list-disc px-6" {...props***REMOVED*** />,
+                      p: props => <p className="mb-2" {...props***REMOVED*** />,
                   ***REMOVED******REMOVED***
                     remarkPlugins={[remarkGfm]***REMOVED***
                   >
