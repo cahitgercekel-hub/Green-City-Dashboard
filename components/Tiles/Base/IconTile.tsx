@@ -6,7 +6,7 @@ import { cva, cx, VariantProps ***REMOVED*** from 'class-variance-authority'
 import { ForwardRefExoticComponent, SVGProps ***REMOVED*** from 'react'
 import { BaseTile, EmbedTileProps ***REMOVED*** from './BaseTile'
 import LiveBadge from './LiveBadge'
-import directus, { tileCollectionName ***REMOVED*** from '@/lib/directus'
+import getTileData from '@/lib/api/getTileData'
 
 const iconTileTitleStyle = cva('', {
   variants: {
@@ -39,16 +39,6 @@ export type IconTileProps = VariantProps<typeof iconTileTitleStyle> &
       | ForwardRefExoticComponent<SVGProps<SVGSVGElement>>
       | ((_props: SVGProps<SVGSVGElement>) => JSX.Element)
     live?: boolean
-***REMOVED***
-
-async function getTileData(id: string) {
-  const { data ***REMOVED*** = await directus.items(tileCollectionName).readByQuery({
-    filter: {
-      tile_id: id,
-  ***REMOVED***,
-***REMOVED***)
-
-  return data?.[0]
 ***REMOVED***
 
 /**
