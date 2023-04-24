@@ -13,8 +13,11 @@ export default function ClimateView() {
         <WeatherTile />
         <ClimateDevelopmentTile />
       </Columns>
+***REMOVED***/* @ts-expect-error Server Component */***REMOVED***
       <CO2EmissionsTile />
+***REMOVED***/* @ts-expect-error Server Component */***REMOVED***
       <ClimateIndicesTile />
+***REMOVED***/* @ts-expect-error Server Component */***REMOVED***
       <GarbageTile />
     </BaseView>
   )
