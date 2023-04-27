@@ -9,6 +9,7 @@ type variants = {
   mobility: string
   successStory: string
   climate: string
+  building: string
 ***REMOVED***
 
 const toggleGroupStyle = cva<{
@@ -20,6 +21,7 @@ const toggleGroupStyle = cva<{
       mobility: 'border-mobility',
       successStory: 'border-secondary',
       climate: 'border-climate',
+      building: 'border-buildings',
   ***REMOVED***,
 ***REMOVED***,
   defaultVariants: {
@@ -39,6 +41,7 @@ const toggleGroupBackgroundStyle = cva<{
       mobility: 'bg-mobility',
       successStory: 'bg-secondary',
       climate: 'bg-climate',
+      building: 'bg-buildings',
   ***REMOVED***,
     isLast: {
       true: 'border-r-2',
@@ -65,6 +68,11 @@ const toggleGroupBackgroundStyle = cva<{
       isLast: true,
       className: 'border-r-climate',
   ***REMOVED***,
+    {
+      variant: 'building',
+      isLast: true,
+      className: 'border-r-buildings',
+  ***REMOVED***,
   ],
   defaultVariants: {
     variant: 'primary',
@@ -78,6 +86,7 @@ const selectedStyle = cva('px-4 transition-all duration-300 md:py-2 md:px-8', {
       mobility: null,
       successStory: null,
       climate: null,
+      building: null,
   ***REMOVED***,
     selected: {
       true: 'bg-opacity-100 text-white',
@@ -105,6 +114,11 @@ const selectedStyle = cva('px-4 transition-all duration-300 md:py-2 md:px-8', {
       variant: 'climate',
       className: 'text-climate',
   ***REMOVED***,
+    {
+      selected: false,
+      variant: 'building',
+      className: 'text-buildings',
+  ***REMOVED***,
   ],
   defaultVariants: {
     variant: 'primary',
@@ -117,9 +131,14 @@ type ToggleGroupProps = VariantProps<typeof toggleGroupStyle> & {
     element: string | React.ReactElement
     value: string
 ***REMOVED***[]
+  onChange?: (_value: string) => void
 ***REMOVED***
 
-export default function ToggleGroup({ items, variant ***REMOVED***: ToggleGroupProps) {
+export default function ToggleGroup({
+  items,
+  variant,
+  onChange,
+***REMOVED***: ToggleGroupProps) {
   const [value, setValue] = useState(items[0].value)
 
   return (
@@ -128,6 +147,7 @@ export default function ToggleGroup({ items, variant ***REMOVED***: ToggleGroupP
       onValueChange={value => {
         if (value) {
           setValue(value)
+          onChange && onChange(value)
       ***REMOVED***
     ***REMOVED******REMOVED***
       type="single"
