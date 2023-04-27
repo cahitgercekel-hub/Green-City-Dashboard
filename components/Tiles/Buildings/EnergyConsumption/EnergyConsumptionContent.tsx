@@ -8,6 +8,9 @@ import Title from '@/components/Elements/Title'
 import { useState ***REMOVED*** from 'react'
 import Slider from '@/components/Inputs/Slider'
 import EnergyConsumptionChart from './EnergyConsumptionChart'
+import LabelSeperator from './LabelSeperator'
+import AnimatedNumber from '@/components/Elements/Animated/AnimatedNumber'
+import { Spacer ***REMOVED*** from '@/components/Elements/Spacer'
 
 type DataType = {
   Datum: number
@@ -38,6 +41,16 @@ function getData(
   )
 
   return filteredYear.map(d => d[building]).filter(d => d !== null) as number[]
+***REMOVED***
+
+function getYearSum(
+  mode: 'strom' | 'waerme',
+  building: keyof Building,
+  year: number,
+) {
+  const data = getData(mode, building, year)
+
+  return data.reduce((a, b) => a + b, 0)
 ***REMOVED***
 
 const years = Array.from(
@@ -71,18 +84,43 @@ export default function EnergyConsumptionContent() {
         <div className="flex h-full w-full justify-between">
     ***REMOVED***Object.keys(buildings).map(building => (
             <div className="flex-1 p-2" key={building***REMOVED***>
-              <Title as="h5" className="h-20" variant="building">
+              <Title as="h4" className="h-20" variant="building">
           ***REMOVED***buildings[building as keyof Building]***REMOVED***
               </Title>
-              <div className="h-72">
-                <EnergyConsumptionChart
-                  data={getData(
+            </div>
+      ***REMOVED***)***REMOVED***
+        </div>
+        <LabelSeperator>Monatlicher Verbrauch</LabelSeperator>
+        <div className="flex h-full w-full justify-between">
+    ***REMOVED***Object.keys(buildings).map(building => (
+            <div className="h-72 w-full" key={building***REMOVED***>
+              <EnergyConsumptionChart
+                data={getData(
+                  mode,
+                  building as keyof Building,
+                  years[yearIndex],
+            ***REMOVED******REMOVED***
+              />
+            </div>
+      ***REMOVED***)***REMOVED***
+        </div>
+        <LabelSeperator>Jahresverbrauch</LabelSeperator>
+        <Spacer size={'sm'***REMOVED***></Spacer>
+        <div className="flex h-full w-full justify-between">
+    ***REMOVED***Object.keys(buildings).map(building => (
+            <div className="flex w-full gap-1" key={building***REMOVED***>
+              <Title as="h3" className="font-medium" variant="building">
+                <AnimatedNumber decimals={0***REMOVED***>
+            ***REMOVED***getYearSum(
                     mode,
                     building as keyof Building,
                     years[yearIndex],
               ***REMOVED******REMOVED***
-                />
-              </div>
+                </AnimatedNumber>
+              </Title>
+              <Title as="h3" className="font-regular" variant="building">
+                kWh
+              </Title>
             </div>
       ***REMOVED***)***REMOVED***
         </div>
