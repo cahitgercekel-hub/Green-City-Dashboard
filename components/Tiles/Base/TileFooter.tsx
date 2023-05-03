@@ -41,8 +41,8 @@ export default function TileFooter({
   dataURL,
   hasMoreDetails,
 ***REMOVED***: TileFooterProps) {
-  return (
-    <div className="mt-6 flex w-full items-center justify-between">
+  function IconButtons() {
+    return (
       <div className={tileFooterStyle({ variant ***REMOVED***)***REMOVED***>
         <SquaresPlusIcon
           className="h-6 cursor-pointer stroke-2"
@@ -58,13 +58,37 @@ export default function TileFooter({
           </Link>
     ***REMOVED******REMOVED***
       </div>
-      <div className="flex flex-[2_2_0%] justify-center">{children***REMOVED***</div>
-***REMOVED***hasMoreDetails && (
-        <div className="flex flex-1 justify-end" onClick={onMoreInfoClick***REMOVED***>
-          <MoreDetails variant={variant***REMOVED*** />
+***REMOVED***
+***REMOVED***
+
+  return (
+    <div className="mt-6 flex w-full flex-col justify-between gap-2 md:flex-row md:items-center">
+      <div className="hidden md:block">
+        <IconButtons />
+        <div className="flex flex-[2_2_0%] justify-center">{children***REMOVED***</div>
+  ***REMOVED***hasMoreDetails && (
+          <div className="flex flex-1 justify-end" onClick={onMoreInfoClick***REMOVED***>
+            <MoreDetails variant={variant***REMOVED*** />
+          </div>
+    ***REMOVED******REMOVED***
+  ***REMOVED***!hasMoreDetails && <div className="flex flex-1 justify-end"></div>***REMOVED***
+      </div>
+      <div className="flex flex-col gap-2 md:hidden">
+        <IconButtons />
+
+        <div className="flex w-full items-center justify-between">
+    ***REMOVED***hasMoreDetails && (
+            <div
+              className="flex flex-1 justify-start"
+              onClick={onMoreInfoClick***REMOVED***
+            >
+              <MoreDetails variant={variant***REMOVED*** />
+            </div>
+      ***REMOVED******REMOVED***
+    ***REMOVED***!hasMoreDetails && <div className="flex flex-1 justify-start"></div>***REMOVED***
+          <div className="flex flex-1 justify-end">{children***REMOVED***</div>
         </div>
-  ***REMOVED******REMOVED***
-***REMOVED***!hasMoreDetails && <div className="flex flex-1 justify-end"></div>***REMOVED***
+      </div>
     </div>
   )
 ***REMOVED***
