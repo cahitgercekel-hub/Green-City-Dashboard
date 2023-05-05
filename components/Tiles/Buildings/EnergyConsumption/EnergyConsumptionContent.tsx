@@ -2,81 +2,12 @@
 
 import ToggleGroup from '@/components/Inputs/ToggleGroup'
 
-import waermeData from '@/assets/data/waerme.json'
 import stromData from '@/assets/data/strom.json'
-import Title from '@/components/Elements/Title'
-import { SVGProps, useState ***REMOVED*** from 'react'
+import { useState ***REMOVED*** from 'react'
 import Slider from '@/components/Inputs/Slider'
-import EnergyConsumptionChart from './EnergyConsumptionChart'
-import LabelSeperator from './LabelSeperator'
-import AnimatedNumber from '@/components/Elements/Animated/AnimatedNumber'
-import { Spacer ***REMOVED*** from '@/components/Elements/Spacer'
-import {
-  Ratsgymnasium,
-  SentruperHoehe,
-  Stadtbibliothek,
-  Stadtweinhaus,
-***REMOVED*** from '@/components/Icons'
-import Carousel from '@/components/Elements/Carousel'
 
-type DataType = {
-  Datum: number
-  stadtbuecherei: number | null
-  sentruper: number | null
-  rathaus: number | null
-  'freiherr-von-stein': number | null
-***REMOVED***
-
-type Building = Omit<DataType, 'Datum'>
-
-const buildings: Record<keyof Building, string> = {
-  rathaus: 'Rathaus / Stadtweinhaus',
-  stadtbuecherei: 'Stadtbücherei',
-  sentruper: 'Sportantlage Sentruper Höhe',
-  'freiherr-von-stein': 'Freiherr-von-Stein-Gymnasium',
-***REMOVED***
-
-const buildingIcon: Record<
-  keyof Building,
-  (_props: SVGProps<SVGSVGElement>) => JSX.Element
-> = {
-  stadtbuecherei: Stadtbibliothek,
-  sentruper: SentruperHoehe,
-  rathaus: Stadtweinhaus,
-  'freiherr-von-stein': Ratsgymnasium,
-***REMOVED***
-
-function getBuildingIcon(
-  building: keyof Building,
-  props?: SVGProps<SVGSVGElement>,
-) {
-  const Icon = buildingIcon[building]
-  return <Icon {...props***REMOVED*** />
-***REMOVED***
-
-function getData(
-  mode: 'strom' | 'waerme',
-  building: keyof Building,
-  year: number,
-) {
-  const data: DataType[] = mode === 'strom' ? stromData : waermeData
-
-  const filteredYear = data.filter(
-    d => year === new Date(d.Datum).getFullYear(),
-  )
-
-  return filteredYear.map(d => d[building]).filter(d => d !== null) as number[]
-***REMOVED***
-
-function getYearSum(
-  mode: 'strom' | 'waerme',
-  building: keyof Building,
-  year: number,
-) {
-  const data = getData(mode, building, year)
-
-  return data.reduce((a, b) => a + b, 0)
-***REMOVED***
+import DesktopView from './DesktopView'
+import MobileView from './MobileView'
 
 const years = Array.from(
   new Set(stromData.map(d => new Date(d.Datum).getFullYear())),
@@ -85,116 +16,6 @@ const years = Array.from(
 export default function EnergyConsumptionContent() {
   const [mode, setMode] = useState<'strom' | 'waerme'>('strom')
   const [yearIndex, setYearIndex] = useState<number>(years.length - 1)
-
-  function DesktopView() {
-    return (
-      <>
-        <div className="flex h-full w-full justify-between gap-8">
-    ***REMOVED***Object.keys(buildings).map(building => (
-            <div className="flex-1 p-2" key={building***REMOVED***>
-              <div className="mx-auto mb-3 flex h-[200px] w-[200px] justify-center">
-          ***REMOVED***getBuildingIcon(building as keyof Building)***REMOVED***
-              </div>
-              <Title
-                as="h4"
-                className="min-h-[5rem] text-center"
-                variant="building"
-              >
-          ***REMOVED***buildings[building as keyof Building]***REMOVED***
-              </Title>
-            </div>
-      ***REMOVED***)***REMOVED***
-        </div>
-        <LabelSeperator>Monatlicher Verbrauch</LabelSeperator>
-        <div className="flex h-full w-full justify-between gap-8">
-    ***REMOVED***Object.keys(buildings).map(building => (
-            <div className="h-72 w-full" key={building***REMOVED***>
-              <EnergyConsumptionChart
-                data={getData(
-                  mode,
-                  building as keyof Building,
-                  years[yearIndex],
-            ***REMOVED******REMOVED***
-              />
-            </div>
-      ***REMOVED***)***REMOVED***
-        </div>
-        <LabelSeperator>Jahresverbrauch</LabelSeperator>
-        <Spacer size={'sm'***REMOVED***></Spacer>
-        <div className="flex h-full w-full justify-between gap-8">
-    ***REMOVED***Object.keys(buildings).map(building => (
-            <div
-              className="flex w-full justify-center gap-1 p-2"
-              key={building***REMOVED***
-            >
-              <Title as="h3" className="font-medium" variant="building">
-                <AnimatedNumber decimals={0***REMOVED***>
-            ***REMOVED***getYearSum(
-                    mode,
-                    building as keyof Building,
-                    years[yearIndex],
-              ***REMOVED******REMOVED***
-                </AnimatedNumber>
-              </Title>
-              <Title as="h3" className="font-regular" variant="building">
-                kWh
-              </Title>
-            </div>
-      ***REMOVED***)***REMOVED***
-        </div>
-      </>
-***REMOVED***
-***REMOVED***
-
-  function MobileView() {
-    return (
-      <Carousel
-        arrows
-        options={{
-          gap: '4rem',
-      ***REMOVED******REMOVED***
-        pagination
-      >
-  ***REMOVED***Object.keys(buildings).map(building => (
-          <div key={building***REMOVED***>
-            <div className="flex gap-2">
-              <Title as="h4" className="h-20 flex-1" variant="building">
-          ***REMOVED***buildings[building as keyof Building]***REMOVED***
-              </Title>
-              <div className="mx-auto flex h-[80px] w-[80px] justify-end">
-          ***REMOVED***getBuildingIcon(building as keyof Building)***REMOVED***
-              </div>
-            </div>
-            <LabelSeperator>Monatlicher Verbrauch</LabelSeperator>
-            <div className="h-40 w-full">
-              <EnergyConsumptionChart
-                data={getData(
-                  mode,
-                  building as keyof Building,
-                  years[yearIndex],
-            ***REMOVED******REMOVED***
-              />
-            </div>
-            <LabelSeperator>Jahresverbrauch</LabelSeperator>
-            <div className="flex w-full gap-1 p-2">
-              <Title as="h3" className="font-medium" variant="building">
-                <AnimatedNumber decimals={0***REMOVED***>
-            ***REMOVED***getYearSum(
-                    mode,
-                    building as keyof Building,
-                    years[yearIndex],
-              ***REMOVED******REMOVED***
-                </AnimatedNumber>
-              </Title>
-              <Title as="h3" className="font-regular" variant="building">
-                kWh
-              </Title>
-            </div>
-          </div>
-    ***REMOVED***)***REMOVED***
-      </Carousel>
-***REMOVED***
-***REMOVED***
 
   return (
     <>
@@ -216,10 +37,10 @@ export default function EnergyConsumptionContent() {
           ></ToggleGroup>
         </div>
         <div className="hidden xl:block">
-          <DesktopView />
+          <DesktopView mode={mode***REMOVED*** yearIndex={yearIndex***REMOVED*** />
         </div>
         <div className="block xl:hidden">
-          <MobileView />
+          <MobileView mode={mode***REMOVED*** yearIndex={yearIndex***REMOVED*** />
         </div>
       </div>
       <Slider
