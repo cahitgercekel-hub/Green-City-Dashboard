@@ -14,27 +14,30 @@ type variants = {
 
 const toggleGroupStyle = cva<{
   variant: variants
-***REMOVED***>('flex h-fit w-fit overflow-hidden rounded-full border-2 bg-white', {
-  variants: {
-    variant: {
-      primary: 'border-primary',
-      mobility: 'border-mobility',
-      successStory: 'border-secondary',
-      climate: 'border-climate',
-      building: 'border-buildings',
+***REMOVED***>(
+  'flex h-fit w-fit overflow-hidden rounded-full border-2 bg-white w-full md:w-auto',
+  {
+    variants: {
+      variant: {
+        primary: 'border-primary',
+        mobility: 'border-mobility',
+        successStory: 'border-secondary',
+        climate: 'border-climate',
+        building: 'border-buildings',
+    ***REMOVED***,
+  ***REMOVED***,
+    defaultVariants: {
+      variant: 'primary',
   ***REMOVED***,
 ***REMOVED***,
-  defaultVariants: {
-    variant: 'primary',
-***REMOVED***,
-***REMOVED***)
+)
 
 const toggleGroupBackgroundStyle = cva<{
   variant: variants
   isLast: {
     true: string
 ***REMOVED***
-***REMOVED***>('px-4 transition-all duration-300 md:py-2 md:px-8', {
+***REMOVED***>('px-4 transition-all duration-300 md:py-2 md:px-8 flex-1', {
   variants: {
     variant: {
       primary: 'bg-primary',
