@@ -4,7 +4,7 @@ import AnimatedCopyIcon from '@/components/Elements/Animated/AnimatedCopyIcon'
 import { Spacer ***REMOVED*** from '@/components/Elements/Spacer'
 import Title from '@/components/Elements/Title'
 import { ComponentPropsWithRef ***REMOVED*** from 'react'
-import { AnimatedProps ***REMOVED*** from 'react-spring'
+import { AnimatedProps ***REMOVED*** from '@react-spring/web'
 import BaseOverlay from './BaseOverlay'
 import { TileType ***REMOVED*** from '@/utils/TileFactory'
 

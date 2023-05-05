@@ -2,7 +2,7 @@
 
 import { cva, cx, VariantProps ***REMOVED*** from 'class-variance-authority'
 import { useState ***REMOVED*** from 'react'
-import { useTransition ***REMOVED*** from 'react-spring'
+import { useTransition ***REMOVED*** from '@react-spring/web'
 import EmbedOverlay from './EmbedOverlay'
 import ShareOverlay from './ShareOverlay'
 import MoreInfoOverlay from './MoreInfoOverlay'

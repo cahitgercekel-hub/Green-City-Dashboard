@@ -1,7 +1,7 @@
 'use client'
 
 import { ComponentPropsWithRef ***REMOVED*** from 'react'
-import { AnimatedProps ***REMOVED*** from 'react-spring'
+import { AnimatedProps ***REMOVED*** from '@react-spring/web'
 import React from 'react'
 import BaseOverlay from './BaseOverlay'
 import Title from '@/components/Elements/Title'

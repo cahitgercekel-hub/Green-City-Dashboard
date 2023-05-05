@@ -1,6 +1,6 @@
 'use client'
 
-import { animated, useSpring ***REMOVED*** from 'react-spring'
+import { animated, useSpring ***REMOVED*** from '@react-spring/web'
 
 type AnimatedNumberProps = React.HTMLAttributes<HTMLSpanElement> & {
   children: number
@@ -12,11 +12,15 @@ export default function AnimatedNumber({
   decimals,
   ...props
 ***REMOVED***: AnimatedNumberProps) {
-  const springProps = useSpring({ val: children ***REMOVED***)
+  const springProps = useSpring({ val: children, from: { val: 0 ***REMOVED*** ***REMOVED***)
 
   return (
     <animated.span {...props***REMOVED***>
-***REMOVED***springProps.val.to(val => val.toFixed(decimals || 0))***REMOVED***
+***REMOVED***springProps.val.to(val =>
+        new Intl.NumberFormat('de-DE', {
+          maximumFractionDigits: decimals || 0,
+      ***REMOVED***).format(val),
+  ***REMOVED******REMOVED***
     </animated.span>
   )
 ***REMOVED***
