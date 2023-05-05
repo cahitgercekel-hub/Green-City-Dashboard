@@ -1,6 +1,6 @@
 import { CheckIcon, ClipboardDocumentIcon ***REMOVED*** from '@heroicons/react/24/outline'
 import { useEffect, useState ***REMOVED*** from 'react'
-import { animated, useTransition ***REMOVED*** from 'react-spring'
+import { animated, useTransition ***REMOVED*** from '@react-spring/web'
 
 type AnimatedCopyIconProps = {
   onClick: () => void
