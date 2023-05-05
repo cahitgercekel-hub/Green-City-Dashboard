@@ -4,7 +4,7 @@ import { Button ***REMOVED*** from '@/components/Elements/Button'
 import { Spacer ***REMOVED*** from '@/components/Elements/Spacer'
 import Title from '@/components/Elements/Title'
 import { useState ***REMOVED*** from 'react'
-import { animated, useTransition ***REMOVED*** from 'react-spring'
+import { animated, useTransition ***REMOVED*** from '@react-spring/web'
 import { BaseTile ***REMOVED*** from '../Base/BaseTile'
 import SurveyAnswer, { SurveyAnswerProps ***REMOVED*** from './Answer'
 
