@@ -98,10 +98,10 @@ export function BaseTile({
 ***REMOVED***
 
   return (
-    <div className="pb-3 md:pb-5">
+    <div className="pb-5">
       <div className={cx(baseTileStyle({ variant ***REMOVED***), className)***REMOVED***>
   ***REMOVED***startImage***REMOVED***
-        <div className="flex w-full flex-col justify-between p-6 md:p-16">
+        <div className="flex w-full flex-col justify-between p-8 md:p-16">
           <div>{children***REMOVED***</div>
           <TileFooter
             dataURL={source***REMOVED***
