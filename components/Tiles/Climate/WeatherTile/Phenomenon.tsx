@@ -1,5 +1,4 @@
-import { CloudIcon ***REMOVED*** from '@heroicons/react/24/outline'
-import { Sun, Temperature, Water, Wind ***REMOVED*** from '@/components/Icons'
+import { Cloud, Sun, Temperature, Water, Wind ***REMOVED*** from '@/components/Icons'
 import { ForwardRefExoticComponent, SVGProps ***REMOVED*** from 'react'
 import AnimatedNumber from '@/components/Elements/Animated/AnimatedNumber'
 import Title from '@/components/Elements/Title'
@@ -37,7 +36,7 @@ const phenomena: PhenomenaType = {
   cloudcover: {
     title: 'Wolken&shy;bedeckung',
     unit: '%',
-    icon: CloudIcon,
+    icon: Cloud,
 ***REMOVED***,
   windspeed: {
     title: 'Wind&shy;geschwindigkeit',
