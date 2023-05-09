@@ -7,6 +7,8 @@ import tailwindConfig from '@/tailwind.config'
 import Title from '@/components/Elements/Title'
 import { Spacer ***REMOVED*** from '@/components/Elements/Spacer'
 import useDevice from '@/hooks/useDevice'
+import { linearRegression ***REMOVED*** from 'simple-statistics'
+import { useWindowSize ***REMOVED*** from 'react-use'
 
 type CO2ChartProps = {
   showFuture?: boolean
@@ -17,14 +19,18 @@ const { theme ***REMOVED*** = resolveConfig(tailwindConfig)
 export default function CO2Chart({ showFuture = false ***REMOVED***: CO2ChartProps) {
   const data = useCO2Data()
   const device = useDevice()
+  const { width ***REMOVED*** = useWindowSize()
 
-  const withFuture = (baseData: number[][]) =>
-    showFuture
-      ? [
-          ...baseData,
-          [parse('01-01-2030', 'dd-MM-yyyy', new Date()).getTime(), 0],
-        ]
-      : baseData
+  const withFuture = (baseData: number[][]) => {
+    const { m, b ***REMOVED*** = linearRegression(baseData)
+    const x = parse('01-01-2030', 'dd-MM-yyyy', new Date()).getTime()
+
+    const y = showFuture ? m * x + b : 0
+    return [
+      ...baseData,
+      [parse('01-01-2030', 'dd-MM-yyyy', new Date()).getTime(), y],
+    ]
+***REMOVED***
 
   const prepareData = (key: keyof (typeof data)[0]) =>
     withFuture(
@@ -90,7 +96,7 @@ export default function CO2Chart({ showFuture = false ***REMOVED***: CO2ChartPro
               top: 24,
               right: 0,
               bottom: 48,
-              left: 80,
+              left: ['mobile', 'tablet'].includes(device) ? 40 : 80,
           ***REMOVED***,
             xAxis: {
               type: 'time',
@@ -117,12 +123,12 @@ export default function CO2Chart({ showFuture = false ***REMOVED***: CO2ChartPro
         ***REMOVED******REMOVED***
           renderer="svg"
           style={{
-            height: ['tablet', 'mobile'].includes(device) ? '200px' : '100%',
+            height: width < 1024 ? '200px' : '100%',
         ***REMOVED******REMOVED***
         />
       </div>
       <Spacer />
-      <div className="ml-[80px] flex flex-wrap items-center gap-4">
+      <div className="flex flex-wrap items-center gap-4 md:ml-[80px]">
   ***REMOVED***series.map((s, i) => (
           <div className="flex min-w-[8rem] items-center gap-2" key={i***REMOVED***>
             <div
