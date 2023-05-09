@@ -3,10 +3,12 @@ import { ForwardRefExoticComponent, SVGProps ***REMOVED*** from 'react'
 import AnimatedNumber from '@/components/Elements/Animated/AnimatedNumber'
 import Title from '@/components/Elements/Title'
 import { cx ***REMOVED*** from 'class-variance-authority'
+import useDevice from '@/hooks/useDevice'
 
 type PhenomenaType = {
   [key: string]: {
     title: string
+    shortTitle?: string
     unit: string
     icon:
       | ForwardRefExoticComponent<SVGProps<SVGSVGElement>>
@@ -35,11 +37,13 @@ const phenomena: PhenomenaType = {
 ***REMOVED***,
   cloudcover: {
     title: 'Wolken&shy;bedeckung',
+    shortTitle: 'Wolkenbed.',
     unit: '%',
     icon: Cloud,
 ***REMOVED***,
   windspeed: {
     title: 'Wind&shy;geschwindigkeit',
+    shortTitle: 'Windgeschw.',
     unit: 'km/h',
     icon: Wind,
     decimals: 1,
@@ -62,23 +66,27 @@ export default function Phenomenon({
   value,
   size = 'md',
 ***REMOVED***: PhenomenonProps) {
-  const { title, unit, icon, decimals ***REMOVED*** = phenomena[phenomenon]
+  const { title, unit, icon, decimals, shortTitle ***REMOVED*** = phenomena[phenomenon]
 
-  const valueSize: 'h1' | 'h3' = size === 'xl' ? 'h1' : 'h3'
+  const valueSize: 'h1' | 'h4' = size === 'xl' ? 'h1' : 'h4'
+
+  const device = useDevice()
 
   const Icon = icon
   return (
-    <div className="my-2 flex items-center gap-3">
+    <div className="my-1 flex items-center gap-3 md:my-2">
       <Icon
         className={cx(
           size === 'md' ? 'aspect-square' : 'w-6',
-          'h-14 text-primary',
+          'h-10 fill-primary stroke-primary text-primary md:h-14',
     ***REMOVED******REMOVED***
       />
       <div>
         <Title
           as={'h5'***REMOVED***
-          dangerouslySetInnerHTML={{ __html: title ***REMOVED******REMOVED***
+          dangerouslySetInnerHTML={{
+            __html: device === 'mobile' && shortTitle ? shortTitle : title,
+        ***REMOVED******REMOVED***
           variant={'primary'***REMOVED***
         ></Title>
         <Title as={valueSize***REMOVED*** variant="climate">

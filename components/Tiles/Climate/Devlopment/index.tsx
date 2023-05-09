@@ -34,7 +34,7 @@ export default function ClimateDevelopmentTile() {
       subtitle={'Temperaturentwicklung Münsters seit 1982'***REMOVED***
       title={'Klima'***REMOVED***
     >
-      <div className="h-[528px] w-full">
+      <div className="h-[316px] w-full md:h-[528px]">
         <div className="h-full w-full">
           <RadarChart data={climateYears***REMOVED*** />
         </div>
