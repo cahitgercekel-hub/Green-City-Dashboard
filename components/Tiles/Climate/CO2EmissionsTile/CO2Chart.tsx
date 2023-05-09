@@ -4,6 +4,11 @@ import { SeriesOption ***REMOVED*** from 'echarts'
 import { ReactECharts ***REMOVED*** from '@/components/Charts/ReactECharts'
 import resolveConfig from 'tailwindcss/resolveConfig'
 import tailwindConfig from '@/tailwind.config'
+import Title from '@/components/Elements/Title'
+import { Spacer ***REMOVED*** from '@/components/Elements/Spacer'
+import useDevice from '@/hooks/useDevice'
+import { linearRegression ***REMOVED*** from 'simple-statistics'
+import { useWindowSize ***REMOVED*** from 'react-use'
 
 type CO2ChartProps = {
   showFuture?: boolean
@@ -13,14 +18,19 @@ const { theme ***REMOVED*** = resolveConfig(tailwindConfig)
 
 export default function CO2Chart({ showFuture = false ***REMOVED***: CO2ChartProps) {
   const data = useCO2Data()
+  const device = useDevice()
+  const { width ***REMOVED*** = useWindowSize()
 
-  const withFuture = (baseData: number[][]) =>
-    showFuture
-      ? [
-          ...baseData,
-          [parse('01-01-2030', 'dd-MM-yyyy', new Date()).getTime(), 0],
-        ]
-      : baseData
+  const withFuture = (baseData: number[][]) => {
+    const { m, b ***REMOVED*** = linearRegression(baseData)
+    const x = parse('01-01-2030', 'dd-MM-yyyy', new Date()).getTime()
+
+    const y = showFuture ? m * x + b : 0
+    return [
+      ...baseData,
+      [parse('01-01-2030', 'dd-MM-yyyy', new Date()).getTime(), y],
+    ]
+***REMOVED***
 
   const prepareData = (key: keyof (typeof data)[0]) =>
     withFuture(
@@ -78,27 +88,59 @@ export default function CO2Chart({ showFuture = false ***REMOVED***: CO2ChartPro
   ]
 
   return (
-    <ReactECharts
-      option={{
-        xAxis: {
-          type: 'time',
-          show: true,
-      ***REMOVED***,
-        yAxis: {
-          type: 'value',
-          min: '0',
-          axisLabel: {
-            formatter: (val: any) => (val / 1000).toFixed(0),
-        ***REMOVED***,
-      ***REMOVED***,
-        series: series,
-        legend: {
-          show: true,
-          bottom: 0,
-          icon: 'circle',
-      ***REMOVED***,
-    ***REMOVED******REMOVED***
-      renderer="svg"
-    />
+    <div className="flex h-full w-full flex-col">
+      <div className="flex-1">
+        <ReactECharts
+          option={{
+            grid: {
+              top: 24,
+              right: 0,
+              bottom: 48,
+              left: ['mobile', 'tablet'].includes(device) ? 40 : 80,
+          ***REMOVED***,
+            xAxis: {
+              type: 'time',
+              show: true,
+              max: parse('01-01-2030', 'dd-MM-yyyy', new Date()).getTime(),
+          ***REMOVED***,
+            yAxis: {
+              type: 'value',
+              axisLabel: {
+                formatter: (val: any) => {
+                  if (val === 0) {
+                    return ''
+                ***REMOVED***
+                  return new Intl.NumberFormat('de-DE', {
+                    maximumFractionDigits: 0,
+                ***REMOVED***).format(val / 1000)
+              ***REMOVED***,
+            ***REMOVED***,
+          ***REMOVED***,
+            series: series,
+            legend: {
+              show: false,
+          ***REMOVED***,
+        ***REMOVED******REMOVED***
+          renderer="svg"
+          style={{
+            height: width < 1024 ? '200px' : '100%',
+        ***REMOVED******REMOVED***
+        />
+      </div>
+      <Spacer />
+      <div className="flex flex-wrap items-center gap-4 md:ml-[80px]">
+  ***REMOVED***series.map((s, i) => (
+          <div className="flex min-w-[8rem] items-center gap-2" key={i***REMOVED***>
+            <div
+              className="h-1 w-8 rounded-full"
+              style={{ backgroundColor: s.color as string ***REMOVED******REMOVED***
+            ></div>
+            <Title as="h5" variant={'primary'***REMOVED***>
+        ***REMOVED***s.name***REMOVED***
+            </Title>
+          </div>
+    ***REMOVED***)***REMOVED***
+      </div>
+    </div>
   )
 ***REMOVED***

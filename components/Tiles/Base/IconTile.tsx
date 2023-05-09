@@ -69,7 +69,7 @@ export default async function IconTile({
       source={data?.data_url***REMOVED***
       variant={variant***REMOVED***
     >
-      <>
+      <div className="px-2.5">
         <div className="flex w-full justify-end md:hidden">
           <Icon
             className={cx(
@@ -107,7 +107,7 @@ export default async function IconTile({
           </div>
     ***REMOVED******REMOVED***
   ***REMOVED***(title || subtitle) && <Spacer />***REMOVED***
-      </>
+      </div>
       <>
   ***REMOVED***!title && !subtitle && (
           <div className={cx('relative', iconTileTitleStyle({ variant ***REMOVED***))***REMOVED***>
