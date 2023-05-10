@@ -1,18 +1,110 @@
 import Link from 'next/link'
 import StairStepBackground from '../StairStepBackground'
+import Script from 'next/script'
+import Title from '@/components/Elements/Title'
+import Container from '../Container'
 
 export default function Footer() {
   return (
     <StairStepBackground>
-      <div className="flex w-full flex-col items-center justify-around  sm:flex-row">
-        <div>Ein Projekt von</div>
-        <div>Gefördert durch</div>
-        <div className="flex flex-col">
-          <Link href="#">Impressum</Link>
-          <Link href="#">Datenschutz</Link>
-          <Link href="#">Sie haben Feedback für uns?</Link>
+      <Script id="linkTo_UnCryptMailto">
+  ***REMOVED***`function UnCryptMailto( s )
+    ***REMOVED***
+            var n = 0;
+            var r = "";
+            for( var i = 0; i < s.length; i++)
+      ***REMOVED***
+                n = s.charCodeAt( i );
+                if( n >= 8364 )
+          ***REMOVED***
+                    n = 128;
+              ***REMOVED***
+                r += String.fromCharCode( n - 1 );
+          ***REMOVED***
+            return r;
+      ***REMOVED***
+
+        function linkTo_UnCryptMailto( s )
+  ***REMOVED***
+            location.href=UnCryptMailto( s );
+      ***REMOVED***
+      `***REMOVED***
+      </Script>
+      <Container>
+        <div className="items-top flex w-full flex-col justify-around pb-10 lg:flex-row lg:gap-20 xl:pb-20 2xl:gap-44">
+          <div className="flex-1">
+            <Title as={'h4'***REMOVED*** className="py-10 md:py-20">
+              Ein Projekt von
+            </Title>
+            <div className="flex w-full grid-cols-2 flex-col gap-8 lg:gap-16 xl:grid">
+              <div className="h-28 w-full bg-red-300 md:h-36">
+          ***REMOVED***/* TODO: ADD IMAGE */***REMOVED***
+              </div>
+              <div className="h-28 w-full bg-red-300 md:h-36">
+          ***REMOVED***/* TODO: ADD IMAGE */***REMOVED***
+              </div>
+              <div className="h-28 w-full bg-red-300 md:h-36">
+          ***REMOVED***/* TODO: ADD IMAGE */***REMOVED***
+              </div>
+              <div className="h-28 w-full bg-red-300 md:h-36">
+          ***REMOVED***/* TODO: ADD IMAGE */***REMOVED***
+              </div>
+            </div>
+          </div>
+          <div className="flex-1">
+            <Title as={'h4'***REMOVED*** className="py-10 md:py-20">
+              Gefördert durch
+            </Title>
+            <div className="flex w-full grid-cols-2 flex-col gap-8 lg:gap-16 xl:grid">
+              <div className="h-28 w-full bg-red-300 md:h-36">
+          ***REMOVED***/* TODO: ADD IMAGE */***REMOVED***
+              </div>
+              <div className="h-28 w-full bg-red-300 md:h-36">
+          ***REMOVED***/* TODO: ADD IMAGE */***REMOVED***
+              </div>
+            </div>
+          </div>
+          <div className="flex flex-1 flex-col sm:hidden 2xl:flex">
+            <Title as={'h4'***REMOVED*** className="py-10 opacity-0 md:py-20">
+              Impressum
+            </Title>
+            <div className="flex flex-1 flex-col justify-between gap-8">
+              <Link href="https://www.stadt-muenster.de/impressum">
+                <Title as="h5" className="underline" variant={'primary'***REMOVED***>
+                  Impressum
+                </Title>
+              </Link>
+              <Link href="https://www.stadt-muenster.de/datenschutz">
+                <Title as="h5" className="underline" variant={'primary'***REMOVED***>
+                  Datenschutz
+                </Title>
+              </Link>
+              <a href="javascript:linkTo_UnCryptMailto('nbjmup;gffecbdlAlmjnbebticpbse/nt');">
+                <Title as="h5" className="underline" variant={'primary'***REMOVED***>
+                  Sie haben Feedback für uns?
+                </Title>
+              </a>
+            </div>
+          </div>
         </div>
-      </div>
+        <div className="hidden justify-between sm:flex 2xl:hidden">
+          <Link href="https://www.stadt-muenster.de/impressum">
+            <Title as="h5" className="underline" variant={'primary'***REMOVED***>
+              Impressum
+            </Title>
+          </Link>
+          <Link href="https://www.stadt-muenster.de/datenschutz">
+            <Title as="h5" className="underline" variant={'primary'***REMOVED***>
+              Datenschutz
+            </Title>
+          </Link>
+          <a href="javascript:linkTo_UnCryptMailto('nbjmup;gffecbdlAlmjnbebticpbse/nt');">
+            <Title as="h5" className="underline" variant={'primary'***REMOVED***>
+              Sie haben Feedback für uns?
+            </Title>
+          </a>
+        </div>
+      </Container>
     </StairStepBackground>
   )
 ***REMOVED***
