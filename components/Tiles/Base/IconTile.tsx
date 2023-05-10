@@ -83,10 +83,8 @@ export default async function IconTile({
             <div className="flex flex-wrap items-center justify-start gap-x-4">
               <Title
                 as={'h1'***REMOVED***
-                className={cx(
-                  'min-w-fit font-normal',
-                  iconTileTitleStyle({ variant ***REMOVED***),
-            ***REMOVED******REMOVED***
+                className={cx('min-w-fit', iconTileTitleStyle({ variant ***REMOVED***))***REMOVED***
+                font={'normal'***REMOVED***
               >
           ***REMOVED***title***REMOVED***
               </Title>
@@ -121,11 +119,11 @@ export default async function IconTile({
 
       <>{children***REMOVED***</>
       <Spacer />
-      <div className="flex space-x-2 text-xs text-primary">
-        <Title as="h7" className="font-semibold">
+      <div className="flex space-x-2 text-xs">
+        <Title as="h7" font="semibold" variant={'primary'***REMOVED***>
           Datenstand: {dataRetrieval ?? (live ? 'live' : 'undefined')***REMOVED***
         </Title>
-        <Title as="h7" className="font-normal">
+        <Title as="h7" font="normal" variant={'primary'***REMOVED***>
           Quelle: {dataSource***REMOVED***
         </Title>
       </div>

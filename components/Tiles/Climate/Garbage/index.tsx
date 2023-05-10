@@ -17,9 +17,9 @@ export default async function GarbageTile() {
         'So viel KG Abfall wurden bisher in Münster pro Einwohner:in produziert'
     ***REMOVED***
       title={
-        <Title as={'h1'***REMOVED*** className="text-climate">
+        <>
           <span className="font-medium">Abfall</span> pro Kopf
-        </Title>
+        </>
     ***REMOVED***
     >
       <TileSplitView>

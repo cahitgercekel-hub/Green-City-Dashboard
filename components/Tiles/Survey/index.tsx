@@ -41,7 +41,7 @@ export default function SurveyTile({ question, answer ***REMOVED***: SurveyTileP
         <Spacer />
         <div className="relative h-fit">
           <div className="opacity-0">
-            <Title as="h3" className="font-medium" variant={'inverse'***REMOVED***>
+            <Title as="h3" variant={'inverse'***REMOVED***>
         ***REMOVED***question***REMOVED***
             </Title>
           </div>
@@ -53,7 +53,7 @@ export default function SurveyTile({ question, answer ***REMOVED***: SurveyTileP
                 className="absolute left-0 top-0 h-full w-full"
                 style={styles***REMOVED***
               >
-                <Title as="h3" className="font-medium" variant={'inverse'***REMOVED***>
+                <Title as="h3" variant={'inverse'***REMOVED***>
             ***REMOVED***question***REMOVED***
                 </Title>
               </animated.div>

@@ -8,9 +8,9 @@ export default function WeatherTile() {
       embedId={'climate-weather'***REMOVED***
       live
       title={
-        <span>
+        <>
           <span className="font-medium">Wetter</span> aktuell
-        </span>
+        </>
     ***REMOVED***
     >
       <WeatherTileContent />
