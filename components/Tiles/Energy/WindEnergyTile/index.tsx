@@ -12,24 +12,23 @@ export default function WindEnergyTile() {
       embedId="energy-wind"
       live
       title={
-        <span>
+        <>
           <span className="font-medium">50</span> MW
-        </span>
+        </>
     ***REMOVED***
     >
       <div>
         <Title as={'subtitle'***REMOVED***>
           Haben die Müsteraner:innen bereits mit ca.{' '***REMOVED***
           <span className="text-energy">28 Windkraftanlagen</span> in Münster
-          produziert. In diesem Moment werden{' '***REMOVED***
-          <span className="text-energy">10 MW</span> produziert.
+          produziert.
         </Title>
         <div className="mt-8 flex items-center justify-between gap-8">
           <WindEnergyIcon className="w-40" />
           <div className="w-full flex-1">
             <div className="flex  items-center justify-between">
               <div>
-                <Title as="h7" variant={'energy'***REMOVED***>
+                <Title as="h7" font="semibold" variant={'energy'***REMOVED***>
                   Bereits installiert
                 </Title>
                 <Title as="h4" variant={'energy'***REMOVED***>
@@ -37,7 +36,7 @@ export default function WindEnergyTile() {
                 </Title>
               </div>
               <div className="flex flex-col items-end">
-                <Title as="h7" variant={'primary'***REMOVED***>
+                <Title as="h7" font="semibold" variant={'primary'***REMOVED***>
                   Angestrebtes Ziel bis 2030
                 </Title>
                 <Title as="h4" variant={'primary'***REMOVED***>
