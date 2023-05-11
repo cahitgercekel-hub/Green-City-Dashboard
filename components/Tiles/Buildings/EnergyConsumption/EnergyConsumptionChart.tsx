@@ -1,4 +1,5 @@
 import { ReactECharts ***REMOVED*** from '@/components/Charts/ReactECharts'
+import useDevice from '@/hooks/useDevice'
 import { BarSeriesOption ***REMOVED*** from 'echarts'
 
 interface Props {
@@ -6,6 +7,8 @@ interface Props {
 ***REMOVED***
 
 export default function EnergyConsumptionChart({ data ***REMOVED***: Props) {
+  const device = useDevice()
+
   return (
     <ReactECharts
       option={{
@@ -13,7 +16,7 @@ export default function EnergyConsumptionChart({ data ***REMOVED***: Props) {
           left: 0,
           top: 5,
           right: 0,
-          bottom: 22,
+          bottom: 32,
       ***REMOVED***,
         xAxis: {
           type: 'category',
@@ -28,6 +31,7 @@ export default function EnergyConsumptionChart({ data ***REMOVED***: Props) {
             overflow: 'truncate', // or 'break' to continue in a new line
             interval: 0,
             color: '#6060d6',
+            fontSize: device === 'mobile' ? 12 : 20,
         ***REMOVED***,
       ***REMOVED***,
         yAxis: {
