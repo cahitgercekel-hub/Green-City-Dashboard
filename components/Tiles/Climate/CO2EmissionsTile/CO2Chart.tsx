@@ -12,15 +12,21 @@ import { useWindowSize ***REMOVED*** from 'react-use'
 
 type CO2ChartProps = {
   showFuture?: boolean
+  mode: 'co2' | 'endenergie'
 ***REMOVED***
 
 const { theme ***REMOVED*** = resolveConfig(tailwindConfig)
 
-export default function CO2Chart({ showFuture = false ***REMOVED***: CO2ChartProps) {
-  const data = useCO2Data()
+export default function CO2Chart({ showFuture = false, mode ***REMOVED***: CO2ChartProps) {
+  const data = useCO2Data(mode)
   const device = useDevice()
   const { width ***REMOVED*** = useWindowSize()
 
+  /**
+   * Adds the future data to the data
+   * @param baseData The base data
+   * @returns The data with the future data
+   */
   const withFuture = (baseData: number[][]) => {
     const { m, b ***REMOVED*** = linearRegression(baseData)
     const x = parse('01-01-2030', 'dd-MM-yyyy', new Date()).getTime()
@@ -32,12 +38,25 @@ export default function CO2Chart({ showFuture = false ***REMOVED***: CO2ChartPro
     ]
 ***REMOVED***
 
-  const prepareData = (key: keyof (typeof data)[0]) =>
-    withFuture(
+  /**
+   * Prepares the data for the chart
+   * @param key The key to prepare
+   * @returns The prepared data
+   */
+  const prepareData = (key: keyof (typeof data)[0]) => {
+    if (mode === 'endenergie') {
+      return data.map(e => [
+        parse(`01-01-${e.Jahr***REMOVED***`, 'dd-MM-yyyy', new Date()).getTime(),
+        e[key],
+      ])
+  ***REMOVED***
+
+    return withFuture(
       data.map(e => [
         parse(`01-01-${e.Jahr***REMOVED***`, 'dd-MM-yyyy', new Date()).getTime(),
         e[key],
       ]),
+***REMOVED***
 ***REMOVED***
 
   const series: SeriesOption[] = [
@@ -112,7 +131,7 @@ export default function CO2Chart({ showFuture = false ***REMOVED***: CO2ChartPro
                 ***REMOVED***
                   return new Intl.NumberFormat('de-DE', {
                     maximumFractionDigits: 0,
-                ***REMOVED***).format(val / 1000)
+                ***REMOVED***).format(val / (mode === 'co2' ? 1000 : 1))
               ***REMOVED***,
             ***REMOVED***,
           ***REMOVED***,

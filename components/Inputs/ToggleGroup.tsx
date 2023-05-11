@@ -3,6 +3,7 @@
 import * as ToggleGroupPrimitive from '@radix-ui/react-toggle-group'
 import { cva, cx, VariantProps ***REMOVED*** from 'class-variance-authority'
 import { useState ***REMOVED*** from 'react'
+import Title from '../Elements/Title'
 
 type variants = {
   primary: string
@@ -171,7 +172,11 @@ export default function ToggleGroup({
           key={i***REMOVED***
           value={e.value***REMOVED***
         >
-    ***REMOVED***typeof e.element === 'string' ? <span>{e.element***REMOVED***</span> : e.element***REMOVED***
+    ***REMOVED***typeof e.element === 'string' ? (
+            <Title as="h5">{e.element***REMOVED***</Title>
+      ***REMOVED*** : (
+            e.element
+      ***REMOVED******REMOVED***
         </ToggleGroupPrimitive.Item>
   ***REMOVED***)***REMOVED***
     </ToggleGroupPrimitive.Root>
