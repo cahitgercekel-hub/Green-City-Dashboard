@@ -73,6 +73,7 @@ export default function TileFactory({ type, ...props ***REMOVED***: TileFactoryP
     case 'energy-wind':
       return <WindEnergyTile />
     case 'energy-energietraeger':
+      // @ts-expect-error Server Component
       return <EnergietraegerTile />
 
     // ---- MOBILITY ----
