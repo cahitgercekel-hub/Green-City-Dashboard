@@ -10,6 +10,9 @@ import Title from '@/components/Elements/Title'
 import StromerzeugungBereitstellung from '@/assets/data/Stromerzeugung_bereitstellung.csv'
 // @ts-ignore
 import Stromemissionen from '@/assets/data/stromemissionen.csv'
+import { Spacer ***REMOVED*** from '@/components/Elements/Spacer'
+import MobileSlider from '@/components/Inputs/MobileSlider'
+import { useWindowSize ***REMOVED*** from 'react-use'
 
 type StromDataType = {
   Jahr: number
@@ -35,36 +38,66 @@ export default function EnergietraegerChart() {
   const data: StromDataType[] =
     mode === 'stromerzeugung' ? StromerzeugungBereitstellung : Stromemissionen
 
+  const unit = mode === 'stromerzeugung' ? 'MWh' : 't'
+
+  const { width ***REMOVED*** = useWindowSize()
+
   return (
     <div className="flex h-full flex-col">
-      <ToggleGroup
-        items={[
-    ***REMOVED***
-            element: (
-              <Title as="h5" className="md:mx-auto md:w-max">
-                Anteilige Stromerzeugung
-              </Title>
-        ***REMOVED***,
-            value: 'stromerzeugung',
-        ***REMOVED***,
-    ***REMOVED***
-            element: (
-              <Title as="h5" className="md:mx-auto md:w-max">
-                CO₂ pro Energieträger
-              </Title>
-        ***REMOVED***,
-            value: 'co2',
-        ***REMOVED***,
-        ]***REMOVED***
-        onChange={val => setMode(val as typeof mode)***REMOVED***
-        variant={'primary'***REMOVED***
-      />
-      <div className="flex h-full w-full flex-1 flex-col">
+      <div className="z-10 w-full">
+        <ToggleGroup
+          items={[
+      ***REMOVED***
+              element: (
+                <Title as="h5" className="2xl:mx-auto">
+                  Anteilige Stromerzeugung
+                </Title>
+          ***REMOVED***,
+              value: 'stromerzeugung',
+          ***REMOVED***,
+      ***REMOVED***
+              element: (
+                <Title as="h5" className="2xl:mx-auto">
+                  CO₂ pro Energieträger
+                </Title>
+          ***REMOVED***,
+              value: 'co2',
+          ***REMOVED***,
+          ]***REMOVED***
+          onChange={val => setMode(val as typeof mode)***REMOVED***
+          variant={'primary'***REMOVED***
+        />
+      </div>
+      <div className="flex h-full w-full flex-1 -translate-y-4 flex-col">
         <div className="flex-1">
           <ReactECharts
             option={{
+              // @ts-ignore
+              tooltip: {
+                formatter: params => {
+                  const percent =
+                    // @ts-ignore
+                    params.value / params.treeAncestors[0].value
+
+                  if (percent === 1) {
+                    return undefined
+                ***REMOVED***
+
+                  // @ts-ignore
+                  return `<p>${params.name***REMOVED***<p>
+                  <p>${new Intl.NumberFormat('de-DE', {
+                    maximumFractionDigits: 0,
+                    // @ts-ignore
+                ***REMOVED***).format(params.value)***REMOVED***${unit***REMOVED***<p>
+                  <p>${(percent * 100).toFixed(1)***REMOVED***%<p>`
+              ***REMOVED***,
+            ***REMOVED***,
               series: [
           ***REMOVED***
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
                   type: 'treemap',
                   breadcrumb: {
                     show: false,
@@ -73,8 +106,30 @@ export default function EnergietraegerChart() {
                     gapWidth: 4,
                 ***REMOVED***,
                   label: {
-                    position: 'insideBottomLeft',
+                    position: ['0%', '100%'],
+                    offset: [0 + 8, -70 - 8],
                     distance: 10,
+                    formatter(params) {
+                      const percent =
+                        // @ts-ignore
+                        params.value / params.treeAncestors[0].value
+
+                      if (percent < 0.05) {
+                        return ''
+                    ***REMOVED***
+
+                      return `{name|${params.name***REMOVED******REMOVED***\n{value|${(
+                        percent * 100
+                  ***REMOVED***.toFixed(0)***REMOVED***%***REMOVED***`
+                  ***REMOVED***,
+                    rich: {
+                      name: {
+                        padding: [0, 0, 4, 0],
+                    ***REMOVED***,
+                      value: {
+                        fontSize: 40,
+                    ***REMOVED***,
+                  ***REMOVED***,
                 ***REMOVED***,
                   roam: false,
                   nodeClick: undefined,
@@ -106,14 +161,27 @@ export default function EnergietraegerChart() {
           ***REMOVED******REMOVED***
           />
         </div>
-        <Slider
-          defaultValue={[0]***REMOVED***
-          labels={data.map(e => e.Jahr.toString())***REMOVED***
-          max={data.length - 1***REMOVED***
-          min={0***REMOVED***
-          onValueChange={([index]) => setYearIndex(index)***REMOVED***
-          variant={'energy'***REMOVED***
-        />
+        <Spacer size={'xs'***REMOVED*** />
+  ***REMOVED***width < 1800 && (
+          <MobileSlider
+            defaultValue={[0]***REMOVED***
+            labels={data.map(e => e.Jahr.toString())***REMOVED***
+            max={data.length - 1***REMOVED***
+            min={0***REMOVED***
+            onValueChange={([index]) => setYearIndex(index)***REMOVED***
+            variant={'energy'***REMOVED***
+          />
+    ***REMOVED******REMOVED***
+  ***REMOVED***width >= 1800 && (
+          <Slider
+            defaultValue={[0]***REMOVED***
+            labels={data.map(e => e.Jahr.toString())***REMOVED***
+            max={data.length - 1***REMOVED***
+            min={0***REMOVED***
+            onValueChange={([index]) => setYearIndex(index)***REMOVED***
+            variant={'energy'***REMOVED***
+          />
+    ***REMOVED******REMOVED***
       </div>
     </div>
   )
