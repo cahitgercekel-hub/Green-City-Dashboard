@@ -7,7 +7,7 @@ import ToggleGroup from '@/components/Inputs/ToggleGroup'
 import Title from '@/components/Elements/Title'
 import { Transition ***REMOVED*** from '@headlessui/react'
 
-function Toggle({ onChange ***REMOVED***: { onChange: (val: string) => void ***REMOVED***) {
+function Toggle({ onChange ***REMOVED***: { onChange: (_val: string) => void ***REMOVED***) {
   return (
     <ToggleGroup
       items={[
