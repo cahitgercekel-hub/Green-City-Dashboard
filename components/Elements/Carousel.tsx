@@ -2,20 +2,40 @@
 
 import { ChevronLeftIcon, ChevronRightIcon ***REMOVED*** from '@heroicons/react/24/outline'
 import { Splide, SplideProps, SplideSlide ***REMOVED*** from '@splidejs/react-splide'
-import { cx ***REMOVED*** from 'class-variance-authority'
+import { cva, cx, VariantProps ***REMOVED*** from 'class-variance-authority'
 import { useEffect, useRef, useState ***REMOVED*** from 'react'
 import '@splidejs/react-splide/css'
 
-interface CarouselProps extends SplideProps {
+interface CarouselProps extends SplideProps, VariantProps<typeof arrowStyle> {
   children: React.ReactElement[]
   arrows?: boolean
   pagination?: boolean
 ***REMOVED***
 
+const arrowStyle = cva('h-6', {
+  variants: {
+    variant: {
+      primary: 'text-primary',
+      secondary: 'text-secondary',
+      mobility: 'text-mobility',
+      successStory: 'text-primary',
+      climate: 'text-climate',
+      building: 'text-buildings',
+      energy: 'text-energy',
+      inverse: 'text-white',
+      dark: 'text-zinc-900',
+  ***REMOVED***,
+***REMOVED***,
+  defaultVariants: {
+    variant: 'primary',
+***REMOVED***,
+***REMOVED***)
+
 export default function Carousel({
   children,
   arrows = false,
   pagination = false,
+  variant,
   ...props
 ***REMOVED***: CarouselProps) {
   const splideRef = useRef<Splide>(null)
@@ -46,7 +66,7 @@ export default function Carousel({
         <div className="flex w-full items-center justify-between">
     ***REMOVED***arrows && (
             <ChevronLeftIcon
-              className="h-6 text-buildings"
+              className={arrowStyle({ variant ***REMOVED***)***REMOVED***
               onClick={() => splideRef.current?.splide?.go('<')***REMOVED***
             />
       ***REMOVED******REMOVED***
@@ -66,7 +86,7 @@ export default function Carousel({
       ***REMOVED******REMOVED***
     ***REMOVED***arrows && (
             <ChevronRightIcon
-              className="h-6 text-buildings"
+              className={arrowStyle({ variant ***REMOVED***)***REMOVED***
               onClick={() => splideRef.current?.splide?.go('>')***REMOVED***
             />
       ***REMOVED******REMOVED***
