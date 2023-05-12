@@ -9,6 +9,7 @@ export default function Climate() {
     <>
       <Columns>
         <BicycleChartTile />
+  ***REMOVED***/* @ts-expect-error Server Component */***REMOVED***
         <StadtradelnTile />
         <BusTile />
       </Columns>
