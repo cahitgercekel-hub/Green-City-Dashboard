@@ -57,7 +57,7 @@ export default function Title({
     <span
 ***REMOVED***...props***REMOVED***
       className={cx(TitleStyle({ as, variant, font ***REMOVED***), className)***REMOVED***
-      style={{ hyphens: 'auto' ***REMOVED******REMOVED***
+      style={{ hyphens: 'auto', ...props.style ***REMOVED******REMOVED***
     >
 ***REMOVED***children***REMOVED***
     </span>
