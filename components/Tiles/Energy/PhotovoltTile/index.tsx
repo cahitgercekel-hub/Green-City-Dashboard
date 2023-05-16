@@ -25,7 +25,7 @@ export default function PhotovoltTile() {
       live
       title={
         <>
-          <AnimatedNumber className="font-medium" decimals={1***REMOVED***>
+          <AnimatedNumber className="font-medium">
       ***REMOVED***data.Nettonennleistung / 1000***REMOVED***
           </AnimatedNumber>{' '***REMOVED***
           MW
