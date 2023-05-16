@@ -173,7 +173,9 @@ export default function ToggleGroup({
           value={e.value***REMOVED***
         >
     ***REMOVED***typeof e.element === 'string' ? (
-            <Title as="h5">{e.element***REMOVED***</Title>
+            <Title as="h5" style={{ hyphens: 'unset' ***REMOVED******REMOVED***>
+        ***REMOVED***e.element***REMOVED***
+            </Title>
       ***REMOVED*** : (
             e.element
       ***REMOVED******REMOVED***
