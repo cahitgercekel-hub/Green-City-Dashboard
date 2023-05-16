@@ -2,7 +2,6 @@ import Columns from '@/components/Layout/Columns'
 import directus, {
   collectionsName,
   successStoriesCollectionName,
-  surveyCollectionName,
   tileCollectionName,
 ***REMOVED*** from '@/lib/directus'
 import { ID ***REMOVED*** from '@directus/sdk'
@@ -11,6 +10,7 @@ import getTilesBucket, { BaseTile ***REMOVED*** from '@/utils/fullWidthBucket'
 import TileFactory, { TileType ***REMOVED*** from '@/utils/TileFactory'
 import { SurveyTileProps ***REMOVED*** from '@/components/Tiles/Survey'
 import { SuccessStoryTileProps ***REMOVED*** from '@/components/Tiles/SuccessStory'
+import { getSurveyData ***REMOVED*** from '@/lib/api/getSurveyData'
 
 // ISR
 export async function generateStaticParams() {
@@ -67,6 +67,7 @@ const getTileComponent = async (tile: BaseTile) => {
     type = (await getTileType(tile.item as string)) as TileType
 ***REMOVED***
 
+  // @ts-expect-error Server Component
   return <TileFactory key={tile.item***REMOVED*** type={type***REMOVED*** {...props***REMOVED*** />
 ***REMOVED***
 
@@ -89,16 +90,6 @@ const getSuccessStoryData = async (
     text: data?.text ?? '',
     image: data?.image,
     imagePosition: data?.image_position,
-***REMOVED***
-***REMOVED***
-const getSurveyData = async (surveyID: ID): Promise<SurveyTileProps> => {
-  const data = await directus.items(surveyCollectionName).readOne(surveyID)
-  return {
-    answer: {
-      text: data?.answer_text ?? '',
-      percent: data?.answer_percent ?? 0,
-  ***REMOVED***,
-    question: data?.question ?? '',
 ***REMOVED***
 ***REMOVED***
 

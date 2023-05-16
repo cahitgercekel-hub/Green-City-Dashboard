@@ -1,7 +1,9 @@
 'use client'
 
-import { ComponentPropsWithRef, useEffect ***REMOVED*** from 'react'
-import { animated, AnimatedProps, useSpring ***REMOVED*** from '@react-spring/web'
+import { ComponentPropsWithRef ***REMOVED*** from 'react'
+import { animated, AnimatedProps ***REMOVED*** from '@react-spring/web'
+import AnimatedNumber from '@/components/Elements/Animated/AnimatedNumber'
+import Title from '@/components/Elements/Title'
 
 export type SurveyAnswerProps = AnimatedProps<ComponentPropsWithRef<'div'>> & {
   percent: number
@@ -13,22 +15,14 @@ export default function SurveyAnswer({
   text,
   ...props
 ***REMOVED***: SurveyAnswerProps) {
-  const [animatedNumber, api] = useSpring({ val: 0 ***REMOVED***, [])
-
-  useEffect(() => {
-    api.start({ val: percent ***REMOVED***)
-***REMOVED***, [percent])
-
   return (
     <animated.div className="absolute left-0 top-0 w-full" style={{ ...props ***REMOVED******REMOVED***>
-      <div className="flex w-full flex-col space-y-4 md:flex-row md:space-x-4">
-        <span className="text-5xl font-medium md:text-7xl">
-          <animated.span>
-      ***REMOVED***animatedNumber.val.to(val => val.toFixed(0))***REMOVED***
-          </animated.span>
-          %
-        </span>
-        <p className="text-lg">{text***REMOVED***</p>
+      <div className="flex w-full flex-col gap-4 md:flex-row">
+        <Title as="h1">
+          <AnimatedNumber decimals={1***REMOVED***>{percent***REMOVED***</AnimatedNumber>
+          <span className="font-normal">%</span>
+        </Title>
+        <Title as="h4">{text***REMOVED***</Title>
       </div>
     </animated.div>
   )

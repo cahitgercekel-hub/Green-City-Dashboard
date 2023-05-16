@@ -13,9 +13,6 @@ const nextConfig = {
 
     return config
 ***REMOVED***,
-  experimental: {
-    appDir: true,
-***REMOVED***,
   output: 'standalone',
   images: {
     remotePatterns: [

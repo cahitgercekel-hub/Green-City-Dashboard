@@ -16,6 +16,7 @@ import SuccessStoryTile, {
   SuccessStoryTileProps,
 ***REMOVED*** from '@/components/Tiles/SuccessStory'
 import SurveyTile, { SurveyTileProps ***REMOVED*** from '@/components/Tiles/Survey'
+import { getSurveyData ***REMOVED*** from '@/lib/api/getSurveyData'
 import {
   BuildingsTypes,
   ClimateTypes,
@@ -23,12 +24,14 @@ import {
   MobilityTypes,
   TileTypePrefix,
 ***REMOVED*** from '@/types/tile'
+import { ID ***REMOVED*** from '@directus/sdk'
 
 type TileTypeSuffix =
   | ClimateTypes
   | MobilityTypes
   | BuildingsTypes
   | EnergyTypes
+  | ID
 
 type SuccessStoryTileType = 'successStory'
 type SurveyTileType = 'survey'
@@ -44,7 +47,22 @@ interface TileFactoryProps {
   surveyData?: SurveyTileProps
 ***REMOVED***
 
-export default function TileFactory({ type, ...props ***REMOVED***: TileFactoryProps) {
+export default async function TileFactory({
+  type,
+  ...props
+***REMOVED***: TileFactoryProps) {
+  if (type.startsWith('survey')) {
+    const [_, id] = type.split('survey-')
+    if (props.surveyData) {
+      return <SurveyTile {...props.surveyData***REMOVED*** />
+  ***REMOVED***
+    const data = await getSurveyData(id)
+    if (!data) {
+      return null
+  ***REMOVED***
+    return <SurveyTile {...data***REMOVED*** />
+***REMOVED***
+
   switch (type) {
     // ---- WEATHER ----
     case 'climate-weather':
@@ -88,13 +106,6 @@ export default function TileFactory({ type, ...props ***REMOVED***: TileFactoryP
     case 'mobility-modalSplit':
       // @ts-expect-error Server Component
       return <ModalSplitTile />
-
-    // ---- SURVEY ----
-    case 'survey':
-      if (!props.surveyData) {
-        return null
-    ***REMOVED***
-      return <SurveyTile {...props.surveyData***REMOVED*** />
 
     // ---- SUCCESS-STORY ----
     case 'successStory':
