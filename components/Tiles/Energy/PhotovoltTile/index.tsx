@@ -1,29 +1,46 @@
-import ProgressBar from '@/components/Charts/Progress/ProgressBar'
-import { Spacer ***REMOVED*** from '@/components/Elements/Spacer'
 import Title from '@/components/Elements/Title'
-import { PvIcon ***REMOVED*** from '@/components/Icons'
-import Slider from '@/components/Inputs/Slider'
 import EnergyTile from '../EnergyTile'
 
+// @ts-ignore
+import PVData from '@/assets/data/bestand-pv-anlagen.csv'
+import AnimatedNumber from '@/components/Elements/Animated/AnimatedNumber'
+import { format ***REMOVED*** from 'date-fns'
+
+interface PVDataType {
+  ZEIT: string
+  AnzahlAnlagen: number
+  AnzahlSolarModule: number
+  Bruttoleistung: number
+  Nettonennleistung: number
+***REMOVED***
+
 export default function PhotovoltTile() {
+  const [data] = PVData as PVDataType[]
+
   return (
     <EnergyTile
-      dataSource={'Stadtwerke Münster'***REMOVED***
+      dataRetrieval={format(new Date(data.ZEIT), 'dd.MM.yyyy')***REMOVED***
+      dataSource={'Marktstammdatenregister'***REMOVED***
       embedId="energy-PV"
       live
       title={
         <>
-          <span className="font-medium">88</span> MW
+          <AnimatedNumber className="font-medium" decimals={1***REMOVED***>
+      ***REMOVED***data.Nettonennleistung / 1000***REMOVED***
+          </AnimatedNumber>{' '***REMOVED***
+          MW
         </>
     ***REMOVED***
     >
       <div>
         <Title as={'subtitle'***REMOVED***>
-          Haben die Müsteraner:innen bereits mit ca.{' '***REMOVED***
-          <span className="text-energy">5.000 PV-Anlagen</span> in Münster
-          produziert.
+          Haben die Müsteraner:innen bereits mit{' '***REMOVED***
+          <span className="text-energy">
+            <AnimatedNumber>{data.AnzahlAnlagen***REMOVED***</AnimatedNumber> PV-Anlagen
+          </span>{' '***REMOVED***
+          in Münster produziert.
         </Title>
-        <div className="mt-8 flex items-center justify-between gap-8">
+  ***REMOVED***/* <div className="mt-8 flex items-center justify-between gap-8">
           <PvIcon className="w-40" />
           <div className="w-full flex-1">
             <div className="flex  items-center justify-between">
@@ -55,7 +72,7 @@ export default function PhotovoltTile() {
               variant={'energy'***REMOVED***
             />
           </div>
-        </div>
+        </div> */***REMOVED***
       </div>
     </EnergyTile>
   )

@@ -1,29 +1,47 @@
-import ProgressBar from '@/components/Charts/Progress/ProgressBar'
-import { Spacer ***REMOVED*** from '@/components/Elements/Spacer'
 import Title from '@/components/Elements/Title'
-import { WindEnergyIcon ***REMOVED*** from '@/components/Icons'
-import Slider from '@/components/Inputs/Slider'
 import EnergyTile from '../EnergyTile'
 
+// @ts-ignore
+import WindData from '@/assets/data/bestand-windanlagen.csv'
+import AnimatedNumber from '@/components/Elements/Animated/AnimatedNumber'
+import { format ***REMOVED*** from 'date-fns'
+
+interface WindDataType {
+  ZEIT: string
+  AnzahlAnlagen: number
+  AnzahlSolarModule: number
+  Bruttoleistung: number
+  Nettonennleistung: number
+***REMOVED***
+
 export default function WindEnergyTile() {
+  const [data] = WindData as WindDataType[]
+
   return (
     <EnergyTile
-      dataSource={'Stadtwerke Münster'***REMOVED***
+      dataRetrieval={format(new Date(data.ZEIT), 'dd.MM.yyyy')***REMOVED***
+      dataSource={'Marktstammdatenregister'***REMOVED***
       embedId="energy-wind"
       live
       title={
         <>
-          <span className="font-medium">50</span> MW
+          <AnimatedNumber className="font-medium">
+      ***REMOVED***data.Nettonennleistung / 1000***REMOVED***
+          </AnimatedNumber>{' '***REMOVED***
+          MW
         </>
     ***REMOVED***
     >
       <div>
         <Title as={'subtitle'***REMOVED***>
-          Haben die Müsteraner:innen bereits mit ca.{' '***REMOVED***
-          <span className="text-energy">28 Windkraftanlagen</span> in Münster
-          produziert.
+          Haben die Müsteraner:innen bereits mit{' '***REMOVED***
+          <span className="text-energy">
+            <AnimatedNumber>{data.AnzahlAnlagen***REMOVED***</AnimatedNumber>{' '***REMOVED***
+            Windkraftanlagen
+          </span>{' '***REMOVED***
+          in Münster produziert.
         </Title>
-        <div className="mt-8 flex items-center justify-between gap-8">
+  ***REMOVED***/* <div className="mt-8 flex items-center justify-between gap-8">
           <WindEnergyIcon className="w-40" />
           <div className="w-full flex-1">
             <div className="flex  items-center justify-between">
@@ -55,7 +73,7 @@ export default function WindEnergyTile() {
               variant={'energy'***REMOVED***
             />
           </div>
-        </div>
+        </div> */***REMOVED***
       </div>
     </EnergyTile>
   )
