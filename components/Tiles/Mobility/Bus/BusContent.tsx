@@ -4,6 +4,7 @@ import AnimatedNumber from '@/components/Elements/Animated/AnimatedNumber'
 import { Spacer ***REMOVED*** from '@/components/Elements/Spacer'
 import Title from '@/components/Elements/Title'
 import { BusCombustion, BusElectro ***REMOVED*** from '@/components/Icons'
+// @ts-ignore
 import BusData from '@/assets/data/stadtwerke-bus-fahrzeuge.csv'
 import { useWindowSize ***REMOVED*** from 'react-use'
 import { useEffect, useState ***REMOVED*** from 'react'
@@ -62,10 +63,12 @@ export default function BusContent() {
       return
   ***REMOVED***
     const row: BusDataType = reducedData[yearIndex]
-    setElectroCount(row['Fahrzeuge Alternative Antriebe Elektro'])
-    setCombustionCount(
-      row['Fahrzeuge SWMS'] - row['Fahrzeuge Alternative Antriebe Elektro'],
-***REMOVED***
+    if (row) {
+      setElectroCount(row['Fahrzeuge Alternative Antriebe Elektro'])
+      setCombustionCount(
+        row['Fahrzeuge SWMS'] - row['Fahrzeuge Alternative Antriebe Elektro'],
+  ***REMOVED***
+  ***REMOVED***
 ***REMOVED***, [yearIndex, reducedData])
 
   return (
