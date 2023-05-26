@@ -1,5 +1,6 @@
 import Columns from '../Layout/Columns'
 import EnergietraegerTile from '../Tiles/Energy/EnergietraegerTile'
+import LanternsTile from '../Tiles/Energy/LanternsTile'
 import PhotovoltTile from '../Tiles/Energy/PhotovoltTile'
 import WindEnergyTile from '../Tiles/Energy/WindEnergyTile'
 import BaseView from './BaseView'
@@ -13,6 +14,7 @@ export default function EnergyView() {
         <WindEnergyTile />
   ***REMOVED***/* @ts-expect-error Server Component */***REMOVED***
         <EnergietraegerTile />
+        <LanternsTile />
       </Columns>
     </BaseView>
   )
