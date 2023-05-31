@@ -1,0 +1,103 @@
+'use client'
+
+import AnimatedNumber from '@/components/Elements/Animated/AnimatedNumber'
+import { Spacer ***REMOVED*** from '@/components/Elements/Spacer'
+import Title from '@/components/Elements/Title'
+import { MuellautoAbgas, MuellautoStrom ***REMOVED*** from '@/components/Icons'
+import MobileSlider from '@/components/Inputs/MobileSlider'
+import Slider from '@/components/Inputs/Slider'
+import { useWindowSize ***REMOVED*** from 'react-use'
+// @ts-ignore
+import AwmEMobility from '@/assets/data/awm-e-mobilitaet.csv'
+import { useEffect, useState ***REMOVED*** from 'react'
+
+type AwmDatatType = {
+  ZEIT: number
+  'AWM Fahrzeuge - Dieselantrieb': number
+  'AWM Fahrzeuge - Elektroantrieb': number
+  'AWM Fahrzeuge - Erdgasantrieb': number
+***REMOVED***
+
+export default function AWMContent() {
+  // const { electroCount, combustionCount ***REMOVED*** = useBusData()
+  const { width ***REMOVED*** = useWindowSize()
+  const [yearIndex, setYearIndex] = useState(0)
+
+  const [combustionCount, setCombustionCount] = useState(0)
+  const [electroCount, setElectroCount] = useState(0)
+
+  const data: AwmDatatType[] = AwmEMobility
+
+  useEffect(() => {
+    if (!data) {
+      return
+  ***REMOVED***
+    const row: AwmDatatType = data[yearIndex]
+    setElectroCount(row['AWM Fahrzeuge - Elektroantrieb'])
+    setCombustionCount(row['AWM Fahrzeuge - Dieselantrieb'])
+***REMOVED***, [data, yearIndex])
+
+  return (
+    <div>
+      <div className="flex justify-between">
+        <div>
+          <Title as="h5" variant={'primary'***REMOVED***>
+            Fahrzeuge mit fossilem Antrieb
+          </Title>
+          <AnimatedNumber className="text-2xl text-mobility">
+      ***REMOVED***combustionCount***REMOVED***
+          </AnimatedNumber>
+        </div>
+        <div className="flex flex-col items-end">
+          <Title as="h5" variant={'primary'***REMOVED***>
+            Fahrzeuge mit Elektroantrieb
+          </Title>
+          <AnimatedNumber className="text-2xl text-mobility">
+      ***REMOVED***electroCount***REMOVED***
+          </AnimatedNumber>
+        </div>
+      </div>
+      <div className="flex h-[390px] w-full items-end rounded bg-white p-4">
+        <div
+          className="flex-none transition-all"
+          style={{
+            width: `${
+              (combustionCount / (electroCount + combustionCount) || 0.5) * 100
+          ***REMOVED***%`,
+        ***REMOVED******REMOVED***
+        >
+          <MuellautoAbgas className="w-full" />
+        </div>
+        <div className="flex-1">
+          <MuellautoStrom className="w-full" />
+        </div>
+      </div>
+***REMOVED***width < 1800 && (
+        <MobileSlider
+          defaultValue={[0]***REMOVED***
+          labels={data.map(e => e.ZEIT.toString())***REMOVED***
+          max={data.length - 1***REMOVED***
+          min={0***REMOVED***
+          onValueChange={([index]) => setYearIndex(index)***REMOVED***
+          variant={'mobility'***REMOVED***
+        />
+  ***REMOVED******REMOVED***
+***REMOVED***width >= 1800 && (
+        <Slider
+          defaultValue={[0]***REMOVED***
+          labels={data.map(e => e.ZEIT.toString())***REMOVED***
+          max={data.length - 1***REMOVED***
+          min={0***REMOVED***
+          onValueChange={([index]) => setYearIndex(index)***REMOVED***
+          variant={'mobility'***REMOVED***
+        />
+  ***REMOVED******REMOVED***
+      <Spacer />
+      <Title as="h5">
+        Über 230 Fahrzeuge setzen die awm ein - ein stattlicher Fuhrpark, der
+        kosequent und Schritt für Schritt auf Erdgas- oder Elektroantrieb
+        umgestellt wird.
+      </Title>
+    </div>
+  )
+***REMOVED***
