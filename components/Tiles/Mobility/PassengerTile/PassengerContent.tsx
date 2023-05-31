@@ -15,28 +15,24 @@ interface PassengerDataProps {
 
 const data: PassengerDataProps[] = [
   {
-    ZEIT: 2017,
-    value: 20,
-***REMOVED***,
-  {
     ZEIT: 2018,
-    value: 40,
+    value: 46.3,
 ***REMOVED***,
   {
     ZEIT: 2019,
-    value: 41,
+    value: 49,
 ***REMOVED***,
   {
     ZEIT: 2020,
-    value: 42,
+    value: 43.9,
 ***REMOVED***,
   {
     ZEIT: 2021,
-    value: 46,
+    value: 41.0,
 ***REMOVED***,
   {
     ZEIT: 2022,
-    value: 49,
+    value: 46.8,
 ***REMOVED***,
 ]
 
