@@ -18,6 +18,7 @@ module.exports = {
       ***REMOVED***,
         secondary: {
           DEFAULT: '#aab315',
+          light: '#fbfbf3'
       ***REMOVED***,
         climate: {
           DEFAULT: '#14b3d9',
