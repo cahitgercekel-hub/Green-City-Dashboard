@@ -110,21 +110,42 @@ export default function DesktopView({ mode, yearIndex ***REMOVED***: DesktopView
           </div>
     ***REMOVED***)***REMOVED***
       </div>
-      <LabelSeperator>Jahresverbrauch</LabelSeperator>
+      <LabelSeperator>
+  ***REMOVED***years[yearIndex] === new Date().getFullYear()
+          ? 'Jahresverbrauch bisher'
+          : 'Jahresverbrauch'***REMOVED***
+      </LabelSeperator>
       <Spacer size={'sm'***REMOVED***></Spacer>
       <div className="flex h-full w-full justify-between gap-8">
-  ***REMOVED***Object.keys(buildings).map(building => (
-          <div className="flex w-full justify-center gap-1 p-2" key={building***REMOVED***>
-            <Title as="h3" variant="building">
-              <AnimatedNumber decimals={0***REMOVED***>
-          ***REMOVED***getYearSum(mode, building as keyof Building, years[yearIndex])***REMOVED***
-              </AnimatedNumber>
-            </Title>
-            <Title as="h3" font="normal" variant="building">
-              kWh
-            </Title>
-          </div>
-    ***REMOVED***)***REMOVED***
+  ***REMOVED***Object.keys(buildings).map(building => {
+          const sum = getYearSum(
+            mode,
+            building as keyof Building,
+            years[yearIndex],
+      ***REMOVED***
+
+          return (
+            <div
+              className="flex w-full justify-center gap-1 p-2"
+              key={building***REMOVED***
+            >
+        ***REMOVED***sum === 0 ? (
+                <Title as="h4" variant="building">
+                  fehlende Daten
+                </Title>
+          ***REMOVED*** : (
+                <>
+                  <Title as="h4" variant="building">
+                    <AnimatedNumber decimals={0***REMOVED***>{sum***REMOVED***</AnimatedNumber>
+                  </Title>
+                  <Title as="h4" font="normal" variant="building">
+                    kWh
+                  </Title>
+                </>
+          ***REMOVED******REMOVED***
+            </div>
+      ***REMOVED***
+      ***REMOVED***)***REMOVED***
       </div>
     </>
   )

@@ -90,35 +90,57 @@ export default function MobileView({ mode, yearIndex ***REMOVED***: MobileViewPr
     ***REMOVED******REMOVED***
       pagination
     >
-***REMOVED***Object.keys(buildings).map(building => (
-        <div key={building***REMOVED***>
-          <div className="flex gap-2">
-            <Title as="h4" className="h-20 flex-1" variant="building">
-        ***REMOVED***buildings[building as keyof Building]***REMOVED***
-            </Title>
-            <div className="mx-auto flex h-[80px] w-[80px] justify-end">
-        ***REMOVED***getBuildingIcon(building as keyof Building)***REMOVED***
+***REMOVED***Object.keys(buildings).map(building => {
+        const sum = getYearSum(
+          mode,
+          building as keyof Building,
+          years[yearIndex],
+    ***REMOVED***
+
+        return (
+          <div key={building***REMOVED***>
+            <div className="flex gap-2">
+              <Title as="h4" className="h-20 flex-1" variant="building">
+          ***REMOVED***buildings[building as keyof Building]***REMOVED***
+              </Title>
+              <div className="mx-auto flex h-[80px] w-[80px] justify-end">
+          ***REMOVED***getBuildingIcon(building as keyof Building)***REMOVED***
+              </div>
+            </div>
+            <LabelSeperator>Monatlicher Verbrauch</LabelSeperator>
+            <div className="h-40 w-full">
+              <EnergyConsumptionChart
+                data={getData(
+                  mode,
+                  building as keyof Building,
+                  years[yearIndex],
+            ***REMOVED******REMOVED***
+              />
+            </div>
+            <LabelSeperator>
+        ***REMOVED***years[yearIndex] === new Date().getFullYear()
+                ? 'Jahresverbrauch bisher'
+                : 'Jahresverbrauch'***REMOVED***
+            </LabelSeperator>
+            <div className="flex w-full gap-1 p-2">
+        ***REMOVED***sum === 0 ? (
+                <Title as="h4" variant="building">
+                  fehlende Daten
+                </Title>
+          ***REMOVED*** : (
+                <>
+                  <Title as="h4" variant="building">
+                    <AnimatedNumber decimals={0***REMOVED***>{sum***REMOVED***</AnimatedNumber>
+                  </Title>
+                  <Title as="h4" font="normal" variant="building">
+                    kWh
+                  </Title>
+                </>
+          ***REMOVED******REMOVED***
             </div>
           </div>
-          <LabelSeperator>Monatlicher Verbrauch</LabelSeperator>
-          <div className="h-40 w-full">
-            <EnergyConsumptionChart
-              data={getData(mode, building as keyof Building, years[yearIndex])***REMOVED***
-            />
-          </div>
-          <LabelSeperator>Jahresverbrauch</LabelSeperator>
-          <div className="flex w-full gap-1 p-2">
-            <Title as="h3" variant="building">
-              <AnimatedNumber decimals={0***REMOVED***>
-          ***REMOVED***getYearSum(mode, building as keyof Building, years[yearIndex])***REMOVED***
-              </AnimatedNumber>
-            </Title>
-            <Title as="h3" font="normal" variant="building">
-              kWh
-            </Title>
-          </div>
-        </div>
-  ***REMOVED***)***REMOVED***
+    ***REMOVED***
+    ***REMOVED***)***REMOVED***
     </Carousel>
   )
 ***REMOVED***
