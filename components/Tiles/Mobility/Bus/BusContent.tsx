@@ -45,6 +45,7 @@ export default function BusContent() {
     ***REMOVED***
       currentYear = item.ZEIT.toString().substring(0, 4)
       const row: BusDataType | undefined = data
+        .slice()
         .reverse()
         .find(item => item.ZEIT.toString().substring(0, 4) === currentYear)
       if (
