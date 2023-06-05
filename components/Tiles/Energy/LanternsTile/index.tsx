@@ -18,12 +18,12 @@ export default function LanternsTile() {
 
   return (
     <EnergyTile
-      dataRetrieval={format(new Date('2023-05-22T00:00:00.000Z'), 'dd.MM.yyyy')***REMOVED***
-      dataSource={'Stadt Münster - Amt für Immobilienmanagement'***REMOVED***
+      dataRetrieval={format(new Date('2023-05-30T00:00:00.000Z'), 'dd.MM.yyyy')***REMOVED***
+      dataSource={'Stadtwerke Münster'***REMOVED***
       embedId="energy-lanterns"
       title={
         <>
-          <AnimatedNumber className="font-medium">{5200***REMOVED***</AnimatedNumber>{' '***REMOVED***
+          <AnimatedNumber className="font-medium">{8850***REMOVED***</AnimatedNumber>{' '***REMOVED***
           LED-Leuchtmittel
         </>
     ***REMOVED***
@@ -33,7 +33,7 @@ export default function LanternsTile() {
           schenken Münsters Straßen bereits klimafreundliches Licht. Die
           Stadtnetze Münster rüsten nach und nach alle rund{' '***REMOVED***
           <span className="text-energy">
-            <AnimatedNumber>{28000***REMOVED***</AnimatedNumber> Straßenlaternen
+            <AnimatedNumber>{29000***REMOVED***</AnimatedNumber> Straßenlaternen
           </span>{' '***REMOVED***
           im Stadtgebiet mit der Technologie aus.
         </Title>

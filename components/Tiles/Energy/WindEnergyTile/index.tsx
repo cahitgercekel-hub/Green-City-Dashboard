@@ -19,14 +19,15 @@ export default function WindEnergyTile() {
 
   return (
     <EnergyTile
-      dataRetrieval={format(new Date(data.ZEIT), 'dd.MM.yyyy')***REMOVED***
-      dataSource={'Marktstammdatenregister'***REMOVED***
+      dataRetrieval="05.06.2023"
+      dataSource="Stadt Münster &ndash; Stadtplanungsamt"
       embedId="energy-wind"
       live
       title={
         <>
           <AnimatedNumber className="font-medium">
-      ***REMOVED***data.Nettonennleistung / 1000***REMOVED***
+          /* {data.Nettonennleistung / 1000***REMOVED*** */
+            62
           </AnimatedNumber>{' '***REMOVED***
           MW
         </>
@@ -34,14 +35,15 @@ export default function WindEnergyTile() {
     >
       <div>
         <Title as={'subtitle'***REMOVED***>
-          Haben die Müsteraner:innen bereits mit{' '***REMOVED***
+          haben die Münsteraner*innen bereits mit{' '***REMOVED***
           <span className="text-energy">
-            <AnimatedNumber>{data.AnzahlAnlagen***REMOVED***</AnimatedNumber>{' '***REMOVED***
+      ***REMOVED***/* <AnimatedNumber>{data.AnzahlAnlagen***REMOVED***</AnimatedNumber>{' '***REMOVED*** */ ***REMOVED***
+            32
             Windkraftanlagen
           </span>{' '***REMOVED***
-          in Münster produziert.
+          in Münster installiert.
         </Title>
-  ***REMOVED***/* <div className="mt-8 flex items-center justify-between gap-8">
+        <div className="mt-8 flex items-center justify-between gap-8">
           <WindEnergyIcon className="w-40" />
           <div className="w-full flex-1">
             <div className="flex  items-center justify-between">
@@ -50,7 +52,7 @@ export default function WindEnergyTile() {
                   Bereits installiert
                 </Title>
                 <Title as="h4" variant={'energy'***REMOVED***>
-                  33%
+                  69%
                 </Title>
               </div>
               <div className="flex flex-col items-end">
@@ -58,10 +60,11 @@ export default function WindEnergyTile() {
                   Angestrebtes Ziel bis 2030
                 </Title>
                 <Title as="h4" variant={'primary'***REMOVED***>
-                  150 MW
+                  90 MW
                 </Title>
               </div>
             </div>
+      ***REMOVED***/* 
             <Spacer size={'sm'***REMOVED*** />
             <ProgressBar progress={33***REMOVED*** variant="energy" />
             <Spacer size={'sm'***REMOVED*** />
@@ -72,8 +75,9 @@ export default function WindEnergyTile() {
               min={0***REMOVED***
               variant={'energy'***REMOVED***
             />
+            */***REMOVED***
           </div>
-        </div> */***REMOVED***
+        </div>
       </div>
     </EnergyTile>
   )
