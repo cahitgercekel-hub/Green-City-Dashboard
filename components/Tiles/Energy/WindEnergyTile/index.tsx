@@ -4,7 +4,7 @@ import EnergyTile from '../EnergyTile'
 // @ts-ignore
 import WindData from '@/assets/data/bestand-windanlagen.csv'
 import AnimatedNumber from '@/components/Elements/Animated/AnimatedNumber'
-import { format ***REMOVED*** from 'date-fns'
+import { WindEnergyIcon ***REMOVED*** from '@/components/Icons'
 
 interface WindDataType {
   ZEIT: string
@@ -25,11 +25,7 @@ export default function WindEnergyTile() {
       live
       title={
         <>
-          <AnimatedNumber className="font-medium">
-          /* {data.Nettonennleistung / 1000***REMOVED*** */
-            62
-          </AnimatedNumber>{' '***REMOVED***
-          MW
+          <AnimatedNumber className="font-medium">{62***REMOVED***</AnimatedNumber> MW
         </>
     ***REMOVED***
     >
@@ -37,9 +33,8 @@ export default function WindEnergyTile() {
         <Title as={'subtitle'***REMOVED***>
           haben die Münsteraner*innen bereits mit{' '***REMOVED***
           <span className="text-energy">
-      ***REMOVED***/* <AnimatedNumber>{data.AnzahlAnlagen***REMOVED***</AnimatedNumber>{' '***REMOVED*** */ ***REMOVED***
-            32
-            Windkraftanlagen
+      ***REMOVED***/* <AnimatedNumber>{data.AnzahlAnlagen***REMOVED***</AnimatedNumber>{' '***REMOVED*** */***REMOVED***
+            32 Windkraftanlagen
           </span>{' '***REMOVED***
           in Münster installiert.
         </Title>
@@ -64,7 +59,7 @@ export default function WindEnergyTile() {
                 </Title>
               </div>
             </div>
-      ***REMOVED***/* 
+      ***REMOVED***/*
             <Spacer size={'sm'***REMOVED*** />
             <ProgressBar progress={33***REMOVED*** variant="energy" />
             <Spacer size={'sm'***REMOVED*** />
