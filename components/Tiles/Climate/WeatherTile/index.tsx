@@ -7,11 +7,7 @@ export default function WeatherTile() {
       dataSource="Deutscher Wetterdienst"
       embedId={'climate-weather'***REMOVED***
       live
-      title={
-        <>
-          <span className="font-medium">Wetter</span> aktuell
-        </>
-    ***REMOVED***
+      title={'Wetter aktuell'***REMOVED***
     >
       <WeatherTileContent />
     </ClimateTile>
