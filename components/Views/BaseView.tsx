@@ -35,6 +35,8 @@ export default async function BaseView({ type, children ***REMOVED***: ViewProps
                 text: survey.answer_text,
                 percent: survey.answer_percent,
             ***REMOVED******REMOVED***
+              dataRetrieval={survey.dataRetrieval***REMOVED***
+              dataSource={survey.dataSource***REMOVED***
               id={survey.id***REMOVED***
               key={survey.id***REMOVED***
               question={survey.question***REMOVED***
