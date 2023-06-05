@@ -57,6 +57,7 @@ export default function BusContent() {
     ***REMOVED***
   ***REMOVED***)
     setReducedData(reducedDataLocal)
+    setYearIndex(reducedDataLocal.length - 1)
 ***REMOVED***, [data])
 
   useEffect(() => {
@@ -109,7 +110,7 @@ export default function BusContent() {
       </div>
 ***REMOVED***width < 1800 && (
         <MobileSlider
-          defaultValue={[0]***REMOVED***
+          defaultValue={[yearIndex]***REMOVED***
           labels={reducedData.map(e => e.ZEIT.toString())***REMOVED***
           max={reducedData.length - 1***REMOVED***
           min={0***REMOVED***
@@ -119,7 +120,7 @@ export default function BusContent() {
   ***REMOVED******REMOVED***
 ***REMOVED***width >= 1800 && (
         <Slider
-          defaultValue={[0]***REMOVED***
+          defaultValue={[yearIndex]***REMOVED***
           labels={reducedData.map(e => e.ZEIT.toString())***REMOVED***
           max={reducedData.length - 1***REMOVED***
           min={0***REMOVED***

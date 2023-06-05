@@ -73,7 +73,7 @@ export default function PassengerContent() {
           </div>
     ***REMOVED***width >= 1800 && (
             <Slider
-              defaultValue={[yearIndex]***REMOVED***
+              defaultValue={[years.length - 1]***REMOVED***
               labels={years***REMOVED***
               max={years.length - 1***REMOVED***
               min={0***REMOVED***
@@ -88,7 +88,7 @@ export default function PassengerContent() {
       <div className="flex-1">
   ***REMOVED***width < 1800 && (
           <MobileSlider
-            defaultValue={[yearIndex]***REMOVED***
+            defaultValue={[years.length - 1]***REMOVED***
             labels={years***REMOVED***
             max={years.length - 1***REMOVED***
             min={0***REMOVED***
