@@ -1,10 +1,11 @@
+import ProgressBar from '@/components/Charts/Progress/ProgressBar'
 import Title from '@/components/Elements/Title'
 import EnergyTile from '../EnergyTile'
 
 // @ts-ignore
-import WindData from '@/assets/data/bestand-windanlagen.csv'
 import AnimatedNumber from '@/components/Elements/Animated/AnimatedNumber'
 import { WindEnergyIcon ***REMOVED*** from '@/components/Icons'
+import { Spacer ***REMOVED*** from '@/components/Elements/Spacer'
 
 interface WindDataType {
   ZEIT: string
@@ -15,7 +16,9 @@ interface WindDataType {
 ***REMOVED***
 
 export default function WindEnergyTile() {
-  const [data] = WindData as WindDataType[]
+  {
+    /* const [data] = WindData as WindDataType[] */
+***REMOVED***
 
   return (
     <EnergyTile
@@ -47,6 +50,7 @@ export default function WindEnergyTile() {
                   Bereits installiert
                 </Title>
                 <Title as="h4" variant={'energy'***REMOVED***>
+            ***REMOVED***/* (data.Bruttoleistung***REMOVED***/90).toFixed(0) */***REMOVED***
                   69%
                 </Title>
               </div>
@@ -59,9 +63,12 @@ export default function WindEnergyTile() {
                 </Title>
               </div>
             </div>
-      ***REMOVED***/*
             <Spacer size={'sm'***REMOVED*** />
-            <ProgressBar progress={33***REMOVED*** variant="energy" />
+      ***REMOVED***/* should be thhe followind, once some organisation reliable is able to count windraeder ...
+                data.Bruttoleistung***REMOVED***/90
+            */***REMOVED***
+            <ProgressBar progress={69***REMOVED*** variant="energy" />
+      ***REMOVED***/*
             <Spacer size={'sm'***REMOVED*** />
             <Slider
               defaultValue={[0]***REMOVED***

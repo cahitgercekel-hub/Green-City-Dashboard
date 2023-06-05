@@ -16,7 +16,7 @@ export default async function CO2EmissionsTile() {
       dataSource="Stadt Münster - Stabsstelle Klima"
       embedId="climate-co2"
       subtitle="So viel wird in Münster ausgestoßen"
-      title={'CO₂'***REMOVED***
+      title={'CO<sub>2</sub>'***REMOVED***
     >
       <TileSplitView>
         <TileSplitView.Left>
