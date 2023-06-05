@@ -42,7 +42,7 @@ export default function SurveyTile({ question, answer, id ***REMOVED***: SurveyT
       <div className="text-white">
         <Title as="h5" font={'normal'***REMOVED*** variant={'inverse'***REMOVED***>
           <span className="font-semibold">Befragungsergebnisse:</span>{' '***REMOVED***
-          Bürgerumfrage 2022
+          Bürger*innenumfrage
         </Title>
         <Spacer />
         <div className="relative h-fit">

@@ -34,13 +34,13 @@ export default function EcoProfitTile() {
       </Title>
       <Spacer />
       <Title as="subtitle">
-        Haben bereits am Ökoprofit-Projekt teilgenommen und gemeinsam{' '***REMOVED***
+        haben bereits am Ökoprofit-Projekt teilgenommen und gemeinsam{' '***REMOVED***
         <span className="text-buildings">
-          <AnimatedNumber decimals={1***REMOVED***>{savingsEuro***REMOVED***</AnimatedNumber> Mio Euro
+          <AnimatedNumber decimals={1***REMOVED***>{savingsEuro***REMOVED***</AnimatedNumber> Millionen Euro
         </span>{' '***REMOVED***
         und{' '***REMOVED***
         <span className="text-buildings">
-          <AnimatedNumber>{savingsCO2***REMOVED***</AnimatedNumber> t CO2
+          <AnimatedNumber>{savingsCO2***REMOVED***</AnimatedNumber> Tonnen CO<sub>2</sub>
         </span>{' '***REMOVED***
         eingespart.
       </Title>
@@ -51,8 +51,8 @@ export default function EcoProfitTile() {
       </Title>
       <Spacer />
       <Title as="subtitle">
-        Haben zudem bereits die &quot;Startberatung Energieeffizienz&quot; in
-        Anspruch genommen.
+        haben bereits die &quot;Startberatung Energieeffizienz&quot;
+        genutzt und Maßnahmen zur Energieeinsparung entwickelt.
       </Title>
     </BuildingTile>
   )
