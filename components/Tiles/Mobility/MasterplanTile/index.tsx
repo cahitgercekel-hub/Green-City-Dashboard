@@ -9,7 +9,7 @@ export default function MasterplanTile() {
   return (
     <MobilityTile
       dataRetrieval={format(new Date('2023-01-18T00:00:00.000Z'), 'dd.MM.yyyy')***REMOVED***
-      dataSource={'Stadt Münster &ndash; Amt für Mobilität und Tiefbau'***REMOVED***
+      dataSource={'Stadt Münster - Amt für Mobilität und Tiefbau'***REMOVED***
       embedId="mobility-masterplan"
       title={<>Der „Masterplan</>***REMOVED***
     >
@@ -19,9 +19,7 @@ export default function MasterplanTile() {
             <Masterplan className="h-20 text-primary md:h-44" />
           </span>
           <Title as={'subtitle'***REMOVED***>
-            <span className="hidden md:block">
-              Mobilität Münster 2035+“ wird aktuell entwickelt.
-            </span>{' '***REMOVED***
+            Mobilität Münster 2035+“ wird aktuell entwickelt.
             Dabei wurden über verschiedene Formate Münsteraner Bürger*innen
             beteiligt, die so{' '***REMOVED***
             <span className="text-mobility">

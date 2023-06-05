@@ -1,10 +1,10 @@
+import { Spacer ***REMOVED*** from '@/components/Elements/Spacer'
 import Title from '@/components/Elements/Title'
 import EnergyTile from '../EnergyTile'
 
 // @ts-ignore
 import PVData from '@/assets/data/bestand-pv-anlagen.csv'
 import AnimatedNumber from '@/components/Elements/Animated/AnimatedNumber'
-import { format ***REMOVED*** from 'date-fns'
 import { PvIcon ***REMOVED*** from '@/components/Icons'
 import ProgressBar from '@/components/Charts/Progress/ProgressBar'
 
@@ -21,13 +21,14 @@ export default function PhotovoltTile() {
 
   return (
     <EnergyTile
-      dataRetrieval={format(new Date(data.ZEIT), 'dd.MM.yyyy')***REMOVED***
+      dataRetrieval="05.06.2023"
       dataSource={'Marktstammdatenregister'***REMOVED***
       embedId="energy-PV"
       live
       title={
         <>
-          <AnimatedNumber>{data.Bruttoleistung / 1000***REMOVED***</AnimatedNumber> MW
+          <AnimatedNumber>{data.Bruttoleistung / 10000000000***REMOVED***</AnimatedNumber>{' '***REMOVED***
+          MW
         </>
     ***REMOVED***
     >
@@ -48,7 +49,7 @@ export default function PhotovoltTile() {
                   Bereits installiert
                 </Title>
                 <Title as="h4" variant={'energy'***REMOVED***>
-            ***REMOVED***(data.Bruttoleistung / 2500).toFixed(0)***REMOVED***%
+            ***REMOVED***(data.Bruttoleistung / 2500000000000).toFixed(0)***REMOVED***%
                 </Title>
               </div>
               <div className="flex flex-col items-end">
@@ -60,12 +61,12 @@ export default function PhotovoltTile() {
                 </Title>
               </div>
             </div>
+            <Spacer size={'sm'***REMOVED*** />
             <ProgressBar
-              progress={parseInt((data.Bruttoleistung / 2500).toFixed(0))***REMOVED***
+              progress={data.Bruttoleistung / 2500000000000***REMOVED***
               variant="energy"
             />
       ***REMOVED***/*
-            <Spacer size={'sm'***REMOVED*** />
             <Spacer size={'sm'***REMOVED*** />
             <Slider
               defaultValue={[0]***REMOVED***
