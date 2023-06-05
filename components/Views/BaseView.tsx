@@ -4,6 +4,8 @@ import { Spacer ***REMOVED*** from '../Elements/Spacer'
 import SectionHeader from '../Layout/SectionHeader'
 import Columns from '../Layout/Columns'
 import SurveyTile from '../Tiles/Survey'
+import getSuccessStoriesForCategory from '@/lib/api/getSuccessStories'
+import SuccessStoryTile from '../Tiles/SuccessStory'
 
 interface ViewProps {
   type: 'climate' | 'mobility' | 'energy' | 'building'
@@ -19,6 +21,7 @@ const categoryID = {
 
 export default async function BaseView({ type, children ***REMOVED***: ViewProps) {
   const surveys = await getSurveysForCategory(categoryID[type])
+  const success = await getSuccessStoriesForCategory(categoryID[type])
 
   return (
     <>
@@ -38,6 +41,21 @@ export default async function BaseView({ type, children ***REMOVED***: ViewProps
             />
       ***REMOVED***)***REMOVED***
         </Columns>
+  ***REMOVED******REMOVED***
+***REMOVED***success && (
+        <>
+    ***REMOVED***success.map(success => (
+            <SuccessStoryTile
+              id={success.id***REMOVED***
+              image={success.image***REMOVED***
+              imagePosition={success.image_position***REMOVED***
+              key={success.id***REMOVED***
+              link={success.link***REMOVED***
+              moreInfo={success.details***REMOVED***
+              text={success.text***REMOVED***
+            />
+      ***REMOVED***)***REMOVED***
+        </>
   ***REMOVED******REMOVED***
       <Spacer size={'sm'***REMOVED*** />
       <GoToButton type={type***REMOVED*** />
