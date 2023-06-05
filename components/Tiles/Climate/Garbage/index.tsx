@@ -16,11 +16,7 @@ export default async function GarbageTile() {
       subtitle={
         'So viele Kilogramm Abfall wurden bisher durchschnittlich pro Münsteraner*in durch die Abfallwirtschaftsbetriebe Münster (awm) erfasst'
     ***REMOVED***
-      title={
-        <>
-          <span className="font-medium">Abfall</span> pro Kopf
-        </>
-    ***REMOVED***
+      title={'Abfall pro Kopf'***REMOVED***
     >
       <TileSplitView>
         <TileSplitView.Left className="rounded bg-white p-5">

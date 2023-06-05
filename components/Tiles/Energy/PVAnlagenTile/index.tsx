@@ -22,10 +22,7 @@ export default function PVAnlagenTile() {
       live
       title={
         <>
-          <AnimatedNumber className="font-medium">
-      ***REMOVED***data.AnzahlAnlagen***REMOVED***
-          </AnimatedNumber>{' '***REMOVED***
-          PV-Anlagen
+          <AnimatedNumber>{data.AnzahlAnlagen***REMOVED***</AnimatedNumber> PV-Anlagen
         </>
     ***REMOVED***
     >

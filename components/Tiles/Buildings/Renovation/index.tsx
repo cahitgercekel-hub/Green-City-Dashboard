@@ -27,7 +27,7 @@ export default async function RenovationTile() {
       embedId="building-renovation"
       title={
         <>
-          <AnimatedNumber className="font-medium">{3469***REMOVED***</AnimatedNumber> t CO
+          <AnimatedNumber>{3469***REMOVED***</AnimatedNumber> t CO
           <sub>2</sub>
         </>
     ***REMOVED***
