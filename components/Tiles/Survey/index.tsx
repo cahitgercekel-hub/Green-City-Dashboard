@@ -13,12 +13,16 @@ export type SurveyTileProps = {
   title: string
   question: string
   answer: SurveyAnswerProps
+  dataSource: string
+  dataRetrieval: Date
   id: string | ID
 ***REMOVED***
 export default function SurveyTile({
   question,
   answer,
   id,
+  dataSource,
+  dataRetrieval,
   title,
 ***REMOVED***: SurveyTileProps) {
   const [showAnswer, setShowAnswer] = useState(false)
@@ -71,6 +75,15 @@ export default function SurveyTile({
         ***REMOVED***,
       ***REMOVED******REMOVED***
         </div>
+      </div>
+      <Spacer />
+      <div className="flex space-x-2 text-xs">
+        <Title as="h7" font="semibold" variant={'inverse'***REMOVED***>
+          Datenstand: {new Date(dataRetrieval).getFullYear()***REMOVED***
+        </Title>
+        <Title as="h7" font="normal" variant={'inverse'***REMOVED***>
+          Quelle: {dataSource***REMOVED***
+        </Title>
       </div>
     </BaseTile>
   )
