@@ -1,7 +1,6 @@
 'use client'
 
 import AnimatedNumber from '@/components/Elements/Animated/AnimatedNumber'
-import { Spacer ***REMOVED*** from '@/components/Elements/Spacer'
 import Title from '@/components/Elements/Title'
 import { MuellautoAbgas, MuellautoStrom ***REMOVED*** from '@/components/Icons'
 import MobileSlider from '@/components/Inputs/MobileSlider'
@@ -92,12 +91,6 @@ export default function AWMContent() {
           variant={'mobility'***REMOVED***
         />
   ***REMOVED******REMOVED***
-      <Spacer />
-      <Title as="h5">
-        Über 230 Fahrzeuge setzen die awm ein - ein stattlicher Fuhrpark, der
-        kosequent und Schritt für Schritt auf Erdgas- oder Elektroantrieb
-        umgestellt wird.
-      </Title>
     </div>
   )
 ***REMOVED***

@@ -38,6 +38,7 @@ export default async function BaseView({ type, children ***REMOVED***: ViewProps
               id={survey.id***REMOVED***
               key={survey.id***REMOVED***
               question={survey.question***REMOVED***
+              title={survey.title***REMOVED***
             />
       ***REMOVED***)***REMOVED***
         </Columns>

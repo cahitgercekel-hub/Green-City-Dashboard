@@ -10,11 +10,17 @@ import SurveyAnswer, { SurveyAnswerProps ***REMOVED*** from './Answer'
 import { ID ***REMOVED*** from '@directus/sdk'
 
 export type SurveyTileProps = {
+  title: string
   question: string
   answer: SurveyAnswerProps
   id: string | ID
 ***REMOVED***
-export default function SurveyTile({ question, answer, id ***REMOVED***: SurveyTileProps) {
+export default function SurveyTile({
+  question,
+  answer,
+  id,
+  title,
+***REMOVED***: SurveyTileProps) {
   const [showAnswer, setShowAnswer] = useState(false)
 
   const transitions = useTransition(showAnswer, {
@@ -41,8 +47,7 @@ export default function SurveyTile({ question, answer, id ***REMOVED***: SurveyT
     >
       <div className="text-white">
         <Title as="h5" font={'normal'***REMOVED*** variant={'inverse'***REMOVED***>
-          <span className="font-semibold">Befragungsergebnisse:</span>{' '***REMOVED***
-          Bürger*innenumfrage
+          <span className="font-semibold">Befragungsergebnisse:</span> {title***REMOVED***
         </Title>
         <Spacer />
         <div className="relative h-fit">
