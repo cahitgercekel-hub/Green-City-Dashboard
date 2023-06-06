@@ -81,16 +81,28 @@ const colors = {
 ***REMOVED***
 
 const nameColumnMapping = {
-  KFZ: 'Modal Split V.leistung - Kfz' | 'Verkehrsmittelwahl Kfz',
-  ÖPNV: 'Modal Split V.leistung - ÖV' | 'Verkehrsmittelwahl ÖV',
-  Fahrrad: 'Modal Split V.leistung - Fahrrad' | 'Verkehrsmittelwahl Fahrrad',
-  Fuß: 'Modal Split V.leistung - Fuß' | 'Verkehrsmittelwahl Fuß',
+  KFZ: {
+    verkehrsleistung: 'Modal Split V.leistung - Kfz',
+    wege: 'Verkehrsmittelwahl Kfz',
+***REMOVED***,
+  ÖPNV: {
+    verkehrsleistung: 'Modal Split V.leistung - ÖV',
+    wege: 'Verkehrsmittelwahl ÖV',
+***REMOVED***,
+  Fahrrad: {
+    verkehrsleistung: 'Modal Split V.leistung - Fahrrad',
+    wege: 'Verkehrsmittelwahl Fahrrad',
+***REMOVED***,
+  Fuß: {
+    verkehrsleistung: 'Modal Split V.leistung - Fuß',
+    wege: 'Verkehrsmittelwahl Fuß',
+***REMOVED***,
 ***REMOVED***
 
 const data: IModalSplitData[] = ModalSplitData
 
 export default function ModalSplitChart() {
-  const [yearIndex, setYearIndex] = useState<number>(0)
+  const [yearIndex, setYearIndex] = useState<number>(1)
   const [mode, setMode] = useState<'verkehrsmittelwahl' | 'verkehrsleistung'>(
     'verkehrsleistung',
   )
@@ -146,10 +158,15 @@ export default function ModalSplitChart() {
         <div className="absolute -top-4 left-0 z-10 w-full md:-top-6 md:w-auto">
           <Toggle onChange={val => setMode(val as typeof mode)***REMOVED*** />
         </div>
-        <div className="absolute left-[45%] top-[50%] z-10  font-bold text-black ">
-    ***REMOVED***mode === 'verkehrsleistung'
-            ? yearData.Absolut + ' km'
-            : yearData['Wege/Tag']***REMOVED***
+        <div className="absolute left-[40%] top-[50%] z-10 text-lg font-bold text-[#005b79] ">
+          <div className="flex">
+            <AnimatedNumber>
+        ***REMOVED***mode === 'verkehrsleistung'
+                ? yearData.Absolut
+                : yearData['Wege/Tag']***REMOVED***
+            </AnimatedNumber>
+            <p className="ml-1"> {mode === 'verkehrsleistung' ? 'km' : ''***REMOVED***</p>
+          </div>
         </div>
         <div className="absolute left-0 top-0 flex h-full w-full">
           <MuensterBackground className="h-full w-full flex-1" />
@@ -241,7 +258,7 @@ export default function ModalSplitChart() {
                   ***REMOVED******REMOVED***
                   >
                     <AnimatedNumber decimals={1***REMOVED***>
-                ***REMOVED***yearData[nameColumnMapping[key]]***REMOVED***
+                ***REMOVED***yearData[nameColumnMapping[key][mode]]***REMOVED***
                     </AnimatedNumber>
                     %
                   </Title>
