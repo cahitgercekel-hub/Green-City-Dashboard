@@ -1,6 +1,5 @@
 import { Spacer ***REMOVED*** from '@/components/Elements/Spacer'
 import Title from '@/components/Elements/Title'
-import Link from 'next/link'
 import Image from 'next/image'
 
 import { BaseTile ***REMOVED*** from '../Base/BaseTile'
@@ -39,11 +38,6 @@ export default function SuccessStoryTile({
   ***REMOVED***text***REMOVED***
       </Title>
       <Spacer />
-      <Link href={link***REMOVED***>
-        <Title as="h6" className="underline" variant={'primary'***REMOVED***>
-          Hier können Sie aktiv werden
-        </Title>
-      </Link>
     </>
   )
 
