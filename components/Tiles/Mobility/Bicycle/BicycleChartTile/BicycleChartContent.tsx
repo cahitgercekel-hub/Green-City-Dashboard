@@ -40,6 +40,7 @@ export default function BicycleChartContent() {
 ***REMOVED***lastDays.length > 0 && (
         <Slider
           defaultValue={[lastDays.length - 1]***REMOVED***
+          firstValueMobile={lastDays.length - 1***REMOVED***
           labels={lastDays.map(d => format(d, 'dd.MM.'))***REMOVED***
           max={lastDays.length - 1***REMOVED***
           min={0***REMOVED***

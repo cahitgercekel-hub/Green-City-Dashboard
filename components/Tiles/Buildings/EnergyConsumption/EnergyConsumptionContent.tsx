@@ -45,6 +45,7 @@ export default function EnergyConsumptionContent() {
       </div>
       <Slider
         defaultValue={[yearIndex]***REMOVED***
+        firstValueMobile={years.length - 1***REMOVED***
         labels={years.map(e => e.toString())***REMOVED***
         max={years.length - 1***REMOVED***
         min={0***REMOVED***

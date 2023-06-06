@@ -130,6 +130,7 @@ export default function GarbageChart() {
       ***REMOVED***width < 1800 && (
               <MobileSlider
                 defaultValue={[years.length - 1]***REMOVED***
+                firstValueMobile={years.length - 1***REMOVED***
                 labels={years***REMOVED***
                 max={years.length - 1***REMOVED***
                 min={0***REMOVED***
@@ -142,6 +143,7 @@ export default function GarbageChart() {
       ***REMOVED***width >= 1800 && (
               <Slider
                 defaultValue={[years.length - 1]***REMOVED***
+                firstValueMobile={years.length - 1***REMOVED***
                 labels={years***REMOVED***
                 max={years.length - 1***REMOVED***
                 min={0***REMOVED***

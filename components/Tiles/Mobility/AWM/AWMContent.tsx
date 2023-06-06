@@ -74,6 +74,7 @@ export default function AWMContent() {
 ***REMOVED***width < 1800 && (
         <MobileSlider
           defaultValue={[yearIndex]***REMOVED***
+          firstValueMobile={data.length - 1***REMOVED***
           labels={data.map(e => e.ZEIT.toString())***REMOVED***
           max={data.length - 1***REMOVED***
           min={0***REMOVED***
@@ -84,6 +85,7 @@ export default function AWMContent() {
 ***REMOVED***width >= 1800 && (
         <Slider
           defaultValue={[yearIndex]***REMOVED***
+          firstValueMobile={data.length - 1***REMOVED***
           labels={data.map(e => e.ZEIT.toString())***REMOVED***
           max={data.length - 1***REMOVED***
           min={0***REMOVED***

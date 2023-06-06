@@ -481,6 +481,7 @@ export default function TrafficloadContent() {
       </div>
       <Slider
         defaultValue={[monthIndex]***REMOVED***
+        firstValueMobile={4***REMOVED*** // MONAT MAI NUR FÜR DEMO
         labels={[
           'JAN',
           'FEB',
