@@ -21,13 +21,12 @@ export default function PhotovoltTile() {
 
   return (
     <EnergyTile
-      dataRetrieval="05.06.2023"
+      dataRetrieval="06.06.2023"
       dataSource={'Marktstammdatenregister'***REMOVED***
       embedId="energy-PV"
-      live
       title={
         <>
-          <AnimatedNumber>{data.Bruttoleistung / 10000000000***REMOVED***</AnimatedNumber>{' '***REMOVED***
+          <AnimatedNumber>{data.Bruttoleistung / 1000***REMOVED***</AnimatedNumber>{' '***REMOVED***
           MW
         </>
     ***REMOVED***
@@ -49,7 +48,7 @@ export default function PhotovoltTile() {
                   Bereits installiert
                 </Title>
                 <Title as="h4" variant={'energy'***REMOVED***>
-            ***REMOVED***(data.Bruttoleistung / 2500000000000).toFixed(0)***REMOVED***%
+            ***REMOVED***(data.Bruttoleistung / 2500).toFixed(0)***REMOVED***%
                 </Title>
               </div>
               <div className="flex flex-col items-end">
@@ -63,7 +62,7 @@ export default function PhotovoltTile() {
             </div>
             <Spacer size={'sm'***REMOVED*** />
             <ProgressBar
-              progress={data.Bruttoleistung / 2500000000000***REMOVED***
+              progress={data.Bruttoleistung / 2500***REMOVED***
               variant="energy"
             />
       ***REMOVED***/*
