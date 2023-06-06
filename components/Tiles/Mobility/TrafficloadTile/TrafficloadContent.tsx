@@ -15,6 +15,7 @@ import { Pendlerkarte ***REMOVED*** from '@/components/Icons'
 function Toggle({ onChange ***REMOVED***: { onChange: (_val: string) => void ***REMOVED***) {
   return (
     <ToggleGroup
+      defaultValue="current"
       items={[
   ***REMOVED***
           element: (
@@ -109,7 +110,7 @@ const getLabel = (value: number, name: string, width: number) => {
 ***REMOVED***
 
 export default function TrafficloadContent() {
-  const [monthIndex, setMonthIndex] = useState(1)
+  const [monthIndex, setMonthIndex] = useState(4)
   const [mode, setMode] = useState<'2013' | '2019' | 'current'>('current')
   const { width ***REMOVED*** = useWindowSize()
 
