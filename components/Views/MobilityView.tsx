@@ -21,6 +21,8 @@ export default function MobilityView() {
         <BusTile />
   ***REMOVED***/* @ts-expect-error Server Component */***REMOVED***
         <AWMTile />
+      </Columns>
+      <Columns>
         <MasterplanTile />
         <PassengerTile />
       </Columns>

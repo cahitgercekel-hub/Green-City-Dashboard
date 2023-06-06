@@ -92,7 +92,7 @@ export default async function IconTile({
         ***REMOVED***subtitle && (
                 <Title
                   as={'subtitle'***REMOVED***
-                  className="2xl:max-w-[60%]"
+                  className="2xl:max-w-[85%]"
                   color={'dark'***REMOVED***
                 >
             ***REMOVED***subtitle***REMOVED***
