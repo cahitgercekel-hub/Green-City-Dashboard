@@ -20,7 +20,7 @@ type AwmDatatType = {
 export default function AWMContent() {
   // const { electroCount, combustionCount ***REMOVED*** = useBusData()
   const { width ***REMOVED*** = useWindowSize()
-  const [yearIndex, setYearIndex] = useState(0)
+  const [yearIndex, setYearIndex] = useState(2)
 
   const [combustionCount, setCombustionCount] = useState(0)
   const [electroCount, setElectroCount] = useState(0)
@@ -73,7 +73,7 @@ export default function AWMContent() {
       </div>
 ***REMOVED***width < 1800 && (
         <MobileSlider
-          defaultValue={[data.length - 1]***REMOVED***
+          defaultValue={[yearIndex]***REMOVED***
           labels={data.map(e => e.ZEIT.toString())***REMOVED***
           max={data.length - 1***REMOVED***
           min={0***REMOVED***
@@ -83,7 +83,7 @@ export default function AWMContent() {
   ***REMOVED******REMOVED***
 ***REMOVED***width >= 1800 && (
         <Slider
-          defaultValue={[data.length - 1]***REMOVED***
+          defaultValue={[yearIndex]***REMOVED***
           labels={data.map(e => e.ZEIT.toString())***REMOVED***
           max={data.length - 1***REMOVED***
           min={0***REMOVED***

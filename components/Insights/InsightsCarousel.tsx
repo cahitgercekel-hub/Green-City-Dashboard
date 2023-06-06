@@ -32,6 +32,7 @@ export default function InsightsCarousel({
 
   return (
     <Carousel
+      arrows={device != 'desktop'***REMOVED***
       options={{
         gap: '1.5rem',
         padding: padding[device],
