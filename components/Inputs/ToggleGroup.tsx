@@ -131,6 +131,7 @@ const selectedStyle = cva('px-4 transition-all duration-300 md:py-2 md:px-8', {
 ***REMOVED***)
 
 type ToggleGroupProps = VariantProps<typeof toggleGroupStyle> & {
+  defaultValue?: string
   items: {
     element: string | React.ReactElement
     value: string
@@ -139,11 +140,12 @@ type ToggleGroupProps = VariantProps<typeof toggleGroupStyle> & {
 ***REMOVED***
 
 export default function ToggleGroup({
+  defaultValue,
   items,
   variant,
   onChange,
 ***REMOVED***: ToggleGroupProps) {
-  const [value, setValue] = useState(items[0].value)
+  const [value, setValue] = useState(defaultValue || items[0].value)
 
   return (
     <ToggleGroupPrimitive.Root
