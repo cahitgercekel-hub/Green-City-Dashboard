@@ -110,6 +110,7 @@ export default function BusContent() {
       </div>
 ***REMOVED***width < 1800 && (
         <MobileSlider
+          firstValueMobile={3***REMOVED*** // ONLY FOR DEMO
           labels={reducedData.map(e => e.ZEIT.toString())***REMOVED***
           max={reducedData.length - 1***REMOVED***
           min={0***REMOVED***
@@ -120,6 +121,7 @@ export default function BusContent() {
   ***REMOVED******REMOVED***
 ***REMOVED***width >= 1800 && (
         <Slider
+          firstValueMobile={3***REMOVED*** //ONLY FOR DEMO
           labels={reducedData.map(e => e.ZEIT.toString())***REMOVED***
           max={reducedData.length - 1***REMOVED***
           min={0***REMOVED***

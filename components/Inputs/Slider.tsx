@@ -27,10 +27,16 @@ const sliderStyle = cva(
 export type SliderProps = SliderPrimitive.SliderProps &
   VariantProps<typeof sliderStyle> & {
     labels?: string[]
+    firstValueMobile?: number
 ***REMOVED***
 
-export default function Slider({ labels, variant, ...props ***REMOVED***: SliderProps) {
-  const [value, setValue] = useState<number>(0)
+export default function Slider({
+  firstValueMobile,
+  labels,
+  variant,
+  ...props
+***REMOVED***: SliderProps) {
+  const [value, setValue] = useState<number>(firstValueMobile || 0)
 
   return (
     <div>
@@ -55,15 +61,24 @@ export default function Slider({ labels, variant, ...props ***REMOVED***: Slider
           <SliderPrimitive.Thumb className="block aspect-square h-6 touch-pan-x rounded-full bg-primary shadow shadow-primary md:h-9" />
         </SliderPrimitive.Root>
       </div>
-***REMOVED***labels && (
-        <div className="mt-3 hidden w-full justify-between md:flex">
-    ***REMOVED***labels.map((l, i) => (
-            <Title as={'h5'***REMOVED*** key={i***REMOVED*** variant={'primary'***REMOVED***>
-        ***REMOVED***l***REMOVED***
-            </Title>
-      ***REMOVED***)***REMOVED***
-        </div>
-  ***REMOVED******REMOVED***
+***REMOVED***labels &&
+        (labels.length != 12 ? (
+          <div className="mt-3 hidden w-full justify-between md:flex">
+      ***REMOVED***labels.map((l, i) => (
+              <Title as={'h5'***REMOVED*** key={i***REMOVED*** variant={'primary'***REMOVED***>
+          ***REMOVED***l***REMOVED***
+              </Title>
+        ***REMOVED***)***REMOVED***
+          </div>
+    ***REMOVED*** : (
+          <div className="mt-3 hidden w-full justify-between md:flex">
+      ***REMOVED***labels.map((l, i) => (
+              <Title as={'h8'***REMOVED*** key={i***REMOVED*** variant={'primary'***REMOVED***>
+          ***REMOVED***l***REMOVED***
+              </Title>
+        ***REMOVED***)***REMOVED***
+          </div>
+    ***REMOVED***)***REMOVED***
     </div>
   )
 ***REMOVED***
