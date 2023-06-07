@@ -16,7 +16,7 @@ export default function PassengerTile() {
     <MobilityTile
       dataRetrieval={format(new Date('2023-05-22T00:00:00.000Z'), 'dd.MM.yyyy')***REMOVED***
       dataSource={'Stadtwerke Münster'***REMOVED***
-      embedId="mobility-masterplan"
+      embedId="mobility-passengers"
       subtitle={'Entwicklung der Fahrgastzahlen in den Bussen der Stadtwerke'***REMOVED***
       title={'ÖPNV'***REMOVED***
     >
