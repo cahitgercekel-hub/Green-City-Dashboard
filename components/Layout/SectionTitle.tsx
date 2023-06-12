@@ -1,6 +1,7 @@
 import { cva, cx, VariantProps ***REMOVED*** from 'class-variance-authority'
 import Title from '../Elements/Title'
 import { BicycleIcon, BuildingIcon, EnergyIcon, MuensterIcon ***REMOVED*** from '../Icons'
+import { SVGProps ***REMOVED*** from 'react'
 
 const sectionHeaderStyle = cva('', {
   variants: {
@@ -9,6 +10,8 @@ const sectionHeaderStyle = cva('', {
       mobility: 'text-mobility border-mobility',
       building: 'text-buildings border-buildings',
       energy: 'text-energy border-energy',
+      impressum: 'text-white',
+      datenschutz: 'text-white',
   ***REMOVED***,
 ***REMOVED***,
 ***REMOVED***)
@@ -20,7 +23,8 @@ export default function SectionTitle({
   large?: boolean
 ***REMOVED***) {
   let title = 'Münster'
-  let Icon = MuensterIcon
+  let Icon: ((_: SVGProps<SVGSVGElement>) => JSX.Element) | undefined =
+    MuensterIcon
 
   if (variant === 'climate') {
     title = 'Klima in Münster'
@@ -37,18 +41,35 @@ export default function SectionTitle({
     title = 'Energie'
     Icon = EnergyIcon
 ***REMOVED***
+  if (variant === 'impressum') {
+    title = 'Impressum'
+    Icon = undefined
+***REMOVED***
+  if (variant === 'datenschutz') {
+    title = 'Datenschutz'
+    Icon = undefined
+***REMOVED***
 
   return (
     <div className="flex items-center space-x-4">
-      <div
-        className={cx(
-          'h-14 w-20 rounded-full border-2 p-2',
-          sectionHeaderStyle({ variant ***REMOVED***),
-    ***REMOVED******REMOVED***
+***REMOVED***Icon && (
+        <div
+          className={cx(
+            'h-14 w-20 rounded-full border-2 p-2',
+            sectionHeaderStyle({ variant ***REMOVED***),
+      ***REMOVED******REMOVED***
+        >
+          <Icon className="mx-auto h-full" />
+        </div>
+  ***REMOVED******REMOVED***
+      <Title
+        as={large ? 'h2' : 'h4'***REMOVED***
+        variant={
+          ['impressum', 'datenschutz'].includes(variant!)
+            ? 'inverse'
+            : 'primary'
+      ***REMOVED***
       >
-        <Icon className="mx-auto h-full" />
-      </div>
-      <Title as={large ? 'h2' : 'h4'***REMOVED*** variant={'primary'***REMOVED***>
   ***REMOVED***title***REMOVED***
       </Title>
     </div>
