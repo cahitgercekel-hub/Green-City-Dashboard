@@ -67,7 +67,6 @@ const getTileComponent = async (tile: BaseTile) => {
     type = (await getTileType(tile.item as string)) as TileType
 ***REMOVED***
 
-  // @ts-expect-error Server Component
   return <TileFactory key={tile.item***REMOVED*** type={type***REMOVED*** {...props***REMOVED*** />
 ***REMOVED***
 

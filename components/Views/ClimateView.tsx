@@ -9,19 +9,18 @@ import BaseView from './BaseView'
 
 export default function ClimateView() {
   return (
-    // @ts-expect-error Server Component
     <BaseView type="climate">
       <Columns>
         <WeatherTile />
         <ClimateDevelopmentTile />
       </Columns>
-***REMOVED***/* @ts-expect-error Server Component */***REMOVED***
+
       <CO2EmissionsTile />
-***REMOVED***/* @ts-expect-error Server Component */***REMOVED***
+
       <ClimateIndicesTile />
-***REMOVED***/* @ts-expect-error Server Component */***REMOVED***
+
       <GarbageTile />
-***REMOVED***/* @ts-expect-error Server Component */***REMOVED***
+
       <DataCountTile />
     </BaseView>
   )
