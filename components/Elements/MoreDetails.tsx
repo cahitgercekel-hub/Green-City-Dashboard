@@ -33,7 +33,7 @@ export default function MoreDetails({
   const Details = (
     <div className={cx(style({ variant ***REMOVED***), className)***REMOVED*** onClick={onClick***REMOVED***>
       <InformationCircleIcon className="h-6" />
-      <Title as="h6" className="underline">
+      <Title as="h6" className="whitespace-nowrap underline">
   ***REMOVED***lessDetails ? 'Weniger Details' : 'Mehr Details'***REMOVED***
       </Title>
     </div>
