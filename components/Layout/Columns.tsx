@@ -3,5 +3,9 @@ export type ColumnsProps = {
 ***REMOVED***
 
 export default function Columns({ children ***REMOVED***: ColumnsProps) {
-  return <div className="gap-3 md:gap-6 lg:columns-2">{children***REMOVED***</div>
+  return (
+    <div className="columns-1 gap-3 md:columns-2 md:gap-6 lg:columns-1 xl:columns-2">
+***REMOVED***children***REMOVED***
+    </div>
+  )
 ***REMOVED***
