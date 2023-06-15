@@ -151,7 +151,11 @@ export default function TrafficloadContent() {
                     color: '#34c17b',
                 ***REMOVED******REMOVED***
                 >
-                  <AnimatedNumber>{val***REMOVED***</AnimatedNumber>
+            ***REMOVED***val === 0 ? (
+                    'Keine Daten'
+              ***REMOVED*** : (
+                    <AnimatedNumber>{val***REMOVED***</AnimatedNumber>
+              ***REMOVED******REMOVED***
                 </Title>
               </div>
         ***REMOVED***

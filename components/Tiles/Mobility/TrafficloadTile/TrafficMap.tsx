@@ -418,9 +418,15 @@ export default function TrafficMap({
           fontWeight={500***REMOVED***
           transform="translate(-12843.75 -12773.281)"
         >
-          <AnimatedNumberSVG x={0***REMOVED*** y={39***REMOVED***>
-      ***REMOVED***Number(weseler)***REMOVED***
-          </AnimatedNumberSVG>
+    ***REMOVED***weseler === 0 ? (
+            <tspan x={0***REMOVED*** y={39***REMOVED***>
+              Keine Daten
+            </tspan>
+      ***REMOVED*** : (
+            <AnimatedNumberSVG x={0***REMOVED*** y={39***REMOVED***>
+        ***REMOVED***Number(weseler)***REMOVED***
+            </AnimatedNumberSVG>
+      ***REMOVED******REMOVED***
         </text>
         <text
           fill="#005b79"
@@ -440,9 +446,15 @@ export default function TrafficMap({
           fontWeight={500***REMOVED***
           transform="translate(-11986.75 -12773.281)"
         >
-          <AnimatedNumberSVG x={0***REMOVED*** y={39***REMOVED***>
-      ***REMOVED***Number(albersloher)***REMOVED***
-          </AnimatedNumberSVG>
+    ***REMOVED***albersloher === 0 ? (
+            <tspan x={0***REMOVED*** y={39***REMOVED***>
+              Keine Daten
+            </tspan>
+      ***REMOVED*** : (
+            <AnimatedNumberSVG x={0***REMOVED*** y={39***REMOVED***>
+        ***REMOVED***Number(albersloher)***REMOVED***
+            </AnimatedNumberSVG>
+      ***REMOVED******REMOVED***
         </text>
         <text
           data-name="Neutor"
@@ -463,9 +475,15 @@ export default function TrafficMap({
           fontWeight={500***REMOVED***
           transform="translate(-11986.75 -13101.277)"
         >
-          <AnimatedNumberSVG x={0***REMOVED*** y={39***REMOVED***>
-      ***REMOVED***Number(warendorfer)***REMOVED***
-          </AnimatedNumberSVG>
+    ***REMOVED***warendorfer === 0 ? (
+            <tspan x={0***REMOVED*** y={39***REMOVED***>
+              Keine Daten
+            </tspan>
+      ***REMOVED*** : (
+            <AnimatedNumberSVG x={0***REMOVED*** y={39***REMOVED***>
+        ***REMOVED***Number(warendorfer)***REMOVED***
+            </AnimatedNumberSVG>
+      ***REMOVED******REMOVED***
         </text>
         <text
           data-name="Neutor"
@@ -518,9 +536,15 @@ export default function TrafficMap({
           fontWeight={500***REMOVED***
           transform="translate(-12843.75 -13103.795)"
         >
-          <AnimatedNumberSVG x={0***REMOVED*** y={39***REMOVED***>
-      ***REMOVED***Number(steinfurter)***REMOVED***
-          </AnimatedNumberSVG>
+    ***REMOVED***steinfurter === 0 ? (
+            <tspan x={0***REMOVED*** y={39***REMOVED***>
+              Keine Daten
+            </tspan>
+      ***REMOVED*** : (
+            <AnimatedNumberSVG x={0***REMOVED*** y={39***REMOVED***>
+        ***REMOVED***Number(steinfurter)***REMOVED***
+            </AnimatedNumberSVG>
+      ***REMOVED******REMOVED***
         </text>
         <text
           data-name="Neutor"
@@ -542,9 +566,15 @@ export default function TrafficMap({
           fontWeight={500***REMOVED***
           transform="translate(-12843.75 -12939.797)"
         >
-          <AnimatedNumberSVG x={0***REMOVED*** y={39***REMOVED***>
-      ***REMOVED***Number(rishon)***REMOVED***
-          </AnimatedNumberSVG>
+    ***REMOVED***rishon === 0 ? (
+            <tspan x={0***REMOVED*** y={39***REMOVED***>
+              Keine Daten
+            </tspan>
+      ***REMOVED*** : (
+            <AnimatedNumberSVG x={0***REMOVED*** y={39***REMOVED***>
+        ***REMOVED***Number(rishon)***REMOVED***
+            </AnimatedNumberSVG>
+      ***REMOVED******REMOVED***
         </text>
         <text
           data-name="Neutor"
