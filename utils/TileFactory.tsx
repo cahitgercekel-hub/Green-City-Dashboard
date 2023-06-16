@@ -28,6 +28,7 @@ import {
   TileTypePrefix,
 ***REMOVED*** from '@/types/tile'
 import { ID ***REMOVED*** from '@directus/sdk'
+import { getSuccessStoryData ***REMOVED*** from '@/lib/api/getSuccessStoryData'
 
 type TileTypeSuffix =
   | ClimateTypes
@@ -64,6 +65,18 @@ export default async function TileFactory({
       return null
   ***REMOVED***
     return <SurveyTile {...data***REMOVED*** />
+***REMOVED***
+
+  if (type.startsWith('successStory')) {
+    const [_, id] = type.split('successStory-')
+    if (props.successStoryData) {
+      return <SuccessStoryTile {...props.successStoryData***REMOVED*** />
+  ***REMOVED***
+    const data = await getSuccessStoryData(id)
+    if (!data) {
+      return null
+  ***REMOVED***
+    return <SuccessStoryTile {...data***REMOVED*** />
 ***REMOVED***
 
   switch (type) {
@@ -108,13 +121,6 @@ export default async function TileFactory({
       return <TrafficloadTile />
     case 'mobility-awm':
       return <AWMTile />
-
-    // ---- SUCCESS-STORY ----
-    case 'successStory':
-      if (!props.successStoryData) {
-        return null
-    ***REMOVED***
-      return <SuccessStoryTile {...props.successStoryData***REMOVED*** />
 
     default:
       return null
