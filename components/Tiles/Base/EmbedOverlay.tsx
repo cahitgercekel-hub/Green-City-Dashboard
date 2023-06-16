@@ -28,8 +28,8 @@ export default function EmbedOverlay({
 
   return (
     <BaseOverlay onClose={onClose***REMOVED*** {...props***REMOVED***>
-      <div className="flex h-full w-full flex-1 flex-col items-center">
-        <Title variant={'secondary'***REMOVED***>
+      <div className="flex h-full w-full flex-1 flex-col">
+        <Title as="h3" variant={'secondary'***REMOVED***>
           Diese Kachel auf Ihre Website einbauen
         </Title>
         <Spacer size={'sm'***REMOVED*** />{' '***REMOVED***
