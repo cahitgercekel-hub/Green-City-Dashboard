@@ -1,5 +1,7 @@
 import '@/styles/globals.css'
 import { Inter ***REMOVED*** from 'next/font/google'
+import Cookies from './Cookies'
+import Matomo from './Matomo'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' ***REMOVED***)
 
@@ -22,7 +24,11 @@ export default function RootLayout({
         head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
       */***REMOVED***
       <head />
-      <body>{children***REMOVED***</body>
+      <body>
+  ***REMOVED***children***REMOVED***
+        <Cookies />
+      </body>
+      <Matomo />
     </html>
   )
 ***REMOVED***
