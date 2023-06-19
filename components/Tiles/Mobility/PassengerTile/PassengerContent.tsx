@@ -54,12 +54,10 @@ export default function PassengerContent() {
           <Opnvbus className="h-20 text-primary md:h-32" />
         </span>
         <div className="flex flex-grow flex-col justify-between">
-          <Title as={'subtitle'***REMOVED***>
-            <span className="font-bold text-mobility">
-              <AnimatedNumber decimals={2***REMOVED***>{passengerValue***REMOVED***</AnimatedNumber> Mio
-            </span>{' '***REMOVED***
+          <Title as="h3" variant={'mobility'***REMOVED***>
+            <AnimatedNumber decimals={2***REMOVED***>{passengerValue***REMOVED***</AnimatedNumber> Mio
           </Title>
-          <div className="flex justify-end pb-2">
+          <div className="flex justify-end pb-4">
             <span>
               <Passenger className="h-10 text-primary md:h-14" />
             </span>
