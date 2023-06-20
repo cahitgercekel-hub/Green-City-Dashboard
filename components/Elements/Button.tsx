@@ -5,7 +5,7 @@ import { cva, cx ***REMOVED*** from 'class-variance-authority'
 import { Spinner ***REMOVED*** from '@/components/Elements/Spinner'
 
 const button = cva(
-  'flex items-center justify-center rounded-full border-2 font-medium focus:outline-none disabled:cursor-not-allowed disabled:opacity-70',
+  'flex items-center justify-center rounded-full border-2 font-medium focus:outline-none disabled:cursor-not-allowed disabled:opacity-70 group transition-colors',
   {
     variants: {
       variant: {
@@ -20,8 +20,14 @@ const button = cva(
     ***REMOVED***,
       size: {
         sm: 'py-1 px-3 text-sm',
-        md: 'py-2 px-4 text-md',
+        md: 'py-2 px-5 text-md',
         lg: 'py-3 px-5 text-lg',
+    ***REMOVED***,
+      hover: {
+        climate: 'hover:border-climate',
+        energy: 'hover:border-energy',
+        mobility: 'hover:border-mobility',
+        buildings: 'hover:border-buildings',
     ***REMOVED***,
   ***REMOVED***,
     defaultVariants: {
@@ -49,6 +55,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       className = '',
       variant,
       size,
+      hover,
       isLoading = false,
       startIcon,
       endIcon,
@@ -58,7 +65,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ) => {
     return (
       <button
-        className={cx(className, button({ variant, size ***REMOVED***))***REMOVED***
+        className={cx(className, button({ variant, size, hover ***REMOVED***))***REMOVED***
         ref={ref***REMOVED***
         type={type***REMOVED***
   ***REMOVED***...props***REMOVED***
