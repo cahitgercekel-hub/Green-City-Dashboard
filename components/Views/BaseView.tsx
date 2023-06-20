@@ -10,6 +10,9 @@ import SuccessStoryTile from '../Tiles/SuccessStory'
 interface ViewProps {
   type: 'climate' | 'mobility' | 'energy' | 'building'
   children: React.ReactNode | React.ReactNode[]
+  showSuccessStories?: boolean
+  showSurveys?: boolean
+  showGoToButton?: boolean
 ***REMOVED***
 
 // TODO: read from directus
@@ -20,7 +23,13 @@ const categoryID = {
   building: '84ff5cfe-184a-41dd-885d-ff9c2c8c9dcf',
 ***REMOVED***
 
-export default async function BaseView({ type, children ***REMOVED***: ViewProps) {
+export default async function BaseView({
+  type,
+  children,
+  showSurveys = true,
+  showSuccessStories = true,
+  showGoToButton = false,
+***REMOVED***: ViewProps) {
   const surveys = await getSurveysForCategory(categoryID[type])
   const success = await getSuccessStoriesForCategory(categoryID[type])
 
@@ -28,7 +37,7 @@ export default async function BaseView({ type, children ***REMOVED***: ViewProps
     <>
       <SectionHeader variant={type***REMOVED*** />
 ***REMOVED***children***REMOVED***
-***REMOVED***surveys && (
+***REMOVED***showSurveys && surveys && (
         <Columns>
     ***REMOVED***surveys.map(survey => (
             <SurveyTile
@@ -46,7 +55,7 @@ export default async function BaseView({ type, children ***REMOVED***: ViewProps
       ***REMOVED***)***REMOVED***
         </Columns>
   ***REMOVED******REMOVED***
-***REMOVED***success && (
+***REMOVED***showSuccessStories && success && (
         <>
     ***REMOVED***success.map(success => (
             <SuccessStoryTile
@@ -61,8 +70,12 @@ export default async function BaseView({ type, children ***REMOVED***: ViewProps
       ***REMOVED***)***REMOVED***
         </>
   ***REMOVED******REMOVED***
-      <Spacer size={'sm'***REMOVED*** />
-      <GoToButton type={type***REMOVED*** />
+***REMOVED***showGoToButton && (
+        <>
+          <Spacer size={'sm'***REMOVED*** />
+          <GoToButton type={type***REMOVED*** />
+        </>
+  ***REMOVED******REMOVED***
       <Spacer size={'xl'***REMOVED*** />
     </>
   )
