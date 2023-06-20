@@ -4,7 +4,7 @@ import MoreDetails from '@/components/Elements/MoreDetails'
 import { cva, VariantProps ***REMOVED*** from 'class-variance-authority'
 import { Download, Share, SquaresPlus ***REMOVED*** from '@/components/Icons'
 
-const tileFooterStyle = cva('flex flex-1 gap-2', {
+const tileFooterStyle = cva('flex flex-1 gap-4', {
   variants: {
     variant: {
       primary: 'text-primary fill-primary',
@@ -42,13 +42,16 @@ export default function TileFooter({
     return (
       <div className={tileFooterStyle({ variant ***REMOVED***)***REMOVED***>
         <SquaresPlus
-          className="h-6 cursor-pointer stroke-2"
+          className="h-6 cursor-pointer stroke-2 px-1"
           onClick={onEmbedClick***REMOVED***
         />
-        <Share className="h-6 cursor-pointer stroke-2" onClick={onShareClick***REMOVED*** />
+        <Share
+          className="h-6 cursor-pointer stroke-2 px-1"
+          onClick={onShareClick***REMOVED***
+        />
   ***REMOVED***dataURL && (
           <Link href={dataURL***REMOVED*** target="_blank">
-            <Download className="h-6 stroke-2" />
+            <Download className="h-6 stroke-2 px-1" />
           </Link>
     ***REMOVED******REMOVED***
       </div>
@@ -57,7 +60,7 @@ export default function TileFooter({
 
   return (
     <div className="mt-6">
-      <div className="hidden w-full flex-row items-center justify-between gap-2 md:flex">
+      <div className="hidden w-full flex-row items-center justify-between gap-2 lg:flex">
         <IconButtons />
         <div className="flex flex-[2_2_0%] justify-center">{children***REMOVED***</div>
   ***REMOVED***hasMoreDetails && (
@@ -67,8 +70,8 @@ export default function TileFooter({
     ***REMOVED******REMOVED***
   ***REMOVED***!hasMoreDetails && <div className="flex flex-1 justify-end"></div>***REMOVED***
       </div>
-      <div className="flex flex-col gap-2 md:hidden">
-        <IconButtons />
+      <div className="flex flex-col gap-2 lg:hidden">
+  ***REMOVED***/* <IconButtons /> */***REMOVED***
 
         <div className="flex w-full items-center justify-between">
     ***REMOVED***hasMoreDetails && (

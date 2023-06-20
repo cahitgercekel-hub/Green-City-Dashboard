@@ -1,15 +1,6 @@
-// @ts-ignore
 import { format ***REMOVED*** from 'date-fns'
 import MobilityTile from '../MobilityTile'
 import PassengerContent from './PassengerContent'
-
-// interface PVDataType {
-//   ZEIT: string
-//   AnzahlAnlagen: number
-//   AnzahlSolarModule: number
-//   Bruttoleistung: number
-//   Nettonennleistung: number
-// ***REMOVED***
 
 export default function PassengerTile() {
   return (

@@ -5,6 +5,8 @@ import Image from 'next/image'
 import { BaseTile ***REMOVED*** from '../Base/BaseTile'
 import { directusImage ***REMOVED*** from '@/lib/directus'
 import { ID ***REMOVED*** from '@directus/sdk'
+import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
 
 export type SuccessStoryTileProps = {
   text: string
@@ -35,9 +37,78 @@ export default function SuccessStoryTile({
         Stimmen für Münster
       </Title>
       <Spacer size="sm" />
-      <Title as="h3" variant={'primary'***REMOVED***>
+      <ReactMarkdown
+        components={{
+          h1: props => (
+            <Title
+              as="h3"
+              className="mb-4 md:mb-6"
+              variant={'primary'***REMOVED***
+        ***REMOVED***...props***REMOVED***
+            />
+      ***REMOVED***,
+          h2: props => (
+            <Title
+              as="h3"
+              className="mb-4 md:mb-6"
+              variant={'primary'***REMOVED***
+        ***REMOVED***...props***REMOVED***
+            />
+      ***REMOVED***,
+          h3: props => (
+            <Title
+              as="h3"
+              className="mb-4 md:mb-6"
+              variant={'primary'***REMOVED***
+        ***REMOVED***...props***REMOVED***
+            />
+      ***REMOVED***,
+          h4: props => (
+            <Title
+              as="h3"
+              className="mb-4 md:mb-6"
+              variant={'primary'***REMOVED***
+        ***REMOVED***...props***REMOVED***
+            />
+      ***REMOVED***,
+          h5: props => (
+            <Title
+              as="h3"
+              className="mb-4 md:mb-6"
+              variant={'primary'***REMOVED***
+        ***REMOVED***...props***REMOVED***
+            />
+      ***REMOVED***,
+          h6: props => (
+            <Title
+              as="h3"
+              className="mb-4 md:mb-6"
+              variant={'primary'***REMOVED***
+        ***REMOVED***...props***REMOVED***
+            />
+      ***REMOVED***,
+          p: props => (
+            <Title
+              as="h3"
+              className="mb-4 md:mb-6"
+              variant={'primary'***REMOVED***
+        ***REMOVED***...props***REMOVED***
+            />
+      ***REMOVED***,
+          a: props => (
+            <Title
+              as="h3"
+              className="mb-4 md:mb-6"
+              variant={'primary'***REMOVED***
+        ***REMOVED***...props***REMOVED***
+            />
+      ***REMOVED***,
+      ***REMOVED******REMOVED***
+        linkTarget={'_blank'***REMOVED***
+        remarkPlugins={[remarkGfm]***REMOVED***
+      >
   ***REMOVED***text***REMOVED***
-      </Title>
+      </ReactMarkdown>
       <Spacer />
     </>
   )

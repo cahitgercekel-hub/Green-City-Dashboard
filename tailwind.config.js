@@ -2,9 +2,19 @@
 module.exports = {
   content: ['./app/**/*.{js,ts,jsx,tsx***REMOVED***', './components/**/*.{js,ts,jsx,tsx***REMOVED***'],
   theme: {
+    screens: {
+      'xs' : '540px',
+      'md' : '768px',
+      'lg' : '1024px',
+      'xl' : '1440px',
+      '2xl': '1920px',
+  ***REMOVED***,
     extend: {
       container: {
         screens: {
+          'lg': '1024px',
+          'xl': '1440px',
+          // 'xl' : '1024px',
           '2xl': '1920px',
       ***REMOVED***,
     ***REMOVED***,
