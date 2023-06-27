@@ -91,3 +91,14 @@ export default directus
 export function directusImage(image: string) {
   return `${process.env.NEXT_PUBLIC_DIRECTUS_URL***REMOVED***/assets/${image***REMOVED***`
 ***REMOVED***
+
+function parseStatus(input: string | undefined): DirectusStatus | undefined {
+  if (input === 'published' || input === 'draft' || input === 'archived') {
+    return input as DirectusStatus
+***REMOVED***
+
+  return undefined
+***REMOVED***
+
+export const ENV_DIRECTUS_ITEM_STATUS: DirectusStatus =
+  parseStatus(process.env.DIRECTUS_ITEM_STATUS) || 'published'

@@ -1,4 +1,7 @@
-import directus, { collectionsName ***REMOVED*** from '@/lib/directus'
+import directus, {
+  collectionsName,
+  ENV_DIRECTUS_ITEM_STATUS,
+***REMOVED*** from '@/lib/directus'
 import withSuspense from '@/utils/withSuspense'
 import Container from '../Layout/Container'
 import InsightsCarousel from './InsightsCarousel'
@@ -7,7 +10,7 @@ const getInsightsData = async () => {
   const { data ***REMOVED*** = await directus.items(collectionsName).readByQuery({
     fields: ['slug', 'title', 'image'],
     filter: {
-      status: 'published',
+      status: ENV_DIRECTUS_ITEM_STATUS,
   ***REMOVED***,
     limit: 3,
 ***REMOVED***)

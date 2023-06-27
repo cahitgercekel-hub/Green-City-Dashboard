@@ -4,5 +4,5 @@ import { revalidatePath ***REMOVED*** from 'next/cache'
 export async function GET(request: NextRequest) {
   const path = request.nextUrl.searchParams.get('path') || '/'
   revalidatePath(path)
-  return NextResponse.json({ revalidated: true, now: Date.now() ***REMOVED***)
+  return NextResponse.json({ revalidated: true, now: Date.now(), path ***REMOVED***)
 ***REMOVED***

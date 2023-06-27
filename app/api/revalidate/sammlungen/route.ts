@@ -1,4 +1,7 @@
-import directus, { collectionsName ***REMOVED*** from '@/lib/directus'
+import directus, {
+  collectionsName,
+  ENV_DIRECTUS_ITEM_STATUS,
+***REMOVED*** from '@/lib/directus'
 import { revalidatePath ***REMOVED*** from 'next/cache'
 ***REMOVED***
 
@@ -6,7 +9,7 @@ export async function GET() {
   const { data ***REMOVED*** = await directus.items(collectionsName).readByQuery({
     fields: ['slug'],
     filter: {
-      status: 'published',
+      status: ENV_DIRECTUS_ITEM_STATUS,
   ***REMOVED***,
 ***REMOVED***)
 

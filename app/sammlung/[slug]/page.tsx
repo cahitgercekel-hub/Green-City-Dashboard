@@ -1,23 +1,25 @@
 import Columns from '@/components/Layout/Columns'
 import directus, {
   collectionsName,
-  successStoriesCollectionName,
+  ENV_DIRECTUS_ITEM_STATUS,
   tileCollectionName,
 ***REMOVED*** from '@/lib/directus'
-import { ID ***REMOVED*** from '@directus/sdk'
 import { notFound ***REMOVED*** from 'next/navigation'
 import getTilesBucket, { BaseTile ***REMOVED*** from '@/utils/fullWidthBucket'
 import TileFactory, { TileType ***REMOVED*** from '@/utils/TileFactory'
 import { SurveyTileProps ***REMOVED*** from '@/components/Tiles/Survey'
 import { SuccessStoryTileProps ***REMOVED*** from '@/components/Tiles/SuccessStory'
 import { getSurveyData ***REMOVED*** from '@/lib/api/getSurveyData'
+import { getSuccessStoryData ***REMOVED*** from '@/lib/api/getSuccessStoryData'
+
+export const revalidate = 10
 
 // ISR
 export async function generateStaticParams() {
   const { data ***REMOVED*** = await directus.items(collectionsName).readByQuery({
     fields: ['slug'],
     filter: {
-      status: 'published',
+      status: ENV_DIRECTUS_ITEM_STATUS,
   ***REMOVED***,
 ***REMOVED***)
 
@@ -34,6 +36,7 @@ const getCollection = async (collectionSlug: string) => {
   const { data ***REMOVED*** = await directus.items(collectionsName).readByQuery({
     filter: {
       slug: collectionSlug,
+      status: ENV_DIRECTUS_ITEM_STATUS,
   ***REMOVED***,
     fields: ['tiles.*'],
     deep: {
@@ -76,22 +79,6 @@ const getTileComponents = async (tiles: BaseTile[]) => {
       return await getTileComponent(t)
   ***REMOVED***),
   )
-***REMOVED***
-
-const getSuccessStoryData = async (
-  surveyID: ID,
-): Promise<SuccessStoryTileProps> => {
-  const data = await directus
-    .items(successStoriesCollectionName)
-    .readOne(surveyID)
-  return {
-    link: data?.link ?? '',
-    text: data?.text ?? '',
-    image: data?.image,
-    imagePosition: data?.image_position,
-    moreInfo: data?.details,
-    id: data?.id ?? '',
-***REMOVED***
 ***REMOVED***
 
 export default async function Collection({
