@@ -3,7 +3,7 @@
 import { ReactECharts ***REMOVED*** from '@/components/Charts/ReactECharts'
 import climateIndicesData from '@/assets/data/climate_indices.json'
 import { LineSeriesOption ***REMOVED*** from 'echarts'
-import { differenceInYears, getYear, parse ***REMOVED*** from 'date-fns'
+import { getYear, parse ***REMOVED*** from 'date-fns'
 import Switch from '@/components/Inputs/Switch'
 import { Eis, Frost, Heiss, Sommer, Tropen ***REMOVED*** from '@/components/Icons'
 import Title from '@/components/Elements/Title'
@@ -32,17 +32,13 @@ type ClimateIndex = {
   tropennaechte: number
 ***REMOVED***
 
-const TIME_DELTA_IN_YEARS = 20
+const STARTING_YEAR = 1990
 
 const data = climateIndicesData as ClimateIndex[]
 const getSeries = (property: keyof ClimateIndex) => {
   const arr = data
     .filter(
-      e =>
-        differenceInYears(
-          new Date(),
-          parse(e.timestamp, 'yyyy-MM-dd HH:mm:ssXXX', new Date()),
-    ***REMOVED*** <= TIME_DELTA_IN_YEARS,
+      e =>  new Date(e.timestamp).getFullYear() >= STARTING_YEAR
 ***REMOVED***
     .map(e => [
       parse(e.timestamp, 'yyyy-MM-dd HH:mm:ssXXX', new Date()),
@@ -185,7 +181,31 @@ export default function ClimateIndicesChart() {
       itemStyle: {
         opacity: 0,
     ***REMOVED***,
+      data: indices[e as IndicesTypes].seriesOption.data?.filter(
+        // @ts-ignore
+        ([date, _val]) => getYear(new Date(date)) !== new Date().getFullYear()
+  ***REMOVED***,
   ***REMOVED***))
+
+  const curYearSeries: LineSeriesOption[] = Object.keys(indices)
+    .filter(e => seriesVisible[e as IndicesTypes])
+    .map(e => ({
+      ...indices[e as IndicesTypes].seriesOption,
+      name: `${indices[e as IndicesTypes].seriesOption.name***REMOVED*** (${new Date().getFullYear()***REMOVED***)`,
+      type: 'line',
+      itemStyle: {
+        opacity: 0,
+    ***REMOVED***,
+      lineStyle: {
+        ...indices[e as IndicesTypes].seriesOption.lineStyle,
+        type: 'dashed',
+    ***REMOVED***,
+      data: indices[e as IndicesTypes].seriesOption.data?.filter(
+        // @ts-ignore
+        ([date, _val]) => getYear(new Date(date)) >= new Date().getFullYear() - 1
+  ***REMOVED***,
+  ***REMOVED***))
+
 
   return (
     <div className="flex h-full w-full flex-col items-center p-5 2xl:flex-row">
@@ -203,7 +223,10 @@ export default function ClimateIndicesChart() {
                 left: 40,
                 right: 40,
             ***REMOVED***,
-              series,
+              series: [
+                ...series,
+                ...curYearSeries,
+              ],
               xAxis: {
                 type: 'time',
                 axisLabel: {
