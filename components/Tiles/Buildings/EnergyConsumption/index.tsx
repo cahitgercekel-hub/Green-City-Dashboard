@@ -12,7 +12,7 @@ export default async function EnergyComsumptionTile() {
 
   return (
     <BuildingTile
-      dataRetrieval={format(new Date(), 'dd.MM.yyyy')***REMOVED***
+      dataRetrieval={format(new Date(), '01.MM.yyyy')***REMOVED***
       dataSource="Stadt Münster &ndash; Amt für Immobilienmanagement"
       embedId={'building-energyConsumption'***REMOVED***
       live
