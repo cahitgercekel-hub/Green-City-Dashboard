@@ -1,5 +1,4 @@
 import { Button ***REMOVED*** from '@/components/Elements/Button'
-import Title from '@/components/Elements/Title'
 import { cx ***REMOVED*** from 'class-variance-authority'
 import Link from 'next/link'
 import { SVGProps ***REMOVED*** from 'react'
@@ -24,10 +23,11 @@ export default function LinkComponent({
     <Link href={link***REMOVED***>
       <Button
         hover={hover***REMOVED***
+        size={'link'***REMOVED***
         startIcon={
           <Icon
             className={cx(
-              'h-[34px] transition-colors',
+              'h-[26px] transition-colors md:h-[34px]',
               variant === 'primary' ? 'text-primary' : 'text-white',
               hover === 'climate' && 'group-hover:text-climate',
               hover === 'energy' && 'group-hover:text-energy',
@@ -38,9 +38,7 @@ export default function LinkComponent({
       ***REMOVED***
         variant={variant***REMOVED***
       >
-        <Title as="h5" variant={variant***REMOVED***>
-    ***REMOVED***title***REMOVED***
-        </Title>
+  ***REMOVED***title***REMOVED***
       </Button>
     </Link>
   )

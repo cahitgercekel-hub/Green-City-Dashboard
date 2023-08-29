@@ -11,28 +11,28 @@ export function GoToButton({ type ***REMOVED***: ButtonProps): JSX.Element {
   if (type === 'climate') {
     return (
       <Link href="/klima">
-        <Button variant={'goToClimate'***REMOVED***>zu den Klimadaten</Button>
+        <Button size={'link'***REMOVED*** variant={'goToClimate'***REMOVED***>zu den Klimadaten</Button>
       </Link>
 ***REMOVED***
 ***REMOVED***
   if (type === 'mobility') {
     return (
       <Link href={'/mobilitaet'***REMOVED***>
-        <Button variant={'goToMobility'***REMOVED***>zu den Mobilitätsdaten</Button>
+        <Button size={'link'***REMOVED*** variant={'goToMobility'***REMOVED***>zu den Mobilitätsdaten</Button>
       </Link>
 ***REMOVED***
 ***REMOVED***
   if (type === 'energy') {
     return (
       <Link href={'/energie'***REMOVED***>
-        <Button variant={'goToEnergy'***REMOVED***>zu den Energiedaten</Button>
+        <Button size={'link'***REMOVED*** variant={'goToEnergy'***REMOVED***>zu den Energiedaten</Button>
       </Link>
 ***REMOVED***
 ***REMOVED***
   if (type === 'building') {
     return (
       <Link href={'/gebaeude'***REMOVED***>
-        <Button variant={'goToBuildings'***REMOVED***>zu den Gebäudedaten</Button>
+        <Button size={'link'***REMOVED*** variant={'goToBuildings'***REMOVED***>zu den Gebäudedaten</Button>
       </Link>
 ***REMOVED***
 ***REMOVED***
