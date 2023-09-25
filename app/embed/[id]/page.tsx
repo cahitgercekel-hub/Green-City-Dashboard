@@ -24,9 +24,9 @@ export default async function Embed({ params ***REMOVED***: { params: { id: Tile
           src={MSLogo***REMOVED***
         />
         <Title as="h7" className="leading-normal" variant={'primary'***REMOVED***>
-          mehr Infos zu den Klimadaten aus Münster
+          Mehr Daten zum Klimaschutz und zur Klimaanpassung
           <br />
-          findet ihr auf{' '***REMOVED***
+          in Münster gibt es auf{' '***REMOVED***
           <Link
             className="underline"
             href="https://klimadashboard.ms/"
