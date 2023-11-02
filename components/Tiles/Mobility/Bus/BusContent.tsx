@@ -3,13 +3,13 @@
 import AnimatedNumber from '@/components/Elements/Animated/AnimatedNumber'
 import { Spacer ***REMOVED*** from '@/components/Elements/Spacer'
 import Title from '@/components/Elements/Title'
-import { EBus, EBusBrennstoff ***REMOVED*** from '@/components/Icons'
 // @ts-ignore
 import BusData from '@/assets/data/stadtwerke-bus-fahrzeuge.csv'
 import { useWindowSize ***REMOVED*** from 'react-use'
 import { useEffect, useState ***REMOVED*** from 'react'
 import MobileSlider from '@/components/Inputs/MobileSlider'
 import Slider from '@/components/Inputs/Slider'
+import { MsKlimadashboardIconsMBusAbgas, MsKlimadashboardIconsMBusElektro ***REMOVED*** from '@/components/Icons/Mobilität'
 
 type BusDataType = {
   ZEIT: string
@@ -93,7 +93,7 @@ export default function BusContent() {
           </AnimatedNumber>
         </div>
       </div>
-      <div className="flex aspect-[5/2] w-full items-end gap-8 rounded bg-white p-4">
+      <div className="flex aspect-[5/2] w-full items-end rounded bg-white p-4">
         <div
           className="flex-none transition-all"
           style={{
@@ -102,10 +102,10 @@ export default function BusContent() {
           ***REMOVED***%`,
         ***REMOVED******REMOVED***
         >
-          <EBusBrennstoff className="w-full" />
+          <MsKlimadashboardIconsMBusAbgas className="w-full" />
         </div>
         <div className="flex-1">
-          <EBus className="w-full" />
+          <MsKlimadashboardIconsMBusElektro className="w-full" />
         </div>
       </div>
 ***REMOVED***width < 1800 && (

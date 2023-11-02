@@ -4,39 +4,34 @@ import MSLogo from '@/assets/logos/stadtlogo-muenster.png'
 import Link from 'next/link'
 import Collapsible from '../../Elements/Collapsible'
 import Container from '../Container'
-import {
-  BicycleIcon,
-  BuildingIcon,
-  EnergyIcon,
-  MuensterIcon,
-***REMOVED*** from '@/components/Icons'
 import { Bars3Icon ***REMOVED*** from '@heroicons/react/24/outline'
 import Title from '@/components/Elements/Title'
 import LinkComponent, { LinkProps ***REMOVED*** from './LinkComponent'
 import { Spacer ***REMOVED*** from '@/components/Elements/Spacer'
+import { MsKlimadashboardIconsButtonAktivEnergieV1, MsKlimadashboardIconsButtonAktivGebaeude, MsKlimadashboardIconsButtonAktivKlima, MsKlimadashboardIconsButtonAktivMobil ***REMOVED*** from '@/components/Icons/Button:Übergeordnet'
 
 const links: LinkProps[] = [
   {
     title: 'Klima in Münster',
-    icon: MuensterIcon,
+    icon: MsKlimadashboardIconsButtonAktivKlima,
     link: '/klima',
     hover: 'climate',
 ***REMOVED***,
   {
     title: 'Energie',
-    icon: EnergyIcon,
+    icon: MsKlimadashboardIconsButtonAktivEnergieV1,
     link: '/energie',
     hover: 'energy',
 ***REMOVED***,
   {
     title: 'Mobilität',
-    icon: BicycleIcon,
+    icon: MsKlimadashboardIconsButtonAktivMobil,
     link: '/mobilitaet',
     hover: 'mobility',
 ***REMOVED***,
   {
     title: 'Gebäude',
-    icon: BuildingIcon,
+    icon: MsKlimadashboardIconsButtonAktivGebaeude,
     link: '/gebaeude',
     hover: 'buildings',
 ***REMOVED***,

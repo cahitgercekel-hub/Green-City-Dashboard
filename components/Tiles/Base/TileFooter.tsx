@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 import MoreDetails from '@/components/Elements/MoreDetails'
 import { cva, VariantProps ***REMOVED*** from 'class-variance-authority'
-import { Download, Share, SquaresPlus ***REMOVED*** from '@/components/Icons'
+import { MsKlimadashboardIconsNaviDownload, MsKlimadashboardIconsNaviKachelImplementieren, MsKlimadashboardIconsNaviTeilen ***REMOVED*** from '@/components/Icons/Button:Übergeordnet/Navi'
 
 const tileFooterStyle = cva('flex flex-1 gap-4', {
   variants: {
@@ -41,17 +41,17 @@ export default function TileFooter({
   function IconButtons() {
     return (
       <div className={tileFooterStyle({ variant ***REMOVED***)***REMOVED***>
-        <SquaresPlus
+        <MsKlimadashboardIconsNaviKachelImplementieren
           className="h-6 cursor-pointer stroke-2 px-1"
           onClick={onEmbedClick***REMOVED***
         />
-        <Share
+        <MsKlimadashboardIconsNaviTeilen
           className="h-6 cursor-pointer stroke-2 px-1"
           onClick={onShareClick***REMOVED***
         />
   ***REMOVED***dataURL && (
-          <Link href={dataURL***REMOVED*** target="_blank">
-            <Download className="h-6 stroke-2 px-1" />
+          <Link className='fill-inherit' href={dataURL***REMOVED*** target="_blank">
+            <MsKlimadashboardIconsNaviDownload className="h-6 stroke-2 px-1" />
           </Link>
     ***REMOVED******REMOVED***
       </div>

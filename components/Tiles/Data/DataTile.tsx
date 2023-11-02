@@ -1,4 +1,4 @@
-import { EnergyIcon ***REMOVED*** from '@/components/Icons'
+import { MsKlimadashboardIconsButtonAktivEnergieV1 ***REMOVED*** from '@/components/Icons/Button:Übergeordnet'
 import IconTile, { IconTileProps ***REMOVED*** from '../Base/IconTile'
 
 export type EnergyTileProps = Omit<IconTileProps, 'variant' | 'icon'>
@@ -10,7 +10,7 @@ export type EnergyTileProps = Omit<IconTileProps, 'variant' | 'icon'>
  */
 export default function DataTile({ children, ...props ***REMOVED***: EnergyTileProps) {
   return (
-    <IconTile {...props***REMOVED*** icon={EnergyIcon***REMOVED*** variant="data">
+    <IconTile {...props***REMOVED*** icon={MsKlimadashboardIconsButtonAktivEnergieV1***REMOVED*** variant="data">
       <>{children***REMOVED***</>
     </IconTile>
   )
