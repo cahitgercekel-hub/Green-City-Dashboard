@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { cva, cx, VariantProps ***REMOVED*** from 'class-variance-authority'
 
 import { ForwardRefExoticComponent, SVGProps ***REMOVED*** from 'react'
-import { MsKlimadashboardIconsNaviDownload, MsKlimadashboardIconsNaviKachelImplementieren, MsKlimadashboardIconsNaviTeilen ***REMOVED*** from '@/components/Icons/Button:Übergeordnet/Navi'
+import { MsKlimadashboardIconsNaviDownload, MsKlimadashboardIconsNaviKachelImplementieren, MsKlimadashboardIconsNaviTeilen ***REMOVED*** from '@/components/Icons/Misc/Navi'
 
 const iconTileTitleStyle = cva('', {
   variants: {

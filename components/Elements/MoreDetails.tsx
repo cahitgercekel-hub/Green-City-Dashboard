@@ -2,7 +2,7 @@ import Link from 'next/link'
 import type { VariantProps ***REMOVED*** from 'class-variance-authority'
 import { cva, cx ***REMOVED*** from 'class-variance-authority'
 import Title from './Title'
-import { MsKlimadashboardIconsNaviInfoI ***REMOVED*** from '../Icons/Button:Übergeordnet/Navi'
+import { MsKlimadashboardIconsNaviInfoI ***REMOVED*** from '../Icons/Misc/Navi'
 
 const style = cva('flex cursor-pointer items-center gap-1 md:gap-3', {
   variants: {

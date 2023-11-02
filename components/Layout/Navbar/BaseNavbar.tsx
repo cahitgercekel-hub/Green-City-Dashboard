@@ -8,7 +8,7 @@ import { Bars3Icon ***REMOVED*** from '@heroicons/react/24/outline'
 import Title from '@/components/Elements/Title'
 import LinkComponent, { LinkProps ***REMOVED*** from './LinkComponent'
 import { Spacer ***REMOVED*** from '@/components/Elements/Spacer'
-import { MsKlimadashboardIconsButtonAktivEnergieV1, MsKlimadashboardIconsButtonAktivGebaeude, MsKlimadashboardIconsButtonAktivKlima, MsKlimadashboardIconsButtonAktivMobil ***REMOVED*** from '@/components/Icons/Button:Übergeordnet'
+import { MsKlimadashboardIconsButtonAktivEnergieV1, MsKlimadashboardIconsButtonAktivGebaeude, MsKlimadashboardIconsButtonAktivKlima, MsKlimadashboardIconsButtonAktivMobil ***REMOVED*** from '@/components/Icons/Misc'
 
 const links: LinkProps[] = [
   {

@@ -1,4 +1,4 @@
-import { MsKlimadashboardIconsMRadlerLinks, MsKlimadashboardIconsMRadlerRechts ***REMOVED*** from '@/components/Icons/Mobilität'
+import { MsKlimadashboardIconsMRadlerLinks, MsKlimadashboardIconsMRadlerRechts ***REMOVED*** from '@/components/Icons/Mobilitaet'
 import * as ProgressPrimitive from '@radix-ui/react-progress'
 
 export default function BicycleProgress({ progress ***REMOVED***: { progress: number ***REMOVED***) {

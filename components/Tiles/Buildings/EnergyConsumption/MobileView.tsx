@@ -7,7 +7,7 @@ import LabelSeperator from './LabelSeperator'
 import waermeData from '@/assets/data/waerme.json'
 import stromData from '@/assets/data/strom.json'
 import Carousel from '@/components/Elements/Carousel'
-import { MsKlimadashboardIconsGBibliothek, MsKlimadashboardIconsGSchule, MsKlimadashboardIconsGSportSentruperHoehe, MsKlimadashboardIconsGStadtweinhaus ***REMOVED*** from '@/components/Icons/Gebäude'
+import { MsKlimadashboardIconsGBibliothek, MsKlimadashboardIconsGSchule, MsKlimadashboardIconsGSportSentruperHoehe, MsKlimadashboardIconsGStadtweinhaus ***REMOVED*** from '@/components/Icons/Gebaeude'
 
 type DataType = {
   Datum: number

@@ -2,7 +2,7 @@
 
 import AnimatedNumber from '@/components/Elements/Animated/AnimatedNumber'
 import Title from '@/components/Elements/Title'
-import { MsKlimadashboardIconsMoepnv, MsKlimadashboardIconsMoepnvGast ***REMOVED*** from '@/components/Icons/Mobilität'
+import { MsKlimadashboardIconsMoepnv, MsKlimadashboardIconsMoepnvGast ***REMOVED*** from '@/components/Icons/Mobilitaet'
 
 import MobileSlider from '@/components/Inputs/MobileSlider'
 import Slider from '@/components/Inputs/Slider'

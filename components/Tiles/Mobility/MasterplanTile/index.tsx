@@ -3,7 +3,7 @@ import Title from '@/components/Elements/Title'
 import AnimatedNumber from '@/components/Elements/Animated/AnimatedNumber'
 import { format ***REMOVED*** from 'date-fns'
 import MobilityTile from '../MobilityTile'
-import { MsKlimadashboardIconsMMasterplanV1 ***REMOVED*** from '@/components/Icons/Mobilität'
+import { MsKlimadashboardIconsMMasterplanV1 ***REMOVED*** from '@/components/Icons/Mobilitaet'
 
 export default function MasterplanTile() {
   return (

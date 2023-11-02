@@ -13,7 +13,7 @@ import Title from '@/components/Elements/Title'
 import remarkGfm from 'remark-gfm'
 import TileHeader from './TileHeader'
 
-import { MsKlimadashboardIconsButtonAktivEnergieV1, MsKlimadashboardIconsButtonAktivGebaeude, MsKlimadashboardIconsButtonAktivKlima, MsKlimadashboardIconsButtonAktivMobil ***REMOVED*** from '@/components/Icons/Button:Übergeordnet'
+import { MsKlimadashboardIconsButtonAktivEnergieV1, MsKlimadashboardIconsButtonAktivGebaeude, MsKlimadashboardIconsButtonAktivKlima, MsKlimadashboardIconsButtonAktivMobil ***REMOVED*** from '@/components/Icons/Misc'
 
 
 const baseTileStyle = cva(

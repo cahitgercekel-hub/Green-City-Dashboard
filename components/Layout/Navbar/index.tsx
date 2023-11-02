@@ -9,7 +9,7 @@ import BaseNavbar from './BaseNavbar'
 import { useState ***REMOVED*** from 'react'
 import SectionTitle from '../SectionTitle'
 import { AnimatePresence, motion ***REMOVED*** from 'framer-motion'
-import { MsKlimadashboardIconsNaviInfoI ***REMOVED*** from '@/components/Icons/Button:Übergeordnet/Navi'
+import { MsKlimadashboardIconsNaviInfoI ***REMOVED*** from '@/components/Icons/Misc/Navi'
 import { XMarkIcon ***REMOVED*** from '@heroicons/react/24/outline'
 
 const routeToType: {

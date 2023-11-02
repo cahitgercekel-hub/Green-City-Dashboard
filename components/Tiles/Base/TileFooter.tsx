@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 import MoreDetails from '@/components/Elements/MoreDetails'
 import { cva, VariantProps ***REMOVED*** from 'class-variance-authority'
-import { MsKlimadashboardIconsNaviDownload, MsKlimadashboardIconsNaviKachelImplementieren, MsKlimadashboardIconsNaviTeilen ***REMOVED*** from '@/components/Icons/Button:Übergeordnet/Navi'
+import { MsKlimadashboardIconsNaviDownload, MsKlimadashboardIconsNaviKachelImplementieren, MsKlimadashboardIconsNaviTeilen ***REMOVED*** from '@/components/Icons/Misc/Navi'
 
 const tileFooterStyle = cva('flex flex-1 gap-4', {
   variants: {
