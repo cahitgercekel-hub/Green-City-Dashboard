@@ -2,7 +2,7 @@ import Link from 'next/link'
 import type { VariantProps ***REMOVED*** from 'class-variance-authority'
 import { cva, cx ***REMOVED*** from 'class-variance-authority'
 import Title from './Title'
-import { MehrDetailsI ***REMOVED*** from '../Icons'
+import { MsKlimadashboardIconsNaviInfoI ***REMOVED*** from '../Icons/Misc/Navi'
 
 const style = cva('flex cursor-pointer items-center gap-1 md:gap-3', {
   variants: {
@@ -32,7 +32,7 @@ export default function MoreDetails({
 ***REMOVED***: MoreDetailsProps) {
   const Details = (
     <div className={cx(style({ variant ***REMOVED***), className)***REMOVED*** onClick={onClick***REMOVED***>
-      <MehrDetailsI className="h-6" />
+      <MsKlimadashboardIconsNaviInfoI className="h-6" />
       <Title as="h6" className="whitespace-nowrap underline">
   ***REMOVED***lessDetails ? 'Weniger Details' : 'Mehr Details'***REMOVED***
       </Title>

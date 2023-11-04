@@ -1,9 +1,9 @@
-import { Cloud, Sun, Temperature, Water, Wind ***REMOVED*** from '@/components/Icons'
 import { ForwardRefExoticComponent, SVGProps ***REMOVED*** from 'react'
 import AnimatedNumber from '@/components/Elements/Animated/AnimatedNumber'
 import Title from '@/components/Elements/Title'
 import { cx ***REMOVED*** from 'class-variance-authority'
 import useDevice from '@/hooks/useDevice'
+import { MsKlimadashboardIconsWetterNiederschlag, MsKlimadashboardIconsWetterSonnig, MsKlimadashboardIconsWetterTemperatur, MsKlimadashboardIconsWetterWindgeschw, MsKlimadashboardIconsWetterWolkendichte ***REMOVED*** from '@/components/Icons/Klima'
 
 type PhenomenaType = {
   [key: string]: {
@@ -27,31 +27,31 @@ const phenomena: PhenomenaType = {
   temperature: {
     title: 'Temperatur',
     unit: '°C',
-    icon: Temperature,
+    icon: MsKlimadashboardIconsWetterTemperatur,
     decimals: 0,
 ***REMOVED***,
   precipitation: {
     title: 'Niederschlag',
     unit: 'mm',
-    icon: Water,
+    icon: MsKlimadashboardIconsWetterNiederschlag,
 ***REMOVED***,
   cloudcover: {
     title: 'Wolken&shy;bedeckung',
     shortTitle: 'Wolkenbed.',
     unit: '%',
-    icon: Cloud,
+    icon: MsKlimadashboardIconsWetterWolkendichte,
 ***REMOVED***,
   windspeed: {
     title: 'Wind&shy;geschwindigkeit',
     shortTitle: 'Windgeschw.',
     unit: 'km/h',
-    icon: Wind,
+    icon: MsKlimadashboardIconsWetterWindgeschw,
     decimals: 1,
 ***REMOVED***,
   sunhours: {
     title: 'Sonnenstunden',
     unit: 'h',
-    icon: Sun,
+    icon: MsKlimadashboardIconsWetterSonnig,
 ***REMOVED***,
 ***REMOVED***
 

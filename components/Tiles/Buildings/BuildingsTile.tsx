@@ -1,4 +1,4 @@
-import { BuildingIcon ***REMOVED*** from '@/components/Icons'
+import { MsKlimadashboardIconsButtonAktivGebaeude ***REMOVED*** from '@/components/Icons/Misc'
 import IconTile, { IconTileProps ***REMOVED*** from '../Base/IconTile'
 
 export type BuildingTileProps = Omit<IconTileProps, 'variant' | 'icon'>
@@ -13,7 +13,7 @@ export default function BuildingTile({
   ...props
 ***REMOVED***: BuildingTileProps) {
   return (
-    <IconTile {...props***REMOVED*** icon={BuildingIcon***REMOVED*** variant="building">
+    <IconTile {...props***REMOVED*** icon={MsKlimadashboardIconsButtonAktivGebaeude***REMOVED*** variant="building">
       <>{children***REMOVED***</>
     </IconTile>
   )
