@@ -1,12 +1,14 @@
 'use client'
 
+import { Spacer ***REMOVED*** from '@/components/Elements/Spacer'
 import Title from '@/components/Elements/Title'
+import Slider from '@/components/Inputs/Slider'
 import useWeather from '@/hooks/useWeather'
 import { conditionMapping, conditionMappingIcon ***REMOVED*** from '@/lib/brightsky'
 import { addHours, format ***REMOVED*** from 'date-fns'
 import { useState ***REMOVED*** from 'react'
+import LongTermAverageDiff from './LongTermAverageDiff'
 import Phenomenon from './Phenomenon'
-import Slider from '@/components/Inputs/Slider'
 
 export default function WeatherTileContent() {
   const [timestamp, setTimestamp] = useState(new Date())
@@ -21,7 +23,7 @@ export default function WeatherTileContent() {
     return addHours(date, i)
 ***REMOVED***)
 
-  if(weather) {
+  if (weather) {
     const Icon = conditionMappingIcon[weather?.condition]
 
     return (
@@ -80,6 +82,8 @@ export default function WeatherTileContent() {
         ***REMOVED******REMOVED***
           variant={'climate'***REMOVED***
         />
+        <Spacer size="xl" />
+        <LongTermAverageDiff />
       </div>
 ***REMOVED***
 ***REMOVED***
