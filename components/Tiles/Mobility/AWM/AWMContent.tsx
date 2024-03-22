@@ -8,8 +8,11 @@ import Slider from '@/components/Inputs/Slider'
 import { useWindowSize ***REMOVED*** from 'react-use'
 // @ts-ignore
 import AwmEMobility from '@/assets/data/awm-e-mobilitaet.csv'
+import {
+  MsKlimadashboardIconsMAwmAbgas,
+  MsKlimadashboardIconsMAwmElektro,
+***REMOVED*** from '@/components/Icons/Mobilitaet'
 import { useEffect, useState ***REMOVED*** from 'react'
-import { MsKlimadashboardIconsMAwmAbgas, MsKlimadashboardIconsMAwmElektro ***REMOVED*** from '@/components/Icons/Mobilitaet'
 
 type AwmDatatType = {
   ZEIT: number
@@ -21,7 +24,7 @@ type AwmDatatType = {
 export default function AWMContent() {
   // const { electroCount, combustionCount ***REMOVED*** = useBusData()
   const { width ***REMOVED*** = useWindowSize()
-  const [yearIndex, setYearIndex] = useState(2)
+  const [yearIndex, setYearIndex] = useState(3)
 
   const [combustionCount, setCombustionCount] = useState(0)
   const [electroCount, setElectroCount] = useState(0)
