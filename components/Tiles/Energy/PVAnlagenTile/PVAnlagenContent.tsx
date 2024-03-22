@@ -5,11 +5,12 @@ import Title from '@/components/Elements/Title'
 
 // @ts-ignore
 import PVData from '@/assets/data/pv-anlagen.csv'
-import { PVAnlagenDataType ***REMOVED*** from '.'
 import { MsKlimadashboardIconsEPvGebaeude ***REMOVED*** from '@/components/Icons/Energie'
+import { PVAnlagenDataType ***REMOVED*** from '.'
 
 export default function PVAnlagenContent() {
-  const [data] = PVData as PVAnlagenDataType[]
+  const allData = PVData as PVAnlagenDataType[]
+  const data = allData.at(-1)!
 
   return (
     <div>
@@ -22,7 +23,10 @@ export default function PVAnlagenContent() {
             sind im Moment auf Gebäuden der Stadtverwaltung installiert. Das
             entspricht einer Leistung von{' '***REMOVED***
             <span className="text-energy">
-              <AnimatedNumber decimals={0***REMOVED***>{data.Leistung***REMOVED***</AnimatedNumber> kWp.
+              <AnimatedNumber decimals={0***REMOVED***>
+          ***REMOVED***data['Leistung aller Anlagen (Summe)']***REMOVED***
+              </AnimatedNumber>{' '***REMOVED***
+              kWp.
             </span>{' '***REMOVED***
           </Title>
         </div>
