@@ -1,20 +1,24 @@
 'use client'
 
+import Title from '@/components/Elements/Title'
+import { TileType ***REMOVED*** from '@/utils/TileFactory'
+import { useTransition ***REMOVED*** from '@react-spring/web'
 import { cva, cx, VariantProps ***REMOVED*** from 'class-variance-authority'
 import { useState ***REMOVED*** from 'react'
-import { useTransition ***REMOVED*** from '@react-spring/web'
-import EmbedOverlay from './EmbedOverlay'
-import ShareOverlay from './ShareOverlay'
-import MoreInfoOverlay from './MoreInfoOverlay'
-import TileFooter from './TileFooter'
-import { TileType ***REMOVED*** from '@/utils/TileFactory'
 import ReactMarkdown from 'react-markdown'
-import Title from '@/components/Elements/Title'
 import remarkGfm from 'remark-gfm'
+import EmbedOverlay from './EmbedOverlay'
+import MoreInfoOverlay from './MoreInfoOverlay'
+import ShareOverlay from './ShareOverlay'
+import TileFooter from './TileFooter'
 import TileHeader from './TileHeader'
 
-import { MsKlimadashboardIconsButtonAktivEnergieV1, MsKlimadashboardIconsButtonAktivGebaeude, MsKlimadashboardIconsButtonAktivKlima, MsKlimadashboardIconsButtonAktivMobil ***REMOVED*** from '@/components/Icons/Misc'
-
+import {
+  MsKlimadashboardIconsButtonAktivEnergieV1,
+  MsKlimadashboardIconsButtonAktivGebaeude,
+  MsKlimadashboardIconsButtonAktivKlima,
+  MsKlimadashboardIconsButtonAktivMobil,
+***REMOVED*** from '@/components/Icons/Misc'
 
 const baseTileStyle = cva(
   'relative flex flex-col md:flex-row h-fit overflow-hidden rounded-[36px] lg:rounded-[56px]',
@@ -136,7 +140,7 @@ export function BaseTile({
             <></>
           </TileHeader>
 
-          <div>{children***REMOVED***</div>
+          <>{children***REMOVED***</>
           <TileFooter
             dataURL={source***REMOVED***
             hasMoreDetails={!!moreInfo***REMOVED***
@@ -183,14 +187,26 @@ export function BaseTile({
           ***REMOVED***typeof moreInfo === 'string' ? (
                   <ReactMarkdown
                     components={{
-                      h1: props => <Title as={'h2'***REMOVED*** {...props***REMOVED*** />,
-                      h2: props => <Title as={'h3'***REMOVED*** {...props***REMOVED*** />,
-                      h3: props => <Title as={'h4'***REMOVED*** {...props***REMOVED*** />,
-                      h4: props => <Title as={'h5'***REMOVED*** {...props***REMOVED*** />,
-                      h5: props => <Title as={'h6'***REMOVED*** {...props***REMOVED*** />,
-                      h6: props => <Title as={'h7'***REMOVED*** {...props***REMOVED*** />,
+                      h1: props => (
+                        <Title as={'h2'***REMOVED*** className="mb-4 md:mb-6" {...props***REMOVED*** />
+                  ***REMOVED***,
+                      h2: props => (
+                        <Title as={'h3'***REMOVED*** className="mb-4 md:mb-6" {...props***REMOVED*** />
+                  ***REMOVED***,
+                      h3: props => (
+                        <Title as={'h4'***REMOVED*** className="mb-4 md:mb-6" {...props***REMOVED*** />
+                  ***REMOVED***,
+                      h4: props => (
+                        <Title as={'h5'***REMOVED*** className="mb-4 md:mb-6" {...props***REMOVED*** />
+                  ***REMOVED***,
+                      h5: props => (
+                        <Title as={'h6'***REMOVED*** className="mb-4 md:mb-6" {...props***REMOVED*** />
+                  ***REMOVED***,
+                      h6: props => (
+                        <Title as={'h7'***REMOVED*** className="mb-4 md:mb-6" {...props***REMOVED*** />
+                  ***REMOVED***,
                       ul: props => <ul className="list-disc px-6" {...props***REMOVED*** />,
-                      p: props => <p className="mb-2" {...props***REMOVED*** />,
+                      p: props => <p className="mb-6 md:mb-10" {...props***REMOVED*** />,
                       a: props => (
                         <a
                           className="underline"

@@ -2,11 +2,11 @@ import { Spacer ***REMOVED*** from '@/components/Elements/Spacer'
 import Title from '@/components/Elements/Title'
 import Image from 'next/image'
 
-import { BaseTile ***REMOVED*** from '../Base/BaseTile'
 import { directusImage ***REMOVED*** from '@/lib/directus'
 import { ID ***REMOVED*** from '@directus/sdk'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
+import { BaseTile ***REMOVED*** from '../Base/BaseTile'
 
 export type SuccessStoryTileProps = {
   text: string
@@ -32,70 +32,64 @@ export default function SuccessStoryTile({
   id,
 ***REMOVED***: SuccessStoryTileProps) {
   const Content = (
-    <>
+    <div className="flex h-full flex-col justify-between">
       <Title as="h5" font={'semibold'***REMOVED*** variant={'primary'***REMOVED***>
         Stimmen für Münster
       </Title>
-      <Spacer size="sm" />
+      <Spacer size="md" />
       <ReactMarkdown
+        className="flex flex-1 flex-col justify-between"
         components={{
           h1: props => (
             <Title
-              as="h3"
-              className="mb-6 md:mb-8"
+              as={'h2'***REMOVED***
+              className="mb-4 md:mb-6"
               variant={'primary'***REMOVED***
         ***REMOVED***...props***REMOVED***
             />
       ***REMOVED***,
           h2: props => (
             <Title
-              as="h3"
-              className="mb-6 md:mb-8"
+              as={'h3'***REMOVED***
+              className="mb-4 md:mb-6"
               variant={'primary'***REMOVED***
         ***REMOVED***...props***REMOVED***
             />
       ***REMOVED***,
           h3: props => (
             <Title
-              as="h3"
-              className="mb-6 md:mb-8"
+              as={'h4'***REMOVED***
+              className="mb-4 md:mb-6"
               variant={'primary'***REMOVED***
         ***REMOVED***...props***REMOVED***
             />
       ***REMOVED***,
           h4: props => (
             <Title
-              as="h3"
-              className="mb-6 md:mb-8"
+              as={'h5'***REMOVED***
+              className="mb-4 md:mb-6"
               variant={'primary'***REMOVED***
         ***REMOVED***...props***REMOVED***
             />
       ***REMOVED***,
           h5: props => (
             <Title
-              as="h3"
-              className="mb-6 md:mb-8"
+              as={'h6'***REMOVED***
+              className="mb-4 md:mb-6"
               variant={'primary'***REMOVED***
         ***REMOVED***...props***REMOVED***
             />
       ***REMOVED***,
           h6: props => (
             <Title
-              as="h3"
-              className="mb-6 md:mb-8"
+              as={'h7'***REMOVED***
+              className="mb-4 md:mb-6"
               variant={'primary'***REMOVED***
         ***REMOVED***...props***REMOVED***
             />
       ***REMOVED***,
+          ul: props => <ul className="list-disc px-6" {...props***REMOVED*** />,
           p: props => (
-            <Title
-              as="h3"
-              className="mb-6 md:mb-8"
-              variant={'primary'***REMOVED***
-        ***REMOVED***...props***REMOVED***
-            />
-      ***REMOVED***,
-          a: props => (
             <Title
               as="h3"
               className="mb-6 md:mb-8"
@@ -109,8 +103,7 @@ export default function SuccessStoryTile({
       >
   ***REMOVED***text***REMOVED***
       </ReactMarkdown>
-      <Spacer />
-    </>
+    </div>
   )
 
   if (!image) {
