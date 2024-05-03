@@ -11,44 +11,40 @@ import TrafficMap from './TrafficMap'
 import TrafficMapMobile from './TrafficMapMobile'
 
 function Toggle({ onChange ***REMOVED***: { onChange: (_val: string) => void ***REMOVED***) {
+  const minYear = 2020
+  const maxYear = new Date().getFullYear()
+
+  const years = Array.from({ length: maxYear - minYear + 1 ***REMOVED***, (_, i) => {
+    return {
+      element: (
+        <Title as="h6" className="2xl:w-max">
+    ***REMOVED***minYear + i***REMOVED***
+        </Title>
+  ***REMOVED***,
+      value: (minYear + i).toString(),
+  ***REMOVED***
+***REMOVED***)
+
   return (
     <ToggleGroup
-      defaultValue="2023"
-      items={[
-  ***REMOVED***
-          element: (
-            <Title as="h6" className="2xl:w-max">
-              2013
-            </Title>
-      ***REMOVED***,
-          value: '2013',
-      ***REMOVED***,
-  ***REMOVED***
-          element: (
-            <Title as="h6" className="2xl:w-max">
-              2019
-            </Title>
-      ***REMOVED***,
-          value: '2019',
-      ***REMOVED***,
-  ***REMOVED***
-          element: (
-            <Title as="h6" className="2xl:w-max">
-              2023
-            </Title>
-      ***REMOVED***,
-          value: '2023',
-      ***REMOVED***,
-      ]***REMOVED***
+      defaultValue="2024"
+      items={years***REMOVED***
       onChange={onChange***REMOVED***
+      scrollX
       variant={'mobility'***REMOVED***
     />
   )
 ***REMOVED***
 
 export default function TrafficloadContent() {
-  const [monthIndex, setMonthIndex] = useState(4)
-  const [mode, setMode] = useState<'2013' | '2019' | '2023'>('2023')
+  const currentYear = new Date().getFullYear()
+  const latestMonthWithData = monatsmittelwerte.features
+    .filter(f => f.properties.year === currentYear)
+    .map(f => f.properties.month)
+    .sort((a, b) => b - a)[0]
+
+  const [monthIndex, setMonthIndex] = useState(latestMonthWithData - 1)
+  const [mode, setMode] = useState(currentYear.toString())
 
   const [mobileActive, setMobileActive] = useState<
     'albersloher' | 'warendorfer' | 'weseler' | 'rishon' | 'steinfurter'
@@ -165,7 +161,7 @@ export default function TrafficloadContent() {
       </div>
       <Slider
         defaultValue={[monthIndex]***REMOVED***
-        firstValueMobile={4***REMOVED*** // MONAT MAI NUR FÜR DEMO
+        firstValueMobile={monthIndex***REMOVED*** // MONAT MAI NUR FÜR DEMO
         labels={[
           'JAN',
           'FEB',
