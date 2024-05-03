@@ -64,14 +64,7 @@ export default function SuccessStoryTile({
         ***REMOVED***...props***REMOVED***
             />
       ***REMOVED***,
-          h4: props => (
-            <Title
-              as={'h5'***REMOVED***
-              className="mb-4 md:mb-6"
-              variant={'primary'***REMOVED***
-        ***REMOVED***...props***REMOVED***
-            />
-      ***REMOVED***,
+          h4: props => <Title as={'h5'***REMOVED*** variant={'primary'***REMOVED*** {...props***REMOVED*** />,
           h5: props => (
             <Title
               as={'h6'***REMOVED***
