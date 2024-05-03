@@ -15,6 +15,9 @@ type variants = {
 
 const toggleGroupStyle = cva<{
   variant: variants
+  scrollX: {
+    true: string
+***REMOVED***
 ***REMOVED***>(
   'flex h-fit w-fit overflow-hidden rounded-full border-2 bg-white w-full md:w-auto',
   {
@@ -25,6 +28,9 @@ const toggleGroupStyle = cva<{
         successStory: 'border-secondary',
         climate: 'border-climate',
         building: 'border-buildings',
+    ***REMOVED***,
+      scrollX: {
+        true: 'overflow-x-auto',
     ***REMOVED***,
   ***REMOVED***,
     defaultVariants: {
@@ -143,13 +149,14 @@ export default function ToggleGroup({
   defaultValue,
   items,
   variant,
+  scrollX,
   onChange,
 ***REMOVED***: ToggleGroupProps) {
   const [value, setValue] = useState(defaultValue || items[0].value)
 
   return (
     <ToggleGroupPrimitive.Root
-      className={toggleGroupStyle({ variant ***REMOVED***)***REMOVED***
+      className={toggleGroupStyle({ variant, scrollX ***REMOVED***)***REMOVED***
       onValueChange={value => {
         if (value) {
           setValue(value)
