@@ -22,9 +22,9 @@ export default function MasterplanTile() {
             Mobilität Münster 2035+“ wurde im April 2024 veröffentlicht. Viele
             Anregungen der Bürger*innen sind darin eingeflossen. Insgesamt{' '***REMOVED***
             <span className="text-mobility">
-              <AnimatedNumber>{46***REMOVED***</AnimatedNumber> Ideen
+              <AnimatedNumber>{46***REMOVED***</AnimatedNumber> Maßnahmen
             </span>{' '***REMOVED***
-            Maßnahmen wurden daraus entwickelt.
+            wurden daraus entwickelt.
           </Title>
         </div>
       </div>
