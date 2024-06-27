@@ -1,12 +1,13 @@
+import { format ***REMOVED*** from 'date-fns'
 import MobilityTile from '../MobilityTile'
 import BusContent from './BusContent'
 
 export default function BusTile() {
   return (
     <MobilityTile
+      dataRetrieval={format(new Date(), '01.MM.yyyy')***REMOVED***
       dataSource="Stadtwerke Münster"
       embedId="mobility-bus"
-      live
       subtitle="Anzahl im Vergleich zu Bussen mit fossilem Antrieb"
       title="E-Busse"
     >

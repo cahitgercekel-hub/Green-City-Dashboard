@@ -4,10 +4,10 @@ import EnergyTile from '../EnergyTile'
 
 // @ts-ignore
 import PVData from '@/assets/data/bestand-pv-anlagen.csv'
-import AnimatedNumber from '@/components/Elements/Animated/AnimatedNumber'
 import ProgressBar from '@/components/Charts/Progress/ProgressBar'
-import { format ***REMOVED*** from 'date-fns'
+import AnimatedNumber from '@/components/Elements/Animated/AnimatedNumber'
 import { MsKlimadashboardIconsEPvAnlagen ***REMOVED*** from '@/components/Icons/Energie'
+import { format ***REMOVED*** from 'date-fns'
 
 interface PVDataType {
   ZEIT: string
@@ -22,7 +22,7 @@ export default function PhotovoltTile() {
 
   return (
     <EnergyTile
-      dataRetrieval={format(new Date(data.ZEIT), 'dd.MM.yyyy')***REMOVED***
+      dataRetrieval={format(new Date(data.ZEIT), '01.MM.yyyy')***REMOVED***
       dataSource={'Marktstammdatenregister'***REMOVED***
       embedId="energy-PV"
       title={
