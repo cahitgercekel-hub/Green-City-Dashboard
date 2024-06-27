@@ -2,11 +2,10 @@ import 'server-only'
 
 import { Spacer ***REMOVED*** from '@/components/Elements/Spacer'
 import Title from '@/components/Elements/Title'
+import getTileData from '@/lib/api/getTileData'
 import { cva, cx, VariantProps ***REMOVED*** from 'class-variance-authority'
 import { ForwardRefExoticComponent, SVGProps ***REMOVED*** from 'react'
 import { BaseTile, EmbedTileProps ***REMOVED*** from './BaseTile'
-import LiveBadge from './LiveBadge'
-import getTileData from '@/lib/api/getTileData'
 
 const iconTileTitleStyle = cva('', {
   variants: {
@@ -65,7 +64,6 @@ export default async function IconTile({
   return (
     <BaseTile
       embedId={embedId***REMOVED***
-      footerCenterElement={live ? <LiveBadge variant={variant***REMOVED*** /> : undefined***REMOVED***
       isFullWidth={data?.full_width***REMOVED***
       moreInfo={data?.details***REMOVED***
       source={data?.data_url***REMOVED***
