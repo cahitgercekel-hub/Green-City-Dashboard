@@ -6,6 +6,7 @@ import getTileData from '@/lib/api/getTileData'
 import { cva, cx, VariantProps ***REMOVED*** from 'class-variance-authority'
 import { ForwardRefExoticComponent, SVGProps ***REMOVED*** from 'react'
 import { BaseTile, EmbedTileProps ***REMOVED*** from './BaseTile'
+import { TileSplitView ***REMOVED*** from './TileSplitView'
 
 const iconTileTitleStyle = cva('', {
   variants: {
@@ -39,6 +40,7 @@ export type IconTileProps = VariantProps<typeof iconTileTitleStyle> &
       | ForwardRefExoticComponent<SVGProps<SVGSVGElement>>
       | ((_props: SVGProps<SVGSVGElement>) => JSX.Element)
     live?: boolean
+    rightAlignedExtra?: React.ReactElement
 ***REMOVED***
 
 /**
@@ -56,6 +58,7 @@ export default async function IconTile({
   dataRetrieval,
   dataSource,
   embedId,
+  rightAlignedExtra,
 ***REMOVED***: IconTileProps) {
   const Icon = icon
 
@@ -119,14 +122,22 @@ export default async function IconTile({
 
       <>{children***REMOVED***</>
       <Spacer />
-      <div className="flex space-x-2 text-xs">
-        <Title as="h7" font="semibold" variant={'primary'***REMOVED***>
-          Datenstand: {dataRetrieval ?? (live ? 'live' : 'undefined')***REMOVED***
-        </Title>
-        <Title as="h7" font="normal" variant={'primary'***REMOVED***>
-          Quelle: {dataSource***REMOVED***
-        </Title>
-      </div>
+      <TileSplitView>
+        <TileSplitView.Left>
+          <div className="flex flex-wrap justify-between">
+            <div className="flex space-x-2 text-xs">
+              <Title as="h7" font="semibold" variant={'primary'***REMOVED***>
+                Datenstand: {dataRetrieval ?? (live ? 'live' : 'undefined')***REMOVED***
+              </Title>
+              <Title as="h7" font="normal" variant={'primary'***REMOVED***>
+                Quelle: {dataSource***REMOVED***
+              </Title>
+            </div>
+            <div>{rightAlignedExtra***REMOVED***</div>
+          </div>
+        </TileSplitView.Left>
+        <div className="w-[272px]" />
+      </TileSplitView>
     </BaseTile>
   )
 ***REMOVED***
