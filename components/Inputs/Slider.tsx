@@ -1,9 +1,9 @@
 'use client'
 
 import * as SliderPrimitive from '@radix-ui/react-slider'
-import Title from '../Elements/Title'
 import { cva, VariantProps ***REMOVED*** from 'class-variance-authority'
 import { useState ***REMOVED*** from 'react'
+import Title from '../Elements/Title'
 
 const sliderStyle = cva(
   'relative h-3 md:h-5 flex-1 rounded-full bg-opacity-20',
@@ -61,24 +61,15 @@ export default function Slider({
           <SliderPrimitive.Thumb className="block aspect-square h-6 touch-pan-x rounded-full bg-primary shadow shadow-primary md:h-9" />
         </SliderPrimitive.Root>
       </div>
-***REMOVED***labels &&
-        (labels.length != 12 ? (
-          <div className="mt-3 hidden w-full justify-between md:flex">
-      ***REMOVED***labels.map((l, i) => (
-              <Title as={'h5'***REMOVED*** key={i***REMOVED*** variant={'primary'***REMOVED***>
-          ***REMOVED***l***REMOVED***
-              </Title>
-        ***REMOVED***)***REMOVED***
-          </div>
-    ***REMOVED*** : (
-          <div className="mt-3 hidden w-full justify-between md:flex">
-      ***REMOVED***labels.map((l, i) => (
-              <Title as={'h8'***REMOVED*** key={i***REMOVED*** variant={'primary'***REMOVED***>
-          ***REMOVED***l***REMOVED***
-              </Title>
-        ***REMOVED***)***REMOVED***
-          </div>
-    ***REMOVED***)***REMOVED***
+***REMOVED***labels && (
+        <div className="mt-3 hidden w-full justify-between md:flex">
+    ***REMOVED***labels.map((l, i) => (
+            <Title as={'h5'***REMOVED*** key={i***REMOVED*** variant={'primary'***REMOVED***>
+        ***REMOVED***l***REMOVED***
+            </Title>
+      ***REMOVED***)***REMOVED***
+        </div>
+  ***REMOVED******REMOVED***
     </div>
   )
 ***REMOVED***
