@@ -267,8 +267,12 @@ export default function WachstumChart() {
           <Title as="h7" font="semibold" variant={'primary'***REMOVED***>
       ***REMOVED***mode === 'percent' ? (
               <span className={device === 'mobile' ? 'pl-2' : 'pl-24'***REMOVED***>%</span>
+        ***REMOVED*** : seriesVisible.bip ? (
+              <span className={device === 'mobile' ? 'pl-2' : 'pl-24'***REMOVED***>€</span>
+        ***REMOVED*** : seriesVisible.beschaeftigte ? (
+              <span>Beschäftigte</span>
         ***REMOVED*** : (
-              '€ | Beschäftigte | t CO2'
+              <span className={device === 'mobile' ? 'pl-2' : 'pl-24'***REMOVED***>t</span>
         ***REMOVED******REMOVED***
           </Title>
           <div className="h-[235px] w-full md:h-[440px]">
