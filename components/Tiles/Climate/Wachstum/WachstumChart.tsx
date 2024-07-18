@@ -2,7 +2,7 @@
 
 import { ReactECharts ***REMOVED*** from '@/components/Charts/ReactECharts'
 import Switch from '@/components/Inputs/Switch'
-import { getYear, parse ***REMOVED*** from 'date-fns'
+import { format, getYear, parse ***REMOVED*** from 'date-fns'
 import { LineSeriesOption ***REMOVED*** from 'echarts'
 
 // @ts-ignore
@@ -238,14 +238,14 @@ export default function WachstumChart() {
 
   return (
     <div className="relative">
-      <div className="absolute -left-10 -top-10 flex w-full items-center justify-end px-5 2xl:justify-between">
+      <div className="absolute -left-10 -top-10 flex items-center justify-end px-5 2xl:justify-between">
         <Toggle onChange={setMode***REMOVED*** />
       </div>
-      <div className=" flex h-full w-full flex-col items-center p-5 2xl:flex-row">
+      <div className=" flex h-full w-full flex-col items-center gap-2 p-5 pt-8 2xl:flex-row">
         <div className="h-full w-full flex-1">
           <Title as="h7" font="semibold" variant={'primary'***REMOVED***>
       ***REMOVED***mode === 'percent' ? (
-              <span className={device === 'mobile' ? 'pl-12' : 'pl-24'***REMOVED***>%</span>
+              <span className={device === 'mobile' ? 'pl-2' : 'pl-24'***REMOVED***>%</span>
         ***REMOVED*** : (
               '€ | Beschäftigte | t CO2'
         ***REMOVED******REMOVED***
@@ -256,14 +256,16 @@ export default function WachstumChart() {
                 grid: {
                   top: 20,
                   bottom: 40,
-                  left: device === 'mobile' ? 70 : 120,
-                  right: 40,
+                  left:
+                    device === 'mobile' ? (mode === 'absolute' ? 80 : 40) : 120,
+                  right: 0,
               ***REMOVED***,
                 series: [...series],
                 xAxis: {
                   type: 'time',
                   axisLabel: {
                     fontSize: device === 'mobile' ? 12 : 20,
+                    margin: 20,
                 ***REMOVED***,
                   min: parse(
                     `${STARTING_YEAR***REMOVED***-01-01`,
@@ -283,17 +285,23 @@ export default function WachstumChart() {
                   valueFormatter: (val: any) => {
                     return Intl.NumberFormat('de-DE').format(val.toFixed(2))
                 ***REMOVED***,
+                  axisPointer: {
+                    label: {
+                      formatter: function (params) {
+                        const oT = new Date(params.value)
+                        return format(oT, 'yyyy')
+                    ***REMOVED***,
+                  ***REMOVED***,
+                ***REMOVED***,
               ***REMOVED***,
                 yAxis: {
                   type: 'value',
                   axisLabel: {
                     fontSize: device === 'mobile' ? 12 : 20,
                     formatter: (val: any) => {
-                      if (val === 0) {
-                        return ''
-                    ***REMOVED***
                       return Intl.NumberFormat('de-DE').format(val)
                   ***REMOVED***,
+                    margin: 20,
                 ***REMOVED***,
               ***REMOVED***,
                 animation: true,
@@ -338,7 +346,7 @@ export default function WachstumChart() {
             onChange={c => setSeriesVisible({ ...seriesVisible, bip: c ***REMOVED***)***REMOVED***
             type="tropennaechte"
           >
-            BIP
+            BIP (Münster)
           </ClimateIndiceToggle>
         </div>
       </div>

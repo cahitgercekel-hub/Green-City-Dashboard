@@ -20,7 +20,7 @@ export default async function WachstumTile() {
           Bruttoinlandsprodukt
         </Title>
     ***REMOVED***
-      title={'Wachstum'***REMOVED***
+      title={'Entwicklung der Wirtschaft'***REMOVED***
     >
       <TileSplitView>
         <TileSplitView.Left className="rounded bg-white p-5">
