@@ -13,7 +13,7 @@ import Title from '@/components/Elements/Title'
 import ToggleGroup from '@/components/Inputs/ToggleGroup'
 import useDevice from '@/hooks/useDevice'
 import tailwindConfig from '@/tailwind.config.js'
-import { useState ***REMOVED*** from 'react'
+import { useEffect, useState ***REMOVED*** from 'react'
 import resolveConfig from 'tailwindcss/resolveConfig'
 import { IndicesTypes ***REMOVED*** from '../ClimateIndices/ClimateIndicesChart'
 
@@ -183,15 +183,18 @@ function ClimateIndiceToggle({
   defaultChecked,
   onChange,
   children,
+  checked,
 ***REMOVED***: {
   type: IndicesTypes
   defaultChecked?: boolean
   onChange?: (_checked: boolean) => void
   children?: React.ReactNode
+  checked?: boolean
 ***REMOVED***) {
   return (
     <div className="flex w-full flex-row-reverse items-center justify-between gap-2 lg:flex-row lg:justify-normal lg:gap-4">
       <Switch
+        checked={checked***REMOVED***
         defaultChecked={defaultChecked***REMOVED***
         onCheckedChange={onChange***REMOVED***
         variant={type***REMOVED***
@@ -222,6 +225,24 @@ export default function WachstumChart() {
     co2Industrie: true,
     co2Gewerbe: true,
 ***REMOVED***)
+
+  useEffect(() => {
+    if (mode === 'percent') {
+      setSeriesVisible({
+        bip: true,
+        beschaeftigte: true,
+        co2Industrie: true,
+        co2Gewerbe: true,
+    ***REMOVED***)
+  ***REMOVED*** else {
+      setSeriesVisible({
+        bip: true,
+        beschaeftigte: false,
+        co2Industrie: false,
+        co2Gewerbe: false,
+    ***REMOVED***)
+  ***REMOVED***
+***REMOVED***, [mode])
 
   const indices = getIndices(mode)
 
@@ -314,39 +335,92 @@ export default function WachstumChart() {
         </div>
         <div className="flex h-full flex-col justify-evenly gap-1">
           <ClimateIndiceToggle
-            defaultChecked={seriesVisible.co2Industrie***REMOVED***
-            onChange={c =>
-              setSeriesVisible({ ...seriesVisible, co2Industrie: c ***REMOVED***)
-          ***REMOVED***
-            type="heisse_tage"
-          >
-            CO<sub>2</sub> Industrie
-          </ClimateIndiceToggle>
-          <ClimateIndiceToggle
-            defaultChecked={seriesVisible.co2Gewerbe***REMOVED***
-            onChange={c =>
-              setSeriesVisible({ ...seriesVisible, co2Gewerbe: c ***REMOVED***)
-          ***REMOVED***
-            type="sommertage"
-          >
-            CO<sub>2</sub> Gewerbe + Sonstiges
-          </ClimateIndiceToggle>
+            checked={seriesVisible.bip***REMOVED***
+            defaultChecked={seriesVisible.bip***REMOVED***
+            onChange={c => {
+              if (mode === 'percent') {
+                setSeriesVisible({ ...seriesVisible, bip: c ***REMOVED***)
+            ***REMOVED*** else {
+                // @ts-ignore
+                const allFalse: Record<ValuesTypes, boolean> = Object.keys(
+                  seriesVisible,
+            ***REMOVED***.reduce((acc, e) => ({ ...acc, [e]: false ***REMOVED***), {***REMOVED***)
 
+                setSeriesVisible({
+                  ...allFalse,
+                  bip: c,
+              ***REMOVED***)
+            ***REMOVED***
+          ***REMOVED******REMOVED***
+            type="tropennaechte"
+          >
+            BIP (Münster)
+          </ClimateIndiceToggle>
           <ClimateIndiceToggle
+            checked={seriesVisible.beschaeftigte***REMOVED***
             defaultChecked={seriesVisible.beschaeftigte***REMOVED***
-            onChange={c =>
-              setSeriesVisible({ ...seriesVisible, beschaeftigte: c ***REMOVED***)
-          ***REMOVED***
+            onChange={c => {
+              if (mode === 'percent') {
+                setSeriesVisible({ ...seriesVisible, beschaeftigte: c ***REMOVED***)
+            ***REMOVED*** else {
+                // @ts-ignore
+                const allFalse: Record<ValuesTypes, boolean> = Object.keys(
+                  seriesVisible,
+            ***REMOVED***.reduce((acc, e) => ({ ...acc, [e]: false ***REMOVED***), {***REMOVED***)
+
+                setSeriesVisible({
+                  ...allFalse,
+                  beschaeftigte: c,
+              ***REMOVED***)
+            ***REMOVED***
+          ***REMOVED******REMOVED***
             type="eistage"
           >
             Beschäftigte* am Arbeitsort
           </ClimateIndiceToggle>
           <ClimateIndiceToggle
-            defaultChecked={seriesVisible.bip***REMOVED***
-            onChange={c => setSeriesVisible({ ...seriesVisible, bip: c ***REMOVED***)***REMOVED***
-            type="tropennaechte"
+            checked={seriesVisible.co2Industrie***REMOVED***
+            defaultChecked={seriesVisible.co2Industrie***REMOVED***
+            onChange={c => {
+              if (mode === 'percent') {
+                setSeriesVisible({ ...seriesVisible, co2Industrie: c ***REMOVED***)
+            ***REMOVED*** else {
+                // @ts-ignore
+                const allFalse: Record<ValuesTypes, boolean> = Object.keys(
+                  seriesVisible,
+            ***REMOVED***.reduce((acc, e) => ({ ...acc, [e]: false ***REMOVED***), {***REMOVED***)
+
+                setSeriesVisible({
+                  ...allFalse,
+                  co2Industrie: c,
+              ***REMOVED***)
+            ***REMOVED***
+          ***REMOVED******REMOVED***
+            type="heisse_tage"
           >
-            BIP (Münster)
+            CO<sub>2</sub> Industrie
+          </ClimateIndiceToggle>
+          <ClimateIndiceToggle
+            checked={seriesVisible.co2Gewerbe***REMOVED***
+            defaultChecked={seriesVisible.co2Gewerbe***REMOVED***
+            onChange={c => {
+              if (mode === 'percent') {
+                setSeriesVisible({ ...seriesVisible, co2Gewerbe: c ***REMOVED***)
+            ***REMOVED*** else {
+                // @ts-ignore
+                const allFalse: Record<ValuesTypes, boolean> = Object.keys(
+                  seriesVisible,
+            ***REMOVED***.reduce((acc, e) => ({ ...acc, [e]: false ***REMOVED***), {***REMOVED***)
+
+                setSeriesVisible({
+                  ...allFalse,
+                  co2Gewerbe: c,
+              ***REMOVED***)
+            ***REMOVED***
+          ***REMOVED******REMOVED***
+            type="sommertage"
+          >
+            CO<sub>2</sub> Gewerbe + Sonstiges
           </ClimateIndiceToggle>
         </div>
       </div>
