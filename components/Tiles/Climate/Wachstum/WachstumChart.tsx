@@ -200,7 +200,7 @@ function ClimateIndiceToggle({
         variant={type***REMOVED***
       />
       <div className="flex items-center gap-2 md:w-max md:gap-4">
-        <Title as="h5" variant={'climate'***REMOVED***>
+        <Title as="h5" variant={type***REMOVED***>
     ***REMOVED***children***REMOVED***
         </Title>
       </div>
@@ -305,6 +305,7 @@ export default function WachstumChart() {
               ***REMOVED***,
                 tooltip: {
                   show: true,
+                  confine: true,
                   showDelay: 0,
                   trigger: 'axis',
                   valueFormatter: (val: any) => {
@@ -337,7 +338,7 @@ export default function WachstumChart() {
             />
           </div>
         </div>
-        <div className="flex h-full flex-col justify-evenly gap-1">
+        <div className="flex h-full flex-col justify-evenly gap-1 2xl:self-start 2xl:pl-4">
           <ClimateIndiceToggle
             checked={seriesVisible.bip***REMOVED***
             defaultChecked={seriesVisible.bip***REMOVED***
