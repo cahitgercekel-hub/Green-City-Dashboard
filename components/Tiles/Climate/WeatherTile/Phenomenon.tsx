@@ -1,9 +1,15 @@
 import { ForwardRefExoticComponent, SVGProps ***REMOVED*** from 'react'
-import AnimatedNumber from '@/components/Elements/Animated/AnimatedNumber'
 import Title from '@/components/Elements/Title'
 import { cx ***REMOVED*** from 'class-variance-authority'
 import useDevice from '@/hooks/useDevice'
-import { MsKlimadashboardIconsWetterNiederschlag, MsKlimadashboardIconsWetterSonnig, MsKlimadashboardIconsWetterTemperatur, MsKlimadashboardIconsWetterWindgeschw, MsKlimadashboardIconsWetterWolkendichte ***REMOVED*** from '@/components/Icons/Klima'
+import {
+  MsKlimadashboardIconsWetterNiederschlag,
+  MsKlimadashboardIconsWetterSonnig,
+  MsKlimadashboardIconsWetterTemperatur,
+  MsKlimadashboardIconsWetterWindgeschw,
+  MsKlimadashboardIconsWetterWolkendichte,
+***REMOVED*** from '@/components/Icons/Klima'
+import AnimatedNumber from '@/components/Elements/Animated/AnimatedNumber'
 
 type PhenomenaType = {
   [key: string]: {
@@ -53,6 +59,26 @@ const phenomena: PhenomenaType = {
     unit: 'h',
     icon: MsKlimadashboardIconsWetterSonnig,
 ***REMOVED***,
+  no2: {
+    title: 'Stickstoffdioxid (NO<sub>2</sub>)',
+    unit: 'μg/m³',
+    icon: MsKlimadashboardIconsWetterSonnig,
+***REMOVED***,
+  pm10: {
+    title: 'Feinstaub PM<sub>10</sub>',
+    unit: 'μg/m³',
+    icon: MsKlimadashboardIconsWetterSonnig,
+***REMOVED***,
+  o3: {
+    title: 'Ozon (O<sub>3</sub>)',
+    unit: 'μg/m³',
+    icon: MsKlimadashboardIconsWetterSonnig,
+***REMOVED***,
+  pm25: {
+    title: 'Feinstaub PM<sub>2.5</sub>',
+    unit: 'μg/m³',
+    icon: MsKlimadashboardIconsWetterSonnig,
+***REMOVED***,
 ***REMOVED***
 
 type PhenomenonProps = {
@@ -90,7 +116,16 @@ export default function Phenomenon({
           variant={'primary'***REMOVED***
         ></Title>
         <Title as={valueSize***REMOVED*** variant="climate">
-          <AnimatedNumber decimals={decimals***REMOVED***>{value***REMOVED***</AnimatedNumber> {unit***REMOVED***
+    ***REMOVED***typeof value === 'number' ? (
+            <>
+              <AnimatedNumber decimals={decimals***REMOVED***>{value***REMOVED***</AnimatedNumber>&nbsp;
+        ***REMOVED***unit***REMOVED***
+            </>
+      ***REMOVED*** : (
+            <>
+              <span>--</span>
+            </>
+      ***REMOVED******REMOVED***{' '***REMOVED***
         </Title>
       </div>
     </div>
