@@ -1,6 +1,6 @@
 export { default as MuensterBackground ***REMOVED*** from './MuensterBackground'
-export { default as Pendlerkarte ***REMOVED*** from './Pendlerkarte'
 export { default as MuensterDom ***REMOVED*** from './MuensterDom'
+export { default as PendlerGesamt ***REMOVED*** from './PendlerGesamt'
 export { default as PendlerKarteWithStations ***REMOVED*** from './PendlerKarteWithStations'
 export { default as PendlerMobilAusgewaehlt ***REMOVED*** from './PendlerMobilAusgewaehlt'
-export { default as PendlerGesamt ***REMOVED*** from './PendlerGesamt'
+export { default as Pendlerkarte ***REMOVED*** from './Pendlerkarte'

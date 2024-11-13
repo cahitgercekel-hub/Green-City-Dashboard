@@ -1,31 +1,44 @@
-import getAirquality from '@/lib/umweltbundesamt_airquality'
+import { FeatureCollection, Point ***REMOVED*** from 'geojson'
 import { useEffect, useState ***REMOVED*** from 'react'
 
-export default function useAirquality(timestamp: Date) {
-  const [airqualityData, setAirqualityData] = useState<any>([])
-  const [parameterData, setParameterData] = useState<any>({***REMOVED***)
+export type AirQualityStationData = {
+  Station: string
+  'Station-ID': string
+  Zeitpunkt: string
+  Luftqualitätsindex: number
+  'Feinstaub (PM₁₀)': number
+  'Ozon (O₃)': string | number
+  'Stickstoffdioxid (NO₂)': number
+  'Feinstaub (PM₂,₅)': number
+  'Fehlender Wert'?: string
+***REMOVED***
+
+type AirQualityFeatureCollection = FeatureCollection<
+  Point,
+  AirQualityStationData
+>
+
+export default function useAirquality() {
+  const [data, setData] = useState<AirQualityFeatureCollection | null>(null)
+
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    async function getData() {
-      const airquality = await getAirquality(timestamp)
-      timestamp.setMinutes(0)
-      timestamp.setSeconds(0)
-      timestamp.setHours(timestamp.getHours() - 1)
-      const parsedResults: any = {***REMOVED***
-      const newData: any =
-        airquality.data['1140'][
-          timestamp.toISOString().replace('T', ' ').substr(0, 19)
-        ]
-      Object.values(newData).forEach((a: any) => {
-        if (a[0] === 1 || a[0] === 3 || a[0] === 5 || a[0] === 9) {
-          parsedResults[a[0]] = a[1]
-      ***REMOVED***
+    setIsLoading(true)
+    fetch(
+      'https://www.muenster01.de/luftqualitaet/data/luftqualitaet_muenster.geojson',
+***REMOVED***
+      .then(res => res.json())
+      .then(airQualityData => {
+        setData(airQualityData)
     ***REMOVED***)
-      setParameterData(parsedResults)
-      setAirqualityData(newData)
-  ***REMOVED***
-    getData()
-***REMOVED***, [timestamp])
+      .catch(err => {
+        console.error(err)
+    ***REMOVED***)
+      .finally(() => {
+        setIsLoading(false)
+    ***REMOVED***)
+***REMOVED***, [])
 
-  return { airqualityData, parameterData ***REMOVED***
+  return { data, isLoading ***REMOVED***
 ***REMOVED***
