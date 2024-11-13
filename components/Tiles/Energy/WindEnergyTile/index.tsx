@@ -2,32 +2,33 @@ import ProgressBar from '@/components/Charts/Progress/ProgressBar'
 import Title from '@/components/Elements/Title'
 import EnergyTile from '../EnergyTile'
 
-// @ts-ignore
 import AnimatedNumber from '@/components/Elements/Animated/AnimatedNumber'
 import { Spacer ***REMOVED*** from '@/components/Elements/Spacer'
 import { MsKlimadashboardIconsEWindkraft ***REMOVED*** from '@/components/Icons/Energie'
+import { format ***REMOVED*** from 'date-fns'
 
-// interface WindDataType {
-//   ZEIT: string
-//   AnzahlAnlagen: number
-//   AnzahlSolarModule: number
-//   Bruttoleistung: number
-//   Nettonennleistung: number
-// ***REMOVED***
+// @ts-ignore
+import WindData from '@/assets/data/bestand-windanlagen.csv'
+
+interface WindDataType {
+  ZEIT: string
+  AnzahlAnlagen: number
+  AnzahlSolarModule: number
+  Bruttoleistung: number
+  Nettonennleistung: number
+***REMOVED***
 
 export default function WindEnergyTile() {
-  {
-    /* const [data] = WindData as WindDataType[] */
-***REMOVED***
+  const [data] = WindData as WindDataType[]
 
   return (
     <EnergyTile
-      dataRetrieval="05.06.2023"
+      dataRetrieval={format(new Date(data.ZEIT), 'dd.MM.yyyy')***REMOVED***
       dataSource="Stadt Münster &ndash; Stadtplanungsamt"
       embedId="energy-wind"
       title={
         <>
-          <AnimatedNumber>{62***REMOVED***</AnimatedNumber> MW
+          <AnimatedNumber>{data.Nettonennleistung / 1000***REMOVED***</AnimatedNumber> MW
         </>
     ***REMOVED***
     >
@@ -35,8 +36,8 @@ export default function WindEnergyTile() {
         <Title as={'subtitle'***REMOVED***>
           haben Organisationen bereits mit{' '***REMOVED***
           <span className="text-energy">
-      ***REMOVED***/* <AnimatedNumber>{data.AnzahlAnlagen***REMOVED***</AnimatedNumber>{' '***REMOVED*** */***REMOVED***
-            32 Windkraftanlagen
+            <AnimatedNumber>{data.AnzahlAnlagen***REMOVED***</AnimatedNumber>{' '***REMOVED***
+            Windkraftanlagen
           </span>{' '***REMOVED***
           in Münster installiert.
         </Title>
@@ -49,8 +50,7 @@ export default function WindEnergyTile() {
                   Bereits installiert
                 </Title>
                 <Title as="h4" variant={'energy'***REMOVED***>
-            ***REMOVED***/* (data.Bruttoleistung***REMOVED***/90).toFixed(0) */***REMOVED***
-                  69%
+            ***REMOVED***(data.Nettonennleistung / 10 / 90).toFixed(0)***REMOVED***%
                 </Title>
               </div>
               <div className="flex flex-col items-end">
@@ -63,20 +63,10 @@ export default function WindEnergyTile() {
               </div>
             </div>
             <Spacer size={'sm'***REMOVED*** />
-      ***REMOVED***/* should be the following, once some organisation is reliably able to count windraeder ...
-                data.Bruttoleistung***REMOVED***/90
-            */***REMOVED***
-            <ProgressBar progress={69***REMOVED*** variant="energy" />
-      ***REMOVED***/*
-            <Spacer size={'sm'***REMOVED*** />
-            <Slider
-              defaultValue={[0]***REMOVED***
-              labels={['2005', '2010', '2015', '2020', 'jetzt']***REMOVED***
-              max={4***REMOVED***
-              min={0***REMOVED***
-              variant={'energy'***REMOVED***
+            <ProgressBar
+              progress={data.Nettonennleistung / 10 / 90***REMOVED***
+              variant="energy"
             />
-            */***REMOVED***
           </div>
         </div>
       </div>
