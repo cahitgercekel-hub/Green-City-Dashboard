@@ -10,30 +10,22 @@ export type AvgTempData = {
 ***REMOVED***
 ***REMOVED***
 
-// const zero = {
-//   value: new Array(12).fill(0),
-//   name: '0',
-//   lineStyle: {
-//     color: '#14b3d9',
-//     width: 4,
-// ***REMOVED***,
-//   itemStyle: {
-//     opacity: 0,
-// ***REMOVED***,
-// ***REMOVED***
-
 export default function RadarChart({ data ***REMOVED***: { data: AvgTempData ***REMOVED***) {
   const [years, setYears] = useState<string[]>([])
   const [seriesData, setSeriesData] = useState<any[]>([])
   const [counter, setCounter] = useState(0)
 
+  const [isPlaying, setIsPlaying] = useState(true)
+
   useEffect(() => {
-    const timer = setInterval(
-      () => setCounter(prevCounter => prevCounter + 1),
-      200,
-***REMOVED***
-    return () => clearInterval(timer)
-***REMOVED***, [])
+    if (isPlaying) {
+      const timer = setInterval(
+        () => setCounter(prevCounter => prevCounter + 1),
+        180,
+  ***REMOVED***
+      return () => clearInterval(timer)
+  ***REMOVED***
+***REMOVED***, [isPlaying])
 
   useEffect(() => {
     const allYears = Object.keys(data)
@@ -47,7 +39,7 @@ export default function RadarChart({ data ***REMOVED***: { data: AvgTempData ***
 ***REMOVED***, [counter])
 
   useEffect(() => {
-    const mySeriesData = years?.slice(-10).map(y => {
+    const mySeriesData = years?.slice(-12).map(y => {
       const year = data[y]
       return {
         value: Object.keys(year)
@@ -70,7 +62,13 @@ export default function RadarChart({ data ***REMOVED***: { data: AvgTempData ***
 ***REMOVED***, [years])
 
   return (
-    <div className="relative h-full w-full">
+    <div
+      className="relative h-full w-full cursor-pointer"
+      onClick={e => {
+        e.stopPropagation()
+        setIsPlaying(!isPlaying)
+    ***REMOVED******REMOVED***
+    >
       <div className="absolute flex h-full w-full items-center justify-center">
         <Title as={'h4'***REMOVED*** className="z-10 text-2xl">
     ***REMOVED***years[years.length - 1]***REMOVED***
