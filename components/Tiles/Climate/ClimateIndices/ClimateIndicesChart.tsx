@@ -18,6 +18,7 @@ import useDevice from '@/hooks/useDevice'
 import tailwindConfig from '@/tailwind.config.js'
 import { ForwardRefExoticComponent, SVGProps, useState ***REMOVED*** from 'react'
 import resolveConfig from 'tailwindcss/resolveConfig'
+import { chartFormatter ***REMOVED*** from '@/utils/chartFormatter'
 
 const { theme ***REMOVED*** = resolveConfig(tailwindConfig)
 
@@ -136,18 +137,19 @@ const indices: Record<
  */
 function ClimateIndiceToggle({
   type,
-  defaultChecked,
+  checked,
   onChange,
 ***REMOVED***: {
   type: IndicesTypes
-  defaultChecked?: boolean
+  checked?: boolean
   onChange?: (_checked: boolean) => void
 ***REMOVED***) {
   const Icon = indices[type].icon
   return (
     <div className="flex w-full flex-row-reverse items-center justify-between gap-2 lg:flex-row lg:justify-normal lg:gap-4">
       <Switch
-        defaultChecked={defaultChecked***REMOVED***
+        // defaultChecked={defaultChecked***REMOVED***
+        checked={checked***REMOVED***
         onCheckedChange={onChange***REMOVED***
         variant={type***REMOVED***
       />
@@ -159,6 +161,36 @@ function ClimateIndiceToggle({
       </div>
     </div>
   )
+***REMOVED***
+
+//Sample function to calculate trendline points
+const calculateTrendline = (data: [string, number][]): [number, number][] => {
+  // Calculate the trendline using linear regression
+  const n = data.length
+  const sumX = data.reduce((acc, [date]) => acc + new Date(date).getTime(), 0)
+  const sumY = data.reduce((acc, [, value]) => acc + value, 0)
+  const sumXY = data.reduce(
+    (acc, [date, value]) => acc + new Date(date).getTime() * value,
+    0,
+  )
+  const sumX2 = data.reduce(
+    (acc, [date]) => acc + Math.pow(new Date(date).getTime(), 2),
+    0,
+  )
+
+  const slope = (n * sumXY - sumX * sumY) / (n * sumX2 - Math.pow(sumX, 2))
+  const intercept = (sumY - slope * sumX) / n
+
+  return data.map(([date]) => {
+    const x = new Date(date).getTime()
+    const y = slope * x + intercept
+    return [x, y]
+***REMOVED***)
+***REMOVED***
+
+// Function to count active toggles
+const countActiveToggles = (toggles: Record<IndicesTypes, boolean>): number => {
+  return Object.values(toggles).filter(isActive => isActive).length
 ***REMOVED***
 
 /**
@@ -235,6 +267,42 @@ export default function ClimateIndicesChart() {
   ***REMOVED***,
   ***REMOVED***))
 
+  const isAllChecked: boolean =
+    seriesVisible.sommertage || seriesVisible.frosttage
+
+  const allData = [
+    ...series,
+    ...lastToCurYearSeries,
+    ...onlyCurYearSeries,
+  ].flatMap(s => s.data)
+
+  const trendlineData = calculateTrendline(allData as [string, number][])
+  const trendlineColor =
+    series.length > 0 ? series[0].lineStyle?.color || 'black' : 'black'
+
+  const activeToggleCount = countActiveToggles(seriesVisible)
+  const trendlineSeries: LineSeriesOption | null =
+    activeToggleCount === 1
+      ? {
+          type: 'line',
+          data: trendlineData,
+          name: 'Durchschnitt',
+          smooth: true,
+          lineStyle: {
+            type: 'dotted', // Change to solid line
+            color: trendlineColor, // Use the series color
+            opacity: 0.3,
+        ***REMOVED***,
+          symbol: 'none', // Hide small circles on the trendline initially
+          emphasis: {
+            lineStyle: {
+              opacity: 1, // Change color on hover
+          ***REMOVED***,
+        ***REMOVED***,
+          markLine: {***REMOVED***,
+      ***REMOVED***
+      : null
+
   return (
     <div className="flex h-full w-full flex-col items-center p-5 2xl:flex-row">
       <div className="h-full w-full flex-1">
@@ -251,7 +319,12 @@ export default function ClimateIndicesChart() {
                 left: 40,
                 right: 40,
             ***REMOVED***,
-              series: [...series, ...lastToCurYearSeries, ...onlyCurYearSeries],
+              series: [
+                ...series,
+                ...lastToCurYearSeries,
+                ...onlyCurYearSeries,
+                ...(trendlineSeries ? [trendlineSeries] : []),
+              ],
               xAxis: {
                 type: 'time',
                 axisLabel: {
@@ -277,10 +350,12 @@ export default function ClimateIndicesChart() {
 
                 //   return '{b0***REMOVED***: {c0***REMOVED***<br />{b1***REMOVED***: {c1***REMOVED***'
                 // ***REMOVED***,
+                // return from x-axis only year
+                formatter: chartFormatter,
             ***REMOVED***,
               yAxis: {
                 type: 'value',
-                interval: 5,
+                interval: isAllChecked ? 10 : 5,
                 axisLabel: {
                   fontSize: device === 'mobile' ? 12 : 20,
                   formatter: (val: any) => {
@@ -301,29 +376,29 @@ export default function ClimateIndicesChart() {
       </div>
       <div className="flex h-full flex-col justify-evenly gap-1">
         <ClimateIndiceToggle
-          defaultChecked={seriesVisible.heisse_tage***REMOVED***
+          checked={seriesVisible.heisse_tage***REMOVED***
           onChange={c => setSeriesVisible({ ...seriesVisible, heisse_tage: c ***REMOVED***)***REMOVED***
           type="heisse_tage"
         />
         <ClimateIndiceToggle
-          defaultChecked={seriesVisible.sommertage***REMOVED***
+          checked={seriesVisible.sommertage***REMOVED***
           onChange={c => setSeriesVisible({ ...seriesVisible, sommertage: c ***REMOVED***)***REMOVED***
           type="sommertage"
         />
         <ClimateIndiceToggle
-          defaultChecked={seriesVisible.tropennaechte***REMOVED***
+          checked={seriesVisible.tropennaechte***REMOVED***
           onChange={c =>
             setSeriesVisible({ ...seriesVisible, tropennaechte: c ***REMOVED***)
         ***REMOVED***
           type="tropennaechte"
         />
         <ClimateIndiceToggle
-          defaultChecked={seriesVisible.frosttage***REMOVED***
+          checked={seriesVisible.frosttage***REMOVED***
           onChange={c => setSeriesVisible({ ...seriesVisible, frosttage: c ***REMOVED***)***REMOVED***
           type="frosttage"
         />
         <ClimateIndiceToggle
-          defaultChecked={seriesVisible.eistage***REMOVED***
+          checked={seriesVisible.eistage***REMOVED***
           onChange={c => setSeriesVisible({ ...seriesVisible, eistage: c ***REMOVED***)***REMOVED***
           type="eistage"
         />
