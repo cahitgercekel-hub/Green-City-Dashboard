@@ -7,6 +7,7 @@ import { parse ***REMOVED*** from 'date-fns'
 import { SeriesOption ***REMOVED*** from 'echarts'
 import { useWindowSize ***REMOVED*** from 'react-use'
 import { linearRegression ***REMOVED*** from 'simple-statistics'
+import { chartFormatter ***REMOVED*** from '@/utils/chartFormatter'
 
 type CO2ChartProps = {
   showFuture?: boolean
@@ -215,6 +216,12 @@ export default function CO2Chart({ showFuture = false, mode ***REMOVED***: CO2Ch
                 ***REMOVED***).format(val / (mode === 'co2' ? 1000 : 1))
               ***REMOVED***,
             ***REMOVED***,
+          ***REMOVED***,
+            tooltip: {
+              show: true,
+              showDelay: 0,
+              trigger: 'axis',
+              formatter: chartFormatter,
           ***REMOVED***,
             series: [...series, ...seriesFuture],
             legend: {
