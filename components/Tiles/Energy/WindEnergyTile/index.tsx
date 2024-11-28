@@ -24,7 +24,7 @@ export default function WindEnergyTile() {
   return (
     <EnergyTile
       dataRetrieval={format(new Date(data.ZEIT), 'dd.MM.yyyy')***REMOVED***
-      dataSource="Stadt Münster &ndash; Stadtplanungsamt"
+      dataSource="Marktstammdatenregister"
       embedId="energy-wind"
       title={
         <>
