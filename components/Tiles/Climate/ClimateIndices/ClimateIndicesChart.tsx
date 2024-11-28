@@ -16,9 +16,9 @@ import {
 ***REMOVED*** from '@/components/Icons/Klima'
 import useDevice from '@/hooks/useDevice'
 import tailwindConfig from '@/tailwind.config.js'
+import { chartFormatter ***REMOVED*** from '@/utils/chartFormatter'
 import { ForwardRefExoticComponent, SVGProps, useState ***REMOVED*** from 'react'
 import resolveConfig from 'tailwindcss/resolveConfig'
-import { chartFormatter ***REMOVED*** from '@/utils/chartFormatter'
 
 const { theme ***REMOVED*** = resolveConfig(tailwindConfig)
 
@@ -270,11 +270,7 @@ export default function ClimateIndicesChart() {
   const isAllChecked: boolean =
     seriesVisible.sommertage || seriesVisible.frosttage
 
-  const allData = [
-    ...series,
-    ...lastToCurYearSeries,
-    ...onlyCurYearSeries,
-  ].flatMap(s => s.data)
+  const allData = [...series].flatMap(s => s.data)
 
   const trendlineData = calculateTrendline(allData as [string, number][])
   const trendlineColor =
