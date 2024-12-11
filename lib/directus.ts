@@ -9,6 +9,7 @@ export const collectionsName = 'collections'
 export const tileCollectionName = 'tiles'
 export const surveyCollectionName = 'survey'
 export const successStoriesCollectionName = 'successStory'
+export const themeCollectionName = 'theme'
 
 export type DirectusStatus = 'draft' | 'archived' | 'published'
 
@@ -74,6 +75,15 @@ export type Survey = {
   dataRetrieval: Date
 }
 
+export type Theme = {
+  id: ID
+  status: DirectusStatus
+  primary: string
+  primary_light: string
+  secondary: string
+  secondary_light: string
+}
+
 // Map your collections to its respective types. The SDK will
 // infer its types based on usage later.
 type DirectusCollection = {
@@ -82,6 +92,7 @@ type DirectusCollection = {
   tiles: Tile
   successStory: SuccessStory
   survey: Survey
+  theme: Theme
 }
 
 const directus = new Directus<DirectusCollection>(directusUrl)

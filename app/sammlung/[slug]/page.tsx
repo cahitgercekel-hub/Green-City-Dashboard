@@ -1,16 +1,16 @@
 import Columns from '@/components/Layout/Columns'
+import { SuccessStoryTileProps } from '@/components/Tiles/SuccessStory'
+import { SurveyTileProps } from '@/components/Tiles/Survey'
+import { getSuccessStoryData } from '@/lib/api/getSuccessStoryData'
+import { getSurveyData } from '@/lib/api/getSurveyData'
 import directus, {
   collectionsName,
   ENV_DIRECTUS_ITEM_STATUS,
   tileCollectionName,
 } from '@/lib/directus'
-import { notFound } from 'next/navigation'
 import getTilesBucket, { BaseTile } from '@/utils/fullWidthBucket'
 import TileFactory, { TileType } from '@/utils/TileFactory'
-import { SurveyTileProps } from '@/components/Tiles/Survey'
-import { SuccessStoryTileProps } from '@/components/Tiles/SuccessStory'
-import { getSurveyData } from '@/lib/api/getSurveyData'
-import { getSuccessStoryData } from '@/lib/api/getSuccessStoryData'
+import { notFound } from 'next/navigation'
 
 export const revalidate = 10
 
@@ -101,6 +101,8 @@ export default async function Collection({
   if (!collection || !collection[0]) {
     return notFound()
   }
+
+  console.log(collection)
 
   const { tiles } = collection[0]
 
