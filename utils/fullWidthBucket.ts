@@ -17,6 +17,7 @@ type TilesBucket = {
 
 // check if a tile should be displayed full width
 const isFullWidth = async (tile: BaseTile) => {
+  console.log(tile)
   if (tile.collection === 'successStory') {
     return true
 ***REMOVED***

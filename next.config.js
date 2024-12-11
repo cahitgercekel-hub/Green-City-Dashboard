@@ -23,6 +23,10 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'cms.klimadashboard-ms.reedu.de',
     ***REMOVED***,
+***REMOVED***
+        protocol: 'http',
+        hostname: 'localhost',
+    ***REMOVED***,
     ],
 ***REMOVED***,
 ***REMOVED***

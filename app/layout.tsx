@@ -1,3 +1,4 @@
+import directus, { Theme ***REMOVED*** from '@/lib/directus'
 import '@/styles/globals.css'
 import { Viewport ***REMOVED*** from 'next'
 import { Inter ***REMOVED*** from 'next/font/google'
@@ -19,11 +20,39 @@ export const viewport: Viewport = {
   initialScale: 1,
 ***REMOVED***
 
-export default function RootLayout({
+function hexToRgb(hex: string) {
+  var result = /^#?([a-f\d]{2***REMOVED***)([a-f\d]{2***REMOVED***)([a-f\d]{2***REMOVED***)$/i.exec(hex)
+  return result
+    ? `${parseInt(result[1], 16)***REMOVED*** ${parseInt(result[2], 16)***REMOVED*** ${parseInt(
+        result[3],
+        16,
+  ***REMOVED******REMOVED***`
+    : null
+***REMOVED***
+
+export default async function RootLayout({
   children,
 ***REMOVED***: {
   children: React.ReactNode
 ***REMOVED***) {
+  const { data ***REMOVED*** = await directus.items('theme').readByQuery({
+    limit: 1,
+***REMOVED***)
+
+  // @ts-ignore
+  const theme = data as Theme
+
+  let style: React.CSSProperties = {***REMOVED***
+
+  if (theme) {
+    style = {
+      '--color-primary': hexToRgb(theme.primary),
+      '--color-primary-light': hexToRgb(theme.primary_light),
+      '--color-secondary': hexToRgb(theme.secondary),
+      '--color-secondary-light': hexToRgb(theme.secondary_light),
+  ***REMOVED*** as React.CSSProperties
+***REMOVED***
+
   return (
     <html className={inter.className***REMOVED*** lang="de">
 ***REMOVED***/*
@@ -31,7 +60,7 @@ export default function RootLayout({
         head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
       */***REMOVED***
       <head />
-      <body>
+      <body style={style***REMOVED***>
   ***REMOVED***children***REMOVED***
         <Cookies />
       </body>

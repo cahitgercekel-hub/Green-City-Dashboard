@@ -3,45 +3,45 @@ module.exports = {
   content: ['./app/**/*.{js,ts,jsx,tsx***REMOVED***', './components/**/*.{js,ts,jsx,tsx***REMOVED***'],
   theme: {
     screens: {
-      'xs' : '540px',
-      'md' : '768px',
-      'lg' : '1024px',
-      'xl' : '1440px',
+      xs: '540px',
+      md: '768px',
+      lg: '1024px',
+      xl: '1440px',
       '2xl': '1920px',
   ***REMOVED***,
     extend: {
       container: {
         screens: {
-          'lg': '1024px',
-          'xl': '1440px',
+          lg: '1024px',
+          xl: '1440px',
           // 'xl' : '1024px',
           '2xl': '1920px',
       ***REMOVED***,
     ***REMOVED***,
       colors: {
         primary: {
-          DEFAULT: '#005b79',
-          light: '#f1f5fd',
+          DEFAULT: 'rgb(var(--color-primary))',
+          light: 'rgb(var(--color-primary-light))',
       ***REMOVED***,
         secondary: {
-          DEFAULT: '#aab315',
-          light: '#fbfbf3',
+          DEFAULT: 'rgb(var(--color-secondary))',
+          light: 'rgb(var(--color-secondary-light))',
       ***REMOVED***,
         climate: {
-          DEFAULT: '#14b3d9',
-          light: '#ecf8fb',
+          DEFAULT: 'rgb(var(--color-climate))',
+          light: 'rgb(var(--color-climate-light))',
       ***REMOVED***,
         mobility: {
-          DEFAULT: '#34c17b',
-          light: '#f5fcf8',
+          DEFAULT: 'rgb(var(--color-mobility))',
+          light: 'rgb(var(--color-mobility-light))',
       ***REMOVED***,
         energy: {
-          DEFAULT: '#f28443',
-          light: '#fdf2ec',
+          DEFAULT: 'rgb(var(--color-energy))',
+          light: 'rgb(var(--color-energy-light))',
       ***REMOVED***,
         buildings: {
-          DEFAULT: '#6060d6',
-          light: '#f2f2fa',
+          DEFAULT: 'rgb(var(--color-buildings))',
+          light: 'rgb(var(--color-buildings-light))',
       ***REMOVED***,
     ***REMOVED***,
   ***REMOVED***,
