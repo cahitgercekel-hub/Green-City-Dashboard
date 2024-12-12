@@ -1140,7 +1140,8 @@ CREATE TABLE public.theme (
     energy_light character varying(255) DEFAULT NULL::character varying,
     buildings character varying(255) DEFAULT NULL::character varying,
     buildings_light character varying(255) DEFAULT NULL::character varying,
-    border_radius integer DEFAULT 3
+    border_radius integer DEFAULT 3,
+    font character varying(255)
 );
 
 
@@ -3589,6 +3590,12 @@ COPY public.directus_activity (id, action, "user", "timestamp", ip, user_agent, 
 2186	update	1dde8813-9593-4009-87c1-cc192594ba4b	2024-12-12 15:14:39.458+00	192.168.65.1	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36	theme	1	http://localhost:8055
 2187	update	1dde8813-9593-4009-87c1-cc192594ba4b	2024-12-12 15:15:17.675+00	192.168.65.1	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36	theme	1	http://localhost:8055
 2188	update	1dde8813-9593-4009-87c1-cc192594ba4b	2024-12-12 15:16:41.411+00	192.168.65.1	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36	theme	1	http://localhost:8055
+2189	create	1dde8813-9593-4009-87c1-cc192594ba4b	2024-12-12 15:33:38.946+00	192.168.65.1	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36	directus_fields	184	http://localhost:8055
+2190	update	1dde8813-9593-4009-87c1-cc192594ba4b	2024-12-12 15:33:45.749+00	192.168.65.1	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36	theme	1	http://localhost:8055
+2191	update	1dde8813-9593-4009-87c1-cc192594ba4b	2024-12-12 15:35:18.762+00	192.168.65.1	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36	theme	1	http://localhost:8055
+2192	update	1dde8813-9593-4009-87c1-cc192594ba4b	2024-12-12 15:40:32.725+00	192.168.65.1	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36	theme	1	http://localhost:8055
+2193	update	1dde8813-9593-4009-87c1-cc192594ba4b	2024-12-12 15:40:57.925+00	192.168.65.1	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36	theme	1	http://localhost:8055
+2194	update	1dde8813-9593-4009-87c1-cc192594ba4b	2024-12-12 15:42:27.09+00	192.168.65.1	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36	theme	1	http://localhost:8055
 \.
 
 
@@ -3745,6 +3752,7 @@ COPY public.directus_fields (id, collection, field, special, interface, options,
 181	sections_tiles	collection	\N	\N	\N	\N	\N	f	t	4	full	\N	\N	\N	f	\N	\N	\N
 182	sections	title	\N	input	\N	\N	\N	f	f	9	full	\N	\N	\N	f	\N	\N	\N
 183	sections	icon	\N	select-icon	\N	\N	\N	f	f	10	full	\N	\N	\N	f	\N	\N	\N
+184	theme	font	\N	select-dropdown	{"choices":[{"text":"inter","value":"inter"},{"text":"lexend","value":"lexend"}]}	\N	\N	f	f	15	full	\N	\N	\N	f	\N	\N	\N
 134	theme	id	\N	input	\N	\N	\N	t	t	1	full	\N	\N	\N	f	\N	\N	\N
 140	theme	primary	\N	select-color	\N	\N	\N	f	f	1	full	\N	\N	\N	f	colors	\N	\N
 141	theme	primary_light	\N	select-color	\N	\N	\N	f	f	2	full	\N	\N	\N	f	colors	\N	\N
@@ -5873,6 +5881,12 @@ COPY public.directus_revisions (id, activity, collection, item, data, delta, par
 1865	2186	theme	1	{"id":1,"user_created":"1dde8813-9593-4009-87c1-cc192594ba4b","date_created":"2024-12-11T09:55:33.806Z","user_updated":"1dde8813-9593-4009-87c1-cc192594ba4b","date_updated":"2024-12-12T15:14:39.454Z","primary":"#081F5D","primary_light":"#EBE8E0","secondary":"#FF7A00","secondary_light":"#FDF2EC","navbar_image":"5290a88c-477e-49bf-a6dc-4628b24b4817","title":"Klimadashboard Wiesbaden","navbar_image_link":null,"climate":"#14B3D9","climate_light":"#ECF8FB","mobility":"#34C17B","mobility_light":"#F5FCF8","energy":"#0B297C","energy_light":"#FFFFFF","buildings":"#6060D6","buildings_light":"#F2F2FA","border_radius":2}	{"primary":"#081F5D","primary_light":"#EBE8E0","secondary":"#FF7A00","secondary_light":"#FDF2EC","climate":"#14B3D9","climate_light":"#ECF8FB","mobility":"#34C17B","mobility_light":"#F5FCF8","energy":"#0B297C","energy_light":"#FFFFFF","buildings":"#6060D6","buildings_light":"#F2F2FA","user_updated":"1dde8813-9593-4009-87c1-cc192594ba4b","date_updated":"2024-12-12T15:14:39.454Z"}	\N	\N
 1866	2187	theme	1	{"id":1,"user_created":"1dde8813-9593-4009-87c1-cc192594ba4b","date_created":"2024-12-11T09:55:33.806Z","user_updated":"1dde8813-9593-4009-87c1-cc192594ba4b","date_updated":"2024-12-12T15:15:17.672Z","primary":"#081F5D","primary_light":"#DBDEE6","secondary":"#FF7A00","secondary_light":"#FDF2EC","navbar_image":"5290a88c-477e-49bf-a6dc-4628b24b4817","title":"Klimadashboard Wiesbaden","navbar_image_link":null,"climate":"#14B3D9","climate_light":"#ECF8FB","mobility":"#34C17B","mobility_light":"#F5FCF8","energy":"#0B297C","energy_light":"#FFFFFF","buildings":"#6060D6","buildings_light":"#F2F2FA","border_radius":2}	{"primary_light":"#DBDEE6","user_updated":"1dde8813-9593-4009-87c1-cc192594ba4b","date_updated":"2024-12-12T15:15:17.672Z"}	\N	\N
 1867	2188	theme	1	{"id":1,"user_created":"1dde8813-9593-4009-87c1-cc192594ba4b","date_created":"2024-12-11T09:55:33.806Z","user_updated":"1dde8813-9593-4009-87c1-cc192594ba4b","date_updated":"2024-12-12T15:16:41.408Z","primary":"#081F5D","primary_light":"#DBDEE6","secondary":"#FF7A00","secondary_light":"#FDF2EC","navbar_image":"5290a88c-477e-49bf-a6dc-4628b24b4817","title":"Klimadashboard Wiesbaden","navbar_image_link":null,"climate":"#14B3D9","climate_light":"#ECF8FB","mobility":"#34C17B","mobility_light":"#F5FCF8","energy":"#0B297C","energy_light":"#F0F4FF","buildings":"#6060D6","buildings_light":"#F2F2FA","border_radius":2}	{"energy_light":"#F0F4FF","user_updated":"1dde8813-9593-4009-87c1-cc192594ba4b","date_updated":"2024-12-12T15:16:41.408Z"}	\N	\N
+1868	2189	directus_fields	184	{"sort":15,"interface":"select-dropdown","special":null,"options":{"choices":[{"text":"inter","value":"inter"},{"text":"lexend","value":"lexend"}]},"collection":"theme","field":"font"}	{"sort":15,"interface":"select-dropdown","special":null,"options":{"choices":[{"text":"inter","value":"inter"},{"text":"lexend","value":"lexend"}]},"collection":"theme","field":"font"}	\N	\N
+1869	2190	theme	1	{"id":1,"user_created":"1dde8813-9593-4009-87c1-cc192594ba4b","date_created":"2024-12-11T09:55:33.806Z","user_updated":"1dde8813-9593-4009-87c1-cc192594ba4b","date_updated":"2024-12-12T15:33:45.747Z","primary":"#081F5D","primary_light":"#DBDEE6","secondary":"#FF7A00","secondary_light":"#FDF2EC","navbar_image":"5290a88c-477e-49bf-a6dc-4628b24b4817","title":"Klimadashboard Wiesbaden","navbar_image_link":null,"climate":"#14B3D9","climate_light":"#ECF8FB","mobility":"#34C17B","mobility_light":"#F5FCF8","energy":"#0B297C","energy_light":"#F0F4FF","buildings":"#6060D6","buildings_light":"#F2F2FA","border_radius":2,"font":"lexend"}	{"font":"lexend","user_updated":"1dde8813-9593-4009-87c1-cc192594ba4b","date_updated":"2024-12-12T15:33:45.747Z"}	\N	\N
+1870	2191	theme	1	{"id":1,"user_created":"1dde8813-9593-4009-87c1-cc192594ba4b","date_created":"2024-12-11T09:55:33.806Z","user_updated":"1dde8813-9593-4009-87c1-cc192594ba4b","date_updated":"2024-12-12T15:35:18.760Z","primary":"#081F5D","primary_light":"#DBDEE6","secondary":"#FF7A00","secondary_light":"#FDF2EC","navbar_image":"5290a88c-477e-49bf-a6dc-4628b24b4817","title":"Klimadashboard Wiesbaden","navbar_image_link":null,"climate":"#14B3D9","climate_light":"#ECF8FB","mobility":"#34C17B","mobility_light":"#F5FCF8","energy":"#0B297C","energy_light":"#F0F4FF","buildings":"#6060D6","buildings_light":"#F2F2FA","border_radius":2,"font":"inter"}	{"font":"inter","user_updated":"1dde8813-9593-4009-87c1-cc192594ba4b","date_updated":"2024-12-12T15:35:18.760Z"}	\N	\N
+1871	2192	theme	1	{"id":1,"user_created":"1dde8813-9593-4009-87c1-cc192594ba4b","date_created":"2024-12-11T09:55:33.806Z","user_updated":"1dde8813-9593-4009-87c1-cc192594ba4b","date_updated":"2024-12-12T15:40:32.722Z","primary":"#081F5D","primary_light":"#DBDEE6","secondary":"#FF7A00","secondary_light":"#FDF2EC","navbar_image":"5290a88c-477e-49bf-a6dc-4628b24b4817","title":"Klimadashboard Wiesbaden","navbar_image_link":null,"climate":"#14B3D9","climate_light":"#ECF8FB","mobility":"#34C17B","mobility_light":"#F5FCF8","energy":"#0B297C","energy_light":"#F0F4FF","buildings":"#6060D6","buildings_light":"#F2F2FA","border_radius":2,"font":"lexend"}	{"font":"lexend","user_updated":"1dde8813-9593-4009-87c1-cc192594ba4b","date_updated":"2024-12-12T15:40:32.722Z"}	\N	\N
+1872	2193	theme	1	{"id":1,"user_created":"1dde8813-9593-4009-87c1-cc192594ba4b","date_created":"2024-12-11T09:55:33.806Z","user_updated":"1dde8813-9593-4009-87c1-cc192594ba4b","date_updated":"2024-12-12T15:40:57.923Z","primary":"#081F5D","primary_light":"#DBDEE6","secondary":"#0B297C","secondary_light":"#F0F4FF","navbar_image":"5290a88c-477e-49bf-a6dc-4628b24b4817","title":"Klimadashboard Wiesbaden","navbar_image_link":null,"climate":"#14B3D9","climate_light":"#ECF8FB","mobility":"#34C17B","mobility_light":"#F5FCF8","energy":"#0B297C","energy_light":"#F0F4FF","buildings":"#6060D6","buildings_light":"#F2F2FA","border_radius":2,"font":"lexend"}	{"secondary":"#0B297C","secondary_light":"#F0F4FF","user_updated":"1dde8813-9593-4009-87c1-cc192594ba4b","date_updated":"2024-12-12T15:40:57.923Z"}	\N	\N
+1873	2194	theme	1	{"id":1,"user_created":"1dde8813-9593-4009-87c1-cc192594ba4b","date_created":"2024-12-11T09:55:33.806Z","user_updated":"1dde8813-9593-4009-87c1-cc192594ba4b","date_updated":"2024-12-12T15:42:27.088Z","primary":"#081F5D","primary_light":"#DBDEE6","secondary":"#0B297C","secondary_light":"#F0F4FF","navbar_image":"5290a88c-477e-49bf-a6dc-4628b24b4817","title":"Klimadashboard Wiesbaden","navbar_image_link":null,"climate":"#14B3D9","climate_light":"#ECF8FB","mobility":"#34C17B","mobility_light":"#F5FCF8","energy":"#0B297C","energy_light":"#F0F4FF","buildings":"#6060D6","buildings_light":"#F2F2FA","border_radius":2,"font":"inter"}	{"font":"inter","user_updated":"1dde8813-9593-4009-87c1-cc192594ba4b","date_updated":"2024-12-12T15:42:27.088Z"}	\N	\N
 \.
 
 
@@ -6158,8 +6172,8 @@ adf65f44-52fd-4947-af19-f5c258edf80a	published	\N	1dde8813-9593-4009-87c1-cc1925
 -- Data for Name: theme; Type: TABLE DATA; Schema: public; Owner: directus
 --
 
-COPY public.theme (id, user_created, date_created, user_updated, date_updated, "primary", primary_light, secondary, secondary_light, navbar_image, title, navbar_image_link, climate, climate_light, mobility, mobility_light, energy, energy_light, buildings, buildings_light, border_radius) FROM stdin;
-1	1dde8813-9593-4009-87c1-cc192594ba4b	2024-12-11 09:55:33.806+00	1dde8813-9593-4009-87c1-cc192594ba4b	2024-12-12 15:16:41.408+00	#081F5D	#DBDEE6	#FF7A00	#FDF2EC	5290a88c-477e-49bf-a6dc-4628b24b4817	Klimadashboard Wiesbaden	\N	#14B3D9	#ECF8FB	#34C17B	#F5FCF8	#0B297C	#F0F4FF	#6060D6	#F2F2FA	2
+COPY public.theme (id, user_created, date_created, user_updated, date_updated, "primary", primary_light, secondary, secondary_light, navbar_image, title, navbar_image_link, climate, climate_light, mobility, mobility_light, energy, energy_light, buildings, buildings_light, border_radius, font) FROM stdin;
+1	1dde8813-9593-4009-87c1-cc192594ba4b	2024-12-11 09:55:33.806+00	1dde8813-9593-4009-87c1-cc192594ba4b	2024-12-12 15:42:27.088+00	#081F5D	#DBDEE6	#0B297C	#F0F4FF	5290a88c-477e-49bf-a6dc-4628b24b4817	Klimadashboard Wiesbaden	\N	#14B3D9	#ECF8FB	#34C17B	#F5FCF8	#0B297C	#F0F4FF	#6060D6	#F2F2FA	2	inter
 \.
 
 
@@ -6214,14 +6228,14 @@ SELECT pg_catalog.setval('public.collections_tiles_id_seq', 72, true);
 -- Name: directus_activity_id_seq; Type: SEQUENCE SET; Schema: public; Owner: directus
 --
 
-SELECT pg_catalog.setval('public.directus_activity_id_seq', 2188, true);
+SELECT pg_catalog.setval('public.directus_activity_id_seq', 2194, true);
 
 
 --
 -- Name: directus_fields_id_seq; Type: SEQUENCE SET; Schema: public; Owner: directus
 --
 
-SELECT pg_catalog.setval('public.directus_fields_id_seq', 183, true);
+SELECT pg_catalog.setval('public.directus_fields_id_seq', 184, true);
 
 
 --
@@ -6256,7 +6270,7 @@ SELECT pg_catalog.setval('public.directus_relations_id_seq', 46, true);
 -- Name: directus_revisions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: directus
 --
 
-SELECT pg_catalog.setval('public.directus_revisions_id_seq', 1867, true);
+SELECT pg_catalog.setval('public.directus_revisions_id_seq', 1873, true);
 
 
 --
