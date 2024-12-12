@@ -2,9 +2,9 @@
 
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline'
 import { Splide, SplideProps, SplideSlide } from '@splidejs/react-splide'
+import '@splidejs/react-splide/css'
 import { cva, cx, VariantProps } from 'class-variance-authority'
 import { useEffect, useRef, useState } from 'react'
-import '@splidejs/react-splide/css'
 
 interface CarouselProps extends SplideProps, VariantProps<typeof arrowStyle> {
   children: React.ReactElement[]
@@ -75,7 +75,7 @@ export default function Carousel({
               {[...Array(children.length)].map((_, i) => (
                 <div
                   className={cx(
-                    'h-3 w-3 rounded-full border-2 border-buildings transition-colors',
+                    'h-3 w-3 rounded-lg border-2 border-buildings transition-colors',
                     curIndex === i ? 'bg-buildings' : 'bg-transparent',
                   )}
                   key={i}

@@ -1,6 +1,6 @@
 import { CheckIcon, ClipboardDocumentIcon } from '@heroicons/react/24/outline'
-import { useEffect, useState } from 'react'
 import { animated, useTransition } from '@react-spring/web'
+import { useEffect, useState } from 'react'
 
 type AnimatedCopyIconProps = {
   onClick: () => void
@@ -30,7 +30,7 @@ export default function AnimatedCopyIcon({ onClick }: AnimatedCopyIconProps) {
 
   return transitions((styles, isSuccess) => (
     <animated.div
-      className="absolute top-0 cursor-pointer rounded-full bg-transparent p-2 hover:bg-zinc-100"
+      className="absolute top-0 cursor-pointer rounded-lg bg-transparent p-2 hover:bg-zinc-100"
       onClick={handleOnClick}
       style={styles}
     >

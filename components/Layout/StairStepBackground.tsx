@@ -5,7 +5,7 @@ const phenomenonStyle = cva('flex-[3_3_0%]', {
   variants: {
     variant: {
       primary: 'bg-primary-light',
-      secondary: 'bg-secondar/20',
+      secondary: 'bg-secondary/20',
       overlay: 'bg-primary/90 backdrop-blur',
     },
   },

@@ -58,8 +58,12 @@ export default async function RootLayout({
       '--color-energy-light': hexToRgb(theme.energy_light),
       '--color-buildings': hexToRgb(theme.buildings),
       '--color-buildings-light': hexToRgb(theme.buildings_light),
-      '--border-radius-md': `${theme.border_radius * 12}px`,
-      '--border-radius-lg': `${theme.border_radius * 17.3}px`,
+      '--border-radius-md': `${
+        theme.border_radius * 12 * (theme.border_radius / 3)
+      }px`,
+      '--border-radius-lg': `${
+        theme.border_radius * 17.3 * (theme.border_radius / 3)
+      }px`,
     } as React.CSSProperties
   }
 

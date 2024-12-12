@@ -19,7 +19,7 @@ const toggleGroupStyle = cva<{
     true: string
   }
 }>(
-  'flex h-fit w-fit overflow-hidden rounded-full border-2 bg-white w-full md:w-auto',
+  'flex h-fit w-fit overflow-hidden rounded-lg border-2 bg-white w-full md:w-auto',
   {
     variants: {
       variant: {

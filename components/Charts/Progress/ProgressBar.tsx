@@ -3,7 +3,7 @@
 import * as ProgressPrimitive from '@radix-ui/react-progress'
 import { cva, VariantProps } from 'class-variance-authority'
 
-const ProgressStyle = cva('flex h-full rounded-full duration-300 ease-in-out', {
+const ProgressStyle = cva('flex h-full rounded-lg duration-300 ease-in-out', {
   variants: {
     variant: {
       primary: 'bg-white',
@@ -24,9 +24,9 @@ type ProgressBarProps = VariantProps<typeof ProgressStyle> & {
 
 function ProgressBar({ progress, variant }: ProgressBarProps) {
   return (
-    <div className="rounded-full border-2 border-primary p-[.25rem]">
+    <div className="rounded-lg border-2 border-primary p-[.25rem]">
       <ProgressPrimitive.Root
-        className="h-5 w-full overflow-hidden rounded-full bg-primary"
+        className="h-5 w-full overflow-hidden rounded-lg bg-primary"
         value={progress}
       >
         <ProgressPrimitive.Indicator

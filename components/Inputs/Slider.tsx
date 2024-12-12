@@ -5,7 +5,7 @@ import { cva, VariantProps } from 'class-variance-authority'
 import { useState } from 'react'
 import Title from '../Elements/Title'
 
-const sliderStyle = cva('relative h-3 md:h-5 flex-1 rounded-full', {
+const sliderStyle = cva('relative h-3 md:h-5 flex-1 rounded-lg', {
   variants: {
     variant: {
       primary: 'bg-primary/20',
@@ -55,7 +55,7 @@ export default function Slider({
           }}
         >
           <SliderPrimitive.Track className={sliderStyle({ variant })} />
-          <SliderPrimitive.Thumb className="block aspect-square h-6 touch-pan-x rounded-full bg-primary shadow shadow-primary md:h-9" />
+          <SliderPrimitive.Thumb className="block aspect-square h-6 touch-pan-x rounded-lg bg-primary shadow shadow-primary md:h-9" />
         </SliderPrimitive.Root>
       </div>
       {labels && (
