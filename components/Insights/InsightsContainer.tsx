@@ -34,9 +34,9 @@ const Fallback = (
   <div className="w-full">
     <Container>
       <div className="flex w-full flex-col items-center justify-between gap-6 lg:flex-row">
-        <div className="h-96 w-full flex-1 animate-pulse self-stretch rounded-lg rounded-md bg-zinc-100" />
-        <div className="h-96 w-full flex-1 animate-pulse self-stretch rounded-lg rounded-md bg-zinc-100" />
-        <div className="h-96 w-full flex-1 animate-pulse self-stretch rounded-lg rounded-md bg-zinc-100" />
+        <div className="h-96 w-full flex-1 animate-pulse self-stretch rounded-md bg-zinc-100 lg:rounded-lg" />
+        <div className="h-96 w-full flex-1 animate-pulse self-stretch rounded-md bg-zinc-100 lg:rounded-lg" />
+        <div className="h-96 w-full flex-1 animate-pulse self-stretch rounded-md bg-zinc-100 lg:rounded-lg" />
       </div>
     </Container>
   </div>

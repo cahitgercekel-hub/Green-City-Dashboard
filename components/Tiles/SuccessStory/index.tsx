@@ -4,7 +4,8 @@ import Image from 'next/image'
 
 import { directusImage } from '@/lib/directus'
 import { ID } from '@directus/sdk'
-import ReactMarkdown from 'react-markdown'
+import Markdown from 'react-markdown'
+import rehypeExternalLinks from 'rehype-external-links'
 import remarkGfm from 'remark-gfm'
 import { BaseTile } from '../Base/BaseTile'
 
@@ -37,7 +38,7 @@ export default function SuccessStoryTile({
         Stimmen für Münster
       </Title>
       <Spacer size="md" />
-      <ReactMarkdown
+      <Markdown
         className="flex flex-1 flex-col justify-between"
         components={{
           h1: props => (
@@ -91,11 +92,13 @@ export default function SuccessStoryTile({
             />
           ),
         }}
-        linkTarget={'_blank'}
+        rehypePlugins={[
+          [rehypeExternalLinks, { target: '_blank', rel: 'noopener' }],
+        ]}
         remarkPlugins={[remarkGfm]}
       >
         {text}
-      </ReactMarkdown>
+      </Markdown>
     </div>
   )
 

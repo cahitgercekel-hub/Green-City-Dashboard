@@ -1,15 +1,16 @@
 import Title from '@/components/Elements/Title'
-import { ReactMarkdown } from 'react-markdown/lib/react-markdown'
+import Script from 'next/script'
+import Markdown from 'react-markdown'
+import rehypeExternalLinks from 'rehype-external-links'
 import remarkGfm from 'remark-gfm'
 
 // @ts-ignore
 import datenschutzText from './datenschutz.md'
-import Script from 'next/script'
 
 export default function Datenschutz() {
   return (
     <main className="mx-auto max-w-[1136px]">
-      <ReactMarkdown
+      <Markdown
         components={{
           h1: props => (
             <Title as={'h2'} className="mb-2" variant={'primary'} {...props} />
@@ -38,11 +39,13 @@ export default function Datenschutz() {
           ),
           a: props => <a className="underline" {...props} />,
         }}
-        linkTarget={'_blank'}
+        rehypePlugins={[
+          [rehypeExternalLinks, { target: '_blank', rel: 'noopener' }],
+        ]}
         remarkPlugins={[remarkGfm]}
       >
         {datenschutzText}
-      </ReactMarkdown>
+      </Markdown>
 
       <Title as={'h3'} className="mb-2" variant={'primary'}>
         Matomo Opt Out
