@@ -292,7 +292,7 @@ export default function CO2Chart({ showFuture = false, mode ***REMOVED***: CO2Ch
   ***REMOVED***series.map((s, i) => (
           <div className="flex min-w-[8rem] items-center gap-2" key={i***REMOVED***>
             <div
-              className="h-1 w-8 rounded-full"
+              className="h-1 w-8 rounded-lg"
               style={{ backgroundColor: s.color as string ***REMOVED******REMOVED***
             ></div>
             <Title as="h5" className="font-normal" variant={'primary'***REMOVED***>

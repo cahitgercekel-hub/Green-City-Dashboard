@@ -93,7 +93,7 @@ export default function BaseNavbar({
           <div className="xl:hidden">
             <Collapsible
               trigger={
-                <div className="w-fit rounded-full border-2 border-primary p-2 md:p-4">
+                <div className="w-fit rounded-lg border-2 border-primary p-2 md:p-4">
                   <Bars3Icon className="w-5 stroke-2 text-primary md:w-6" />
                 </div>
             ***REMOVED***

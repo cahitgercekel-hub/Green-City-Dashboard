@@ -1,11 +1,11 @@
-import { cva, cx, VariantProps ***REMOVED*** from 'class-variance-authority'
-import Title from '../Elements/Title'
 import {
   MsKlimadashboardIconsButtonAktivEnergieV1,
   MsKlimadashboardIconsButtonAktivGebaeude,
   MsKlimadashboardIconsButtonAktivKlima,
   MsKlimadashboardIconsButtonAktivMobil,
 ***REMOVED*** from '@/components/Icons/Misc'
+import { cva, cx, VariantProps ***REMOVED*** from 'class-variance-authority'
+import Title from '../Elements/Title'
 
 import { SVGProps ***REMOVED*** from 'react'
 
@@ -70,7 +70,7 @@ export default function SectionTitle({
 ***REMOVED***Icon && (
         <div
           className={cx(
-            'h-14 w-20 rounded-full border-2 p-2',
+            'h-14 w-20 rounded-lg border-2 p-2',
             sectionHeaderStyle({ variant ***REMOVED***),
       ***REMOVED******REMOVED***
         >

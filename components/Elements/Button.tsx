@@ -1,11 +1,11 @@
-import * as React from 'react'
 import type { VariantProps ***REMOVED*** from 'class-variance-authority'
 import { cva, cx ***REMOVED*** from 'class-variance-authority'
+import * as React from 'react'
 
 import { Spinner ***REMOVED*** from '@/components/Elements/Spinner'
 
 const button = cva(
-  'flex items-center justify-center rounded-full border-2 font-medium focus:outline-none disabled:cursor-not-allowed disabled:opacity-70 group transition-colors',
+  'flex items-center justify-center rounded-lg border-2 font-medium focus:outline-none disabled:cursor-not-allowed disabled:opacity-70 group transition-colors',
   {
     variants: {
       variant: {
@@ -17,7 +17,7 @@ const button = cva(
         goToMobility: 'border-mobility text-primary',
         goToEnergy: 'border-energy text-primary',
         goToBuildings: 'border-buildings text-primary',
-        overlay: 'border-secondary text-white'
+        overlay: 'border-secondary text-white',
     ***REMOVED***,
       size: {
         sm: 'py-1 px-3 text-sm',
