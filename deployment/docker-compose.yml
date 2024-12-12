@@ -17,7 +17,7 @@ services:
     depends_on:
       - db
     entrypoint: /bin/bash
-    command: -c "PGPASSWORD=directus psql -h db -U directus -d directus -f /seed/backup_2024_12_11.sql"
+    command: -c "PGPASSWORD=directus psql -h db -U directus -d directus -f /seed/seed.sql"
 
   directus:
     image: directus/directus:latest
