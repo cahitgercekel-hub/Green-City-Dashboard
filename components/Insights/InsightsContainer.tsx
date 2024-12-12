@@ -3,17 +3,20 @@ import directus, {
   ENV_DIRECTUS_ITEM_STATUS,
 ***REMOVED*** from '@/lib/directus'
 import withSuspense from '@/utils/withSuspense'
+import { readItems ***REMOVED*** from '@directus/sdk'
 import Container from '../Layout/Container'
 import InsightsCarousel from './InsightsCarousel'
 
 const getInsightsData = async () => {
-  const { data ***REMOVED*** = await directus.items(collectionsName).readByQuery({
-    fields: ['slug', 'title', 'image'],
-    filter: {
-      status: ENV_DIRECTUS_ITEM_STATUS,
-  ***REMOVED***,
-    limit: 3,
-***REMOVED***)
+  const data = await directus.request(
+    readItems(collectionsName, {
+      fields: ['slug', 'title', 'image'],
+      status: {
+        _eq: ENV_DIRECTUS_ITEM_STATUS,
+    ***REMOVED***,
+      limit: 3,
+  ***REMOVED***),
+  )
 
   return data
 ***REMOVED***

@@ -1,12 +1,12 @@
-import directus, { successStoriesCollectionName ***REMOVED*** from '../directus'
-import { ID ***REMOVED*** from '@directus/sdk'
 import { SuccessStoryTileProps ***REMOVED*** from '@/components/Tiles/SuccessStory'
+import { readItem ***REMOVED*** from '@directus/sdk'
+import directus, { successStoriesCollectionName ***REMOVED*** from '../directus'
 
-export const getSuccessStoryData = async (successStoryID: ID) => {
+export const getSuccessStoryData = async (successStoryID: string) => {
 ***REMOVED***
-    const data = await directus
-      .items(successStoriesCollectionName)
-      .readOne(successStoryID)
+    const data = await directus.request(
+      readItem(successStoriesCollectionName, successStoryID),
+***REMOVED***
     const props: SuccessStoryTileProps = {
       id: data?.id ?? '',
       link: data?.link ?? '',

@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "NODE_OPTIONS='--inspect' next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
@@ -12,7 +12,7 @@
     "postinstall": "bash ./scripts/postinstall.sh"
 ***REMOVED***,
   "dependencies": {
-    "@directus/sdk": "^10.3.5",
+    "@directus/sdk": "^18.0.1",
     "@headlessui/react": "^2.2.0",
     "@heroicons/react": "^2.2.0",
     "@radix-ui/react-collapsible": "^1.1.1",

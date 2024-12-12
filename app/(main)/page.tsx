@@ -3,26 +3,65 @@ import Container from '@/components/Layout/Container'
 
 import AnimatedPage from '@/components/Layout/AnimatedPage'
 
-import Columns from '@/components/Layout/Columns'
-import EnergyComsumptionTile from '@/components/Tiles/Buildings/EnergyConsumption'
-import CO2EmissionsTile from '@/components/Tiles/Climate/CO2EmissionsTile'
-import ClimateDevelopmentTile from '@/components/Tiles/Climate/Devlopment'
-import WeatherTile from '@/components/Tiles/Climate/WeatherTile'
-import EnergietraegerTile from '@/components/Tiles/Energy/EnergietraegerTile'
-import PhotovoltTile from '@/components/Tiles/Energy/PhotovoltTile'
-import WindEnergyTile from '@/components/Tiles/Energy/WindEnergyTile'
-import BicycleChartTile from '@/components/Tiles/Mobility/Bicycle/BicycleChartTile'
-import BusTile from '@/components/Tiles/Mobility/Bus'
-import TrafficloadTile from '@/components/Tiles/Mobility/TrafficloadTile'
-import BaseView from '@/components/Views/BaseView'
+import Title from '@/components/Elements/Title'
+import { MsKlimadashboardIconsKachelIconKlima ***REMOVED*** from '@/components/Icons/Misc'
+import directus, { Section ***REMOVED*** from '@/lib/directus'
+import TileFactory from '@/utils/TileFactory'
+import { readItem, readItems ***REMOVED*** from '@directus/sdk'
 
 export default async function Home() {
+  const data = await directus.request(
+    readItems('sections', {
+      fields: ['title', 'tiles.*'],
+  ***REMOVED***),
+  )
+
+  async function buildSections(data: Section[]) {
+    const sections = await Promise.all(
+      data.map(async section => {
+        const { title, tiles, icon ***REMOVED*** = section
+
+        if (!tiles) {
+          return null
+      ***REMOVED***
+
+        const tileIds = await Promise.all(
+          tiles.map(async tile => {
+            return await directus.request(readItem(tile.collection, tile.item))
+        ***REMOVED***),
+    ***REMOVED***
+
+        return (
+          <div key={title***REMOVED***>
+            <div className="my-4 flex w-full items-center justify-between">
+              <div className="flex items-center space-x-4">
+                <div className="h-14 w-20 rounded-lg border-2 border-primary p-2">
+                  <MsKlimadashboardIconsKachelIconKlima className="mx-auto h-full fill-primary" />
+                </div>
+                <Title as={'h4'***REMOVED*** variant={'primary'***REMOVED***>
+            ***REMOVED***title***REMOVED***
+                </Title>
+              </div>
+            </div>
+
+      ***REMOVED***tileIds.map(tileId => (
+              <TileFactory key={tileId.tile_id***REMOVED*** type={tileId.tile_id***REMOVED*** />
+        ***REMOVED***)***REMOVED***
+          </div>
+    ***REMOVED***
+    ***REMOVED***),
+***REMOVED***
+
+    return sections
+***REMOVED***
+
   return (
     <div className="-translate-y-52">
       <AnimatedPage>
         <InsightsContainer />
         <Container>
-          <BaseView
+    ***REMOVED***buildSections(data)***REMOVED***
+    ***REMOVED***/* <BaseView
             showGoToButton={true***REMOVED***
             showSuccessStories={false***REMOVED***
             showSurveys={false***REMOVED***
@@ -33,7 +72,6 @@ export default async function Home() {
               <WeatherTile />
               <ClimateDevelopmentTile />
             </Columns>
-      ***REMOVED***/* <WachstumTile /> */***REMOVED***
           </BaseView>
 
           <BaseView
@@ -69,7 +107,7 @@ export default async function Home() {
             type="building"
           >
             <EnergyComsumptionTile />
-          </BaseView>
+          </BaseView> */***REMOVED***
         </Container>
       </AnimatedPage>
     </div>

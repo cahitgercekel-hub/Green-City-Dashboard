@@ -9,6 +9,7 @@ import {
   MsKlimadashboardIconsButtonAktivMobil,
 ***REMOVED*** from '@/components/Icons/Misc'
 import directus, { directusImage, Theme ***REMOVED*** from '@/lib/directus'
+import { readSingleton ***REMOVED*** from '@directus/sdk'
 import { Bars3Icon ***REMOVED*** from '@heroicons/react/24/outline'
 import Link from 'next/link'
 import { useEffect, useState ***REMOVED*** from 'react'
@@ -59,16 +60,9 @@ export default function BaseNavbar({
 
   useEffect(() => {
     const fetchTheme = async () => {
-      const { data ***REMOVED*** = await directus.items('theme').readByQuery({
-        limit: 1,
-    ***REMOVED***)
+      const theme = await directus.request(readSingleton('theme'))
 
-      if (!data) {
-        return
-    ***REMOVED***
-
-      // @ts-ignore
-      setTheme(data as Theme)
+      setTheme(theme)
   ***REMOVED***
 
     fetchTheme()

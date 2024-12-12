@@ -7,19 +7,26 @@ import directus, {
   collectionsName,
   ENV_DIRECTUS_ITEM_STATUS,
 ***REMOVED*** from '@/lib/directus'
+import { readItems ***REMOVED*** from '@directus/sdk'
 import { notFound ***REMOVED*** from 'next/navigation'
 
 // revalidate each minute
 export const revalidate = 10
 
 const getCollection = async (collectionSlug: string) => {
-  const { data ***REMOVED*** = await directus.items(collectionsName).readByQuery({
-    filter: {
-      slug: collectionSlug,
-      status: ENV_DIRECTUS_ITEM_STATUS,
-  ***REMOVED***,
-    fields: ['title', 'description'],
-***REMOVED***)
+  const data = await directus.request(
+    readItems(collectionsName, {
+      filter: {
+        slug: {
+          _eq: collectionSlug,
+      ***REMOVED***,
+        status: {
+          _eq: ENV_DIRECTUS_ITEM_STATUS,
+      ***REMOVED***,
+    ***REMOVED***,
+      fields: ['title', 'description'],
+  ***REMOVED***),
+  )
 
   return data
 ***REMOVED***
@@ -35,7 +42,7 @@ export default async function Layout({
     return notFound()
 ***REMOVED***
 
-  const { slug ***REMOVED*** = params
+  const { slug ***REMOVED*** = await params
 
   if (!slug) {
     return notFound()
