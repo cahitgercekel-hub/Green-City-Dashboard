@@ -2,12 +2,17 @@ import directus from '@/lib/directus'
 import '@/styles/globals.css'
 import { readSingleton } from '@directus/sdk'
 import { Viewport } from 'next'
-import { Inter } from 'next/font/google'
+import { Inter, Lexend } from 'next/font/google'
 import Script from 'next/script'
 import Cookies from './Cookies'
 import Matomo from './Matomo'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
+const lexend = Lexend({
+  subsets: ['latin'],
+  variable: '--font-lexend',
+  weight: ['300', '400', '700'],
+})
 
 export async function generateMetadata() {
   const theme = await directus.request(readSingleton('theme'))
@@ -49,6 +54,8 @@ export default async function RootLayout({
 
   let style: React.CSSProperties = {}
 
+  let font = inter.className
+
   if (theme) {
     style = {
       '--color-primary': hexToRgb(theme.primary),
@@ -70,10 +77,14 @@ export default async function RootLayout({
         theme.border_radius * 17.3 * (theme.border_radius / 3)
       }px`,
     } as React.CSSProperties
+
+    if (theme.font === 'lexend') {
+      font = lexend.className
+    }
   }
 
   return (
-    <html className={inter.className} lang="de">
+    <html className={font} lang="de">
       {/*
         <head /> will contain the components returned by the nearest parent
         head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head

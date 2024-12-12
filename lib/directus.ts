@@ -97,6 +97,8 @@ export type Theme = {
   energy_light: string
   // border radius
   border_radius: number
+  // font
+  font: string
 }
 
 export type Section = {
