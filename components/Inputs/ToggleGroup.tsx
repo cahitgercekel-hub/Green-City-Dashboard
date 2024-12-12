@@ -99,35 +99,35 @@ const selectedStyle = cva('px-4 transition-all duration-300 md:py-2 md:px-8', {
       building: null,
   ***REMOVED***,
     selected: {
-      true: 'bg-opacity-100 text-white',
-      false: 'bg-opacity-0',
+      true: 'text-white',
+      false: '',
   ***REMOVED***,
 ***REMOVED***,
   compoundVariants: [
     {
       selected: false,
       variant: 'primary',
-      className: 'text-primary',
+      className: 'text-primary bg-primary/0',
   ***REMOVED***,
     {
       selected: false,
       variant: 'mobility',
-      className: 'text-mobility',
+      className: 'text-mobility bg-mobility/0',
   ***REMOVED***,
     {
       selected: false,
       variant: 'successStory',
-      className: 'text-secondary',
+      className: 'text-secondary bg-primary/0',
   ***REMOVED***,
     {
       selected: false,
       variant: 'climate',
-      className: 'text-climate',
+      className: 'text-climate bg-climate/0',
   ***REMOVED***,
     {
       selected: false,
       variant: 'building',
-      className: 'text-buildings',
+      className: 'text-buildings bg-buildings/0',
   ***REMOVED***,
   ],
   defaultVariants: {

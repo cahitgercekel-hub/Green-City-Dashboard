@@ -18,6 +18,10 @@ module.exports = {
           '2xl': '1920px',
       ***REMOVED***,
     ***REMOVED***,
+      borderRadius: {
+        md: 'var(--border-radius-md)',
+        lg: 'var(--border-radius-lg)',
+    ***REMOVED***,
       colors: {
         primary: {
           DEFAULT: 'rgb(var(--color-primary))',

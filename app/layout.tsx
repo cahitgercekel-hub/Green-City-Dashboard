@@ -50,6 +50,16 @@ export default async function RootLayout({
       '--color-primary-light': hexToRgb(theme.primary_light),
       '--color-secondary': hexToRgb(theme.secondary),
       '--color-secondary-light': hexToRgb(theme.secondary_light),
+      '--color-climate': hexToRgb(theme.climate),
+      '--color-climate-light': hexToRgb(theme.climate_light),
+      '--color-mobility': hexToRgb(theme.mobility),
+      '--color-mobility-light': hexToRgb(theme.mobility_light),
+      '--color-energy': hexToRgb(theme.energy),
+      '--color-energy-light': hexToRgb(theme.energy_light),
+      '--color-buildings': hexToRgb(theme.buildings),
+      '--color-buildings-light': hexToRgb(theme.buildings_light),
+      '--border-radius-md': `${theme.border_radius * 12***REMOVED***px`,
+      '--border-radius-lg': `${theme.border_radius * 17.3***REMOVED***px`,
   ***REMOVED*** as React.CSSProperties
 ***REMOVED***
 
