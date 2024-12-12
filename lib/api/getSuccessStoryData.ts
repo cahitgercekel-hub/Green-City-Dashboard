@@ -1,12 +1,12 @@
-import directus, { successStoriesCollectionName } from '../directus'
-import { ID } from '@directus/sdk'
 import { SuccessStoryTileProps } from '@/components/Tiles/SuccessStory'
+import { readItem } from '@directus/sdk'
+import directus, { successStoriesCollectionName } from '../directus'
 
-export const getSuccessStoryData = async (successStoryID: ID) => {
+export const getSuccessStoryData = async (successStoryID: string) => {
   try {
-    const data = await directus
-      .items(successStoriesCollectionName)
-      .readOne(successStoryID)
+    const data = await directus.request(
+      readItem(successStoriesCollectionName, successStoryID),
+    )
     const props: SuccessStoryTileProps = {
       id: data?.id ?? '',
       link: data?.link ?? '',

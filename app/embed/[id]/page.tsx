@@ -8,7 +8,7 @@ import { notFound } from 'next/navigation'
 export const revalidate = 10
 
 export default async function Embed({ params }: { params: { id: TileType } }) {
-  const { id } = params
+  const { id } = await params
 
   if (!id) {
     return notFound()

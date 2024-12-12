@@ -10,18 +10,21 @@ import directus, {
 } from '@/lib/directus'
 import getTilesBucket, { BaseTile } from '@/utils/fullWidthBucket'
 import TileFactory, { TileType } from '@/utils/TileFactory'
+import { readItem, readItems } from '@directus/sdk'
 import { notFound } from 'next/navigation'
 
 export const revalidate = 10
 
 // ISR
 export async function generateStaticParams() {
-  const { data } = await directus.items(collectionsName).readByQuery({
-    fields: ['slug'],
-    filter: {
-      status: ENV_DIRECTUS_ITEM_STATUS,
-    },
-  })
+  const data = await directus.request(
+    readItems(collectionsName, {
+      fields: ['slug'],
+      status: {
+        _eq: ENV_DIRECTUS_ITEM_STATUS,
+      },
+    }),
+  )
 
   if (!data) {
     return [{ slug: undefined }]
@@ -33,22 +36,29 @@ export async function generateStaticParams() {
 }
 
 const getCollection = async (collectionSlug: string) => {
-  const { data } = await directus.items(collectionsName).readByQuery({
-    filter: {
-      slug: collectionSlug,
-      status: ENV_DIRECTUS_ITEM_STATUS,
-    },
-    fields: ['tiles.*'],
-    deep: {
-      tiles: {},
-    },
-  })
+  const data = await directus.request(
+    readItems(collectionsName, {
+      filter: {
+        slug: {
+          _eq: collectionSlug,
+        },
+        status: {
+          _eq: ENV_DIRECTUS_ITEM_STATUS,
+        },
+      },
+      fields: ['title', 'description', 'tiles.*'],
+    }),
+  )
 
   return data
 }
 
 const getTileType = async (tileID: string) => {
-  const data = await directus.items(tileCollectionName).readOne(tileID)
+  const data = await directus.request(
+    readItem(tileCollectionName, tileID, {
+      fields: ['tile_id'],
+    }),
+  )
 
   return data?.tile_id
 }
@@ -63,6 +73,7 @@ const getTileComponent = async (tile: BaseTile) => {
     props = { surveyData }
     type = 'survey'
   } else if (tile.collection === 'successStory') {
+    console.log(tile)
     const successStoryData = await getSuccessStoryData(tile.item)
     props = { successStoryData }
     type = 'successStory'
@@ -90,7 +101,7 @@ export default async function Collection({
     return notFound()
   }
 
-  const { slug } = params
+  const { slug } = await params
 
   if (!slug) {
     return notFound()
@@ -101,8 +112,6 @@ export default async function Collection({
   if (!collection || !collection[0]) {
     return notFound()
   }
-
-  console.log(collection)
 
   const { tiles } = collection[0]
 

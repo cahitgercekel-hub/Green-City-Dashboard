@@ -1,5 +1,5 @@
 import { TileType } from '@/utils/TileFactory'
-import { Directus, ID } from '@directus/sdk'
+import { rest } from '@directus/sdk'
 
 const directusUrl =
   process.env.NEXT_PUBLIC_DIRECTUS_URL || 'http://localhost:8055'
@@ -14,46 +14,46 @@ export const themeCollectionName = 'theme'
 export type DirectusStatus = 'draft' | 'archived' | 'published'
 
 export type MainPage = {
-  id: ID
+  id: string
   status: DirectusStatus
   tiles: {
-    id: ID
-    collections_id: ID
-    item: ID
+    id: string
+    collections_id: string
+    item: string
     collection: typeof tileCollectionName | typeof surveyCollectionName
     sort: number
   }[]
 }
 
 export type Collection = {
-  id: ID
+  id: string
   status: DirectusStatus
   title: string
   description?: string
   image: string
   slug?: string
   tiles: {
-    id: ID
-    collections_id: ID
-    item: ID
+    id: string
+    collections_id: string
+    item: string
     collection: typeof tileCollectionName | typeof surveyCollectionName
     sort: number
   }[]
 }
 
 export type Tile = {
-  id: ID
+  // id: string
   name: string
-  group: any
+  // group: any
   full_width: boolean
-  tile_id: TileType
+  tile_id: string & TileType
   details: string
   data_url: string
   info: string
 }
 
 export type SuccessStory = {
-  id: ID
+  id: string
   status: DirectusStatus
   text: string
   link: string
@@ -64,7 +64,7 @@ export type SuccessStory = {
 }
 
 export type Survey = {
-  id: ID
+  id: string
   status: DirectusStatus
   title: string
   question: string
@@ -76,7 +76,7 @@ export type Survey = {
 }
 
 export type Theme = {
-  id: ID
+  id: string
   status: DirectusStatus
   title: string
   // navbar
@@ -99,18 +99,28 @@ export type Theme = {
   border_radius: number
 }
 
-// Map your collections to its respective types. The SDK will
-// infer its types based on usage later.
-type DirectusCollection = {
-  mainPage: MainPage
-  collections: Collection
-  tiles: Tile
-  successStory: SuccessStory
-  survey: Survey
-  theme: Theme
+export type Section = {
+  title: string
+  tiles: Tile[]
+  icon: string
 }
 
-const directus = new Directus<DirectusCollection>(directusUrl)
+interface DirectusSchema {
+  theme: Theme
+  collections: Collection[]
+  tiles: Tile[]
+  survey: Survey[]
+  successStory: SuccessStory[]
+  sections: Section[]
+}
+
+// const directus = new Directus<DirectusCollection>(directusUrl)
+
+import { createDirectus } from '@directus/sdk'
+
+const directus = createDirectus<DirectusSchema>(
+  process.env.NEXT_PUBLIC_DIRECTUS_URL!,
+).with(rest())
 
 export default directus
 

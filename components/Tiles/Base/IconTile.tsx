@@ -4,7 +4,7 @@ import { Spacer } from '@/components/Elements/Spacer'
 import Title from '@/components/Elements/Title'
 import getTileData from '@/lib/api/getTileData'
 import { cva, cx, VariantProps } from 'class-variance-authority'
-import { ForwardRefExoticComponent, SVGProps } from 'react'
+import { ForwardRefExoticComponent, JSX, SVGProps } from 'react'
 import { BaseTile, EmbedTileProps } from './BaseTile'
 import { TileSplitView } from './TileSplitView'
 

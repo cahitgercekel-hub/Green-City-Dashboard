@@ -1,5 +1,6 @@
-import directus, { Theme } from '@/lib/directus'
+import directus from '@/lib/directus'
 import '@/styles/globals.css'
+import { readSingleton } from '@directus/sdk'
 import { Viewport } from 'next'
 import { Inter } from 'next/font/google'
 import Script from 'next/script'
@@ -9,12 +10,14 @@ import Matomo from './Matomo'
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 
 export async function generateMetadata() {
-  const { data } = await directus.items('theme').readByQuery({
-    limit: 1,
-  })
+  const theme = await directus.request(readSingleton('theme'))
 
-  // @ts-ignore
-  const theme = data as Theme
+  if (!theme) {
+    return {
+      title: 'Klimadashboard',
+      icons: '/favicon.ico',
+    }
+  }
 
   return {
     title: theme.title,
@@ -42,12 +45,7 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  const { data } = await directus.items('theme').readByQuery({
-    limit: 1,
-  })
-
-  // @ts-ignore
-  const theme = data as Theme
+  const theme = await directus.request(readSingleton('theme'))
 
   let style: React.CSSProperties = {}
 
