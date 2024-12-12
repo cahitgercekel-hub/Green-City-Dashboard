@@ -8,11 +8,18 @@ import Matomo from './Matomo'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' ***REMOVED***)
 
-export const metadata = {
-  title: 'Klimadashboard Münster',
-  description: 'Das Klimadashboard der Stadt Münster',
-  icons: '/favicon.ico',
-  metadataBase: new URL('https://klimadashboard.ms'),
+export async function generateMetadata() {
+  const { data ***REMOVED*** = await directus.items('theme').readByQuery({
+    limit: 1,
+***REMOVED***)
+
+  // @ts-ignore
+  const theme = data as Theme
+
+  return {
+    title: theme.title,
+    icons: '/favicon.ico',
+***REMOVED***
 ***REMOVED***
 
 export const viewport: Viewport = {

@@ -57,4 +57,3 @@ Die gespeicherten Daten werden ausschließlich zu den genannten Zwecken ausgewer
 Matomo verwendet sogenannte "Cookies", Textdateien, die auf Ihrem Computer gespeichert werden. Die Cookies ermöglichen die Wiedererkennung des Internet-Browsers und geben uns so Aufschluss darüber, wie Sie unsere Website nutzen. Diese Analyse erfolgt anonym, ein Rückschluss auf einzelne Personen oder das Anlegen von Benutzerprofilen ist damit nicht möglich.
 Die durch den Cookie erzeugten Informationen über Ihre Benutzung dieser Website (einschließlich Ihrer anonymisierten IP-Adresse) bleiben dabei unter der Datenhoheit der Stadt Münster.
 Sie können der Erfassung Ihrer Besuche durch die Webanalysesoftware Matomo widersprechen, indem Sie das folgende Häkchen entfernen (es dauert ggf. ein paar Sekunden, bis das Häkchen sichtbar wird):
-
