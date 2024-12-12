@@ -78,10 +78,25 @@ export type Survey = {
 export type Theme = {
   id: ID
   status: DirectusStatus
+  title: string
+  // navbar
+  navbar_image: string
+  navbar_image_link: string
+  // colors
   primary: string
   primary_light: string
   secondary: string
   secondary_light: string
+  climate: string
+  climate_light: string
+  buildings: string
+  buildings_light: string
+  mobility: string
+  mobility_light: string
+  energy: string
+  energy_light: string
+  // border radius
+  border_radius: number
 }
 
 // Map your collections to its respective types. The SDK will

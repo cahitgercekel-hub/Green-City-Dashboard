@@ -1,28 +1,25 @@
 'use client'
 
 import * as SliderPrimitive from '@radix-ui/react-slider'
-import Title from '../Elements/Title'
 import { cva, VariantProps } from 'class-variance-authority'
 import { useState } from 'react'
+import Title from '../Elements/Title'
 
-const sliderStyle = cva(
-  'relative h-3 md:h-5 flex-1 rounded-full bg-opacity-20',
-  {
-    variants: {
-      variant: {
-        primary: 'bg-primary',
-        mobility: 'bg-mobility',
-        successStory: 'bg-secondary',
-        climate: 'bg-climate',
-        energy: 'bg-energy',
-        buildings: 'bg-buildings',
-      },
-    },
-    defaultVariants: {
-      variant: 'primary',
+const sliderStyle = cva('relative h-3 md:h-5 flex-1 rounded-full', {
+  variants: {
+    variant: {
+      primary: 'bg-primary/20',
+      mobility: 'bg-mobility/20',
+      successStory: 'bg-secondary/20',
+      climate: 'bg-climate/20',
+      energy: 'bg-energy/20',
+      buildings: 'bg-buildings/20',
     },
   },
-)
+  defaultVariants: {
+    variant: 'primary',
+  },
+})
 
 export type SliderProps = SliderPrimitive.SliderProps &
   VariantProps<typeof sliderStyle> & {

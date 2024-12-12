@@ -111,10 +111,10 @@ export default function BusContent() {
             }%`,
           }}
         >
-          <MsKlimadashboardIconsMBusAbgas className="w-full" />
+          <MsKlimadashboardIconsMBusAbgas className="w-full fill-primary" />
         </div>
         <div className="flex-1">
-          <MsKlimadashboardIconsMBusElektro className="w-full" />
+          <MsKlimadashboardIconsMBusElektro className="w-full fill-mobility" />
         </div>
       </div>
       {width < 1800 && (
