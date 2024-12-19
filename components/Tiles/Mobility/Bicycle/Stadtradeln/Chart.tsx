@@ -17,9 +17,9 @@ const { theme } = resolveConfig(tailwindConfig)
 const colors = {
   muenster: {
     // @ts-ignore
-    color: theme?.colors?.mobility.DEFAULT || '#34c17b',
+    color: theme?.colors?.mobility.DEFAULT || '#FF7A00',
     symbol: `image://${
-      require('@/assets/icons/Bicycle/BicycleIconGreen.svg').default.src
+      require('@/assets/icons/Bicycle/BicycleIconBlue.svg').default.src
     }`,
   },
   other: {

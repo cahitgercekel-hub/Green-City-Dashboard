@@ -1,6 +1,7 @@
-import Columns from '@/components/Layout/Columns'
 import { SuccessStoryTileProps } from '@/components/Tiles/SuccessStory'
 import { SurveyTileProps } from '@/components/Tiles/Survey'
+import { TileLayout } from '@/components/Tiles/TileLayout'
+import { fetchCollection } from '@/lib/api/directusService'
 import { getSuccessStoryData } from '@/lib/api/getSuccessStoryData'
 import { getSurveyData } from '@/lib/api/getSurveyData'
 import directus, {
@@ -10,6 +11,7 @@ import directus, {
 } from '@/lib/directus'
 import getTilesBucket, { BaseTile } from '@/utils/fullWidthBucket'
 import TileFactory, { TileType } from '@/utils/TileFactory'
+import { sortTiles } from '@/utils/tileLayout'
 import { readItem, readItems } from '@directus/sdk'
 import { notFound } from 'next/navigation'
 
@@ -97,40 +99,17 @@ export default async function Collection({
 }: {
   params?: { slug: string }
 }) {
-  if (!params) {
-    return notFound()
-  }
+  if (!params?.slug) {return notFound()}
 
-  const { slug } = await params
-
-  if (!slug) {
-    return notFound()
-  }
-
-  const collection = await getCollection(slug)
-
-  if (!collection || !collection[0]) {
-    return notFound()
-  }
+  const collection = await fetchCollection(
+    params.slug,
+    ENV_DIRECTUS_ITEM_STATUS,
+  )
+  if (!collection?.[0]) {return notFound()}
 
   const { tiles } = collection[0]
-
-  const sortedTiles = tiles.sort((a, b) => a.sort - b.sort)
-
-  // sort tiles into buckets indicating full width display or column display
+  const sortedTiles = sortTiles(tiles)
   const tileBuckets = await getTilesBucket(sortedTiles)
 
-  return (
-    <div>
-      {await Promise.all(
-        tileBuckets.map(async ({ tiles, isFullWidth }, i) => {
-          if (isFullWidth) {
-            return await getTileComponents(tiles)
-          }
-
-          return <Columns key={i}>{await getTileComponents(tiles)}</Columns>
-        }),
-      )}
-    </div>
-  )
+  return <TileLayout tileBuckets={tileBuckets} />
 }

@@ -113,13 +113,13 @@ export default function BaseNavbar({
               {actionComponent}
 
               <div className="hidden h-fit flex-wrap justify-end gap-2 xl:flex">
-                {links.map(l => (
+                {/* {links.map(l => (
                   <LinkComponent
                     key={l.link}
                     variant={variant === 'overlay' ? 'inverse' : 'primary'}
                     {...l}
                   />
-                ))}
+                ))} */}
               </div>
             </div>
           </div>

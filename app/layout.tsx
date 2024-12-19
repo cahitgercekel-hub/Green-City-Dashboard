@@ -2,7 +2,7 @@ import directus from '@/lib/directus'
 import '@/styles/globals.css'
 import { readSingleton } from '@directus/sdk'
 import { Viewport } from 'next'
-import { Inter, Lexend } from 'next/font/google'
+import { Inter, Lexend, Lora } from 'next/font/google'
 import Script from 'next/script'
 import Cookies from './Cookies'
 import Matomo from './Matomo'
@@ -12,6 +12,11 @@ const lexend = Lexend({
   subsets: ['latin'],
   variable: '--font-lexend',
   weight: ['300', '400', '700'],
+})
+const lora = Lora({
+  subsets: ['latin'],
+  style: 'italic',
+  variable: '--font-lora',
 })
 
 export async function generateMetadata() {
@@ -54,8 +59,6 @@ export default async function RootLayout({
 
   let style: React.CSSProperties = {}
 
-  let font = inter.className
-
   if (theme) {
     style = {
       '--color-primary': hexToRgb(theme.primary),
@@ -77,14 +80,13 @@ export default async function RootLayout({
         theme.border_radius * 17.3 * (theme.border_radius / 3)
       }px`,
     } as React.CSSProperties
-
-    if (theme.font === 'lexend') {
-      font = lexend.className
-    }
   }
 
   return (
-    <html className={font} lang="de">
+    <html
+      className={`${inter.variable} ${lexend.variable} ${lora.variable}`}
+      lang="de"
+    >
       {/*
         <head /> will contain the components returned by the nearest parent
         head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head

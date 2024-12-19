@@ -55,7 +55,7 @@ export default function MobileSlider({
           }}
         >
           <SliderPrimitive.Track className={sliderStyle({ variant })} />
-          <SliderPrimitive.Thumb className="block aspect-square h-6 touch-pan-x rounded-lg bg-primary shadow shadow-primary md:h-9" />
+          <SliderPrimitive.Thumb className="block aspect-square h-6 touch-pan-x rounded-full bg-primary shadow shadow-primary md:h-9" />
         </SliderPrimitive.Root>
       </div>
     </div>

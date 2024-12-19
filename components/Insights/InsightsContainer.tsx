@@ -7,7 +7,7 @@ import { readItems } from '@directus/sdk'
 import Container from '../Layout/Container'
 import InsightsCarousel from './InsightsCarousel'
 
-const getInsightsData = async () => {
+export const getInsightsData = async () => {
   const data = await directus.request(
     readItems(collectionsName, {
       fields: ['slug', 'title', 'image'],
@@ -23,6 +23,10 @@ const getInsightsData = async () => {
 
 async function InsightsContainer() {
   const insights = await getInsightsData()
+
+  if (insights.length === 0) {
+    return null
+  }
 
   return (
     <div className="w-full">

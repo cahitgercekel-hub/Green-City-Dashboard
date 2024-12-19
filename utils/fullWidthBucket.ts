@@ -10,7 +10,7 @@ export type BaseTile = {
   sort: number
 }
 
-type TilesBucket = {
+export type TilesBucket = {
   tiles: BaseTile[]
   isFullWidth: boolean
 }

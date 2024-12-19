@@ -1,18 +1,23 @@
-import InsightsContainer from '@/components/Insights/InsightsContainer'
+import InsightsContainer, {
+  getInsightsData,
+} from '@/components/Insights/InsightsContainer'
 import Container from '@/components/Layout/Container'
 
 import AnimatedPage from '@/components/Layout/AnimatedPage'
 
 import Title from '@/components/Elements/Title'
-import { MsKlimadashboardIconsKachelIconKlima } from '@/components/Icons/Misc'
+import SvgWiesbaden from '@/components/Icons/Wiesbaden'
+import { TileLayout } from '@/components/Tiles/TileLayout'
 import directus, { Section } from '@/lib/directus'
-import TileFactory from '@/utils/TileFactory'
-import { readItem, readItems } from '@directus/sdk'
+import getTilesBucket from '@/utils/fullWidthBucket'
+import { sortTiles } from '@/utils/tileLayout'
+import { readItems } from '@directus/sdk'
+import { cx } from 'class-variance-authority'
 
 export default async function Home() {
   const data = await directus.request(
     readItems('sections', {
-      fields: ['title', 'tiles.*'],
+      fields: ['*', { tiles: ['*'] }],
     }),
   )
 
@@ -25,18 +30,15 @@ export default async function Home() {
           return null
         }
 
-        const tileIds = await Promise.all(
-          tiles.map(async tile => {
-            return await directus.request(readItem(tile.collection, tile.item))
-          }),
-        )
+        const sortedTiles = sortTiles(tiles)
+        const tileBuckets = await getTilesBucket(sortedTiles)
 
         return (
           <div key={title}>
             <div className="my-4 flex w-full items-center justify-between">
               <div className="flex items-center space-x-4">
                 <div className="h-14 w-20 rounded-lg border-2 border-primary p-2">
-                  <MsKlimadashboardIconsKachelIconKlima className="mx-auto h-full fill-primary" />
+                  <SvgWiesbaden className="mx-auto h-full fill-primary stroke-primary" />
                 </div>
                 <Title as={'h4'} variant={'primary'}>
                   {title}
@@ -44,9 +46,7 @@ export default async function Home() {
               </div>
             </div>
 
-            {tileIds.map(tileId => (
-              <TileFactory key={tileId.tile_id} type={tileId.tile_id} />
-            ))}
+            <TileLayout tileBuckets={tileBuckets} />
           </div>
         )
       }),
@@ -55,60 +55,13 @@ export default async function Home() {
     return sections
   }
 
+  const insights = await getInsightsData()
+
   return (
-    <div className="-translate-y-52">
+    <div className={cx(insights.length > 0 && '-translate-y-52')}>
       <AnimatedPage>
         <InsightsContainer />
-        <Container>
-          {buildSections(data)}
-          {/* <BaseView
-            showGoToButton={true}
-            showSuccessStories={false}
-            showSurveys={false}
-            type="climate"
-          >
-            <CO2EmissionsTile />
-            <Columns>
-              <WeatherTile />
-              <ClimateDevelopmentTile />
-            </Columns>
-          </BaseView>
-
-          <BaseView
-            showGoToButton={true}
-            showSuccessStories={false}
-            showSurveys={false}
-            type="energy"
-          >
-            <Columns>
-              <PhotovoltTile />
-              <WindEnergyTile />
-              <EnergietraegerTile />
-            </Columns>
-          </BaseView>
-
-          <BaseView
-            showGoToButton={true}
-            showSuccessStories={false}
-            showSurveys={false}
-            type="mobility"
-          >
-            <TrafficloadTile />
-            <Columns>
-              <BusTile />
-              <BicycleChartTile />
-            </Columns>
-          </BaseView>
-
-          <BaseView
-            showGoToButton={true}
-            showSuccessStories={false}
-            showSurveys={false}
-            type="building"
-          >
-            <EnergyComsumptionTile />
-          </BaseView> */}
-        </Container>
+        <Container>{buildSections(data)}</Container>
       </AnimatedPage>
     </div>
   )

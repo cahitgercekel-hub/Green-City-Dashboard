@@ -2,15 +2,15 @@
 
 import { Button } from '../../Elements/Button'
 
-import Title from '@/components/Elements/Title'
 import Back from '@/components/Elements/Back'
-import { usePathname } from 'next/navigation'
-import BaseNavbar from './BaseNavbar'
-import { useState } from 'react'
-import SectionTitle from '../SectionTitle'
-import { AnimatePresence, motion } from 'framer-motion'
+import Title from '@/components/Elements/Title'
 import { MsKlimadashboardIconsNaviInfoI } from '@/components/Icons/Misc/Navi'
 import { XMarkIcon } from '@heroicons/react/24/outline'
+import { AnimatePresence, motion } from 'framer-motion'
+import { usePathname } from 'next/navigation'
+import { useState } from 'react'
+import SectionTitle from '../SectionTitle'
+import BaseNavbar from './BaseNavbar'
 
 const routeToType: {
   [key: string]:
@@ -31,7 +31,7 @@ const routeToType: {
   feedback: 'feedback',
 }
 
-export default function Navbar() {
+export default function Navbar({ large }: { large?: boolean }) {
   const pathname = usePathname()
 
   const [showOverlay, setShowOverlay] = useState(false)
@@ -109,7 +109,7 @@ export default function Navbar() {
     return (
       <div className="relative">
         <BaseNavbar actionComponent={ActionComponent}>
-          <div className="h-40" />
+          {large ? <div className="h-40" /> : <></>}
         </BaseNavbar>
         <AnimatePresence>
           {showOverlay && (
