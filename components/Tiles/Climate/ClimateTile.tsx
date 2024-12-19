@@ -1,4 +1,4 @@
-import { MsKlimadashboardIconsButtonAktivKlima ***REMOVED*** from '@/components/Icons/Misc'
+import SvgWiesbaden from '@/components/Icons/Wiesbaden'
 import IconTile, { IconTileProps ***REMOVED*** from '../Base/IconTile'
 
 export type ClimateTileProps = Omit<IconTileProps, 'variant' | 'icon'>
@@ -10,7 +10,7 @@ export type ClimateTileProps = Omit<IconTileProps, 'variant' | 'icon'>
  */
 export default function ClimateTile({ children, ...props ***REMOVED***: ClimateTileProps) {
   return (
-    <IconTile {...props***REMOVED*** icon={MsKlimadashboardIconsButtonAktivKlima***REMOVED*** variant="climate">
+    <IconTile {...props***REMOVED*** icon={SvgWiesbaden***REMOVED*** variant="climate">
       <>{children***REMOVED***</>
     </IconTile>
   )

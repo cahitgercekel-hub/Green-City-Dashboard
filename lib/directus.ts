@@ -41,6 +41,17 @@ export type Collection = {
 ***REMOVED***[]
 ***REMOVED***
 
+export type CollectionTile = {
+  id: string
+  collections_id: string
+  item: string
+  collection:
+    | typeof tileCollectionName
+    | typeof surveyCollectionName
+    | typeof successStoriesCollectionName
+  sort: number
+***REMOVED***
+
 export type Tile = {
   // id: string
   name: string
@@ -103,7 +114,7 @@ export type Theme = {
 
 export type Section = {
   title: string
-  tiles: Tile[]
+  tiles: CollectionTile[]
   icon: string
 ***REMOVED***
 

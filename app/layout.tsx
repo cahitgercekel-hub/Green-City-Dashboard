@@ -2,7 +2,7 @@ import directus from '@/lib/directus'
 import '@/styles/globals.css'
 import { readSingleton ***REMOVED*** from '@directus/sdk'
 import { Viewport ***REMOVED*** from 'next'
-import { Inter, Lexend ***REMOVED*** from 'next/font/google'
+import { Inter, Lexend, Lora ***REMOVED*** from 'next/font/google'
 import Script from 'next/script'
 import Cookies from './Cookies'
 import Matomo from './Matomo'
@@ -12,6 +12,11 @@ const lexend = Lexend({
   subsets: ['latin'],
   variable: '--font-lexend',
   weight: ['300', '400', '700'],
+***REMOVED***)
+const lora = Lora({
+  subsets: ['latin'],
+  style: 'italic',
+  variable: '--font-lora',
 ***REMOVED***)
 
 export async function generateMetadata() {
@@ -54,8 +59,6 @@ export default async function RootLayout({
 
   let style: React.CSSProperties = {***REMOVED***
 
-  let font = inter.className
-
   if (theme) {
     style = {
       '--color-primary': hexToRgb(theme.primary),
@@ -77,14 +80,13 @@ export default async function RootLayout({
         theme.border_radius * 17.3 * (theme.border_radius / 3)
     ***REMOVED***px`,
   ***REMOVED*** as React.CSSProperties
-
-    if (theme.font === 'lexend') {
-      font = lexend.className
-  ***REMOVED***
 ***REMOVED***
 
   return (
-    <html className={font***REMOVED*** lang="de">
+    <html
+      className={`${inter.variable***REMOVED*** ${lexend.variable***REMOVED*** ${lora.variable***REMOVED***`***REMOVED***
+      lang="de"
+    >
 ***REMOVED***/*
         <head /> will contain the components returned by the nearest parent
         head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head

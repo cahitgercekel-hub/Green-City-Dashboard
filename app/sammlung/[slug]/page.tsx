@@ -1,6 +1,7 @@
-import Columns from '@/components/Layout/Columns'
 import { SuccessStoryTileProps ***REMOVED*** from '@/components/Tiles/SuccessStory'
 import { SurveyTileProps ***REMOVED*** from '@/components/Tiles/Survey'
+import { TileLayout ***REMOVED*** from '@/components/Tiles/TileLayout'
+import { fetchCollection ***REMOVED*** from '@/lib/api/directusService'
 import { getSuccessStoryData ***REMOVED*** from '@/lib/api/getSuccessStoryData'
 import { getSurveyData ***REMOVED*** from '@/lib/api/getSurveyData'
 import directus, {
@@ -10,6 +11,7 @@ import directus, {
 ***REMOVED*** from '@/lib/directus'
 import getTilesBucket, { BaseTile ***REMOVED*** from '@/utils/fullWidthBucket'
 import TileFactory, { TileType ***REMOVED*** from '@/utils/TileFactory'
+import { sortTiles ***REMOVED*** from '@/utils/tileLayout'
 import { readItem, readItems ***REMOVED*** from '@directus/sdk'
 import { notFound ***REMOVED*** from 'next/navigation'
 
@@ -97,40 +99,17 @@ export default async function Collection({
 ***REMOVED***: {
   params?: { slug: string ***REMOVED***
 ***REMOVED***) {
-  if (!params) {
-    return notFound()
-***REMOVED***
+  if (!params?.slug) {return notFound()***REMOVED***
 
-  const { slug ***REMOVED*** = await params
-
-  if (!slug) {
-    return notFound()
-***REMOVED***
-
-  const collection = await getCollection(slug)
-
-  if (!collection || !collection[0]) {
-    return notFound()
-***REMOVED***
+  const collection = await fetchCollection(
+    params.slug,
+    ENV_DIRECTUS_ITEM_STATUS,
+  )
+  if (!collection?.[0]) {return notFound()***REMOVED***
 
   const { tiles ***REMOVED*** = collection[0]
-
-  const sortedTiles = tiles.sort((a, b) => a.sort - b.sort)
-
-  // sort tiles into buckets indicating full width display or column display
+  const sortedTiles = sortTiles(tiles)
   const tileBuckets = await getTilesBucket(sortedTiles)
 
-  return (
-    <div>
-***REMOVED***await Promise.all(
-        tileBuckets.map(async ({ tiles, isFullWidth ***REMOVED***, i) => {
-          if (isFullWidth) {
-            return await getTileComponents(tiles)
-        ***REMOVED***
-
-          return <Columns key={i***REMOVED***>{await getTileComponents(tiles)***REMOVED***</Columns>
-      ***REMOVED***),
-  ***REMOVED******REMOVED***
-    </div>
-  )
+  return <TileLayout tileBuckets={tileBuckets***REMOVED*** />
 ***REMOVED***

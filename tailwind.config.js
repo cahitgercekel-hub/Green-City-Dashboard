@@ -9,6 +9,11 @@ module.exports = {
       xl: '1440px',
       '2xl': '1920px',
   ***REMOVED***,
+    fontFamily: {
+      inter: 'var(--font-inter)',
+      lexend: 'var(--font-lexend)',
+      lora: 'var(--font-lora)',
+  ***REMOVED***,
     extend: {
       container: {
         screens: {

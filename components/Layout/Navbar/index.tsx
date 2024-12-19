@@ -2,15 +2,15 @@
 
 import { Button ***REMOVED*** from '../../Elements/Button'
 
-import Title from '@/components/Elements/Title'
 import Back from '@/components/Elements/Back'
-import { usePathname ***REMOVED*** from 'next/navigation'
-import BaseNavbar from './BaseNavbar'
-import { useState ***REMOVED*** from 'react'
-import SectionTitle from '../SectionTitle'
-import { AnimatePresence, motion ***REMOVED*** from 'framer-motion'
+import Title from '@/components/Elements/Title'
 import { MsKlimadashboardIconsNaviInfoI ***REMOVED*** from '@/components/Icons/Misc/Navi'
 import { XMarkIcon ***REMOVED*** from '@heroicons/react/24/outline'
+import { AnimatePresence, motion ***REMOVED*** from 'framer-motion'
+import { usePathname ***REMOVED*** from 'next/navigation'
+import { useState ***REMOVED*** from 'react'
+import SectionTitle from '../SectionTitle'
+import BaseNavbar from './BaseNavbar'
 
 const routeToType: {
   [key: string]:
@@ -31,7 +31,7 @@ const routeToType: {
   feedback: 'feedback',
 ***REMOVED***
 
-export default function Navbar() {
+export default function Navbar({ large ***REMOVED***: { large?: boolean ***REMOVED***) {
   const pathname = usePathname()
 
   const [showOverlay, setShowOverlay] = useState(false)
@@ -109,7 +109,7 @@ export default function Navbar() {
     return (
       <div className="relative">
         <BaseNavbar actionComponent={ActionComponent***REMOVED***>
-          <div className="h-40" />
+    ***REMOVED***large ? <div className="h-40" /> : <></>***REMOVED***
         </BaseNavbar>
         <AnimatePresence>
     ***REMOVED***showOverlay && (

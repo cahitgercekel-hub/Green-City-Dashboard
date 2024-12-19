@@ -73,7 +73,9 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ***REMOVED***...props***REMOVED***
       >
   ***REMOVED***isLoading && <Spinner className="text-current" size="sm" />***REMOVED***
-  ***REMOVED***!isLoading && <div className="mr-1 md:mr-4">{startIcon***REMOVED***</div>***REMOVED***
+  ***REMOVED***!isLoading && startIcon && (
+          <div className="mr-1 md:mr-4">{startIcon***REMOVED***</div>
+    ***REMOVED******REMOVED***
         <span className="mx-2">{props.children***REMOVED***</span> {!isLoading && endIcon***REMOVED***
       </button>
 ***REMOVED***

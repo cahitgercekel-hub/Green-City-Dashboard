@@ -55,7 +55,7 @@ export default function Slider({
         ***REMOVED******REMOVED***
         >
           <SliderPrimitive.Track className={sliderStyle({ variant ***REMOVED***)***REMOVED*** />
-          <SliderPrimitive.Thumb className="block aspect-square h-6 touch-pan-x rounded-lg bg-primary shadow shadow-primary md:h-9" />
+          <SliderPrimitive.Thumb className="block aspect-square h-6 touch-pan-x rounded-full bg-primary shadow shadow-primary md:h-9" />
         </SliderPrimitive.Root>
       </div>
 ***REMOVED***labels && (
