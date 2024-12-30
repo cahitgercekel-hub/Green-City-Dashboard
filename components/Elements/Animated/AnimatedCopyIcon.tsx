@@ -29,6 +29,7 @@ export default function AnimatedCopyIcon({ onClick ***REMOVED***: AnimatedCopyIc
 ***REMOVED***
 
   return transitions((styles, isSuccess) => (
+    // @ts-ignore
     <animated.div
       className="absolute top-0 cursor-pointer rounded-lg bg-transparent p-2 hover:bg-zinc-100"
       onClick={handleOnClick***REMOVED***

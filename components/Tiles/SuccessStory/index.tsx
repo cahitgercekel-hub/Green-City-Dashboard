@@ -3,7 +3,6 @@ import Title from '@/components/Elements/Title'
 import Image from 'next/image'
 
 import { directusImage ***REMOVED*** from '@/lib/directus'
-import { ID ***REMOVED*** from '@directus/sdk'
 import Markdown from 'react-markdown'
 import rehypeExternalLinks from 'rehype-external-links'
 import remarkGfm from 'remark-gfm'
@@ -15,7 +14,7 @@ export type SuccessStoryTileProps = {
   image?: string
   imagePosition?: 'left' | 'right'
   moreInfo?: string
-  id: string | ID
+  id: string
 ***REMOVED***
 
 /**
@@ -107,7 +106,7 @@ export default function SuccessStoryTile({
 ***REMOVED***
 
   const StoryImage = (
-    <div className="relative min-h-[20rem]  overflow-hidden md:min-h-[40rem] md:w-4/5">
+    <div className="relative min-h-[20rem] overflow-hidden md:min-h-[40rem] md:w-4/5">
       <Image
         alt={'Image'***REMOVED***
         className="object-cover object-center transition-all group-hover:scale-105"

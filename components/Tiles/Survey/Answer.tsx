@@ -16,6 +16,7 @@ export default function SurveyAnswer({
   ...props
 ***REMOVED***: SurveyAnswerProps) {
   return (
+    // @ts-ignore
     <animated.div className="absolute left-0 top-0 w-full" style={{ ...props ***REMOVED******REMOVED***>
       <div className="flex w-full flex-col gap-4 md:flex-row">
         <Title as="h1" className="whitespace-nowrap">

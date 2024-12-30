@@ -17,7 +17,7 @@ import {
 import useDevice from '@/hooks/useDevice'
 import tailwindConfig from '@/tailwind.config.js'
 import { chartFormatter ***REMOVED*** from '@/utils/chartFormatter'
-import { ForwardRefExoticComponent, SVGProps, useState ***REMOVED*** from 'react'
+import { ForwardRefExoticComponent, JSX, SVGProps, useState ***REMOVED*** from 'react'
 import resolveConfig from 'tailwindcss/resolveConfig'
 
 const { theme ***REMOVED*** = resolveConfig(tailwindConfig)

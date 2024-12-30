@@ -25,7 +25,7 @@ async function InsightsContainer() {
   const insights = await getInsightsData()
 
   if (insights.length === 0) {
-    return null
+    return <></>
 ***REMOVED***
 
   return (

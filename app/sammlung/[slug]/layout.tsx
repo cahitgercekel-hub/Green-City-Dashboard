@@ -33,13 +33,18 @@ const getCollection = async (collectionSlug: string) => {
 
 type Params = Promise<{ slug: string ***REMOVED***>
 
-export default async function Layout({
-  children,
-  params,
-***REMOVED***: {
-  children: React.ReactNode
-  params?: Params
-***REMOVED***) {
+export default async function Layout(
+  props: {
+    children: React.ReactNode
+    params?: Promise<Params>
+***REMOVED***
+) {
+  const params = await props.params;
+
+  const {
+    children
+***REMOVED*** = props;
+
   if (!params) {
     return notFound()
 ***REMOVED***

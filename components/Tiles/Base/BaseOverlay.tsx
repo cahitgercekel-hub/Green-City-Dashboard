@@ -37,6 +37,7 @@ export default function BaseOverlay({
   ...props
 ***REMOVED***: BaseOverlayProps) {
   return (
+    // @ts-ignore
     <animated.div {...props***REMOVED*** className={overlayStyle({ variant ***REMOVED***)***REMOVED***>
       <div className="w-full flex-1 overflow-hidden">{children***REMOVED***</div>
       <XMarkIcon

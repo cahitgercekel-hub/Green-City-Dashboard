@@ -94,19 +94,23 @@ const getTileComponents = async (tiles: BaseTile[]) => {
   )
 ***REMOVED***
 
-export default async function Collection({
-  params,
-***REMOVED***: {
-  params?: { slug: string ***REMOVED***
+export default async function Collection(props: {
+  params?: Promise<{ slug: string ***REMOVED***>
 ***REMOVED***) {
-  if (!params?.slug) {return notFound()***REMOVED***
+  const params = await props.params
+  if (!params?.slug) {
+    return notFound()
+***REMOVED***
 
   const collection = await fetchCollection(
     params.slug,
     ENV_DIRECTUS_ITEM_STATUS,
   )
-  if (!collection?.[0]) {return notFound()***REMOVED***
+  if (!collection?.[0]) {
+    return notFound()
+***REMOVED***
 
+  // @ts-ignore
   const { tiles ***REMOVED*** = collection[0]
   const sortedTiles = sortTiles(tiles)
   const tileBuckets = await getTilesBucket(sortedTiles)

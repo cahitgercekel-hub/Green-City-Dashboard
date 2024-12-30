@@ -17,6 +17,7 @@ import { cx ***REMOVED*** from 'class-variance-authority'
 export default async function Home() {
   const data = await directus.request(
     readItems('sections', {
+      // @ts-ignore
       fields: ['*', { tiles: ['*'] ***REMOVED***],
   ***REMOVED***),
   )

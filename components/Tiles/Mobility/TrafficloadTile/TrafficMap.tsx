@@ -3,7 +3,6 @@
 import AnimatedNumberSVG from '@/components/Elements/Animated/AnimatedNumberSVG'
 import { map ***REMOVED*** from '@/utils/map'
 import { animated, useSpring ***REMOVED*** from '@react-spring/web'
-import * as React from 'react'
 import { SVGProps ***REMOVED*** from 'react'
 
 const MIN_RADIUS = 40
@@ -148,6 +147,7 @@ export default function TrafficMap({
         />
         <g id="Gruppe_981">
           <animated.circle
+            // @ts-ignore
             cx="616"
             cy="340"
             data-name="Ellipse 3"
@@ -191,6 +191,7 @@ export default function TrafficMap({
         </g>
         <g id="Gruppe_556">
           <animated.circle
+            // @ts-ignore
             cx="511"
             cy="276"
             data-name="Ellipse 3"
@@ -234,6 +235,7 @@ export default function TrafficMap({
         </g>
         <g id="Gruppe_979">
           <animated.circle
+            // @ts-ignore
             cx="484"
             cy="375"
             data-name="Ellipse 1"
@@ -277,6 +279,7 @@ export default function TrafficMap({
         </g>
         <g id="Gruppe_978">
           <animated.circle
+            // @ts-ignore
             cx="534"
             cy="204"
             data-name="Ellipse 2"
@@ -320,6 +323,7 @@ export default function TrafficMap({
         </g>
         <g id="Gruppe_980">
           <animated.circle
+            // @ts-ignore
             cx="648"
             cy="213"
             data-name="Ellipse 3"
