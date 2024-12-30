@@ -7,7 +7,7 @@ import {
 import { cva, cx, VariantProps } from 'class-variance-authority'
 import Title from '../Elements/Title'
 
-import { SVGProps } from 'react'
+import { JSX, SVGProps } from 'react'
 
 const sectionHeaderStyle = cva('', {
   variants: {

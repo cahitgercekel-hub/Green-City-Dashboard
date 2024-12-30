@@ -9,7 +9,7 @@ import {
 } from '@/components/Icons/Klima'
 import useDevice from '@/hooks/useDevice'
 import { cx } from 'class-variance-authority'
-import { ForwardRefExoticComponent, SVGProps } from 'react'
+import { ForwardRefExoticComponent, JSX, SVGProps } from 'react'
 
 type PhenomenaType = {
   [key: string]: {

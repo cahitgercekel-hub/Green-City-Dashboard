@@ -2,12 +2,17 @@ import AnimatedNumber from '@/components/Elements/Animated/AnimatedNumber'
 import { Spacer } from '@/components/Elements/Spacer'
 import Title from '@/components/Elements/Title'
 
-import { SVGProps } from 'react'
+import stromData from '@/assets/data/strom.json'
+import waermeData from '@/assets/data/waerme.json'
+import {
+  MsKlimadashboardIconsGBibliothek,
+  MsKlimadashboardIconsGSchule,
+  MsKlimadashboardIconsGSportSentruperHoehe,
+  MsKlimadashboardIconsGStadtweinhaus,
+} from '@/components/Icons/Gebaeude'
+import { JSX, SVGProps } from 'react'
 import EnergyConsumptionChart from './EnergyConsumptionChart'
 import LabelSeperator from './LabelSeperator'
-import waermeData from '@/assets/data/waerme.json'
-import stromData from '@/assets/data/strom.json'
-import { MsKlimadashboardIconsGBibliothek, MsKlimadashboardIconsGSchule, MsKlimadashboardIconsGSportSentruperHoehe, MsKlimadashboardIconsGStadtweinhaus } from '@/components/Icons/Gebaeude'
 
 type DataType = {
   Datum: number

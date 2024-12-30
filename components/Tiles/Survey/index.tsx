@@ -3,11 +3,10 @@
 import { Button } from '@/components/Elements/Button'
 import { Spacer } from '@/components/Elements/Spacer'
 import Title from '@/components/Elements/Title'
-import { useState } from 'react'
 import { animated, useTransition } from '@react-spring/web'
+import { useState } from 'react'
 import { BaseTile } from '../Base/BaseTile'
 import SurveyAnswer, { SurveyAnswerProps } from './Answer'
-import { ID } from '@directus/sdk'
 
 export type SurveyTileProps = {
   title: string
@@ -15,7 +14,7 @@ export type SurveyTileProps = {
   answer: SurveyAnswerProps
   dataSource: string
   dataRetrieval: Date
-  id: string | ID
+  id: string
 }
 export default function SurveyTile({
   question,
@@ -64,6 +63,7 @@ export default function SurveyTile({
             renderAnswer ? (
               <SurveyAnswer {...answer} {...styles} />
             ) : (
+              // @ts-ignore
               <animated.div
                 className="absolute left-0 top-0 h-full w-full"
                 style={styles}
