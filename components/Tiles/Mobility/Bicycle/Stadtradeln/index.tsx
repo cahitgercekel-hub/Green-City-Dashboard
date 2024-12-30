@@ -17,7 +17,7 @@ export default async function StadtradelnTile() {
       subtitle="auf der Überholspur"
       title="Stadtradeln"
     >
-      <ChartContainer />
+      <ChartContainer city="wiesbaden" />
       <Spacer />
       <Title as="h5">{infoText***REMOVED***</Title>
     </MobilityTile>
