@@ -3,7 +3,7 @@ import Columns from '@/components/Layout/Columns'
 import { TilesBucket } from '@/utils/fullWidthBucket'
 import { renderTileComponents } from '@/utils/tileUtils'
 
-export function TileLayout({
+export async function TileLayout({
   tileBuckets,
 }: {
   tileBuckets: TilesBucket[]
