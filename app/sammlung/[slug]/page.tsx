@@ -19,6 +19,10 @@ export const revalidate = 10
 
 // ISR
 export async function generateStaticParams() {
+  if (process.env.NEXT_PHASE === 'phase-production-build') {
+    return []
+***REMOVED***
+
   const data = await directus.request(
     readItems(collectionsName, {
       fields: ['slug'],
