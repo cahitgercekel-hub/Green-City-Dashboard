@@ -31,12 +31,14 @@ const getCollection = async (collectionSlug: string) => {
   return data
 }
 
+type Params = Promise<{ slug: string }>
+
 export default async function Layout({
   children,
   params,
 }: {
   children: React.ReactNode
-  params?: { slug: string }
+  params?: Params
 }) {
   if (!params) {
     return notFound()
