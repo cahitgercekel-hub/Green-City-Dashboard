@@ -7,7 +7,9 @@ import { notFound ***REMOVED*** from 'next/navigation'
 
 export const revalidate = 10
 
-export default async function Embed({ params ***REMOVED***: { params: { id: TileType ***REMOVED*** ***REMOVED***) {
+type Params = Promise<{ id: TileType ***REMOVED***>
+
+export default async function Embed({ params ***REMOVED***: { params: Params ***REMOVED***) {
   const { id ***REMOVED*** = await params
 
   if (!id) {
