@@ -29,7 +29,7 @@ RUN yarn postinstall
 # Uncomment the following line in case you want to disable telemetry during the build.
 ENV NEXT_TELEMETRY_DISABLED=1
 
-RUN yarn build --experimental-build-mode compile
+RUN NEXT_PUBLIC_DIRECTUS_URL=NEXT_PUBLIC_DIRECTUS_URL yarn build --experimental-build-mode compile
 
 # If using npm comment out above and use below instead
 # RUN npm run build
@@ -58,5 +58,9 @@ USER nextjs
 EXPOSE 3000
 
 ENV PORT=3000
+
+ENV HOSTNAME="0.0.0.0"
+
+ENTRYPOINT [ "/app/entrypoint.sh" ]
 
 CMD ["node", "server.js"]
