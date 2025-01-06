@@ -19,7 +19,7 @@ export default function SurveyAnswer({
     // @ts-ignore
     <animated.div className="absolute left-0 top-0 w-full" style={{ ...props ***REMOVED******REMOVED***>
       <div className="flex w-full flex-col gap-4 md:flex-row">
-        <Title as="h1" className="whitespace-nowrap">
+        <Title as="h1" className="flex-[2_2_0%] whitespace-nowrap">
     ***REMOVED***typeof percent === 'number' ? (
             <AnimatedNumber decimals={1***REMOVED***>{percent***REMOVED***</AnimatedNumber>
       ***REMOVED*** : (
@@ -27,7 +27,9 @@ export default function SurveyAnswer({
       ***REMOVED******REMOVED***
           <span className="font-normal">%</span>
         </Title>
-        <Title as="h4">{text***REMOVED***</Title>
+        <Title as="h4" className="flex-[3_3_0%]">
+    ***REMOVED***text***REMOVED***
+        </Title>
       </div>
     </animated.div>
   )
