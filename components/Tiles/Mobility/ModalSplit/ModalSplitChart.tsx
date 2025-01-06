@@ -1,21 +1,21 @@
 //@ts-nocheck
 'use client'
 
-import resolveConfig from 'tailwindcss/resolveConfig'
 import tailwindConfig from '@/tailwind.config'
+import resolveConfig from 'tailwindcss/resolveConfig'
 // @ts-ignore
 // import ModalSplitData from '@/assets/data/verkehrsmittelwahl-zeitreihe.csv'
-import ModalSplitData from '@/assets/data/modal-split.csv'
+import ModalSplitData from '@/assets/data/modal-split-wiesbaden.csv'
 import { ReactECharts } from '@/components/Charts/ReactECharts'
-import Slider from '@/components/Inputs/Slider'
-import { MuensterBackground } from '@/components/Icons/'
-import { useState } from 'react'
-import { useWindowSize } from 'react-use'
+import AnimatedNumber from '@/components/Elements/Animated/AnimatedNumber'
 import Carousel from '@/components/Elements/Carousel'
 import Title from '@/components/Elements/Title'
-import AnimatedNumber from '@/components/Elements/Animated/AnimatedNumber'
-import ToggleGroup from '@/components/Inputs/ToggleGroup'
+import { MuensterBackground } from '@/components/Icons/'
 import SvgMuensterDom from '@/components/Icons/MuensterDom'
+import Slider from '@/components/Inputs/Slider'
+import ToggleGroup from '@/components/Inputs/ToggleGroup'
+import { useState } from 'react'
+import { useWindowSize } from 'react-use'
 
 const { theme } = resolveConfig(tailwindConfig)
 
@@ -63,11 +63,15 @@ function Toggle({ onChange }: { onChange: (_val: string) => void }) {
 }
 
 const icons = {
-  KFZ: require('@/assets/icons/ModalSplit/MS_Klimadashboard_Icons_m_modalsplit_pkw.svg').default.src,
-  ÖPNV: require('@/assets/icons/ModalSplit/MS_Klimadashboard_Icons_m_modalsplit_bus.svg').default.src,
-  Fahrrad: require('@/assets/icons/ModalSplit/MS_Klimadashboard_Icons_m_modalsplit_rad.svg').default
-    .src,
-  Fuß: require('@/assets/icons/ModalSplit/MS_Klimadashboard_Icons_m_modalsplit_fuss.svg').default.src,
+  KFZ: require('@/assets/icons/ModalSplit/MS_Klimadashboard_Icons_m_modalsplit_pkw.svg')
+    .default.src,
+  ÖPNV: require('@/assets/icons/ModalSplit/MS_Klimadashboard_Icons_m_modalsplit_bus.svg')
+    .default.src,
+  Fahrrad:
+    require('@/assets/icons/ModalSplit/MS_Klimadashboard_Icons_m_modalsplit_rad.svg')
+      .default.src,
+  Fuß: require('@/assets/icons/ModalSplit/MS_Klimadashboard_Icons_m_modalsplit_fuss.svg')
+    .default.src,
 }
 
 const colors = {
@@ -102,10 +106,17 @@ const nameColumnMapping = {
 
 const data: IModalSplitData[] = ModalSplitData
 
+const availableModes = (data: IModalSplitData[]) => {
+  const hasVerkehrsleistung =
+    data[0]['Modal Split V.leistung - Fahrrad'] != null
+
+  return hasVerkehrsleistung ? ['verkehrsleistung', 'wege'] : ['wege']
+}
+
 export default function ModalSplitChart() {
   const [yearIndex, setYearIndex] = useState<number>(1)
-  const [mode, setMode] = useState<'verkehrsmittelwahl' | 'verkehrsleistung'>(
-    'verkehrsleistung',
+  const [mode, setMode] = useState<'wege' | 'verkehrsleistung'>(
+    availableModes(data)[0],
   )
 
   const { width } = useWindowSize()
@@ -156,9 +167,12 @@ export default function ModalSplitChart() {
   return (
     <>
       <div className="relative flex h-96 flex-1 flex-col rounded bg-white p-2 md:h-[32rem]">
-        <div className="absolute -top-4 left-0 z-10 w-full md:-top-6 md:w-auto">
-          <Toggle onChange={val => setMode(val as typeof mode)} />
-        </div>
+        {availableModes(data).length > 1 && (
+          <div className="absolute -top-4 left-0 z-10 w-full md:-top-6 md:w-auto">
+            <Toggle onChange={val => setMode(val as typeof mode)} />
+          </div>
+        )}
+
         <div className="absolute left-0 top-0 flex h-full w-full">
           <MuensterBackground className="h-full w-full flex-1" />
           <div className="sm:w-14"></div>
@@ -221,19 +235,21 @@ export default function ModalSplitChart() {
                 ],
               }}
             />
-            <div className="absolute left-0 top-0 mt-4 flex h-full w-full flex-col items-center justify-center">
-              <SvgMuensterDom className="h-10 stroke-2" />
-              <Title as={width > 1260 ? 'h4' : 'h5'} variant="primary">
-                <AnimatedNumber>
-                  {mode === 'verkehrsleistung'
-                    ? yearData.Absolut
-                    : yearData['Wege/Tag']}
-                </AnimatedNumber>
-                <span className="ml-1">
-                  {mode === 'verkehrsleistung' ? 'km' : 'Wege'}
-                </span>
-              </Title>
-            </div>
+            {(yearData.Absolut || yearData['Wege/Tag']) && (
+              <div className="absolute left-0 top-0 mt-4 flex h-full w-full flex-col items-center justify-center">
+                <SvgMuensterDom className="h-10 stroke-2" />
+                <Title as={width > 1260 ? 'h4' : 'h5'} variant="primary">
+                  <AnimatedNumber>
+                    {mode === 'verkehrsleistung'
+                      ? yearData.Absolut
+                      : yearData['Wege/Tag']}
+                  </AnimatedNumber>
+                  <span className="ml-1">
+                    {mode === 'verkehrsleistung' ? 'km' : 'Wege'}
+                  </span>
+                </Title>
+              </div>
+            )}
           </div>
         </div>
       </div>
