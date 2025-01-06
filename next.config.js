@@ -21,7 +21,7 @@ const nextConfig = {
     remotePatterns: [
 ***REMOVED***
         protocol: 'https',
-        hostname: 'cms.klimadashboard-ms.reedu.de',
+        hostname: process.env.NEXT_PUBLIC_DIRECTUS_URL,
     ***REMOVED***,
 ***REMOVED***
         protocol: 'http',
