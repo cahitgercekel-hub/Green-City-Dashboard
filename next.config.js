@@ -21,7 +21,7 @@ const nextConfig = {
     remotePatterns: [
 ***REMOVED***
         protocol: 'https',
-        hostname: process.env.NEXT_PUBLIC_DIRECTUS_URL,
+        hostname: '**.reedu.de',
     ***REMOVED***,
 ***REMOVED***
         protocol: 'http',
