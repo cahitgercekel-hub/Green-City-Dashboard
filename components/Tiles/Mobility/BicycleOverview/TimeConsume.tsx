@@ -1,6 +1,7 @@
 import AnimatedNumber from '@/components/Elements/Animated/AnimatedNumber'
 import OverviewData from './Data'
 import { ClockIcon ***REMOVED*** from '@/components/Icons'
+import useDevice from '@/hooks/useDevice'
 
 interface Overview {
   year: string
@@ -20,6 +21,7 @@ function retriveMonthData(
   )
   return result ?? null
 ***REMOVED***
+
 const totalTimePerMonth = OverviewData.map(data => data.Zeit)
 const maxTime = Math.max(...totalTimePerMonth)
 
@@ -29,32 +31,42 @@ interface TotalDistanceProps {
 ***REMOVED***
 
 function TotalTime({ indexofmonth, year ***REMOVED***: TotalDistanceProps) {
+  const device = useDevice()
   const result = retriveMonthData(indexofmonth, year)
-  const timeDifference = Math.ceil(((result ? result.Zeit : 1) * 48) / maxTime)
-  const progress = timeDifference > 1 ? timeDifference : 1
-  const items = Array.from({ length: progress ***REMOVED***, (_, index) => index + 1)
+  const numberOfItems =
+    device === 'mobile'
+      ? Math.ceil(((result ? result.Zeit : 1) * 48) / maxTime)
+      : Math.ceil(((result ? result.Zeit : 1) * 120) / maxTime)
+  const totalGridCells = device === 'mobile' ? 48 : 120
+  const items = Array.from({ length: numberOfItems ***REMOVED***, (_, index) => index + 1)
+  const emptyCells = totalGridCells - numberOfItems
 
   return (
-    <div className=" flex h-full flex-col justify-center gap-4 text-center">
-***REMOVED***/* rotate-180 to fill the grid from bottom to top */***REMOVED***
-      <div className="relative h-4/5 rotate-180 overflow-hidden p-2">
-        <div className="absolute grid grid-cols-8 grid-rows-2 md:grid-cols-8 md:grid-rows-5">
-    ***REMOVED***items.map(item => (
-            <div className="text-center" key={item***REMOVED***>
-              <ClockIcon className="h-full w-full rotate-180" />
-            </div>
-      ***REMOVED***)***REMOVED***
-        </div>
-      </div>
+    <div className="h-1/3 w-full overflow-hidden md:h-full">
+      <div className="flex h-full flex-col">
+        <div className="overflow-hidde h-4/5 p-2">
+          <div className="grid-rows-10  grid h-full max-h-full grid-cols-12 content-end ">
+      ***REMOVED***Array.from({ length: emptyCells ***REMOVED***).map((_, index) => (
+              <div key={`empty-${index***REMOVED***`***REMOVED*** />
+        ***REMOVED***)***REMOVED***
 
-      <div className="flex h-1/5 flex-col items-center justify-center text-mobility">
-        <h3 className="text-2xl font-bold">
-          <AnimatedNumber>{result ? result.Zeit : 0***REMOVED***</AnimatedNumber>
-          <span>h</span>
-        </h3>
-        <strong className=" text-xl text-primary md:text-base lg:text-xl">
-          Datensammelzeit
-        </strong>
+      ***REMOVED***items.map(item => (
+              <ClockIcon
+                key={item***REMOVED***
+                className="inline-block max-h-full max-w-full"
+              />
+        ***REMOVED***)***REMOVED***
+          </div>
+        </div>
+
+        <div className="flex h-1/5 flex-col items-center justify-center">
+          <h3 className="text-2xl font-bold text-mobility">
+            <AnimatedNumber>{result ? result.Zeit : 0***REMOVED***</AnimatedNumber>h
+          </h3>
+          <strong className="text-xl text-primary md:text-base lg:text-xl">
+            Datensammelzeit
+          </strong>
+        </div>
       </div>
     </div>
   )
