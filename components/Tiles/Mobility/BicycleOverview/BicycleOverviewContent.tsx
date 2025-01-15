@@ -11,7 +11,7 @@ import TotalBikes from './RigistredBikes'
 
 function Toggle({ onChange }: { onChange: (_val: string) => void }) {
   const minYear = 2020
-  const maxYear = new Date().getFullYear()
+  const maxYear = new Date().getFullYear() - 1
 
   const years = Array.from({ length: maxYear - minYear + 1 }, (_, i) => {
     return {
@@ -42,30 +42,24 @@ export default function BicycleOverviewContent() {
     .map(f => f.properties.month)
     .sort((a, b) => b - a)[0]
 
-  const [monthIndex, setMonthIndex] = useState(latestMonthWithData - 1)
-  const [mode, setMode] = useState(currentYear.toString())
-
+  const [monthIndex, setMonthIndex] = useState(latestMonthWithData)
+  const [mode, setMode] = useState('2024')
+  console.log('datta', monthIndex, mode)
   return (
     <>
-      <div className="relative flex h-[60rem] flex-1 flex-col rounded bg-white p-6  md:h-[32rem]">
+      <div className="relative flex h-[60rem] flex-1 flex-col rounded border bg-white px-6 pb-4 pt-8 md:h-[28rem]  xl:h-[32rem]">
         <div className="absolute -top-4 left-0 w-full md:-top-6 md:w-auto">
           <Toggle onChange={val => setMode(val as typeof mode)} />
         </div>
-        <div className="mx-auto mb-2 flex  h-full w-full flex-wrap gap-3 py-3 md:flex-nowrap">
-          <div className="h-1/3 w-full overflow-hidden  md:h-full md:w-1/3">
-            <TotalBikes indexofmonth={monthIndex} year={mode} />
-          </div>
-          <div className="h-1/3 w-full overflow-hidden  md:h-full md:w-1/3">
-            <TotalDistance indexofmonth={monthIndex} year={mode} />
-          </div>
-          <div className="h-1/3 w-full overflow-hidden  md:h-full md:w-1/3">
-            <TotalTime indexofmonth={monthIndex} year={mode} />
-          </div>
+        <div className="flex h-full w-full flex-col gap-4 overflow-hidden py-2 md:flex-row">
+          <TotalBikes indexofmonth={monthIndex} year={mode} />
+          <TotalDistance indexofmonth={monthIndex} year={mode} />
+          <TotalTime indexofmonth={monthIndex} year={mode} />
         </div>
       </div>
 
       <Slider
-        defaultValue={[monthIndex]}
+        defaultValue={[monthIndex - 1]}
         firstValueMobile={monthIndex} // MONAT MAI NUR FÜR DEMO
         labels={[
           'JAN',

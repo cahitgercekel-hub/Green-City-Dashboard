@@ -42,20 +42,25 @@ function TotalDistance({ indexofmonth, year }: TotalDistanceProps) {
   )
 
   return (
-    <div className="flex h-full flex-col justify-center gap-4 text-center">
-      <div className="relative h-4/5 overflow-hidden">
-        <DottedPath className="absolute bottom-0" progressPercent={progress} />
+    <div className="h-1/3 w-full overflow-hidden md:h-full">
+      <div className="flex h-full flex-col">
+        <div className="relative h-4/5 overflow-hidden ">
+          <DottedPath
+            className="absolute bottom-0"
+            progressPercent={progress}
+          />
 
-        <BikeIcon className="absolute bottom-[-4%] right-[10%] h-6 w-20 bg-white px-2 xs:bottom-[-2%]" />
-      </div>
-      <div className="flex h-1/5 flex-col items-center justify-center">
-        <h3 className="text-2xl font-bold text-mobility">
-          <AnimatedNumber>{result ? result.TotalDistance : 0}</AnimatedNumber>
-          <span>km</span>
-        </h3>
-        <strong className="text-xl text-primary md:text-base lg:text-xl">
-          Distanzübersicht
-        </strong>
+          <BikeIcon className="absolute bottom-[-4%] right-[10%] h-6 w-20 bg-white px-2 xs:bottom-[-2%]" />
+        </div>
+        <div className="flex h-1/5 flex-col items-center justify-center">
+          <h3 className="text-2xl font-bold text-mobility">
+            <AnimatedNumber>{result ? result.TotalDistance : 0}</AnimatedNumber>
+            <span>km</span>
+          </h3>
+          <strong className="text-xl text-primary md:text-base lg:text-xl">
+            Distanzübersicht
+          </strong>
+        </div>
       </div>
     </div>
   )
