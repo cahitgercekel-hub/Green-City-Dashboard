@@ -32,8 +32,8 @@ interface TotalBikesProps {
 
 function TotalBikes({ indexofmonth, year }: TotalBikesProps) {
   const device = useDevice()
-  const countOfGridItem = device === 'mobile' ? 60 : 120
-  const numberofRows = device === 'mobile' ? 5 : 10
+  const countOfGridItem = device === 'mobile' ? 48 : 120
+  const numberofRows = device === 'mobile' ? 4 : 10
 
   const result = retriveMonthData(indexofmonth, year)
   const numberOfItems = Math.ceil(
@@ -42,29 +42,29 @@ function TotalBikes({ indexofmonth, year }: TotalBikesProps) {
   const items = Array.from({ length: numberOfItems }, (_, index) => index + 1)
 
   return (
-    <div className="flex h-full flex-col justify-center">
+    <div className="flex h-full flex-col gap-4">
       {/* rotate-180 to fill the grid from bottom to top  */}
-      <div className="relative h-4/5 rotate-180 overflow-hidden">
+      <div className="relative h-4/5 rotate-180 overflow-hidden p-2">
         <div
-          className="absolute inset-0 grid"
-          style={{
-            gridTemplateColumns: 'repeat(12, 1fr)',
-            gridTemplateRows: `repeat(${numberofRows}, 1fr)`,
-          }}
+          className={`absolute grid grid-cols-12 ${
+            numberofRows ? `grid-rows-${numberofRows}` : ''
+          }`}
         >
           {items.map(item => (
-            <div className="grid-item" key={item}>
+            <div className="text-center" key={item}>
               <LocationIcon className="h-full w-full rotate-180" />
             </div>
           ))}
         </div>
       </div>
 
-      <div className="flex h-1/5 flex-col items-center justify-center text-mobility">
-        <h3 className="text-base font-bold underline">
+      <div className="flex h-1/5 flex-col items-center justify-center ">
+        <h3 className="text-2xl font-bold text-mobility">
           <AnimatedNumber>{result ? result.NumberOfBike : 0}</AnimatedNumber>
         </h3>
-        <strong className="text-xs md:text-base">Registrierte Fahrten</strong>
+        <strong className="text-xl text-primary md:text-base lg:text-xl">
+          Registrierte Fahrten
+        </strong>
       </div>
     </div>
   )
