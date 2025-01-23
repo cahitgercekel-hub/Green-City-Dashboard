@@ -1,6 +1,6 @@
 import AnimatedNumber from '@/components/Elements/Animated/AnimatedNumber'
 import OverviewData from './Data'
-import { DottedPath, BikeIcon ***REMOVED*** from '@/components/Icons'
+import { DottedPath, Bike ***REMOVED*** from '@/components/Icons'
 import mapBetween from '@/utils/mapBetween'
 
 interface Overview {
@@ -42,15 +42,15 @@ function TotalDistance({ indexofmonth, year ***REMOVED***: TotalDistanceProps) {
   )
 
   return (
-    <div className="h-1/3 w-full overflow-hidden md:h-full">
+    <div className="h-1/3 w-full overflow-hidden  md:h-full">
       <div className="flex h-full flex-col">
-        <div className="relative h-4/5 overflow-hidden ">
+        <div className="relative h-4/5 overflow-hidden p-2">
           <DottedPath
-            className="absolute bottom-0"
+            className="absolute bottom-4"
             progressPercent={progress***REMOVED***
           />
 
-          <BikeIcon className="absolute bottom-[-4%] right-[10%] h-6 w-20 bg-white px-2 xs:bottom-[-2%]" />
+          <Bike className="absolute bottom-2 right-[10%] h-6 w-20 bg-white px-2 xl:scale-150 xl:transform" />
         </div>
         <div className="flex h-1/5 flex-col items-center justify-center">
           <h3 className="text-2xl font-bold text-mobility">

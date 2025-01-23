@@ -2,7 +2,6 @@ import AnimatedNumber from '@/components/Elements/Animated/AnimatedNumber'
 import OverviewData from './Data'
 import { LocationIcon ***REMOVED*** from '@/components/Icons'
 import useDevice from '@/hooks/useDevice'
-import { max ***REMOVED*** from 'date-fns'
 
 interface Overview {
   year: string
@@ -46,7 +45,7 @@ function TotalBikes({ indexofmonth, year ***REMOVED***: TotalBikesProps) {
     <div className="h-1/3 w-full overflow-hidden md:h-full">
       <div className="flex h-full flex-col">
         <div className="h-4/5 overflow-hidden p-2">
-          <div className="grid-rows-10 grid h-full grid-cols-12 content-end">
+          <div className="grid-rows-10 grid h-full grid-cols-12">
       ***REMOVED***Array.from({ length: emptyCells ***REMOVED***).map((_, index) => (
               <div key={`empty-${index***REMOVED***`***REMOVED*** />
         ***REMOVED***)***REMOVED***

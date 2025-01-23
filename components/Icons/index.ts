@@ -6,5 +6,6 @@ export { default as PendlerMobilAusgewaehlt ***REMOVED*** from './PendlerMobilAu
 export { default as Pendlerkarte ***REMOVED*** from './Pendlerkarte'
 export { default as LocationIcon ***REMOVED*** from './LocationIcon'
 export { default as ClockIcon ***REMOVED*** from './ClockIcon'
-export { default as BikeIcon ***REMOVED*** from './BikeIcon'
+// export { default as BikeIcon ***REMOVED*** from './BikeIcon'
 export { default as DottedPath ***REMOVED*** from './DottedPath'
+export { default as Bike ***REMOVED*** from './Bike'
