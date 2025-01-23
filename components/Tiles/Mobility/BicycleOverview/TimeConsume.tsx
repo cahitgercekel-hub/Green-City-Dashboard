@@ -44,8 +44,8 @@ function TotalTime({ indexofmonth, year }: TotalDistanceProps) {
   return (
     <div className="h-1/3 w-full overflow-hidden md:h-full">
       <div className="flex h-full flex-col">
-        <div className="overflow-hidde h-4/5 p-2">
-          <div className="grid-rows-10  grid h-full max-h-full grid-cols-12 content-end ">
+        <div className="relative h-4/5 overflow-hidden p-2">
+          <div className="grid-rows-10 grid h-full max-h-full grid-cols-12">
             {Array.from({ length: emptyCells }).map((_, index) => (
               <div key={`empty-${index}`} />
             ))}
@@ -53,7 +53,7 @@ function TotalTime({ indexofmonth, year }: TotalDistanceProps) {
             {items.map(item => (
               <ClockIcon
                 key={item}
-                className="inline-block max-h-full max-w-full"
+                className="inline-block max-h-full w-full max-w-full"
               />
             ))}
           </div>
