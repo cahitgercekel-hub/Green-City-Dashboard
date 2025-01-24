@@ -75,7 +75,7 @@ export default function BaseNavbar({
           <Link href={theme.navbar_image_link || '#'***REMOVED*** target="_blank">
       ***REMOVED***/* eslint-disable-next-line @next/next/no-img-element */***REMOVED***
             <img
-              alt="Logo der Stadt Münster"
+              alt="Logo"
               className="h-12 w-auto"
               src={directusImage(theme.navbar_image)***REMOVED***
             />

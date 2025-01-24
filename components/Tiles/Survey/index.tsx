@@ -77,14 +77,14 @@ export default function SurveyTile({
         </div>
       </div>
       <Spacer />
-      <div className="flex space-x-2 text-xs">
+***REMOVED***/* <div className="flex space-x-2 text-xs">
         <Title as="h7" font="semibold" variant={'inverse'***REMOVED***>
           Datenstand: {new Date(dataRetrieval).getFullYear()***REMOVED***
         </Title>
         <Title as="h7" font="normal" variant={'inverse'***REMOVED***>
           Quelle: {dataSource***REMOVED***
         </Title>
-      </div>
+      </div> */***REMOVED***
     </BaseTile>
   )
 ***REMOVED***
