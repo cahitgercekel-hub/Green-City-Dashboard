@@ -93,6 +93,8 @@ export type Theme = {
   // navbar
   navbar_image: string
   navbar_image_link: string
+  about_button_title: string
+  about_button_text: string
   // colors
   primary: string
   primary_light: string
@@ -110,6 +112,8 @@ export type Theme = {
   border_radius: number
   // font
   font: string
+  // success stories
+  success_stories_title: string
 }
 
 export type Section = {

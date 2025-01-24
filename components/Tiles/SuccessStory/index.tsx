@@ -2,7 +2,8 @@ import { Spacer } from '@/components/Elements/Spacer'
 import Title from '@/components/Elements/Title'
 import Image from 'next/image'
 
-import { directusImage } from '@/lib/directus'
+import directus, { directusImage } from '@/lib/directus'
+import { readSingleton } from '@directus/sdk'
 import Markdown from 'react-markdown'
 import rehypeExternalLinks from 'rehype-external-links'
 import remarkGfm from 'remark-gfm'
@@ -22,7 +23,7 @@ export type SuccessStoryTileProps = {
  * @param SuccessStoryTileProps properties of the success story tile
  * @returns SuccessStoryTileProps
  */
-export default function SuccessStoryTile({
+export default async function SuccessStoryTile({
   text,
   // eslint-disable-next-line unused-imports/no-unused-vars
   link,
@@ -31,10 +32,12 @@ export default function SuccessStoryTile({
   moreInfo,
   id,
 }: SuccessStoryTileProps) {
+  const theme = await directus.request(readSingleton('theme'))
+
   const Content = (
     <div className="flex h-full flex-col justify-between">
       <Title as="h5" font={'semibold'} variant={'primary'}>
-        Stimmen für Münster
+        {theme.success_stories_title}
       </Title>
       <Spacer size="md" />
       <Markdown

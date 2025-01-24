@@ -95,7 +95,7 @@ export function BaseTile({
     if (navigator && navigator.share) {
       try {
         await navigator.share({
-          title: 'Klimadashboard Münster',
+          title: 'Dashboard',
           url: `${window.location.origin}/share/${embedId}`,
         })
       } catch (e) {

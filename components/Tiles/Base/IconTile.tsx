@@ -125,7 +125,7 @@ export default async function IconTile({
       <TileSplitView>
         <TileSplitView.Left>
           <div className="flex flex-wrap justify-between">
-            <div className="space-x-2 text-xs ">
+            {/* <div className="space-x-2 text-xs ">
               <Title
                 as="h7"
                 className="inline"
@@ -142,7 +142,7 @@ export default async function IconTile({
               >
                 Quelle: {dataSource}
               </Title>
-            </div>
+            </div> */}
             <div>{rightAlignedExtra}</div>
           </div>
         </TileSplitView.Left>
