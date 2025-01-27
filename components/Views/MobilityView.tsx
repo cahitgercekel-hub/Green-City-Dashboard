@@ -8,6 +8,7 @@ import ModalSplitTile from '../Tiles/Mobility/ModalSplit'
 import PassengerTile from '../Tiles/Mobility/PassengerTile'
 import TrafficloadTile from '../Tiles/Mobility/TrafficloadTile'
 import BaseView from './BaseView'
+import OverTakingDistance from '../Tiles/Mobility/Bicycle/OverTakingDistance'
 
 export default function MobilityView() {
   return (
@@ -23,6 +24,11 @@ export default function MobilityView() {
       <Columns>
         <MasterplanTile />
         <PassengerTile />
+      </Columns>
+
+      <Columns>
+        <OverTakingDistance />
+        <OverTakingDistance />
       </Columns>
 
       <ModalSplitTile />
