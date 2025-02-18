@@ -5,35 +5,36 @@ import { cva, VariantProps ***REMOVED*** from 'class-variance-authority'
 import { useState ***REMOVED*** from 'react'
 import Title from '../Elements/Title'
 
-const sliderStyle = cva(
-  'relative h-3 md:h-5 flex-1 rounded-full bg-opacity-20',
-  {
-    variants: {
-      variant: {
-        primary: 'bg-primary',
-        mobility: 'bg-mobility',
-        successStory: 'bg-secondary',
-        climate: 'bg-climate',
-        energy: 'bg-energy',
-        buildings: 'bg-buildings',
-    ***REMOVED***,
-  ***REMOVED***,
-    defaultVariants: {
-      variant: 'primary',
+const sliderStyle = cva('relative h-3  flex-1 rounded-full bg-opacity-20', {
+  variants: {
+    variant: {
+      primary: 'bg-primary',
+      mobility: 'bg-mobility',
+      successStory: 'bg-secondary',
+      climate: 'bg-climate',
+      energy: 'bg-energy',
+      buildings: 'bg-buildings',
   ***REMOVED***,
 ***REMOVED***,
-)
+  defaultVariants: {
+    variant: 'primary',
+***REMOVED***,
+***REMOVED***)
 
 export type SliderProps = SliderPrimitive.SliderProps &
   VariantProps<typeof sliderStyle> & {
     labels?: string[]
     firstValueMobile?: number
+    trackHeight?: string // Optional prop for track height
+    thumbHeight?: string // Optional prop for thumb height
 ***REMOVED***
 
 export default function Slider({
   firstValueMobile,
   labels,
   variant,
+  trackHeight = 'md:h-5', // Default height for track
+  thumbHeight = 'md:h-9', // Default height for thumb
   ...props
 ***REMOVED***: SliderProps) {
   const [value, setValue] = useState<number>(firstValueMobile || 0)
@@ -57,8 +58,12 @@ export default function Slider({
             setValue(e)
         ***REMOVED******REMOVED***
         >
-          <SliderPrimitive.Track className={sliderStyle({ variant ***REMOVED***)***REMOVED*** />
-          <SliderPrimitive.Thumb className="block aspect-square h-6 touch-pan-x rounded-full bg-primary shadow shadow-primary md:h-9" />
+          <SliderPrimitive.Track
+            className={sliderStyle({ variant ***REMOVED***) + ` ${trackHeight***REMOVED***`***REMOVED***
+          />
+          <SliderPrimitive.Thumb
+            className={`block aspect-square h-6 ${thumbHeight***REMOVED*** touch-pan-x rounded-full bg-primary shadow shadow-primary`***REMOVED***
+          />
         </SliderPrimitive.Root>
       </div>
 ***REMOVED***labels && (

@@ -15,3 +15,5 @@ export { default as MsKlimadashboardIconsMPendler ***REMOVED*** from './MsKlimad
 export { default as MsKlimadashboardIconsMPendlerAufgewaehlt ***REMOVED*** from './MsKlimadashboardIconsMPendlerAufgewaehlt'
 export { default as MsKlimadashboardIconsMRadlerLinks ***REMOVED*** from './MsKlimadashboardIconsMRadlerLinks'
 export { default as MsKlimadashboardIconsMRadlerRechts ***REMOVED*** from './MsKlimadashboardIconsMRadlerRechts'
+export { default as BikePerson ***REMOVED*** from './BikePerson'
+export { default as Car ***REMOVED*** from './Car'
