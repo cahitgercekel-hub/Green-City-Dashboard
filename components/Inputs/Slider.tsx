@@ -5,35 +5,36 @@ import { cva, VariantProps } from 'class-variance-authority'
 import { useState } from 'react'
 import Title from '../Elements/Title'
 
-const sliderStyle = cva(
-  'relative h-3 md:h-5 flex-1 rounded-full bg-opacity-20',
-  {
-    variants: {
-      variant: {
-        primary: 'bg-primary',
-        mobility: 'bg-mobility',
-        successStory: 'bg-secondary',
-        climate: 'bg-climate',
-        energy: 'bg-energy',
-        buildings: 'bg-buildings',
-      },
-    },
-    defaultVariants: {
-      variant: 'primary',
+const sliderStyle = cva('relative h-3  flex-1 rounded-full bg-opacity-20', {
+  variants: {
+    variant: {
+      primary: 'bg-primary',
+      mobility: 'bg-mobility',
+      successStory: 'bg-secondary',
+      climate: 'bg-climate',
+      energy: 'bg-energy',
+      buildings: 'bg-buildings',
     },
   },
-)
+  defaultVariants: {
+    variant: 'primary',
+  },
+})
 
 export type SliderProps = SliderPrimitive.SliderProps &
   VariantProps<typeof sliderStyle> & {
     labels?: string[]
     firstValueMobile?: number
+    trackHeight?: string // Optional prop for track height
+    thumbHeight?: string // Optional prop for thumb height
   }
 
 export default function Slider({
   firstValueMobile,
   labels,
   variant,
+  trackHeight = 'md:h-5', // Default height for track
+  thumbHeight = 'md:h-9', // Default height for thumb
   ...props
 }: SliderProps) {
   const [value, setValue] = useState<number>(firstValueMobile || 0)
@@ -57,8 +58,12 @@ export default function Slider({
             setValue(e)
           }}
         >
-          <SliderPrimitive.Track className={sliderStyle({ variant })} />
-          <SliderPrimitive.Thumb className="block aspect-square h-6 touch-pan-x rounded-full bg-primary shadow shadow-primary md:h-9" />
+          <SliderPrimitive.Track
+            className={sliderStyle({ variant }) + ` ${trackHeight}`}
+          />
+          <SliderPrimitive.Thumb
+            className={`block aspect-square h-6 ${thumbHeight} touch-pan-x rounded-full bg-primary shadow shadow-primary`}
+          />
         </SliderPrimitive.Root>
       </div>
       {labels && (
