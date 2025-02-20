@@ -67,6 +67,6 @@ jobs:
           body: |
             The Docker image was built successfully with the following name(s):
             ```
-            \${{ steps.meta.outputs.tags ***REMOVED******REMOVED***
+            ${{ steps.meta.outputs.tags ***REMOVED******REMOVED***
             ```
           reactions: 'rocket'
