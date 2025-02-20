@@ -25,12 +25,16 @@ export type SliderProps = SliderPrimitive.SliderProps &
   VariantProps<typeof sliderStyle> & {
     labels?: string[]
     firstValueMobile?: number
+    trackHeight?: string // Optional prop for track height
+    thumbHeight?: string // Optional prop for thumb height
 ***REMOVED***
 
 export default function Slider({
   firstValueMobile,
   labels,
   variant,
+  trackHeight = 'md:h-5', // Default height for track
+  thumbHeight = 'md:h-9', // Default height for thumb
   ...props
 ***REMOVED***: SliderProps) {
   const [value, setValue] = useState<number>(firstValueMobile || 0)
@@ -54,8 +58,12 @@ export default function Slider({
             setValue(e)
         ***REMOVED******REMOVED***
         >
-          <SliderPrimitive.Track className={sliderStyle({ variant ***REMOVED***)***REMOVED*** />
-          <SliderPrimitive.Thumb className="block aspect-square h-6 touch-pan-x rounded-full bg-primary shadow shadow-primary md:h-9" />
+          <SliderPrimitive.Track
+            className={sliderStyle({ variant ***REMOVED***) + ` ${trackHeight***REMOVED***`***REMOVED***
+          />
+          <SliderPrimitive.Thumb
+            className={`block aspect-square h-6 ${thumbHeight***REMOVED*** touch-pan-x rounded-full bg-primary shadow shadow-primary`***REMOVED***
+          />
         </SliderPrimitive.Root>
       </div>
 ***REMOVED***labels && (
