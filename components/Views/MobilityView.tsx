@@ -7,6 +7,7 @@ import MasterplanTile from '../Tiles/Mobility/MasterplanTile'
 import ModalSplitTile from '../Tiles/Mobility/ModalSplit'
 import PassengerTile from '../Tiles/Mobility/PassengerTile'
 import TrafficloadTile from '../Tiles/Mobility/TrafficloadTile'
+import BicycleOverview from '../Tiles/Mobility/BicycleOverview'
 import BaseView from './BaseView'
 
 export default async function MobilityView() {
@@ -26,6 +27,7 @@ export default async function MobilityView() {
       <ModalSplitTile />
 
       <TrafficloadTile />
+      <BicycleOverview />
     </BaseView>
   )
 }
