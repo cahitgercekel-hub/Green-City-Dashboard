@@ -1,27 +1,36 @@
-import Columns from '@/components/Layout/Columns'
+import { SuccessStoryTileProps } from '@/components/Tiles/SuccessStory'
+import { SurveyTileProps } from '@/components/Tiles/Survey'
+import { TileLayout } from '@/components/Tiles/TileLayout'
+import { fetchCollection } from '@/lib/api/directusService'
+import { getSuccessStoryData } from '@/lib/api/getSuccessStoryData'
+import { getSurveyData } from '@/lib/api/getSurveyData'
 import directus, {
   collectionsName,
   ENV_DIRECTUS_ITEM_STATUS,
   tileCollectionName,
 } from '@/lib/directus'
-import { notFound } from 'next/navigation'
 import getTilesBucket, { BaseTile } from '@/utils/fullWidthBucket'
 import TileFactory, { TileType } from '@/utils/TileFactory'
-import { SurveyTileProps } from '@/components/Tiles/Survey'
-import { SuccessStoryTileProps } from '@/components/Tiles/SuccessStory'
-import { getSurveyData } from '@/lib/api/getSurveyData'
-import { getSuccessStoryData } from '@/lib/api/getSuccessStoryData'
+import { sortTiles } from '@/utils/tileLayout'
+import { readItem, readItems } from '@directus/sdk'
+import { notFound } from 'next/navigation'
 
 export const revalidate = 10
 
 // ISR
 export async function generateStaticParams() {
-  const { data } = await directus.items(collectionsName).readByQuery({
-    fields: ['slug'],
-    filter: {
-      status: ENV_DIRECTUS_ITEM_STATUS,
-    },
-  })
+  if (process.env.NEXT_PHASE === 'phase-production-build') {
+    return []
+  }
+
+  const data = await directus.request(
+    readItems(collectionsName, {
+      fields: ['slug'],
+      status: {
+        _eq: ENV_DIRECTUS_ITEM_STATUS,
+      },
+    }),
+  )
 
   if (!data) {
     return [{ slug: undefined }]
@@ -33,22 +42,29 @@ export async function generateStaticParams() {
 }
 
 const getCollection = async (collectionSlug: string) => {
-  const { data } = await directus.items(collectionsName).readByQuery({
-    filter: {
-      slug: collectionSlug,
-      status: ENV_DIRECTUS_ITEM_STATUS,
-    },
-    fields: ['tiles.*'],
-    deep: {
-      tiles: {},
-    },
-  })
+  const data = await directus.request(
+    readItems(collectionsName, {
+      filter: {
+        slug: {
+          _eq: collectionSlug,
+        },
+        status: {
+          _eq: ENV_DIRECTUS_ITEM_STATUS,
+        },
+      },
+      fields: ['title', 'description', 'tiles.*'],
+    }),
+  )
 
   return data
 }
 
 const getTileType = async (tileID: string) => {
-  const data = await directus.items(tileCollectionName).readOne(tileID)
+  const data = await directus.request(
+    readItem(tileCollectionName, tileID, {
+      fields: ['tile_id'],
+    }),
+  )
 
   return data?.tile_id
 }
@@ -63,6 +79,7 @@ const getTileComponent = async (tile: BaseTile) => {
     props = { surveyData }
     type = 'survey'
   } else if (tile.collection === 'successStory') {
+    console.log(tile)
     const successStoryData = await getSuccessStoryData(tile.item)
     props = { successStoryData }
     type = 'successStory'
@@ -81,45 +98,26 @@ const getTileComponents = async (tiles: BaseTile[]) => {
   )
 }
 
-export default async function Collection({
-  params,
-}: {
-  params?: { slug: string }
+export default async function Collection(props: {
+  params?: Promise<{ slug: string }>
 }) {
-  if (!params) {
+  const params = await props.params
+  if (!params?.slug) {
     return notFound()
   }
 
-  const { slug } = params
-
-  if (!slug) {
+  const collection = await fetchCollection(
+    params.slug,
+    ENV_DIRECTUS_ITEM_STATUS,
+  )
+  if (!collection?.[0]) {
     return notFound()
   }
 
-  const collection = await getCollection(slug)
-
-  if (!collection || !collection[0]) {
-    return notFound()
-  }
-
+  // @ts-ignore
   const { tiles } = collection[0]
-
-  const sortedTiles = tiles.sort((a, b) => a.sort - b.sort)
-
-  // sort tiles into buckets indicating full width display or column display
+  const sortedTiles = sortTiles(tiles)
   const tileBuckets = await getTilesBucket(sortedTiles)
 
-  return (
-    <div>
-      {await Promise.all(
-        tileBuckets.map(async ({ tiles, isFullWidth }, i) => {
-          if (isFullWidth) {
-            return await getTileComponents(tiles)
-          }
-
-          return <Columns key={i}>{await getTileComponents(tiles)}</Columns>
-        }),
-      )}
-    </div>
-  )
+  return <TileLayout tileBuckets={tileBuckets} />
 }

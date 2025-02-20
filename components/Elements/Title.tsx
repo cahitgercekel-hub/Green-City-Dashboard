@@ -1,19 +1,18 @@
-import { cx, VariantProps } from 'class-variance-authority'
-import { cva } from 'class-variance-authority'
+import { cva, cx, VariantProps } from 'class-variance-authority'
 import { HTMLAttributes } from 'react'
 
 const TitleStyle = cva('block', {
   variants: {
     as: {
-      h1: 'text-[40px] lg:text-[80px] lg:leading-[5.5rem]',
-      h2: 'text-[30px] lg:text-[50px] lg:leading-[3.5rem] lg:tracking-tight',
-      h3: 'text-[30px] lg:text-[40px] lg:leading-[3rem]',
-      h4: 'text-[20px] lg:text-3xl lg:leading-[36px]',
+      h1: 'text-[40px] lg:text-[80px] lg:leading-[5.5rem] font-lexend',
+      h2: 'text-[30px] lg:text-[50px] lg:leading-[3.5rem] lg:tracking-tight font-lexend',
+      h3: 'text-[30px] lg:text-[40px] lg:leading-[3rem] font-lexend',
+      h4: 'text-[20px] lg:text-3xl lg:leading-[36px] ',
       h5: 'text-base lg:text-xl lg:leading-6 lg:tracking-wide',
       h6: 'text-base lg:text-lg lg:tracking-wide',
       h7: 'text-base leading-7 tracking-wide',
       h8: 'text-sm leading-5 tracking-wide',
-      subtitle: 'text-xl lg:text-3xl',
+      subtitle: 'text-xl lg:text-3xl font-lora',
     },
     variant: {
       primary: 'text-primary',

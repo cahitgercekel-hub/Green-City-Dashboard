@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react'
+import { JSX, Suspense } from 'react'
 
 const withSuspense = (
   WrappedComponent: () => JSX.Element | Promise<JSX.Element>,

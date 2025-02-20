@@ -21,7 +21,7 @@ import {
 } from '@/components/Icons/Misc'
 
 const baseTileStyle = cva(
-  'relative flex flex-col md:flex-row h-fit overflow-hidden rounded-[36px] lg:rounded-[56px]',
+  'relative flex flex-col md:flex-row h-fit overflow-hidden rounded-md lg:rounded-lg',
   {
     variants: {
       variant: {
@@ -95,7 +95,7 @@ export function BaseTile({
     if (navigator && navigator.share) {
       try {
         await navigator.share({
-          title: 'Klimadashboard Münster',
+          title: 'Dashboard',
           url: `${window.location.origin}/share/${embedId}`,
         })
       } catch (e) {

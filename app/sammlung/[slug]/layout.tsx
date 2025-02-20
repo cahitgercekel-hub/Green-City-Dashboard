@@ -7,35 +7,49 @@ import directus, {
   collectionsName,
   ENV_DIRECTUS_ITEM_STATUS,
 } from '@/lib/directus'
+import { readItems } from '@directus/sdk'
 import { notFound } from 'next/navigation'
 
 // revalidate each minute
 export const revalidate = 10
 
 const getCollection = async (collectionSlug: string) => {
-  const { data } = await directus.items(collectionsName).readByQuery({
-    filter: {
-      slug: collectionSlug,
-      status: ENV_DIRECTUS_ITEM_STATUS,
-    },
-    fields: ['title', 'description'],
-  })
+  const data = await directus.request(
+    readItems(collectionsName, {
+      filter: {
+        slug: {
+          _eq: collectionSlug,
+        },
+        status: {
+          _eq: ENV_DIRECTUS_ITEM_STATUS,
+        },
+      },
+      fields: ['title', 'description'],
+    }),
+  )
 
   return data
 }
 
-export default async function Layout({
-  children,
-  params,
-}: {
-  children: React.ReactNode
-  params?: { slug: string }
-}) {
+type Params = Promise<{ slug: string }>
+
+export default async function Layout(
+  props: {
+    children: React.ReactNode
+    params?: Promise<Params>
+  }
+) {
+  const params = await props.params;
+
+  const {
+    children
+  } = props;
+
   if (!params) {
     return notFound()
   }
 
-  const { slug } = params
+  const { slug } = await params
 
   if (!slug) {
     return notFound()

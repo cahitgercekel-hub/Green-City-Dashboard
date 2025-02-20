@@ -2,9 +2,10 @@ import { Spacer } from '@/components/Elements/Spacer'
 import Title from '@/components/Elements/Title'
 import Image from 'next/image'
 
-import { directusImage } from '@/lib/directus'
-import { ID } from '@directus/sdk'
-import ReactMarkdown from 'react-markdown'
+import directus, { directusImage } from '@/lib/directus'
+import { readSingleton } from '@directus/sdk'
+import Markdown from 'react-markdown'
+import rehypeExternalLinks from 'rehype-external-links'
 import remarkGfm from 'remark-gfm'
 import { BaseTile } from '../Base/BaseTile'
 
@@ -14,7 +15,7 @@ export type SuccessStoryTileProps = {
   image?: string
   imagePosition?: 'left' | 'right'
   moreInfo?: string
-  id: string | ID
+  id: string
 }
 
 /**
@@ -22,7 +23,7 @@ export type SuccessStoryTileProps = {
  * @param SuccessStoryTileProps properties of the success story tile
  * @returns SuccessStoryTileProps
  */
-export default function SuccessStoryTile({
+export default async function SuccessStoryTile({
   text,
   // eslint-disable-next-line unused-imports/no-unused-vars
   link,
@@ -31,13 +32,15 @@ export default function SuccessStoryTile({
   moreInfo,
   id,
 }: SuccessStoryTileProps) {
+  const theme = await directus.request(readSingleton('theme'))
+
   const Content = (
     <div className="flex h-full flex-col justify-between">
       <Title as="h5" font={'semibold'} variant={'primary'}>
-        Stimmen für Münster
+        {theme.success_stories_title}
       </Title>
       <Spacer size="md" />
-      <ReactMarkdown
+      <Markdown
         className="flex flex-1 flex-col justify-between"
         components={{
           h1: props => (
@@ -91,11 +94,13 @@ export default function SuccessStoryTile({
             />
           ),
         }}
-        linkTarget={'_blank'}
+        rehypePlugins={[
+          [rehypeExternalLinks, { target: '_blank', rel: 'noopener' }],
+        ]}
         remarkPlugins={[remarkGfm]}
       >
         {text}
-      </ReactMarkdown>
+      </Markdown>
     </div>
   )
 
@@ -104,7 +109,7 @@ export default function SuccessStoryTile({
   }
 
   const StoryImage = (
-    <div className="relative min-h-[20rem]  overflow-hidden md:min-h-[40rem] md:w-4/5">
+    <div className="relative min-h-[20rem] overflow-hidden md:min-h-[40rem] md:w-4/5">
       <Image
         alt={'Image'}
         className="object-cover object-center transition-all group-hover:scale-105"

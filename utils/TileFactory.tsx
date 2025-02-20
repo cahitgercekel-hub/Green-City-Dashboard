@@ -35,14 +35,13 @@ import {
   MobilityTypes,
   TileTypePrefix,
 } from '@/types/tile'
-import { ID } from '@directus/sdk'
 
 type TileTypeSuffix =
   | ClimateTypes
   | MobilityTypes
   | BuildingsTypes
   | EnergyTypes
-  | ID
+  | string
 
 type SuccessStoryTileType = 'successStory'
 type SurveyTileType = 'survey'

@@ -4,7 +4,7 @@ import { Spacer } from '@/components/Elements/Spacer'
 import Title from '@/components/Elements/Title'
 import getTileData from '@/lib/api/getTileData'
 import { cva, cx, VariantProps } from 'class-variance-authority'
-import { ForwardRefExoticComponent, SVGProps } from 'react'
+import { ForwardRefExoticComponent, JSX, SVGProps } from 'react'
 import { BaseTile, EmbedTileProps } from './BaseTile'
 import { TileSplitView } from './TileSplitView'
 
@@ -125,7 +125,7 @@ export default async function IconTile({
       <TileSplitView>
         <TileSplitView.Left>
           <div className="flex flex-wrap justify-between">
-            <div className="space-x-2 text-xs ">
+            {/* <div className="space-x-2 text-xs ">
               <Title
                 as="h7"
                 className="inline"
@@ -142,7 +142,7 @@ export default async function IconTile({
               >
                 Quelle: {dataSource}
               </Title>
-            </div>
+            </div> */}
             <div>{rightAlignedExtra}</div>
           </div>
         </TileSplitView.Left>

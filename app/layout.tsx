@@ -1,17 +1,38 @@
+import directus from '@/lib/directus'
 import '@/styles/globals.css'
+import { readSingleton } from '@directus/sdk'
 import { Viewport } from 'next'
-import { Inter } from 'next/font/google'
+import { Inter, Lexend, Lora } from 'next/font/google'
 import Script from 'next/script'
 import Cookies from './Cookies'
 import Matomo from './Matomo'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
+const lexend = Lexend({
+  subsets: ['latin'],
+  variable: '--font-lexend',
+  weight: ['300', '400', '700'],
+})
+const lora = Lora({
+  subsets: ['latin'],
+  style: 'italic',
+  variable: '--font-lora',
+})
 
-export const metadata = {
-  title: 'Klimadashboard Münster',
-  description: 'Das Klimadashboard der Stadt Münster',
-  icons: '/favicon.ico',
-  metadataBase: new URL('https://klimadashboard.ms'),
+export async function generateMetadata() {
+  const theme = await directus.request(readSingleton('theme'))
+
+  if (!theme) {
+    return {
+      title: 'Klimadashboard',
+      icons: '/favicon.ico',
+    }
+  }
+
+  return {
+    title: theme.title,
+    icons: '/favicon.ico',
+  }
 }
 
 export const viewport: Viewport = {
@@ -19,19 +40,59 @@ export const viewport: Viewport = {
   initialScale: 1,
 }
 
-export default function RootLayout({
+function hexToRgb(hex: string) {
+  var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex)
+  return result
+    ? `${parseInt(result[1], 16)} ${parseInt(result[2], 16)} ${parseInt(
+        result[3],
+        16,
+      )}`
+    : null
+}
+
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+  const theme = await directus.request(readSingleton('theme'))
+
+  let style: React.CSSProperties = {}
+
+  if (theme) {
+    style = {
+      '--color-primary': hexToRgb(theme.primary),
+      '--color-primary-light': hexToRgb(theme.primary_light),
+      '--color-secondary': hexToRgb(theme.secondary),
+      '--color-secondary-light': hexToRgb(theme.secondary_light),
+      '--color-climate': hexToRgb(theme.climate),
+      '--color-climate-light': hexToRgb(theme.climate_light),
+      '--color-mobility': hexToRgb(theme.mobility),
+      '--color-mobility-light': hexToRgb(theme.mobility_light),
+      '--color-energy': hexToRgb(theme.energy),
+      '--color-energy-light': hexToRgb(theme.energy_light),
+      '--color-buildings': hexToRgb(theme.buildings),
+      '--color-buildings-light': hexToRgb(theme.buildings_light),
+      '--border-radius-md': `${
+        theme.border_radius * 12 * (theme.border_radius / 3)
+      }px`,
+      '--border-radius-lg': `${
+        theme.border_radius * 17.3 * (theme.border_radius / 3)
+      }px`,
+    } as React.CSSProperties
+  }
+
   return (
-    <html className={inter.className} lang="de">
+    <html
+      className={`${inter.variable} ${lexend.variable} ${lora.variable}`}
+      lang="de"
+    >
       {/*
         <head /> will contain the components returned by the nearest parent
         head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
       */}
       <head />
-      <body>
+      <body style={style}>
         {children}
         <Cookies />
       </body>

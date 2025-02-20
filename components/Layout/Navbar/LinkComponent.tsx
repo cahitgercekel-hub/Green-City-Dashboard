@@ -1,7 +1,7 @@
 import { Button } from '@/components/Elements/Button'
 import { cx } from 'class-variance-authority'
 import Link from 'next/link'
-import { SVGProps } from 'react'
+import { JSX, SVGProps } from 'react'
 
 export type LinkProps = {
   title: string

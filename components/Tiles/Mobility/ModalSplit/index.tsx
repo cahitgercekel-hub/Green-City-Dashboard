@@ -14,7 +14,7 @@ export default async function ModalSplitTile() {
       dataRetrieval={format(new Date(), '01.MM.yyyy')}
       dataSource="Stadt Münster &ndash; Amt für Mobilität und Tiefbau"
       embedId="mobility-modalSplit"
-      subtitle="Aufteilung der zurückgelegten Wege und Kilometer der Münsteraner*innen"
+      subtitle="Aufteilung der zurückgelegten Wege und Kilometer"
       title={'Unterwegs'}
     >
       <TileSplitView>

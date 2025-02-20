@@ -17,9 +17,9 @@ const { theme } = resolveConfig(tailwindConfig)
 const colors = {
   muenster: {
     // @ts-ignore
-    color: theme?.colors?.mobility.DEFAULT || '#34c17b',
+    color: theme?.colors?.mobility.DEFAULT || '#FF7A00',
     symbol: `image://${
-      require('@/assets/icons/Bicycle/BicycleIconGreen.svg').default.src
+      require('@/assets/icons/Bicycle/BicycleIconBlue.svg').default.src
     }`,
   },
   other: {
@@ -111,6 +111,9 @@ export default function Chart({ data, other }: ChartProps) {
     ])
   }, [other])
 
+  // the maximum value of the series
+  const maxValue = Math.max(...data.map(e => e.value))
+
   if (!data) {
     return <Spinner />
   }
@@ -148,8 +151,8 @@ export default function Chart({ data, other }: ChartProps) {
             ],
             yAxis: {
               type: 'value',
-              interval: 250_000,
-              max: 3_000_000,
+              interval: (Math.ceil(maxValue / 250000) * 250000) / 4,
+              max: Math.ceil(maxValue / 250000) * 250000,
               axisLabel: {
                 fontSize: device === 'mobile' ? 12 : 20,
                 formatter: (value: number) =>

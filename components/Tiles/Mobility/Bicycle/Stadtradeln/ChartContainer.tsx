@@ -17,24 +17,32 @@ export type StadtradelnData = {
   value: number
 }
 
-const muensterData = (stadtradelnData as StadtradelnData[]).filter(
-  ({ key }) => key === 'muenster',
-)
-
-const otherCities = (stadtradelnData as StadtradelnData[]).filter(
-  ({ key }) => key !== 'muenster',
-)
-
-const otherCitiesSet = Array.from(new Set(otherCities.map(({ key }) => key)))
-
 const COMPARE_INTERVAL = 5000
 
 const AnimatedProgressCircle = animated(ProgressCircle)
 
-export default function ChartContainer() {
+export interface ChartContainerProps {
+  city: string
+  enableCompare?: boolean
+}
+
+export default function ChartContainer({
+  city,
+  enableCompare = false,
+}: ChartContainerProps) {
   const [compare, setCompare] = useState(false)
   const [otherData, setOtherData] = useState<StadtradelnData[]>()
   const [otherIndex, setOtherIndex] = useState(0)
+
+  const cityData = (stadtradelnData as StadtradelnData[]).filter(
+    ({ key }) => key === city,
+  )
+
+  const otherCities = (stadtradelnData as StadtradelnData[]).filter(
+    ({ key }) => key !== city,
+  )
+
+  const otherCitiesSet = Array.from(new Set(otherCities.map(({ key }) => key)))
 
   const [springs, api] = useSpring(() => ({
     from: { progress: 0 },
@@ -87,45 +95,48 @@ export default function ChartContainer() {
   return (
     <div className="rounded bg-white p-2">
       <div className="flex h-[350px] w-full items-center justify-center md:h-[500px]">
-        <Chart compare={compare} data={muensterData} other={otherData} />
+        <Chart compare={compare} data={cityData} other={otherData} />
       </div>
       <div className="flex items-center gap-2 p-4 md:gap-10 md:pl-8">
         <div className="h-1 w-8 rounded bg-mobility md:w-[52px]" />
         <Title as={'h5'} variant={'primary'}>
-          geradelte Kilometer in Münster
+          geradelte Kilometer
         </Title>
       </div>
-      <div className="flex w-full flex-col justify-between gap-2 rounded border border-dashed border-primary p-2 md:flex-row md:items-center md:space-x-4 md:p-4 md:pl-8">
-        <div className="flex flex-shrink-0 items-center gap-2 md:gap-10">
-          <Switch
-            defaultChecked={compare}
-            onCheckedChange={setCompare}
-            variant={'mobility'}
-          />
-          <Title as={'h5'} variant={'primary'}>
-            Städtevergleich
-          </Title>
-        </div>
-        {otherData && (
-          <div className="flex flex-1 items-center">
-            <div className="relative h-6 flex-1">
-              <AnimatedRollingElement>
-                <div className="flex items-center gap-2 md:gap-4">
-                  <div className="h-1 w-9 rounded bg-buildings md:w-[52px]" />
-                  <Title as="h5" variant={'primary'}>
-                    {
-                      otherData.find(e => e.key === otherCitiesSet[otherIndex])
-                        ?.name
-                    }
-                  </Title>
-                </div>
-              </AnimatedRollingElement>
-            </div>
-
-            <AnimatedProgressCircle {...springs} />
+      {enableCompare && (
+        <div className="flex w-full flex-col justify-between gap-2 rounded border border-dashed border-primary p-2 md:flex-row md:items-center md:space-x-4 md:p-4 md:pl-8">
+          <div className="flex flex-shrink-0 items-center gap-2 md:gap-10">
+            <Switch
+              defaultChecked={compare}
+              onCheckedChange={setCompare}
+              variant={'mobility'}
+            />
+            <Title as={'h5'} variant={'primary'}>
+              Städtevergleich
+            </Title>
           </div>
-        )}
-      </div>
+          {otherData && (
+            <div className="flex flex-1 items-center">
+              <div className="relative h-6 flex-1">
+                <AnimatedRollingElement>
+                  <div className="flex items-center gap-2 md:gap-4">
+                    <div className="h-1 w-9 rounded bg-buildings md:w-[52px]" />
+                    <Title as="h5" variant={'primary'}>
+                      {
+                        otherData.find(
+                          e => e.key === otherCitiesSet[otherIndex],
+                        )?.name
+                      }
+                    </Title>
+                  </div>
+                </AnimatedRollingElement>
+              </div>
+
+              <AnimatedProgressCircle {...springs} />
+            </div>
+          )}
+        </div>
+      )}
     </div>
   )
 }

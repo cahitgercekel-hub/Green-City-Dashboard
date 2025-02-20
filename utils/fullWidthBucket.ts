@@ -1,16 +1,16 @@
 import directus from '@/lib/directus'
-import { ID } from '@directus/sdk'
+import { readItem } from '@directus/sdk'
 
 // super complex and probably overkill function to seperate fill width from normal tiles
 export type BaseTile = {
-  id: ID
-  collections_id: ID
-  item: ID
+  id: string
+  collections_id: string
+  item: string
   collection: string
   sort: number
 }
 
-type TilesBucket = {
+export type TilesBucket = {
   tiles: BaseTile[]
   isFullWidth: boolean
 }
@@ -25,9 +25,11 @@ const isFullWidth = async (tile: BaseTile) => {
     return false
   }
 
-  const data = await directus.items(tile.collection).readOne(tile.item, {
-    fields: ['full_width'],
-  })
+  const data = await directus.request(
+    readItem('tiles', tile.item, {
+      fields: ['full_width'],
+    }),
+  )
 
   return data?.full_width === true
 }

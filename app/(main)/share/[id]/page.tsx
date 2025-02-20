@@ -3,8 +3,10 @@ import { notFound } from 'next/navigation'
 
 export const revalidate = 10
 
-export default async function Share({ params }: { params: { id: TileType } }) {
-  const { id } = params
+type Params = Promise<{ id: TileType }>
+
+export default async function Share({ params }: { params: Params }) {
+  const { id } = await params
 
   if (!id) {
     return notFound()
