@@ -2,10 +2,10 @@ import * as React from 'react'
 import { SVGProps ***REMOVED*** from 'react'
 
 interface Props extends SVGProps<SVGSVGElement> {
-  progressPercent: number
+  progresspercent: number
 ***REMOVED***
 function SVGComponent(props: Props) {
-  const strockeDashoffset = ((100 - props.progressPercent) / 100) * 3000
+  const strockeDashoffset = ((100 - props.progresspercent) / 100) * 3000
   return (
     <svg
       id="uuid-1bcbba7a-db2c-4a40-8bc5-a5e0251c3ccd"
