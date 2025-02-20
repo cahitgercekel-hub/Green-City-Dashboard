@@ -19,6 +19,7 @@ jobs:
     permissions:
       contents: read
       packages: write
+      pull-requests: write  # Add permission to write to pull requests
 
     steps:
       - name: Checkout repository
@@ -39,7 +40,7 @@ jobs:
 
       - name: Extract metadata (tags, labels) for Docker
         id: meta
-        uses: docker/metadata-action@v3
+        uses: docker/metadata-action@v5
         with:
           images: ${{ env.REGISTRY ***REMOVED******REMOVED***/${{ env.IMAGE_NAME ***REMOVED******REMOVED***
           flavor: |
@@ -57,3 +58,15 @@ jobs:
           labels: ${{ steps.meta.outputs.labels ***REMOVED******REMOVED***
           cache-from: type=gha
           cache-to: type=gha,mode=max
+
+      - name: Comment on pull request
+        if: github.event_name == 'pull_request'
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          issue-number: ${{ github.event.pull_request.number ***REMOVED******REMOVED***
+          body: |
+            The Docker image was built successfully with the following name(s):
+            ```
+            \${{ steps.meta.outputs.tags ***REMOVED******REMOVED***
+            ```
+          reactions: 'rocket'
