@@ -41,6 +41,7 @@
     "react-map-gl": "^7.1.8",
     "react-markdown": "^8.0.7",
     "react-use": "^17.4.0",
+    "rehype-external-links": "^3.0.0",
     "remark-gfm": "^3.0.1",
     "server-only": "^0.0.1",
     "sharp": "^0.33.5",
