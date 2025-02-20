@@ -17,6 +17,7 @@ export default function AnimatedRollingElement({
 ***REMOVED***)
 
   return transitions((style, item) => (
+    // @ts-ignore
     <animated.div className="absolute" style={style***REMOVED***>
 ***REMOVED***item***REMOVED***
     </animated.div>

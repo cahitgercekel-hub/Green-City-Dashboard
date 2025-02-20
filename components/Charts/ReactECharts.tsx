@@ -1,9 +1,9 @@
 'use client'
 
-import React, { useEffect, useRef ***REMOVED*** from 'react'
-import { getInstanceByDom, init ***REMOVED*** from 'echarts'
-import type { CSSProperties ***REMOVED*** from 'react'
 import type { ECharts, EChartsOption, SetOptionOpts ***REMOVED*** from 'echarts'
+import { getInstanceByDom, init ***REMOVED*** from 'echarts'
+import type { CSSProperties, JSX ***REMOVED*** from 'react'
+import { useEffect, useRef ***REMOVED*** from 'react'
 
 import useDevice from '@/hooks/useDevice'
 

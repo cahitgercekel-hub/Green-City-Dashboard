@@ -9,7 +9,7 @@ import {
 ***REMOVED*** from '@/components/Icons/Klima'
 import useDevice from '@/hooks/useDevice'
 import { cx ***REMOVED*** from 'class-variance-authority'
-import { ForwardRefExoticComponent, SVGProps ***REMOVED*** from 'react'
+import { ForwardRefExoticComponent, JSX, SVGProps ***REMOVED*** from 'react'
 
 type PhenomenaType = {
   [key: string]: {

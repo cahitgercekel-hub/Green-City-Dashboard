@@ -1,76 +1,68 @@
-import InsightsContainer from '@/components/Insights/InsightsContainer'
+import InsightsContainer, {
+  getInsightsData,
+***REMOVED*** from '@/components/Insights/InsightsContainer'
 import Container from '@/components/Layout/Container'
 
 import AnimatedPage from '@/components/Layout/AnimatedPage'
 
-import Columns from '@/components/Layout/Columns'
-import EnergyComsumptionTile from '@/components/Tiles/Buildings/EnergyConsumption'
-import CO2EmissionsTile from '@/components/Tiles/Climate/CO2EmissionsTile'
-import ClimateDevelopmentTile from '@/components/Tiles/Climate/Devlopment'
-import WeatherTile from '@/components/Tiles/Climate/WeatherTile'
-import EnergietraegerTile from '@/components/Tiles/Energy/EnergietraegerTile'
-import PhotovoltTile from '@/components/Tiles/Energy/PhotovoltTile'
-import WindEnergyTile from '@/components/Tiles/Energy/WindEnergyTile'
-import BicycleChartTile from '@/components/Tiles/Mobility/Bicycle/BicycleChartTile'
-import BusTile from '@/components/Tiles/Mobility/Bus'
-import TrafficloadTile from '@/components/Tiles/Mobility/TrafficloadTile'
-import BaseView from '@/components/Views/BaseView'
+import Title from '@/components/Elements/Title'
+import SvgWiesbaden from '@/components/Icons/Wiesbaden'
+import { TileLayout ***REMOVED*** from '@/components/Tiles/TileLayout'
+import directus, { Section ***REMOVED*** from '@/lib/directus'
+import getTilesBucket from '@/utils/fullWidthBucket'
+import { sortTiles ***REMOVED*** from '@/utils/tileLayout'
+import { readItems ***REMOVED*** from '@directus/sdk'
+import { cx ***REMOVED*** from 'class-variance-authority'
 
 export default async function Home() {
+  const data = await directus.request(
+    readItems('sections', {
+      // @ts-ignore
+      fields: ['*', { tiles: ['*'] ***REMOVED***],
+  ***REMOVED***),
+  )
+
+  async function buildSections(data: Section[]) {
+    const sections = await Promise.all(
+      data.map(async section => {
+        const { title, tiles, icon ***REMOVED*** = section
+
+        if (!tiles) {
+          return null
+      ***REMOVED***
+
+        const sortedTiles = sortTiles(tiles)
+        const tileBuckets = await getTilesBucket(sortedTiles)
+
+        return (
+          <div key={title***REMOVED***>
+            <div className="my-4 flex w-full items-center justify-between">
+              <div className="flex items-center space-x-4">
+                <div className="h-14 w-20 rounded-lg border-2 border-primary p-2">
+                  <SvgWiesbaden className="mx-auto h-full fill-primary stroke-primary" />
+                </div>
+                <Title as={'h4'***REMOVED*** variant={'primary'***REMOVED***>
+            ***REMOVED***title***REMOVED***
+                </Title>
+              </div>
+            </div>
+
+            <TileLayout tileBuckets={tileBuckets***REMOVED*** />
+          </div>
+    ***REMOVED***
+    ***REMOVED***),
+***REMOVED***
+
+    return sections
+***REMOVED***
+
+  const insights = await getInsightsData()
+
   return (
-    <div className="-translate-y-52">
+    <div className={cx(insights.length > 0 && '-translate-y-52')***REMOVED***>
       <AnimatedPage>
         <InsightsContainer />
-        <Container>
-          <BaseView
-            showGoToButton={true***REMOVED***
-            showSuccessStories={false***REMOVED***
-            showSurveys={false***REMOVED***
-            type="climate"
-          >
-            <CO2EmissionsTile />
-            <Columns>
-              <WeatherTile />
-              <ClimateDevelopmentTile />
-            </Columns>
-      ***REMOVED***/* <WachstumTile /> */***REMOVED***
-          </BaseView>
-
-          <BaseView
-            showGoToButton={true***REMOVED***
-            showSuccessStories={false***REMOVED***
-            showSurveys={false***REMOVED***
-            type="energy"
-          >
-            <Columns>
-              <PhotovoltTile />
-              <WindEnergyTile />
-              <EnergietraegerTile />
-            </Columns>
-          </BaseView>
-
-          <BaseView
-            showGoToButton={true***REMOVED***
-            showSuccessStories={false***REMOVED***
-            showSurveys={false***REMOVED***
-            type="mobility"
-          >
-            <TrafficloadTile />
-            <Columns>
-              <BusTile />
-              <BicycleChartTile />
-            </Columns>
-          </BaseView>
-
-          <BaseView
-            showGoToButton={true***REMOVED***
-            showSuccessStories={false***REMOVED***
-            showSurveys={false***REMOVED***
-            type="building"
-          >
-            <EnergyComsumptionTile />
-          </BaseView>
-        </Container>
+        <Container>{buildSections(data)***REMOVED***</Container>
       </AnimatedPage>
     </div>
   )

@@ -1,4 +1,5 @@
-import MSLogo from '@/assets/logos/stadtlogo-muenster.png'
+'use client'
+
 import { Spacer ***REMOVED*** from '@/components/Elements/Spacer'
 import Title from '@/components/Elements/Title'
 import {
@@ -7,9 +8,11 @@ import {
   MsKlimadashboardIconsButtonAktivKlima,
   MsKlimadashboardIconsButtonAktivMobil,
 ***REMOVED*** from '@/components/Icons/Misc'
+import directus, { directusImage, Theme ***REMOVED*** from '@/lib/directus'
+import { readSingleton ***REMOVED*** from '@directus/sdk'
 import { Bars3Icon ***REMOVED*** from '@heroicons/react/24/outline'
-import Image from 'next/image'
 import Link from 'next/link'
+import { useEffect, useState ***REMOVED*** from 'react'
 import Collapsible from '../../Elements/Collapsible'
 import Container from '../Container'
 import StairStepBackground from '../StairStepBackground'
@@ -53,23 +56,38 @@ export default function BaseNavbar({
   variant = 'primary',
   children,
 ***REMOVED***: BaseNavbarProps) {
+  const [theme, setTheme] = useState<Theme | null>(null)
+
+  useEffect(() => {
+    const fetchTheme = async () => {
+      const theme = await directus.request(readSingleton('theme'))
+
+      setTheme(theme)
+  ***REMOVED***
+
+    fetchTheme()
+***REMOVED***, [])
+
   return (
     <div className="pt-8">
-      <div className="container relative z-10 mx-auto flex translate-y-1/2 flex-row justify-end px-4 md:px-12">
-        <Link href="https://www.stadt-muenster.de/" target="_blank">
-          <Image
-            alt="Logo der Stadt Münster"
-            className="h-12 w-auto"
-            src={MSLogo***REMOVED***
-          />
-        </Link>
+      <div className="container relative z-10 mx-auto flex max-w-[1920px] translate-y-1/2 flex-row justify-end px-2 xs:px-[16px] md:px-[32px] xl:px-[82px]">
+  ***REMOVED***theme && (
+          <Link href={theme.navbar_image_link || '#'***REMOVED*** target="_blank">
+      ***REMOVED***/* eslint-disable-next-line @next/next/no-img-element */***REMOVED***
+            <img
+              alt="Logo"
+              className="h-12 w-auto"
+              src={directusImage(theme.navbar_image)***REMOVED***
+            />
+          </Link>
+    ***REMOVED******REMOVED***
       </div>
       <StairStepBackground variant={variant***REMOVED***>
         <Container>
           <div className="xl:hidden">
             <Collapsible
               trigger={
-                <div className="w-fit rounded-full border-2 border-primary p-2 md:p-4">
+                <div className="w-fit rounded-lg border-2 border-primary p-2 md:p-4">
                   <Bars3Icon className="w-5 stroke-2 text-primary md:w-6" />
                 </div>
             ***REMOVED***
@@ -88,20 +106,20 @@ export default function BaseNavbar({
                 as="h2"
                 variant={variant === 'overlay' ? 'inverse' : 'primary'***REMOVED***
               >
-                Klimadashboard Münster
+          ***REMOVED***theme?.title || 'Klimadashboard'***REMOVED***
               </Title>
             </Link>
             <div className="flex items-center justify-between">
         ***REMOVED***actionComponent***REMOVED***
 
               <div className="hidden h-fit flex-wrap justify-end gap-2 xl:flex">
-          ***REMOVED***links.map(l => (
+          ***REMOVED***/* {links.map(l => (
                   <LinkComponent
                     key={l.link***REMOVED***
                     variant={variant === 'overlay' ? 'inverse' : 'primary'***REMOVED***
               ***REMOVED***...l***REMOVED***
                   />
-            ***REMOVED***)***REMOVED***
+            ***REMOVED***)***REMOVED*** */***REMOVED***
               </div>
             </div>
           </div>

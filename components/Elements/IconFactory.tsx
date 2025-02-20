@@ -1,5 +1,5 @@
 import { cva, cx, VariantProps ***REMOVED*** from 'class-variance-authority'
-import { ForwardRefExoticComponent, HTMLAttributes, SVGProps ***REMOVED*** from 'react'
+import { ForwardRefExoticComponent, HTMLAttributes, JSX, SVGProps ***REMOVED*** from 'react'
 
 interface IconFactoryProps
   extends HTMLAttributes<HTMLDivElement>,

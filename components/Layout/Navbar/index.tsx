@@ -2,15 +2,15 @@
 
 import { Button ***REMOVED*** from '../../Elements/Button'
 
-import Title from '@/components/Elements/Title'
 import Back from '@/components/Elements/Back'
-import { usePathname ***REMOVED*** from 'next/navigation'
-import BaseNavbar from './BaseNavbar'
-import { useState ***REMOVED*** from 'react'
-import SectionTitle from '../SectionTitle'
-import { AnimatePresence, motion ***REMOVED*** from 'framer-motion'
+import Title from '@/components/Elements/Title'
 import { MsKlimadashboardIconsNaviInfoI ***REMOVED*** from '@/components/Icons/Misc/Navi'
 import { XMarkIcon ***REMOVED*** from '@heroicons/react/24/outline'
+import { AnimatePresence, motion ***REMOVED*** from 'framer-motion'
+import { usePathname ***REMOVED*** from 'next/navigation'
+import { useState ***REMOVED*** from 'react'
+import SectionTitle from '../SectionTitle'
+import BaseNavbar from './BaseNavbar'
 
 const routeToType: {
   [key: string]:
@@ -31,7 +31,13 @@ const routeToType: {
   feedback: 'feedback',
 ***REMOVED***
 
-export default function Navbar() {
+export default function Navbar({
+  large,
+  aboutButton,
+***REMOVED***: {
+  large?: boolean
+  aboutButton?: { title: string; text: string ***REMOVED***
+***REMOVED***) {
   const pathname = usePathname()
 
   const [showOverlay, setShowOverlay] = useState(false)
@@ -44,17 +50,21 @@ export default function Navbar() {
   const [_, route] = pathname?.split('/')
 
   const ActionComponent = isIndexPage ? (
-    <Button
-      className="whitespace-nowrap"
-      onClick={() => setShowOverlay(true)***REMOVED***
-      size={'link'***REMOVED***
-      startIcon={
-        <MsKlimadashboardIconsNaviInfoI className="h-[26px] md:h-[34px]" />
-    ***REMOVED***
-      variant={'secondary'***REMOVED***
-    >
-      So helfen Daten dem Klima
-    </Button>
+    aboutButton?.text ? (
+      <Button
+        className="whitespace-nowrap"
+        onClick={() => setShowOverlay(true)***REMOVED***
+        size={'link'***REMOVED***
+        startIcon={
+          <MsKlimadashboardIconsNaviInfoI className="h-[26px] md:h-[34px]" />
+      ***REMOVED***
+        variant={'secondary'***REMOVED***
+      >
+  ***REMOVED***aboutButton.title***REMOVED***
+      </Button>
+***REMOVED*** : (
+      <></>
+***REMOVED***
   ) : (
     <Back
       variant={
@@ -68,18 +78,7 @@ export default function Navbar() {
   const InfoText = (
     <div className="lg:w-2/3 2xl:w-1/3">
       <Title as={'h5'***REMOVED*** variant={'inverse'***REMOVED***>
-        Wo steht Münster auf dem Weg zur Klimaneutralität? Und wo zeigen sich
-        die Folgen des Klimawandels in Münster schon jetzt? Das Klimadashboard
-        zeigt den aktuellen Datenstand zu verschiedenen Indikatoren von
-        Klimaschutz und Anpassung an die Folgen des Klimawandels und schafft so
-        mehr Transparenz in der gesamtstädtischen Klimaarbeit. Entwickelt wurde
-        das Klimadashboard von der Stabsstelle Smart City und der Stabsstelle
-        Klima der Stadt Münster mit Unterstützung von den Stadtwerken Münster
-        und der Wirtschaftsförderung Münster. Wir arbeiten stetig daran, die
-        Verfügbarkeit der Daten zu verbessern. Das Klimadashboard wird im Rahmen
-        des Förderprogramms „Modellprojekte Smart Cities“ aus Mitteln des
-        Bundesministeriums für Wohnen, Stadtentwicklung und Bauwesen (BMWSB)
-        gefördert.
+  ***REMOVED***aboutButton?.text***REMOVED***
       </Title>
     </div>
   )
@@ -109,7 +108,7 @@ export default function Navbar() {
     return (
       <div className="relative">
         <BaseNavbar actionComponent={ActionComponent***REMOVED***>
-          <div className="h-40" />
+    ***REMOVED***large ? <div className="h-40" /> : <></>***REMOVED***
         </BaseNavbar>
         <AnimatePresence>
     ***REMOVED***showOverlay && (

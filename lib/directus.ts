@@ -1,5 +1,5 @@
 import { TileType ***REMOVED*** from '@/utils/TileFactory'
-import { Directus, ID ***REMOVED*** from '@directus/sdk'
+import { rest ***REMOVED*** from '@directus/sdk'
 
 const directusUrl =
   process.env.NEXT_PUBLIC_DIRECTUS_URL || 'http://localhost:8055'
@@ -9,50 +9,62 @@ export const collectionsName = 'collections'
 export const tileCollectionName = 'tiles'
 export const surveyCollectionName = 'survey'
 export const successStoriesCollectionName = 'successStory'
+export const themeCollectionName = 'theme'
 
 export type DirectusStatus = 'draft' | 'archived' | 'published'
 
 export type MainPage = {
-  id: ID
+  id: string
   status: DirectusStatus
   tiles: {
-    id: ID
-    collections_id: ID
-    item: ID
+    id: string
+    collections_id: string
+    item: string
     collection: typeof tileCollectionName | typeof surveyCollectionName
     sort: number
 ***REMOVED***[]
 ***REMOVED***
 
 export type Collection = {
-  id: ID
+  id: string
   status: DirectusStatus
   title: string
   description?: string
   image: string
   slug?: string
   tiles: {
-    id: ID
-    collections_id: ID
-    item: ID
+    id: string
+    collections_id: string
+    item: string
     collection: typeof tileCollectionName | typeof surveyCollectionName
     sort: number
 ***REMOVED***[]
 ***REMOVED***
 
+export type CollectionTile = {
+  id: string
+  collections_id: string
+  item: string
+  collection:
+    | typeof tileCollectionName
+    | typeof surveyCollectionName
+    | typeof successStoriesCollectionName
+  sort: number
+***REMOVED***
+
 export type Tile = {
-  id: ID
+  // id: string
   name: string
-  group: any
+  // group: any
   full_width: boolean
-  tile_id: TileType
+  tile_id: string & TileType
   details: string
   data_url: string
   info: string
 ***REMOVED***
 
 export type SuccessStory = {
-  id: ID
+  id: string
   status: DirectusStatus
   text: string
   link: string
@@ -63,7 +75,7 @@ export type SuccessStory = {
 ***REMOVED***
 
 export type Survey = {
-  id: ID
+  id: string
   status: DirectusStatus
   title: string
   question: string
@@ -74,17 +86,58 @@ export type Survey = {
   dataRetrieval: Date
 ***REMOVED***
 
-// Map your collections to its respective types. The SDK will
-// infer its types based on usage later.
-type DirectusCollection = {
-  mainPage: MainPage
-  collections: Collection
-  tiles: Tile
-  successStory: SuccessStory
-  survey: Survey
+export type Theme = {
+  id: string
+  status: DirectusStatus
+  title: string
+  // navbar
+  navbar_image: string
+  navbar_image_link: string
+  about_button_title: string
+  about_button_text: string
+  // colors
+  primary: string
+  primary_light: string
+  secondary: string
+  secondary_light: string
+  climate: string
+  climate_light: string
+  buildings: string
+  buildings_light: string
+  mobility: string
+  mobility_light: string
+  energy: string
+  energy_light: string
+  // border radius
+  border_radius: number
+  // font
+  font: string
+  // success stories
+  success_stories_title: string
 ***REMOVED***
 
-const directus = new Directus<DirectusCollection>(directusUrl)
+export type Section = {
+  title: string
+  tiles: CollectionTile[]
+  icon: string
+***REMOVED***
+
+interface DirectusSchema {
+  theme: Theme
+  collections: Collection[]
+  tiles: Tile[]
+  survey: Survey[]
+  successStory: SuccessStory[]
+  sections: Section[]
+***REMOVED***
+
+// const directus = new Directus<DirectusCollection>(directusUrl)
+
+import { createDirectus ***REMOVED*** from '@directus/sdk'
+
+const directus = createDirectus<DirectusSchema>(
+  process.env.NEXT_PUBLIC_DIRECTUS_URL!,
+).with(rest())
 
 export default directus
 

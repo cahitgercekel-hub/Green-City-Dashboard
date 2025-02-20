@@ -1,27 +1,36 @@
-import Columns from '@/components/Layout/Columns'
+import { SuccessStoryTileProps ***REMOVED*** from '@/components/Tiles/SuccessStory'
+import { SurveyTileProps ***REMOVED*** from '@/components/Tiles/Survey'
+import { TileLayout ***REMOVED*** from '@/components/Tiles/TileLayout'
+import { fetchCollection ***REMOVED*** from '@/lib/api/directusService'
+import { getSuccessStoryData ***REMOVED*** from '@/lib/api/getSuccessStoryData'
+import { getSurveyData ***REMOVED*** from '@/lib/api/getSurveyData'
 import directus, {
   collectionsName,
   ENV_DIRECTUS_ITEM_STATUS,
   tileCollectionName,
 ***REMOVED*** from '@/lib/directus'
-import { notFound ***REMOVED*** from 'next/navigation'
 import getTilesBucket, { BaseTile ***REMOVED*** from '@/utils/fullWidthBucket'
 import TileFactory, { TileType ***REMOVED*** from '@/utils/TileFactory'
-import { SurveyTileProps ***REMOVED*** from '@/components/Tiles/Survey'
-import { SuccessStoryTileProps ***REMOVED*** from '@/components/Tiles/SuccessStory'
-import { getSurveyData ***REMOVED*** from '@/lib/api/getSurveyData'
-import { getSuccessStoryData ***REMOVED*** from '@/lib/api/getSuccessStoryData'
+import { sortTiles ***REMOVED*** from '@/utils/tileLayout'
+import { readItem, readItems ***REMOVED*** from '@directus/sdk'
+import { notFound ***REMOVED*** from 'next/navigation'
 
 export const revalidate = 10
 
 // ISR
 export async function generateStaticParams() {
-  const { data ***REMOVED*** = await directus.items(collectionsName).readByQuery({
-    fields: ['slug'],
-    filter: {
-      status: ENV_DIRECTUS_ITEM_STATUS,
-  ***REMOVED***,
-***REMOVED***)
+  if (process.env.NEXT_PHASE === 'phase-production-build') {
+    return []
+***REMOVED***
+
+  const data = await directus.request(
+    readItems(collectionsName, {
+      fields: ['slug'],
+      status: {
+        _eq: ENV_DIRECTUS_ITEM_STATUS,
+    ***REMOVED***,
+  ***REMOVED***),
+  )
 
   if (!data) {
     return [{ slug: undefined ***REMOVED***]
@@ -33,22 +42,29 @@ export async function generateStaticParams() {
 ***REMOVED***
 
 const getCollection = async (collectionSlug: string) => {
-  const { data ***REMOVED*** = await directus.items(collectionsName).readByQuery({
-    filter: {
-      slug: collectionSlug,
-      status: ENV_DIRECTUS_ITEM_STATUS,
-  ***REMOVED***,
-    fields: ['tiles.*'],
-    deep: {
-      tiles: {***REMOVED***,
-  ***REMOVED***,
-***REMOVED***)
+  const data = await directus.request(
+    readItems(collectionsName, {
+      filter: {
+        slug: {
+          _eq: collectionSlug,
+      ***REMOVED***,
+        status: {
+          _eq: ENV_DIRECTUS_ITEM_STATUS,
+      ***REMOVED***,
+    ***REMOVED***,
+      fields: ['title', 'description', 'tiles.*'],
+  ***REMOVED***),
+  )
 
   return data
 ***REMOVED***
 
 const getTileType = async (tileID: string) => {
-  const data = await directus.items(tileCollectionName).readOne(tileID)
+  const data = await directus.request(
+    readItem(tileCollectionName, tileID, {
+      fields: ['tile_id'],
+  ***REMOVED***),
+  )
 
   return data?.tile_id
 ***REMOVED***
@@ -63,6 +79,7 @@ const getTileComponent = async (tile: BaseTile) => {
     props = { surveyData ***REMOVED***
     type = 'survey'
 ***REMOVED*** else if (tile.collection === 'successStory') {
+    console.log(tile)
     const successStoryData = await getSuccessStoryData(tile.item)
     props = { successStoryData ***REMOVED***
     type = 'successStory'
@@ -81,45 +98,26 @@ const getTileComponents = async (tiles: BaseTile[]) => {
   )
 ***REMOVED***
 
-export default async function Collection({
-  params,
-***REMOVED***: {
-  params?: { slug: string ***REMOVED***
+export default async function Collection(props: {
+  params?: Promise<{ slug: string ***REMOVED***>
 ***REMOVED***) {
-  if (!params) {
+  const params = await props.params
+  if (!params?.slug) {
     return notFound()
 ***REMOVED***
 
-  const { slug ***REMOVED*** = params
-
-  if (!slug) {
+  const collection = await fetchCollection(
+    params.slug,
+    ENV_DIRECTUS_ITEM_STATUS,
+  )
+  if (!collection?.[0]) {
     return notFound()
 ***REMOVED***
 
-  const collection = await getCollection(slug)
-
-  if (!collection || !collection[0]) {
-    return notFound()
-***REMOVED***
-
+  // @ts-ignore
   const { tiles ***REMOVED*** = collection[0]
-
-  const sortedTiles = tiles.sort((a, b) => a.sort - b.sort)
-
-  // sort tiles into buckets indicating full width display or column display
+  const sortedTiles = sortTiles(tiles)
   const tileBuckets = await getTilesBucket(sortedTiles)
 
-  return (
-    <div>
-***REMOVED***await Promise.all(
-        tileBuckets.map(async ({ tiles, isFullWidth ***REMOVED***, i) => {
-          if (isFullWidth) {
-            return await getTileComponents(tiles)
-        ***REMOVED***
-
-          return <Columns key={i***REMOVED***>{await getTileComponents(tiles)***REMOVED***</Columns>
-      ***REMOVED***),
-  ***REMOVED******REMOVED***
-    </div>
-  )
+  return <TileLayout tileBuckets={tileBuckets***REMOVED*** />
 ***REMOVED***

@@ -1,6 +1,8 @@
 import Title from '@/components/Elements/Title'
-import { ReactMarkdown ***REMOVED*** from 'react-markdown/lib/react-markdown'
+import Markdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
+
+import rehypeExternalLinks from 'rehype-external-links'
 
 // @ts-ignore
 import impressumText from './impressum.md'
@@ -8,7 +10,7 @@ import impressumText from './impressum.md'
 export default function Impressum() {
   return (
     <main className="mx-auto max-w-[1136px]">
-      <ReactMarkdown
+      <Markdown
         components={{
           h1: props => (
             <Title as={'h2'***REMOVED*** className="mb-2" variant={'primary'***REMOVED*** {...props***REMOVED*** />
@@ -32,11 +34,13 @@ export default function Impressum() {
       ***REMOVED***,
           a: props => <a className="underline" {...props***REMOVED*** />,
       ***REMOVED******REMOVED***
-        linkTarget={'_blank'***REMOVED***
+        rehypePlugins={[
+          [rehypeExternalLinks, { target: '_blank', rel: 'noopener' ***REMOVED***],
+        ]***REMOVED***
         remarkPlugins={[remarkGfm]***REMOVED***
       >
   ***REMOVED***impressumText***REMOVED***
-      </ReactMarkdown>
+      </Markdown>
     </main>
   )
 ***REMOVED***

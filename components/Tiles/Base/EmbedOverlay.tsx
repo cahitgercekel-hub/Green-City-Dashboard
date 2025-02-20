@@ -1,13 +1,13 @@
 'use client'
 
 import AnimatedCopyIcon from '@/components/Elements/Animated/AnimatedCopyIcon'
-import Title from '@/components/Elements/Title'
-import { ComponentPropsWithRef ***REMOVED*** from 'react'
-import { AnimatedProps ***REMOVED*** from '@react-spring/web'
-import BaseOverlay from './BaseOverlay'
-import { TileType ***REMOVED*** from '@/utils/TileFactory'
 import { Button ***REMOVED*** from '@/components/Elements/Button'
+import Title from '@/components/Elements/Title'
+import { TileType ***REMOVED*** from '@/utils/TileFactory'
 import { ClipboardDocumentIcon ***REMOVED*** from '@heroicons/react/24/outline'
+import { AnimatedProps ***REMOVED*** from '@react-spring/web'
+import { ComponentPropsWithRef ***REMOVED*** from 'react'
+import BaseOverlay from './BaseOverlay'
 
 type EmbedOverlayProps = AnimatedProps<ComponentPropsWithRef<'div'>> & {
   onClose?: () => void
@@ -21,7 +21,7 @@ export default function EmbedOverlay({
 ***REMOVED***: EmbedOverlayProps) {
   const link = `${window.location.origin***REMOVED***/embed/${embedId***REMOVED***`
 
-  const iframeSrc = `<iframe src="${link***REMOVED***" style="border:none; width:100%; height:100%" title="Klimadashboard Münster"></iframe>`
+  const iframeSrc = `<iframe src="${link***REMOVED***" style="border:none; width:100%; height:100%" title="Dashboard"></iframe>`
 
   const copyToClipboard = async () => {
     await navigator.clipboard.writeText(iframeSrc)

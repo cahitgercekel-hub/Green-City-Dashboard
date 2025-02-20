@@ -2,7 +2,6 @@
 
 import { map ***REMOVED*** from '@/utils/map'
 import { animated, useSpring ***REMOVED*** from '@react-spring/web'
-import * as React from 'react'
 import { SVGProps ***REMOVED*** from 'react'
 
 const MIN_RADIUS = 20
@@ -145,6 +144,7 @@ export default function TrafficMapMobile({
         />
         <g id="Gruppe 950">
           <animated.circle
+            // @ts-ignore
             cx="131.385"
             cy="159.125"
             data-name="Ellipse Ring"
@@ -182,6 +182,7 @@ export default function TrafficMapMobile({
         </g>
         <g id="Gruppe 962">
           <animated.circle
+            // @ts-ignore
             cx="117.385"
             cy="199.125"
             data-name="Ellipse Weseler"
@@ -219,6 +220,7 @@ export default function TrafficMapMobile({
         </g>
         <g id="Gruppe 963">
           <animated.circle
+            // @ts-ignore
             cx="198.385"
             cy="194.125"
             data-name="Ellipse Albersloher"
@@ -298,6 +300,7 @@ export default function TrafficMapMobile({
         </g>
         <g id="Gruppe 960">
           <animated.circle
+            // @ts-ignore
             cx="217.385"
             cy="120.125"
             data-name="Ellipse Warendorfer"
@@ -335,6 +338,7 @@ export default function TrafficMapMobile({
         </g>
         <g id="Gruppe 961">
           <animated.circle
+            // @ts-ignore
             cx="150.825"
             cy="115.825"
             data-name="Ellipse Steinfurter"

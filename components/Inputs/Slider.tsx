@@ -5,15 +5,15 @@ import { cva, VariantProps ***REMOVED*** from 'class-variance-authority'
 import { useState ***REMOVED*** from 'react'
 import Title from '../Elements/Title'
 
-const sliderStyle = cva('relative h-3  flex-1 rounded-full bg-opacity-20', {
+const sliderStyle = cva('relative h-3 md:h-5 flex-1 rounded-lg', {
   variants: {
     variant: {
-      primary: 'bg-primary',
-      mobility: 'bg-mobility',
-      successStory: 'bg-secondary',
-      climate: 'bg-climate',
-      energy: 'bg-energy',
-      buildings: 'bg-buildings',
+      primary: 'bg-primary/20',
+      mobility: 'bg-mobility/20',
+      successStory: 'bg-secondary/20',
+      climate: 'bg-climate/20',
+      energy: 'bg-energy/20',
+      buildings: 'bg-buildings/20',
   ***REMOVED***,
 ***REMOVED***,
   defaultVariants: {
@@ -51,7 +51,7 @@ export default function Slider({
     ***REMOVED******REMOVED***
         <SliderPrimitive.Root
           aria-label="Volume"
-          className="relative flex h-fit w-full items-center"
+          className="relative flex h-fit w-full cursor-pointer items-center"
     ***REMOVED***...props***REMOVED***
           onValueChange={([e]) => {
             props.onValueChange && props.onValueChange([e])

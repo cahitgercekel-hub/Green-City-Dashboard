@@ -2,23 +2,20 @@
 
 import { cva, VariantProps ***REMOVED*** from 'class-variance-authority'
 
-const QualityBarStyle = cva(
-  'flex h-full rounded-full duration-300 ease-in-out',
-  {
-    variants: {
-      variant: {
-        primary: 'bg-white',
-        mobility: 'bg-mobility',
-        climate: 'bg-climate',
-        building: 'bg-buildings',
-        energy: 'bg-energy',
-    ***REMOVED***,
-  ***REMOVED***,
-    defaultVariants: {
-      variant: 'primary',
+const QualityBarStyle = cva('flex h-full rounded-lg duration-300 ease-in-out', {
+  variants: {
+    variant: {
+      primary: 'bg-white',
+      mobility: 'bg-mobility',
+      climate: 'bg-climate',
+      building: 'bg-buildings',
+      energy: 'bg-energy',
   ***REMOVED***,
 ***REMOVED***,
-)
+  defaultVariants: {
+    variant: 'primary',
+***REMOVED***,
+***REMOVED***)
 
 type QualityBarProps = VariantProps<typeof QualityBarStyle> & {
   progress: number
@@ -27,8 +24,8 @@ type QualityBarProps = VariantProps<typeof QualityBarStyle> & {
 function QualityBar({ progress ***REMOVED***: QualityBarProps) {
   return (
     <div className="pt-4">
-      <div className="relative rounded-full border-2 border-primary p-[.25rem]">
-        <div className="h-5 w-full rounded-full bg-gradient-to-l from-[#f28443] via-yellow-400 to-[#34c17b]">
+      <div className="relative rounded-lg border-2 border-primary p-[.25rem]">
+        <div className="h-5 w-full rounded-lg bg-gradient-to-l from-[#f28443] via-yellow-400 to-[#34c17b]">
           <div className="relative box-border h-full w-full px-2">
             <div className="relative h-full">
               <div

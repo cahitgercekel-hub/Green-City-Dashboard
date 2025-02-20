@@ -3,6 +3,7 @@ import { Spacer ***REMOVED*** from '@/components/Elements/Spacer'
 import Title from '@/components/Elements/Title'
 import useCO2Data from '@/hooks/useCO2Data'
 import useDevice from '@/hooks/useDevice'
+import { chartFormatter ***REMOVED*** from '@/utils/chartFormatter'
 import { parse ***REMOVED*** from 'date-fns'
 import { SeriesOption ***REMOVED*** from 'echarts'
 import { useWindowSize ***REMOVED*** from 'react-use'
@@ -39,7 +40,7 @@ export default function CO2Chart({ showFuture = false, mode ***REMOVED***: CO2Ch
    * @param key The key to prepare
    * @returns The prepared data
    */
-  const prepareFutureData = (key: keyof (typeof data)[0]) => {
+  const prepareFutureData = (key: keyof (typeof data)[0], onlyLast = false) => {
     const baseData = data.map(e => [
       parse(`01-01-${e.ZEIT***REMOVED***`, 'dd-MM-yyyy', new Date()).getTime(),
       e[key],
@@ -52,6 +53,19 @@ export default function CO2Chart({ showFuture = false, mode ***REMOVED***: CO2Ch
 
         // @ts-ignore
         const targetValue = lastData[`${key***REMOVED*** (Zielwert)`] ?? 0
+
+        if (onlyLast) {
+          return [
+            [
+              parse(
+                `01-01-${lastData.ZEIT***REMOVED***`,
+                'dd-MM-yyyy',
+                new Date(),
+          ***REMOVED***.getTime(),
+              targetValue,
+            ],
+          ]
+      ***REMOVED***
 
         return [
           baseData[baseData.length - 2],
@@ -69,6 +83,9 @@ export default function CO2Chart({ showFuture = false, mode ***REMOVED***: CO2Ch
 
     const y = showFuture ? 0 : m * x + b
 
+    if (onlyLast) {
+      return [[x, y]]
+  ***REMOVED***
     return [lastYear, [x, y]]
 ***REMOVED***
 
@@ -113,23 +130,12 @@ export default function CO2Chart({ showFuture = false, mode ***REMOVED***: CO2Ch
         width: 3,
     ***REMOVED***,
   ***REMOVED***,
-    // Gesamter Verbrauch/Ausstoß
-    // {
-    //   type: 'line',
-    //   name: 'Gesamt',
-    //   data: prepareData('Gesamt'),
-    //   showSymbol: false,
-    //   color: '#f3e500',
-    //   lineStyle: {
-    //     width: 3,
-    //     type: 'solid',
-    // ***REMOVED***,
-    // ***REMOVED***,
   ]
 
   const seriesFuture: SeriesOption[] = [
     {
       type: 'line',
+      name: 'Verkehr (Future)',
       data: prepareFutureData('CO2-Emissionen - Verkehr'),
       showSymbol: false,
       color: '#34c17b',
@@ -137,15 +143,22 @@ export default function CO2Chart({ showFuture = false, mode ***REMOVED***: CO2Ch
         width: 3,
         type: 'dashed',
     ***REMOVED***,
+      tooltip: {
+        show: false,
+    ***REMOVED***,
   ***REMOVED***,
     {
       type: 'line',
+      name: 'Industrie (Future)',
       data: prepareFutureData('CO2-Emissionen - Industrie'),
       showSymbol: false,
       color: '#2ABADC',
       lineStyle: {
         width: 3,
         type: 'dashed',
+    ***REMOVED***,
+      tooltip: {
+        show: false,
     ***REMOVED***,
   ***REMOVED***,
     {
@@ -158,6 +171,9 @@ export default function CO2Chart({ showFuture = false, mode ***REMOVED***: CO2Ch
         width: 3,
         type: 'dashed',
     ***REMOVED***,
+      tooltip: {
+        show: false,
+    ***REMOVED***,
   ***REMOVED***,
     {
       type: 'line',
@@ -169,19 +185,57 @@ export default function CO2Chart({ showFuture = false, mode ***REMOVED***: CO2Ch
         width: 3,
         type: 'dashed',
     ***REMOVED***,
+      tooltip: {
+        show: false,
+    ***REMOVED***,
   ***REMOVED***,
-    // Gesamter Verbrauch/Ausstoß
-    // {
-    //   type: 'line',
-    //   name: 'Gesamt (Future)',
-    //   data: prepareFutureData('Gesamt'),
-    //   showSymbol: false,
-    //   color: '#f3e500',
-    //   lineStyle: {
-    //     width: 3,
-    //     type: 'dashed',
-    // ***REMOVED***,
-    // ***REMOVED***,
+  ]
+
+  const seriesFutureOnlyYear: SeriesOption[] = [
+    {
+      type: 'line',
+      name: 'Verkehr (Future)',
+      data: prepareFutureData('CO2-Emissionen - Verkehr', true),
+      showSymbol: false,
+      color: '#34c17b',
+      lineStyle: {
+        width: 3,
+        type: 'dashed',
+    ***REMOVED***,
+  ***REMOVED***,
+    {
+      type: 'line',
+      name: 'Industrie (Future)',
+      data: prepareFutureData('CO2-Emissionen - Industrie', true),
+      showSymbol: false,
+      color: '#2ABADC',
+      lineStyle: {
+        width: 3,
+        type: 'dashed',
+    ***REMOVED***,
+  ***REMOVED***,
+    {
+      type: 'line',
+      name: 'Gewerbe und Sonstiges (Future)',
+      data: prepareFutureData('CO2-Emissionen - Gewerbe + Sonstiges', true),
+      showSymbol: false,
+      color: '#F28647',
+      lineStyle: {
+        width: 3,
+        type: 'dashed',
+    ***REMOVED***,
+  ***REMOVED***,
+    {
+      type: 'line',
+      name: 'Private Haushalte (Future)',
+      data: prepareFutureData('CO2-Emissionen - Private Haushalte', true),
+      showSymbol: false,
+      color: '#6060D6',
+      lineStyle: {
+        width: 3,
+        type: 'dashed',
+    ***REMOVED***,
+  ***REMOVED***,
   ]
 
   return (
@@ -216,7 +270,13 @@ export default function CO2Chart({ showFuture = false, mode ***REMOVED***: CO2Ch
               ***REMOVED***,
             ***REMOVED***,
           ***REMOVED***,
-            series: [...series, ...seriesFuture],
+            tooltip: {
+              show: true,
+              showDelay: 0,
+              trigger: 'axis',
+              formatter: chartFormatter,
+          ***REMOVED***,
+            series: [...series, ...seriesFuture, ...seriesFutureOnlyYear],
             legend: {
               show: false,
           ***REMOVED***,
@@ -232,7 +292,7 @@ export default function CO2Chart({ showFuture = false, mode ***REMOVED***: CO2Ch
   ***REMOVED***series.map((s, i) => (
           <div className="flex min-w-[8rem] items-center gap-2" key={i***REMOVED***>
             <div
-              className="h-1 w-8 rounded-full"
+              className="h-1 w-8 rounded-lg"
               style={{ backgroundColor: s.color as string ***REMOVED******REMOVED***
             ></div>
             <Title as="h5" className="font-normal" variant={'primary'***REMOVED***>

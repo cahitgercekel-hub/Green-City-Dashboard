@@ -2,9 +2,10 @@ import { Spacer ***REMOVED*** from '@/components/Elements/Spacer'
 import Title from '@/components/Elements/Title'
 import Image from 'next/image'
 
-import { directusImage ***REMOVED*** from '@/lib/directus'
-import { ID ***REMOVED*** from '@directus/sdk'
-import ReactMarkdown from 'react-markdown'
+import directus, { directusImage ***REMOVED*** from '@/lib/directus'
+import { readSingleton ***REMOVED*** from '@directus/sdk'
+import Markdown from 'react-markdown'
+import rehypeExternalLinks from 'rehype-external-links'
 import remarkGfm from 'remark-gfm'
 import { BaseTile ***REMOVED*** from '../Base/BaseTile'
 
@@ -14,7 +15,7 @@ export type SuccessStoryTileProps = {
   image?: string
   imagePosition?: 'left' | 'right'
   moreInfo?: string
-  id: string | ID
+  id: string
 ***REMOVED***
 
 /**
@@ -22,7 +23,7 @@ export type SuccessStoryTileProps = {
  * @param SuccessStoryTileProps properties of the success story tile
  * @returns SuccessStoryTileProps
  */
-export default function SuccessStoryTile({
+export default async function SuccessStoryTile({
   text,
   // eslint-disable-next-line unused-imports/no-unused-vars
   link,
@@ -31,13 +32,15 @@ export default function SuccessStoryTile({
   moreInfo,
   id,
 ***REMOVED***: SuccessStoryTileProps) {
+  const theme = await directus.request(readSingleton('theme'))
+
   const Content = (
     <div className="flex h-full flex-col justify-between">
       <Title as="h5" font={'semibold'***REMOVED*** variant={'primary'***REMOVED***>
-        Stimmen für Münster
+  ***REMOVED***theme.success_stories_title***REMOVED***
       </Title>
       <Spacer size="md" />
-      <ReactMarkdown
+      <Markdown
         className="flex flex-1 flex-col justify-between"
         components={{
           h1: props => (
@@ -91,11 +94,13 @@ export default function SuccessStoryTile({
             />
       ***REMOVED***,
       ***REMOVED******REMOVED***
-        linkTarget={'_blank'***REMOVED***
+        rehypePlugins={[
+          [rehypeExternalLinks, { target: '_blank', rel: 'noopener' ***REMOVED***],
+        ]***REMOVED***
         remarkPlugins={[remarkGfm]***REMOVED***
       >
   ***REMOVED***text***REMOVED***
-      </ReactMarkdown>
+      </Markdown>
     </div>
   )
 
@@ -104,7 +109,7 @@ export default function SuccessStoryTile({
 ***REMOVED***
 
   const StoryImage = (
-    <div className="relative min-h-[20rem]  overflow-hidden md:min-h-[40rem] md:w-4/5">
+    <div className="relative min-h-[20rem] overflow-hidden md:min-h-[40rem] md:w-4/5">
       <Image
         alt={'Image'***REMOVED***
         className="object-cover object-center transition-all group-hover:scale-105"

@@ -3,23 +3,30 @@ import directus, {
   ENV_DIRECTUS_ITEM_STATUS,
 ***REMOVED*** from '@/lib/directus'
 import withSuspense from '@/utils/withSuspense'
+import { readItems ***REMOVED*** from '@directus/sdk'
 import Container from '../Layout/Container'
 import InsightsCarousel from './InsightsCarousel'
 
-const getInsightsData = async () => {
-  const { data ***REMOVED*** = await directus.items(collectionsName).readByQuery({
-    fields: ['slug', 'title', 'image'],
-    filter: {
-      status: ENV_DIRECTUS_ITEM_STATUS,
-  ***REMOVED***,
-    limit: 3,
-***REMOVED***)
+export const getInsightsData = async () => {
+  const data = await directus.request(
+    readItems(collectionsName, {
+      fields: ['slug', 'title', 'image'],
+      status: {
+        _eq: ENV_DIRECTUS_ITEM_STATUS,
+    ***REMOVED***,
+      limit: 3,
+  ***REMOVED***),
+  )
 
   return data
 ***REMOVED***
 
 async function InsightsContainer() {
   const insights = await getInsightsData()
+
+  if (insights.length === 0) {
+    return <></>
+***REMOVED***
 
   return (
     <div className="w-full">
@@ -34,9 +41,9 @@ const Fallback = (
   <div className="w-full">
     <Container>
       <div className="flex w-full flex-col items-center justify-between gap-6 lg:flex-row">
-        <div className="h-96 w-full flex-1 animate-pulse self-stretch rounded-[36px] bg-zinc-100 md:rounded-[56px]" />
-        <div className="h-96 w-full flex-1 animate-pulse self-stretch rounded-[36px] bg-zinc-100 md:rounded-[56px]" />
-        <div className="h-96 w-full flex-1 animate-pulse self-stretch rounded-[36px] bg-zinc-100 md:rounded-[56px]" />
+        <div className="h-96 w-full flex-1 animate-pulse self-stretch rounded-md bg-zinc-100 lg:rounded-lg" />
+        <div className="h-96 w-full flex-1 animate-pulse self-stretch rounded-md bg-zinc-100 lg:rounded-lg" />
+        <div className="h-96 w-full flex-1 animate-pulse self-stretch rounded-md bg-zinc-100 lg:rounded-lg" />
       </div>
     </Container>
   </div>
