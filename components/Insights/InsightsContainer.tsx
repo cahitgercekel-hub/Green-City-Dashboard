@@ -1,9 +1,9 @@
 import directus, {
   collectionsName,
   ENV_DIRECTUS_ITEM_STATUS,
-***REMOVED*** from '@/lib/directus'
+} from '@/lib/directus'
 import withSuspense from '@/utils/withSuspense'
-import { readItems ***REMOVED*** from '@directus/sdk'
+import { readItems } from '@directus/sdk'
 import Container from '../Layout/Container'
 import InsightsCarousel from './InsightsCarousel'
 
@@ -13,29 +13,29 @@ export const getInsightsData = async () => {
       fields: ['slug', 'title', 'image'],
       status: {
         _eq: ENV_DIRECTUS_ITEM_STATUS,
-    ***REMOVED***,
+      },
       limit: 3,
-  ***REMOVED***),
+    }),
   )
 
   return data
-***REMOVED***
+}
 
 async function InsightsContainer() {
   const insights = await getInsightsData()
 
   if (insights.length === 0) {
     return <></>
-***REMOVED***
+  }
 
   return (
     <div className="w-full">
       <Container className="sm:px-0 px-0 md:px-0 lg:px-0 xl:px-0 2xl:px-0">
-  ***REMOVED***insights && <InsightsCarousel insights={insights***REMOVED*** />***REMOVED***
+        {insights && <InsightsCarousel insights={insights} />}
       </Container>
     </div>
   )
-***REMOVED***
+}
 
 const Fallback = (
   <div className="w-full">

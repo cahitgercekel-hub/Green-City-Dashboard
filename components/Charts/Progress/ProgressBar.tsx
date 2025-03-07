@@ -1,7 +1,7 @@
 'use client'
 
 import * as ProgressPrimitive from '@radix-ui/react-progress'
-import { cva, VariantProps ***REMOVED*** from 'class-variance-authority'
+import { cva, VariantProps } from 'class-variance-authority'
 
 const ProgressStyle = cva('flex h-full rounded-lg duration-300 ease-in-out', {
   variants: {
@@ -11,31 +11,31 @@ const ProgressStyle = cva('flex h-full rounded-lg duration-300 ease-in-out', {
       climate: 'bg-climate',
       building: 'bg-buildings',
       energy: 'bg-energy',
-  ***REMOVED***,
-***REMOVED***,
+    },
+  },
   defaultVariants: {
     variant: 'primary',
-***REMOVED***,
-***REMOVED***)
+  },
+})
 
 type ProgressBarProps = VariantProps<typeof ProgressStyle> & {
   progress: number
-***REMOVED***
+}
 
-function ProgressBar({ progress, variant ***REMOVED***: ProgressBarProps) {
+function ProgressBar({ progress, variant }: ProgressBarProps) {
   return (
     <div className="rounded-lg border-2 border-primary p-[.25rem]">
       <ProgressPrimitive.Root
         className="h-5 w-full overflow-hidden rounded-lg bg-primary"
-        value={progress***REMOVED***
+        value={progress}
       >
         <ProgressPrimitive.Indicator
-          className={ProgressStyle({ variant ***REMOVED***)***REMOVED***
-          style={{ width: `${progress***REMOVED***%` ***REMOVED******REMOVED***
+          className={ProgressStyle({ variant })}
+          style={{ width: `${progress}%` }}
         />
       </ProgressPrimitive.Root>
     </div>
   )
-***REMOVED***
+}
 
 export default ProgressBar

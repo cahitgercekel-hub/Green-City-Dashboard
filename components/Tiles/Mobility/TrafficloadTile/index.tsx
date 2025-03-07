@@ -1,7 +1,7 @@
-import { format ***REMOVED*** from 'date-fns'
+import { format } from 'date-fns'
 import MobilityTile from '@/components/Tiles/Mobility/MobilityTile'
 import Title from '@/components/Elements/Title'
-import { TileSplitView ***REMOVED*** from '../../Base/TileSplitView'
+import { TileSplitView } from '../../Base/TileSplitView'
 import getTileData from '@/lib/api/getTileData'
 import TrafficloadContent from './TrafficloadContent'
 export default async function TrafficloadTile() {
@@ -14,24 +14,24 @@ export default async function TrafficloadTile() {
 
   return (
     <MobilityTile
-      dataRetrieval={format(new Date(), '01.MM.yyyy')***REMOVED***
+      dataRetrieval={format(new Date(), '01.MM.yyyy')}
       dataSource="Stadt Münster - Amt für Mobilität und Tiefbau"
       embedId="mobility-trafficload"
       subtitle="Anzahl gezählter Fahrzeuge an Werktagen"
-      title={'Kfz-Verkehrsbelastung'***REMOVED***
+      title={'Kfz-Verkehrsbelastung'}
     >
       <TileSplitView>
         <TileSplitView.Left>
           <TrafficloadContent />
         </TileSplitView.Left>
         <TileSplitView.Right>
-          <Title as="h5" variant={'dark'***REMOVED***>
-            <p>{firstParagraph***REMOVED***</p>
+          <Title as="h5" variant={'dark'}>
+            <p>{firstParagraph}</p>
             <br />
-            <p>{secondParagraph***REMOVED***</p>
+            <p>{secondParagraph}</p>
           </Title>
         </TileSplitView.Right>
       </TileSplitView>
     </MobilityTile>
   )
-***REMOVED***
+}

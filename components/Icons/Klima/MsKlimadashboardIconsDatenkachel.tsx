@@ -1,16 +1,16 @@
 import * as React from 'react'
-import type { SVGProps ***REMOVED*** from 'react'
+import type { SVGProps } from 'react'
 function SvgMsKlimadashboardIconsDatenkachel(props: SVGProps<SVGSVGElement>) {
   return <svg
     data-name="Ebene 1"
     id="MS_Klimadashboard_Icons_Datenkachel_svg__Ebene_1"
     viewBox="0 0 145.5 177.85"
     xmlns="http://www.w3.org/2000/svg"
-    {...props***REMOVED***
+    {...props}
   >
     <defs>
       <style>
-  ***REMOVED***'.MS_Klimadashboard_Icons_Datenkachel_svg__cls-1{fill:#005b79***REMOVED***'***REMOVED***
+        {'.MS_Klimadashboard_Icons_Datenkachel_svg__cls-1{fill:#005b79}'}
       </style>
     </defs>
     <g
@@ -70,5 +70,5 @@ function SvgMsKlimadashboardIconsDatenkachel(props: SVGProps<SVGSVGElement>) {
       d="M89.24 104.22c-.17 0-.35 0-.53-.02-3.38-.2-5.77-1.12-7.75-2.96-.46-.43-.88-.88-1.28-1.39-3.92-4.94-5.29-11.6-5.34-11.88-.07-.34 0-.7.22-.98.21-.28.52-.47.87-.5.25-.03 6.23-.67 12.36 1.04.76.21 1.51.52 2.24.91 2.63 1.4 4.71 3.82 5.72 6.64.79 2.2.67 4.42-.33 6.08-.05.09-.11.18-.17.26-.01.02-.08.11-.09.13a5.8 5.8 0 0 1-.82.9c-1.27 1.12-3.15 1.77-5.1 1.77ZM77.15 88.88c.59 2.12 1.98 6.24 4.5 9.43.32.4.65.77 1.02 1.11 1.54 1.44 3.39 2.13 6.19 2.29 1.5.09 2.92-.33 3.82-1.12.18-.16.32-.32.46-.5l.06-.09s.06-.09.07-.11c.61-1.01.66-2.49.13-3.97-.79-2.21-2.49-4.18-4.55-5.28-.56-.31-1.14-.54-1.72-.7-3.95-1.1-7.92-1.14-9.98-1.06ZM51.81 104.51a1.251 1.251 0 0 1-1.1-1.85l10.21-18.61c.33-.61 1.09-.83 1.7-.5.61.33.83 1.09.5 1.7l-10.21 18.61c-.23.42-.66.65-1.1.65Z"
     />
   </svg>
-***REMOVED***
+}
 export default SvgMsKlimadashboardIconsDatenkachel

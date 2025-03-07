@@ -21,4 +21,4 @@ export default function EnergyView() {
       </Columns>
     </BaseView>
   )
-***REMOVED***
+}

@@ -1,9 +1,9 @@
 'use client'
 
 import AnimatedNumberSVG from '@/components/Elements/Animated/AnimatedNumberSVG'
-import { map ***REMOVED*** from '@/utils/map'
-import { animated, useSpring ***REMOVED*** from '@react-spring/web'
-import { SVGProps ***REMOVED*** from 'react'
+import { map } from '@/utils/map'
+import { animated, useSpring } from '@react-spring/web'
+import { SVGProps } from 'react'
 
 const MIN_RADIUS = 40
 const MAX_RADIUS = 100
@@ -14,7 +14,7 @@ interface TrafficMapProps extends SVGProps<SVGSVGElement> {
   weseler: number
   rishon: number
   steinfurter: number
-***REMOVED***
+}
 
 export default function TrafficMap({
   albersloher,
@@ -23,7 +23,7 @@ export default function TrafficMap({
   rishon,
   steinfurter,
   ...props
-***REMOVED***: TrafficMapProps) {
+}: TrafficMapProps) {
   const values = Object.values([
     albersloher,
     warendorfer,
@@ -36,24 +36,24 @@ export default function TrafficMap({
 
   const albersloherRadius = useSpring({
     val: map(albersloher, minValue, maxValue, MIN_RADIUS, MAX_RADIUS),
-    from: { val: 0 ***REMOVED***,
-***REMOVED***)
+    from: { val: 0 },
+  })
   const warendorferRadius = useSpring({
     val: map(warendorfer, minValue, maxValue, MIN_RADIUS, MAX_RADIUS),
-    from: { val: 0 ***REMOVED***,
-***REMOVED***)
+    from: { val: 0 },
+  })
   const weselerRadius = useSpring({
     val: map(weseler, minValue, maxValue, MIN_RADIUS, MAX_RADIUS),
-    from: { val: 0 ***REMOVED***,
-***REMOVED***)
+    from: { val: 0 },
+  })
   const rishonRadius = useSpring({
     val: map(rishon, minValue, maxValue, MIN_RADIUS, MAX_RADIUS),
-    from: { val: 0 ***REMOVED***,
-***REMOVED***)
+    from: { val: 0 },
+  })
   const steinfurterRadius = useSpring({
     val: map(steinfurter, minValue, maxValue, MIN_RADIUS, MAX_RADIUS),
-    from: { val: 0 ***REMOVED***,
-***REMOVED***)
+    from: { val: 0 },
+  })
 
   return (
     <svg
@@ -62,7 +62,7 @@ export default function TrafficMap({
       viewBox="0 0 1286 586"
       width="1286"
       xmlns="http://www.w3.org/2000/svg"
-***REMOVED***...props***REMOVED***
+      {...props}
     >
       <g id="Pendler_gesamt 1">
         <path
@@ -152,7 +152,7 @@ export default function TrafficMap({
             cy="340"
             data-name="Ellipse 3"
             fill="rgba(52,193,123,0.15)"
-            r={albersloherRadius.val.to(val => val)***REMOVED***
+            r={albersloherRadius.val.to(val => val)}
           />
           <g id="MS_Klimadashboard_Icons_m_pendler">
             <g id="group">
@@ -196,7 +196,7 @@ export default function TrafficMap({
             cy="276"
             data-name="Ellipse 3"
             fill="rgba(52,193,123,0.15)"
-            r={rishonRadius.val.to(val => val)***REMOVED***
+            r={rishonRadius.val.to(val => val)}
           />
           <g id="MS_Klimadashboard_Icons_m_pendler-copy-3">
             <g id="group-1">
@@ -240,7 +240,7 @@ export default function TrafficMap({
             cy="375"
             data-name="Ellipse 1"
             fill="rgba(52,193,123,0.15)"
-            r={weselerRadius.val.to(val => val)***REMOVED***
+            r={weselerRadius.val.to(val => val)}
           />
           <g id="MS_Klimadashboard_Icons_m_pendler-copy-2">
             <g id="group-2">
@@ -284,7 +284,7 @@ export default function TrafficMap({
             cy="204"
             data-name="Ellipse 2"
             fill="rgba(52,193,123,0.15)"
-            r={steinfurterRadius.val.to(val => val)***REMOVED***
+            r={steinfurterRadius.val.to(val => val)}
           />
           <g id="MS_Klimadashboard_Icons_m_pendler-copy-1">
             <g id="group-3">
@@ -328,7 +328,7 @@ export default function TrafficMap({
             cy="213"
             data-name="Ellipse 3"
             fill="rgba(52,193,123,0.15)"
-            r={warendorferRadius.val.to(val => val)***REMOVED***
+            r={warendorferRadius.val.to(val => val)}
           />
 
           <g id="MS_Klimadashboard_Icons_m_pendler-copy">
@@ -377,25 +377,25 @@ export default function TrafficMap({
         <text
           fill="#34C17B"
           fontSize="40"
-          fontWeight={500***REMOVED***
+          fontWeight={500}
           id="2.893.526"
           letterSpacing="0em"
           xmlSpace="preserve"
         >
-    ***REMOVED***weseler === 0 ? (
+          {weseler === 0 ? (
             <tspan x="5" y="510.545">
               Keine Daten
             </tspan>
-      ***REMOVED*** : (
+          ) : (
             <AnimatedNumberSVG x="5" y="510.545">
-        ***REMOVED***Number(weseler)***REMOVED***
+              {Number(weseler)}
             </AnimatedNumberSVG>
-      ***REMOVED******REMOVED***
+          )}
         </text>
         <text
           fill="#005B79"
           fontSize="20"
-          fontWeight={500***REMOVED***
+          fontWeight={500}
           id="Weseler-Str.-/-Inselbogen"
           letterSpacing="0em"
           xmlSpace="preserve"
@@ -407,55 +407,55 @@ export default function TrafficMap({
         <text
           fill="#34C17B"
           fontSize="40"
-          fontWeight={500***REMOVED***
+          fontWeight={500}
           id="5.753.832"
           letterSpacing="0em"
           xmlSpace="preserve"
         >
-    ***REMOVED***albersloher === 0 ? (
+          {albersloher === 0 ? (
             <tspan x="862" y="510.545">
               Keine Daten
             </tspan>
-      ***REMOVED*** : (
+          ) : (
             <AnimatedNumberSVG x="862" y="510.545">
-        ***REMOVED***Number(albersloher)***REMOVED***
+              {Number(albersloher)}
             </AnimatedNumberSVG>
-      ***REMOVED******REMOVED***
+          )}
         </text>
         <text
           fill="#005B79"
           fontSize="20"
-          fontWeight={500***REMOVED***
+          fontWeight={500}
           id="Albersloher-Weg-/-Heumannsweg-"
           letterSpacing="0em"
           xmlSpace="preserve"
         >
           <tspan x="862" y="460.273">
-            Albersloher Weg / Heumannsweg{' '***REMOVED***
+            Albersloher Weg / Heumannsweg{' '}
           </tspan>
         </text>
         <text
           fill="#34C17B"
           fontSize="40"
-          fontWeight={500***REMOVED***
+          fontWeight={500}
           id="2.428.372"
           letterSpacing="0em"
           xmlSpace="preserve"
         >
-    ***REMOVED***warendorfer === 0 ? (
+          {warendorfer === 0 ? (
             <tspan x="862" y="182.545">
               Keine Daten
             </tspan>
-      ***REMOVED*** : (
+          ) : (
             <AnimatedNumberSVG x="862" y="182.545">
-        ***REMOVED***Number(warendorfer)***REMOVED***
+              {Number(warendorfer)}
             </AnimatedNumberSVG>
-      ***REMOVED******REMOVED***
+          )}
         </text>
         <text
           fill="#005B79"
           fontSize="20"
-          fontWeight={500***REMOVED***
+          fontWeight={500}
           id="Warendorfer-Str.-/-Schifffahrter-Damm"
           letterSpacing="0em"
           xmlSpace="preserve"
@@ -487,25 +487,25 @@ export default function TrafficMap({
         <text
           fill="#34C17B"
           fontSize="40"
-          fontWeight={500***REMOVED***
+          fontWeight={500}
           id="4.397.847"
           letterSpacing="0em"
           xmlSpace="preserve"
         >
-    ***REMOVED***steinfurter === 0 ? (
+          {steinfurter === 0 ? (
             <tspan x="5" y="179.545">
               Keine Daten
             </tspan>
-      ***REMOVED*** : (
+          ) : (
             <AnimatedNumberSVG x="5" y="179.545">
-        ***REMOVED***Number(steinfurter)***REMOVED***
+              {Number(steinfurter)}
             </AnimatedNumberSVG>
-      ***REMOVED******REMOVED***
+          )}
         </text>
         <text
           fill="#005B79"
           fontSize="20"
-          fontWeight={500***REMOVED***
+          fontWeight={500}
           id="Steinfurter-Str.-/-Austermannstr."
           letterSpacing="0em"
           xmlSpace="preserve"
@@ -517,25 +517,25 @@ export default function TrafficMap({
         <text
           fill="#34C17B"
           fontSize="40"
-          fontWeight={500***REMOVED***
+          fontWeight={500}
           id="4.397.847-1"
           letterSpacing="0em"
           xmlSpace="preserve"
         >
-    ***REMOVED***rishon === 0 ? (
+          {rishon === 0 ? (
             <tspan x="5" y="343.545">
               Keine Daten
             </tspan>
-      ***REMOVED*** : (
+          ) : (
             <AnimatedNumberSVG x="5" y="343.545">
-        ***REMOVED***Number(rishon)***REMOVED***
+              {Number(rishon)}
             </AnimatedNumberSVG>
-      ***REMOVED******REMOVED***
+          )}
         </text>
         <text
           fill="#005B79"
           fontSize="20"
-          fontWeight={500***REMOVED***
+          fontWeight={500}
           id="Rishon-le-Zion-Ring-/-Einsteinstr."
           letterSpacing="0em"
           xmlSpace="preserve"
@@ -584,4 +584,4 @@ export default function TrafficMap({
       </g>
     </svg>
   )
-***REMOVED***
+}

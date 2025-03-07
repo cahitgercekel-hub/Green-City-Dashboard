@@ -4,7 +4,7 @@ import Title from '@/components/Elements/Title'
 import AnimatedNumber from '@/components/Elements/Animated/AnimatedNumber'
 import getTileData from '@/lib/api/getTileData'
 import ClimateTile from '../../Climate/ClimateTile'
-import { MsKlimadashboardIconsDatenkachel ***REMOVED*** from '@/components/Icons/Klima'
+import { MsKlimadashboardIconsDatenkachel } from '@/components/Icons/Klima'
 
 export default async function DataCountTile() {
   const data = await getTileData('climate-data')
@@ -14,21 +14,21 @@ export default async function DataCountTile() {
     <ClimateTile
       dataRetrieval="05.06.2023"
       dataSource="Stadt Münster - Stabsstelle Smart City"
-      embedId={'climate-data'***REMOVED***
+      embedId={'climate-data'}
       title={
         <>
-          <AnimatedNumber>{12***REMOVED***</AnimatedNumber> Datenquellen
+          <AnimatedNumber>{12}</AnimatedNumber> Datenquellen
         </>
-    ***REMOVED***
+      }
     >
       <div>
         <div className="flex flex-row justify-center gap-6">
           <span className="flex flex-col justify-center">
             <MsKlimadashboardIconsDatenkachel className="h-20 text-primary md:h-44" />
           </span>
-          <Title as={'subtitle'***REMOVED***>{infoText***REMOVED***</Title>
+          <Title as={'subtitle'}>{infoText}</Title>
         </div>
       </div>
     </ClimateTile>
   )
-***REMOVED***
+}

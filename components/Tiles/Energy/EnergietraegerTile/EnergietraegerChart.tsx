@@ -1,18 +1,18 @@
 'use client'
 
-import { ReactECharts ***REMOVED*** from '@/components/Charts/ReactECharts'
+import { ReactECharts } from '@/components/Charts/ReactECharts'
 import Title from '@/components/Elements/Title'
 import Slider from '@/components/Inputs/Slider'
 import ToggleGroup from '@/components/Inputs/ToggleGroup'
-import { useState ***REMOVED*** from 'react'
+import { useState } from 'react'
 
 // @ts-ignore
 import StromerzeugungBereitstellung from '@/assets/data/verbrauch-erzeugung-strom.csv'
 // @ts-ignore
 import Stromemissionen from '@/assets/data/emissionen-strom.csv'
-import { Spacer ***REMOVED*** from '@/components/Elements/Spacer'
+import { Spacer } from '@/components/Elements/Spacer'
 import MobileSlider from '@/components/Inputs/MobileSlider'
-import { useWindowSize ***REMOVED*** from 'react-use'
+import { useWindowSize } from 'react-use'
 
 type StromVerbrauchErzeugung = {
   ZEIT: number
@@ -28,7 +28,7 @@ type StromVerbrauchErzeugung = {
   'Stromerzeugung/-bereitstellung nach Energieträgern - Wasserkraft': number
   'Stromerzeugung/-bereitstellung nach Energieträgern - Windkraft': number
   'Stromerzeugung/-bereitstellung nach Energieträgern - reg. Bezug (Bundesmix)': number
-***REMOVED***
+}
 
 type StromEmissionen = {
   ZEIT: number
@@ -43,7 +43,7 @@ type StromEmissionen = {
   'Strom-Emissionen nach Energieträgern - PV': number
   'Strom-Emissionen nach Energieträgern - Wasserkraft': number
   'Strom-Emissionen nach Energieträgern - reg. Bezug (Bundesmix)': number
-***REMOVED***
+}
 
 export default function EnergietraegerChart() {
   const [mode, setMode] = useState<'stromerzeugung' | 'stromemissionen'>(
@@ -57,32 +57,32 @@ export default function EnergietraegerChart() {
 
   const unit = mode === 'stromerzeugung' ? 'MWh' : 't'
 
-  const { width ***REMOVED*** = useWindowSize()
+  const { width } = useWindowSize()
 
   return (
     <div className="flex h-full flex-col">
       <div className="z-10 w-full">
         <ToggleGroup
           items={[
-      ***REMOVED***
+            {
               element: (
                 <Title as="h5" className="2xl:mx-auto">
                   Anteilige Stromerzeugung
                 </Title>
-          ***REMOVED***,
+              ),
               value: 'stromerzeugung',
-          ***REMOVED***,
-      ***REMOVED***
+            },
+            {
               element: (
                 <Title as="h5" className="2xl:mx-auto">
                   CO₂ pro Quelle
                 </Title>
-          ***REMOVED***,
+              ),
               value: 'co2',
-          ***REMOVED***,
-          ]***REMOVED***
-          onChange={val => setMode(val as typeof mode)***REMOVED***
-          variant={'primary'***REMOVED***
+            },
+          ]}
+          onChange={val => setMode(val as typeof mode)}
+          variant={'primary'}
         />
       </div>
       <div className="flex h-full w-full flex-1 -translate-y-4 flex-col">
@@ -98,19 +98,19 @@ export default function EnergietraegerChart() {
 
                   if (percent === 1) {
                     return undefined
-                ***REMOVED***
+                  }
 
                   // @ts-ignore
-                  return `<p>${params.name***REMOVED***<p>
+                  return `<p>${params.name}<p>
                   <p>${new Intl.NumberFormat('de-DE', {
                     maximumFractionDigits: 0,
                     // @ts-ignore
-                ***REMOVED***).format(params.value)***REMOVED***${unit***REMOVED***<p>
-                  <p>${(percent * 100).toFixed(1)***REMOVED***%<p>`
-              ***REMOVED***,
-            ***REMOVED***,
+                  }).format(params.value)}${unit}<p>
+                  <p>${(percent * 100).toFixed(1)}%<p>`
+                },
+              },
               series: [
-          ***REMOVED***
+                {
                   top: 0,
                   left: 0,
                   right: 0,
@@ -118,10 +118,10 @@ export default function EnergietraegerChart() {
                   type: 'treemap',
                   breadcrumb: {
                     show: false,
-                ***REMOVED***,
+                  },
                   itemStyle: {
                     gapWidth: 4,
-                ***REMOVED***,
+                  },
                   label: {
                     position: ['0%', '100%'],
                     offset: [0 + 8, -70 - 8],
@@ -133,29 +133,29 @@ export default function EnergietraegerChart() {
 
                       if (percent < 0.05) {
                         return ''
-                    ***REMOVED***
+                      }
 
-                      return `{name|${params.name***REMOVED******REMOVED***\n{value|${(
+                      return `{name|${params.name}}\n{value|${(
                         percent * 100
-                  ***REMOVED***.toFixed(0)***REMOVED***%***REMOVED***`
-                  ***REMOVED***,
+                      ).toFixed(0)}%}`
+                    },
                     rich: {
                       name: {
                         padding: [0, 0, 4, 0],
-                    ***REMOVED***,
+                      },
                       value: {
                         fontSize: 40,
-                    ***REMOVED***,
-                  ***REMOVED***,
-                ***REMOVED***,
+                      },
+                    },
+                  },
                   roam: false,
                   nodeClick: undefined,
                   levels: [
-              ***REMOVED***
+                    {
                       itemStyle: {
                         color: '#f28443',
-                    ***REMOVED***,
-                  ***REMOVED***,
+                      },
+                    },
                   ],
                   data: Object.keys(data[yearIndex])
                     .filter(
@@ -169,51 +169,51 @@ export default function EnergietraegerChart() {
                           'Stromerzeugung/-bereitstellung nach Energieträgern - reg. Bezug (Bundesmix)',
                           'Strom-Emissionen nach Energieträgern - reg. Bezug (Bundesmix)',
                         ].includes(k),
-                ***REMOVED***
+                    )
                     .map(key => ({
                       name: key
                         .replace(
                           'Stromerzeugung/-bereitstellung nach Energieträgern - ',
                           '',
-                    ***REMOVED***
+                        )
                         .replace('Strom-Emissionen nach Energieträgern - ', ''),
                       value:
                         data[yearIndex][
                           key as keyof (
                             | StromVerbrauchErzeugung
                             | StromEmissionen
-                      ***REMOVED***
+                          )
                         ],
-                  ***REMOVED***)),
-              ***REMOVED***,
+                    })),
+                },
               ],
-          ***REMOVED******REMOVED***
+            }}
           />
         </div>
-        <Spacer size={'xs'***REMOVED*** />
-  ***REMOVED***width < 1800 && (
+        <Spacer size={'xs'} />
+        {width < 1800 && (
           <MobileSlider
-            defaultValue={[data.length - 1]***REMOVED***
-            firstValueMobile={data.length - 1***REMOVED***
-            labels={data.map(e => e.ZEIT.toString())***REMOVED***
-            max={data.length - 1***REMOVED***
-            min={0***REMOVED***
-            onValueChange={([index]) => setYearIndex(index)***REMOVED***
-            variant={'energy'***REMOVED***
+            defaultValue={[data.length - 1]}
+            firstValueMobile={data.length - 1}
+            labels={data.map(e => e.ZEIT.toString())}
+            max={data.length - 1}
+            min={0}
+            onValueChange={([index]) => setYearIndex(index)}
+            variant={'energy'}
           />
-    ***REMOVED******REMOVED***
-  ***REMOVED***width >= 1800 && (
+        )}
+        {width >= 1800 && (
           <Slider
-            defaultValue={[data.length - 1]***REMOVED***
-            firstValueMobile={data.length - 1***REMOVED***
-            labels={data.map(e => e.ZEIT.toString())***REMOVED***
-            max={data.length - 1***REMOVED***
-            min={0***REMOVED***
-            onValueChange={([index]) => setYearIndex(index)***REMOVED***
-            variant={'energy'***REMOVED***
+            defaultValue={[data.length - 1]}
+            firstValueMobile={data.length - 1}
+            labels={data.map(e => e.ZEIT.toString())}
+            max={data.length - 1}
+            min={0}
+            onValueChange={([index]) => setYearIndex(index)}
+            variant={'energy'}
           />
-    ***REMOVED******REMOVED***
+        )}
       </div>
     </div>
   )
-***REMOVED***
+}

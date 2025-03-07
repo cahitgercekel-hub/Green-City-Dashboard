@@ -1,20 +1,20 @@
 import Link from 'next/link'
 
 import MoreDetails from '@/components/Elements/MoreDetails'
-import { cva, VariantProps ***REMOVED*** from 'class-variance-authority'
-import { MsKlimadashboardIconsNaviDownload, MsKlimadashboardIconsNaviKachelImplementieren, MsKlimadashboardIconsNaviTeilen ***REMOVED*** from '@/components/Icons/Misc/Navi'
+import { cva, VariantProps } from 'class-variance-authority'
+import { MsKlimadashboardIconsNaviDownload, MsKlimadashboardIconsNaviKachelImplementieren, MsKlimadashboardIconsNaviTeilen } from '@/components/Icons/Misc/Navi'
 
 const tileFooterStyle = cva('flex flex-1 gap-4', {
   variants: {
     variant: {
       primary: 'text-primary fill-primary',
       inverse: 'text-white fill-white',
-  ***REMOVED***,
-***REMOVED***,
+    },
+  },
   defaultVariants: {
     variant: 'primary',
-***REMOVED***,
-***REMOVED***)
+  },
+})
 
 type TileFooterProps = VariantProps<typeof tileFooterStyle> & {
   onEmbedClick?: () => void
@@ -23,7 +23,7 @@ type TileFooterProps = VariantProps<typeof tileFooterStyle> & {
   children?: React.ReactElement
   dataURL?: string
   hasMoreDetails?: boolean
-***REMOVED***
+}
 
 /**
  * A footer for all tiles with sharing, export and embed button as well as a more information link
@@ -37,55 +37,55 @@ export default function TileFooter({
   variant,
   dataURL,
   hasMoreDetails,
-***REMOVED***: TileFooterProps) {
+}: TileFooterProps) {
   function IconButtons() {
     return (
-      <div className={tileFooterStyle({ variant ***REMOVED***)***REMOVED***>
+      <div className={tileFooterStyle({ variant })}>
         <MsKlimadashboardIconsNaviKachelImplementieren
           className="h-6 cursor-pointer stroke-2 px-1"
-          onClick={onEmbedClick***REMOVED***
+          onClick={onEmbedClick}
         />
         <MsKlimadashboardIconsNaviTeilen
           className="h-6 cursor-pointer stroke-2 px-1"
-          onClick={onShareClick***REMOVED***
+          onClick={onShareClick}
         />
-  ***REMOVED***dataURL && (
-          <Link className='fill-inherit' href={dataURL***REMOVED*** target="_blank">
+        {dataURL && (
+          <Link className='fill-inherit' href={dataURL} target="_blank">
             <MsKlimadashboardIconsNaviDownload className="h-6 stroke-2 px-1" />
           </Link>
-    ***REMOVED******REMOVED***
+        )}
       </div>
-***REMOVED***
-***REMOVED***
+    )
+  }
 
   return (
     <div className="mt-6">
       <div className="hidden w-full flex-row items-center justify-between gap-2 lg:flex">
         <IconButtons />
-        <div className="flex flex-[2_2_0%] justify-center">{children***REMOVED***</div>
-  ***REMOVED***hasMoreDetails && (
-          <div className="flex flex-1 justify-end" onClick={onMoreInfoClick***REMOVED***>
-            <MoreDetails variant={variant***REMOVED*** />
+        <div className="flex flex-[2_2_0%] justify-center">{children}</div>
+        {hasMoreDetails && (
+          <div className="flex flex-1 justify-end" onClick={onMoreInfoClick}>
+            <MoreDetails variant={variant} />
           </div>
-    ***REMOVED******REMOVED***
-  ***REMOVED***!hasMoreDetails && <div className="flex flex-1 justify-end"></div>***REMOVED***
+        )}
+        {!hasMoreDetails && <div className="flex flex-1 justify-end"></div>}
       </div>
       <div className="flex flex-col gap-2 lg:hidden">
-  ***REMOVED***/* <IconButtons /> */***REMOVED***
+        {/* <IconButtons /> */}
 
         <div className="flex w-full items-center justify-between">
-    ***REMOVED***hasMoreDetails && (
+          {hasMoreDetails && (
             <div
               className="flex flex-1 justify-start"
-              onClick={onMoreInfoClick***REMOVED***
+              onClick={onMoreInfoClick}
             >
-              <MoreDetails variant={variant***REMOVED*** />
+              <MoreDetails variant={variant} />
             </div>
-      ***REMOVED******REMOVED***
-    ***REMOVED***!hasMoreDetails && <div className="flex flex-1 justify-start"></div>***REMOVED***
-          <div className="flex flex-1 justify-end">{children***REMOVED***</div>
+          )}
+          {!hasMoreDetails && <div className="flex flex-1 justify-start"></div>}
+          <div className="flex flex-1 justify-end">{children}</div>
         </div>
       </div>
     </div>
   )
-***REMOVED***
+}

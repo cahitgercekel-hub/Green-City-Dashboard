@@ -10,4 +10,4 @@ export default function LoadingRow() {
       </div>
     </div>
   )
-***REMOVED***
+}

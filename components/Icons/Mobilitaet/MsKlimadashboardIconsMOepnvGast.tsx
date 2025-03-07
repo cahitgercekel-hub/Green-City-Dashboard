@@ -1,5 +1,5 @@
 import * as React from 'react'
-import type { SVGProps ***REMOVED*** from 'react'
+import type { SVGProps } from 'react'
 function SvgMsKlimadashboardIconsMOpnvGast(props: SVGProps<SVGSVGElement>) {
   return (
     <svg
@@ -8,7 +8,7 @@ function SvgMsKlimadashboardIconsMOpnvGast(props: SVGProps<SVGSVGElement>) {
       id="MS_Klimadashboard_Icons_m_o\u0308pnv_gast_svg__Ebene_1"
       viewBox="0 0 16.62 36.25"
       xmlns="http://www.w3.org/2000/svg"
-***REMOVED***...props***REMOVED***
+      {...props}
     >
       <path
         className="MS_Klimadashboard_Icons_m_o\u0308pnv_gast_svg__cls-1"
@@ -16,5 +16,5 @@ function SvgMsKlimadashboardIconsMOpnvGast(props: SVGProps<SVGSVGElement>) {
       />
     </svg>
   )
-***REMOVED***
+}
 export default SvgMsKlimadashboardIconsMOpnvGast

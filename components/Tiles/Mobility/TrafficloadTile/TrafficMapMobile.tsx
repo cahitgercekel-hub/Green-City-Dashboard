@@ -1,8 +1,8 @@
 'use client'
 
-import { map ***REMOVED*** from '@/utils/map'
-import { animated, useSpring ***REMOVED*** from '@react-spring/web'
-import { SVGProps ***REMOVED*** from 'react'
+import { map } from '@/utils/map'
+import { animated, useSpring } from '@react-spring/web'
+import { SVGProps } from 'react'
 
 const MIN_RADIUS = 20
 const MAX_RADIUS = 50
@@ -14,7 +14,7 @@ interface TrafficMapProps extends SVGProps<SVGSVGElement> {
   rishon: number
   steinfurter: number
   active: 'albersloher' | 'warendorfer' | 'weseler' | 'rishon' | 'steinfurter'
-***REMOVED***
+}
 
 export default function TrafficMapMobile({
   albersloher,
@@ -24,7 +24,7 @@ export default function TrafficMapMobile({
   steinfurter,
   active,
   ...props
-***REMOVED***: TrafficMapProps) {
+}: TrafficMapProps) {
   const values = Object.values([
     albersloher,
     warendorfer,
@@ -37,38 +37,38 @@ export default function TrafficMapMobile({
 
   const albersloherRadius = useSpring({
     val: map(albersloher, minValue, maxValue, MIN_RADIUS, MAX_RADIUS),
-    from: { val: 0 ***REMOVED***,
-***REMOVED***)
+    from: { val: 0 },
+  })
   const warendorferRadius = useSpring({
     val: map(warendorfer, minValue, maxValue, MIN_RADIUS, MAX_RADIUS),
-    from: { val: 0 ***REMOVED***,
-***REMOVED***)
+    from: { val: 0 },
+  })
   const weselerRadius = useSpring({
     val: map(weseler, minValue, maxValue, MIN_RADIUS, MAX_RADIUS),
-    from: { val: 0 ***REMOVED***,
-***REMOVED***)
+    from: { val: 0 },
+  })
   const rishonRadius = useSpring({
     val: map(rishon, minValue, maxValue, MIN_RADIUS, MAX_RADIUS),
-    from: { val: 0 ***REMOVED***,
-***REMOVED***)
+    from: { val: 0 },
+  })
   const steinfurterRadius = useSpring({
     val: map(steinfurter, minValue, maxValue, MIN_RADIUS, MAX_RADIUS),
-    from: { val: 0 ***REMOVED***,
-***REMOVED***)
+    from: { val: 0 },
+  })
 
   function getFill(location: typeof active) {
     return active === location
       ? 'rgba(0, 91, 121, 0.15'
       : 'rgba(52,193,123,0.15)'
-***REMOVED***
+  }
 
   function getStroke(location: typeof active) {
     return active === location ? '#005B79' : '#34c17b'
-***REMOVED***
+  }
 
   function getOpacity(location: typeof active) {
     return active === location ? 1 : 0
-***REMOVED***
+  }
 
   return (
     <svg
@@ -77,7 +77,7 @@ export default function TrafficMapMobile({
       viewBox="0 0 317 335"
       width="317"
       xmlns="http://www.w3.org/2000/svg"
-***REMOVED***...props***REMOVED***
+      {...props}
     >
       <g id="Gruppe 976">
         <path
@@ -148,11 +148,11 @@ export default function TrafficMapMobile({
             cx="131.385"
             cy="159.125"
             data-name="Ellipse Ring"
-            fill={getFill('rishon')***REMOVED***
-            r={rishonRadius.val.to(val => val)***REMOVED***
+            fill={getFill('rishon')}
+            r={rishonRadius.val.to(val => val)}
           />
           <g id="MS_Klimadashboard_Icons_m_pendler">
-            <g fill={getStroke('rishon')***REMOVED*** id="group">
+            <g fill={getStroke('rishon')} id="group">
               <path
                 d="M135.512 164.232H126.213C125.954 164.232 125.739 164.017 125.739 163.758C125.739 163.499 125.954 163.285 126.213 163.285H135.512C135.771 163.285 135.985 163.499 135.985 163.758C135.985 164.017 135.771 164.232 135.512 164.232Z"
                 id="Path"
@@ -186,11 +186,11 @@ export default function TrafficMapMobile({
             cx="117.385"
             cy="199.125"
             data-name="Ellipse Weseler"
-            fill={getFill('weseler')***REMOVED***
-            r={weselerRadius.val.to(val => val)***REMOVED***
+            fill={getFill('weseler')}
+            r={weselerRadius.val.to(val => val)}
           />
           <g id="MS_Klimadashboard_Icons_m_pendler_2">
-            <g fill={getStroke('weseler')***REMOVED*** id="group_2">
+            <g fill={getStroke('weseler')} id="group_2">
               <path
                 d="M121.512 204.232H112.213C111.954 204.232 111.739 204.017 111.739 203.758C111.739 203.499 111.954 203.285 112.213 203.285H121.512C121.771 203.285 121.985 203.499 121.985 203.758C121.985 204.017 121.771 204.232 121.512 204.232Z"
                 id="Path_2"
@@ -224,11 +224,11 @@ export default function TrafficMapMobile({
             cx="198.385"
             cy="194.125"
             data-name="Ellipse Albersloher"
-            fill={getFill('albersloher')***REMOVED***
-            r={albersloherRadius.val.to(val => val)***REMOVED***
+            fill={getFill('albersloher')}
+            r={albersloherRadius.val.to(val => val)}
           />
           <g id="MS_Klimadashboard_Icons_m_pendler_3">
-            <g fill={getStroke('albersloher')***REMOVED*** id="group_3">
+            <g fill={getStroke('albersloher')} id="group_3">
               <path
                 d="M202.512 199.232H193.213C192.954 199.232 192.739 199.017 192.739 198.758C192.739 198.499 192.954 198.285 193.213 198.285H202.512C202.771 198.285 202.985 198.499 202.985 198.758C202.985 199.017 202.771 199.232 202.512 199.232Z"
                 id="Path_3"
@@ -256,7 +256,7 @@ export default function TrafficMapMobile({
             </g>
           </g>
         </g>
-        <g id="Gruppe Albersloher" opacity={getOpacity('albersloher')***REMOVED***>
+        <g id="Gruppe Albersloher" opacity={getOpacity('albersloher')}>
           <path
             d="M180.782 305.719V175.004"
             id="Pfad 603"
@@ -270,7 +270,7 @@ export default function TrafficMapMobile({
             id="Ellipse 130"
           />
         </g>
-        <g id="Gruppe Weseler" opacity={getOpacity('weseler')***REMOVED***>
+        <g id="Gruppe Weseler" opacity={getOpacity('weseler')}>
           <path
             d="M122.116 305.719V222.043"
             id="Pfad 602"
@@ -284,7 +284,7 @@ export default function TrafficMapMobile({
             id="Ellipse 131"
           />
         </g>
-        <g id="Gruppe Ring" opacity={getOpacity('rishon')***REMOVED***>
+        <g id="Gruppe Ring" opacity={getOpacity('rishon')}>
           <path
             d="M150.729 305.719V162.912"
             id="Pfad 601"
@@ -304,11 +304,11 @@ export default function TrafficMapMobile({
             cx="217.385"
             cy="120.125"
             data-name="Ellipse Warendorfer"
-            fill={getFill('warendorfer')***REMOVED***
-            r={warendorferRadius.val.to(val => val)***REMOVED***
+            fill={getFill('warendorfer')}
+            r={warendorferRadius.val.to(val => val)}
           />
           <g id="MS_Klimadashboard_Icons_m_pendler_4">
-            <g fill={getStroke('warendorfer')***REMOVED*** id="group_4">
+            <g fill={getStroke('warendorfer')} id="group_4">
               <path
                 d="M221.512 125.232H212.213C211.954 125.232 211.739 125.017 211.739 124.758C211.739 124.499 211.954 124.285 212.213 124.285H221.512C221.771 124.285 221.985 124.499 221.985 124.758C221.985 125.017 221.771 125.232 221.512 125.232Z"
                 id="Path_4"
@@ -342,11 +342,11 @@ export default function TrafficMapMobile({
             cx="150.825"
             cy="115.825"
             data-name="Ellipse Steinfurter"
-            fill={getFill('steinfurter')***REMOVED***
-            r={steinfurterRadius.val.to(val => val)***REMOVED***
+            fill={getFill('steinfurter')}
+            r={steinfurterRadius.val.to(val => val)}
           />
           <g id="MS_Klimadashboard_Icons_m_pendler_5">
-            <g fill={getStroke('steinfurter')***REMOVED*** id="group_5">
+            <g fill={getStroke('steinfurter')} id="group_5">
               <path
                 d="M154.512 121.232H145.213C144.954 121.232 144.739 121.017 144.739 120.758C144.739 120.499 144.954 120.285 145.213 120.285H154.512C154.771 120.285 154.985 120.499 154.985 120.758C154.985 121.017 154.771 121.232 154.512 121.232Z"
                 id="Path_5"
@@ -374,7 +374,7 @@ export default function TrafficMapMobile({
             </g>
           </g>
         </g>
-        <g id="Gruppe Steinfurter" opacity={getOpacity('steinfurter')***REMOVED***>
+        <g id="Gruppe Steinfurter" opacity={getOpacity('steinfurter')}>
           <path
             d="M156.943 305.719V140.059"
             id="Pfad 599"
@@ -388,7 +388,7 @@ export default function TrafficMapMobile({
             id="Pfad 600"
           />
         </g>
-        <g id="Gruppe Warendorfer" opacity={getOpacity('warendorfer')***REMOVED***>
+        <g id="Gruppe Warendorfer" opacity={getOpacity('warendorfer')}>
           <path
             d="M198.532 305.718V140.319"
             id="Pfad 604"
@@ -405,4 +405,4 @@ export default function TrafficMapMobile({
       </g>
     </svg>
   )
-***REMOVED***
+}

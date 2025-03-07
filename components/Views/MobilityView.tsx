@@ -36,4 +36,4 @@ export default async function MobilityView() {
       <BicycleOverview />
     </BaseView>
   )
-***REMOVED***
+}

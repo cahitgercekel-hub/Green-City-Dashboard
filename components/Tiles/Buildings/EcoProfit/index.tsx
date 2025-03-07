@@ -5,9 +5,9 @@ import EcoProfitData from '@/assets/data/oekoprofit.csv'
 // @ts-ignore
 import StartberatungData from '@/assets/data/teilnehmer-startberatung.csv'
 import AnimatedNumber from '@/components/Elements/Animated/AnimatedNumber'
-import { Spacer ***REMOVED*** from '@/components/Elements/Spacer'
+import { Spacer } from '@/components/Elements/Spacer'
 import Title from '@/components/Elements/Title'
-import { format ***REMOVED*** from 'date-fns'
+import { format } from 'date-fns'
 
 interface IEcoProfitData {
   ZEIT: number
@@ -18,12 +18,12 @@ interface IEcoProfitData {
   'Einsparung Betriebskosten': number
   'Einsparung Energie': number
   'einmalige Investitionskosten': number
-***REMOVED***
+}
 
 interface IStartberatungData {
   ZEIT: number
   'Teilnehmer Startberatung - Unternehmen': number
-***REMOVED***
+}
 
 export default function EcoProfitTile() {
   const data = EcoProfitData as IEcoProfitData[]
@@ -43,32 +43,32 @@ export default function EcoProfitTile() {
 
   return (
     <BuildingTile
-      dataRetrieval={format(new Date(), '01.MM.yyyy')***REMOVED***
+      dataRetrieval={format(new Date(), '01.MM.yyyy')}
       dataSource="Stadt Münster"
-      embedId={'building-ecoProfit'***REMOVED***
+      embedId={'building-ecoProfit'}
     >
-      <Title as={'h1'***REMOVED*** font={'normal'***REMOVED*** variant={'building'***REMOVED***>
-        <AnimatedNumber>{companiesTotal***REMOVED***</AnimatedNumber> Unternehmen
+      <Title as={'h1'} font={'normal'} variant={'building'}>
+        <AnimatedNumber>{companiesTotal}</AnimatedNumber> Unternehmen
       </Title>
       <Spacer />
       <Title as="subtitle">
-        haben bereits am Ökoprofit-Projekt teilgenommen und gemeinsam{' '***REMOVED***
+        haben bereits am Ökoprofit-Projekt teilgenommen und gemeinsam{' '}
         <span className="text-buildings">
-          <AnimatedNumber decimals={1***REMOVED***>
-      ***REMOVED***savingsEuro / 1_000_000***REMOVED***
-          </AnimatedNumber>{' '***REMOVED***
+          <AnimatedNumber decimals={1}>
+            {savingsEuro / 1_000_000}
+          </AnimatedNumber>{' '}
           Millionen Euro
-        </span>{' '***REMOVED***
-        und{' '***REMOVED***
+        </span>{' '}
+        und{' '}
         <span className="text-buildings">
-          <AnimatedNumber>{savingsCO2***REMOVED***</AnimatedNumber> Tonnen CO
+          <AnimatedNumber>{savingsCO2}</AnimatedNumber> Tonnen CO
           <sub>2</sub>
-        </span>{' '***REMOVED***
+        </span>{' '}
         eingespart.
       </Title>
-      <Spacer size={'xl'***REMOVED*** />
-      <Title as={'h1'***REMOVED*** font={'normal'***REMOVED*** variant={'building'***REMOVED***>
-        <AnimatedNumber>{companiesStartupConsulting***REMOVED***</AnimatedNumber>{' '***REMOVED***
+      <Spacer size={'xl'} />
+      <Title as={'h1'} font={'normal'} variant={'building'}>
+        <AnimatedNumber>{companiesStartupConsulting}</AnimatedNumber>{' '}
         Unternehmen
       </Title>
       <Spacer />
@@ -78,4 +78,4 @@ export default function EcoProfitTile() {
       </Title>
     </BuildingTile>
   )
-***REMOVED***
+}

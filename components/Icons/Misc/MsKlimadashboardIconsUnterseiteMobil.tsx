@@ -1,17 +1,17 @@
 import * as React from 'react'
-import type { SVGProps ***REMOVED*** from 'react'
+import type { SVGProps } from 'react'
 function SvgMsKlimadashboardIconsUnterseiteMobil(props: SVGProps<SVGSVGElement>) {
   return <svg
     data-name="Ebene 1"
     viewBox="0 0 352.73 81.39"
     xmlns="http://www.w3.org/2000/svg"
-    {...props***REMOVED***
+    {...props}
   >
     <path
       d="M87.69 32.38c-1.3 0-2.56.18-3.78.47l-6.53-15.54 5.97-.15c.24.04 1.29.24 1.79 1 .4.61.42 1.51.04 2.7-.21.66.15 1.36.81 1.57.66.21 1.36-.15 1.57-.81.62-1.94.51-3.57-.34-4.85-1.23-1.84-3.46-2.09-3.71-2.11h-.14l-7.89.2c-.41.01-.79.22-1.02.57-.22.35-.26.78-.1 1.16l2.76 6.57-28.47.36-1.91-4.06h5.79c1.04 0 1.87-.84 1.87-1.87s-.84-1.87-1.87-1.87H39.51c-1.04 0-1.87.84-1.87 1.87s.84 1.87 1.87 1.87h4.47l2.31 4.9-6.38 10.04a15.714 15.714 0 0 0-7.73-2.03c-8.74 0-15.85 7.11-15.85 15.85s7.11 15.85 15.85 15.85 15.42-6.71 15.81-15.1l9.86-.04 1.52 3.22c-.56.38-.92 1.03-.92 1.75 0 1.17.95 2.13 2.13 2.13h1.78c1.17 0 2.13-.95 2.13-2.13s-.95-2.13-2.13-2.13h-.39l-1.8-3.82L78.6 26.63l2.94 6.99c-5.69 2.41-9.69 8.05-9.69 14.6 0 8.74 7.11 15.85 15.85 15.85s15.85-7.11 15.85-15.85-7.11-15.85-15.85-15.85Zm-55.51 29.2c-7.36 0-13.35-5.99-13.35-13.35s5.99-13.35 13.35-13.35c2.32 0 4.49.59 6.4 1.64l-6.73 10.6c-.25.39-.26.87-.04 1.27s.64.65 1.09.65l12.59-.05c-.4 7.01-6.21 12.59-13.31 12.59ZM45.4 46.49l-10.22.04 5.47-8.61c2.55 2.1 4.3 5.13 4.75 8.57Zm2.52 0c-.48-4.32-2.7-8.11-5.94-10.67l5.56-8.76 9.13 19.39-8.75.03Zm11.07-.99-9.16-19.47 26.28-.33-17.12 19.8Zm28.7 16.09c-7.36 0-13.35-5.99-13.35-13.35 0-5.52 3.37-10.27 8.16-12.3l5.19 12.34c.2.48.67.77 1.15.77.16 0 .33-.03.48-.1.64-.27.94-1 .67-1.64l-5.1-12.12c.9-.19 1.84-.3 2.8-.3 7.36 0 13.35 5.99 13.35 13.35s-5.99 13.35-13.35 13.35Z"
       style={{
         fill: '#34c17b',
-    ***REMOVED******REMOVED***
+      }}
     />
     <g data-name="Mobilit\xE4t Sammlung Desktop">
       <path
@@ -19,34 +19,34 @@ function SvgMsKlimadashboardIconsUnterseiteMobil(props: SVGProps<SVGSVGElement>)
         data-name="Themen im Fokus-3"
         style={{
           fill: '#005b79',
-      ***REMOVED******REMOVED***
+        }}
       />
       <g data-name="Gruppe 494">
         <rect
-          height={81.39***REMOVED***
-          rx={40.7***REMOVED***
-          ry={40.7***REMOVED***
+          height={81.39}
+          rx={40.7}
+          ry={40.7}
           style={{
             fill: 'none',
-        ***REMOVED******REMOVED***
-          width={120.15***REMOVED***
+          }}
+          width={120.15}
         />
         <rect
-          height={78.89***REMOVED***
-          rx={39.45***REMOVED***
-          ry={39.45***REMOVED***
+          height={78.89}
+          rx={39.45}
+          ry={39.45}
           style={{
             stroke: '#34c17b',
             strokeMiterlimit: 10,
             strokeWidth: '2.5px',
             fill: 'none',
-        ***REMOVED******REMOVED***
-          width={117.65***REMOVED***
-          x={1.25***REMOVED***
-          y={1.25***REMOVED***
+          }}
+          width={117.65}
+          x={1.25}
+          y={1.25}
         />
       </g>
     </g>
   </svg>
-***REMOVED***
+}
 export default SvgMsKlimadashboardIconsUnterseiteMobil

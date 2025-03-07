@@ -1,8 +1,8 @@
-import type { VariantProps ***REMOVED*** from 'class-variance-authority'
-import { cva, cx ***REMOVED*** from 'class-variance-authority'
+import type { VariantProps } from 'class-variance-authority'
+import { cva, cx } from 'class-variance-authority'
 import * as React from 'react'
 
-import { Spinner ***REMOVED*** from '@/components/Elements/Spinner'
+import { Spinner } from '@/components/Elements/Spinner'
 
 const button = cva(
   'flex items-center justify-center rounded-lg border-2 font-medium focus:outline-none disabled:cursor-not-allowed disabled:opacity-70 group transition-colors',
@@ -18,37 +18,37 @@ const button = cva(
         goToEnergy: 'border-energy text-primary',
         goToBuildings: 'border-buildings text-primary',
         overlay: 'border-secondary text-white',
-    ***REMOVED***,
+      },
       size: {
         sm: 'py-1 px-3 text-sm',
         md: 'py-2 px-5 text-md',
         lg: 'py-3 px-5 text-lg',
         link: 'pr-6 md:pr-10 pl-5 md:pl-8 py-2 md:py-3 text-xl md:text-2xl',
-    ***REMOVED***,
+      },
       hover: {
         climate: 'hover:border-climate',
         energy: 'hover:border-energy',
         mobility: 'hover:border-mobility',
         buildings: 'hover:border-buildings',
-    ***REMOVED***,
-  ***REMOVED***,
+      },
+    },
     defaultVariants: {
       variant: 'primary',
       size: 'md',
-  ***REMOVED***,
-***REMOVED***,
+    },
+  },
 )
 
 type IconProps =
-  | { startIcon: React.ReactElement; endIcon?: never ***REMOVED***
-  | { endIcon: React.ReactElement; startIcon?: never ***REMOVED***
-  | { endIcon?: undefined; startIcon?: undefined ***REMOVED***
+  | { startIcon: React.ReactElement; endIcon?: never }
+  | { endIcon: React.ReactElement; startIcon?: never }
+  | { endIcon?: undefined; startIcon?: undefined }
 
 export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> &
   VariantProps<typeof button> &
   IconProps & {
     isLoading?: boolean
-***REMOVED***
+  }
 
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (
@@ -62,24 +62,24 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       startIcon,
       endIcon,
       ...props
-  ***REMOVED***,
+    },
     ref,
   ) => {
     return (
       <button
-        className={cx(className, button({ variant, size, hover ***REMOVED***))***REMOVED***
-        ref={ref***REMOVED***
-        type={type***REMOVED***
-  ***REMOVED***...props***REMOVED***
+        className={cx(className, button({ variant, size, hover }))}
+        ref={ref}
+        type={type}
+        {...props}
       >
-  ***REMOVED***isLoading && <Spinner className="text-current" size="sm" />***REMOVED***
-  ***REMOVED***!isLoading && startIcon && (
-          <div className="mr-1 md:mr-4">{startIcon***REMOVED***</div>
-    ***REMOVED******REMOVED***
-        <span className="mx-2">{props.children***REMOVED***</span> {!isLoading && endIcon***REMOVED***
+        {isLoading && <Spinner className="text-current" size="sm" />}
+        {!isLoading && startIcon && (
+          <div className="mr-1 md:mr-4">{startIcon}</div>
+        )}
+        <span className="mx-2">{props.children}</span> {!isLoading && endIcon}
       </button>
-***REMOVED***
-***REMOVED***,
+    )
+  },
 )
 
 Button.displayName = 'Button'

@@ -1,19 +1,19 @@
 'use client'
 
 import AnimatedNumber from '@/components/Elements/Animated/AnimatedNumber'
-import { Spacer ***REMOVED*** from '@/components/Elements/Spacer'
+import { Spacer } from '@/components/Elements/Spacer'
 import Title from '@/components/Elements/Title'
 // @ts-ignore
 import BusData from '@/assets/data/stadtwerke-bus-fahrzeuge.csv'
 import {
   MsKlimadashboardIconsMBusAbgas,
   MsKlimadashboardIconsMBusElektro,
-***REMOVED*** from '@/components/Icons/Mobilitaet'
+} from '@/components/Icons/Mobilitaet'
 import MobileSlider from '@/components/Inputs/MobileSlider'
 import Slider from '@/components/Inputs/Slider'
-import { useBusData ***REMOVED*** from '@/hooks/useBusData'
-import { useEffect, useState ***REMOVED*** from 'react'
-import { useWindowSize ***REMOVED*** from 'react-use'
+import { useBusData } from '@/hooks/useBusData'
+import { useEffect, useState } from 'react'
+import { useWindowSize } from 'react-use'
 
 type BusDataType = {
   ZEIT: string
@@ -25,11 +25,11 @@ type BusDataType = {
   'Fahrzeuge Sub': number
   'Fahrzeuge awm - Alternativer Antrieb': number
   'Fahrzeuge awm - Verbrenner': number
-***REMOVED***
+}
 
 export default function BusContent() {
-  // const { electroCount, combustionCount ***REMOVED*** = useBusData()
-  const { width ***REMOVED*** = useWindowSize()
+  // const { electroCount, combustionCount } = useBusData()
+  const { width } = useWindowSize()
   const [yearIndex, setYearIndex] = useState(0)
   const [combustionCount, setCombustionCount] = useState(0)
   const [electroCount, setElectroCount] = useState(0)
@@ -40,18 +40,18 @@ export default function BusContent() {
   const currECount =
     data.at(-1)?.['Fahrzeuge Alternative Antriebe Elektro'] ?? 0
 
-  const { electroCount: liveElectroCount ***REMOVED*** = useBusData()
+  const { electroCount: liveElectroCount } = useBusData()
 
   useEffect(() => {
     if (!data) {
       return
-  ***REMOVED***
+    }
     const reducedDataLocal: BusDataType[] = []
     let currentYear = ''
     data.forEach(item => {
       if (currentYear === item.ZEIT.toString().substring(0, 4)) {
         return
-    ***REMOVED***
+      }
       currentYear = item.ZEIT.toString().substring(0, 4)
       const row: BusDataType | undefined = data
         .slice()
@@ -61,44 +61,44 @@ export default function BusContent() {
         row &&
         row['Fahrzeuge SWMS'] &&
         row['Fahrzeuge Alternative Antriebe Elektro']
-  ***REMOVED*** {
-        reducedDataLocal.push({ ...row, ZEIT: currentYear ***REMOVED***)
-    ***REMOVED***
-  ***REMOVED***)
+      ) {
+        reducedDataLocal.push({ ...row, ZEIT: currentYear })
+      }
+    })
     setReducedData(reducedDataLocal)
     setYearIndex(reducedDataLocal.length - 1)
-***REMOVED***, [data])
+  }, [data])
 
   useEffect(() => {
     if (!reducedData) {
       return
-  ***REMOVED***
+    }
     const row: BusDataType = reducedData[yearIndex]
     if (row) {
       setElectroCount(row['Fahrzeuge Alternative Antriebe Elektro'])
       setCombustionCount(
         row['Fahrzeuge SWMS'] - row['Fahrzeuge Alternative Antriebe Elektro'],
-  ***REMOVED***
-  ***REMOVED***
-***REMOVED***, [yearIndex, reducedData])
+      )
+    }
+  }, [yearIndex, reducedData])
 
   return (
     <div>
       <div className="flex justify-between">
         <div>
-          <Title as="h5" variant={'primary'***REMOVED***>
+          <Title as="h5" variant={'primary'}>
             Fahrzeuge mit fossilem Antrieb
           </Title>
           <AnimatedNumber className="text-2xl text-mobility">
-      ***REMOVED***combustionCount***REMOVED***
+            {combustionCount}
           </AnimatedNumber>
         </div>
         <div className="flex flex-col items-end">
-          <Title as="h5" variant={'primary'***REMOVED***>
+          <Title as="h5" variant={'primary'}>
             Fahrzeuge mit Elektroantrieb
           </Title>
           <AnimatedNumber className="text-2xl text-mobility">
-      ***REMOVED***electroCount***REMOVED***
+            {electroCount}
           </AnimatedNumber>
         </div>
       </div>
@@ -108,8 +108,8 @@ export default function BusContent() {
           style={{
             width: `${
               (combustionCount / (electroCount + combustionCount) || 0.5) * 100
-          ***REMOVED***%`,
-        ***REMOVED******REMOVED***
+            }%`,
+          }}
         >
           <MsKlimadashboardIconsMBusAbgas className="w-full fill-primary" />
         </div>
@@ -117,42 +117,42 @@ export default function BusContent() {
           <MsKlimadashboardIconsMBusElektro className="w-full fill-mobility" />
         </div>
       </div>
-***REMOVED***width < 1800 && (
+      {width < 1800 && (
         <MobileSlider
-          firstValueMobile={3***REMOVED*** // ONLY FOR DEMO
-          labels={reducedData.map(e => e.ZEIT.toString())***REMOVED***
-          max={reducedData.length - 1***REMOVED***
-          min={0***REMOVED***
-          onValueChange={([index]) => setYearIndex(index)***REMOVED***
-          value={[yearIndex]***REMOVED***
-          variant={'mobility'***REMOVED***
+          firstValueMobile={3} // ONLY FOR DEMO
+          labels={reducedData.map(e => e.ZEIT.toString())}
+          max={reducedData.length - 1}
+          min={0}
+          onValueChange={([index]) => setYearIndex(index)}
+          value={[yearIndex]}
+          variant={'mobility'}
         />
-  ***REMOVED******REMOVED***
-***REMOVED***width >= 1800 && (
+      )}
+      {width >= 1800 && (
         <Slider
-          firstValueMobile={3***REMOVED*** //ONLY FOR DEMO
-          labels={reducedData.map(e => e.ZEIT.toString())***REMOVED***
-          max={reducedData.length - 1***REMOVED***
-          min={0***REMOVED***
-          onValueChange={([index]) => setYearIndex(index)***REMOVED***
-          value={[yearIndex]***REMOVED***
-          variant={'mobility'***REMOVED***
+          firstValueMobile={3} //ONLY FOR DEMO
+          labels={reducedData.map(e => e.ZEIT.toString())}
+          max={reducedData.length - 1}
+          min={0}
+          onValueChange={([index]) => setYearIndex(index)}
+          value={[yearIndex]}
+          variant={'mobility'}
         />
-  ***REMOVED******REMOVED***
+      )}
       <Spacer />
       <Title as="h5">
         Busfahren ist Klimaschutz. Damit die Umweltbilanz noch besser wird,
         setzen wir immer stärker auf Busse mit Ökostrom. Bis 2029 soll unsere
-        Busflotte komplett elektrisch fahren! Von den bereits{' '***REMOVED***
+        Busflotte komplett elektrisch fahren! Von den bereits{' '}
         <span className="text-mobility">
-          <AnimatedNumber>{currECount***REMOVED***</AnimatedNumber> Elektrobussen
+          <AnimatedNumber>{currECount}</AnimatedNumber> Elektrobussen
         </span>
-        , sind aktuell{' '***REMOVED***
+        , sind aktuell{' '}
         <span className="text-mobility">
-          <AnimatedNumber>{liveElectroCount***REMOVED***</AnimatedNumber> Elektrobusse
-        </span>{' '***REMOVED***
+          <AnimatedNumber>{liveElectroCount}</AnimatedNumber> Elektrobusse
+        </span>{' '}
         auf Münsters Straßen unterwegs.
       </Title>
     </div>
   )
-***REMOVED***
+}

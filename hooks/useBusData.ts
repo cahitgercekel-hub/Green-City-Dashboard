@@ -1,13 +1,13 @@
 'use client'
 
-import { useEffect, useState ***REMOVED*** from 'react'
+import { useEffect, useState } from 'react'
 
 const getBusData = async () => {
   const res = await fetch('https://rest.busradar.conterra.de/prod/fahrzeuge')
   const data = await res.json()
 
   return data
-***REMOVED***
+}
 
 type BusProps = {
   linienid: string
@@ -27,7 +27,7 @@ type BusProps = {
   visfahrplanlagezst: number
   ankunftziel: string
   zielhst: string
-***REMOVED***
+}
 
 export function useBusData() {
   const [data, setData] =
@@ -39,26 +39,26 @@ export function useBusData() {
   useEffect(() => {
     const timer = setInterval(() => {
       getBusData().then(e => setData(e))
-  ***REMOVED***, 60000)
+    }, 60000)
     getBusData().then(e => setData(e))
 
     return clearInterval(timer)
-***REMOVED***, [])
+  }, [])
 
   useEffect(() => {
     if (!data) {
       return
-  ***REMOVED***
+    }
 
     const eCount = data.features.filter(bus => {
       const id = bus.properties.fahrzeugid.substring(0, 2)
 
       return parseInt(id) >= 18 && parseInt(id) <= 26
-  ***REMOVED***).length
+    }).length
 
     setElectroCount(eCount)
     setCombustionCount(data.features.length - eCount)
-***REMOVED***, [data])
+  }, [data])
 
-  return { data, electroCount, combustionCount ***REMOVED***
-***REMOVED***
+  return { data, electroCount, combustionCount }
+}

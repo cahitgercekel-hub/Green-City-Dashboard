@@ -4,4 +4,4 @@ export const revalidate = 10
 
 export default function Energie() {
   return <EnergyView />
-***REMOVED***
+}

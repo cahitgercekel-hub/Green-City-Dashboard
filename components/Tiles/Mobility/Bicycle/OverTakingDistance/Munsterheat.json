@@ -6,120 +6,120 @@
       "geometry": {
         "type": "Point",
         "coordinates": [7.6256, 51.9607]
-    ***REMOVED***,
+      },
       "properties": {
         "name": "Zahnarzt Münster City",
         "category": "Dentistry",
         "intensity": 0.5
-    ***REMOVED***
-  ***REMOVED***,
+      }
+    },
     {
       "type": "Feature",
       "geometry": {
         "type": "Point",
         "coordinates": [7.6285, 51.9632]
-    ***REMOVED***,
+      },
       "properties": {
         "name": "Dentalzentrum Münster",
         "category": "Dentistry",
         "intensity": 0.8
-    ***REMOVED***
-  ***REMOVED***,
+      }
+    },
     {
       "type": "Feature",
       "geometry": {
         "type": "Point",
         "coordinates": [7.6152, 51.9553]
-    ***REMOVED***,
+      },
       "properties": {
         "name": "Smile Dental Clinic",
         "category": "Dentistry",
         "intensity": 0.7
-    ***REMOVED***
-  ***REMOVED***,
+      }
+    },
     {
       "type": "Feature",
       "geometry": {
         "type": "Point",
         "coordinates": [7.6341, 51.9705]
-    ***REMOVED***,
+      },
       "properties": {
         "name": "Dr. Müller Zahnarztpraxis",
         "category": "Dentistry",
         "intensity": 1.0
-    ***REMOVED***
-  ***REMOVED***,
+      }
+    },
     {
       "type": "Feature",
       "geometry": {
         "type": "Point",
         "coordinates": [7.6197, 51.9589]
-    ***REMOVED***,
+      },
       "properties": {
         "name": "Zahnmedizin Münster",
         "category": "Dentistry",
         "intensity": 0.6
-    ***REMOVED***
-  ***REMOVED***,
+      }
+    },
     {
       "type": "Feature",
       "geometry": {
         "type": "Point",
         "coordinates": [7.6450, 51.9734]
-    ***REMOVED***,
+      },
       "properties": {
         "name": "Münster Dental Care",
         "category": "Dentistry",
         "intensity": 1.0
-    ***REMOVED***
-  ***REMOVED***,
+      }
+    },
     {
       "type": "Feature",
       "geometry": {
         "type": "Point",
         "coordinates": [7.6100, 51.9500]
-    ***REMOVED***,
+      },
       "properties": {
         "name": "Westfälische Zahnklinik",
         "category": "Dentistry",
         "intensity": 0.9
-    ***REMOVED***
-  ***REMOVED***,
+      }
+    },
     {
       "type": "Feature",
       "geometry": {
         "type": "Point",
         "coordinates": [7.6300, 51.9650]
-    ***REMOVED***,
+      },
       "properties": {
         "name": "City Smile Münster",
         "category": "Dentistry",
         "intensity": 0.4
-    ***REMOVED***
-  ***REMOVED***,
+      }
+    },
     {
       "type": "Feature",
       "geometry": {
         "type": "Point",
         "coordinates": [7.6205, 51.9620]
-    ***REMOVED***,
+      },
       "properties": {
         "name": "Praxis Dr. Schmidt",
         "category": "Dentistry",
         "intensity": 0.75
-    ***REMOVED***
-  ***REMOVED***,
+      }
+    },
     {
       "type": "Feature",
       "geometry": {
         "type": "Point",
         "coordinates": [7.6500, 51.9750]
-    ***REMOVED***,
+      },
       "properties": {
         "name": "Münster Smile Zentrum",
         "category": "Dentistry",
         "intensity": 1.0
-    ***REMOVED***
-  ***REMOVED***
+      }
+    }
   ]
-***REMOVED***
+}

@@ -1,16 +1,16 @@
 import * as React from 'react'
-import type { SVGProps ***REMOVED*** from 'react'
+import type { SVGProps } from 'react'
 function SvgMsKlimadashboardIconsMPendler(props: SVGProps<SVGSVGElement>) {
   return <svg
     data-name="Ebene 1"
     id="MS_Klimadashboard_Icons_m_pendler_svg__Ebene_1"
     viewBox="0 0 53.65 53.65"
     xmlns="http://www.w3.org/2000/svg"
-    {...props***REMOVED***
+    {...props}
   >
     <defs>
       <style>
-  ***REMOVED***'.MS_Klimadashboard_Icons_m_pendler_svg__cls-1{fill:#34c17b***REMOVED***'***REMOVED***
+        {'.MS_Klimadashboard_Icons_m_pendler_svg__cls-1{fill:#34c17b}'}
       </style>
     </defs>
     <g
@@ -18,15 +18,15 @@ function SvgMsKlimadashboardIconsMPendler(props: SVGProps<SVGSVGElement>) {
       id="MS_Klimadashboard_Icons_m_pendler_svg__Gruppe_968"
     >
       <circle
-        cx={26.83***REMOVED***
-        cy={26.83***REMOVED***
+        cx={26.83}
+        cy={26.83}
         data-name="Ellipse 48-3"
         id="MS_Klimadashboard_Icons_m_pendler_svg__Ellipse_48-3"
-        r={26.83***REMOVED***
+        r={26.83}
         style={{
           opacity: 0.15,
           fill: '#34c17b',
-      ***REMOVED******REMOVED***
+        }}
       />
     </g>
     <path
@@ -46,5 +46,5 @@ function SvgMsKlimadashboardIconsMPendler(props: SVGProps<SVGSVGElement>) {
       d="M24.73 19.1c.41 0 .75.34.75.75v4.02c0 .41-.34.75-.75.75s-.75-.34-.75-.75v-4.02c0-.41.34-.75.75-.75Z"
     />
   </svg>
-***REMOVED***
+}
 export default SvgMsKlimadashboardIconsMPendler

@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { SVGProps ***REMOVED*** from 'react'
+import { SVGProps } from 'react'
 function SvgCarIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <svg
@@ -7,7 +7,7 @@ function SvgCarIcon(props: SVGProps<SVGSVGElement>) {
       viewBox="0 0 60.5 56.5"
       width="60.5"
       xmlns="http://www.w3.org/2000/svg"
-***REMOVED***...props***REMOVED***
+      {...props}
     >
       <g
         data-name="Komponente 62 – 4"
@@ -144,5 +144,5 @@ function SvgCarIcon(props: SVGProps<SVGSVGElement>) {
       </g>
     </svg>
   )
-***REMOVED***
+}
 export default SvgCarIcon

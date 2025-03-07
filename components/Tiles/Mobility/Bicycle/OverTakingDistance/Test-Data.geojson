@@ -1,26 +1,26 @@
 {
     "type": "FeatureCollection",
     "features": [
-***REMOVED***
+      {
         "type": "Feature",
         "geometry": {
           "type": "Point",
           "coordinates": [7.6157, 51.9500]
-      ***REMOVED***,
+        },
         "properties": {
           "traffic_density": 10
-      ***REMOVED***
-    ***REMOVED***,
-***REMOVED***
+        }
+      },
+      {
         "type": "Feature",
         "geometry": {
           "type": "Point",
           "coordinates": [7.6250, 51.9505]
-      ***REMOVED***,
+        },
         "properties": {
           "traffic_density": 20
-      ***REMOVED***
-    ***REMOVED***
+        }
+      }
     ]
-***REMOVED***
+  }
   

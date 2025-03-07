@@ -1,10 +1,10 @@
 import AnimatedPage from '@/components/Layout/AnimatedPage'
 import Container from '@/components/Layout/Container'
 
-export default function Layout({ children ***REMOVED***: { children: React.ReactNode ***REMOVED***) {
+export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <Container>
-      <AnimatedPage>{children***REMOVED***</AnimatedPage>
+      <AnimatedPage>{children}</AnimatedPage>
     </Container>
   )
-***REMOVED***
+}

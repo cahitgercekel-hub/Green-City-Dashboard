@@ -1,16 +1,16 @@
 import * as React from 'react'
-import type { SVGProps ***REMOVED*** from 'react'
+import type { SVGProps } from 'react'
 function SvgMsKlimadashboardIconsMAwmAbgas(props: SVGProps<SVGSVGElement>) {
   return <svg
     data-name="Ebene 1"
     id="MS_Klimadashboard_Icons_m_awm_abgas_svg__Ebene_1"
     viewBox="0 0 270.58 142.02"
     xmlns="http://www.w3.org/2000/svg"
-    {...props***REMOVED***
+    {...props}
   >
     <defs>
       <style>
-  ***REMOVED***'.MS_Klimadashboard_Icons_m_awm_abgas_svg__cls-1{fill:#005b79***REMOVED***'***REMOVED***
+        {'.MS_Klimadashboard_Icons_m_awm_abgas_svg__cls-1{fill:#005b79}'}
       </style>
     </defs>
     <path
@@ -34,5 +34,5 @@ function SvgMsKlimadashboardIconsMAwmAbgas(props: SVGProps<SVGSVGElement>) {
       d="M237.83 119.69c-.59 0-1.2-.06-1.84-.19-1.69-.35-3.05-1.27-3.95-2.65-1.07-1.64-1.43-3.93-.97-6.11.27-1.24 1.33-2.55 2.33-3.45-1.06-1.95-1.4-4.08-.97-6.1.23-1.09.68-2.13 1.35-3.08.22-.32.58-.52.97-.53.4-.02.76.15 1.01.45 2.67 3.24 7.12 4.08 9.91 1.88 1.15-.91 1.89-2.2 2.14-3.74.11-.64.68-1.1 1.34-1.04 1.9.17 3.7-.08 5.36-.73.51-.2 1.1-.04 1.44.39 1.3 1.66 4.23 5.94 3.38 9.92-.94 4.41-5.38 7.53-10.91 7.73-.34.44-.89 1.11-1.77 2.19l-.11.14c-1.92 2.21-4.78 4.94-8.72 4.94Zm-2.73-18.76c-.09.25-.17.51-.22.78-.37 1.72.05 3.51 1.2 5.17.19.28.27.63.2.96-.07.33-.27.63-.55.81-.96.62-2.06 1.91-2.21 2.62-.33 1.52-.09 3.14.62 4.23.54.82 1.33 1.35 2.37 1.57 2.83.59 5.25-.58 8.13-3.9l.1-.12c1.54-1.88 1.92-2.37 2.02-2.5.22-.36.62-.59 1.06-.59h.06c4.6 0 8.31-2.36 9.03-5.76.4-1.87-.48-4.5-2.37-7.14-1.42.44-2.97.65-4.49.63a8.145 8.145 0 0 1-2.81 4.19c-3.48 2.75-8.53 2.28-12.13-.93ZM225.63 127.97h-8.9a1.25 1.25 0 0 1 0-2.5h8.9c.89 0 1.61-.61 1.61-1.36v-1.52c0-.75-.72-1.36-1.61-1.36h-8.9a1.25 1.25 0 0 1 0-2.5h8.9c2.27 0 4.11 1.73 4.11 3.86v1.52c0 2.13-1.84 3.86-4.11 3.86Z"
     />
   </svg>
-***REMOVED***
+}
 export default SvgMsKlimadashboardIconsMAwmAbgas

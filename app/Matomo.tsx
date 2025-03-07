@@ -1,7 +1,7 @@
 'use client'
 
 import Script from 'next/script'
-import { useEffect, useState ***REMOVED*** from 'react'
+import { useEffect, useState } from 'react'
 
 const COOKIE_CONSENT_NAME = 'CookieConsent'
 
@@ -17,26 +17,26 @@ export default function Matomo() {
         let c = ca[i]
         while (c.charAt(0) == ' ') {
           c = c.substring(1)
-      ***REMOVED***
+        }
         if (c.indexOf(name) == 0) {
           return c.substring(name.length, c.length)
-      ***REMOVED***
-    ***REMOVED***
+        }
+      }
       return ''
-  ***REMOVED***
+    }
 
     // check cookie value each second
     const id = setInterval(() => {
       setIsAllowed(getCookie(COOKIE_CONSENT_NAME) == 'true')
-  ***REMOVED***, 1000)
+    }, 1000)
 
     return () => clearInterval(id)
-***REMOVED***, [])
+  }, [])
 
   if (isAllowed) {
     return (
       <Script id="matomo">
-  ***REMOVED***`
+        {`
     var _paq = window._paq = window._paq || [];
     /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
     _paq.push(['trackPageView']);
@@ -47,9 +47,9 @@ export default function Matomo() {
       _paq.push(['setSiteId', '8022']);
       var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
       g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
-  ***REMOVED***)();
-  `***REMOVED***
+    })();
+  `}
       </Script>
-***REMOVED***
-***REMOVED***
-***REMOVED***
+    )
+  }
+}

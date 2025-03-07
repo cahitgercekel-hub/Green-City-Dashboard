@@ -5,11 +5,11 @@ export default function WeatherTile() {
   return (
     <ClimateTile
       dataSource="Deutscher Wetterdienst"
-      embedId={'climate-weather'***REMOVED***
+      embedId={'climate-weather'}
       live
-      title={'Wetter aktuell'***REMOVED***
+      title={'Wetter aktuell'}
     >
       <WeatherTileContent />
     </ClimateTile>
   )
-***REMOVED***
+}

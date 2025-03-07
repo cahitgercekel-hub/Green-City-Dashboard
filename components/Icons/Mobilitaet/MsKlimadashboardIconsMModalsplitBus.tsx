@@ -1,16 +1,16 @@
 import * as React from 'react'
-import type { SVGProps ***REMOVED*** from 'react'
+import type { SVGProps } from 'react'
 function SvgMsKlimadashboardIconsMModalsplitBus(props: SVGProps<SVGSVGElement>) {
   return <svg
     data-name="Ebene 1"
     id="MS_Klimadashboard_Icons_m_modalsplit_bus_svg__Ebene_1"
     viewBox="0 0 79.53 49.23"
     xmlns="http://www.w3.org/2000/svg"
-    {...props***REMOVED***
+    {...props}
   >
     <defs>
       <style>
-  ***REMOVED***'.MS_Klimadashboard_Icons_m_modalsplit_bus_svg__cls-1{fill:#14b3d9***REMOVED***'***REMOVED***
+        {'.MS_Klimadashboard_Icons_m_modalsplit_bus_svg__cls-1{fill:#14b3d9}'}
       </style>
     </defs>
     <path
@@ -48,5 +48,5 @@ function SvgMsKlimadashboardIconsMModalsplitBus(props: SVGProps<SVGSVGElement>) 
       </g>
     </g>
   </svg>
-***REMOVED***
+}
 export default SvgMsKlimadashboardIconsMModalsplitBus

@@ -1,4 +1,4 @@
-import { Spacer ***REMOVED*** from '@/components/Elements/Spacer'
+import { Spacer } from '@/components/Elements/Spacer'
 import Title from '@/components/Elements/Title'
 import EnergyTile from '../EnergyTile'
 
@@ -6,8 +6,8 @@ import EnergyTile from '../EnergyTile'
 import PVData from '@/assets/data/bestand-pv-anlagen.csv'
 import ProgressBar from '@/components/Charts/Progress/ProgressBar'
 import AnimatedNumber from '@/components/Elements/Animated/AnimatedNumber'
-import { MsKlimadashboardIconsEPvAnlagen ***REMOVED*** from '@/components/Icons/Energie'
-import { format ***REMOVED*** from 'date-fns'
+import { MsKlimadashboardIconsEPvAnlagen } from '@/components/Icons/Energie'
+import { format } from 'date-fns'
 
 interface PVDataType {
   ZEIT: string
@@ -15,28 +15,28 @@ interface PVDataType {
   AnzahlSolarModule: number
   Bruttoleistung: number
   Nettonennleistung: number
-***REMOVED***
+}
 
 export default function PhotovoltTile() {
   const [data] = PVData as PVDataType[]
 
   return (
     <EnergyTile
-      dataRetrieval={format(new Date(data.ZEIT), '01.MM.yyyy')***REMOVED***
-      dataSource={'Marktstammdatenregister'***REMOVED***
+      dataRetrieval={format(new Date(data.ZEIT), '01.MM.yyyy')}
+      dataSource={'Marktstammdatenregister'}
       embedId="energy-PV"
       title={
         <>
-          <AnimatedNumber>{data.Bruttoleistung / 1000***REMOVED***</AnimatedNumber> MWp
+          <AnimatedNumber>{data.Bruttoleistung / 1000}</AnimatedNumber> MWp
         </>
-    ***REMOVED***
+      }
     >
       <div>
-        <Title as={'subtitle'***REMOVED***>
-          haben die Münsteraner*innen bereits mit{' '***REMOVED***
+        <Title as={'subtitle'}>
+          haben die Münsteraner*innen bereits mit{' '}
           <span className="text-energy">
-            <AnimatedNumber>{data.AnzahlAnlagen***REMOVED***</AnimatedNumber> PV-Anlagen
-          </span>{' '***REMOVED***
+            <AnimatedNumber>{data.AnzahlAnlagen}</AnimatedNumber> PV-Anlagen
+          </span>{' '}
           in Münster installiert.
         </Title>
         <div className="mt-8 flex items-center justify-between gap-8">
@@ -44,39 +44,39 @@ export default function PhotovoltTile() {
           <div className="w-full flex-1">
             <div className="flex  items-center justify-between">
               <div>
-                <Title as="h7" font="semibold" variant={'energy'***REMOVED***>
+                <Title as="h7" font="semibold" variant={'energy'}>
                   Bereits installiert
                 </Title>
-                <Title as="h4" variant={'energy'***REMOVED***>
-            ***REMOVED***((data.Bruttoleistung / 1000 / 2400) * 100).toFixed(0)***REMOVED***%
+                <Title as="h4" variant={'energy'}>
+                  {((data.Bruttoleistung / 1000 / 2400) * 100).toFixed(0)}%
                 </Title>
               </div>
               <div className="flex flex-col items-end">
-                <Title as="h7" font="semibold" variant={'primary'***REMOVED***>
+                <Title as="h7" font="semibold" variant={'primary'}>
                   Angestrebtes Ziel bis 2030
                 </Title>
-                <Title as="h4" variant={'primary'***REMOVED***>
+                <Title as="h4" variant={'primary'}>
                   2.400 MWp
                 </Title>
               </div>
             </div>
-            <Spacer size={'sm'***REMOVED*** />
+            <Spacer size={'sm'} />
             <ProgressBar
-              progress={(data.Bruttoleistung / 1000 / 2400) * 100***REMOVED***
+              progress={(data.Bruttoleistung / 1000 / 2400) * 100}
               variant="energy"
             />
-      ***REMOVED***/*
-            <Spacer size={'sm'***REMOVED*** />
+            {/*
+            <Spacer size={'sm'} />
             <Slider
-              defaultValue={[0]***REMOVED***
-              labels={['2005', '2010', '2015', '2020', 'jetzt']***REMOVED***
-              max={4***REMOVED***
-              min={0***REMOVED***
-              variant={'energy'***REMOVED***
-            />*/***REMOVED***
+              defaultValue={[0]}
+              labels={['2005', '2010', '2015', '2020', 'jetzt']}
+              max={4}
+              min={0}
+              variant={'energy'}
+            />*/}
           </div>
         </div>
       </div>
     </EnergyTile>
   )
-***REMOVED***
+}

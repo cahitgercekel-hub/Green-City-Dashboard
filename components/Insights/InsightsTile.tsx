@@ -6,43 +6,43 @@ type InsightsTileProps = {
   title: string
   link: string
   image: string
-***REMOVED***
+}
 
 export default function InsightsTile({
   title,
   link,
   image,
-***REMOVED***: InsightsTileProps) {
+}: InsightsTileProps) {
   return (
     <div className="h-full overflow-hidden rounded-md bg-white lg:rounded-lg">
-      <Link href={link***REMOVED***>
+      <Link href={link}>
         <div className="group flex h-full w-full flex-col  bg-secondary transition-all hover:bg-[#f6f7e6]">
           <div className="flex w-full flex-1 justify-between gap-2 py-[33px] pl-[52px] pr-12">
             <Title
               as="h6"
               className="mt-2 flex-[2_2_0%] underline group-hover:text-secondary"
-              variant={'inverse'***REMOVED***
+              variant={'inverse'}
             >
               Kacheln filtern
             </Title>
             <Title
-              as={'h4'***REMOVED***
+              as={'h4'}
               className="flex-[3_3_0%] group-hover:text-secondary"
               variant="inverse"
             >
-        ***REMOVED***title***REMOVED***
+              {title}
             </Title>
           </div>
           <div className="relative h-44 overflow-hidden">
             <Image
-              alt={'Image'***REMOVED***
+              alt={'Image'}
               className="object-cover transition-all group-hover:scale-105"
               fill
-              src={image + '?width=600&format=webp'***REMOVED***
+              src={image + '?width=600&format=webp'}
             />
           </div>
         </div>
       </Link>
     </div>
   )
-***REMOVED***
+}

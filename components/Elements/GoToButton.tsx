@@ -1,49 +1,49 @@
 import Link from 'next/link'
 
-import { Button ***REMOVED*** from './Button'
+import { Button } from './Button'
 
 interface ButtonProps {
   type: 'climate' | 'mobility' | 'energy' | 'building'
-***REMOVED***
+}
 
-export function GoToButton({ type ***REMOVED***: ButtonProps) {
+export function GoToButton({ type }: ButtonProps) {
   if (type === 'climate') {
     return (
       <Link href="/klima">
-        <Button size={'link'***REMOVED*** variant={'goToClimate'***REMOVED***>
+        <Button size={'link'} variant={'goToClimate'}>
           zu den Klimadaten
         </Button>
       </Link>
-***REMOVED***
-***REMOVED***
+    )
+  }
   if (type === 'mobility') {
     return (
-      <Link href={'/mobilitaet'***REMOVED***>
-        <Button size={'link'***REMOVED*** variant={'goToMobility'***REMOVED***>
+      <Link href={'/mobilitaet'}>
+        <Button size={'link'} variant={'goToMobility'}>
           zu den Mobilitätsdaten
         </Button>
       </Link>
-***REMOVED***
-***REMOVED***
+    )
+  }
   if (type === 'energy') {
     return (
-      <Link href={'/energie'***REMOVED***>
-        <Button size={'link'***REMOVED*** variant={'goToEnergy'***REMOVED***>
+      <Link href={'/energie'}>
+        <Button size={'link'} variant={'goToEnergy'}>
           zu den Energiedaten
         </Button>
       </Link>
-***REMOVED***
-***REMOVED***
+    )
+  }
   if (type === 'building') {
     return (
-      <Link href={'/gebaeude'***REMOVED***>
-        <Button size={'link'***REMOVED*** variant={'goToBuildings'***REMOVED***>
+      <Link href={'/gebaeude'}>
+        <Button size={'link'} variant={'goToBuildings'}>
           zu den Gebäudedaten
         </Button>
       </Link>
-***REMOVED***
-***REMOVED***
+    )
+  }
 
   // this should never be reached
   return <Button>zu den Daten</Button>
-***REMOVED***
+}

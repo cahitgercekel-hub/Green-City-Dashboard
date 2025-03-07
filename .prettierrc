@@ -10,4 +10,4 @@
   "jsxBracketSameLine": false,
   "arrowParens": "avoid",
   "plugins": ["prettier-plugin-tailwindcss"]
-***REMOVED***
+}

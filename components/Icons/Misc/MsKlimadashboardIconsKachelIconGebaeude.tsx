@@ -1,18 +1,18 @@
 import * as React from 'react'
-import type { SVGProps ***REMOVED*** from 'react'
+import type { SVGProps } from 'react'
 function SvgMsKlimadashboardIconsKachelIconGebaeude(props: SVGProps<SVGSVGElement>) {
   return <svg
     data-name="Ebene 1"
     id="MS_Klimadashboard_Icons_Kachel_Icon_Gebaeude_svg__Ebene_1"
     viewBox="0 0 73 52"
     xmlns="http://www.w3.org/2000/svg"
-    {...props***REMOVED***
+    {...props}
   >
     <defs>
       <style>
-  ***REMOVED***
-          '.MS_Klimadashboard_Icons_Kachel_Icon_Gebaeude_svg__cls-1{fill:#9d9de6***REMOVED***'
-      ***REMOVED***
+        {
+          '.MS_Klimadashboard_Icons_Kachel_Icon_Gebaeude_svg__cls-1{fill:#9d9de6}'
+        }
       </style>
     </defs>
     <path
@@ -28,5 +28,5 @@ function SvgMsKlimadashboardIconsKachelIconGebaeude(props: SVGProps<SVGSVGElemen
       d="M35.03 41.38H26.8c-.69 0-1.25-.56-1.25-1.25V26.85c0-.69.56-1.25 1.25-1.25h8.16c.69 0 1.25.56 1.25 1.25v6.34a1.25 1.25 0 0 1-2.5 0V28.1h-5.66v10.78h6.98a1.25 1.25 0 0 1 0 2.5Z"
     />
   </svg>
-***REMOVED***
+}
 export default SvgMsKlimadashboardIconsKachelIconGebaeude

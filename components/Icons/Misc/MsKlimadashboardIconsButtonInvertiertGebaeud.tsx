@@ -1,18 +1,18 @@
 import * as React from 'react'
-import type { SVGProps ***REMOVED*** from 'react'
+import type { SVGProps } from 'react'
 function SvgMsKlimadashboardIconsButtonInvertiertGebaeud(props: SVGProps<SVGSVGElement>) {
   return <svg
     data-name="Ebene 1"
     id="MS_Klimadashboard_Icons_Button_invertiert_Gebaeud_svg__Ebene_1"
     viewBox="0 0 46.34 43"
     xmlns="http://www.w3.org/2000/svg"
-    {...props***REMOVED***
+    {...props}
   >
     <defs>
       <style>
-  ***REMOVED***
-          '.MS_Klimadashboard_Icons_Button_invertiert_Gebaeud_svg__cls-1{fill:#fff***REMOVED***'
-      ***REMOVED***
+        {
+          '.MS_Klimadashboard_Icons_Button_invertiert_Gebaeud_svg__cls-1{fill:#fff}'
+        }
       </style>
     </defs>
     <path
@@ -28,5 +28,5 @@ function SvgMsKlimadashboardIconsButtonInvertiertGebaeud(props: SVGProps<SVGSVGE
       d="M22.32 35.89h-7.49c-.69 0-1.25-.56-1.25-1.25V22.56c0-.69.56-1.25 1.25-1.25h7.42c.69 0 1.25.56 1.25 1.25v5.76a1.25 1.25 0 0 1-2.5 0v-4.51h-4.92v9.58h6.24a1.25 1.25 0 0 1 0 2.5Z"
     />
   </svg>
-***REMOVED***
+}
 export default SvgMsKlimadashboardIconsButtonInvertiertGebaeud

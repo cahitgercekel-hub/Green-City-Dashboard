@@ -9,8 +9,8 @@ import {
   MsKlimadashboardIconsGSchule,
   MsKlimadashboardIconsGSportSentruperHoehe,
   MsKlimadashboardIconsGStadtweinhaus,
-***REMOVED*** from '@/components/Icons/Gebaeude'
-import { JSX, SVGProps ***REMOVED*** from 'react'
+} from '@/components/Icons/Gebaeude'
+import { JSX, SVGProps } from 'react'
 import EnergyConsumptionChart from './EnergyConsumptionChart'
 import LabelSeperator from './LabelSeperator'
 
@@ -20,7 +20,7 @@ type DataType = {
   sentruper: number | null
   rathaus: number | null
   'freiherr-von-stein': number | null
-***REMOVED***
+}
 
 type Building = Omit<DataType, 'Datum'>
 
@@ -29,7 +29,7 @@ const buildings: Record<keyof Building, string> = {
   stadtbuecherei: 'Stadtbücherei',
   sentruper: 'Sportanlage Sentruper Höhe',
   'freiherr-von-stein': 'Freiherr-vom-Stein-Gymnasium',
-***REMOVED***
+}
 
 const buildingIcon: Record<
   keyof Building,
@@ -39,15 +39,15 @@ const buildingIcon: Record<
   sentruper: MsKlimadashboardIconsGSportSentruperHoehe,
   rathaus: MsKlimadashboardIconsGStadtweinhaus,
   'freiherr-von-stein': MsKlimadashboardIconsGSchule,
-***REMOVED***
+}
 
 function getBuildingIcon(
   building: keyof Building,
   props?: SVGProps<SVGSVGElement>,
 ) {
   const Icon = buildingIcon[building]
-  return <Icon {...props***REMOVED*** />
-***REMOVED***
+  return <Icon {...props} />
+}
 
 function getData(
   mode: 'strom' | 'waerme',
@@ -61,7 +61,7 @@ function getData(
   )
 
   return filteredYear.map(d => d[building]).filter(d => d !== null) as number[]
-***REMOVED***
+}
 
 function getYearSum(
   mode: 'strom' | 'waerme',
@@ -71,7 +71,7 @@ function getYearSum(
   const data = getData(mode, building, year)
 
   return data.reduce((a, b) => a + b, 0)
-***REMOVED***
+}
 
 const years = Array.from(
   new Set(
@@ -82,32 +82,32 @@ const years = Array.from(
 interface MobileViewProps {
   mode: 'strom' | 'waerme'
   yearIndex: number
-***REMOVED***
+}
 
-export default function MobileView({ mode, yearIndex ***REMOVED***: MobileViewProps) {
+export default function MobileView({ mode, yearIndex }: MobileViewProps) {
   return (
     <Carousel
       arrows
       options={{
         gap: '4rem',
-    ***REMOVED******REMOVED***
+      }}
       pagination
     >
-***REMOVED***Object.keys(buildings).map(building => {
+      {Object.keys(buildings).map(building => {
         const sum = getYearSum(
           mode,
           building as keyof Building,
           years[yearIndex],
-    ***REMOVED***
+        )
 
         return (
-          <div key={building***REMOVED***>
+          <div key={building}>
             <div className="flex gap-2">
               <Title as="h4" className="h-20 flex-1" variant="building">
-          ***REMOVED***buildings[building as keyof Building]***REMOVED***
+                {buildings[building as keyof Building]}
               </Title>
               <div className="mx-auto flex h-[80px] w-[80px] justify-end">
-          ***REMOVED***getBuildingIcon(building as keyof Building)***REMOVED***
+                {getBuildingIcon(building as keyof Building)}
               </div>
             </div>
             <LabelSeperator>Monatlicher Verbrauch</LabelSeperator>
@@ -117,33 +117,33 @@ export default function MobileView({ mode, yearIndex ***REMOVED***: MobileViewPr
                   mode,
                   building as keyof Building,
                   years[yearIndex],
-            ***REMOVED******REMOVED***
+                )}
               />
             </div>
             <LabelSeperator>
-        ***REMOVED***years[yearIndex] === new Date().getFullYear()
+              {years[yearIndex] === new Date().getFullYear()
                 ? 'Jahresverbrauch bisher'
-                : 'Jahresverbrauch'***REMOVED***
+                : 'Jahresverbrauch'}
             </LabelSeperator>
             <div className="flex w-full gap-1 p-2">
-        ***REMOVED***sum === 0 ? (
+              {sum === 0 ? (
                 <Title as="h4" variant="building">
                   fehlende Daten
                 </Title>
-          ***REMOVED*** : (
+              ) : (
                 <>
                   <Title as="h4" variant="building">
-                    <AnimatedNumber decimals={0***REMOVED***>{sum***REMOVED***</AnimatedNumber>
+                    <AnimatedNumber decimals={0}>{sum}</AnimatedNumber>
                   </Title>
                   <Title as="h4" font="normal" variant="building">
                     kWh
                   </Title>
                 </>
-          ***REMOVED******REMOVED***
+              )}
             </div>
           </div>
-    ***REMOVED***
-    ***REMOVED***)***REMOVED***
+        )
+      })}
     </Carousel>
   )
-***REMOVED***
+}

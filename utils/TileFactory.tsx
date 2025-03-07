@@ -26,17 +26,17 @@ import PassengerTile from '@/components/Tiles/Mobility/PassengerTile'
 import TrafficloadTile from '@/components/Tiles/Mobility/TrafficloadTile'
 import SuccessStoryTile, {
   SuccessStoryTileProps,
-***REMOVED*** from '@/components/Tiles/SuccessStory'
-import SurveyTile, { SurveyTileProps ***REMOVED*** from '@/components/Tiles/Survey'
-import { getSuccessStoryData ***REMOVED*** from '@/lib/api/getSuccessStoryData'
-import { getSurveyData ***REMOVED*** from '@/lib/api/getSurveyData'
+} from '@/components/Tiles/SuccessStory'
+import SurveyTile, { SurveyTileProps } from '@/components/Tiles/Survey'
+import { getSuccessStoryData } from '@/lib/api/getSuccessStoryData'
+import { getSurveyData } from '@/lib/api/getSurveyData'
 import {
   BuildingsTypes,
   ClimateTypes,
   EnergyTypes,
   MobilityTypes,
   TileTypePrefix,
-***REMOVED*** from '@/types/tile'
+} from '@/types/tile'
 
 type TileTypeSuffix =
   | ClimateTypes
@@ -51,13 +51,13 @@ type SurveyTileType = 'survey'
 export type TileType =
   | SuccessStoryTileType
   | SurveyTileType
-  | `${TileTypePrefix***REMOVED***-${TileTypeSuffix***REMOVED***`
+  | `${TileTypePrefix}-${TileTypeSuffix}`
 
 interface TileFactoryProps {
   type: TileType
   successStoryData?: SuccessStoryTileProps
   surveyData?: SurveyTileProps
-***REMOVED***
+}
 
 /**
  * The TileFactory is a helper function to create tiles dynamically.
@@ -68,30 +68,30 @@ interface TileFactoryProps {
 export default async function TileFactory({
   type,
   ...props
-***REMOVED***: TileFactoryProps) {
+}: TileFactoryProps) {
   if (type.startsWith('survey')) {
     const [_, id] = type.split('survey-')
     if (props.surveyData) {
-      return <SurveyTile {...props.surveyData***REMOVED*** />
-  ***REMOVED***
+      return <SurveyTile {...props.surveyData} />
+    }
     const data = await getSurveyData(id)
     if (!data) {
       return null
-  ***REMOVED***
-    return <SurveyTile {...data***REMOVED*** />
-***REMOVED***
+    }
+    return <SurveyTile {...data} />
+  }
 
   if (type.startsWith('successStory')) {
     const [_, id] = type.split('successStory-')
     if (props.successStoryData) {
-      return <SuccessStoryTile {...props.successStoryData***REMOVED*** />
-  ***REMOVED***
+      return <SuccessStoryTile {...props.successStoryData} />
+    }
     const data = await getSuccessStoryData(id)
     if (!data) {
       return null
-  ***REMOVED***
-    return <SuccessStoryTile {...data***REMOVED*** />
-***REMOVED***
+    }
+    return <SuccessStoryTile {...data} />
+  }
 
   switch (type) {
     // ---- WEATHER ----
@@ -156,5 +156,5 @@ export default async function TileFactory({
 
     default:
       return null
-***REMOVED***
-***REMOVED***
+  }
+}

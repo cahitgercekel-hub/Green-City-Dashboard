@@ -9,18 +9,18 @@ export default function Cookies() {
         background: '#aab315',
         color: '#fff',
         borderRadius: '4px',
-    ***REMOVED******REMOVED***
+      }}
       buttonText="Akzeptieren"
       declineButtonStyle={{
         borderRadius: '4px',
-    ***REMOVED******REMOVED***
+      }}
       declineButtonText="Ablehnen"
       enableDeclineButton
       style={{
         background: '#005b79',
-    ***REMOVED******REMOVED***
+      }}
     >
       Einwilligung zu Cookies (Analytics, Tracking)
     </CookieConsent>
   )
-***REMOVED***
+}

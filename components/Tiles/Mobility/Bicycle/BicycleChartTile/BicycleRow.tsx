@@ -7,7 +7,7 @@ type BicycleRowProps = {
   count: number
   min: number
   max: number
-***REMOVED***
+}
 
 function mapBetween(
   currentNum: number,
@@ -19,24 +19,24 @@ function mapBetween(
   return (
     ((maxAllowed - minAllowed) * (currentNum - min)) / (max - min) + minAllowed
   )
-***REMOVED***
+}
 
-export default function BicycleRow({ name, count, min, max ***REMOVED***: BicycleRowProps) {
+export default function BicycleRow({ name, count, min, max }: BicycleRowProps) {
   const progress = mapBetween(count, min * 0.9, max * 1.1)
 
   return (
     <div className="my-2 flex w-full items-end">
       <div className="w-28 flex-none md:w-40">
-        <Title as={'h5'***REMOVED*** variant={'primary'***REMOVED***>
-    ***REMOVED***name***REMOVED***
+        <Title as={'h5'} variant={'primary'}>
+          {name}
         </Title>
-        <Title as={'h3'***REMOVED*** variant={'mobility'***REMOVED***>
-          <AnimatedNumber>{count***REMOVED***</AnimatedNumber>
+        <Title as={'h3'} variant={'mobility'}>
+          <AnimatedNumber>{count}</AnimatedNumber>
         </Title>
       </div>
       <div className="mb-2 flex-1 md:mb-0">
-        <BicycleProgress progress={progress***REMOVED*** />
+        <BicycleProgress progress={progress} />
       </div>
     </div>
   )
-***REMOVED***
+}

@@ -10,7 +10,7 @@ export type Condition =
 export interface BrightSkyResponse {
   weather: Weather[]
   sources: Source[]
-***REMOVED***
+}
 
 export interface Weather {
   timestamp: string
@@ -41,7 +41,7 @@ export interface Weather {
     | 'snow'
     | 'hail'
     | 'thunderstorm'
-***REMOVED***
+}
 
 export interface Source {
   id: number
@@ -55,4 +55,4 @@ export interface Source {
   first_record: string
   last_record: string
   distance: number
-***REMOVED***
+}

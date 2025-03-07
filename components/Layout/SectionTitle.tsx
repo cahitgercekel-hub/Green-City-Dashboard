@@ -3,11 +3,11 @@ import {
   MsKlimadashboardIconsButtonAktivGebaeude,
   MsKlimadashboardIconsButtonAktivKlima,
   MsKlimadashboardIconsButtonAktivMobil,
-***REMOVED*** from '@/components/Icons/Misc'
-import { cva, cx, VariantProps ***REMOVED*** from 'class-variance-authority'
+} from '@/components/Icons/Misc'
+import { cva, cx, VariantProps } from 'class-variance-authority'
 import Title from '../Elements/Title'
 
-import { JSX, SVGProps ***REMOVED*** from 'react'
+import { JSX, SVGProps } from 'react'
 
 const sectionHeaderStyle = cva('', {
   variants: {
@@ -19,74 +19,74 @@ const sectionHeaderStyle = cva('', {
       impressum: 'text-white',
       datenschutz: 'text-white',
       feedback: 'text-white',
-  ***REMOVED***,
-***REMOVED***,
-***REMOVED***)
+    },
+  },
+})
 
 export default function SectionTitle({
   variant,
   large,
-***REMOVED***: VariantProps<typeof sectionHeaderStyle> & {
+}: VariantProps<typeof sectionHeaderStyle> & {
   large?: boolean
-***REMOVED***) {
+}) {
   let title: string | React.ReactNode = 'Münster'
   let Icon: ((_: SVGProps<SVGSVGElement>) => JSX.Element) | undefined =
     MsKlimadashboardIconsButtonAktivKlima
 
   if (variant === 'climate') {
     title = 'Klima in Münster'
-***REMOVED***
+  }
   if (variant === 'mobility') {
     title = 'Mobilität'
     Icon = MsKlimadashboardIconsButtonAktivMobil
-***REMOVED***
+  }
   if (variant === 'building') {
     title = 'Gebäude'
     Icon = MsKlimadashboardIconsButtonAktivGebaeude
-***REMOVED***
+  }
   if (variant === 'energy') {
     title = 'Energie'
     Icon = MsKlimadashboardIconsButtonAktivEnergieV1
-***REMOVED***
+  }
   if (variant === 'impressum') {
     title = 'Impressum'
     Icon = undefined
-***REMOVED***
+  }
   if (variant === 'datenschutz') {
     title = 'Datenschutz'
     Icon = undefined
-***REMOVED***
+  }
   if (variant === 'feedback') {
     title = (
       <span>
         Mit Ihren Daten - <br /> für Ihre Kommune
       </span>
-***REMOVED***
+    )
     Icon = undefined
-***REMOVED***
+  }
 
   return (
     <div className="flex items-center space-x-4">
-***REMOVED***Icon && (
+      {Icon && (
         <div
           className={cx(
             'h-14 w-20 rounded-lg border-2 p-2',
-            sectionHeaderStyle({ variant ***REMOVED***),
-      ***REMOVED******REMOVED***
+            sectionHeaderStyle({ variant }),
+          )}
         >
           <Icon className="mx-auto h-full" />
         </div>
-  ***REMOVED******REMOVED***
+      )}
       <Title
-        as={large ? 'h2' : 'h4'***REMOVED***
+        as={large ? 'h2' : 'h4'}
         variant={
           ['impressum', 'datenschutz', 'feedback'].includes(variant!)
             ? 'inverse'
             : 'primary'
-      ***REMOVED***
+        }
       >
-  ***REMOVED***title***REMOVED***
+        {title}
       </Title>
     </div>
   )
-***REMOVED***
+}

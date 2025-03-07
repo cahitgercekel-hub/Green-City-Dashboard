@@ -1,12 +1,12 @@
 import 'server-only'
 
-import { Spacer ***REMOVED*** from '@/components/Elements/Spacer'
+import { Spacer } from '@/components/Elements/Spacer'
 import Title from '@/components/Elements/Title'
 import getTileData from '@/lib/api/getTileData'
-import { cva, cx, VariantProps ***REMOVED*** from 'class-variance-authority'
-import { ForwardRefExoticComponent, JSX, SVGProps ***REMOVED*** from 'react'
-import { BaseTile, EmbedTileProps ***REMOVED*** from './BaseTile'
-import { TileSplitView ***REMOVED*** from './TileSplitView'
+import { cva, cx, VariantProps } from 'class-variance-authority'
+import { ForwardRefExoticComponent, JSX, SVGProps } from 'react'
+import { BaseTile, EmbedTileProps } from './BaseTile'
+import { TileSplitView } from './TileSplitView'
 
 const iconTileTitleStyle = cva('', {
   variants: {
@@ -18,17 +18,17 @@ const iconTileTitleStyle = cva('', {
       building: 'text-buildings',
       energy: 'text-energy',
       data: 'text-secondary',
-  ***REMOVED***,
-***REMOVED***,
+    },
+  },
   defaultVariants: {
     variant: 'primary',
-***REMOVED***,
-***REMOVED***)
+  },
+})
 
 export type DataSourceProps = {
   dataRetrieval?: string
   dataSource: string
-***REMOVED***
+}
 
 export type IconTileProps = VariantProps<typeof iconTileTitleStyle> &
   DataSourceProps &
@@ -41,7 +41,7 @@ export type IconTileProps = VariantProps<typeof iconTileTitleStyle> &
       | ((_props: SVGProps<SVGSVGElement>) => JSX.Element)
     live?: boolean
     rightAlignedExtra?: React.ReactElement
-***REMOVED***
+  }
 
 /**
  * A tile that has an icon on top right
@@ -59,96 +59,96 @@ export default async function IconTile({
   dataSource,
   embedId,
   rightAlignedExtra,
-***REMOVED***: IconTileProps) {
+}: IconTileProps) {
   const Icon = icon
 
   const data = await getTileData(embedId!)
 
   return (
     <BaseTile
-      embedId={embedId***REMOVED***
-      isFullWidth={data?.full_width***REMOVED***
-      moreInfo={data?.details***REMOVED***
-      source={data?.data_url***REMOVED***
-      variant={variant***REMOVED***
+      embedId={embedId}
+      isFullWidth={data?.full_width}
+      moreInfo={data?.details}
+      source={data?.data_url}
+      variant={variant}
     >
       <div className="px-2.5">
         <div className="absolute right-16 top-16 hidden lg:block">
           <Icon
             className={cx(
               'h-[29px] w-auto flex-shrink-0 opacity-40 md:h-[50px]',
-              iconTileTitleStyle({ variant ***REMOVED***),
-        ***REMOVED******REMOVED***
+              iconTileTitleStyle({ variant }),
+            )}
           />
         </div>
-  ***REMOVED***title && (
+        {title && (
           <div className="relative flex items-center justify-between">
             <div className="flex flex-wrap items-center justify-start gap-x-4 lg:max-w-[87%]">
               <Title
-                as={'h1'***REMOVED***
-                className={cx('min-w-fit', iconTileTitleStyle({ variant ***REMOVED***))***REMOVED***
-                font={'normal'***REMOVED***
+                as={'h1'}
+                className={cx('min-w-fit', iconTileTitleStyle({ variant }))}
+                font={'normal'}
               >
-          ***REMOVED***title***REMOVED***
+                {title}
               </Title>
-        ***REMOVED***subtitle && (
+              {subtitle && (
                 <Title
-                  as={'subtitle'***REMOVED***
+                  as={'subtitle'}
                   className="2xl:max-w-[85%]"
-                  color={'dark'***REMOVED***
+                  color={'dark'}
                 >
-            ***REMOVED***subtitle***REMOVED***
+                  {subtitle}
                 </Title>
-          ***REMOVED******REMOVED***
+              )}
             </div>
 
-      ***REMOVED***/* <Icon
+            {/* <Icon
               className={cx(
                 'absolute right-0 top-0 hidden h-[29px] w-auto flex-shrink-0 opacity-40 md:h-[50px] 2xl:block',
-                iconTileTitleStyle({ variant ***REMOVED***),
-          ***REMOVED******REMOVED***
-            /> */***REMOVED***
+                iconTileTitleStyle({ variant }),
+              )}
+            /> */}
           </div>
-    ***REMOVED******REMOVED***
-  ***REMOVED***(title || subtitle) && <Spacer />***REMOVED***
+        )}
+        {(title || subtitle) && <Spacer />}
       </div>
       <>
-  ***REMOVED***!title && !subtitle && (
-          <div className={cx('relative', iconTileTitleStyle({ variant ***REMOVED***))***REMOVED***>
+        {!title && !subtitle && (
+          <div className={cx('relative', iconTileTitleStyle({ variant }))}>
             <Icon className=" absolute right-0 top-0 hidden h-[50px] w-auto opacity-40 2xl:block" />
           </div>
-    ***REMOVED******REMOVED***
+        )}
       </>
 
-      <>{children***REMOVED***</>
+      <>{children}</>
       <Spacer />
       <TileSplitView>
         <TileSplitView.Left>
           <div className="flex flex-wrap justify-between">
-      ***REMOVED***/* <div className="space-x-2 text-xs ">
+            {/* <div className="space-x-2 text-xs ">
               <Title
                 as="h7"
                 className="inline"
                 font="semibold"
-                variant={'primary'***REMOVED***
+                variant={'primary'}
               >
-                Datenstand: {dataRetrieval ?? (live ? 'live' : 'undefined')***REMOVED***
+                Datenstand: {dataRetrieval ?? (live ? 'live' : 'undefined')}
               </Title>
               <Title
                 as="h7"
                 className="inline"
                 font="normal"
-                variant={'primary'***REMOVED***
+                variant={'primary'}
               >
-                Quelle: {dataSource***REMOVED***
+                Quelle: {dataSource}
               </Title>
-            </div> */***REMOVED***
-            <div>{rightAlignedExtra***REMOVED***</div>
+            </div> */}
+            <div>{rightAlignedExtra}</div>
           </div>
         </TileSplitView.Left>
-  ***REMOVED***/* @TODO : Check if we needed this, removing fixes layout issues. */***REMOVED***
-  ***REMOVED***/* <div className="w-[272px]" /> */***REMOVED***
+        {/* @TODO : Check if we needed this, removing fixes layout issues. */}
+        {/* <div className="w-[272px]" /> */}
       </TileSplitView>
     </BaseTile>
   )
-***REMOVED***
+}

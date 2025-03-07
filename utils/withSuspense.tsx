@@ -1,4 +1,4 @@
-import { JSX, Suspense ***REMOVED*** from 'react'
+import { JSX, Suspense } from 'react'
 
 const withSuspense = (
   WrappedComponent: () => JSX.Element | Promise<JSX.Element>,
@@ -6,10 +6,10 @@ const withSuspense = (
 ) =>
   function () {
     return (
-      <Suspense fallback={FallbackComponent***REMOVED***>
+      <Suspense fallback={FallbackComponent}>
         <WrappedComponent />
       </Suspense>
-***REMOVED***
-***REMOVED***
+    )
+  }
 
 export default withSuspense

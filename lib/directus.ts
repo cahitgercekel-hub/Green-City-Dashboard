@@ -1,5 +1,5 @@
-import { TileType ***REMOVED*** from '@/utils/TileFactory'
-import { rest ***REMOVED*** from '@directus/sdk'
+import { TileType } from '@/utils/TileFactory'
+import { rest } from '@directus/sdk'
 
 const directusUrl =
   process.env.NEXT_PUBLIC_DIRECTUS_URL || 'http://localhost:8055'
@@ -22,8 +22,8 @@ export type MainPage = {
     item: string
     collection: typeof tileCollectionName | typeof surveyCollectionName
     sort: number
-***REMOVED***[]
-***REMOVED***
+  }[]
+}
 
 export type Collection = {
   id: string
@@ -38,8 +38,8 @@ export type Collection = {
     item: string
     collection: typeof tileCollectionName | typeof surveyCollectionName
     sort: number
-***REMOVED***[]
-***REMOVED***
+  }[]
+}
 
 export type CollectionTile = {
   id: string
@@ -50,7 +50,7 @@ export type CollectionTile = {
     | typeof surveyCollectionName
     | typeof successStoriesCollectionName
   sort: number
-***REMOVED***
+}
 
 export type Tile = {
   // id: string
@@ -61,7 +61,7 @@ export type Tile = {
   details: string
   data_url: string
   info: string
-***REMOVED***
+}
 
 export type SuccessStory = {
   id: string
@@ -72,7 +72,7 @@ export type SuccessStory = {
   image_position: 'left' | 'right'
   category: string
   details: string
-***REMOVED***
+}
 
 export type Survey = {
   id: string
@@ -84,7 +84,7 @@ export type Survey = {
   category: string
   dataSource: string
   dataRetrieval: Date
-***REMOVED***
+}
 
 export type Theme = {
   id: string
@@ -114,13 +114,13 @@ export type Theme = {
   font: string
   // success stories
   success_stories_title: string
-***REMOVED***
+}
 
 export type Section = {
   title: string
   tiles: CollectionTile[]
   icon: string
-***REMOVED***
+}
 
 interface DirectusSchema {
   theme: Theme
@@ -129,11 +129,11 @@ interface DirectusSchema {
   survey: Survey[]
   successStory: SuccessStory[]
   sections: Section[]
-***REMOVED***
+}
 
 // const directus = new Directus<DirectusCollection>(directusUrl)
 
-import { createDirectus ***REMOVED*** from '@directus/sdk'
+import { createDirectus } from '@directus/sdk'
 
 const directus = createDirectus<DirectusSchema>(
   process.env.NEXT_PUBLIC_DIRECTUS_URL!,
@@ -142,16 +142,16 @@ const directus = createDirectus<DirectusSchema>(
 export default directus
 
 export function directusImage(image: string) {
-  return `${process.env.NEXT_PUBLIC_DIRECTUS_URL***REMOVED***/assets/${image***REMOVED***`
-***REMOVED***
+  return `${process.env.NEXT_PUBLIC_DIRECTUS_URL}/assets/${image}`
+}
 
 function parseStatus(input: string | undefined): DirectusStatus | undefined {
   if (input === 'published' || input === 'draft' || input === 'archived') {
     return input as DirectusStatus
-***REMOVED***
+  }
 
   return undefined
-***REMOVED***
+}
 
 export const ENV_DIRECTUS_ITEM_STATUS: DirectusStatus =
   parseStatus(process.env.DIRECTUS_ITEM_STATUS) || 'published'

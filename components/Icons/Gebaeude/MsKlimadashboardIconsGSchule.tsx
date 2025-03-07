@@ -1,16 +1,16 @@
 import * as React from 'react'
-import type { SVGProps ***REMOVED*** from 'react'
+import type { SVGProps } from 'react'
 function SvgMsKlimadashboardIconsGSchule(props: SVGProps<SVGSVGElement>) {
   return <svg
     data-name="Ebene 1"
     id="MS_Klimadashboard_Icons_g_schule_svg__Ebene_1"
     viewBox="0 0 177.93 157.11"
     xmlns="http://www.w3.org/2000/svg"
-    {...props***REMOVED***
+    {...props}
   >
     <defs>
       <style>
-  ***REMOVED***'.MS_Klimadashboard_Icons_g_schule_svg__cls-1{fill:#6060d6***REMOVED***'***REMOVED***
+        {'.MS_Klimadashboard_Icons_g_schule_svg__cls-1{fill:#6060d6}'}
       </style>
     </defs>
     <path
@@ -34,5 +34,5 @@ function SvgMsKlimadashboardIconsGSchule(props: SVGProps<SVGSVGElement>) {
       d="M93.34 73.74c-.51 0-.99-.32-1.18-.83l-2.74-7.67c-.23-.65.11-1.37.76-1.6.65-.23 1.37.11 1.6.76l2.74 7.67c.23.65-.11 1.37-.76 1.6-.14.05-.28.07-.42.07ZM104.73 146.55c-.69 0-1.25-.56-1.25-1.25v-42.42H77.07v42.42a1.25 1.25 0 0 1-2.5 0v-43.67c0-.69.56-1.25 1.25-1.25h28.91c.69 0 1.25.56 1.25 1.25v43.67c0 .69-.56 1.25-1.25 1.25Z"
     />
   </svg>
-***REMOVED***
+}
 export default SvgMsKlimadashboardIconsGSchule

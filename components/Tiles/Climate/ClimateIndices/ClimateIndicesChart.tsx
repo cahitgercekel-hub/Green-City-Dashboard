@@ -1,10 +1,10 @@
 'use client'
 
 import climateIndicesData from '@/assets/data/climate_indices.json'
-import { ReactECharts ***REMOVED*** from '@/components/Charts/ReactECharts'
+import { ReactECharts } from '@/components/Charts/ReactECharts'
 import Switch from '@/components/Inputs/Switch'
-import { getYear, parse ***REMOVED*** from 'date-fns'
-import { LineSeriesOption ***REMOVED*** from 'echarts'
+import { getYear, parse } from 'date-fns'
+import { LineSeriesOption } from 'echarts'
 
 import Title from '@/components/Elements/Title'
 import {
@@ -13,14 +13,14 @@ import {
   MsKlimadashboardIconsKlimakenntageHeiss,
   MsKlimadashboardIconsKlimakenntageSommer,
   MsKlimadashboardIconsKlimakenntageTropennacht,
-***REMOVED*** from '@/components/Icons/Klima'
+} from '@/components/Icons/Klima'
 import useDevice from '@/hooks/useDevice'
 import tailwindConfig from '@/tailwind.config.js'
-import { chartFormatter ***REMOVED*** from '@/utils/chartFormatter'
-import { ForwardRefExoticComponent, JSX, SVGProps, useState ***REMOVED*** from 'react'
+import { chartFormatter } from '@/utils/chartFormatter'
+import { ForwardRefExoticComponent, JSX, SVGProps, useState } from 'react'
 import resolveConfig from 'tailwindcss/resolveConfig'
 
-const { theme ***REMOVED*** = resolveConfig(tailwindConfig)
+const { theme } = resolveConfig(tailwindConfig)
 
 export type IndicesTypes =
   | 'eistage'
@@ -38,7 +38,7 @@ type ClimateIndex = {
   sommertage: number
   timestamp: string
   tropennaechte: number
-***REMOVED***
+}
 
 const STARTING_YEAR = 1990
 
@@ -56,13 +56,13 @@ const getSeries = (property: keyof ClimateIndex) => {
       acc[year] = (acc[year] ?? 0) + (value as number)
 
       return acc
-  ***REMOVED***, {***REMOVED***)
+    }, {})
 
   return Object.entries(arr).map(([year, value]) => [
-    `${year***REMOVED***-01-01T00:00:00.000Z`,
+    `${year}-01-01T00:00:00.000Z`,
     value,
   ])
-***REMOVED***
+}
 
 /**
  * All the indices that are on the chart
@@ -75,7 +75,7 @@ const indices: Record<
       | ForwardRefExoticComponent<SVGProps<SVGSVGElement>>
       | ((_props: SVGProps<SVGSVGElement>) => JSX.Element)
     seriesOption: LineSeriesOption
-***REMOVED***
+  }
 > = {
   heisse_tage: {
     title: 'Heiße Tage (>= 30°C)',
@@ -85,8 +85,8 @@ const indices: Record<
       data: getSeries('heisse_tage'),
       // @ts-ignore
       color: theme?.colors?.energy.DEFAULT || '#6060d6',
-  ***REMOVED***,
-***REMOVED***,
+    },
+  },
   sommertage: {
     title: 'Sommertage (>= 25°C)',
     icon: MsKlimadashboardIconsKlimakenntageSommer,
@@ -95,8 +95,8 @@ const indices: Record<
       data: getSeries('sommertage'),
       // @ts-ignore
       color: theme?.colors?.mobility.DEFAULT || '#6060d6',
-  ***REMOVED***,
-***REMOVED***,
+    },
+  },
   tropennaechte: {
     title: 'Tropennächte (>= 20°C)',
     icon: MsKlimadashboardIconsKlimakenntageTropennacht,
@@ -105,8 +105,8 @@ const indices: Record<
       data: getSeries('tropennaechte'),
       // @ts-ignore
       color: theme?.colors?.buildings.DEFAULT || '#6060d6',
-  ***REMOVED***,
-***REMOVED***,
+    },
+  },
   frosttage: {
     title: 'Frosttage (Min. < 0°C)',
     seriesOption: {
@@ -114,9 +114,9 @@ const indices: Record<
       data: getSeries('frosttage'),
       // @ts-ignore
       color: theme?.colors?.primary.DEFAULT || '#6060d6',
-  ***REMOVED***,
+    },
     icon: MsKlimadashboardIconsKlimakenntageFrost,
-***REMOVED***,
+  },
   eistage: {
     title: 'Eistage (Max. < 0°C)',
     icon: MsKlimadashboardIconsKlimakenntageEis,
@@ -125,9 +125,9 @@ const indices: Record<
       data: getSeries('eistage'),
       // @ts-ignore
       color: theme?.colors?.climate.DEFAULT || '#6060d6',
-  ***REMOVED***,
-***REMOVED***,
-***REMOVED***
+    },
+  },
+}
 
 /**
  *
@@ -139,29 +139,29 @@ function ClimateIndiceToggle({
   type,
   checked,
   onChange,
-***REMOVED***: {
+}: {
   type: IndicesTypes
   checked?: boolean
   onChange?: (_checked: boolean) => void
-***REMOVED***) {
+}) {
   const Icon = indices[type].icon
   return (
     <div className="flex w-full flex-row-reverse items-center justify-between gap-2 lg:flex-row lg:justify-normal lg:gap-4">
       <Switch
-        // defaultChecked={defaultChecked***REMOVED***
-        checked={checked***REMOVED***
-        onCheckedChange={onChange***REMOVED***
-        variant={type***REMOVED***
+        // defaultChecked={defaultChecked}
+        checked={checked}
+        onCheckedChange={onChange}
+        variant={type}
       />
       <div className="flex items-center gap-2 md:w-max md:gap-4">
         <Icon className="aspect-square h-5 md:h-8" />
-        <Title as="h5" variant={type***REMOVED***>
-    ***REMOVED***indices[type].title***REMOVED***
+        <Title as="h5" variant={type}>
+          {indices[type].title}
         </Title>
       </div>
     </div>
   )
-***REMOVED***
+}
 
 //Sample function to calculate trendline points
 const calculateTrendline = (data: [string, number][]): [number, number][] => {
@@ -185,13 +185,13 @@ const calculateTrendline = (data: [string, number][]): [number, number][] => {
     const x = new Date(date).getTime()
     const y = slope * x + intercept
     return [x, y]
-***REMOVED***)
-***REMOVED***
+  })
+}
 
 // Function to count active toggles
 const countActiveToggles = (toggles: Record<IndicesTypes, boolean>): number => {
   return Object.values(toggles).filter(isActive => isActive).length
-***REMOVED***
+}
 
 /**
  *
@@ -208,7 +208,7 @@ export default function ClimateIndicesChart() {
     heisse_tage: true,
     sommertage: false,
     tropennaechte: false,
-***REMOVED***)
+  })
 
   const series: LineSeriesOption[] = Object.keys(indices)
     .filter(e => seriesVisible[e as IndicesTypes])
@@ -217,55 +217,55 @@ export default function ClimateIndicesChart() {
       type: 'line',
       itemStyle: {
         opacity: 0,
-    ***REMOVED***,
+      },
       data: indices[e as IndicesTypes].seriesOption.data?.filter(
         // @ts-ignore
         ([date, _val]) => getYear(new Date(date)) !== new Date().getFullYear(),
-  ***REMOVED***,
-  ***REMOVED***))
+      ),
+    }))
 
   const lastToCurYearSeries: LineSeriesOption[] = Object.keys(indices)
     .filter(e => seriesVisible[e as IndicesTypes])
     .map(e => ({
       ...indices[e as IndicesTypes].seriesOption,
-      name: `${indices[e as IndicesTypes].seriesOption.name***REMOVED***`,
+      name: `${indices[e as IndicesTypes].seriesOption.name}`,
       type: 'line',
       itemStyle: {
         opacity: 0,
-    ***REMOVED***,
+      },
       lineStyle: {
         ...indices[e as IndicesTypes].seriesOption.lineStyle,
         type: 'dashed',
-    ***REMOVED***,
+      },
       tooltip: {
         show: false,
-    ***REMOVED***,
+      },
       data: indices[e as IndicesTypes].seriesOption.data?.filter(
         // @ts-ignore
         ([date, _val]) =>
           getYear(new Date(date)) >= new Date().getFullYear() - 1,
-  ***REMOVED***,
-  ***REMOVED***))
+      ),
+    }))
 
   // this is only added to fix the double tooltip bug
   const onlyCurYearSeries: LineSeriesOption[] = Object.keys(indices)
     .filter(e => seriesVisible[e as IndicesTypes])
     .map(e => ({
       ...indices[e as IndicesTypes].seriesOption,
-      name: `${indices[e as IndicesTypes].seriesOption.name***REMOVED***`,
+      name: `${indices[e as IndicesTypes].seriesOption.name}`,
       type: 'line',
       itemStyle: {
         opacity: 0,
-    ***REMOVED***,
+      },
       lineStyle: {
         ...indices[e as IndicesTypes].seriesOption.lineStyle,
         type: 'dashed',
-    ***REMOVED***,
+      },
       data: indices[e as IndicesTypes].seriesOption.data?.filter(
         // @ts-ignore
         ([date, _val]) => getYear(new Date(date)) == new Date().getFullYear(),
-  ***REMOVED***,
-  ***REMOVED***))
+      ),
+    }))
 
   const isAllChecked: boolean =
     seriesVisible.sommertage || seriesVisible.frosttage
@@ -288,21 +288,21 @@ export default function ClimateIndicesChart() {
             type: 'dotted', // Change to solid line
             color: trendlineColor, // Use the series color
             opacity: 0.3,
-        ***REMOVED***,
+          },
           symbol: 'none', // Hide small circles on the trendline initially
           emphasis: {
             lineStyle: {
               opacity: 1, // Change color on hover
-          ***REMOVED***,
-        ***REMOVED***,
-          markLine: {***REMOVED***,
-      ***REMOVED***
+            },
+          },
+          markLine: {},
+        }
       : null
 
   return (
     <div className="flex h-full w-full flex-col items-center p-5 2xl:flex-row">
       <div className="h-full w-full flex-1">
-        <Title as="h7" font="semibold" variant={'primary'***REMOVED***>
+        <Title as="h7" font="semibold" variant={'primary'}>
           Anzahl <br />
           der Tage
         </Title>
@@ -314,7 +314,7 @@ export default function ClimateIndicesChart() {
                 bottom: 40,
                 left: 40,
                 right: 40,
-            ***REMOVED***,
+              },
               series: [
                 ...series,
                 ...lastToCurYearSeries,
@@ -325,18 +325,18 @@ export default function ClimateIndicesChart() {
                 type: 'time',
                 axisLabel: {
                   fontSize: device === 'mobile' ? 12 : 20,
-              ***REMOVED***,
+                },
                 min: parse(
-                  `${STARTING_YEAR***REMOVED***-01-01`,
+                  `${STARTING_YEAR}-01-01`,
                   'yyyy-MM-dd',
                   new Date(),
-            ***REMOVED***.getTime(),
+                ).getTime(),
                 max: parse(
-                  `${new Date().getFullYear()***REMOVED***-01-01`,
+                  `${new Date().getFullYear()}-01-01`,
                   'yyyy-MM-dd',
                   new Date(),
-            ***REMOVED***.getTime(),
-            ***REMOVED***,
+                ).getTime(),
+              },
               tooltip: {
                 show: true,
                 showDelay: 0,
@@ -344,11 +344,11 @@ export default function ClimateIndicesChart() {
                 // formatter: (params: any) => {
                 //   console.log(params)
 
-                //   return '{b0***REMOVED***: {c0***REMOVED***<br />{b1***REMOVED***: {c1***REMOVED***'
-                // ***REMOVED***,
+                //   return '{b0}: {c0}<br />{b1}: {c1}'
+                // },
                 // return from x-axis only year
                 formatter: chartFormatter,
-            ***REMOVED***,
+              },
               yAxis: {
                 type: 'value',
                 interval: isAllChecked ? 10 : 5,
@@ -357,48 +357,48 @@ export default function ClimateIndicesChart() {
                   formatter: (val: any) => {
                     if (val === 0) {
                       return ''
-                  ***REMOVED***
+                    }
                     return val
-                ***REMOVED***,
-              ***REMOVED***,
-            ***REMOVED***,
+                  },
+                },
+              },
               animation: true,
-          ***REMOVED******REMOVED***
+            }}
             settings={{
               notMerge: true,
-          ***REMOVED******REMOVED***
+            }}
           />
         </div>
       </div>
       <div className="flex h-full flex-col justify-evenly gap-1">
         <ClimateIndiceToggle
-          checked={seriesVisible.heisse_tage***REMOVED***
-          onChange={c => setSeriesVisible({ ...seriesVisible, heisse_tage: c ***REMOVED***)***REMOVED***
+          checked={seriesVisible.heisse_tage}
+          onChange={c => setSeriesVisible({ ...seriesVisible, heisse_tage: c })}
           type="heisse_tage"
         />
         <ClimateIndiceToggle
-          checked={seriesVisible.sommertage***REMOVED***
-          onChange={c => setSeriesVisible({ ...seriesVisible, sommertage: c ***REMOVED***)***REMOVED***
+          checked={seriesVisible.sommertage}
+          onChange={c => setSeriesVisible({ ...seriesVisible, sommertage: c })}
           type="sommertage"
         />
         <ClimateIndiceToggle
-          checked={seriesVisible.tropennaechte***REMOVED***
+          checked={seriesVisible.tropennaechte}
           onChange={c =>
-            setSeriesVisible({ ...seriesVisible, tropennaechte: c ***REMOVED***)
-        ***REMOVED***
+            setSeriesVisible({ ...seriesVisible, tropennaechte: c })
+          }
           type="tropennaechte"
         />
         <ClimateIndiceToggle
-          checked={seriesVisible.frosttage***REMOVED***
-          onChange={c => setSeriesVisible({ ...seriesVisible, frosttage: c ***REMOVED***)***REMOVED***
+          checked={seriesVisible.frosttage}
+          onChange={c => setSeriesVisible({ ...seriesVisible, frosttage: c })}
           type="frosttage"
         />
         <ClimateIndiceToggle
-          checked={seriesVisible.eistage***REMOVED***
-          onChange={c => setSeriesVisible({ ...seriesVisible, eistage: c ***REMOVED***)***REMOVED***
+          checked={seriesVisible.eistage}
+          onChange={c => setSeriesVisible({ ...seriesVisible, eistage: c })}
           type="eistage"
         />
       </div>
     </div>
   )
-***REMOVED***
+}

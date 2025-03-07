@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { SVGProps ***REMOVED*** from 'react'
+import { SVGProps } from 'react'
 
 function SvgPendlerkarte(props: SVGProps<SVGSVGElement>) {
   return (
@@ -8,7 +8,7 @@ function SvgPendlerkarte(props: SVGProps<SVGSVGElement>) {
       viewBox="0 0 554.915 585.578"
       width="554.915"
       xmlns="http://www.w3.org/2000/svg"
-***REMOVED***...props***REMOVED***
+      {...props}
     >
       <g
         data-name="Gruppe 879"
@@ -112,6 +112,6 @@ function SvgPendlerkarte(props: SVGProps<SVGSVGElement>) {
       </g>
     </svg>
   )
-***REMOVED***
+}
 
 export default SvgPendlerkarte

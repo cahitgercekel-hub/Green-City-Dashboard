@@ -1,5 +1,5 @@
 import directus from '@/lib/directus'
-import { readItem ***REMOVED*** from '@directus/sdk'
+import { readItem } from '@directus/sdk'
 
 // super complex and probably overkill function to seperate fill width from normal tiles
 export type BaseTile = {
@@ -8,31 +8,31 @@ export type BaseTile = {
   item: string
   collection: string
   sort: number
-***REMOVED***
+}
 
 export type TilesBucket = {
   tiles: BaseTile[]
   isFullWidth: boolean
-***REMOVED***
+}
 
 // check if a tile should be displayed full width
 const isFullWidth = async (tile: BaseTile) => {
   if (tile.collection === 'successStory') {
     return true
-***REMOVED***
+  }
 
   if (tile.collection === 'survey') {
     return false
-***REMOVED***
+  }
 
   const data = await directus.request(
     readItem('tiles', tile.item, {
       fields: ['full_width'],
-  ***REMOVED***),
+    }),
   )
 
   return data?.full_width === true
-***REMOVED***
+}
 
 /**
  * Some tiles must be displayed full width, while others are displayed as pairs in columns.
@@ -48,29 +48,29 @@ const isFullWidth = async (tile: BaseTile) => {
     id: "A",
     collections_id: "ABC"
     ...
- ***REMOVED***
+   }
    const tileB = {
     id: "B",
     collections_id: "ABC"
     ...
- ***REMOVED***
+   }
    const tileC = {
     id: "C",
     collections_id: "ABC"
     ...
- ***REMOVED***
+   }
 
    const buckets = await getTilesBucket([tileA, tileB, tileC])
 
    [
     {
-        tiles: [{id: "A", collections_id: "ABC" ...***REMOVED***],
+        tiles: [{id: "A", collections_id: "ABC" ...}],
         isFullWidth: true
-  ***REMOVED***
+    }
     {
-        tiles: [{id: "B", collections_id: "ABC" ...***REMOVED***, {id: "C", collections_id: "ABC" ...***REMOVED***],
+        tiles: [{id: "B", collections_id: "ABC" ...}, {id: "C", collections_id: "ABC" ...}],
         isFullWidth: false
-  ***REMOVED***
+    }
    ]
    ```
  *
@@ -85,23 +85,23 @@ const getTilesBucket = async (tiles: BaseTile[]) => {
       a[bucketIndex] = {
         tiles: [],
         isFullWidth: false,
-    ***REMOVED***
-  ***REMOVED***
+      }
+    }
     if (!(await isFullWidth(e))) {
       a[bucketIndex].tiles.push(e)
-  ***REMOVED*** else {
+    } else {
       bucketIndex++
       a[bucketIndex] = {
         tiles: [],
         isFullWidth: true,
-    ***REMOVED***
+      }
       a[bucketIndex].tiles.push(e)
       bucketIndex++
-  ***REMOVED***
+    }
     return a
-***REMOVED***, Promise.resolve<TilesBucket[]>([]))
+  }, Promise.resolve<TilesBucket[]>([]))
 
   return fullWidthIndex
-***REMOVED***
+}
 
 export default getTilesBucket

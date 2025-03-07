@@ -6,9 +6,9 @@ import Providers from '@/components/Layout/Providers'
 import directus, {
   collectionsName,
   ENV_DIRECTUS_ITEM_STATUS,
-***REMOVED*** from '@/lib/directus'
-import { readItems ***REMOVED*** from '@directus/sdk'
-import { notFound ***REMOVED*** from 'next/navigation'
+} from '@/lib/directus'
+import { readItems } from '@directus/sdk'
+import { notFound } from 'next/navigation'
 
 // revalidate each minute
 export const revalidate = 10
@@ -19,59 +19,59 @@ const getCollection = async (collectionSlug: string) => {
       filter: {
         slug: {
           _eq: collectionSlug,
-      ***REMOVED***,
+        },
         status: {
           _eq: ENV_DIRECTUS_ITEM_STATUS,
-      ***REMOVED***,
-    ***REMOVED***,
+        },
+      },
       fields: ['title', 'description'],
-  ***REMOVED***),
+    }),
   )
 
   return data
-***REMOVED***
+}
 
-type Params = Promise<{ slug: string ***REMOVED***>
+type Params = Promise<{ slug: string }>
 
 export default async function Layout(
   props: {
     children: React.ReactNode
     params?: Promise<Params>
-***REMOVED***
+  }
 ) {
   const params = await props.params;
 
   const {
     children
-***REMOVED*** = props;
+  } = props;
 
   if (!params) {
     return notFound()
-***REMOVED***
+  }
 
-  const { slug ***REMOVED*** = await params
+  const { slug } = await params
 
   if (!slug) {
     return notFound()
-***REMOVED***
+  }
 
   const collection = await getCollection(slug)
 
   if (!collection) {
     return notFound()
-***REMOVED***
+  }
 
-  const { title, description ***REMOVED*** = collection[0]
+  const { title, description } = collection[0]
 
   return (
     <div className="flex h-screen flex-col">
-      <CollectionNavbar description={description || ''***REMOVED*** title={title***REMOVED*** />
+      <CollectionNavbar description={description || ''} title={title} />
       <Container className="flex-1">
         <Providers>
-          <AnimatedPage>{children***REMOVED***</AnimatedPage>
+          <AnimatedPage>{children}</AnimatedPage>
         </Providers>
       </Container>
       <Footer />
     </div>
   )
-***REMOVED***
+}

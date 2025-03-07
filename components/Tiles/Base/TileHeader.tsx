@@ -1,13 +1,13 @@
 import Link from 'next/link'
 
-import { cva, cx, VariantProps ***REMOVED*** from 'class-variance-authority'
+import { cva, cx, VariantProps } from 'class-variance-authority'
 
 import {
   MsKlimadashboardIconsNaviDownload,
   MsKlimadashboardIconsNaviKachelImplementieren,
   MsKlimadashboardIconsNaviTeilen,
-***REMOVED*** from '@/components/Icons/Misc/Navi'
-import { ForwardRefExoticComponent, JSX, SVGProps ***REMOVED*** from 'react'
+} from '@/components/Icons/Misc/Navi'
+import { ForwardRefExoticComponent, JSX, SVGProps } from 'react'
 
 const iconTileTitleStyle = cva('', {
   variants: {
@@ -21,24 +21,24 @@ const iconTileTitleStyle = cva('', {
       energy: 'text-energy',
       inverse: 'text-white',
       data: 'text-secondary',
-  ***REMOVED***,
-***REMOVED***,
+    },
+  },
   defaultVariants: {
     variant: 'primary',
-***REMOVED***,
-***REMOVED***)
+  },
+})
 
 const tileHeaderStyle = cva('flex flex-1 gap-2', {
   variants: {
     variant: {
       primary: 'text-primary fill-primary',
       inverse: 'text-white fill-white',
-  ***REMOVED***,
-***REMOVED***,
+    },
+  },
   defaultVariants: {
     variant: 'primary',
-***REMOVED***,
-***REMOVED***)
+  },
+})
 
 type TileHeaderProps = VariantProps<typeof iconTileTitleStyle> & {
   onEmbedClick?: () => void
@@ -50,7 +50,7 @@ type TileHeaderProps = VariantProps<typeof iconTileTitleStyle> & {
   icon?:
     | ForwardRefExoticComponent<SVGProps<SVGSVGElement>>
     | ((_props: SVGProps<SVGSVGElement>) => JSX.Element)
-***REMOVED***
+}
 
 /**
  * A footer for all tiles with sharing, export and embed button as well as a more information link
@@ -62,7 +62,7 @@ export default function TileHeader({
   variant,
   dataURL,
   icon,
-***REMOVED***: TileHeaderProps) {
+}: TileHeaderProps) {
   function IconButtons() {
     const Icon = icon
     return (
@@ -72,43 +72,43 @@ export default function TileHeader({
           variant === 'secondary'
             ? 'fill-white text-white'
             : 'fill-primary text-primary',
-    ***REMOVED******REMOVED***
+        )}
       >
         <div>
           <MsKlimadashboardIconsNaviKachelImplementieren
             className="h-6 w-6 cursor-pointer stroke-2"
-            onClick={onEmbedClick***REMOVED***
+            onClick={onEmbedClick}
           />
         </div>
         <div>
           <MsKlimadashboardIconsNaviTeilen
             className="h-6 w-6 cursor-pointer stroke-2"
-            onClick={onShareClick***REMOVED***
+            onClick={onShareClick}
           />
         </div>
-  ***REMOVED***dataURL && (
-          <Link className="fill-inherit" href={dataURL***REMOVED*** target="_blank">
+        {dataURL && (
+          <Link className="fill-inherit" href={dataURL} target="_blank">
             <MsKlimadashboardIconsNaviDownload className="h-6 stroke-2" />
           </Link>
-    ***REMOVED******REMOVED***
-  ***REMOVED***Icon && (
+        )}
+        {Icon && (
           <div className="flex w-full justify-end lg:hidden">
             <Icon
               className={cx(
                 'h-[29px] w-auto flex-shrink-0 opacity-40 lg:h-[50px]',
-                iconTileTitleStyle({ variant ***REMOVED***),
-          ***REMOVED******REMOVED***
+                iconTileTitleStyle({ variant }),
+              )}
             />
           </div>
           //   <Icon
           //     className={cx(
           //       'absolute right-0 top-0 h-[29px] w-auto flex-shrink-0 opacity-40 md:block md:h-[50px]',
-          // ***REMOVED******REMOVED***
+          //     )}
           //   ></Icon>
-    ***REMOVED******REMOVED***
+        )}
       </div>
-***REMOVED***
-***REMOVED***
+    )
+  }
 
   return (
     <div className="">
@@ -117,4 +117,4 @@ export default function TileHeader({
       </div>
     </div>
   )
-***REMOVED***
+}

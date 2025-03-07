@@ -1,17 +1,17 @@
-import { format ***REMOVED*** from 'date-fns'
+import { format } from 'date-fns'
 import MobilityTile from '@/components/Tiles/Mobility/MobilityTile'
-import { TileSplitView ***REMOVED*** from '../../Base/TileSplitView'
+import { TileSplitView } from '../../Base/TileSplitView'
 // import getTileData from '@/lib/api/getTileData'
 import BicycleOverviewContent from './BicycleOverviewContent'
 
 export default async function BicycleOverview() {
   return (
     <MobilityTile
-      dataRetrieval={format(new Date(), '01.MM.yyyy')***REMOVED***
+      dataRetrieval={format(new Date(), '01.MM.yyyy')}
       dataSource="Stadt Münster - Amt für Mobilität und Tiefbau"
       embedId="mobility-bicycleOverview"
       subtitle=""
-      title={'Kampangnenmetriken'***REMOVED***
+      title={'Kampangnenmetriken'}
     >
       <TileSplitView>
         <TileSplitView.Left>
@@ -20,4 +20,4 @@ export default async function BicycleOverview() {
       </TileSplitView>
     </MobilityTile>
   )
-***REMOVED***
+}

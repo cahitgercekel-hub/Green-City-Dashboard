@@ -30,4 +30,4 @@ export default function ClimateView() {
       </Columns>
     </BaseView>
   )
-***REMOVED***
+}

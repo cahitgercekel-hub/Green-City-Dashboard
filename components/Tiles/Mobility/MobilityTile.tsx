@@ -1,5 +1,5 @@
-import { MsKlimadashboardIconsButtonAktivMobil ***REMOVED*** from '@/components/Icons/Misc'
-import IconTile, { IconTileProps ***REMOVED*** from '../Base/IconTile'
+import { MsKlimadashboardIconsButtonAktivMobil } from '@/components/Icons/Misc'
+import IconTile, { IconTileProps } from '../Base/IconTile'
 
 export type MobilityTileProps = Omit<IconTileProps, 'variant' | 'icon'>
 
@@ -11,10 +11,10 @@ export type MobilityTileProps = Omit<IconTileProps, 'variant' | 'icon'>
 export default function MobilityTile({
   children,
   ...props
-***REMOVED***: MobilityTileProps) {
+}: MobilityTileProps) {
   return (
-    <IconTile {...props***REMOVED*** icon={MsKlimadashboardIconsButtonAktivMobil***REMOVED*** variant="mobility">
-      <>{children***REMOVED***</>
+    <IconTile {...props} icon={MsKlimadashboardIconsButtonAktivMobil} variant="mobility">
+      <>{children}</>
     </IconTile>
   )
-***REMOVED***
+}

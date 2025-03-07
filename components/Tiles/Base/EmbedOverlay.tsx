@@ -1,48 +1,48 @@
 'use client'
 
 import AnimatedCopyIcon from '@/components/Elements/Animated/AnimatedCopyIcon'
-import { Button ***REMOVED*** from '@/components/Elements/Button'
+import { Button } from '@/components/Elements/Button'
 import Title from '@/components/Elements/Title'
-import { TileType ***REMOVED*** from '@/utils/TileFactory'
-import { ClipboardDocumentIcon ***REMOVED*** from '@heroicons/react/24/outline'
-import { AnimatedProps ***REMOVED*** from '@react-spring/web'
-import { ComponentPropsWithRef ***REMOVED*** from 'react'
+import { TileType } from '@/utils/TileFactory'
+import { ClipboardDocumentIcon } from '@heroicons/react/24/outline'
+import { AnimatedProps } from '@react-spring/web'
+import { ComponentPropsWithRef } from 'react'
 import BaseOverlay from './BaseOverlay'
 
 type EmbedOverlayProps = AnimatedProps<ComponentPropsWithRef<'div'>> & {
   onClose?: () => void
   embedId: TileType
-***REMOVED***
+}
 
 export default function EmbedOverlay({
   onClose,
   embedId,
   ...props
-***REMOVED***: EmbedOverlayProps) {
-  const link = `${window.location.origin***REMOVED***/embed/${embedId***REMOVED***`
+}: EmbedOverlayProps) {
+  const link = `${window.location.origin}/embed/${embedId}`
 
-  const iframeSrc = `<iframe src="${link***REMOVED***" style="border:none; width:100%; height:100%" title="Dashboard"></iframe>`
+  const iframeSrc = `<iframe src="${link}" style="border:none; width:100%; height:100%" title="Dashboard"></iframe>`
 
   const copyToClipboard = async () => {
     await navigator.clipboard.writeText(iframeSrc)
-***REMOVED***
+  }
 
   return (
-    <BaseOverlay onClose={onClose***REMOVED*** {...props***REMOVED***>
+    <BaseOverlay onClose={onClose} {...props}>
       <div className="flex h-full w-full flex-1 flex-col">
         <div className="grid grid-flow-col grid-cols-3 grid-rows-2 gap-8">
           <div className="col-span-2 row-span-1">
-            <Title as="h3" variant={'secondary'***REMOVED***>
+            <Title as="h3" variant={'secondary'}>
               Diese Kachel auf Ihre Website einbetten
             </Title>
           </div>
           <div className="col-span-2 row-span-1">
             <div className="flex rounded bg-white p-4">
               <pre className="m-4 flex-1 whitespace-pre-wrap break-all text-sm">
-          ***REMOVED***iframeSrc***REMOVED***
+                {iframeSrc}
               </pre>
               <div className="relative w-7">
-                <AnimatedCopyIcon onClick={copyToClipboard***REMOVED*** />
+                <AnimatedCopyIcon onClick={copyToClipboard} />
               </div>
             </div>
           </div>
@@ -56,11 +56,11 @@ export default function EmbedOverlay({
         </div>
         <div className="pt-10">
           <Button
-            onClick={copyToClipboard***REMOVED***
+            onClick={copyToClipboard}
             startIcon={
               <ClipboardDocumentIcon className="w-5 stroke-2 text-secondary" />
-          ***REMOVED***
-            variant={'overlay'***REMOVED***
+            }
+            variant={'overlay'}
           >
             HTML Code kopieren
           </Button>
@@ -68,4 +68,4 @@ export default function EmbedOverlay({
       </div>
     </BaseOverlay>
   )
-***REMOVED***
+}

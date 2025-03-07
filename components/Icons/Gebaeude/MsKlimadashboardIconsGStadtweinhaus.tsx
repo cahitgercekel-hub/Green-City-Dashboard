@@ -1,16 +1,16 @@
 import * as React from 'react'
-import type { SVGProps ***REMOVED*** from 'react'
+import type { SVGProps } from 'react'
 function SvgMsKlimadashboardIconsGStadtweinhaus(props: SVGProps<SVGSVGElement>) {
   return <svg
     data-name="Ebene 1"
     id="MS_Klimadashboard_Icons_g_stadtweinhaus_svg__Ebene_1"
     viewBox="0 0 162.42 198.4"
     xmlns="http://www.w3.org/2000/svg"
-    {...props***REMOVED***
+    {...props}
   >
     <defs>
       <style>
-  ***REMOVED***'.MS_Klimadashboard_Icons_g_stadtweinhaus_svg__cls-1{fill:#6060d6***REMOVED***'***REMOVED***
+        {'.MS_Klimadashboard_Icons_g_stadtweinhaus_svg__cls-1{fill:#6060d6}'}
       </style>
     </defs>
     <path
@@ -26,5 +26,5 @@ function SvgMsKlimadashboardIconsGStadtweinhaus(props: SVGProps<SVGSVGElement>) 
       d="M49.85 197.49c-.69 0-1.25-.56-1.25-1.25v-29.92c0-6.33 6.58-11.48 14.67-11.48s14.67 5.15 14.67 11.48v23.04a1.25 1.25 0 0 1-2.5 0v-23.04c0-4.95-5.46-8.98-12.17-8.98s-12.17 4.03-12.17 8.98v29.92c0 .69-.56 1.25-1.25 1.25ZM111.38 197.49c-.69 0-1.25-.56-1.25-1.25v-29.92c0-4.95-5.46-8.98-12.17-8.98s-12.17 4.03-12.17 8.98v23.04a1.25 1.25 0 0 1-2.5 0v-23.04c0-6.33 6.58-11.48 14.67-11.48s14.67 5.15 14.67 11.48v29.92c0 .69-.56 1.25-1.25 1.25Z"
     />
   </svg>
-***REMOVED***
+}
 export default SvgMsKlimadashboardIconsGStadtweinhaus

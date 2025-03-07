@@ -8,6 +8,6 @@ function mapBetween(
   return (
     ((maxAllowed - minAllowed) * (currentNum - min)) / (max - min) + minAllowed
   )
-***REMOVED***
+}
 
 export default mapBetween

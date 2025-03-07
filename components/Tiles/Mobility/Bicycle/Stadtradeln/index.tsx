@@ -1,8 +1,8 @@
-import { Spacer ***REMOVED*** from '@/components/Elements/Spacer'
+import { Spacer } from '@/components/Elements/Spacer'
 import Title from '@/components/Elements/Title'
 import MobilityTile from '@/components/Tiles/Mobility/MobilityTile'
 import getTileData from '@/lib/api/getTileData'
-import { format ***REMOVED*** from 'date-fns'
+import { format } from 'date-fns'
 import ChartContainer from './ChartContainer'
 
 export default async function StadtradelnTile() {
@@ -11,7 +11,7 @@ export default async function StadtradelnTile() {
 
   return (
     <MobilityTile
-      dataRetrieval={format(new Date(), '01.MM.yyyy')***REMOVED***
+      dataRetrieval={format(new Date(), '01.MM.yyyy')}
       dataSource="Stadtradeln"
       embedId="mobility-stadtradeln"
       subtitle="auf der Überholspur"
@@ -19,7 +19,7 @@ export default async function StadtradelnTile() {
     >
       <ChartContainer city="wiesbaden" />
       <Spacer />
-      <Title as="h5">{infoText***REMOVED***</Title>
+      <Title as="h5">{infoText}</Title>
     </MobilityTile>
   )
-***REMOVED***
+}

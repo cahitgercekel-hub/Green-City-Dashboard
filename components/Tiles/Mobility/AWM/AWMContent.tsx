@@ -5,25 +5,25 @@ import Title from '@/components/Elements/Title'
 
 import MobileSlider from '@/components/Inputs/MobileSlider'
 import Slider from '@/components/Inputs/Slider'
-import { useWindowSize ***REMOVED*** from 'react-use'
+import { useWindowSize } from 'react-use'
 // @ts-ignore
 import AwmEMobility from '@/assets/data/awm-e-mobilitaet.csv'
 import {
   MsKlimadashboardIconsMAwmAbgas,
   MsKlimadashboardIconsMAwmElektro,
-***REMOVED*** from '@/components/Icons/Mobilitaet'
-import { useEffect, useState ***REMOVED*** from 'react'
+} from '@/components/Icons/Mobilitaet'
+import { useEffect, useState } from 'react'
 
 type AwmDatatType = {
   ZEIT: number
   'AWM Fahrzeuge - Dieselantrieb': number
   'AWM Fahrzeuge - Elektroantrieb': number
   'AWM Fahrzeuge - Erdgasantrieb': number
-***REMOVED***
+}
 
 export default function AWMContent() {
-  // const { electroCount, combustionCount ***REMOVED*** = useBusData()
-  const { width ***REMOVED*** = useWindowSize()
+  // const { electroCount, combustionCount } = useBusData()
+  const { width } = useWindowSize()
   const [yearIndex, setYearIndex] = useState(3)
 
   const [combustionCount, setCombustionCount] = useState(0)
@@ -34,32 +34,32 @@ export default function AWMContent() {
   useEffect(() => {
     if (!data) {
       return
-  ***REMOVED***
+    }
     const row: AwmDatatType = data[yearIndex]
     setElectroCount(row['AWM Fahrzeuge - Elektroantrieb'])
     setCombustionCount(
       row['AWM Fahrzeuge - Dieselantrieb'] +
         row['AWM Fahrzeuge - Erdgasantrieb'],
-***REMOVED***
-***REMOVED***, [data, yearIndex])
+    )
+  }, [data, yearIndex])
 
   return (
     <div>
       <div className="flex justify-between">
         <div>
-          <Title as="h5" variant={'primary'***REMOVED***>
+          <Title as="h5" variant={'primary'}>
             Fahrzeuge mit fossilem Antrieb
           </Title>
           <AnimatedNumber className="text-2xl text-mobility">
-      ***REMOVED***combustionCount***REMOVED***
+            {combustionCount}
           </AnimatedNumber>
         </div>
         <div className="flex flex-col items-end">
-          <Title as="h5" variant={'primary'***REMOVED***>
+          <Title as="h5" variant={'primary'}>
             Fahrzeuge mit Elektroantrieb
           </Title>
           <AnimatedNumber className="text-2xl text-mobility">
-      ***REMOVED***electroCount***REMOVED***
+            {electroCount}
           </AnimatedNumber>
         </div>
       </div>
@@ -69,8 +69,8 @@ export default function AWMContent() {
           style={{
             width: `${
               (combustionCount / (electroCount + combustionCount) || 0.5) * 100
-          ***REMOVED***%`,
-        ***REMOVED******REMOVED***
+            }%`,
+          }}
         >
           <MsKlimadashboardIconsMAwmAbgas className="w-full" />
         </div>
@@ -78,28 +78,28 @@ export default function AWMContent() {
           <MsKlimadashboardIconsMAwmElektro className="w-full" />
         </div>
       </div>
-***REMOVED***width < 1800 && (
+      {width < 1800 && (
         <MobileSlider
-          defaultValue={[yearIndex]***REMOVED***
-          firstValueMobile={data.length - 1***REMOVED***
-          labels={data.map(e => e.ZEIT.toString())***REMOVED***
-          max={data.length - 1***REMOVED***
-          min={0***REMOVED***
-          onValueChange={([index]) => setYearIndex(index)***REMOVED***
-          variant={'mobility'***REMOVED***
+          defaultValue={[yearIndex]}
+          firstValueMobile={data.length - 1}
+          labels={data.map(e => e.ZEIT.toString())}
+          max={data.length - 1}
+          min={0}
+          onValueChange={([index]) => setYearIndex(index)}
+          variant={'mobility'}
         />
-  ***REMOVED******REMOVED***
-***REMOVED***width >= 1800 && (
+      )}
+      {width >= 1800 && (
         <Slider
-          defaultValue={[yearIndex]***REMOVED***
-          firstValueMobile={data.length - 1***REMOVED***
-          labels={data.map(e => e.ZEIT.toString())***REMOVED***
-          max={data.length - 1***REMOVED***
-          min={0***REMOVED***
-          onValueChange={([index]) => setYearIndex(index)***REMOVED***
-          variant={'mobility'***REMOVED***
+          defaultValue={[yearIndex]}
+          firstValueMobile={data.length - 1}
+          labels={data.map(e => e.ZEIT.toString())}
+          max={data.length - 1}
+          min={0}
+          onValueChange={([index]) => setYearIndex(index)}
+          variant={'mobility'}
         />
-  ***REMOVED******REMOVED***
+      )}
     </div>
   )
-***REMOVED***
+}

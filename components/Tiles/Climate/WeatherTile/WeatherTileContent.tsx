@@ -1,19 +1,19 @@
 'use client'
 
-import { Spacer ***REMOVED*** from '@/components/Elements/Spacer'
+import { Spacer } from '@/components/Elements/Spacer'
 import Title from '@/components/Elements/Title'
 import Slider from '@/components/Inputs/Slider'
 import useWeather from '@/hooks/useWeather'
-import { conditionMapping, conditionMappingIcon ***REMOVED*** from '@/lib/brightsky'
-import { addHours, format ***REMOVED*** from 'date-fns'
-import { useState ***REMOVED*** from 'react'
+import { conditionMapping, conditionMappingIcon } from '@/lib/brightsky'
+import { addHours, format } from 'date-fns'
+import { useState } from 'react'
 import LongTermAverageDiff from './LongTermAverageDiff'
 import Phenomenon from './Phenomenon'
 
 export default function WeatherTileContent() {
   const [timestamp, setTimestamp] = useState(new Date())
 
-  const weather = useWeather({ lat: 52, lng: 7.6 ***REMOVED***, timestamp)
+  const weather = useWeather({ lat: 52, lng: 7.6 }, timestamp)
 
   const nextHours = new Array(6).fill(undefined).map((e, i) => {
     const date = new Date()
@@ -21,21 +21,21 @@ export default function WeatherTileContent() {
     date.setSeconds(0)
     date.setMilliseconds(0)
     return addHours(date, i)
-***REMOVED***)
+  })
 
   if (weather) {
     const Icon = conditionMappingIcon[weather?.condition]
 
     return (
       <div>
-  ***REMOVED***weather && (
+        {weather && (
           <div className="mb-8 flex flex-col gap-4">
             <div className="flex flex-1 items-center gap-6 md:gap-2">
               <Icon className="h-20 text-primary md:mr-12 md:h-36" />
-              <Title as={'h4'***REMOVED*** className="my-4 w-3/4 md:w-1/2">
-                In Münster ist es gerade{' '***REMOVED***
+              <Title as={'h4'} className="my-4 w-3/4 md:w-1/2">
+                In Münster ist es gerade{' '}
                 <span className="text-climate">
-            ***REMOVED***conditionMapping[weather?.condition]***REMOVED***
+                  {conditionMapping[weather?.condition]}
                 </span>
               </Title>
             </div>
@@ -44,7 +44,7 @@ export default function WeatherTileContent() {
                 <Phenomenon
                   phenomenon="temperature"
                   size="xl"
-                  value={weather?.temperature***REMOVED***
+                  value={weather?.temperature}
                 />
               </div>
 
@@ -52,41 +52,41 @@ export default function WeatherTileContent() {
                 <div className="flex h-full w-full flex-1 flex-col justify-between gap-2.5 md:gap-6">
                   <Phenomenon
                     phenomenon="precipitation"
-                    value={weather?.precipitation***REMOVED***
+                    value={weather?.precipitation}
                   />
                   <Phenomenon
                     phenomenon="cloudcover"
-                    value={weather?.cloud_cover***REMOVED***
+                    value={weather?.cloud_cover}
                   />
                   <Phenomenon
                     phenomenon="windspeed"
-                    value={weather?.wind_speed***REMOVED***
+                    value={weather?.wind_speed}
                   />
-            ***REMOVED***/* <Phenomenon phenomenon="sunhours" value={weather?.sunshine***REMOVED*** /> */***REMOVED***
+                  {/* <Phenomenon phenomenon="sunhours" value={weather?.sunshine} /> */}
                 </div>
               </div>
             </div>
           </div>
-    ***REMOVED******REMOVED***
+        )}
         <Slider
-          defaultValue={[0]***REMOVED***
+          defaultValue={[0]}
           labels={(() => {
             const labels = nextHours.map(d => format(d, 'kk:mm'))
             labels[0] = 'jetzt'
             return labels
-        ***REMOVED***)()***REMOVED***
-          max={nextHours.length - 1***REMOVED***
-          min={0***REMOVED***
+          })()}
+          max={nextHours.length - 1}
+          min={0}
           onValueChange={([e]) => {
             setTimestamp(nextHours[e])
-        ***REMOVED******REMOVED***
-          variant={'climate'***REMOVED***
+          }}
+          variant={'climate'}
         />
         <Spacer size="xl" />
         <LongTermAverageDiff />
       </div>
-***REMOVED***
-***REMOVED***
+    )
+  }
 
   return <p>Loading...</p>
-***REMOVED***
+}

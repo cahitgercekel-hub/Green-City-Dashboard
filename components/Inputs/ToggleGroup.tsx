@@ -1,8 +1,8 @@
 'use client'
 
 import * as ToggleGroupPrimitive from '@radix-ui/react-toggle-group'
-import { cva, cx, VariantProps ***REMOVED*** from 'class-variance-authority'
-import { useState ***REMOVED*** from 'react'
+import { cva, cx, VariantProps } from 'class-variance-authority'
+import { useState } from 'react'
 import Title from '../Elements/Title'
 
 type variants = {
@@ -11,14 +11,14 @@ type variants = {
   successStory: string
   climate: string
   building: string
-***REMOVED***
+}
 
 const toggleGroupStyle = cva<{
   variant: variants
   scrollX: {
     true: string
-***REMOVED***
-***REMOVED***>(
+  }
+}>(
   'flex h-fit w-fit overflow-hidden rounded-lg border-2 bg-white w-full md:w-auto',
   {
     variants: {
@@ -28,23 +28,23 @@ const toggleGroupStyle = cva<{
         successStory: 'border-secondary',
         climate: 'border-climate',
         building: 'border-buildings',
-    ***REMOVED***,
+      },
       scrollX: {
         true: 'overflow-x-auto',
-    ***REMOVED***,
-  ***REMOVED***,
+      },
+    },
     defaultVariants: {
       variant: 'primary',
-  ***REMOVED***,
-***REMOVED***,
+    },
+  },
 )
 
 const toggleGroupBackgroundStyle = cva<{
   variant: variants
   isLast: {
     true: string
-***REMOVED***
-***REMOVED***>('px-4 transition-all duration-300 md:py-2 md:px-8 flex-1', {
+  }
+}>('px-4 transition-all duration-300 md:py-2 md:px-8 flex-1', {
   variants: {
     variant: {
       primary: 'bg-primary',
@@ -52,42 +52,42 @@ const toggleGroupBackgroundStyle = cva<{
       successStory: 'bg-secondary',
       climate: 'bg-climate',
       building: 'bg-buildings',
-  ***REMOVED***,
+    },
     isLast: {
       true: 'border-r-2',
-  ***REMOVED***,
-***REMOVED***,
+    },
+  },
   compoundVariants: [
     {
       variant: 'primary',
       isLast: true,
       className: 'border-r-primary',
-  ***REMOVED***,
+    },
     {
       variant: 'mobility',
       isLast: true,
       className: 'border-r-mobility',
-  ***REMOVED***,
+    },
     {
       variant: 'successStory',
       isLast: true,
       className: 'border-r-secondary',
-  ***REMOVED***,
+    },
     {
       variant: 'climate',
       isLast: true,
       className: 'border-r-climate',
-  ***REMOVED***,
+    },
     {
       variant: 'building',
       isLast: true,
       className: 'border-r-buildings',
-  ***REMOVED***,
+    },
   ],
   defaultVariants: {
     variant: 'primary',
-***REMOVED***,
-***REMOVED***)
+  },
+})
 
 const selectedStyle = cva('px-4 transition-all duration-300 md:py-2 md:px-8', {
   variants: {
@@ -97,53 +97,53 @@ const selectedStyle = cva('px-4 transition-all duration-300 md:py-2 md:px-8', {
       successStory: null,
       climate: null,
       building: null,
-  ***REMOVED***,
+    },
     selected: {
       true: 'text-white',
       false: '',
-  ***REMOVED***,
-***REMOVED***,
+    },
+  },
   compoundVariants: [
     {
       selected: false,
       variant: 'primary',
       className: 'text-primary bg-primary/0',
-  ***REMOVED***,
+    },
     {
       selected: false,
       variant: 'mobility',
       className: 'text-mobility bg-mobility/0',
-  ***REMOVED***,
+    },
     {
       selected: false,
       variant: 'successStory',
       className: 'text-secondary bg-primary/0',
-  ***REMOVED***,
+    },
     {
       selected: false,
       variant: 'climate',
       className: 'text-climate bg-climate/0',
-  ***REMOVED***,
+    },
     {
       selected: false,
       variant: 'building',
       className: 'text-buildings bg-buildings/0',
-  ***REMOVED***,
+    },
   ],
   defaultVariants: {
     variant: 'primary',
     selected: false,
-***REMOVED***,
-***REMOVED***)
+  },
+})
 
 type ToggleGroupProps = VariantProps<typeof toggleGroupStyle> & {
   defaultValue?: string
   items: {
     element: string | React.ReactElement
     value: string
-***REMOVED***[]
+  }[]
   onChange?: (_value: string) => void
-***REMOVED***
+}
 
 export default function ToggleGroup({
   defaultValue,
@@ -151,45 +151,45 @@ export default function ToggleGroup({
   variant,
   scrollX,
   onChange,
-***REMOVED***: ToggleGroupProps) {
+}: ToggleGroupProps) {
   const [value, setValue] = useState(defaultValue || items[0].value)
 
   return (
     <ToggleGroupPrimitive.Root
-      className={toggleGroupStyle({ variant, scrollX ***REMOVED***)***REMOVED***
+      className={toggleGroupStyle({ variant, scrollX })}
       onValueChange={value => {
         if (value) {
           setValue(value)
           onChange && onChange(value)
-      ***REMOVED***
-    ***REMOVED******REMOVED***
+        }
+      }}
       type="single"
-      value={value***REMOVED***
+      value={value}
     >
-***REMOVED***items.map((e, i) => (
+      {items.map((e, i) => (
         <ToggleGroupPrimitive.Item
           className={cx(
             toggleGroupBackgroundStyle({
               variant,
               isLast: i !== items.length - 1,
-          ***REMOVED***),
+            }),
             selectedStyle({
               variant,
               selected: value === e.value,
-          ***REMOVED***),
-      ***REMOVED******REMOVED***
-          key={i***REMOVED***
-          value={e.value***REMOVED***
+            }),
+          )}
+          key={i}
+          value={e.value}
         >
-    ***REMOVED***typeof e.element === 'string' ? (
-            <Title as="h5" style={{ hyphens: 'unset' ***REMOVED******REMOVED***>
-        ***REMOVED***e.element***REMOVED***
+          {typeof e.element === 'string' ? (
+            <Title as="h5" style={{ hyphens: 'unset' }}>
+              {e.element}
             </Title>
-      ***REMOVED*** : (
+          ) : (
             e.element
-      ***REMOVED******REMOVED***
+          )}
         </ToggleGroupPrimitive.Item>
-  ***REMOVED***)***REMOVED***
+      ))}
     </ToggleGroupPrimitive.Root>
   )
-***REMOVED***
+}

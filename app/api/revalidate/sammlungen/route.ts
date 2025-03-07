@@ -1,10 +1,10 @@
 import directus, {
   collectionsName,
   ENV_DIRECTUS_ITEM_STATUS,
-***REMOVED*** from '@/lib/directus'
-import { readItems ***REMOVED*** from '@directus/sdk'
-import { revalidatePath ***REMOVED*** from 'next/cache'
-***REMOVED***
+} from '@/lib/directus'
+import { readItems } from '@directus/sdk'
+import { revalidatePath } from 'next/cache'
+import { NextResponse } from 'next/server'
 
 export async function GET() {
   const data = await directus.request(
@@ -12,25 +12,25 @@ export async function GET() {
       fields: ['slug'],
       status: {
         _eq: ENV_DIRECTUS_ITEM_STATUS,
-    ***REMOVED***,
-  ***REMOVED***),
+      },
+    }),
   )
 
   if (!data) {
-***REMOVED***{ msg: 'No data' ***REMOVED***)
-***REMOVED***
+    return NextResponse.json({ msg: 'No data' })
+  }
 
   const revalidatedPaths: string[] = []
 
-  data.forEach(({ slug ***REMOVED***) => {
-    const path = `/sammlung/${slug***REMOVED***`
+  data.forEach(({ slug }) => {
+    const path = `/sammlung/${slug}`
     revalidatedPaths.push(path)
     revalidatePath(path)
-***REMOVED***)
+  })
 
   return NextResponse.json({
     revalidated: true,
     now: Date.now(),
     paths: revalidatedPaths,
-***REMOVED***)
-***REMOVED***
+  })
+}

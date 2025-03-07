@@ -1,6 +1,6 @@
 import AnimatedNumber from '@/components/Elements/Animated/AnimatedNumber'
 import OverviewData from './Data'
-import { Bike, DottedPath ***REMOVED*** from '@/components/Icons'
+import { Bike, DottedPath } from '@/components/Icons'
 import mapBetween from '@/utils/mapBetween'
 
 interface Overview {
@@ -10,16 +10,16 @@ interface Overview {
   NumberOfBike: number
   TotalDistance: number
   Zeit: number
-***REMOVED***
+}
 
 function retriveMonthData(indexOfMonth: number, year: string): Overview | null {
   return (
     OverviewData.find(
-      ({ index, year: dataYear ***REMOVED***) =>
+      ({ index, year: dataYear }) =>
         index === indexOfMonth && dataYear === year,
-***REMOVED*** ?? null
+    ) ?? null
   )
-***REMOVED***
+}
 
 const distancePerMonth = OverviewData.map(data => data.TotalDistance)
 const maxDistance = Math.max(...distancePerMonth)
@@ -28,9 +28,9 @@ const minDistance = Math.min(...distancePerMonth)
 interface TotalDistanceProps {
   indexofmonth: number
   year: string
-***REMOVED***
+}
 
-function TotalDistance({ indexofmonth, year ***REMOVED***: TotalDistanceProps) {
+function TotalDistance({ indexofmonth, year }: TotalDistanceProps) {
   const result = retriveMonthData(indexofmonth, year)
 
   const progress = mapBetween(
@@ -47,14 +47,14 @@ function TotalDistance({ indexofmonth, year ***REMOVED***: TotalDistanceProps) {
         <div className="relative h-4/5 overflow-hidden p-2">
           <DottedPath
             className="absolute bottom-4"
-            progresspercent={progress***REMOVED***
+            progresspercent={progress}
           />
 
           <Bike className="absolute bottom-2 right-[10%] h-6 w-20 bg-white px-2 xl:scale-150 xl:transform" />
         </div>
         <div className="flex h-1/5 flex-col items-center justify-center">
           <h3 className="text-2xl font-bold text-mobility">
-            <AnimatedNumber>{result ? result.TotalDistance : 0***REMOVED***</AnimatedNumber>
+            <AnimatedNumber>{result ? result.TotalDistance : 0}</AnimatedNumber>
             <span>km</span>
           </h3>
           <strong className="text-xl text-primary md:text-base lg:text-xl">
@@ -64,6 +64,6 @@ function TotalDistance({ indexofmonth, year ***REMOVED***: TotalDistanceProps) {
       </div>
     </div>
   )
-***REMOVED***
+}
 
 export default TotalDistance

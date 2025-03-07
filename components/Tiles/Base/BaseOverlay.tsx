@@ -1,7 +1,7 @@
-import { XMarkIcon ***REMOVED*** from '@heroicons/react/24/outline'
-import { animated, AnimatedProps ***REMOVED*** from '@react-spring/web'
-import { cva, VariantProps ***REMOVED*** from 'class-variance-authority'
-import { ComponentPropsWithRef ***REMOVED*** from 'react'
+import { XMarkIcon } from '@heroicons/react/24/outline'
+import { animated, AnimatedProps } from '@react-spring/web'
+import { cva, VariantProps } from 'class-variance-authority'
+import { ComponentPropsWithRef } from 'react'
 
 export const overlayStyle = cva(
   'absolute left-0 top-0 z-20 h-full w-full md:pt-20 md:pr-20 md:pl-[70px] md:pb-[70px] backdrop-blur p-8 flex flex-col-reverse md:flex-row',
@@ -16,34 +16,34 @@ export const overlayStyle = cva(
         building: 'bg-buildings/90',
         energy: 'bg-energy/90',
         data: 'bg-secondary/90',
-    ***REMOVED***,
-  ***REMOVED***,
+      },
+    },
     defaultVariants: {
       variant: 'primary',
-  ***REMOVED***,
-***REMOVED***,
+    },
+  },
 )
 
 type BaseOverlayProps = VariantProps<typeof overlayStyle> &
   AnimatedProps<ComponentPropsWithRef<'div'>> & {
     children: React.ReactNode | React.ReactNode[]
     onClose?: () => void
-***REMOVED***
+  }
 
 export default function BaseOverlay({
   variant,
   children,
   onClose,
   ...props
-***REMOVED***: BaseOverlayProps) {
+}: BaseOverlayProps) {
   return (
     // @ts-ignore
-    <animated.div {...props***REMOVED*** className={overlayStyle({ variant ***REMOVED***)***REMOVED***>
-      <div className="w-full flex-1 overflow-hidden">{children***REMOVED***</div>
+    <animated.div {...props} className={overlayStyle({ variant })}>
+      <div className="w-full flex-1 overflow-hidden">{children}</div>
       <XMarkIcon
         className="h-6 cursor-pointer self-end text-white md:ml-[35px] md:self-auto"
-        onClick={onClose***REMOVED***
+        onClick={onClose}
       />
     </animated.div>
   )
-***REMOVED***
+}

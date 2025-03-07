@@ -1,38 +1,38 @@
 import Title from '@/components/Elements/Title'
-import directus, { directusImage ***REMOVED*** from '@/lib/directus'
-import TileFactory, { TileType ***REMOVED*** from '@/utils/TileFactory'
-import { readSingleton ***REMOVED*** from '@directus/sdk'
+import directus, { directusImage } from '@/lib/directus'
+import TileFactory, { TileType } from '@/utils/TileFactory'
+import { readSingleton } from '@directus/sdk'
 import Image from 'next/image'
 import Link from 'next/link'
-import { notFound ***REMOVED*** from 'next/navigation'
+import { notFound } from 'next/navigation'
 
 export const revalidate = 10
 
-type Params = Promise<{ id: TileType ***REMOVED***>
+type Params = Promise<{ id: TileType }>
 
-export default async function Embed({ params ***REMOVED***: { params: Params ***REMOVED***) {
-  const { id ***REMOVED*** = await params
+export default async function Embed({ params }: { params: Params }) {
+  const { id } = await params
 
   if (!id) {
     return notFound()
-***REMOVED***
+  }
 
   const theme = await directus.request(readSingleton('theme'))
 
   return (
     <div className="relative">
-      <TileFactory type={id***REMOVED*** />
+      <TileFactory type={id} />
       <div className="sticky bottom-0 right-0 flex flex-col justify-end gap-4 bg-white py-2 md:flex-row md:items-center">
         <Image
           alt="Logo"
           className="h-10 w-fit"
           layout="fill"
-          src={directusImage(theme.navbar_image)***REMOVED***
+          src={directusImage(theme.navbar_image)}
         />
-        <Title as="h7" className="leading-normal" variant={'primary'***REMOVED***>
+        <Title as="h7" className="leading-normal" variant={'primary'}>
           Mehr Daten zum Klimaschutz und zur Klimaanpassung
           <br />
-          gibt es auf{' '***REMOVED***
+          gibt es auf{' '}
           <Link
             className="underline"
             href="https://klimadashboard.ms/"
@@ -44,4 +44,4 @@ export default async function Embed({ params ***REMOVED***: { params: Params ***
       </div>
     </div>
   )
-***REMOVED***
+}

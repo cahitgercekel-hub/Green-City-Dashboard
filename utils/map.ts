@@ -2,7 +2,7 @@
 
 export function clamp(input: number, min: number, max: number): number {
   return input < min ? min : input > max ? max : input
-***REMOVED***
+}
 
 export function map(
   current: number,
@@ -14,4 +14,4 @@ export function map(
   const mapped: number =
     ((current - in_min) * (out_max - out_min)) / (in_max - in_min) + out_min
   return clamp(mapped, out_min, out_max)
-***REMOVED***
+}

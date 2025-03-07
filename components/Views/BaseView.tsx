@@ -1,6 +1,6 @@
 import getSurveysForCategory from '@/lib/api/getSurveyForCategories'
-import { GoToButton ***REMOVED*** from '../Elements/GoToButton'
-import { Spacer ***REMOVED*** from '../Elements/Spacer'
+import { GoToButton } from '../Elements/GoToButton'
+import { Spacer } from '../Elements/Spacer'
 import SectionHeader from '../Layout/SectionHeader'
 import Columns from '../Layout/Columns'
 import SurveyTile from '../Tiles/Survey'
@@ -13,7 +13,7 @@ interface ViewProps {
   showSuccessStories?: boolean
   showSurveys?: boolean
   showGoToButton?: boolean
-***REMOVED***
+}
 
 // TODO: read from directus
 const categoryID = {
@@ -21,7 +21,7 @@ const categoryID = {
   mobility: '4fa0c731-13d7-4ce9-8407-91a8a71da1cb',
   energy: '0c7620c0-7d0c-45e7-b801-0bc44715f731',
   building: '84ff5cfe-184a-41dd-885d-ff9c2c8c9dcf',
-***REMOVED***
+}
 
 export default async function BaseView({
   type,
@@ -29,54 +29,54 @@ export default async function BaseView({
   showSurveys = true,
   showSuccessStories = true,
   showGoToButton = false,
-***REMOVED***: ViewProps) {
+}: ViewProps) {
   const surveys = await getSurveysForCategory(categoryID[type])
   const success = await getSuccessStoriesForCategory(categoryID[type])
 
   return (
     <>
-      <SectionHeader variant={type***REMOVED*** />
-***REMOVED***children***REMOVED***
-***REMOVED***showSurveys && surveys && (
+      <SectionHeader variant={type} />
+      {children}
+      {showSurveys && surveys && (
         <Columns>
-    ***REMOVED***surveys.map(survey => (
+          {surveys.map(survey => (
             <SurveyTile
               answer={{
                 text: survey.answer_text,
                 percent: survey.answer_percent,
-            ***REMOVED******REMOVED***
-              dataRetrieval={survey.dataRetrieval***REMOVED***
-              dataSource={survey.dataSource***REMOVED***
-              id={survey.id***REMOVED***
-              key={survey.id***REMOVED***
-              question={survey.question***REMOVED***
-              title={survey.title***REMOVED***
+              }}
+              dataRetrieval={survey.dataRetrieval}
+              dataSource={survey.dataSource}
+              id={survey.id}
+              key={survey.id}
+              question={survey.question}
+              title={survey.title}
             />
-      ***REMOVED***)***REMOVED***
+          ))}
         </Columns>
-  ***REMOVED******REMOVED***
-***REMOVED***showSuccessStories && success && (
+      )}
+      {showSuccessStories && success && (
         <>
-    ***REMOVED***success.map(success => (
+          {success.map(success => (
             <SuccessStoryTile
-              id={success.id***REMOVED***
-              image={success.image***REMOVED***
-              imagePosition={success.image_position***REMOVED***
-              key={success.id***REMOVED***
-              link={success.link***REMOVED***
-              moreInfo={success.details***REMOVED***
-              text={success.text***REMOVED***
+              id={success.id}
+              image={success.image}
+              imagePosition={success.image_position}
+              key={success.id}
+              link={success.link}
+              moreInfo={success.details}
+              text={success.text}
             />
-      ***REMOVED***)***REMOVED***
+          ))}
         </>
-  ***REMOVED******REMOVED***
-***REMOVED***showGoToButton && (
+      )}
+      {showGoToButton && (
         <>
-          <Spacer size={'sm'***REMOVED*** />
-          <GoToButton type={type***REMOVED*** />
+          <Spacer size={'sm'} />
+          <GoToButton type={type} />
         </>
-  ***REMOVED******REMOVED***
-      <Spacer size={'xl'***REMOVED*** />
+      )}
+      <Spacer size={'xl'} />
     </>
   )
-***REMOVED***
+}

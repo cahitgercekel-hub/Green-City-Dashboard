@@ -1,77 +1,77 @@
 import * as React from 'react'
-import type { SVGProps ***REMOVED*** from 'react'
+import type { SVGProps } from 'react'
 function SvgPendlerKarteWithStations(props: SVGProps<SVGSVGElement>) {
   return <svg
     viewBox="0 0 1285.75 585.578"
     xmlns="http://www.w3.org/2000/svg"
-    {...props***REMOVED***
+    {...props}
   >
     <g data-name="Komponente 59 \u2013 3" transform="translate(1)">
       <g
         data-name="Gruppe 79"
         fontFamily="Inter-Medium, Inter"
-        fontWeight={500***REMOVED***
+        fontWeight={500}
       >
         <text
-          data-name={7.4***REMOVED***
+          data-name={7.4}
           fill="#34c17b"
-          fontSize={40***REMOVED***
+          fontSize={40}
           transform="translate(3.75 472.925)"
         >
-          <tspan x={0***REMOVED*** y={39***REMOVED***>
-      ***REMOVED***'2.893.526'***REMOVED***
+          <tspan x={0} y={39}>
+            {'2.893.526'}
           </tspan>
         </text>
         <text
           fill="#005b79"
-          fontSize={20***REMOVED***
+          fontSize={20}
           letterSpacing=".005em"
           transform="translate(3.75 440.943)"
         >
-          <tspan x={0***REMOVED*** y={19***REMOVED***>
-      ***REMOVED***'Weseler Str. / Inselbogen'***REMOVED***
+          <tspan x={0} y={19}>
+            {'Weseler Str. / Inselbogen'}
           </tspan>
         </text>
         <text
-          data-name={7.4***REMOVED***
+          data-name={7.4}
           fill="#34c17b"
-          fontSize={40***REMOVED***
+          fontSize={40}
           transform="translate(860.75 472.925)"
         >
-          <tspan x={0***REMOVED*** y={39***REMOVED***>
-      ***REMOVED***'5.753.832'***REMOVED***
+          <tspan x={0} y={39}>
+            {'5.753.832'}
           </tspan>
         </text>
         <text
           data-name="Neutor"
           fill="#005b79"
-          fontSize={20***REMOVED***
+          fontSize={20}
           letterSpacing=".005em"
           transform="translate(860.75 441.943)"
         >
-          <tspan x={0***REMOVED*** y={19***REMOVED***>
-      ***REMOVED***'Albersloher Weg / Heumannsweg '***REMOVED***
+          <tspan x={0} y={19}>
+            {'Albersloher Weg / Heumannsweg '}
           </tspan>
         </text>
         <text
-          data-name={7.4***REMOVED***
+          data-name={7.4}
           fill="#34c17b"
-          fontSize={40***REMOVED***
+          fontSize={40}
           transform="translate(860.75 144.929)"
         >
-          <tspan x={0***REMOVED*** y={39***REMOVED***>
-      ***REMOVED***'2.428.372'***REMOVED***
+          <tspan x={0} y={39}>
+            {'2.428.372'}
           </tspan>
         </text>
         <text
           data-name="Neutor"
           fill="#005b79"
-          fontSize={20***REMOVED***
+          fontSize={20}
           letterSpacing=".005em"
           transform="translate(860.75 111.929)"
         >
-          <tspan x={0***REMOVED*** y={19***REMOVED***>
-      ***REMOVED***'Warendorfer Str. / Schifffahrter Damm'***REMOVED***
+          <tspan x={0} y={19}>
+            {'Warendorfer Str. / Schifffahrter Damm'}
           </tspan>
         </text>
       </g>
@@ -80,7 +80,7 @@ function SvgPendlerKarteWithStations(props: SVGProps<SVGSVGElement>) {
         data-name="Stroke 1"
         fill="rgba(52,193,123,0.15)"
       />
-      <g data-name="Gruppe 472" fill="none" stroke="#fff" strokeWidth={3***REMOVED***>
+      <g data-name="Gruppe 472" fill="none" stroke="#fff" strokeWidth={3}>
         <path
           d="M322.1 78.136a283.1 283.1 0 0 1 30.959 42.575c14.684 24.824 47.732 57.42 62.734 60.523s24.959 6.088 45.186 8.806 26.047-3.308 42.7 14.5 44.395 46.422 44.395 46.422l8.888 2.878"
           data-name="Pfad 365"
@@ -104,11 +104,11 @@ function SvgPendlerKarteWithStations(props: SVGProps<SVGSVGElement>) {
       </g>
       <g data-name="Gruppe 474" transform="translate(-151.106 -261.708)">
         <circle
-          cx={71.5***REMOVED***
-          cy={71.5***REMOVED***
+          cx={71.5}
+          cy={71.5}
           data-name="Ellipse 50"
           fill="rgba(52,193,123,0.15)"
-          r={71.5***REMOVED***
+          r={71.5}
           transform="translate(707.684 545)"
         />
         <g
@@ -117,25 +117,25 @@ function SvgPendlerKarteWithStations(props: SVGProps<SVGSVGElement>) {
           stroke="#34c17b"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth={2.5***REMOVED***
+          strokeWidth={2.5}
           transform="translate(49.184 486.5)"
         >
           <rect
             data-name="Rechteck 16"
-            height={22***REMOVED***
-            rx={4***REMOVED***
+            height={22}
+            rx={4}
             transform="translate(701 129)"
-            width={58***REMOVED***
+            width={58}
           />
           <path
             d="M716 151v4a2 2 0 0 1-2 2h-5a2 2 0 0 1-2-2v-4"
             data-name="Pfad 24"
           />
           <circle
-            cx={4***REMOVED***
-            cy={4***REMOVED***
+            cx={4}
+            cy={4}
             data-name="Ellipse 11"
-            r={4***REMOVED***
+            r={4}
             transform="translate(706 134)"
           />
           <path
@@ -143,10 +143,10 @@ function SvgPendlerKarteWithStations(props: SVGProps<SVGSVGElement>) {
             data-name="Pfad 29"
           />
           <circle
-            cx={4***REMOVED***
-            cy={4***REMOVED***
+            cx={4}
+            cy={4}
             data-name="Ellipse 12"
-            r={4***REMOVED***
+            r={4}
             transform="translate(746 134)"
           />
           <path
@@ -164,36 +164,36 @@ function SvgPendlerKarteWithStations(props: SVGProps<SVGSVGElement>) {
         data-name="Pfad 371"
         fill="none"
         stroke="#fff"
-        strokeWidth={3***REMOVED***
+        strokeWidth={3}
       />
       <path
         d="m304.721 285.443 68.77 10.42 48.949 33.826 68.684 53.53"
         data-name="Pfad 372"
         fill="none"
         stroke="#fff"
-        strokeWidth={2***REMOVED***
+        strokeWidth={2}
       />
       <path
         d="m543.043 301.513-10.155-8.584v-40.638l7.728-8.683"
         data-name="Pfad 373"
         fill="none"
         stroke="#fff"
-        strokeWidth={3***REMOVED***
+        strokeWidth={3}
       />
       <path
         d="M552.85 4.765v26.633l3.727 9.715v15.175l-3.727 24.14-3.447 102.027v68.548"
         data-name="Pfad 374"
         fill="none"
         stroke="#fff"
-        strokeWidth={3***REMOVED***
+        strokeWidth={3}
       />
       <g data-name="Gruppe 471" transform="translate(-96.744 -154.675)">
         <circle
-          cx={68***REMOVED***
-          cy={68***REMOVED***
+          cx={68}
+          cy={68}
           data-name="Ellipse 47"
           fill="rgba(52,193,123,0.15)"
-          r={68***REMOVED***
+          r={68}
           transform="translate(525 289.25)"
         />
         <g
@@ -202,25 +202,25 @@ function SvgPendlerKarteWithStations(props: SVGProps<SVGSVGElement>) {
           stroke="#34c17b"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth={2.5***REMOVED***
+          strokeWidth={2.5}
           transform="translate(-137 227.25)"
         >
           <rect
             data-name="Rechteck 16"
-            height={22***REMOVED***
-            rx={4***REMOVED***
+            height={22}
+            rx={4}
             transform="translate(701 129)"
-            width={58***REMOVED***
+            width={58}
           />
           <path
             d="M716 151v4a2 2 0 0 1-2 2h-5a2 2 0 0 1-2-2v-4"
             data-name="Pfad 24"
           />
           <circle
-            cx={4***REMOVED***
-            cy={4***REMOVED***
+            cx={4}
+            cy={4}
             data-name="Ellipse 11"
-            r={4***REMOVED***
+            r={4}
             transform="translate(706 134)"
           />
           <path
@@ -228,10 +228,10 @@ function SvgPendlerKarteWithStations(props: SVGProps<SVGSVGElement>) {
             data-name="Pfad 29"
           />
           <circle
-            cx={4***REMOVED***
-            cy={4***REMOVED***
+            cx={4}
+            cy={4}
             data-name="Ellipse 12"
-            r={4***REMOVED***
+            r={4}
             transform="translate(746 134)"
           />
           <path
@@ -250,22 +250,22 @@ function SvgPendlerKarteWithStations(props: SVGProps<SVGSVGElement>) {
         fill="none"
         stroke="#005b79"
         strokeLinecap="round"
-        strokeWidth={2***REMOVED***
+        strokeWidth={2}
       />
       <circle
-        cx={6.5***REMOVED***
-        cy={6.5***REMOVED***
+        cx={6.5}
+        cy={6.5}
         data-name="Ellipse 55"
         fill="#005b79"
-        r={6.5***REMOVED***
+        r={6.5}
         transform="translate(539.5 239.564)"
       />
       <circle
-        cx={6.5***REMOVED***
-        cy={6.5***REMOVED***
+        cx={6.5}
+        cy={6.5}
         data-name="Ellipse 56"
         fill="#005b79"
-        r={6.5***REMOVED***
+        r={6.5}
         transform="translate(616.5 232.564)"
       />
       <path
@@ -274,15 +274,15 @@ function SvgPendlerKarteWithStations(props: SVGProps<SVGSVGElement>) {
         fill="none"
         stroke="#005b79"
         strokeLinecap="round"
-        strokeWidth={2***REMOVED***
+        strokeWidth={2}
       />
       <g data-name="Gruppe 473" transform="translate(-125.225 -125.165)">
         <circle
-          cx={42.75***REMOVED***
-          cy={42.75***REMOVED***
+          cx={42.75}
+          cy={42.75}
           data-name="Ellipse 49"
           fill="rgba(52,193,123,0.15)"
-          r={42.75***REMOVED***
+          r={42.75}
           transform="translate(738.771 295.25)"
         />
         <g
@@ -291,25 +291,25 @@ function SvgPendlerKarteWithStations(props: SVGProps<SVGSVGElement>) {
           stroke="#34c17b"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth={2.5***REMOVED***
+          strokeWidth={2.5}
           transform="translate(59.846 215.75)"
         >
           <rect
             data-name="Rechteck 16"
-            height={15.685***REMOVED***
-            rx={4***REMOVED***
+            height={15.685}
+            rx={4}
             transform="translate(701 121.537)"
-            width={41.352***REMOVED***
+            width={41.352}
           />
           <path
             d="M711.695 137.222v2.852a1.426 1.426 0 0 1-1.426 1.426h-3.565a1.426 1.426 0 0 1-1.426-1.426v-2.852"
             data-name="Pfad 24"
           />
           <circle
-            cx={2.852***REMOVED***
-            cy={2.852***REMOVED***
+            cx={2.852}
+            cy={2.852}
             data-name="Ellipse 11"
-            r={2.852***REMOVED***
+            r={2.852}
             transform="translate(704.565 125.102)"
           />
           <path
@@ -317,10 +317,10 @@ function SvgPendlerKarteWithStations(props: SVGProps<SVGSVGElement>) {
             data-name="Pfad 29"
           />
           <circle
-            cx={2.852***REMOVED***
-            cy={2.852***REMOVED***
+            cx={2.852}
+            cy={2.852}
             data-name="Ellipse 12"
-            r={2.852***REMOVED***
+            r={2.852}
             transform="translate(733.083 125.102)"
           />
           <path
@@ -334,11 +334,11 @@ function SvgPendlerKarteWithStations(props: SVGProps<SVGSVGElement>) {
         </g>
       </g>
       <circle
-        cx={6.5***REMOVED***
-        cy={6.5***REMOVED***
+        cx={6.5}
+        cy={6.5}
         data-name="Ellipse 57"
         fill="#005b79"
-        r={6.5***REMOVED***
+        r={6.5}
         transform="translate(586.5 302.042)"
       />
       <path
@@ -347,15 +347,15 @@ function SvgPendlerKarteWithStations(props: SVGProps<SVGSVGElement>) {
         fill="none"
         stroke="#005b79"
         strokeLinecap="round"
-        strokeWidth={2***REMOVED***
+        strokeWidth={2}
       />
       <g data-name="Gruppe 556" transform="translate(-37.419 -308.098)">
         <circle
-          cx={47***REMOVED***
-          cy={47***REMOVED***
+          cx={47}
+          cy={47}
           data-name="Ellipse 48"
           fill="rgba(52,193,123,0.15)"
-          r={47***REMOVED***
+          r={47}
           transform="translate(507.675 532.988)"
         />
         <g
@@ -364,25 +364,25 @@ function SvgPendlerKarteWithStations(props: SVGProps<SVGSVGElement>) {
           stroke="#34c17b"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth={2.5***REMOVED***
+          strokeWidth={2.5}
           transform="translate(-170.479 454.5)"
         >
           <rect
             data-name="Rechteck 16"
-            height={18.323***REMOVED***
-            rx={4***REMOVED***
+            height={18.323}
+            rx={4}
             transform="translate(701 124.655)"
-            width={48.307***REMOVED***
+            width={48.307}
           />
           <path
             d="M713.497 142.978v3.331a1.665 1.665 0 0 1-1.67 1.669h-4.164a1.665 1.665 0 0 1-1.666-1.669v-3.331"
             data-name="Pfad 24"
           />
           <circle
-            cx={3.331***REMOVED***
-            cy={3.331***REMOVED***
+            cx={3.331}
+            cy={3.331}
             data-name="Ellipse 11"
-            r={3.331***REMOVED***
+            r={3.331}
             transform="translate(705.164 128.819)"
           />
           <path
@@ -390,10 +390,10 @@ function SvgPendlerKarteWithStations(props: SVGProps<SVGSVGElement>) {
             data-name="Pfad 29"
           />
           <circle
-            cx={3.331***REMOVED***
-            cy={3.331***REMOVED***
+            cx={3.331}
+            cy={3.331}
             data-name="Ellipse 12"
-            r={3.331***REMOVED***
+            r={3.331}
             transform="translate(738.479 128.819)"
           />
           <path
@@ -407,11 +407,11 @@ function SvgPendlerKarteWithStations(props: SVGProps<SVGSVGElement>) {
         </g>
       </g>
       <circle
-        cx={6.5***REMOVED***
-        cy={6.5***REMOVED***
+        cx={6.5}
+        cy={6.5}
         data-name="Ellipse 58"
         fill="#005b79"
-        r={6.5***REMOVED***
+        r={6.5}
         transform="translate(483.256 373.607)"
       />
       <path
@@ -420,15 +420,15 @@ function SvgPendlerKarteWithStations(props: SVGProps<SVGSVGElement>) {
         fill="none"
         stroke="#005b79"
         strokeLinecap="round"
-        strokeWidth={2***REMOVED***
+        strokeWidth={2}
       />
       <g data-name="Gruppe 475" transform="translate(-58.419 -214.098)">
         <circle
-          cx={47***REMOVED***
-          cy={47***REMOVED***
+          cx={47}
+          cy={47}
           data-name="Ellipse 48"
           fill="rgba(52,193,123,0.15)"
-          r={47***REMOVED***
+          r={47}
           transform="translate(507.675 532.988)"
         />
         <g
@@ -437,25 +437,25 @@ function SvgPendlerKarteWithStations(props: SVGProps<SVGSVGElement>) {
           stroke="#34c17b"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth={2.5***REMOVED***
+          strokeWidth={2.5}
           transform="translate(-170.479 454.5)"
         >
           <rect
             data-name="Rechteck 16"
-            height={18.323***REMOVED***
-            rx={4***REMOVED***
+            height={18.323}
+            rx={4}
             transform="translate(701 124.655)"
-            width={48.307***REMOVED***
+            width={48.307}
           />
           <path
             d="M713.497 142.978v3.331a1.665 1.665 0 0 1-1.67 1.669h-4.164a1.665 1.665 0 0 1-1.666-1.669v-3.331"
             data-name="Pfad 24"
           />
           <circle
-            cx={3.331***REMOVED***
-            cy={3.331***REMOVED***
+            cx={3.331}
+            cy={3.331}
             data-name="Ellipse 11"
-            r={3.331***REMOVED***
+            r={3.331}
             transform="translate(705.164 128.819)"
           />
           <path
@@ -463,10 +463,10 @@ function SvgPendlerKarteWithStations(props: SVGProps<SVGSVGElement>) {
             data-name="Pfad 29"
           />
           <circle
-            cx={3.331***REMOVED***
-            cy={3.331***REMOVED***
+            cx={3.331}
+            cy={3.331}
             data-name="Ellipse 12"
-            r={3.331***REMOVED***
+            r={3.331}
             transform="translate(738.479 128.819)"
           />
           <path
@@ -480,62 +480,62 @@ function SvgPendlerKarteWithStations(props: SVGProps<SVGSVGElement>) {
         </g>
       </g>
       <text
-        data-name={7.4***REMOVED***
+        data-name={7.4}
         fill="#34c17b"
         fontFamily="Inter-Medium, Inter"
-        fontSize={40***REMOVED***
-        fontWeight={500***REMOVED***
+        fontSize={40}
+        fontWeight={500}
         transform="translate(3.75 142.412)"
       >
-        <tspan x={0***REMOVED*** y={39***REMOVED***>
-    ***REMOVED***'4.397.847'***REMOVED***
+        <tspan x={0} y={39}>
+          {'4.397.847'}
         </tspan>
       </text>
       <text
         data-name="Neutor"
         fill="#005b79"
         fontFamily="Inter-Medium, Inter"
-        fontSize={20***REMOVED***
-        fontWeight={500***REMOVED***
+        fontSize={20}
+        fontWeight={500}
         letterSpacing=".005em"
         transform="translate(3.75 111.929)"
       >
-        <tspan x={0***REMOVED*** y={19***REMOVED***>
-    ***REMOVED***'Steinfurter Str. / Austermannstr.'***REMOVED***
+        <tspan x={0} y={19}>
+          {'Steinfurter Str. / Austermannstr.'}
         </tspan>
         <tspan fontFamily="Inter-Medium" />
       </text>
       <text
-        data-name={7.4***REMOVED***
+        data-name={7.4}
         fill="#34c17b"
         fontFamily="Inter-Medium, Inter"
-        fontSize={40***REMOVED***
-        fontWeight={500***REMOVED***
+        fontSize={40}
+        fontWeight={500}
         transform="translate(3.75 306.41)"
       >
-        <tspan x={0***REMOVED*** y={39***REMOVED***>
-    ***REMOVED***'4.397.847'***REMOVED***
+        <tspan x={0} y={39}>
+          {'4.397.847'}
         </tspan>
       </text>
       <text
         data-name="Neutor"
         fill="#005b79"
         fontFamily="Inter-Medium, Inter"
-        fontSize={20***REMOVED***
-        fontWeight={500***REMOVED***
+        fontSize={20}
+        fontWeight={500}
         letterSpacing=".005em"
         transform="translate(3.75 275.409)"
       >
-        <tspan x={0***REMOVED*** y={19***REMOVED***>
-    ***REMOVED***'Rishon-le-Zion-Ring / Einsteinstr.'***REMOVED***
+        <tspan x={0} y={19}>
+          {'Rishon-le-Zion-Ring / Einsteinstr.'}
         </tspan>
       </text>
       <circle
-        cx={6.5***REMOVED***
-        cy={6.5***REMOVED***
+        cx={6.5}
+        cy={6.5}
         data-name="Ellipse 59"
         fill="#005b79"
-        r={6.5***REMOVED***
+        r={6.5}
         transform="translate(527 269.044)"
       />
       <path
@@ -544,9 +544,9 @@ function SvgPendlerKarteWithStations(props: SVGProps<SVGSVGElement>) {
         fill="none"
         stroke="#005b79"
         strokeLinecap="round"
-        strokeWidth={2***REMOVED***
+        strokeWidth={2}
       />
     </g>
   </svg>
-***REMOVED***
+}
 export default SvgPendlerKarteWithStations

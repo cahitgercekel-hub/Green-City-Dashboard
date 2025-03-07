@@ -1,10 +1,10 @@
 import * as React from 'react'
-import type { SVGProps ***REMOVED*** from 'react'
+import type { SVGProps } from 'react'
 function SvgPendlerGesamt(props: SVGProps<SVGSVGElement>) {
   return <svg
     viewBox="0 0 1285.75 585.578"
     xmlns="http://www.w3.org/2000/svg"
-    {...props***REMOVED***
+    {...props}
   >
     <g data-name="Gruppe 988" transform="translate(12848.5 13246.207)">
       <path
@@ -17,23 +17,23 @@ function SvgPendlerGesamt(props: SVGProps<SVGSVGElement>) {
         data-name="Pfad 372"
         fill="none"
         stroke="#fff"
-        strokeWidth={2***REMOVED***
+        strokeWidth={2}
       />
       <path
         d="m-12304.457-12944.694-10.155-8.584v-40.638l7.728-8.683"
         data-name="Pfad 373"
         fill="none"
         stroke="#fff"
-        strokeWidth={3***REMOVED***
+        strokeWidth={3}
       />
       <path
         d="M-12294.65-13241.442v26.633l3.727 9.715v15.175l-3.727 24.14-3.447 102.027v68.548"
         data-name="Pfad 374"
         fill="none"
         stroke="#fff"
-        strokeWidth={3***REMOVED***
+        strokeWidth={3}
       />
-      <g data-name="Gruppe 472" fill="none" stroke="#fff" strokeWidth={3***REMOVED***>
+      <g data-name="Gruppe 472" fill="none" stroke="#fff" strokeWidth={3}>
         <path
           d="M-12525.4-13168.071a283.1 283.1 0 0 1 30.959 42.575c14.684 24.824 47.732 57.42 62.734 60.523s24.959 6.088 45.186 8.806 26.047-3.308 42.7 14.5 44.395 46.422 44.395 46.422l8.888 2.878"
           data-name="Pfad 365"
@@ -60,15 +60,15 @@ function SvgPendlerGesamt(props: SVGProps<SVGSVGElement>) {
         data-name="Pfad 371"
         fill="none"
         stroke="#fff"
-        strokeWidth={3***REMOVED***
+        strokeWidth={3}
       />
       <g data-name="Gruppe 556" transform="translate(-12892.598 -13550.543)">
         <circle
-          cx={47***REMOVED***
-          cy={47***REMOVED***
+          cx={47}
+          cy={47}
           data-name="Ellipse 48"
           fill="rgba(52,193,123,0.15)"
-          r={47***REMOVED***
+          r={47}
           transform="translate(507.675 532.988)"
         />
         <g
@@ -77,25 +77,25 @@ function SvgPendlerGesamt(props: SVGProps<SVGSVGElement>) {
           stroke="#34c17b"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth={2.5***REMOVED***
+          strokeWidth={2.5}
           transform="translate(-170.479 454.5)"
         >
           <rect
             data-name="Rechteck 16"
-            height={18.323***REMOVED***
-            rx={4***REMOVED***
+            height={18.323}
+            rx={4}
             transform="translate(701 124.655)"
-            width={48.307***REMOVED***
+            width={48.307}
           />
           <path
             d="M713.497 142.978v3.331a1.665 1.665 0 0 1-1.67 1.669h-4.164a1.665 1.665 0 0 1-1.666-1.669v-3.331"
             data-name="Pfad 24"
           />
           <circle
-            cx={3.331***REMOVED***
-            cy={3.331***REMOVED***
+            cx={3.331}
+            cy={3.331}
             data-name="Ellipse 11"
-            r={3.331***REMOVED***
+            r={3.331}
             transform="translate(705.164 128.819)"
           />
           <path
@@ -103,10 +103,10 @@ function SvgPendlerGesamt(props: SVGProps<SVGSVGElement>) {
             data-name="Pfad 29"
           />
           <circle
-            cx={3.331***REMOVED***
-            cy={3.331***REMOVED***
+            cx={3.331}
+            cy={3.331}
             data-name="Ellipse 12"
-            r={3.331***REMOVED***
+            r={3.331}
             transform="translate(738.479 128.819)"
           />
           <path
@@ -121,11 +121,11 @@ function SvgPendlerGesamt(props: SVGProps<SVGSVGElement>) {
       </g>
       <g data-name="Gruppe 979" transform="translate(-12922.175 -13448.285)">
         <circle
-          cx={47***REMOVED***
-          cy={47***REMOVED***
+          cx={47}
+          cy={47}
           data-name="Ellipse 48"
           fill="rgba(52,193,123,0.15)"
-          r={47***REMOVED***
+          r={47}
           transform="translate(507.675 532.988)"
         />
         <g
@@ -134,25 +134,25 @@ function SvgPendlerGesamt(props: SVGProps<SVGSVGElement>) {
           stroke="#34c17b"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth={2.5***REMOVED***
+          strokeWidth={2.5}
           transform="translate(-170.479 454.5)"
         >
           <rect
             data-name="Rechteck 16"
-            height={18.323***REMOVED***
-            rx={4***REMOVED***
+            height={18.323}
+            rx={4}
             transform="translate(701 124.655)"
-            width={48.307***REMOVED***
+            width={48.307}
           />
           <path
             d="M713.497 142.978v3.331a1.665 1.665 0 0 1-1.67 1.669h-4.164a1.665 1.665 0 0 1-1.666-1.669v-3.331"
             data-name="Pfad 24"
           />
           <circle
-            cx={3.331***REMOVED***
-            cy={3.331***REMOVED***
+            cx={3.331}
+            cy={3.331}
             data-name="Ellipse 11"
-            r={3.331***REMOVED***
+            r={3.331}
             transform="translate(705.164 128.819)"
           />
           <path
@@ -160,10 +160,10 @@ function SvgPendlerGesamt(props: SVGProps<SVGSVGElement>) {
             data-name="Pfad 29"
           />
           <circle
-            cx={3.331***REMOVED***
-            cy={3.331***REMOVED***
+            cx={3.331}
+            cy={3.331}
             data-name="Ellipse 12"
-            r={3.331***REMOVED***
+            r={3.331}
             transform="translate(738.479 128.819)"
           />
           <path
@@ -178,11 +178,11 @@ function SvgPendlerGesamt(props: SVGProps<SVGSVGElement>) {
       </g>
       <g data-name="Gruppe 978" transform="translate(-12869.287 -13622.191)">
         <circle
-          cx={47***REMOVED***
-          cy={47***REMOVED***
+          cx={47}
+          cy={47}
           data-name="Ellipse 48"
           fill="rgba(52,193,123,0.15)"
-          r={47***REMOVED***
+          r={47}
           transform="translate(507.675 532.988)"
         />
         <g
@@ -191,25 +191,25 @@ function SvgPendlerGesamt(props: SVGProps<SVGSVGElement>) {
           stroke="#34c17b"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth={2.5***REMOVED***
+          strokeWidth={2.5}
           transform="translate(-170.479 454.5)"
         >
           <rect
             data-name="Rechteck 16"
-            height={18.323***REMOVED***
-            rx={4***REMOVED***
+            height={18.323}
+            rx={4}
             transform="translate(701 124.655)"
-            width={48.307***REMOVED***
+            width={48.307}
           />
           <path
             d="M713.497 142.978v3.331a1.665 1.665 0 0 1-1.67 1.669h-4.164a1.665 1.665 0 0 1-1.666-1.669v-3.331"
             data-name="Pfad 24"
           />
           <circle
-            cx={3.331***REMOVED***
-            cy={3.331***REMOVED***
+            cx={3.331}
+            cy={3.331}
             data-name="Ellipse 11"
-            r={3.331***REMOVED***
+            r={3.331}
             transform="translate(705.164 128.819)"
           />
           <path
@@ -217,10 +217,10 @@ function SvgPendlerGesamt(props: SVGProps<SVGSVGElement>) {
             data-name="Pfad 29"
           />
           <circle
-            cx={3.331***REMOVED***
-            cy={3.331***REMOVED***
+            cx={3.331}
+            cy={3.331}
             data-name="Ellipse 12"
-            r={3.331***REMOVED***
+            r={3.331}
             transform="translate(738.479 128.819)"
           />
           <path
@@ -235,11 +235,11 @@ function SvgPendlerGesamt(props: SVGProps<SVGSVGElement>) {
       </g>
       <g data-name="Gruppe 980" transform="translate(-12754.911 -13612.783)">
         <circle
-          cx={47***REMOVED***
-          cy={47***REMOVED***
+          cx={47}
+          cy={47}
           data-name="Ellipse 48"
           fill="rgba(52,193,123,0.15)"
-          r={47***REMOVED***
+          r={47}
           transform="translate(507.675 532.988)"
         />
         <g
@@ -248,25 +248,25 @@ function SvgPendlerGesamt(props: SVGProps<SVGSVGElement>) {
           stroke="#34c17b"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth={2.5***REMOVED***
+          strokeWidth={2.5}
           transform="translate(-170.479 454.5)"
         >
           <rect
             data-name="Rechteck 16"
-            height={18.323***REMOVED***
-            rx={4***REMOVED***
+            height={18.323}
+            rx={4}
             transform="translate(701 124.655)"
-            width={48.307***REMOVED***
+            width={48.307}
           />
           <path
             d="M713.497 142.978v3.331a1.665 1.665 0 0 1-1.67 1.669h-4.164a1.665 1.665 0 0 1-1.666-1.669v-3.331"
             data-name="Pfad 24"
           />
           <circle
-            cx={3.331***REMOVED***
-            cy={3.331***REMOVED***
+            cx={3.331}
+            cy={3.331}
             data-name="Ellipse 11"
-            r={3.331***REMOVED***
+            r={3.331}
             transform="translate(705.164 128.819)"
           />
           <path
@@ -274,10 +274,10 @@ function SvgPendlerGesamt(props: SVGProps<SVGSVGElement>) {
             data-name="Pfad 29"
           />
           <circle
-            cx={3.331***REMOVED***
-            cy={3.331***REMOVED***
+            cx={3.331}
+            cy={3.331}
             data-name="Ellipse 12"
-            r={3.331***REMOVED***
+            r={3.331}
             transform="translate(738.479 128.819)"
           />
           <path
@@ -292,11 +292,11 @@ function SvgPendlerGesamt(props: SVGProps<SVGSVGElement>) {
       </g>
       <g data-name="Gruppe 981" transform="translate(-12792.911 -13486.406)">
         <circle
-          cx={47***REMOVED***
-          cy={47***REMOVED***
+          cx={47}
+          cy={47}
           data-name="Ellipse 48"
           fill="rgba(52,193,123,0.15)"
-          r={47***REMOVED***
+          r={47}
           transform="translate(507.675 532.988)"
         />
         <g
@@ -305,25 +305,25 @@ function SvgPendlerGesamt(props: SVGProps<SVGSVGElement>) {
           stroke="#34c17b"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth={2.5***REMOVED***
+          strokeWidth={2.5}
           transform="translate(-170.479 454.5)"
         >
           <rect
             data-name="Rechteck 16"
-            height={18.323***REMOVED***
-            rx={4***REMOVED***
+            height={18.323}
+            rx={4}
             transform="translate(701 124.655)"
-            width={48.307***REMOVED***
+            width={48.307}
           />
           <path
             d="M713.497 142.978v3.331a1.665 1.665 0 0 1-1.67 1.669h-4.164a1.665 1.665 0 0 1-1.666-1.669v-3.331"
             data-name="Pfad 24"
           />
           <circle
-            cx={3.331***REMOVED***
-            cy={3.331***REMOVED***
+            cx={3.331}
+            cy={3.331}
             data-name="Ellipse 11"
-            r={3.331***REMOVED***
+            r={3.331}
             transform="translate(705.164 128.819)"
           />
           <path
@@ -331,10 +331,10 @@ function SvgPendlerGesamt(props: SVGProps<SVGSVGElement>) {
             data-name="Pfad 29"
           />
           <circle
-            cx={3.331***REMOVED***
-            cy={3.331***REMOVED***
+            cx={3.331}
+            cy={3.331}
             data-name="Ellipse 12"
-            r={3.331***REMOVED***
+            r={3.331}
             transform="translate(738.479 128.819)"
           />
           <path
@@ -353,171 +353,171 @@ function SvgPendlerGesamt(props: SVGProps<SVGSVGElement>) {
         fill="none"
         stroke="#005b79"
         strokeLinecap="round"
-        strokeWidth={2***REMOVED***
+        strokeWidth={2}
       />
       <text
-        data-name={7.4***REMOVED***
+        data-name={7.4}
         fill="#34c17b"
         fontFamily="Inter-Medium, Inter"
-        fontSize={40***REMOVED***
-        fontWeight={500***REMOVED***
+        fontSize={40}
+        fontWeight={500}
         transform="translate(-12843.75 -12773.281)"
       >
-        <tspan x={0***REMOVED*** y={39***REMOVED***>
-    ***REMOVED***'2.893.526'***REMOVED***
+        <tspan x={0} y={39}>
+          {'2.893.526'}
         </tspan>
       </text>
       <text
         fill="#005b79"
         fontFamily="Inter-Medium, Inter"
-        fontSize={20***REMOVED***
-        fontWeight={500***REMOVED***
+        fontSize={20}
+        fontWeight={500}
         letterSpacing=".005em"
         transform="translate(-12843.75 -12805.264)"
       >
-        <tspan x={0***REMOVED*** y={19***REMOVED***>
-    ***REMOVED***'Weseler Str. / Inselbogen'***REMOVED***
+        <tspan x={0} y={19}>
+          {'Weseler Str. / Inselbogen'}
         </tspan>
       </text>
       <text
-        data-name={7.4***REMOVED***
+        data-name={7.4}
         fill="#34c17b"
         fontFamily="Inter-Medium, Inter"
-        fontSize={40***REMOVED***
-        fontWeight={500***REMOVED***
+        fontSize={40}
+        fontWeight={500}
         transform="translate(-11986.75 -12773.281)"
       >
-        <tspan x={0***REMOVED*** y={39***REMOVED***>
-    ***REMOVED***'5.753.832'***REMOVED***
+        <tspan x={0} y={39}>
+          {'5.753.832'}
         </tspan>
       </text>
       <text
         data-name="Neutor"
         fill="#005b79"
         fontFamily="Inter-Medium, Inter"
-        fontSize={20***REMOVED***
-        fontWeight={500***REMOVED***
+        fontSize={20}
+        fontWeight={500}
         letterSpacing=".005em"
         transform="translate(-11986.75 -12804.264)"
       >
-        <tspan x={0***REMOVED*** y={19***REMOVED***>
-    ***REMOVED***'Albersloher Weg / Heumannsweg '***REMOVED***
+        <tspan x={0} y={19}>
+          {'Albersloher Weg / Heumannsweg '}
         </tspan>
       </text>
       <text
-        data-name={7.4***REMOVED***
+        data-name={7.4}
         fill="#34c17b"
         fontFamily="Inter-Medium, Inter"
-        fontSize={40***REMOVED***
-        fontWeight={500***REMOVED***
+        fontSize={40}
+        fontWeight={500}
         transform="translate(-11986.75 -13101.277)"
       >
-        <tspan x={0***REMOVED*** y={39***REMOVED***>
-    ***REMOVED***'2.428.372'***REMOVED***
+        <tspan x={0} y={39}>
+          {'2.428.372'}
         </tspan>
       </text>
       <text
         data-name="Neutor"
         fill="#005b79"
         fontFamily="Inter-Medium, Inter"
-        fontSize={20***REMOVED***
-        fontWeight={500***REMOVED***
+        fontSize={20}
+        fontWeight={500}
         letterSpacing=".005em"
         transform="translate(-11986.75 -13134.277)"
       >
-        <tspan x={0***REMOVED*** y={19***REMOVED***>
-    ***REMOVED***'Warendorfer Str. / Schifffahrter Damm'***REMOVED***
+        <tspan x={0} y={19}>
+          {'Warendorfer Str. / Schifffahrter Damm'}
         </tspan>
       </text>
       <circle
-        cx={6.5***REMOVED***
-        cy={6.5***REMOVED***
+        cx={6.5}
+        cy={6.5}
         data-name="Ellipse 55"
         fill="#005b79"
-        r={6.5***REMOVED***
+        r={6.5}
         transform="translate(-12308 -13006.643)"
       />
       <circle
-        cx={6.5***REMOVED***
-        cy={6.5***REMOVED***
+        cx={6.5}
+        cy={6.5}
         data-name="Ellipse 56"
         fill="#005b79"
-        r={6.5***REMOVED***
+        r={6.5}
         transform="translate(-12231 -13013.643)"
       />
       <circle
-        cx={6.5***REMOVED***
-        cy={6.5***REMOVED***
+        cx={6.5}
+        cy={6.5}
         data-name="Ellipse 57"
         fill="#005b79"
-        r={6.5***REMOVED***
+        r={6.5}
         transform="translate(-12261 -12944.164)"
       />
       <circle
-        cx={6.5***REMOVED***
-        cy={6.5***REMOVED***
+        cx={6.5}
+        cy={6.5}
         data-name="Ellipse 58"
         fill="#005b79"
-        r={6.5***REMOVED***
+        r={6.5}
         transform="translate(-12364.244 -12872.6)"
       />
       <text
-        data-name={7.4***REMOVED***
+        data-name={7.4}
         fill="#34c17b"
         fontFamily="Inter-Medium, Inter"
-        fontSize={40***REMOVED***
-        fontWeight={500***REMOVED***
+        fontSize={40}
+        fontWeight={500}
         transform="translate(-12843.75 -13103.795)"
       >
-        <tspan x={0***REMOVED*** y={39***REMOVED***>
-    ***REMOVED***'4.397.847'***REMOVED***
+        <tspan x={0} y={39}>
+          {'4.397.847'}
         </tspan>
       </text>
       <text
         data-name="Neutor"
         fill="#005b79"
         fontFamily="Inter-Medium, Inter"
-        fontSize={20***REMOVED***
-        fontWeight={500***REMOVED***
+        fontSize={20}
+        fontWeight={500}
         letterSpacing=".005em"
         transform="translate(-12843.75 -13134.277)"
       >
-        <tspan x={0***REMOVED*** y={19***REMOVED***>
-    ***REMOVED***'Steinfurter Str. / Austermannstr.'***REMOVED***
+        <tspan x={0} y={19}>
+          {'Steinfurter Str. / Austermannstr.'}
         </tspan>
         <tspan fontFamily="Inter-Medium" />
       </text>
       <text
-        data-name={7.4***REMOVED***
+        data-name={7.4}
         fill="#34c17b"
         fontFamily="Inter-Medium, Inter"
-        fontSize={40***REMOVED***
-        fontWeight={500***REMOVED***
+        fontSize={40}
+        fontWeight={500}
         transform="translate(-12843.75 -12939.797)"
       >
-        <tspan x={0***REMOVED*** y={39***REMOVED***>
-    ***REMOVED***'4.397.847'***REMOVED***
+        <tspan x={0} y={39}>
+          {'4.397.847'}
         </tspan>
       </text>
       <text
         data-name="Neutor"
         fill="#005b79"
         fontFamily="Inter-Medium, Inter"
-        fontSize={20***REMOVED***
-        fontWeight={500***REMOVED***
+        fontSize={20}
+        fontWeight={500}
         letterSpacing=".005em"
         transform="translate(-12843.75 -12970.798)"
       >
-        <tspan x={0***REMOVED*** y={19***REMOVED***>
-    ***REMOVED***'Rishon-le-Zion-Ring / Einsteinstr.'***REMOVED***
+        <tspan x={0} y={19}>
+          {'Rishon-le-Zion-Ring / Einsteinstr.'}
         </tspan>
       </text>
       <circle
-        cx={6.5***REMOVED***
-        cy={6.5***REMOVED***
+        cx={6.5}
+        cy={6.5}
         data-name="Ellipse 59"
         fill="#005b79"
-        r={6.5***REMOVED***
+        r={6.5}
         transform="translate(-12320.5 -12977.162)"
       />
       <path
@@ -526,7 +526,7 @@ function SvgPendlerGesamt(props: SVGProps<SVGSVGElement>) {
         fill="none"
         stroke="#005b79"
         strokeLinecap="round"
-        strokeWidth={2***REMOVED***
+        strokeWidth={2}
       />
       <path
         d="M-12847.5-12985.305h534.5v14.75"
@@ -534,7 +534,7 @@ function SvgPendlerGesamt(props: SVGProps<SVGSVGElement>) {
         fill="none"
         stroke="#005b79"
         strokeLinecap="round"
-        strokeWidth={2***REMOVED***
+        strokeWidth={2}
       />
       <path
         d="M-12847.5-12819.915h489.5v-46.185"
@@ -542,7 +542,7 @@ function SvgPendlerGesamt(props: SVGProps<SVGSVGElement>) {
         fill="none"
         stroke="#005b79"
         strokeLinecap="round"
-        strokeWidth={2***REMOVED***
+        strokeWidth={2}
       />
       <path
         d="M-11716.244-12819.915h-538v-118.459"
@@ -550,9 +550,9 @@ function SvgPendlerGesamt(props: SVGProps<SVGSVGElement>) {
         fill="none"
         stroke="#005b79"
         strokeLinecap="round"
-        strokeWidth={2***REMOVED***
+        strokeWidth={2}
       />
     </g>
   </svg>
-***REMOVED***
+}
 export default SvgPendlerGesamt

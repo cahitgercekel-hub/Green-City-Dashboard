@@ -6,35 +6,35 @@ import Carousel from '@/components/Elements/Carousel'
 import Title from '@/components/Elements/Title'
 import Slider from '@/components/Inputs/Slider'
 import ToggleGroup from '@/components/Inputs/ToggleGroup'
-import { useState ***REMOVED*** from 'react'
+import { useState } from 'react'
 import TrafficMap from './TrafficMap'
 import TrafficMapMobile from './TrafficMapMobile'
 
-function Toggle({ onChange ***REMOVED***: { onChange: (_val: string) => void ***REMOVED***) {
+function Toggle({ onChange }: { onChange: (_val: string) => void }) {
   const minYear = 2020
   const maxYear = new Date().getFullYear()
 
-  const years = Array.from({ length: maxYear - minYear + 1 ***REMOVED***, (_, i) => {
+  const years = Array.from({ length: maxYear - minYear + 1 }, (_, i) => {
     return {
       element: (
         <Title as="h6" className="2xl:w-max">
-    ***REMOVED***minYear + i***REMOVED***
+          {minYear + i}
         </Title>
-  ***REMOVED***,
+      ),
       value: (minYear + i).toString(),
-  ***REMOVED***
-***REMOVED***)
+    }
+  })
 
   return (
     <ToggleGroup
       defaultValue="2024"
-      items={years***REMOVED***
-      onChange={onChange***REMOVED***
+      items={years}
+      onChange={onChange}
       scrollX
-      variant={'mobility'***REMOVED***
+      variant={'mobility'}
     />
   )
-***REMOVED***
+}
 
 export default function TrafficloadContent() {
   const currentYear = new Date().getFullYear()
@@ -56,8 +56,8 @@ export default function TrafficloadContent() {
     return (
       f.properties.year.toString() === year &&
       f.properties.month === monthIndex + 1
-***REMOVED***
-***REMOVED***)
+    )
+  })
 
   const albersloher = data.find(d => d.properties.amknotennr === 10010750)
   const warendorfer = data.find(d => d.properties.amknotennr === 10011170)
@@ -75,7 +75,7 @@ export default function TrafficloadContent() {
       rishon?.properties.mittelwert.toFixed(0) ?? 0,
     'Steinfurter Str. / Austermannstr.':
       steinfurter?.properties.mittelwert.toFixed(0) ?? 0,
-***REMOVED***
+  }
 
   const mapping = new Map([
     ['Albersloher Weg / Heumannsweg', 'albersloher'],
@@ -89,35 +89,35 @@ export default function TrafficloadContent() {
     <>
       <div className="relative flex h-96 flex-1 flex-col rounded bg-white p-2 md:h-[32rem]">
         <div className="absolute -top-4 left-0 w-full md:-top-6 md:w-auto">
-          <Toggle onChange={val => setMode(val as typeof mode)***REMOVED*** />
+          <Toggle onChange={val => setMode(val as typeof mode)} />
         </div>
         <div className="absolute bottom-5 left-0 hidden h-[80%] w-full justify-center lg:flex">
           <TrafficMap
-            albersloher={streetData['Albersloher Weg / Heumannsweg'] as number***REMOVED***
+            albersloher={streetData['Albersloher Weg / Heumannsweg'] as number}
             className="h-full"
-            rishon={streetData['Rishon-le-Zion-Ring / Einsteinstr.'] as number***REMOVED***
+            rishon={streetData['Rishon-le-Zion-Ring / Einsteinstr.'] as number}
             steinfurter={
               streetData['Steinfurter Str. / Austermannstr.'] as number
-          ***REMOVED***
+            }
             warendorfer={
               streetData['Warendorfer Str. / Schifffahrter Damm'] as number
-          ***REMOVED***
-            weseler={streetData['Weseler Str. / Inselbogen'] as number***REMOVED***
+            }
+            weseler={streetData['Weseler Str. / Inselbogen'] as number}
           />
         </div>
         <div className="absolute -bottom-10 left-0 flex h-full w-full justify-center lg:hidden">
           <TrafficMapMobile
-            active={mobileActive***REMOVED***
-            albersloher={streetData['Albersloher Weg / Heumannsweg'] as number***REMOVED***
+            active={mobileActive}
+            albersloher={streetData['Albersloher Weg / Heumannsweg'] as number}
             className="h-full"
-            rishon={streetData['Rishon-le-Zion-Ring / Einsteinstr.'] as number***REMOVED***
+            rishon={streetData['Rishon-le-Zion-Ring / Einsteinstr.'] as number}
             steinfurter={
               streetData['Steinfurter Str. / Austermannstr.'] as number
-          ***REMOVED***
+            }
             warendorfer={
               streetData['Warendorfer Str. / Schifffahrter Damm'] as number
-          ***REMOVED***
-            weseler={streetData['Weseler Str. / Inselbogen'] as number***REMOVED***
+            }
+            weseler={streetData['Weseler Str. / Inselbogen'] as number}
           />
         </div>
       </div>
@@ -128,40 +128,40 @@ export default function TrafficloadContent() {
             setMobileActive(
               (mapping.get(
                 Object.keys(streetData)[e.index],
-          ***REMOVED*** as typeof mobileActive) ?? 'albersloher',
-        ***REMOVED***
-        ***REMOVED***
-          variant={'mobility'***REMOVED***
+              ) as typeof mobileActive) ?? 'albersloher',
+            )
+          }
+          variant={'mobility'}
         >
-    ***REMOVED***Object.keys(streetData).map((key, index) => {
+          {Object.keys(streetData).map((key, index) => {
             const val = parseInt(
               streetData[key as keyof typeof streetData] as string,
-        ***REMOVED***
+            )
             return (
-              <div key={index***REMOVED***>
-                <Title as="h5" variant={'primary'***REMOVED***>
-            ***REMOVED***key***REMOVED***
+              <div key={index}>
+                <Title as="h5" variant={'primary'}>
+                  {key}
                 </Title>
                 <Title
                   as="h3"
                   style={{
                     color: '#34c17b',
-                ***REMOVED******REMOVED***
+                  }}
                 >
-            ***REMOVED***val === 0 ? (
+                  {val === 0 ? (
                     'Keine Daten'
-              ***REMOVED*** : (
-                    <AnimatedNumber>{val***REMOVED***</AnimatedNumber>
-              ***REMOVED******REMOVED***
+                  ) : (
+                    <AnimatedNumber>{val}</AnimatedNumber>
+                  )}
                 </Title>
               </div>
-        ***REMOVED***
-        ***REMOVED***)***REMOVED***
+            )
+          })}
         </Carousel>
       </div>
       <Slider
-        defaultValue={[monthIndex]***REMOVED***
-        firstValueMobile={monthIndex***REMOVED*** // MONAT MAI NUR FÜR DEMO
+        defaultValue={[monthIndex]}
+        firstValueMobile={monthIndex} // MONAT MAI NUR FÜR DEMO
         labels={[
           'JAN',
           'FEB',
@@ -175,14 +175,14 @@ export default function TrafficloadContent() {
           'OKT',
           'NOV',
           'DEZ',
-        ]***REMOVED***
-        max={11***REMOVED***
-        min={0***REMOVED***
+        ]}
+        max={11}
+        min={0}
         onValueChange={([e]) => {
           setMonthIndex(e)
-      ***REMOVED******REMOVED***
-        variant={'mobility'***REMOVED***
+        }}
+        variant={'mobility'}
       />
     </>
   )
-***REMOVED***
+}

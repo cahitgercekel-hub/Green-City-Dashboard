@@ -3,7 +3,7 @@ import EnergyTile from '../EnergyTile'
 
 // @ts-ignore
 import AnimatedNumber from '@/components/Elements/Animated/AnimatedNumber'
-import { format ***REMOVED*** from 'date-fns'
+import { format } from 'date-fns'
 
 // interface PVDataType {
 //   ZEIT: string
@@ -11,32 +11,32 @@ import { format ***REMOVED*** from 'date-fns'
 //   AnzahlSolarModule: number
 //   Bruttoleistung: number
 //   Nettonennleistung: number
-// ***REMOVED***
+// }
 
 export default function LanternsTile() {
   // const [data] = PVData as PVDataType[]
 
   return (
     <EnergyTile
-      dataRetrieval={format(new Date('2023-05-30T00:00:00.000Z'), 'dd.MM.yyyy')***REMOVED***
-      dataSource={'Stadtwerke Münster'***REMOVED***
+      dataRetrieval={format(new Date('2023-05-30T00:00:00.000Z'), 'dd.MM.yyyy')}
+      dataSource={'Stadtwerke Münster'}
       embedId="energy-lanterns"
       title={
         <>
-          <AnimatedNumber>{8850***REMOVED***</AnimatedNumber> LED-Leuchtmittel
+          <AnimatedNumber>{8850}</AnimatedNumber> LED-Leuchtmittel
         </>
-    ***REMOVED***
+      }
     >
       <div>
-        <Title as={'subtitle'***REMOVED***>
+        <Title as={'subtitle'}>
           schenken Münsters Straßen bereits klimafreundliches Licht. Die
-          Stadtnetze Münster rüsten nach und nach alle rund{' '***REMOVED***
+          Stadtnetze Münster rüsten nach und nach alle rund{' '}
           <span className="text-energy">
-            <AnimatedNumber>{29000***REMOVED***</AnimatedNumber> Straßenlaternen
-          </span>{' '***REMOVED***
+            <AnimatedNumber>{29000}</AnimatedNumber> Straßenlaternen
+          </span>{' '}
           im Stadtgebiet mit der Technologie aus.
         </Title>
       </div>
     </EnergyTile>
   )
-***REMOVED***
+}

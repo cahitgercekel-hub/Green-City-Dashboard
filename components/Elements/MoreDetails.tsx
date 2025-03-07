@@ -1,27 +1,27 @@
 import Link from 'next/link'
-import type { VariantProps ***REMOVED*** from 'class-variance-authority'
-import { cva, cx ***REMOVED*** from 'class-variance-authority'
+import type { VariantProps } from 'class-variance-authority'
+import { cva, cx } from 'class-variance-authority'
 import Title from './Title'
-import { MsKlimadashboardIconsNaviInfoI ***REMOVED*** from '../Icons/Misc/Navi'
+import { MsKlimadashboardIconsNaviInfoI } from '../Icons/Misc/Navi'
 
 const style = cva('flex cursor-pointer items-center gap-1 md:gap-3', {
   variants: {
     variant: {
       primary: 'text-primary',
       inverse: 'text-white',
-  ***REMOVED***,
-***REMOVED***,
+    },
+  },
   defaultVariants: {
     variant: 'primary',
-***REMOVED***,
-***REMOVED***)
+  },
+})
 
 export type MoreDetailsProps = VariantProps<typeof style> & {
   link?: string
   className?: string
   lessDetails?: boolean
   onClick?: () => void
-***REMOVED***
+}
 
 export default function MoreDetails({
   link,
@@ -29,19 +29,19 @@ export default function MoreDetails({
   className,
   lessDetails,
   onClick,
-***REMOVED***: MoreDetailsProps) {
+}: MoreDetailsProps) {
   const Details = (
-    <div className={cx(style({ variant ***REMOVED***), className)***REMOVED*** onClick={onClick***REMOVED***>
+    <div className={cx(style({ variant }), className)} onClick={onClick}>
       <MsKlimadashboardIconsNaviInfoI className="h-6" />
       <Title as="h6" className="whitespace-nowrap underline">
-  ***REMOVED***lessDetails ? 'Weniger Details' : 'Mehr Details'***REMOVED***
+        {lessDetails ? 'Weniger Details' : 'Mehr Details'}
       </Title>
     </div>
   )
 
   if (!link) {
     return Details
-***REMOVED***
+  }
 
-  return <Link href={link***REMOVED***>{Details***REMOVED***</Link>
-***REMOVED***
+  return <Link href={link}>{Details}</Link>
+}

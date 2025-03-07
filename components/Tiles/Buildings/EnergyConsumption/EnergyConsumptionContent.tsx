@@ -3,7 +3,7 @@
 import ToggleGroup from '@/components/Inputs/ToggleGroup'
 
 import stromData from '@/assets/data/strom.json'
-import { useState ***REMOVED*** from 'react'
+import { useState } from 'react'
 import Slider from '@/components/Inputs/Slider'
 
 import DesktopView from './DesktopView'
@@ -25,37 +25,37 @@ export default function EnergyConsumptionContent() {
         <div className="absolute -top-4 right-0 w-full md:-top-6 md:w-auto">
           <ToggleGroup
             items={[
-        ***REMOVED***
+              {
                 element: 'Strom',
                 value: 'strom',
-            ***REMOVED***,
-        ***REMOVED***
+              },
+              {
                 element: 'Wärme',
                 value: 'waerme',
-            ***REMOVED***,
-            ]***REMOVED***
-            onChange={value => setMode(value as 'strom' | 'waerme')***REMOVED***
-            variant={'building'***REMOVED***
+              },
+            ]}
+            onChange={value => setMode(value as 'strom' | 'waerme')}
+            variant={'building'}
           ></ToggleGroup>
         </div>
         <div className="hidden xl:block">
-          <DesktopView mode={mode***REMOVED*** yearIndex={yearIndex***REMOVED*** />
+          <DesktopView mode={mode} yearIndex={yearIndex} />
         </div>
         <div className="block xl:hidden">
-          <MobileView mode={mode***REMOVED*** yearIndex={yearIndex***REMOVED*** />
+          <MobileView mode={mode} yearIndex={yearIndex} />
         </div>
       </div>
       <Slider
-        defaultValue={[yearIndex]***REMOVED***
-        firstValueMobile={years.length - 1***REMOVED***
-        labels={years.map(e => e.toString())***REMOVED***
-        max={years.length - 1***REMOVED***
-        min={0***REMOVED***
+        defaultValue={[yearIndex]}
+        firstValueMobile={years.length - 1}
+        labels={years.map(e => e.toString())}
+        max={years.length - 1}
+        min={0}
         onValueChange={([e]) => {
           setYearIndex(e)
-      ***REMOVED******REMOVED***
-        variant={'buildings'***REMOVED***
+        }}
+        variant={'buildings'}
       />
     </>
   )
-***REMOVED***
+}

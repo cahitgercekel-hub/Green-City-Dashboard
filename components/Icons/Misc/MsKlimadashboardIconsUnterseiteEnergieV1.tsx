@@ -1,18 +1,18 @@
 import * as React from 'react'
-import type { SVGProps ***REMOVED*** from 'react'
+import type { SVGProps } from 'react'
 function SvgMsKlimadashboardIconsUnterseiteEnergieV1(props: SVGProps<SVGSVGElement>) {
   return <svg
     data-name="Ebene 1"
     id="MS_Klimadashboard_Icons_Unterseite_Energie_v1_svg__Ebene_1"
     viewBox="0 0 351.25 82"
     xmlns="http://www.w3.org/2000/svg"
-    {...props***REMOVED***
+    {...props}
   >
     <defs>
       <style>
-  ***REMOVED***
-          '.MS_Klimadashboard_Icons_Unterseite_Energie_v1_svg__cls-3{fill:#f28443***REMOVED***'
-      ***REMOVED***
+        {
+          '.MS_Klimadashboard_Icons_Unterseite_Energie_v1_svg__cls-3{fill:#f28443}'
+        }
       </style>
     </defs>
     <g
@@ -27,7 +27,7 @@ function SvgMsKlimadashboardIconsUnterseiteEnergieV1(props: SVGProps<SVGSVGEleme
             id="MS_Klimadashboard_Icons_Unterseite_Energie_v1_svg__Themen_im_Fokus-2"
             style={{
               fill: '#005b79',
-          ***REMOVED******REMOVED***
+            }}
           />
         </g>
       </g>
@@ -37,7 +37,7 @@ function SvgMsKlimadashboardIconsUnterseiteEnergieV1(props: SVGProps<SVGSVGEleme
             d="M41 0h38c22.64 0 41 18.36 41 41s-18.36 41-41 41H41C18.36 82 0 63.64 0 41S18.36 0 41 0Z"
             style={{
               fill: 'none',
-          ***REMOVED******REMOVED***
+            }}
           />
           <path
             className="MS_Klimadashboard_Icons_Unterseite_Energie_v1_svg__cls-3"
@@ -51,5 +51,5 @@ function SvgMsKlimadashboardIconsUnterseiteEnergieV1(props: SVGProps<SVGSVGEleme
       </g>
     </g>
   </svg>
-***REMOVED***
+}
 export default SvgMsKlimadashboardIconsUnterseiteEnergieV1

@@ -1,18 +1,18 @@
 import * as React from 'react'
-import type { SVGProps ***REMOVED*** from 'react'
+import type { SVGProps } from 'react'
 function SvgMsKlimadashboardIconsMMasterplanV2(props: SVGProps<SVGSVGElement>) {
   return <svg
     data-name="Ebene 1"
     id="MS_Klimadashboard_Icons_m_masterplan_v2_svg__Ebene_1"
     viewBox="0 0 175.97 165.46"
     xmlns="http://www.w3.org/2000/svg"
-    {...props***REMOVED***
+    {...props}
   >
     <defs>
       <style>
-  ***REMOVED***
-          '.MS_Klimadashboard_Icons_m_masterplan_v2_svg__cls-1{fill:#005b79***REMOVED***.MS_Klimadashboard_Icons_m_masterplan_v2_svg__cls-2{fill:#34c17b***REMOVED***'
-      ***REMOVED***
+        {
+          '.MS_Klimadashboard_Icons_m_masterplan_v2_svg__cls-1{fill:#005b79}.MS_Klimadashboard_Icons_m_masterplan_v2_svg__cls-2{fill:#34c17b}'
+        }
       </style>
     </defs>
     <path
@@ -44,5 +44,5 @@ function SvgMsKlimadashboardIconsMMasterplanV2(props: SVGProps<SVGSVGElement>) {
       d="M94.35 118.15H82.48c-2.18 0-3.96-1.82-3.96-4.06v-5.28c0-.69.56-1.25 1.25-1.25h17.3c.69 0 1.25.56 1.25 1.25v5.28c0 2.24-1.78 4.06-3.96 4.06Zm-13.34-8.09v4.03c0 .86.66 1.56 1.46 1.56h11.87c.81 0 1.46-.7 1.46-1.56v-4.03H81Z"
     />
   </svg>
-***REMOVED***
+}
 export default SvgMsKlimadashboardIconsMMasterplanV2

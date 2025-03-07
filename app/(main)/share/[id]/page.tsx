@@ -1,16 +1,16 @@
-import TileFactory, { TileType ***REMOVED*** from '@/utils/TileFactory'
-import { notFound ***REMOVED*** from 'next/navigation'
+import TileFactory, { TileType } from '@/utils/TileFactory'
+import { notFound } from 'next/navigation'
 
 export const revalidate = 10
 
-type Params = Promise<{ id: TileType ***REMOVED***>
+type Params = Promise<{ id: TileType }>
 
-export default async function Share({ params ***REMOVED***: { params: Params ***REMOVED***) {
-  const { id ***REMOVED*** = await params
+export default async function Share({ params }: { params: Params }) {
+  const { id } = await params
 
   if (!id) {
     return notFound()
-***REMOVED***
+  }
 
-  return <TileFactory type={id***REMOVED*** />
-***REMOVED***
+  return <TileFactory type={id} />
+}

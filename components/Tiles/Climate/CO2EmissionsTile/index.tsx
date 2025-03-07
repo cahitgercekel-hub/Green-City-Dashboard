@@ -1,9 +1,9 @@
-import { Spacer ***REMOVED*** from '@/components/Elements/Spacer'
+import { Spacer } from '@/components/Elements/Spacer'
 import Title from '@/components/Elements/Title'
-import { MsKlimadashboardIconsKCo2 ***REMOVED*** from '@/components/Icons/Klima'
+import { MsKlimadashboardIconsKCo2 } from '@/components/Icons/Klima'
 import getTileData from '@/lib/api/getTileData'
-import { format ***REMOVED*** from 'date-fns'
-import { TileSplitView ***REMOVED*** from '../../Base/TileSplitView'
+import { format } from 'date-fns'
+import { TileSplitView } from '../../Base/TileSplitView'
 import ClimateTile from '../ClimateTile'
 import CO2EmissionsContent from './CO2EmissionsContent'
 
@@ -13,7 +13,7 @@ export default async function CO2EmissionsTile() {
 
   return (
     <ClimateTile
-      dataRetrieval={format(new Date(), '01.MM.yyyy')***REMOVED***
+      dataRetrieval={format(new Date(), '01.MM.yyyy')}
       dataSource="Stadt Münster - Stabsstelle Klima"
       embedId="climate-co2"
       subtitle="So viel wird in Münster ausgestoßen"
@@ -21,7 +21,7 @@ export default async function CO2EmissionsTile() {
         <>
           CO<sub>2</sub>
         </>
-    ***REMOVED***
+      }
     >
       <TileSplitView>
         <TileSplitView.Left>
@@ -29,8 +29,8 @@ export default async function CO2EmissionsTile() {
         </TileSplitView.Left>
         <TileSplitView.Right>
           <div className="flex flex-col items-center justify-between">
-            <Title as="h5" variant={'dark'***REMOVED***>
-        ***REMOVED***infoText***REMOVED***
+            <Title as="h5" variant={'dark'}>
+              {infoText}
             </Title>
             <Spacer />
             <MsKlimadashboardIconsKCo2 className="mx-auto w-40" />
@@ -39,4 +39,4 @@ export default async function CO2EmissionsTile() {
       </TileSplitView>
     </ClimateTile>
   )
-***REMOVED***
+}

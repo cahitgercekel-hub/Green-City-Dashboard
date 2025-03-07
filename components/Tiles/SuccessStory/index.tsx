@@ -1,13 +1,13 @@
-import { Spacer ***REMOVED*** from '@/components/Elements/Spacer'
+import { Spacer } from '@/components/Elements/Spacer'
 import Title from '@/components/Elements/Title'
 import Image from 'next/image'
 
-import directus, { directusImage ***REMOVED*** from '@/lib/directus'
-import { readSingleton ***REMOVED*** from '@directus/sdk'
+import directus, { directusImage } from '@/lib/directus'
+import { readSingleton } from '@directus/sdk'
 import Markdown from 'react-markdown'
 import rehypeExternalLinks from 'rehype-external-links'
 import remarkGfm from 'remark-gfm'
-import { BaseTile ***REMOVED*** from '../Base/BaseTile'
+import { BaseTile } from '../Base/BaseTile'
 
 export type SuccessStoryTileProps = {
   text: string
@@ -16,7 +16,7 @@ export type SuccessStoryTileProps = {
   imagePosition?: 'left' | 'right'
   moreInfo?: string
   id: string
-***REMOVED***
+}
 
 /**
  * A tile that represents a success story
@@ -31,13 +31,13 @@ export default async function SuccessStoryTile({
   imagePosition = 'left',
   moreInfo,
   id,
-***REMOVED***: SuccessStoryTileProps) {
+}: SuccessStoryTileProps) {
   const theme = await directus.request(readSingleton('theme'))
 
   const Content = (
     <div className="flex h-full flex-col justify-between">
-      <Title as="h5" font={'semibold'***REMOVED*** variant={'primary'***REMOVED***>
-  ***REMOVED***theme.success_stories_title***REMOVED***
+      <Title as="h5" font={'semibold'} variant={'primary'}>
+        {theme.success_stories_title}
       </Title>
       <Spacer size="md" />
       <Markdown
@@ -45,76 +45,76 @@ export default async function SuccessStoryTile({
         components={{
           h1: props => (
             <Title
-              as={'h2'***REMOVED***
+              as={'h2'}
               className="mb-4 md:mb-6"
-              variant={'primary'***REMOVED***
-        ***REMOVED***...props***REMOVED***
+              variant={'primary'}
+              {...props}
             />
-      ***REMOVED***,
+          ),
           h2: props => (
             <Title
-              as={'h3'***REMOVED***
+              as={'h3'}
               className="mb-4 md:mb-6"
-              variant={'primary'***REMOVED***
-        ***REMOVED***...props***REMOVED***
+              variant={'primary'}
+              {...props}
             />
-      ***REMOVED***,
+          ),
           h3: props => (
             <Title
-              as={'h4'***REMOVED***
+              as={'h4'}
               className="mb-4 md:mb-6"
-              variant={'primary'***REMOVED***
-        ***REMOVED***...props***REMOVED***
+              variant={'primary'}
+              {...props}
             />
-      ***REMOVED***,
-          h4: props => <Title as={'h5'***REMOVED*** variant={'primary'***REMOVED*** {...props***REMOVED*** />,
+          ),
+          h4: props => <Title as={'h5'} variant={'primary'} {...props} />,
           h5: props => (
             <Title
-              as={'h6'***REMOVED***
+              as={'h6'}
               className="mb-4 md:mb-6"
-              variant={'primary'***REMOVED***
-        ***REMOVED***...props***REMOVED***
+              variant={'primary'}
+              {...props}
             />
-      ***REMOVED***,
+          ),
           h6: props => (
             <Title
-              as={'h7'***REMOVED***
+              as={'h7'}
               className="mb-4 md:mb-6"
-              variant={'primary'***REMOVED***
-        ***REMOVED***...props***REMOVED***
+              variant={'primary'}
+              {...props}
             />
-      ***REMOVED***,
-          ul: props => <ul className="list-disc px-6" {...props***REMOVED*** />,
+          ),
+          ul: props => <ul className="list-disc px-6" {...props} />,
           p: props => (
             <Title
               as="h3"
               className="mb-6 md:mb-8"
-              variant={'primary'***REMOVED***
-        ***REMOVED***...props***REMOVED***
+              variant={'primary'}
+              {...props}
             />
-      ***REMOVED***,
-      ***REMOVED******REMOVED***
+          ),
+        }}
         rehypePlugins={[
-          [rehypeExternalLinks, { target: '_blank', rel: 'noopener' ***REMOVED***],
-        ]***REMOVED***
-        remarkPlugins={[remarkGfm]***REMOVED***
+          [rehypeExternalLinks, { target: '_blank', rel: 'noopener' }],
+        ]}
+        remarkPlugins={[remarkGfm]}
       >
-  ***REMOVED***text***REMOVED***
+        {text}
       </Markdown>
     </div>
   )
 
   if (!image) {
-    return <BaseTile variant="successStory">{Content***REMOVED***</BaseTile>
-***REMOVED***
+    return <BaseTile variant="successStory">{Content}</BaseTile>
+  }
 
   const StoryImage = (
     <div className="relative min-h-[20rem] overflow-hidden md:min-h-[40rem] md:w-4/5">
       <Image
-        alt={'Image'***REMOVED***
+        alt={'Image'}
         className="object-cover object-center transition-all group-hover:scale-105"
         fill
-        src={directusImage(image)***REMOVED***
+        src={directusImage(image)}
       />
     </div>
   )
@@ -122,24 +122,24 @@ export default async function SuccessStoryTile({
   if (imagePosition === 'right') {
     return (
       <BaseTile
-        embedId={`successStory-${id***REMOVED***`***REMOVED***
-        endImage={StoryImage***REMOVED***
-        moreInfo={moreInfo***REMOVED***
+        embedId={`successStory-${id}`}
+        endImage={StoryImage}
+        moreInfo={moreInfo}
         variant="successStory"
       >
-  ***REMOVED***Content***REMOVED***
+        {Content}
       </BaseTile>
-***REMOVED***
-***REMOVED***
+    )
+  }
 
   return (
     <BaseTile
-      embedId={`successStory-${id***REMOVED***`***REMOVED***
-      moreInfo={moreInfo***REMOVED***
-      startImage={StoryImage***REMOVED***
+      embedId={`successStory-${id}`}
+      moreInfo={moreInfo}
+      startImage={StoryImage}
       variant="successStory"
     >
-***REMOVED***Content***REMOVED***
+      {Content}
     </BaseTile>
   )
-***REMOVED***
+}

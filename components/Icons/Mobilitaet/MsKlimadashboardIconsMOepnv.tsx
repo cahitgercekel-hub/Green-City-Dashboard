@@ -1,5 +1,5 @@
 import * as React from 'react'
-import type { SVGProps ***REMOVED*** from 'react'
+import type { SVGProps } from 'react'
 function SvgMsKlimadashboardIconsMOpnv(props: SVGProps<SVGSVGElement>) {
   return (
     <svg
@@ -8,7 +8,7 @@ function SvgMsKlimadashboardIconsMOpnv(props: SVGProps<SVGSVGElement>) {
       id="MS_Klimadashboard_Icons_m_o\u0308pnv_svg__Ebene_1"
       viewBox="0 0 196.86 122.31"
       xmlns="http://www.w3.org/2000/svg"
-***REMOVED***...props***REMOVED***
+      {...props}
     >
       <path d="M156.4 118.6c-9.15 0-16.6-7.45-16.6-16.6s7.45-16.6 16.6-16.6S173 92.85 173 102s-7.45 16.6-16.6 16.6Zm0-30.7c-7.77 0-14.1 6.32-14.1 14.1s6.33 14.1 14.1 14.1 14.1-6.32 14.1-14.1-6.32-14.1-14.1-14.1ZM40.84 118.6c-9.15 0-16.6-7.45-16.6-16.6s7.45-16.6 16.6-16.6 16.6 7.45 16.6 16.6-7.45 16.6-16.6 16.6Zm0-30.7c-7.77 0-14.1 6.32-14.1 14.1s6.32 14.1 14.1 14.1 14.1-6.32 14.1-14.1-6.32-14.1-14.1-14.1Z" />
       <path
@@ -17,7 +17,7 @@ function SvgMsKlimadashboardIconsMOpnv(props: SVGProps<SVGSVGElement>) {
         id="MS_Klimadashboard_Icons_m_o\u0308pnv_svg__Linie_14"
         style={{
           fill: '#f5fcf8',
-      ***REMOVED******REMOVED***
+        }}
       />
       <path
         className="MS_Klimadashboard_Icons_m_o\u0308pnv_svg__cls-1"
@@ -51,5 +51,5 @@ function SvgMsKlimadashboardIconsMOpnv(props: SVGProps<SVGSVGElement>) {
       </g>
     </svg>
   )
-***REMOVED***
+}
 export default SvgMsKlimadashboardIconsMOpnv

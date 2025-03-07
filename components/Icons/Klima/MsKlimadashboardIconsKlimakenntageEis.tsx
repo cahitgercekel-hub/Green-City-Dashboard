@@ -1,16 +1,16 @@
 import * as React from 'react'
-import type { SVGProps ***REMOVED*** from 'react'
+import type { SVGProps } from 'react'
 function SvgMsKlimadashboardIconsKlimakenntageEis(props: SVGProps<SVGSVGElement>) {
   return <svg
     data-name="Ebene 1"
     id="MS_Klimadashboard_Icons_Klimakenntage_eis_svg__Ebene_1"
     viewBox="0 0 40 40"
     xmlns="http://www.w3.org/2000/svg"
-    {...props***REMOVED***
+    {...props}
   >
     <defs>
       <style>
-  ***REMOVED***'.MS_Klimadashboard_Icons_Klimakenntage_eis_svg__cls-2{fill:#14b3d9***REMOVED***'***REMOVED***
+        {'.MS_Klimadashboard_Icons_Klimakenntage_eis_svg__cls-2{fill:#14b3d9}'}
       </style>
     </defs>
     <g
@@ -23,7 +23,7 @@ function SvgMsKlimadashboardIconsKlimakenntageEis(props: SVGProps<SVGSVGElement>
         id="MS_Klimadashboard_Icons_Klimakenntage_eis_svg__Pfad_289"
         style={{
           fill: '#fff',
-      ***REMOVED******REMOVED***
+        }}
       />
       <g
         data-name="Gruppe 176"
@@ -88,5 +88,5 @@ function SvgMsKlimadashboardIconsKlimakenntageEis(props: SVGProps<SVGSVGElement>
       </g>
     </g>
   </svg>
-***REMOVED***
+}
 export default SvgMsKlimadashboardIconsKlimakenntageEis

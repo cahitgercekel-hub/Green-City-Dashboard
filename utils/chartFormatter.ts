@@ -8,9 +8,9 @@ export const chartFormatter = (params: any) => {
 
       if (index === 0) {
         const year = new Date(param.value[0]).getFullYear()
-        return `<b>${year***REMOVED***</b><br/>${marker***REMOVED***${seriesName***REMOVED***: ${value***REMOVED***`
-    ***REMOVED***
-      return `${marker***REMOVED***${seriesName***REMOVED***: ${value***REMOVED***`
-  ***REMOVED***)
+        return `<b>${year}</b><br/>${marker}${seriesName}: ${value}`
+      }
+      return `${marker}${seriesName}: ${value}`
+    })
     .join('<br/>')
-***REMOVED***
+}

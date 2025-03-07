@@ -1,37 +1,37 @@
 'use client'
 
-import { cva, cx, VariantProps ***REMOVED*** from 'class-variance-authority'
-import { motion ***REMOVED*** from 'framer-motion'
+import { cva, cx, VariantProps } from 'class-variance-authority'
+import { motion } from 'framer-motion'
 
 const progressStyle = cva('-rotate-90 stroke-[1rem]', {
   variants: {
     variant: {
       primary: 'stroke-primary',
       secondary: 'stroke-secondary',
-  ***REMOVED***,
+    },
     size: {
       sm: 'h-4 w-4',
       md: 'h-8 w-8',
       lg: 'h-10 w-10',
-  ***REMOVED***,
-***REMOVED***,
+    },
+  },
   defaultVariants: {
     variant: 'primary',
     size: 'md',
-***REMOVED***,
-***REMOVED***)
+  },
+})
 
 type ProgressCircleProps = VariantProps<typeof progressStyle> & {
   progress: number
   className?: string
-***REMOVED***
+}
 
 export function ProgressCircle({
   progress,
   className,
   variant,
   size,
-***REMOVED***: ProgressCircleProps) {
+}: ProgressCircleProps) {
   const radius = 40
   const circumference = Math.ceil(2 * Math.PI * radius)
   const fillPercents = Math.abs(
@@ -41,22 +41,22 @@ export function ProgressCircle({
   const transition = {
     ease: 'easeIn',
     delay: 2000,
-***REMOVED***
+  }
 
   const variants = {
     hidden: {
       strokeDashoffset: circumference,
       transition,
-  ***REMOVED***,
+    },
     show: {
       strokeDashoffset: fillPercents,
       transition,
-  ***REMOVED***,
-***REMOVED***
+    },
+  }
 
   return (
     <svg
-      className={cx(progressStyle({ size, variant ***REMOVED***), className)***REMOVED***
+      className={cx(progressStyle({ size, variant }), className)}
       viewBox="0 0 100 100"
     >
       <motion.circle
@@ -64,14 +64,14 @@ export function ProgressCircle({
         cy="50"
         fill="transparent"
         initial="hidden"
-        r={radius***REMOVED***
-        strokeDasharray={circumference***REMOVED***
-        strokeDashoffset={fillPercents***REMOVED***
+        r={radius}
+        strokeDasharray={circumference}
+        strokeDashoffset={fillPercents}
         style={{
           strokeLinecap: 'round',
-      ***REMOVED******REMOVED***
-        variants={variants***REMOVED***
+        }}
+        variants={variants}
       />
     </svg>
   )
-***REMOVED***
+}

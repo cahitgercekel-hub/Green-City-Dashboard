@@ -1,9 +1,9 @@
 'use client'
 
-import { Button ***REMOVED*** from '@/components/Elements/Button'
+import { Button } from '@/components/Elements/Button'
 import Title from '@/components/Elements/Title'
-import { MsKlimadashboardIconsNaviDownload ***REMOVED*** from '@/components/Icons/Misc/Navi'
-import { EnvelopeIcon ***REMOVED*** from '@heroicons/react/24/outline'
+import { MsKlimadashboardIconsNaviDownload } from '@/components/Icons/Misc/Navi'
+import { EnvelopeIcon } from '@heroicons/react/24/outline'
 import Link from 'next/link'
 
 function UnCryptMailto(s: string) {
@@ -13,21 +13,21 @@ function UnCryptMailto(s: string) {
     n = s.charCodeAt(i)
     if (n >= 8364) {
       n = 128
-  ***REMOVED***
+    }
     r += String.fromCharCode(n - 1)
-***REMOVED***
+  }
   return r
-***REMOVED***
+}
 
 function linkTo_UnCryptMailto(s: string) {
   location.href = UnCryptMailto(s)
-***REMOVED***
+}
 
 export default function Impressum() {
   return (
     <main className="mx-auto max-w-[1136px]">
       <div className="h-12 md:h-24 lg:h-64" />
-      <Title as="h3" id="use-dashboard" variant={'primary'***REMOVED***>
+      <Title as="h3" id="use-dashboard" variant={'primary'}>
         Sie wollen das Dashboard selbst nutzen?
       </Title>
       <div className="h-6" />
@@ -45,14 +45,14 @@ export default function Impressum() {
         <Button
           startIcon={
             <MsKlimadashboardIconsNaviDownload className="h-5 fill-secondary" />
-        ***REMOVED***
+          }
           variant="secondary"
         >
           Anleitung herunterladen
         </Button>
       </Link>
       <div className="h-32" />
-      <Title as="h3" id="feedback" variant={'primary'***REMOVED***>
+      <Title as="h3" id="feedback" variant={'primary'}>
         Sie haben Feedback?
       </Title>
       <div className="h-6" />
@@ -65,8 +65,8 @@ export default function Impressum() {
       </Title>
       <div className="h-10" />
       <Button
-        onClick={() => linkTo_UnCryptMailto('nbjmup;lmjnbAtubeu.nvfotufs/ef')***REMOVED***
-        startIcon={<EnvelopeIcon className="h-6" />***REMOVED***
+        onClick={() => linkTo_UnCryptMailto('nbjmup;lmjnbAtubeu.nvfotufs/ef')}
+        startIcon={<EnvelopeIcon className="h-6" />}
         variant="secondary"
       >
         Kontakt aufnehmen
@@ -74,4 +74,4 @@ export default function Impressum() {
       <div className="h-12 md:h-24 lg:h-64" />
     </main>
   )
-***REMOVED***
+}

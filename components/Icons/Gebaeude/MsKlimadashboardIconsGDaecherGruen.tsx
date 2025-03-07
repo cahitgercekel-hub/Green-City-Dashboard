@@ -1,28 +1,28 @@
 import * as React from 'react'
-import type { SVGProps ***REMOVED*** from 'react'
+import type { SVGProps } from 'react'
 function SvgMsKlimadashboardIconsGDaecherGruen(props: SVGProps<SVGSVGElement>) {
   return <svg
     data-name="Ebene 1"
     id="MS_Klimadashboard_Icons_g_daecher_gruen_svg__Ebene_1"
     viewBox="0 0 94 94"
     xmlns="http://www.w3.org/2000/svg"
-    {...props***REMOVED***
+    {...props}
   >
     <defs>
       <style>
-  ***REMOVED***'.MS_Klimadashboard_Icons_g_daecher_gruen_svg__cls-1{fill:#6060d6***REMOVED***'***REMOVED***
+        {'.MS_Klimadashboard_Icons_g_daecher_gruen_svg__cls-1{fill:#6060d6}'}
       </style>
     </defs>
     <circle
-      cx={47***REMOVED***
-      cy={47***REMOVED***
+      cx={47}
+      cy={47}
       data-name="Ellipse 35"
       id="MS_Klimadashboard_Icons_g_daecher_gruen_svg__Ellipse_35"
-      r={47***REMOVED***
+      r={47}
       style={{
         opacity: 0.46,
         fill: '#6060d6',
-    ***REMOVED******REMOVED***
+      }}
     />
     <path
       className="MS_Klimadashboard_Icons_g_daecher_gruen_svg__cls-1"
@@ -41,5 +41,5 @@ function SvgMsKlimadashboardIconsGDaecherGruen(props: SVGProps<SVGSVGElement>) {
       d="M27.28 41.06c-2.52 0-4.44-.74-6.21-2.38-3.73-3.43-5.65-8.52-5.72-8.73-.1-.26-.08-.55.05-.8s.35-.43.62-.51c.2-.05 4.86-1.31 9.91-.73 2.98.34 5.75 2.25 7.24 4.98.91 1.66 1.09 3.43.5 4.87l-.15.33c-.81 1.58-2.64 2.7-4.77 2.9-.51.05-1 .08-1.47.08Zm-9.61-10.75c.73 1.6 2.35 4.69 4.75 6.9 1.67 1.53 3.44 2.05 6.13 1.78 1.44-.14 2.68-.86 3.18-1.82.03-.06.06-.12.08-.19.35-.86.2-2.04-.4-3.15-1.17-2.14-3.41-3.68-5.71-3.95-3.26-.37-6.42.1-8.03.42Zm14.96 7.31ZM30.43 74.1c-.55 0-1-.45-1-1V63.08c0-.3.13-.58.36-.77l19.82-16.59c.38-.32.94-.31 1.3.02l19.25 17.07c.21.19.34.46.34.75v9.45c0 .55-.45 1-1 1s-1-.45-1-1v-9l-18.27-16.2-18.8 15.73v9.55c0 .55-.45 1-1 1ZM36.86 52.83a.999.999 0 0 1-.65-1.76l1.76-1.51a.999.999 0 1 1 1.3 1.52l-1.76 1.51c-.19.16-.42.24-.65.24Z"
     />
   </svg>
-***REMOVED***
+}
 export default SvgMsKlimadashboardIconsGDaecherGruen

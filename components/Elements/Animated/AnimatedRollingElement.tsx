@@ -1,25 +1,25 @@
-import { animated, useTransition ***REMOVED*** from '@react-spring/web'
+import { animated, useTransition } from '@react-spring/web'
 
 type AnimatedRollingElementProps = {
   children: React.ReactElement | React.ReactElement[]
-***REMOVED***
+}
 
 export default function AnimatedRollingElement({
   children,
-***REMOVED***: AnimatedRollingElementProps) {
+}: AnimatedRollingElementProps) {
   const transitions = useTransition(children, {
     from: {
       opacity: 0,
       transform: 'translate3d(0,100%,0)',
-  ***REMOVED***,
-    enter: { opacity: 1, transform: 'translate3d(0,0,0)' ***REMOVED***,
-    leave: { opacity: 0, transform: 'translate3d(0,-100%,0)' ***REMOVED***,
-***REMOVED***)
+    },
+    enter: { opacity: 1, transform: 'translate3d(0,0,0)' },
+    leave: { opacity: 0, transform: 'translate3d(0,-100%,0)' },
+  })
 
   return transitions((style, item) => (
     // @ts-ignore
-    <animated.div className="absolute" style={style***REMOVED***>
-***REMOVED***item***REMOVED***
+    <animated.div className="absolute" style={style}>
+      {item}
     </animated.div>
   ))
-***REMOVED***
+}

@@ -5,7 +5,7 @@ interface Overview {
   NumberOfBike: number
   TotalDistance: number
   Zeit: number
-***REMOVED***
+}
 const OverviewData: Overview[] = [
   // 2020 Data
   {
@@ -15,7 +15,7 @@ const OverviewData: Overview[] = [
     NumberOfBike: 15,
     TotalDistance: 130,
     Zeit: 80,
-***REMOVED***,
+  },
   {
     year: '2020',
     index: 1,
@@ -23,7 +23,7 @@ const OverviewData: Overview[] = [
     NumberOfBike: 18,
     TotalDistance: 140,
     Zeit: 85,
-***REMOVED***,
+  },
   {
     year: '2020',
     index: 2,
@@ -31,7 +31,7 @@ const OverviewData: Overview[] = [
     NumberOfBike: 20,
     TotalDistance: 150,
     Zeit: 90,
-***REMOVED***,
+  },
   {
     year: '2020',
     index: 3,
@@ -39,7 +39,7 @@ const OverviewData: Overview[] = [
     NumberOfBike: 22,
     TotalDistance: 160,
     Zeit: 95,
-***REMOVED***,
+  },
   {
     year: '2020',
     index: 4,
@@ -47,7 +47,7 @@ const OverviewData: Overview[] = [
     NumberOfBike: 25,
     TotalDistance: 170,
     Zeit: 100,
-***REMOVED***,
+  },
   {
     year: '2020',
     index: 5,
@@ -55,7 +55,7 @@ const OverviewData: Overview[] = [
     NumberOfBike: 30,
     TotalDistance: 180,
     Zeit: 110,
-***REMOVED***,
+  },
   {
     year: '2020',
     index: 6,
@@ -63,7 +63,7 @@ const OverviewData: Overview[] = [
     NumberOfBike: 32,
     TotalDistance: 190,
     Zeit: 120,
-***REMOVED***,
+  },
   {
     year: '2020',
     index: 7,
@@ -71,7 +71,7 @@ const OverviewData: Overview[] = [
     NumberOfBike: 80,
     TotalDistance: 200,
     Zeit: 125,
-***REMOVED***,
+  },
   {
     year: '2020',
     index: 8,
@@ -79,7 +79,7 @@ const OverviewData: Overview[] = [
     NumberOfBike: 38,
     TotalDistance: 210,
     Zeit: 130,
-***REMOVED***,
+  },
   {
     year: '2020',
     index: 9,
@@ -87,7 +87,7 @@ const OverviewData: Overview[] = [
     NumberOfBike: 40,
     TotalDistance: 220,
     Zeit: 135,
-***REMOVED***,
+  },
   {
     year: '2020',
     index: 10,
@@ -95,7 +95,7 @@ const OverviewData: Overview[] = [
     NumberOfBike: 42,
     TotalDistance: 230,
     Zeit: 140,
-***REMOVED***,
+  },
   {
     year: '2020',
     index: 11,
@@ -103,7 +103,7 @@ const OverviewData: Overview[] = [
     NumberOfBike: 45,
     TotalDistance: 240,
     Zeit: 145,
-***REMOVED***,
+  },
 
   // 2021 Data
   {
@@ -113,7 +113,7 @@ const OverviewData: Overview[] = [
     NumberOfBike: 18,
     TotalDistance: 135,
     Zeit: 90,
-***REMOVED***,
+  },
   {
     year: '2021',
     index: 1,
@@ -121,7 +121,7 @@ const OverviewData: Overview[] = [
     NumberOfBike: 21,
     TotalDistance: 145,
     Zeit: 95,
-***REMOVED***,
+  },
   {
     year: '2021',
     index: 2,
@@ -129,7 +129,7 @@ const OverviewData: Overview[] = [
     NumberOfBike: 23,
     TotalDistance: 155,
     Zeit: 100,
-***REMOVED***,
+  },
   {
     year: '2021',
     index: 3,
@@ -137,7 +137,7 @@ const OverviewData: Overview[] = [
     NumberOfBike: 25,
     TotalDistance: 165,
     Zeit: 105,
-***REMOVED***,
+  },
   {
     year: '2021',
     index: 4,
@@ -145,7 +145,7 @@ const OverviewData: Overview[] = [
     NumberOfBike: 28,
     TotalDistance: 175,
     Zeit: 110,
-***REMOVED***,
+  },
   {
     year: '2021',
     index: 5,
@@ -153,7 +153,7 @@ const OverviewData: Overview[] = [
     NumberOfBike: 33,
     TotalDistance: 185,
     Zeit: 115,
-***REMOVED***,
+  },
   {
     year: '2021',
     index: 6,
@@ -161,7 +161,7 @@ const OverviewData: Overview[] = [
     NumberOfBike: 36,
     TotalDistance: 195,
     Zeit: 120,
-***REMOVED***,
+  },
   {
     year: '2021',
     index: 7,
@@ -169,7 +169,7 @@ const OverviewData: Overview[] = [
     NumberOfBike: 39,
     TotalDistance: 205,
     Zeit: 125,
-***REMOVED***,
+  },
   {
     year: '2021',
     index: 8,
@@ -177,7 +177,7 @@ const OverviewData: Overview[] = [
     NumberOfBike: 41,
     TotalDistance: 215,
     Zeit: 130,
-***REMOVED***,
+  },
   {
     year: '2021',
     index: 9,
@@ -185,7 +185,7 @@ const OverviewData: Overview[] = [
     NumberOfBike: 44,
     TotalDistance: 225,
     Zeit: 135,
-***REMOVED***,
+  },
   {
     year: '2021',
     index: 10,
@@ -193,7 +193,7 @@ const OverviewData: Overview[] = [
     NumberOfBike: 47,
     TotalDistance: 235,
     Zeit: 140,
-***REMOVED***,
+  },
   {
     year: '2021',
     index: 11,
@@ -201,7 +201,7 @@ const OverviewData: Overview[] = [
     NumberOfBike: 50,
     TotalDistance: 245,
     Zeit: 145,
-***REMOVED***,
+  },
 
   // 2022 Data
   {
@@ -211,7 +211,7 @@ const OverviewData: Overview[] = [
     NumberOfBike: 20,
     TotalDistance: 150,
     Zeit: 50,
-***REMOVED***,
+  },
   {
     year: '2022',
     index: 1,
@@ -219,7 +219,7 @@ const OverviewData: Overview[] = [
     NumberOfBike: 25,
     TotalDistance: 160,
     Zeit: 55,
-***REMOVED***,
+  },
   {
     year: '2022',
     index: 2,
@@ -227,7 +227,7 @@ const OverviewData: Overview[] = [
     NumberOfBike: 27,
     TotalDistance: 170,
     Zeit: 60,
-***REMOVED***,
+  },
   {
     year: '2022',
     index: 3,
@@ -235,7 +235,7 @@ const OverviewData: Overview[] = [
     NumberOfBike: 30,
     TotalDistance: 180,
     Zeit: 65,
-***REMOVED***,
+  },
   {
     year: '2022',
     index: 4,
@@ -243,7 +243,7 @@ const OverviewData: Overview[] = [
     NumberOfBike: 32,
     TotalDistance: 190,
     Zeit: 70,
-***REMOVED***,
+  },
   {
     year: '2022',
     index: 5,
@@ -251,7 +251,7 @@ const OverviewData: Overview[] = [
     NumberOfBike: 35,
     TotalDistance: 200,
     Zeit: 75,
-***REMOVED***,
+  },
   {
     year: '2022',
     index: 6,
@@ -259,7 +259,7 @@ const OverviewData: Overview[] = [
     NumberOfBike: 38,
     TotalDistance: 210,
     Zeit: 80,
-***REMOVED***,
+  },
   {
     year: '2022',
     index: 7,
@@ -267,7 +267,7 @@ const OverviewData: Overview[] = [
     NumberOfBike: 40,
     TotalDistance: 220,
     Zeit: 85,
-***REMOVED***,
+  },
   {
     year: '2022',
     index: 8,
@@ -275,7 +275,7 @@ const OverviewData: Overview[] = [
     NumberOfBike: 42,
     TotalDistance: 230,
     Zeit: 90,
-***REMOVED***,
+  },
   {
     year: '2022',
     index: 9,
@@ -283,7 +283,7 @@ const OverviewData: Overview[] = [
     NumberOfBike: 44,
     TotalDistance: 240,
     Zeit: 95,
-***REMOVED***,
+  },
   {
     year: '2022',
     index: 10,
@@ -291,7 +291,7 @@ const OverviewData: Overview[] = [
     NumberOfBike: 46,
     TotalDistance: 250,
     Zeit: 100,
-***REMOVED***,
+  },
   {
     year: '2022',
     index: 11,
@@ -299,7 +299,7 @@ const OverviewData: Overview[] = [
     NumberOfBike: 48,
     TotalDistance: 260,
     Zeit: 105,
-***REMOVED***,
+  },
   // 2023 Data
   {
     year: '2023',
@@ -308,7 +308,7 @@ const OverviewData: Overview[] = [
     NumberOfBike: 20,
     TotalDistance: 15,
     Zeit: 100,
-***REMOVED***,
+  },
   {
     year: '2023',
     index: 1,
@@ -316,7 +316,7 @@ const OverviewData: Overview[] = [
     NumberOfBike: 25,
     TotalDistance: 20,
     Zeit: 120,
-***REMOVED***,
+  },
   {
     year: '2023',
     index: 2,
@@ -324,7 +324,7 @@ const OverviewData: Overview[] = [
     NumberOfBike: 18,
     TotalDistance: 12,
     Zeit: 90,
-***REMOVED***,
+  },
   {
     year: '2023',
     index: 3,
@@ -332,7 +332,7 @@ const OverviewData: Overview[] = [
     NumberOfBike: 22,
     TotalDistance: 18,
     Zeit: 110,
-***REMOVED***,
+  },
   {
     year: '2023',
     index: 4,
@@ -340,7 +340,7 @@ const OverviewData: Overview[] = [
     NumberOfBike: 30,
     TotalDistance: 25,
     Zeit: 130,
-***REMOVED***,
+  },
   {
     year: '2023',
     index: 5,
@@ -348,7 +348,7 @@ const OverviewData: Overview[] = [
     NumberOfBike: 28,
     TotalDistance: 23,
     Zeit: 125,
-***REMOVED***,
+  },
   {
     year: '2023',
     index: 6,
@@ -356,7 +356,7 @@ const OverviewData: Overview[] = [
     NumberOfBike: 35,
     TotalDistance: 30,
     Zeit: 140,
-***REMOVED***,
+  },
   {
     year: '2023',
     index: 7,
@@ -364,7 +364,7 @@ const OverviewData: Overview[] = [
     NumberOfBike: 32,
     TotalDistance: 27,
     Zeit: 135,
-***REMOVED***,
+  },
   {
     year: '2023',
     index: 8,
@@ -372,7 +372,7 @@ const OverviewData: Overview[] = [
     NumberOfBike: 26,
     TotalDistance: 22,
     Zeit: 115,
-***REMOVED***,
+  },
   {
     year: '2023',
     index: 9,
@@ -380,7 +380,7 @@ const OverviewData: Overview[] = [
     NumberOfBike: 24,
     TotalDistance: 20,
     Zeit: 105,
-***REMOVED***,
+  },
   {
     year: '2023',
     index: 10,
@@ -388,7 +388,7 @@ const OverviewData: Overview[] = [
     NumberOfBike: 19,
     TotalDistance: 14,
     Zeit: 95,
-***REMOVED***,
+  },
   {
     year: '2023',
     index: 11,
@@ -396,7 +396,7 @@ const OverviewData: Overview[] = [
     NumberOfBike: 21,
     TotalDistance: 16,
     Zeit: 100,
-***REMOVED***,
+  },
 
   // 2024 Data
   {
@@ -406,7 +406,7 @@ const OverviewData: Overview[] = [
     NumberOfBike: 22,
     TotalDistance: 17,
     Zeit: 105,
-***REMOVED***,
+  },
   {
     year: '2024',
     index: 1,
@@ -414,7 +414,7 @@ const OverviewData: Overview[] = [
     NumberOfBike: 27,
     TotalDistance: 22,
     Zeit: 125,
-***REMOVED***,
+  },
   {
     year: '2024',
     index: 2,
@@ -422,7 +422,7 @@ const OverviewData: Overview[] = [
     NumberOfBike: 20,
     TotalDistance: 14,
     Zeit: 95,
-***REMOVED***,
+  },
   {
     year: '2024',
     index: 3,
@@ -430,7 +430,7 @@ const OverviewData: Overview[] = [
     NumberOfBike: 300,
     TotalDistance: 20,
     Zeit: 115,
-***REMOVED***,
+  },
   {
     year: '2024',
     index: 4,
@@ -438,7 +438,7 @@ const OverviewData: Overview[] = [
     NumberOfBike: 32,
     TotalDistance: 28,
     Zeit: 140,
-***REMOVED***,
+  },
   {
     year: '2024',
     index: 5,
@@ -446,7 +446,7 @@ const OverviewData: Overview[] = [
     NumberOfBike: 30,
     TotalDistance: 26,
     Zeit: 130,
-***REMOVED***,
+  },
   {
     year: '2024',
     index: 6,
@@ -454,7 +454,7 @@ const OverviewData: Overview[] = [
     NumberOfBike: 38,
     TotalDistance: 33,
     Zeit: 150,
-***REMOVED***,
+  },
   {
     year: '2024',
     index: 7,
@@ -462,7 +462,7 @@ const OverviewData: Overview[] = [
     NumberOfBike: 50,
     TotalDistance: 29,
     Zeit: 145,
-***REMOVED***,
+  },
   {
     year: '2024',
     index: 8,
@@ -470,7 +470,7 @@ const OverviewData: Overview[] = [
     NumberOfBike: 28,
     TotalDistance: 24,
     Zeit: 120,
-***REMOVED***,
+  },
   {
     year: '2024',
     index: 9,
@@ -478,7 +478,7 @@ const OverviewData: Overview[] = [
     NumberOfBike: 26,
     TotalDistance: 22,
     Zeit: 110,
-***REMOVED***,
+  },
   {
     year: '2024',
     index: 10,
@@ -486,7 +486,7 @@ const OverviewData: Overview[] = [
     NumberOfBike: 21,
     TotalDistance: 16,
     Zeit: 100,
-***REMOVED***,
+  },
   {
     year: '2024',
     index: 11,
@@ -494,7 +494,7 @@ const OverviewData: Overview[] = [
     NumberOfBike: 300,
     TotalDistance: 500,
     Zeit: 300,
-***REMOVED***,
+  },
 ]
 
 export default OverviewData

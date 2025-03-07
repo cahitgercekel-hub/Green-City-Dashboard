@@ -1,19 +1,19 @@
-import { cx ***REMOVED*** from 'class-variance-authority'
-import { HTMLAttributes ***REMOVED*** from 'react'
+import { cx } from 'class-variance-authority'
+import { HTMLAttributes } from 'react'
 
 export function TileSplitView(props: HTMLAttributes<HTMLDivElement>) {
   return (
     <div
-***REMOVED***...props***REMOVED***
-      className={cx('flex flex-col gap-10 lg:flex-row', props.className)***REMOVED***
+      {...props}
+      className={cx('flex flex-col gap-10 lg:flex-row', props.className)}
     />
   )
-***REMOVED***
+}
 
 TileSplitView.Left = function LeftView(props: HTMLAttributes<HTMLDivElement>) {
-  return <div {...props***REMOVED*** className={cx(props.className, 'flex-1')***REMOVED*** />
-***REMOVED***
+  return <div {...props} className={cx(props.className, 'flex-1')} />
+}
 
 TileSplitView.Right = function Rightiew(props: HTMLAttributes<HTMLDivElement>) {
-  return <div {...props***REMOVED*** className="lg:max-w-[272px]" />
-***REMOVED***
+  return <div {...props} className="lg:max-w-[272px]" />
+}

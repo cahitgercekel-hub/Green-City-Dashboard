@@ -42,13 +42,13 @@ export default async function GarbageTile() {
       embedId="mobility-sampleTile"
       title="Sample Tile"
     >
-***REMOVED***/*
+      {/*
        * Here you can add the content of the Tile
        * Don't forget to place the infoText
-       */***REMOVED***
+       */}
     </MobilityTile>
   )
-***REMOVED***
+}
 ```
 
 ### 4. Fill it with content
@@ -62,14 +62,14 @@ As said, it's best to create a seperate component with the content of the Tile. 
   title="Sample Tile"
 >
   <TileSplitView>
-    {' '***REMOVED***
-    {/* <-- This is a useful wrapper for a full width tile, left the content, right the info text */***REMOVED***
+    {' '}
+    {/* <-- This is a useful wrapper for a full width tile, left the content, right the info text */}
     <TileSplitView.Left>
-      <SampleTileContent /> {/* <-- This would be the content */***REMOVED***
+      <SampleTileContent /> {/* <-- This would be the content */}
     </TileSplitView.Left>
     <TileSplitView.Right>
-      <Title as="h5" variant={'dark'***REMOVED***>
-  ***REMOVED***infoText***REMOVED*** {/* <-- Rendering the info Text*/***REMOVED***
+      <Title as="h5" variant={'dark'}>
+        {infoText} {/* <-- Rendering the info Text*/}
       </Title>
     </TileSplitView.Right>
   </TileSplitView>

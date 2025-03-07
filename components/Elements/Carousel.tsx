@@ -1,16 +1,16 @@
 'use client'
 
-import { ChevronLeftIcon, ChevronRightIcon ***REMOVED*** from '@heroicons/react/24/outline'
-import { Splide, SplideProps, SplideSlide ***REMOVED*** from '@splidejs/react-splide'
+import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline'
+import { Splide, SplideProps, SplideSlide } from '@splidejs/react-splide'
 import '@splidejs/react-splide/css'
-import { cva, cx, VariantProps ***REMOVED*** from 'class-variance-authority'
-import { useEffect, useRef, useState ***REMOVED*** from 'react'
+import { cva, cx, VariantProps } from 'class-variance-authority'
+import { useEffect, useRef, useState } from 'react'
 
 interface CarouselProps extends SplideProps, VariantProps<typeof arrowStyle> {
   children: React.ReactElement[]
   arrows?: boolean
   pagination?: boolean
-***REMOVED***
+}
 
 const arrowStyle = cva('h-6', {
   variants: {
@@ -24,12 +24,12 @@ const arrowStyle = cva('h-6', {
       energy: 'text-energy',
       inverse: 'text-white',
       dark: 'text-zinc-900',
-  ***REMOVED***,
-***REMOVED***,
+    },
+  },
   defaultVariants: {
     variant: 'primary',
-***REMOVED***,
-***REMOVED***)
+  },
+})
 
 export default function Carousel({
   children,
@@ -37,7 +37,7 @@ export default function Carousel({
   pagination = false,
   variant,
   ...props
-***REMOVED***: CarouselProps) {
+}: CarouselProps) {
   const splideRef = useRef<Splide>(null)
 
   const [curIndex, setCurIndex] = useState(0)
@@ -45,53 +45,53 @@ export default function Carousel({
   useEffect(() => {
     splideRef.current &&
       splideRef.current.splide?.on('move', e => setCurIndex(e))
-***REMOVED***)
+  })
 
   return (
     <div className="relative">
       <Splide
-        ref={splideRef***REMOVED***
-  ***REMOVED***...props***REMOVED***
+        ref={splideRef}
+        {...props}
         options={{
           ...props.options,
           arrows: false,
           pagination: false,
-      ***REMOVED******REMOVED***
+        }}
       >
-  ***REMOVED***children?.map(child => (
-          <SplideSlide key={child.key***REMOVED***>{child***REMOVED***</SplideSlide>
-    ***REMOVED***)***REMOVED***
+        {children?.map(child => (
+          <SplideSlide key={child.key}>{child}</SplideSlide>
+        ))}
       </Splide>
-***REMOVED***(arrows || pagination) && (
+      {(arrows || pagination) && (
         <div className="flex w-full items-center justify-between">
-    ***REMOVED***arrows && (
+          {arrows && (
             <ChevronLeftIcon
-              className={arrowStyle({ variant ***REMOVED***)***REMOVED***
-              onClick={() => splideRef.current?.splide?.go('<')***REMOVED***
+              className={arrowStyle({ variant })}
+              onClick={() => splideRef.current?.splide?.go('<')}
             />
-      ***REMOVED******REMOVED***
-    ***REMOVED***pagination && (
+          )}
+          {pagination && (
             <div className="flex gap-1">
-        ***REMOVED***[...Array(children.length)].map((_, i) => (
+              {[...Array(children.length)].map((_, i) => (
                 <div
                   className={cx(
                     'h-3 w-3 rounded-lg border-2 border-buildings transition-colors',
                     curIndex === i ? 'bg-buildings' : 'bg-transparent',
-              ***REMOVED******REMOVED***
-                  key={i***REMOVED***
-                  onClick={() => splideRef.current?.splide?.go(i)***REMOVED***
+                  )}
+                  key={i}
+                  onClick={() => splideRef.current?.splide?.go(i)}
                 />
-          ***REMOVED***)***REMOVED***
+              ))}
             </div>
-      ***REMOVED******REMOVED***
-    ***REMOVED***arrows && (
+          )}
+          {arrows && (
             <ChevronRightIcon
-              className={arrowStyle({ variant ***REMOVED***)***REMOVED***
-              onClick={() => splideRef.current?.splide?.go('>')***REMOVED***
+              className={arrowStyle({ variant })}
+              onClick={() => splideRef.current?.splide?.go('>')}
             />
-      ***REMOVED******REMOVED***
+          )}
         </div>
-  ***REMOVED******REMOVED***
+      )}
     </div>
   )
-***REMOVED***
+}

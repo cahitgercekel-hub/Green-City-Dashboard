@@ -16,4 +16,4 @@ export default function BuildingsView() {
       <EnergyComsumptionTile />
     </BaseView>
   )
-***REMOVED***
+}

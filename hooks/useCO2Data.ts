@@ -17,7 +17,7 @@ type InputDataType = {
   'Endenergieverbrauch nach Sektoren - Private Haushalte (Zielwert)': number
   'Endenergieverbrauch nach Sektoren - Verkehr': number
   'Endenergieverbrauch nach Sektoren - Verkehr (Zielwert)': number
-***REMOVED***
+}
 
 type CO2Data = {
   ZEIT: number
@@ -31,7 +31,7 @@ type CO2Data = {
   'CO2-Emissionen - Private Haushalte': number
   'CO2-Emissionen - Verkehr': number
   'CO2-Emissionen - Verkehr (Zielwert)': number
-***REMOVED***
+}
 
 export default function useCO2Data(series: 'endenergie' | 'co2'): CO2Data[] {
   if (series === 'endenergie') {
@@ -57,7 +57,7 @@ export default function useCO2Data(series: 'endenergie' | 'co2'): CO2Data[] {
         d['Endenergieverbrauch nach Sektoren - Industrie (Zielwert)'],
       'CO2-Emissionen - Private Haushalte (Zielwert)':
         d['Endenergieverbrauch nach Sektoren - Private Haushalte (Zielwert)'],
-  ***REMOVED***))
-***REMOVED***
+    }))
+  }
   return CO2Data
-***REMOVED***
+}

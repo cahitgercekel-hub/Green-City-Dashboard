@@ -1,18 +1,18 @@
 import * as React from 'react'
-import type { SVGProps ***REMOVED*** from 'react'
+import type { SVGProps } from 'react'
 function SvgMsKlimadashboardIconsGSportSentruperHoehe(props: SVGProps<SVGSVGElement>) {
   return <svg
     data-name="Ebene 1"
     id="MS_Klimadashboard_Icons_g_sport-sentruper-hoehe_svg__Ebene_1"
     viewBox="0 0 196.25 129.46"
     xmlns="http://www.w3.org/2000/svg"
-    {...props***REMOVED***
+    {...props}
   >
     <defs>
       <style>
-  ***REMOVED***
-          '.MS_Klimadashboard_Icons_g_sport-sentruper-hoehe_svg__cls-1{fill:#6060d6***REMOVED***'
-      ***REMOVED***
+        {
+          '.MS_Klimadashboard_Icons_g_sport-sentruper-hoehe_svg__cls-1{fill:#6060d6}'
+        }
       </style>
     </defs>
     <path
@@ -32,5 +32,5 @@ function SvgMsKlimadashboardIconsGSportSentruperHoehe(props: SVGProps<SVGSVGElem
       d="M1.4 129.41h-.15a1.25 1.25 0 0 1 0-2.5h.15c34.28 0 62.17-27.89 62.17-62.18 0-25.04-14.9-47.53-37.97-57.29-.64-.27-.93-1-.66-1.64s1-.93 1.64-.66a64.594 64.594 0 0 1 39.5 59.59c0 35.66-29.01 64.68-64.67 64.68ZM171.55 124.84c-.16 0-.31-.03-.47-.09-24.62-9.92-40.54-33.47-40.54-60.02C130.55 29.04 159.33 0 194.72 0a1.25 1.25 0 0 1 0 2.5c-34 0-61.67 27.91-61.67 62.23 0 25.52 15.3 48.17 38.97 57.7a1.252 1.252 0 0 1-.47 2.41Z"
     />
   </svg>
-***REMOVED***
+}
 export default SvgMsKlimadashboardIconsGSportSentruperHoehe

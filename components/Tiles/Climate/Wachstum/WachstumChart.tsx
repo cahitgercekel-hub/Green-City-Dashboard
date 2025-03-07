@@ -1,9 +1,9 @@
 'use client'
 
-import { ReactECharts ***REMOVED*** from '@/components/Charts/ReactECharts'
+import { ReactECharts } from '@/components/Charts/ReactECharts'
 import Switch from '@/components/Inputs/Switch'
-import { format, getYear, parse ***REMOVED*** from 'date-fns'
-import { LineSeriesOption ***REMOVED*** from 'echarts'
+import { format, getYear, parse } from 'date-fns'
+import { LineSeriesOption } from 'echarts'
 
 // @ts-ignore
 import WachstumData from '@/assets/data/wachstum.csv'
@@ -13,11 +13,11 @@ import Title from '@/components/Elements/Title'
 import ToggleGroup from '@/components/Inputs/ToggleGroup'
 import useDevice from '@/hooks/useDevice'
 import tailwindConfig from '@/tailwind.config.js'
-import { useEffect, useState ***REMOVED*** from 'react'
+import { useEffect, useState } from 'react'
 import resolveConfig from 'tailwindcss/resolveConfig'
-import { IndicesTypes ***REMOVED*** from '../ClimateIndices/ClimateIndicesChart'
+import { IndicesTypes } from '../ClimateIndices/ClimateIndicesChart'
 
-const { theme ***REMOVED*** = resolveConfig(tailwindConfig)
+const { theme } = resolveConfig(tailwindConfig)
 
 type ValuesTypes = 'bip' | 'beschaeftigte' | 'co2Industrie' | 'co2Gewerbe'
 
@@ -25,7 +25,7 @@ type Wachstum = {
   ZEIT: number
   Bruttoinlandsprodukt: number
   'Sozialversicherungspflichtige Beschäftigte am Arbeitsort': number
-***REMOVED***
+}
 
 type CO2Emissionen = {
   ZEIT: number
@@ -39,7 +39,7 @@ type CO2Emissionen = {
   'CO2-Emissionen - Private Haushalte': number
   'CO2-Emissionen - Verkehr': number
   'CO2-Emissionen - Verkehr (Zielwert)': number
-***REMOVED***
+}
 
 const STARTING_YEAR = 1990
 
@@ -50,17 +50,17 @@ const getSeries = <T extends Wachstum | CO2Emissionen>(
 ) => {
   const arr = data
     .filter(e => e.ZEIT >= STARTING_YEAR)
-    .map(e => [new Date(`${e.ZEIT***REMOVED***-01-01T00:00:00.000Z`), e[property]])
+    .map(e => [new Date(`${e.ZEIT}-01-01T00:00:00.000Z`), e[property]])
     .reduce((acc: Record<string, number>, [timestamp, value]) => {
       const year = getYear(timestamp as Date)
 
       acc[year] = (acc[year] ?? 0) + (value as number)
 
       return acc
-  ***REMOVED***, {***REMOVED***)
+    }, {})
 
   const entries = Object.entries(arr)
-    .map(([year, value]) => [`${year***REMOVED***-01-01T00:00:00.000Z`, value])
+    .map(([year, value]) => [`${year}-01-01T00:00:00.000Z`, value])
     .filter(e => e[1] != 0)
 
   if (percentualGrowth) {
@@ -69,10 +69,10 @@ const getSeries = <T extends Wachstum | CO2Emissionen>(
       year,
       (((value as number) - initialYearValue) / initialYearValue) * 100,
     ])
-***REMOVED***
+  }
 
   return entries
-***REMOVED***
+}
 
 /**
  * All the indices that are on the chart
@@ -82,7 +82,7 @@ function getIndices(mode: 'percent' | 'absolute'): Record<
   {
     title: string
     seriesOption: LineSeriesOption
-***REMOVED***
+  }
 > {
   return {
     bip: {
@@ -93,11 +93,11 @@ function getIndices(mode: 'percent' | 'absolute'): Record<
           WachstumData,
           'Bruttoinlandsprodukt',
           mode === 'percent',
-    ***REMOVED***,
+        ),
         // @ts-ignore
         color: theme?.colors?.buildings.DEFAULT || '#6060d6',
-    ***REMOVED***,
-  ***REMOVED***,
+      },
+    },
     beschaeftigte: {
       title: 'Beschäftigte am Arbeitsort',
       seriesOption: {
@@ -106,11 +106,11 @@ function getIndices(mode: 'percent' | 'absolute'): Record<
           WachstumData,
           'Sozialversicherungspflichtige Beschäftigte am Arbeitsort',
           mode === 'percent',
-    ***REMOVED***,
+        ),
         // @ts-ignore
         color: theme?.colors?.climate.DEFAULT || '#6060d6',
-    ***REMOVED***,
-  ***REMOVED***,
+      },
+    },
     co2Industrie: {
       title: 'CO2 Industrie',
       seriesOption: {
@@ -119,11 +119,11 @@ function getIndices(mode: 'percent' | 'absolute'): Record<
           CO2EmissionenTonnenData,
           'CO2-Emissionen - Industrie',
           mode === 'percent',
-    ***REMOVED***,
+        ),
         // @ts-ignore
         color: theme?.colors?.energy.DEFAULT || '#6060d6',
-    ***REMOVED***,
-  ***REMOVED***,
+      },
+    },
     co2Gewerbe: {
       title: 'CO2 Gewerbe + Sonstiges',
       seriesOption: {
@@ -132,45 +132,45 @@ function getIndices(mode: 'percent' | 'absolute'): Record<
           CO2EmissionenTonnenData,
           'CO2-Emissionen - Gewerbe + Sonstiges',
           mode === 'percent',
-    ***REMOVED***,
+        ),
         // @ts-ignore
         color: theme?.colors?.mobility.DEFAULT || '#6060d6',
-    ***REMOVED***,
-  ***REMOVED***,
-***REMOVED***
-***REMOVED***
+      },
+    },
+  }
+}
 
 function Toggle({
   onChange,
-***REMOVED***: {
+}: {
   onChange: (_val: 'percent' | 'absolute') => void
-***REMOVED***) {
+}) {
   return (
     <ToggleGroup
       items={[
-  ***REMOVED***
+        {
           element: (
             <Title as="h5" className="2xl:w-max">
               Prozentuale Entwicklung
             </Title>
-      ***REMOVED***,
+          ),
           value: 'percent',
-      ***REMOVED***,
-  ***REMOVED***
+        },
+        {
           element: (
             <Title as="h5" className="2xl:w-max">
               Absolute Entwicklung
             </Title>
-      ***REMOVED***,
+          ),
           value: 'absolute',
-      ***REMOVED***,
-      ]***REMOVED***
+        },
+      ]}
       // @ts-ignore
-      onChange={onChange***REMOVED***
-      variant={'climate'***REMOVED***
+      onChange={onChange}
+      variant={'climate'}
     />
   )
-***REMOVED***
+}
 
 /**
  *
@@ -184,29 +184,29 @@ function ClimateIndiceToggle({
   onChange,
   children,
   checked,
-***REMOVED***: {
+}: {
   type: IndicesTypes
   defaultChecked?: boolean
   onChange?: (_checked: boolean) => void
   children?: React.ReactNode
   checked?: boolean
-***REMOVED***) {
+}) {
   return (
     <div className="flex w-full flex-row-reverse items-center justify-between gap-2 lg:flex-row lg:justify-normal lg:gap-4">
       <Switch
-        checked={checked***REMOVED***
-        defaultChecked={defaultChecked***REMOVED***
-        onCheckedChange={onChange***REMOVED***
-        variant={type***REMOVED***
+        checked={checked}
+        defaultChecked={defaultChecked}
+        onCheckedChange={onChange}
+        variant={type}
       />
       <div className="flex items-center gap-2 md:w-max md:gap-4">
-        <Title as="h5" variant={type***REMOVED***>
-    ***REMOVED***children***REMOVED***
+        <Title as="h5" variant={type}>
+          {children}
         </Title>
       </div>
     </div>
   )
-***REMOVED***
+}
 
 /**
  *
@@ -224,7 +224,7 @@ export default function WachstumChart() {
     beschaeftigte: true,
     co2Industrie: true,
     co2Gewerbe: true,
-***REMOVED***)
+  })
 
   useEffect(() => {
     if (mode === 'percent') {
@@ -233,16 +233,16 @@ export default function WachstumChart() {
         beschaeftigte: true,
         co2Industrie: true,
         co2Gewerbe: true,
-    ***REMOVED***)
-  ***REMOVED*** else {
+      })
+    } else {
       setSeriesVisible({
         bip: true,
         beschaeftigte: false,
         co2Industrie: false,
         co2Gewerbe: false,
-    ***REMOVED***)
-  ***REMOVED***
-***REMOVED***, [mode])
+      })
+    }
+  }, [mode])
 
   const indices = getIndices(mode)
 
@@ -253,27 +253,27 @@ export default function WachstumChart() {
       type: 'line',
       itemStyle: {
         opacity: 0,
-    ***REMOVED***,
+      },
       data: indices[e as ValuesTypes].seriesOption.data,
-  ***REMOVED***))
+    }))
 
   return (
     <div className="relative">
       <div className="absolute -left-10 -top-10 flex items-center justify-end px-5 2xl:justify-between">
-        <Toggle onChange={setMode***REMOVED*** />
+        <Toggle onChange={setMode} />
       </div>
       <div className=" flex h-full w-full flex-col items-center gap-2 p-5 pt-8 2xl:flex-row">
         <div className="h-full w-full flex-1">
-          <Title as="h7" font="semibold" variant={'primary'***REMOVED***>
-      ***REMOVED***mode === 'percent' ? (
-              <span className={device === 'mobile' ? 'pl-2' : 'pl-24'***REMOVED***>%</span>
-        ***REMOVED*** : seriesVisible.bip ? (
-              <span className={device === 'mobile' ? 'pl-2' : 'pl-24'***REMOVED***>t€</span>
-        ***REMOVED*** : seriesVisible.beschaeftigte ? (
+          <Title as="h7" font="semibold" variant={'primary'}>
+            {mode === 'percent' ? (
+              <span className={device === 'mobile' ? 'pl-2' : 'pl-24'}>%</span>
+            ) : seriesVisible.bip ? (
+              <span className={device === 'mobile' ? 'pl-2' : 'pl-24'}>t€</span>
+            ) : seriesVisible.beschaeftigte ? (
               <span>Beschäftigte</span>
-        ***REMOVED*** : (
-              <span className={device === 'mobile' ? 'pl-2' : 'pl-24'***REMOVED***>t</span>
-        ***REMOVED******REMOVED***
+            ) : (
+              <span className={device === 'mobile' ? 'pl-2' : 'pl-24'}>t</span>
+            )}
           </Title>
           <div className="h-[235px] w-full md:h-[440px]">
             <ReactECharts
@@ -284,25 +284,25 @@ export default function WachstumChart() {
                   left:
                     device === 'mobile' ? (mode === 'absolute' ? 80 : 40) : 120,
                   right: 0,
-              ***REMOVED***,
+                },
                 series: [...series],
                 xAxis: {
                   type: 'time',
                   axisLabel: {
                     fontSize: device === 'mobile' ? 12 : 20,
                     margin: 20,
-                ***REMOVED***,
+                  },
                   min: parse(
-                    `${STARTING_YEAR***REMOVED***-01-01`,
+                    `${STARTING_YEAR}-01-01`,
                     'yyyy-MM-dd',
                     new Date(),
-              ***REMOVED***.getTime(),
+                  ).getTime(),
                   max: parse(
-                    `${new Date().getFullYear()***REMOVED***-01-01`,
+                    `${new Date().getFullYear()}-01-01`,
                     'yyyy-MM-dd',
                     new Date(),
-              ***REMOVED***.getTime(),
-              ***REMOVED***,
+                  ).getTime(),
+                },
                 tooltip: {
                   show: true,
                   confine: true,
@@ -310,119 +310,119 @@ export default function WachstumChart() {
                   trigger: 'axis',
                   valueFormatter: (val: any) => {
                     return Intl.NumberFormat('de-DE').format(val.toFixed(2))
-                ***REMOVED***,
+                  },
                   axisPointer: {
                     label: {
                       formatter: function (params) {
                         const oT = new Date(params.value)
                         return format(oT, 'yyyy')
-                    ***REMOVED***,
-                  ***REMOVED***,
-                ***REMOVED***,
-              ***REMOVED***,
+                      },
+                    },
+                  },
+                },
                 yAxis: {
                   type: 'value',
                   axisLabel: {
                     fontSize: device === 'mobile' ? 12 : 20,
                     formatter: (val: any) => {
                       return Intl.NumberFormat('de-DE').format(val)
-                  ***REMOVED***,
+                    },
                     margin: 20,
-                ***REMOVED***,
-              ***REMOVED***,
+                  },
+                },
                 animation: true,
-            ***REMOVED******REMOVED***
+              }}
               settings={{
                 notMerge: true,
-            ***REMOVED******REMOVED***
+              }}
             />
           </div>
         </div>
         <div className="flex h-full flex-col justify-evenly gap-1 2xl:self-start 2xl:pl-4">
           <ClimateIndiceToggle
-            checked={seriesVisible.bip***REMOVED***
-            defaultChecked={seriesVisible.bip***REMOVED***
+            checked={seriesVisible.bip}
+            defaultChecked={seriesVisible.bip}
             onChange={c => {
               if (mode === 'percent') {
-                setSeriesVisible({ ...seriesVisible, bip: c ***REMOVED***)
-            ***REMOVED*** else {
+                setSeriesVisible({ ...seriesVisible, bip: c })
+              } else {
                 // @ts-ignore
                 const allFalse: Record<ValuesTypes, boolean> = Object.keys(
                   seriesVisible,
-            ***REMOVED***.reduce((acc, e) => ({ ...acc, [e]: false ***REMOVED***), {***REMOVED***)
+                ).reduce((acc, e) => ({ ...acc, [e]: false }), {})
 
                 setSeriesVisible({
                   ...allFalse,
                   bip: c,
-              ***REMOVED***)
-            ***REMOVED***
-          ***REMOVED******REMOVED***
+                })
+              }
+            }}
             type="tropennaechte"
           >
             BIP (Münster)
           </ClimateIndiceToggle>
           <ClimateIndiceToggle
-            checked={seriesVisible.beschaeftigte***REMOVED***
-            defaultChecked={seriesVisible.beschaeftigte***REMOVED***
+            checked={seriesVisible.beschaeftigte}
+            defaultChecked={seriesVisible.beschaeftigte}
             onChange={c => {
               if (mode === 'percent') {
-                setSeriesVisible({ ...seriesVisible, beschaeftigte: c ***REMOVED***)
-            ***REMOVED*** else {
+                setSeriesVisible({ ...seriesVisible, beschaeftigte: c })
+              } else {
                 // @ts-ignore
                 const allFalse: Record<ValuesTypes, boolean> = Object.keys(
                   seriesVisible,
-            ***REMOVED***.reduce((acc, e) => ({ ...acc, [e]: false ***REMOVED***), {***REMOVED***)
+                ).reduce((acc, e) => ({ ...acc, [e]: false }), {})
 
                 setSeriesVisible({
                   ...allFalse,
                   beschaeftigte: c,
-              ***REMOVED***)
-            ***REMOVED***
-          ***REMOVED******REMOVED***
+                })
+              }
+            }}
             type="eistage"
           >
             Beschäftigte* am Arbeitsort
           </ClimateIndiceToggle>
           <ClimateIndiceToggle
-            checked={seriesVisible.co2Industrie***REMOVED***
-            defaultChecked={seriesVisible.co2Industrie***REMOVED***
+            checked={seriesVisible.co2Industrie}
+            defaultChecked={seriesVisible.co2Industrie}
             onChange={c => {
               if (mode === 'percent') {
-                setSeriesVisible({ ...seriesVisible, co2Industrie: c ***REMOVED***)
-            ***REMOVED*** else {
+                setSeriesVisible({ ...seriesVisible, co2Industrie: c })
+              } else {
                 // @ts-ignore
                 const allFalse: Record<ValuesTypes, boolean> = Object.keys(
                   seriesVisible,
-            ***REMOVED***.reduce((acc, e) => ({ ...acc, [e]: false ***REMOVED***), {***REMOVED***)
+                ).reduce((acc, e) => ({ ...acc, [e]: false }), {})
 
                 setSeriesVisible({
                   ...allFalse,
                   co2Industrie: c,
-              ***REMOVED***)
-            ***REMOVED***
-          ***REMOVED******REMOVED***
+                })
+              }
+            }}
             type="heisse_tage"
           >
             CO<sub>2</sub> Industrie
           </ClimateIndiceToggle>
           <ClimateIndiceToggle
-            checked={seriesVisible.co2Gewerbe***REMOVED***
-            defaultChecked={seriesVisible.co2Gewerbe***REMOVED***
+            checked={seriesVisible.co2Gewerbe}
+            defaultChecked={seriesVisible.co2Gewerbe}
             onChange={c => {
               if (mode === 'percent') {
-                setSeriesVisible({ ...seriesVisible, co2Gewerbe: c ***REMOVED***)
-            ***REMOVED*** else {
+                setSeriesVisible({ ...seriesVisible, co2Gewerbe: c })
+              } else {
                 // @ts-ignore
                 const allFalse: Record<ValuesTypes, boolean> = Object.keys(
                   seriesVisible,
-            ***REMOVED***.reduce((acc, e) => ({ ...acc, [e]: false ***REMOVED***), {***REMOVED***)
+                ).reduce((acc, e) => ({ ...acc, [e]: false }), {})
 
                 setSeriesVisible({
                   ...allFalse,
                   co2Gewerbe: c,
-              ***REMOVED***)
-            ***REMOVED***
-          ***REMOVED******REMOVED***
+                })
+              }
+            }}
             type="sommertage"
           >
             CO<sub>2</sub> Gewerbe + Sonstiges
@@ -431,4 +431,4 @@ export default function WachstumChart() {
       </div>
     </div>
   )
-***REMOVED***
+}

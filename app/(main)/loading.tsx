@@ -1,4 +1,4 @@
-import { Spinner ***REMOVED*** from '@/components/Elements/Spinner'
+import { Spinner } from '@/components/Elements/Spinner'
 import Container from '@/components/Layout/Container'
 
 export default function Loading() {
@@ -7,4 +7,4 @@ export default function Loading() {
       <Spinner className="mx-auto" />
     </Container>
   )
-***REMOVED***
+}

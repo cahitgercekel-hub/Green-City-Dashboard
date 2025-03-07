@@ -1,25 +1,25 @@
 // components/TileLayout.tsx
 import Columns from '@/components/Layout/Columns'
-import { TilesBucket ***REMOVED*** from '@/utils/fullWidthBucket'
-import { renderTileComponents ***REMOVED*** from '@/utils/tileUtils'
+import { TilesBucket } from '@/utils/fullWidthBucket'
+import { renderTileComponents } from '@/utils/tileUtils'
 
 export async function TileLayout({
   tileBuckets,
-***REMOVED***: {
+}: {
   tileBuckets: TilesBucket[]
-***REMOVED***) {
+}) {
   return (
     <>
-***REMOVED***await Promise.all(
-        tileBuckets.map(async ({ tiles, isFullWidth ***REMOVED***, i) => {
+      {await Promise.all(
+        tileBuckets.map(async ({ tiles, isFullWidth }, i) => {
           const components = await renderTileComponents(tiles)
           return isFullWidth ? (
-            <div key={i***REMOVED***>{components***REMOVED***</div>
-      ***REMOVED*** : (
-            <Columns key={i***REMOVED***>{components***REMOVED***</Columns>
-      ***REMOVED***
-      ***REMOVED***),
-  ***REMOVED******REMOVED***
+            <div key={i}>{components}</div>
+          ) : (
+            <Columns key={i}>{components}</Columns>
+          )
+        }),
+      )}
     </>
   )
-***REMOVED***
+}

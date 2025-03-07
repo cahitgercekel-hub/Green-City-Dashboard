@@ -1,11 +1,11 @@
 'use client'
 
-import { AnimatePresence ***REMOVED*** from 'framer-motion'
+import { AnimatePresence } from 'framer-motion'
 
-export default function Providers({ children ***REMOVED***: { children: React.ReactNode ***REMOVED***) {
+export default function Providers({ children }: { children: React.ReactNode }) {
   return (
-    <AnimatePresence initial={false***REMOVED*** mode="wait">
-***REMOVED***children***REMOVED***
+    <AnimatePresence initial={false} mode="wait">
+      {children}
     </AnimatePresence>
   )
-***REMOVED***
+}

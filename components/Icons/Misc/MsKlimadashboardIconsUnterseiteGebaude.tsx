@@ -1,16 +1,16 @@
 import * as React from 'react'
-import type { SVGProps ***REMOVED*** from 'react'
+import type { SVGProps } from 'react'
 function SvgMsKlimadashboardIconsUnterseiteGebaude(props: SVGProps<SVGSVGElement>) {
   return <svg
     data-name="Ebene 1"
     id="MS_Klimadashboard_Icons_Unterseite_Gebaude_svg__Ebene_1"
     viewBox="0 0 359.38 81.39"
     xmlns="http://www.w3.org/2000/svg"
-    {...props***REMOVED***
+    {...props}
   >
     <defs>
       <style>
-  ***REMOVED***'.MS_Klimadashboard_Icons_Unterseite_Gebaude_svg__cls-3{fill:#6060d6***REMOVED***'***REMOVED***
+        {'.MS_Klimadashboard_Icons_Unterseite_Gebaude_svg__cls-3{fill:#6060d6}'}
       </style>
     </defs>
     <g
@@ -25,7 +25,7 @@ function SvgMsKlimadashboardIconsUnterseiteGebaude(props: SVGProps<SVGSVGElement
             id="MS_Klimadashboard_Icons_Unterseite_Gebaude_svg__Themen_im_Fokus-4"
             style={{
               fill: '#005b79',
-          ***REMOVED******REMOVED***
+            }}
           />
         </g>
       </g>
@@ -36,13 +36,13 @@ function SvgMsKlimadashboardIconsUnterseiteGebaude(props: SVGProps<SVGSVGElement
         <g id="MS_Klimadashboard_Icons_Unterseite_Gebaude_svg__Passive-4">
           <g id="MS_Klimadashboard_Icons_Unterseite_Gebaude_svg__Rectangle-4">
             <rect
-              height={81.39***REMOVED***
-              rx={40.7***REMOVED***
-              ry={40.7***REMOVED***
+              height={81.39}
+              rx={40.7}
+              ry={40.7}
               style={{
                 fill: 'none',
-            ***REMOVED******REMOVED***
-              width={118.27***REMOVED***
+              }}
+              width={118.27}
             />
             <path
               className="MS_Klimadashboard_Icons_Unterseite_Gebaude_svg__cls-3"
@@ -65,5 +65,5 @@ function SvgMsKlimadashboardIconsUnterseiteGebaude(props: SVGProps<SVGSVGElement
       </g>
     </g>
   </svg>
-***REMOVED***
+}
 export default SvgMsKlimadashboardIconsUnterseiteGebaude

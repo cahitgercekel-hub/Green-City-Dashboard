@@ -5,7 +5,7 @@ import BuildingsTile from '../BuildingsTile'
 // import WindData from '@/assets/data/bestand-windanlagen.csv'
 import AnimatedNumber from '@/components/Elements/Animated/AnimatedNumber'
 import getTileData from '@/lib/api/getTileData'
-import { format ***REMOVED*** from 'date-fns'
+import { format } from 'date-fns'
 
 // interface WindDataType {
 //   ZEIT: string
@@ -13,7 +13,7 @@ import { format ***REMOVED*** from 'date-fns'
 //   AnzahlSolarModule: number
 //   Bruttoleistung: number
 //   Nettonennleistung: number
-// ***REMOVED***
+// }
 
 export default async function RenovationTile() {
   // const [data] = WindData as WindDataType[]
@@ -22,18 +22,18 @@ export default async function RenovationTile() {
 
   return (
     <BuildingsTile
-      dataRetrieval={format(new Date(), '01.MM.yyyy')***REMOVED***
-      dataSource={'Stadt Münster'***REMOVED***
+      dataRetrieval={format(new Date(), '01.MM.yyyy')}
+      dataSource={'Stadt Münster'}
       embedId="building-renovation"
       title={
         <>
-          <AnimatedNumber>{7227***REMOVED***</AnimatedNumber>
+          <AnimatedNumber>{7227}</AnimatedNumber>
         </>
-    ***REMOVED***
+      }
     >
       <div>
-        <Title as={'subtitle'***REMOVED***>{infoText***REMOVED***</Title>
+        <Title as={'subtitle'}>{infoText}</Title>
       </div>
     </BuildingsTile>
   )
-***REMOVED***
+}

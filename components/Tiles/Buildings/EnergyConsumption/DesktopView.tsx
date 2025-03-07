@@ -1,5 +1,5 @@
 import AnimatedNumber from '@/components/Elements/Animated/AnimatedNumber'
-import { Spacer ***REMOVED*** from '@/components/Elements/Spacer'
+import { Spacer } from '@/components/Elements/Spacer'
 import Title from '@/components/Elements/Title'
 
 import stromData from '@/assets/data/strom.json'
@@ -9,8 +9,8 @@ import {
   MsKlimadashboardIconsGSchule,
   MsKlimadashboardIconsGSportSentruperHoehe,
   MsKlimadashboardIconsGStadtweinhaus,
-***REMOVED*** from '@/components/Icons/Gebaeude'
-import { JSX, SVGProps ***REMOVED*** from 'react'
+} from '@/components/Icons/Gebaeude'
+import { JSX, SVGProps } from 'react'
 import EnergyConsumptionChart from './EnergyConsumptionChart'
 import LabelSeperator from './LabelSeperator'
 
@@ -20,7 +20,7 @@ type DataType = {
   sentruper: number | null
   rathaus: number | null
   'freiherr-von-stein': number | null
-***REMOVED***
+}
 
 type Building = Omit<DataType, 'Datum'>
 
@@ -29,7 +29,7 @@ const buildings: Record<keyof Building, string> = {
   stadtbuecherei: 'Stadtbücherei',
   sentruper: 'Sportanlage Sentruper Höhe',
   'freiherr-von-stein': 'Freiherr-vom-Stein-Gymnasium',
-***REMOVED***
+}
 
 const buildingIcon: Record<
   keyof Building,
@@ -39,15 +39,15 @@ const buildingIcon: Record<
   sentruper: MsKlimadashboardIconsGSportSentruperHoehe,
   rathaus: MsKlimadashboardIconsGStadtweinhaus,
   'freiherr-von-stein': MsKlimadashboardIconsGSchule,
-***REMOVED***
+}
 
 function getBuildingIcon(
   building: keyof Building,
   props?: SVGProps<SVGSVGElement>,
 ) {
   const Icon = buildingIcon[building]
-  return <Icon {...props***REMOVED*** />
-***REMOVED***
+  return <Icon {...props} />
+}
 
 function getData(
   mode: 'strom' | 'waerme',
@@ -61,7 +61,7 @@ function getData(
   )
 
   return filteredYear.map(d => d[building]).filter(d => d !== null) as number[]
-***REMOVED***
+}
 
 function getYearSum(
   mode: 'strom' | 'waerme',
@@ -71,7 +71,7 @@ function getYearSum(
   const data = getData(mode, building, year)
 
   return data.reduce((a, b) => a + b, 0)
-***REMOVED***
+}
 
 const years = Array.from(
   new Set(
@@ -82,74 +82,74 @@ const years = Array.from(
 interface DesktopViewProps {
   mode: 'strom' | 'waerme'
   yearIndex: number
-***REMOVED***
+}
 
-export default function DesktopView({ mode, yearIndex ***REMOVED***: DesktopViewProps) {
+export default function DesktopView({ mode, yearIndex }: DesktopViewProps) {
   return (
     <>
       <div className="flex h-full w-full justify-between gap-8">
-  ***REMOVED***Object.keys(buildings).map(building => (
-          <div className="flex-1 p-2" key={building***REMOVED***>
+        {Object.keys(buildings).map(building => (
+          <div className="flex-1 p-2" key={building}>
             <div className="mx-auto mb-3 flex h-[200px] w-[200px] justify-center">
-        ***REMOVED***getBuildingIcon(building as keyof Building)***REMOVED***
+              {getBuildingIcon(building as keyof Building)}
             </div>
             <Title
               as="h4"
               className="min-h-[5rem] text-center"
               variant="building"
             >
-        ***REMOVED***buildings[building as keyof Building]***REMOVED***
+              {buildings[building as keyof Building]}
             </Title>
           </div>
-    ***REMOVED***)***REMOVED***
+        ))}
       </div>
       <LabelSeperator>Monatlicher Verbrauch</LabelSeperator>
       <div className="flex h-full w-full justify-between gap-8">
-  ***REMOVED***Object.keys(buildings).map(building => (
-          <div className="h-72 w-full md:pb-2" key={building***REMOVED***>
+        {Object.keys(buildings).map(building => (
+          <div className="h-72 w-full md:pb-2" key={building}>
             <EnergyConsumptionChart
-              data={getData(mode, building as keyof Building, years[yearIndex])***REMOVED***
+              data={getData(mode, building as keyof Building, years[yearIndex])}
             />
           </div>
-    ***REMOVED***)***REMOVED***
+        ))}
       </div>
       <LabelSeperator>
-  ***REMOVED***years[yearIndex] === new Date().getFullYear()
+        {years[yearIndex] === new Date().getFullYear()
           ? 'Jahresverbrauch bisher'
-          : 'Jahresverbrauch'***REMOVED***
+          : 'Jahresverbrauch'}
       </LabelSeperator>
-      <Spacer size={'sm'***REMOVED***></Spacer>
+      <Spacer size={'sm'}></Spacer>
       <div className="flex h-full w-full justify-between gap-8">
-  ***REMOVED***Object.keys(buildings).map(building => {
+        {Object.keys(buildings).map(building => {
           const sum = getYearSum(
             mode,
             building as keyof Building,
             years[yearIndex],
-      ***REMOVED***
+          )
 
           return (
             <div
               className="flex w-full justify-center gap-1 p-2"
-              key={building***REMOVED***
+              key={building}
             >
-        ***REMOVED***sum === 0 ? (
+              {sum === 0 ? (
                 <Title as="h4" variant="building">
                   fehlende Daten
                 </Title>
-          ***REMOVED*** : (
+              ) : (
                 <>
                   <Title as="h4" variant="building">
-                    <AnimatedNumber decimals={0***REMOVED***>{sum***REMOVED***</AnimatedNumber>
+                    <AnimatedNumber decimals={0}>{sum}</AnimatedNumber>
                   </Title>
                   <Title as="h4" font="normal" variant="building">
                     kWh
                   </Title>
                 </>
-          ***REMOVED******REMOVED***
+              )}
             </div>
-      ***REMOVED***
-      ***REMOVED***)***REMOVED***
+          )
+        })}
       </div>
     </>
   )
-***REMOVED***
+}

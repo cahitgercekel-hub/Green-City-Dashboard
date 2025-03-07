@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useEffect, useRef, useState ***REMOVED*** from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import maplibregl from 'maplibre-gl'
 import 'maplibre-gl/dist/maplibre-gl.css'
 
@@ -12,28 +12,28 @@ const MuensterMap: React.FC = () => {
   const geomap = {
     type: 'FeatureCollection',
     features: [
-***REMOVED***
+      {
         type: 'Feature',
         geometry: {
           type: 'Point',
           coordinates: [7.6157, 51.95],
-      ***REMOVED***,
+        },
         properties: {
           traffic_density: 10,
-      ***REMOVED***,
-    ***REMOVED***,
-***REMOVED***
+        },
+      },
+      {
         type: 'Feature',
         geometry: {
           type: 'Point',
           coordinates: [7.625, 51.9505],
-      ***REMOVED***,
+        },
         properties: {
           traffic_density: 20,
-      ***REMOVED***,
-    ***REMOVED***,
+        },
+      },
     ],
-***REMOVED***
+  }
 
   useEffect(() => {
     if (!mapContainerRef.current) return
@@ -43,13 +43,13 @@ const MuensterMap: React.FC = () => {
       style: 'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json', // Base map style
       center: [7.6286, 51.9607], // Coordinates of Münster
       zoom: 12,
-  ***REMOVED***)
+    })
 
     setMap(mapInstance)
 
     // Cleanup on unmount
     return () => mapInstance.remove()
-***REMOVED***, [])
+  }, [])
 
   useEffect(() => {
     if (!map) return
@@ -58,7 +58,7 @@ const MuensterMap: React.FC = () => {
       map.addSource('streets', {
         type: 'geojson',
         data: geomap,
-    ***REMOVED***)
+      })
 
       map.addLayer({
         id: 'heatmap',
@@ -120,22 +120,22 @@ const MuensterMap: React.FC = () => {
             15,
             0,
           ],
-      ***REMOVED***,
-    ***REMOVED***)
-  ***REMOVED***)
-***REMOVED***, [map])
+        },
+      })
+    })
+  }, [map])
 
   return (
     <div
-      ref={mapContainerRef***REMOVED***
-      style={{ width: '100%', height: '500px' ***REMOVED******REMOVED*** // Map container size
+      ref={mapContainerRef}
+      style={{ width: '100%', height: '500px' }} // Map container size
     />
   )
-***REMOVED***
+}
 
 export default MuensterMap
 
-// import React, { useEffect, useRef ***REMOVED*** from 'react'
+// import React, { useEffect, useRef } from 'react'
 // import maplibregl from 'maplibre-gl'
 // import 'maplibre-gl/dist/maplibre-gl.css'
 
@@ -152,13 +152,13 @@ export default MuensterMap
 //         'https://api.maptiler.com/maps/streets-v2/style.json?key=OkGRwvJGHklpL2XFjQW0',
 //       center: [7.6256, 51.9607], // Münster coordinates
 //       zoom: 12,
-//   ***REMOVED***)
+//     })
 
 //     // GeoJSON data with additional points and lines
 //     const geojsonData = {
 //       type: 'FeatureCollection',
 //       features: [
-//   ***REMOVED***
+//         {
 //           type: 'Feature',
 //           geometry: {
 //             type: 'LineString',
@@ -168,70 +168,70 @@ export default MuensterMap
 //               [7.62, 51.958],
 //               [7.635, 51.97],
 //             ],
-//         ***REMOVED***,
+//           },
 //           properties: {
 //             intensity: 1,
-//         ***REMOVED***,
-//       ***REMOVED***,
-//   ***REMOVED***
+//           },
+//         },
+//         {
 //           type: 'Feature',
 //           geometry: {
 //             type: 'Point',
 //             coordinates: [7.63, 51.965],
-//         ***REMOVED***,
+//           },
 //           properties: {
 //             intensity: 0.8,
-//         ***REMOVED***,
-//       ***REMOVED***,
-//   ***REMOVED***
+//           },
+//         },
+//         {
 //           type: 'Feature',
 //           geometry: {
 //             type: 'Point',
 //             coordinates: [7.62, 51.958],
-//         ***REMOVED***,
+//           },
 //           properties: {
 //             intensity: 0.6,
-//         ***REMOVED***,
-//       ***REMOVED***,
-//   ***REMOVED***
+//           },
+//         },
+//         {
 //           type: 'Feature',
 //           geometry: {
 //             type: 'Point',
 //             coordinates: [7.64, 51.9675],
-//         ***REMOVED***,
+//           },
 //           properties: {
 //             intensity: 0.9,
-//         ***REMOVED***,
-//       ***REMOVED***,
-//   ***REMOVED***
+//           },
+//         },
+//         {
 //           type: 'Feature',
 //           geometry: {
 //             type: 'Point',
 //             coordinates: [7.615, 51.955],
-//         ***REMOVED***,
+//           },
 //           properties: {
 //             intensity: 0.7,
-//         ***REMOVED***,
-//       ***REMOVED***,
-//   ***REMOVED***
+//           },
+//         },
+//         {
 //           type: 'Feature',
 //           geometry: {
 //             type: 'Point',
 //             coordinates: [7.645, 51.973],
-//         ***REMOVED***,
+//           },
 //           properties: {
 //             intensity: 1.0,
-//         ***REMOVED***,
-//       ***REMOVED***,
+//           },
+//         },
 //       ],
-//   ***REMOVED***
+//     }
 
 //     map.on('load', () => {
 //       // Add the data source
 //       map.addSource('geojson-data', {
 //         type: 'geojson',
 //         data: geojsonData,
-//     ***REMOVED***)
+//       })
 
 //       // Add a heatmap layer
 //       map.addLayer({
@@ -254,8 +254,8 @@ export default MuensterMap
 //           ],
 //           'heatmap-radius': 20,
 //           'heatmap-opacity': 0.8,
-//       ***REMOVED***,
-//     ***REMOVED***)
+//         },
+//       })
 
 //       // Add a line layer
 //       map.addLayer({
@@ -266,8 +266,8 @@ export default MuensterMap
 //         paint: {
 //           'line-width': 4,
 //           'line-color': 'blue',
-//       ***REMOVED***,
-//     ***REMOVED***)
+//         },
+//       })
 
 //       // Add a circle layer for points
 //       map.addLayer({
@@ -297,19 +297,19 @@ export default MuensterMap
 //             'red',
 //           ],
 //           'circle-opacity': 0.8,
-//       ***REMOVED***,
-//     ***REMOVED***)
-//   ***REMOVED***)
+//         },
+//       })
+//     })
 
 //     return () => map.remove() // Cleanup map instance on component unmount
-// ***REMOVED***, [])
+//   }, [])
 
 //   return (
 //     <div
-//       ref={mapContainerRef***REMOVED***
+//       ref={mapContainerRef}
 //       className="absolute bottom-0 left-0 right-0 top-0"
 //     />
 //   )
-// ***REMOVED***
+// }
 
 // export default MunsterMap

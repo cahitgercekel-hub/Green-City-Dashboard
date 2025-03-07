@@ -1,23 +1,23 @@
 import directus from '@/lib/directus'
 import '@/styles/globals.css'
-import { readSingleton ***REMOVED*** from '@directus/sdk'
-import { Viewport ***REMOVED*** from 'next'
-import { Inter, Lexend, Lora ***REMOVED*** from 'next/font/google'
+import { readSingleton } from '@directus/sdk'
+import { Viewport } from 'next'
+import { Inter, Lexend, Lora } from 'next/font/google'
 import Script from 'next/script'
 import Cookies from './Cookies'
 import Matomo from './Matomo'
 
-const inter = Inter({ subsets: ['latin'], variable: '--font-inter' ***REMOVED***)
+const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 const lexend = Lexend({
   subsets: ['latin'],
   variable: '--font-lexend',
   weight: ['300', '400', '700'],
-***REMOVED***)
+})
 const lora = Lora({
   subsets: ['latin'],
   style: 'italic',
   variable: '--font-lora',
-***REMOVED***)
+})
 
 export async function generateMetadata() {
   const theme = await directus.request(readSingleton('theme'))
@@ -26,38 +26,38 @@ export async function generateMetadata() {
     return {
       title: 'Klimadashboard',
       icons: '/favicon.ico',
-  ***REMOVED***
-***REMOVED***
+    }
+  }
 
   return {
     title: theme.title,
     icons: '/favicon.ico',
-***REMOVED***
-***REMOVED***
+  }
+}
 
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
-***REMOVED***
+}
 
 function hexToRgb(hex: string) {
-  var result = /^#?([a-f\d]{2***REMOVED***)([a-f\d]{2***REMOVED***)([a-f\d]{2***REMOVED***)$/i.exec(hex)
+  var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex)
   return result
-    ? `${parseInt(result[1], 16)***REMOVED*** ${parseInt(result[2], 16)***REMOVED*** ${parseInt(
+    ? `${parseInt(result[1], 16)} ${parseInt(result[2], 16)} ${parseInt(
         result[3],
         16,
-  ***REMOVED******REMOVED***`
+      )}`
     : null
-***REMOVED***
+}
 
 export default async function RootLayout({
   children,
-***REMOVED***: {
+}: {
   children: React.ReactNode
-***REMOVED***) {
+}) {
   const theme = await directus.request(readSingleton('theme'))
 
-  let style: React.CSSProperties = {***REMOVED***
+  let style: React.CSSProperties = {}
 
   if (theme) {
     style = {
@@ -75,25 +75,25 @@ export default async function RootLayout({
       '--color-buildings-light': hexToRgb(theme.buildings_light),
       '--border-radius-md': `${
         theme.border_radius * 12 * (theme.border_radius / 3)
-    ***REMOVED***px`,
+      }px`,
       '--border-radius-lg': `${
         theme.border_radius * 17.3 * (theme.border_radius / 3)
-    ***REMOVED***px`,
-  ***REMOVED*** as React.CSSProperties
-***REMOVED***
+      }px`,
+    } as React.CSSProperties
+  }
 
   return (
     <html
-      className={`${inter.variable***REMOVED*** ${lexend.variable***REMOVED*** ${lora.variable***REMOVED***`***REMOVED***
+      className={`${inter.variable} ${lexend.variable} ${lora.variable}`}
       lang="de"
     >
-***REMOVED***/*
+      {/*
         <head /> will contain the components returned by the nearest parent
         head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
-      */***REMOVED***
+      */}
       <head />
-      <body style={style***REMOVED***>
-  ***REMOVED***children***REMOVED***
+      <body style={style}>
+        {children}
         <Cookies />
       </body>
       <Matomo />
@@ -104,4 +104,4 @@ export default async function RootLayout({
       />
     </html>
   )
-***REMOVED***
+}

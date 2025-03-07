@@ -1,7 +1,7 @@
 'use client'
 
-import { Menu ***REMOVED*** from '@headlessui/react'
-import { ArrowsUpDownIcon ***REMOVED*** from '@heroicons/react/24/outline'
+import { Menu } from '@headlessui/react'
+import { ArrowsUpDownIcon } from '@heroicons/react/24/outline'
 import Dropdown from './Dropdown'
 import Title from './Title'
 
@@ -15,14 +15,14 @@ export default function SortTiles() {
             Kacheln sortieren
           </Title>
         </div>
-    ***REMOVED***
+      }
     >
       <div className="flex flex-col gap-1 rounded-lg bg-white p-2 shadow">
         <Menu.Item>
           <Title
             as="h6"
             className="cursor-pointer rounded px-4 py-2 hover:bg-zinc-100"
-            variant={'primary'***REMOVED***
+            variant={'primary'}
           >
             Nach Kategorie
           </Title>
@@ -31,7 +31,7 @@ export default function SortTiles() {
           <Title
             as="h6"
             className="cursor-pointer rounded px-4 py-2 hover:bg-zinc-100"
-            variant={'primary'***REMOVED***
+            variant={'primary'}
           >
             Neueste zuerst
           </Title>
@@ -39,4 +39,4 @@ export default function SortTiles() {
       </div>
     </Dropdown>
   )
-***REMOVED***
+}

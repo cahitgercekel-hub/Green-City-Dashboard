@@ -1,27 +1,27 @@
 .CollapsibleContent {
   overflow: hidden;
-***REMOVED***
+}
 .CollapsibleContent[data-state='open'] {
   animation: slideDown 300ms ease-out;
-***REMOVED***
+}
 .CollapsibleContent[data-state='closed'] {
   animation: slideUp 300ms ease-out;
-***REMOVED***
+}
 
 @keyframes slideDown {
   from {
     height: 0;
-***REMOVED***
+  }
   to {
     height: var(--radix-collapsible-content-height);
-***REMOVED***
-***REMOVED***
+  }
+}
 
 @keyframes slideUp {
   from {
     height: var(--radix-collapsible-content-height);
-***REMOVED***
+  }
   to {
     height: 0;
-***REMOVED***
-***REMOVED***
+  }
+}

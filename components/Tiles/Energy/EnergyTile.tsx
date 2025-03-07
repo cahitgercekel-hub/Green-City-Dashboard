@@ -1,5 +1,5 @@
-import { MsKlimadashboardIconsButtonAktivEnergieV1 ***REMOVED*** from '@/components/Icons/Misc'
-import IconTile, { IconTileProps ***REMOVED*** from '../Base/IconTile'
+import { MsKlimadashboardIconsButtonAktivEnergieV1 } from '@/components/Icons/Misc'
+import IconTile, { IconTileProps } from '../Base/IconTile'
 
 export type EnergyTileProps = Omit<IconTileProps, 'variant' | 'icon'>
 
@@ -8,10 +8,10 @@ export type EnergyTileProps = Omit<IconTileProps, 'variant' | 'icon'>
  * @param EnergyTileProps properties of the Energy tile
  * @returns Energy Tile
  */
-export default function EnergyTile({ children, ...props ***REMOVED***: EnergyTileProps) {
+export default function EnergyTile({ children, ...props }: EnergyTileProps) {
   return (
-    <IconTile {...props***REMOVED*** icon={MsKlimadashboardIconsButtonAktivEnergieV1***REMOVED*** variant="energy">
-      <>{children***REMOVED***</>
+    <IconTile {...props} icon={MsKlimadashboardIconsButtonAktivEnergieV1} variant="energy">
+      <>{children}</>
     </IconTile>
   )
-***REMOVED***
+}

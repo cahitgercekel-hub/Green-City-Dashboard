@@ -1,7 +1,7 @@
 import * as SwitchPrimitive from '@radix-ui/react-switch'
-import type { VariantProps ***REMOVED*** from 'class-variance-authority'
-import { cva ***REMOVED*** from 'class-variance-authority'
-import { useEffect, useState ***REMOVED*** from 'react'
+import type { VariantProps } from 'class-variance-authority'
+import { cva } from 'class-variance-authority'
+import { useEffect, useState } from 'react'
 import Title from '../Elements/Title'
 
 const switchThumbStyle = cva(
@@ -18,15 +18,15 @@ const switchThumbStyle = cva(
         heisse_tage: 'bg-energy',
         sommertage: 'bg-mobility',
         tropennaechte: 'bg-buildings',
-    ***REMOVED***,
+      },
       checked: {
         true: 'translate-x-full',
-    ***REMOVED***,
-  ***REMOVED***,
+      },
+    },
     defaultVariants: {
       variant: 'primary',
-  ***REMOVED***,
-***REMOVED***,
+    },
+  },
 )
 
 const switchThumbInnerStyle = cva(
@@ -36,9 +36,9 @@ const switchThumbInnerStyle = cva(
       checked: {
         false: 'opacity-100',
         true: 'opacity-0',
-    ***REMOVED***,
-  ***REMOVED***,
-***REMOVED***,
+      },
+    },
+  },
 )
 
 const switchBorderStyle = cva(
@@ -55,49 +55,49 @@ const switchBorderStyle = cva(
         heisse_tage: 'border-energy',
         sommertage: 'border-mobility',
         tropennaechte: 'border-buildings',
-    ***REMOVED***,
-  ***REMOVED***,
+      },
+    },
     defaultVariants: {
       variant: 'primary',
-  ***REMOVED***,
-***REMOVED***,
+    },
+  },
 )
 
 type SwitchProps = SwitchPrimitive.SwitchProps &
   VariantProps<typeof switchBorderStyle> & {
     label?: string
-***REMOVED***
+  }
 
-export default function Switch({ label, variant, ...props ***REMOVED***: SwitchProps) {
+export default function Switch({ label, variant, ...props }: SwitchProps) {
   const [checked, setChecked] = useState(props.defaultChecked)
 
   useEffect(() => {
     setChecked(props.checked)
-***REMOVED***, [props.checked])
+  }, [props.checked])
 
   return (
     <div className="flex items-center space-x-4">
       <SwitchPrimitive.Root
-        className={switchBorderStyle({ variant ***REMOVED***)***REMOVED***
-  ***REMOVED***...props***REMOVED***
+        className={switchBorderStyle({ variant })}
+        {...props}
         onCheckedChange={val => {
           if (props.onCheckedChange) {
             props.onCheckedChange(val)
-        ***REMOVED***
+          }
           setChecked(val)
-      ***REMOVED******REMOVED***
+        }}
       >
         <SwitchPrimitive.Thumb asChild>
-          <div className={switchThumbStyle({ variant, checked ***REMOVED***)***REMOVED***>
-            <div className={switchThumbInnerStyle({ checked ***REMOVED***)***REMOVED*** />
+          <div className={switchThumbStyle({ variant, checked })}>
+            <div className={switchThumbInnerStyle({ checked })} />
           </div>
         </SwitchPrimitive.Thumb>
       </SwitchPrimitive.Root>
-***REMOVED***label && (
-        <Title as={'h5'***REMOVED*** variant={'primary'***REMOVED***>
-    ***REMOVED***label***REMOVED***
+      {label && (
+        <Title as={'h5'} variant={'primary'}>
+          {label}
         </Title>
-  ***REMOVED******REMOVED***
+      )}
     </div>
   )
-***REMOVED***
+}

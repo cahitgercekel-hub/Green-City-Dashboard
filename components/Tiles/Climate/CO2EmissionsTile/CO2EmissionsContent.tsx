@@ -1,37 +1,37 @@
 'use client'
 
-import { useState ***REMOVED*** from 'react'
+import { useState } from 'react'
 import CO2Chart from './CO2Chart'
 import Switch from '@/components/Inputs/Switch'
 import ToggleGroup from '@/components/Inputs/ToggleGroup'
 import Title from '@/components/Elements/Title'
 
-function Toggle({ onChange ***REMOVED***: { onChange: (_val: string) => void ***REMOVED***) {
+function Toggle({ onChange }: { onChange: (_val: string) => void }) {
   return (
     <ToggleGroup
       items={[
-  ***REMOVED***
+        {
           element: (
             <Title as="h5" className="2xl:w-max">
               CO₂ Emissionen in 1000 t
             </Title>
-      ***REMOVED***,
+          ),
           value: 'co2',
-      ***REMOVED***,
-  ***REMOVED***
+        },
+        {
           element: (
             <Title as="h5" className="2xl:w-max">
               Endenergieverbrauch in GWh
             </Title>
-      ***REMOVED***,
+          ),
           value: 'endenergie',
-      ***REMOVED***,
-      ]***REMOVED***
-      onChange={onChange***REMOVED***
-      variant={'climate'***REMOVED***
+        },
+      ]}
+      onChange={onChange}
+      variant={'climate'}
     />
   )
-***REMOVED***
+}
 
 export default function CO2EmissionsContent() {
   const [showFuture, setShowFuture] = useState(false)
@@ -43,22 +43,22 @@ export default function CO2EmissionsContent() {
       <div className="relative h-full rounded bg-white p-5 py-10 md:mt-5">
         <div className="absolute -top-6 right-0 flex w-full items-center justify-end px-5 2xl:justify-between">
           <div className="hidden 2xl:block">
-            <Toggle onChange={val => setMode(val as typeof mode)***REMOVED*** />
+            <Toggle onChange={val => setMode(val as typeof mode)} />
           </div>
           <Switch
-            defaultChecked={showFuture***REMOVED***
+            defaultChecked={showFuture}
             label="Klimaneutral"
-            onCheckedChange={setShowFuture***REMOVED***
+            onCheckedChange={setShowFuture}
             variant="climate"
           />
         </div>
         <div className="h-full w-full">
-          <CO2Chart mode={mode***REMOVED*** showFuture={showFuture***REMOVED*** />
+          <CO2Chart mode={mode} showFuture={showFuture} />
         </div>
       </div>
       <div className="relative block w-full -translate-y-1/2 2xl:hidden">
-        <Toggle onChange={val => setMode(val as typeof mode)***REMOVED*** />
+        <Toggle onChange={val => setMode(val as typeof mode)} />
       </div>
     </div>
   )
-***REMOVED***
+}

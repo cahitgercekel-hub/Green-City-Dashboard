@@ -1,5 +1,5 @@
-import { TileType ***REMOVED*** from '@/utils/TileFactory'
-import { readItems ***REMOVED*** from '@directus/sdk'
+import { TileType } from '@/utils/TileFactory'
+import { readItems } from '@directus/sdk'
 import directus from '../directus'
 
 export default async function getTileData(id: TileType) {
@@ -8,9 +8,9 @@ export default async function getTileData(id: TileType) {
       filter: {
         tile_id: {
           _eq: id,
-      ***REMOVED***,
-    ***REMOVED***,
-  ***REMOVED***),
+        },
+      },
+    }),
   )
   return data
-***REMOVED***
+}

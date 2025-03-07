@@ -6,13 +6,13 @@
       "type": "node-terminal",
       "request": "launch",
       "command": "npm run dev"
-  ***REMOVED***,
+    },
     {
       "name": "Next.js: debug client-side",
       "type": "chrome",
       "request": "launch",
       "url": "http://localhost:3000"
-  ***REMOVED***,
+    },
     {
       "name": "Next.js: debug full stack",
       "type": "node-terminal",
@@ -22,7 +22,7 @@
         "pattern": "started server on .+, url: (https?://.+)",
         "uriFormat": "%s",
         "action": "debugWithChrome"
-    ***REMOVED***
-  ***REMOVED***
+      }
+    }
   ]
-***REMOVED***
+}

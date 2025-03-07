@@ -1,10 +1,10 @@
 import getWeather from '@/lib/brightsky'
-import { Weather ***REMOVED*** from '@/types/brightsky'
-import { isEqual ***REMOVED*** from 'date-fns'
-import { useEffect, useState ***REMOVED*** from 'react'
+import { Weather } from '@/types/brightsky'
+import { isEqual } from 'date-fns'
+import { useEffect, useState } from 'react'
 
 type stationId = string
-type coordinates = { lat: number; lng: number ***REMOVED***
+type coordinates = { lat: number; lng: number }
 
 export default function useWeather(
   location: stationId | coordinates,
@@ -15,16 +15,16 @@ export default function useWeather(
   useEffect(() => {
     const match = weatherCache?.find(w =>
       isEqual(new Date(w.timestamp), timestamp),
-***REMOVED***
+    )
     if (match) {
       return
-  ***REMOVED***
+    }
 
     async function getData() {
-      const { weather, sources: _sources ***REMOVED*** = await getWeather(
+      const { weather, sources: _sources } = await getWeather(
         location,
         timestamp,
-  ***REMOVED***
+      )
 
       const weatherMap = new Map<string, Weather>()
 
@@ -35,19 +35,19 @@ export default function useWeather(
       newWeather.forEach(w => {
         if (!weatherMap.has(w.timestamp)) {
           weatherMap.set(w.timestamp, w)
-      ***REMOVED***
-    ***REMOVED***)
+        }
+      })
 
       const newWeatherCache = Array.from(weatherMap.values()).sort(
         (a, b) =>
           new Date(a.timestamp).getDate() - new Date(b.timestamp).getDate(),
-  ***REMOVED***
+      )
 
       setWeatherCache(newWeatherCache)
-  ***REMOVED***
+    }
 
     getData()
-***REMOVED***, [location, timestamp])
+  }, [location, timestamp])
 
   timestamp.setMinutes(0)
   timestamp.setSeconds(0)
@@ -59,5 +59,5 @@ export default function useWeather(
 
   if (match) {
     return match
-***REMOVED***
-***REMOVED***
+  }
+}

@@ -1,4 +1,4 @@
-import { Spacer ***REMOVED*** from '@/components/Elements/Spacer'
+import { Spacer } from '@/components/Elements/Spacer'
 import Title from '@/components/Elements/Title'
 import MobilityTile from '@/components/Tiles/Mobility/MobilityTile'
 import BicycleChartContent from './BicycleChartContent'
@@ -18,9 +18,9 @@ export default async function BicycleChartTile() {
     >
       <>
         <BicycleChartContent />
-        <Spacer size={'lg'***REMOVED*** />
-        <Title as="h5">{infoText***REMOVED***</Title>
+        <Spacer size={'lg'} />
+        <Title as="h5">{infoText}</Title>
       </>
     </MobilityTile>
   )
-***REMOVED***
+}

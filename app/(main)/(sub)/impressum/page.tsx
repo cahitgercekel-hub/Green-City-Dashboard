@@ -13,34 +13,34 @@ export default function Impressum() {
       <Markdown
         components={{
           h1: props => (
-            <Title as={'h2'***REMOVED*** className="mb-2" variant={'primary'***REMOVED*** {...props***REMOVED*** />
-      ***REMOVED***,
+            <Title as={'h2'} className="mb-2" variant={'primary'} {...props} />
+          ),
           h2: props => (
-            <Title as={'h3'***REMOVED*** className="mb-2" variant={'primary'***REMOVED*** {...props***REMOVED*** />
-      ***REMOVED***,
+            <Title as={'h3'} className="mb-2" variant={'primary'} {...props} />
+          ),
           h3: props => (
-            <Title as={'h4'***REMOVED*** className="mb-2" variant={'primary'***REMOVED*** {...props***REMOVED*** />
-      ***REMOVED***,
+            <Title as={'h4'} className="mb-2" variant={'primary'} {...props} />
+          ),
           h4: props => (
-            <Title as={'h5'***REMOVED*** className="mb-2" variant={'primary'***REMOVED*** {...props***REMOVED*** />
-      ***REMOVED***,
+            <Title as={'h5'} className="mb-2" variant={'primary'} {...props} />
+          ),
           h5: props => (
-            <Title as={'h6'***REMOVED*** className="mb-2" variant={'primary'***REMOVED*** {...props***REMOVED*** />
-      ***REMOVED***,
-          h6: props => <Title as={'h7'***REMOVED*** className="mb-2" {...props***REMOVED*** />,
-          ul: props => <ul className="list-disc px-6" {...props***REMOVED*** />,
+            <Title as={'h6'} className="mb-2" variant={'primary'} {...props} />
+          ),
+          h6: props => <Title as={'h7'} className="mb-2" {...props} />,
+          ul: props => <ul className="list-disc px-6" {...props} />,
           p: props => (
-            <Title as="h5" className="mb-4" font={'normal'***REMOVED*** {...props***REMOVED*** />
-      ***REMOVED***,
-          a: props => <a className="underline" {...props***REMOVED*** />,
-      ***REMOVED******REMOVED***
+            <Title as="h5" className="mb-4" font={'normal'} {...props} />
+          ),
+          a: props => <a className="underline" {...props} />,
+        }}
         rehypePlugins={[
-          [rehypeExternalLinks, { target: '_blank', rel: 'noopener' ***REMOVED***],
-        ]***REMOVED***
-        remarkPlugins={[remarkGfm]***REMOVED***
+          [rehypeExternalLinks, { target: '_blank', rel: 'noopener' }],
+        ]}
+        remarkPlugins={[remarkGfm]}
       >
-  ***REMOVED***impressumText***REMOVED***
+        {impressumText}
       </Markdown>
     </main>
   )
-***REMOVED***
+}

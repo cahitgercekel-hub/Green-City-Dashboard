@@ -1,6 +1,6 @@
 import AnimatedNumber from '@/components/Elements/Animated/AnimatedNumber'
 import OverviewData from './Data'
-import { ClockIcon ***REMOVED*** from '@/components/Icons'
+import { ClockIcon } from '@/components/Icons'
 import useDevice from '@/hooks/useDevice'
 
 interface Overview {
@@ -10,7 +10,7 @@ interface Overview {
   NumberOfBike: number
   TotalDistance: number
   Zeit: number
-***REMOVED***
+}
 
 function retriveMonthData(
   indexofmonth: number,
@@ -20,7 +20,7 @@ function retriveMonthData(
     data => data.index === indexofmonth && data.year === yearinput,
   )
   return result ?? null
-***REMOVED***
+}
 
 const totalTimePerMonth = OverviewData.map(data => data.Zeit)
 const maxTime = Math.max(...totalTimePerMonth)
@@ -28,9 +28,9 @@ const maxTime = Math.max(...totalTimePerMonth)
 interface TotalDistanceProps {
   indexofmonth: number
   year: string
-***REMOVED***
+}
 
-function TotalTime({ indexofmonth, year ***REMOVED***: TotalDistanceProps) {
+function TotalTime({ indexofmonth, year }: TotalDistanceProps) {
   const device = useDevice()
   const result = retriveMonthData(indexofmonth, year)
   const numberOfItems =
@@ -38,7 +38,7 @@ function TotalTime({ indexofmonth, year ***REMOVED***: TotalDistanceProps) {
       ? Math.ceil(((result ? result.Zeit : 1) * 48) / maxTime)
       : Math.ceil(((result ? result.Zeit : 1) * 120) / maxTime)
   const totalGridCells = device === 'mobile' ? 48 : 120
-  const items = Array.from({ length: numberOfItems ***REMOVED***, (_, index) => index + 1)
+  const items = Array.from({ length: numberOfItems }, (_, index) => index + 1)
   const emptyCells = totalGridCells - numberOfItems
 
   return (
@@ -46,22 +46,22 @@ function TotalTime({ indexofmonth, year ***REMOVED***: TotalDistanceProps) {
       <div className="flex h-full flex-col">
         <div className="relative h-4/5 overflow-hidden p-2">
           <div className="grid-rows-10 grid h-full max-h-full grid-cols-12">
-      ***REMOVED***Array.from({ length: emptyCells ***REMOVED***).map((_, index) => (
-              <div key={`empty-${index***REMOVED***`***REMOVED*** />
-        ***REMOVED***)***REMOVED***
+            {Array.from({ length: emptyCells }).map((_, index) => (
+              <div key={`empty-${index}`} />
+            ))}
 
-      ***REMOVED***items.map(item => (
+            {items.map(item => (
               <ClockIcon
-                key={item***REMOVED***
+                key={item}
                 className="inline-block max-h-full w-full max-w-full"
               />
-        ***REMOVED***)***REMOVED***
+            ))}
           </div>
         </div>
 
         <div className="flex h-1/5 flex-col items-center justify-center">
           <h3 className="text-2xl font-bold text-mobility">
-            <AnimatedNumber>{result ? result.Zeit : 0***REMOVED***</AnimatedNumber>h
+            <AnimatedNumber>{result ? result.Zeit : 0}</AnimatedNumber>h
           </h3>
           <strong className="text-xl text-primary md:text-base lg:text-xl">
             Datensammelzeit
@@ -70,6 +70,6 @@ function TotalTime({ indexofmonth, year ***REMOVED***: TotalDistanceProps) {
       </div>
     </div>
   )
-***REMOVED***
+}
 
 export default TotalTime

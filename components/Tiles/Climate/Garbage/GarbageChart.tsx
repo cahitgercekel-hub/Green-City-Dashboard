@@ -3,14 +3,14 @@
 import AnimatedNumber from '@/components/Elements/Animated/AnimatedNumber'
 import Title from '@/components/Elements/Title'
 import tailwindConfig from '@/tailwind.config.js'
-import { SeriesOption ***REMOVED*** from 'echarts'
-import { useState ***REMOVED*** from 'react'
+import { SeriesOption } from 'echarts'
+import { useState } from 'react'
 import resolveConfig from 'tailwindcss/resolveConfig'
 
-import { ReactECharts ***REMOVED*** from '@/components/Charts/ReactECharts'
+import { ReactECharts } from '@/components/Charts/ReactECharts'
 import MobileSlider from '@/components/Inputs/MobileSlider'
 import Slider from '@/components/Inputs/Slider'
-import { useWindowSize ***REMOVED*** from 'react-use'
+import { useWindowSize } from 'react-use'
 
 // @ts-ignore
 import GarbageData from '@/assets/data/awm-abfallaufkommen-pro-kopf.csv'
@@ -18,16 +18,16 @@ import {
   MsKlimadashboardIconsKAbfallGesamt,
   MsKlimadashboardIconsKAbfallRest,
   MsKlimadashboardIconsKAbfallWertstoffe,
-***REMOVED*** from '@/components/Icons/Klima'
+} from '@/components/Icons/Klima'
 
-const { theme ***REMOVED*** = resolveConfig(tailwindConfig)
+const { theme } = resolveConfig(tailwindConfig)
 
 interface GarbageDataProps {
   ZEIT: number
   'Abfallaufkommen - Gesamt': number
   'Abfallaufkommen - Restmüll': number
   'Abfallaufkommen - Wertstoffe': number
-***REMOVED***
+}
 
 function getSeries(name: string, data: any[], color: string): SeriesOption {
   return {
@@ -36,20 +36,20 @@ function getSeries(name: string, data: any[], color: string): SeriesOption {
     areaStyle: {
       color,
       opacity: 0.23,
-  ***REMOVED***,
+    },
     lineStyle: {
       color,
       width: 4,
-  ***REMOVED***,
+    },
     itemStyle: {
       opacity: 0,
-  ***REMOVED***,
+    },
     emphasis: {
       focus: 'series',
-  ***REMOVED***,
+    },
     data,
-***REMOVED***
-***REMOVED***
+  }
+}
 
 const data = GarbageData as GarbageDataProps[]
 const years = data.map(e => e.ZEIT.toString())
@@ -59,7 +59,7 @@ const years = data.map(e => e.ZEIT.toString())
  * @returns The Garbage Chart
  */
 export default function GarbageChart() {
-  const { width ***REMOVED*** = useWindowSize()
+  const { width } = useWindowSize()
 
   const [yearIndex, setYearIndex] = useState(
     years.length > 0 ? years.length - 1 : 0,
@@ -76,86 +76,86 @@ export default function GarbageChart() {
                 left: 60,
                 bottom: 20,
                 right: 20,
-            ***REMOVED***,
+              },
               series: [
                 getSeries(
                   'Gesamt',
                   data.map(e => e['Abfallaufkommen - Gesamt']),
                   // @ts-ignore
                   theme?.colors?.mobility.DEFAULT || '#34c17b',
-            ***REMOVED***,
+                ),
                 getSeries(
                   'Wertstoffe',
                   data.map(e => e['Abfallaufkommen - Wertstoffe']),
                   // @ts-ignore
                   theme?.colors?.energy.DEFAULT || '#f28443',
-            ***REMOVED***,
+                ),
                 getSeries(
                   'Restmüll',
                   data.map(e => e['Abfallaufkommen - Restmüll']),
                   // @ts-ignore
                   theme?.colors?.climate.DEFAULT || '#14b3d9',
-            ***REMOVED***,
+                ),
               ],
               xAxis: [
-          ***REMOVED***
+                {
                   type: 'category',
                   data: years,
                   show: false,
                   axisLabel: {
                     fontSize: 20,
-                ***REMOVED***,
-              ***REMOVED***,
+                  },
+                },
               ],
               yAxis: {
                 type: 'value',
                 interval: 100,
                 axisLabel: {
                   fontSize: 20,
-              ***REMOVED***,
-            ***REMOVED***,
+                },
+              },
               animation: true,
-          ***REMOVED******REMOVED***
+            }}
             settings={{
               notMerge: true,
-          ***REMOVED******REMOVED***
+            }}
             style={{
               height: width < 1024 ? '200px' : '100%',
               width: '100%',
-          ***REMOVED******REMOVED***
+            }}
           />
         </div>
         <div className="mt-4 flex w-full gap-4 py-4 md:gap-12 md:pl-4 md:pr-16">
-          <Title as={'h5'***REMOVED*** className="hidden 2xl:block" variant={'primary'***REMOVED***>
+          <Title as={'h5'} className="hidden 2xl:block" variant={'primary'}>
             Jahr
           </Title>
           <div className="flex-1">
-      ***REMOVED***width < 1800 && (
+            {width < 1800 && (
               <MobileSlider
-                defaultValue={[years.length - 1]***REMOVED***
-                firstValueMobile={years.length - 1***REMOVED***
-                labels={years***REMOVED***
-                max={years.length - 1***REMOVED***
-                min={0***REMOVED***
+                defaultValue={[years.length - 1]}
+                firstValueMobile={years.length - 1}
+                labels={years}
+                max={years.length - 1}
+                min={0}
                 onValueChange={([e]) => {
                   setYearIndex(e)
-              ***REMOVED******REMOVED***
-                variant={'climate'***REMOVED***
+                }}
+                variant={'climate'}
               />
-        ***REMOVED******REMOVED***
-      ***REMOVED***width >= 1800 && (
+            )}
+            {width >= 1800 && (
               <Slider
-                defaultValue={[years.length - 1]***REMOVED***
-                firstValueMobile={years.length - 1***REMOVED***
-                labels={years***REMOVED***
-                max={years.length - 1***REMOVED***
-                min={0***REMOVED***
+                defaultValue={[years.length - 1]}
+                firstValueMobile={years.length - 1}
+                labels={years}
+                max={years.length - 1}
+                min={0}
                 onValueChange={([e]) => {
                   setYearIndex(e)
-              ***REMOVED******REMOVED***
-                variant={'climate'***REMOVED***
+                }}
+                variant={'climate'}
               />
-        ***REMOVED******REMOVED***
+            )}
           </div>
         </div>
       </div>
@@ -163,14 +163,14 @@ export default function GarbageChart() {
         <div className="flex h-fit items-center gap-2 md:w-48">
           <MsKlimadashboardIconsKAbfallGesamt className="h-10 md:h-14" />
           <div>
-            <Title as={'h5'***REMOVED*** variant={'primary'***REMOVED***>
+            <Title as={'h5'} variant={'primary'}>
               Gesamt
             </Title>
-            <Title as={'h3'***REMOVED*** variant={'primary'***REMOVED***>
+            <Title as={'h3'} variant={'primary'}>
               <AnimatedNumber>
-          ***REMOVED***data.find(e => e.ZEIT.toString() === years[yearIndex])?.[
+                {data.find(e => e.ZEIT.toString() === years[yearIndex])?.[
                   'Abfallaufkommen - Gesamt'
-                ] ?? 0***REMOVED***
+                ] ?? 0}
               </AnimatedNumber>
               kg
             </Title>
@@ -179,14 +179,14 @@ export default function GarbageChart() {
         <div className="flex h-fit items-center gap-2 md:w-48">
           <MsKlimadashboardIconsKAbfallWertstoffe className="h-10 stroke-energy md:h-14" />
           <div>
-            <Title as={'h5'***REMOVED*** variant={'primary'***REMOVED***>
+            <Title as={'h5'} variant={'primary'}>
               Wertstoffe
             </Title>
-            <Title as={'h3'***REMOVED*** variant={'primary'***REMOVED***>
+            <Title as={'h3'} variant={'primary'}>
               <AnimatedNumber>
-          ***REMOVED***data.find(e => e.ZEIT.toString() === years[yearIndex])?.[
+                {data.find(e => e.ZEIT.toString() === years[yearIndex])?.[
                   'Abfallaufkommen - Wertstoffe'
-                ] ?? 0***REMOVED***
+                ] ?? 0}
               </AnimatedNumber>
               kg
             </Title>
@@ -195,14 +195,14 @@ export default function GarbageChart() {
         <div className="flex h-fit items-center gap-2 md:w-48">
           <MsKlimadashboardIconsKAbfallRest className="h-10 stroke-climate md:h-14" />
           <div>
-            <Title as={'h5'***REMOVED*** variant={'primary'***REMOVED***>
+            <Title as={'h5'} variant={'primary'}>
               Restmüll
             </Title>
-            <Title as={'h3'***REMOVED*** variant={'primary'***REMOVED***>
+            <Title as={'h3'} variant={'primary'}>
               <AnimatedNumber>
-          ***REMOVED***data.find(e => e.ZEIT.toString() === years[yearIndex])?.[
+                {data.find(e => e.ZEIT.toString() === years[yearIndex])?.[
                   'Abfallaufkommen - Restmüll'
-                ] ?? 0***REMOVED***
+                ] ?? 0}
               </AnimatedNumber>
               kg
             </Title>
@@ -211,4 +211,4 @@ export default function GarbageChart() {
       </div>
     </div>
   )
-***REMOVED***
+}

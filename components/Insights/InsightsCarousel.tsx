@@ -1,40 +1,40 @@
 'use client'
 
 import InsightsTile from './InsightsTile'
-import { directusImage ***REMOVED*** from '@/lib/directus'
+import { directusImage } from '@/lib/directus'
 import useDevice from '@/hooks/useDevice'
 import Carousel from '../Elements/Carousel'
-import { useWindowSize ***REMOVED*** from 'react-use'
+import { useWindowSize } from 'react-use'
 
 const pages = {
   desktop: 3,
   tablet: 2,
   mobile: 1,
-***REMOVED***
+}
 
 const padding = {
   desktop: '0px',
   tablet: '16px',
   mobile: '16px',
-***REMOVED***
+}
 
 type Insight = {
   image: string
   slug?: string | undefined
   title: string
-***REMOVED***
+}
 
 export default function InsightsCarousel({
   insights,
-***REMOVED***: {
+}: {
   insights: Insight[]
-***REMOVED***) {
+}) {
   const device = useDevice()
-  const { width ***REMOVED*** = useWindowSize()
+  const { width } = useWindowSize()
 
   return (
     <Carousel
-      arrows={device != 'desktop'***REMOVED***
+      arrows={device != 'desktop'}
       options={{
         gap: '1.5rem',
         // sorry for this quick and dirty hack
@@ -45,16 +45,16 @@ export default function InsightsCarousel({
             ? '82px'
             : padding[device],
         perPage: pages[device],
-    ***REMOVED******REMOVED***
+      }}
     >
-***REMOVED***insights?.map(({ slug, title, image ***REMOVED***) => (
+      {insights?.map(({ slug, title, image }) => (
         <InsightsTile
-          image={directusImage(image)***REMOVED***
-          key={slug***REMOVED***
-          link={`/sammlung/${slug***REMOVED***`***REMOVED***
-          title={title***REMOVED***
+          image={directusImage(image)}
+          key={slug}
+          link={`/sammlung/${slug}`}
+          title={title}
         />
-  ***REMOVED***)***REMOVED***
+      ))}
     </Carousel>
   )
-***REMOVED***
+}

@@ -1,5 +1,5 @@
-import { cva, cx, VariantProps ***REMOVED*** from 'class-variance-authority'
-import { HTMLAttributes ***REMOVED*** from 'react'
+import { cva, cx, VariantProps } from 'class-variance-authority'
+import { HTMLAttributes } from 'react'
 
 const TitleStyle = cva('block', {
   variants: {
@@ -13,7 +13,7 @@ const TitleStyle = cva('block', {
       h7: 'text-base leading-7 tracking-wide',
       h8: 'text-sm leading-5 tracking-wide',
       subtitle: 'text-xl lg:text-3xl font-lora',
-  ***REMOVED***,
+    },
     variant: {
       primary: 'text-primary',
       secondary: 'text-secondary',
@@ -29,18 +29,18 @@ const TitleStyle = cva('block', {
       heisse_tage: 'text-energy',
       sommertage: 'text-mobility',
       tropennaechte: 'text-buildings',
-  ***REMOVED***,
+    },
     font: {
       medium: 'font-medium',
       normal: 'font-normal',
       bold: 'font-bold',
       semibold: 'font-semibold',
-  ***REMOVED***,
-***REMOVED***,
+    },
+  },
   defaultVariants: {
     font: 'medium',
-***REMOVED***,
-***REMOVED***)
+  },
+})
 
 type TitleProps = VariantProps<typeof TitleStyle> &
   HTMLAttributes<HTMLSpanElement>
@@ -52,14 +52,14 @@ export default function Title({
   children,
   className,
   ...props
-***REMOVED***: TitleProps) {
+}: TitleProps) {
   return (
     <span
-***REMOVED***...props***REMOVED***
-      className={cx(TitleStyle({ as, variant, font ***REMOVED***), className)***REMOVED***
-      style={{ hyphens: 'auto', ...props.style ***REMOVED******REMOVED***
+      {...props}
+      className={cx(TitleStyle({ as, variant, font }), className)}
+      style={{ hyphens: 'auto', ...props.style }}
     >
-***REMOVED***children***REMOVED***
+      {children}
     </span>
   )
-***REMOVED***
+}

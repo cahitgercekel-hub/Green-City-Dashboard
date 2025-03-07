@@ -1,25 +1,25 @@
 'use client'
 
 import * as CollapsiblePrimitive from '@radix-ui/react-collapsible'
-import { useState ***REMOVED*** from 'react'
+import { useState } from 'react'
 import styles from './Collapsible.module.css'
 
 type CollapsibleProps = {
   trigger: React.ReactElement
   children: React.ReactElement
-***REMOVED***
+}
 
-export default function Collapsible({ trigger, children ***REMOVED***: CollapsibleProps) {
+export default function Collapsible({ trigger, children }: CollapsibleProps) {
   const [open, setOpen] = useState(false)
 
   return (
-    <CollapsiblePrimitive.Root onOpenChange={setOpen***REMOVED*** open={open***REMOVED***>
+    <CollapsiblePrimitive.Root onOpenChange={setOpen} open={open}>
       <CollapsiblePrimitive.Trigger asChild>
-  ***REMOVED***trigger***REMOVED***
+        {trigger}
       </CollapsiblePrimitive.Trigger>
-      <CollapsiblePrimitive.Content className={styles.CollapsibleContent***REMOVED***>
-  ***REMOVED***children***REMOVED***
+      <CollapsiblePrimitive.Content className={styles.CollapsibleContent}>
+        {children}
       </CollapsiblePrimitive.Content>
     </CollapsiblePrimitive.Root>
   )
-***REMOVED***
+}

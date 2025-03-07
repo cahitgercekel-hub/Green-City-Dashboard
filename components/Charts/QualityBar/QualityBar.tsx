@@ -1,6 +1,6 @@
 'use client'
 
-import { cva, VariantProps ***REMOVED*** from 'class-variance-authority'
+import { cva, VariantProps } from 'class-variance-authority'
 
 const QualityBarStyle = cva('flex h-full rounded-lg duration-300 ease-in-out', {
   variants: {
@@ -10,18 +10,18 @@ const QualityBarStyle = cva('flex h-full rounded-lg duration-300 ease-in-out', {
       climate: 'bg-climate',
       building: 'bg-buildings',
       energy: 'bg-energy',
-  ***REMOVED***,
-***REMOVED***,
+    },
+  },
   defaultVariants: {
     variant: 'primary',
-***REMOVED***,
-***REMOVED***)
+  },
+})
 
 type QualityBarProps = VariantProps<typeof QualityBarStyle> & {
   progress: number
-***REMOVED***
+}
 
-function QualityBar({ progress ***REMOVED***: QualityBarProps) {
+function QualityBar({ progress }: QualityBarProps) {
   return (
     <div className="pt-4">
       <div className="relative rounded-lg border-2 border-primary p-[.25rem]">
@@ -30,11 +30,11 @@ function QualityBar({ progress ***REMOVED***: QualityBarProps) {
             <div className="relative h-full">
               <div
                 className="absolute top-[-5%] h-[110%] translate-x-[-1px] border-l-2 border-l-primary"
-                style={{ left: `${progress***REMOVED***%` ***REMOVED******REMOVED***
+                style={{ left: `${progress}%` }}
               ></div>
               <div
                 className="absolute top-[-24px]  translate-x-[-50%] px-2"
-                style={{ left: `${progress***REMOVED***%` ***REMOVED******REMOVED***
+                style={{ left: `${progress}%` }}
               >
                 <div
                   className="h-0 w-0
@@ -53,6 +53,6 @@ function QualityBar({ progress ***REMOVED***: QualityBarProps) {
       </div>
     </div>
   )
-***REMOVED***
+}
 
 export default QualityBar

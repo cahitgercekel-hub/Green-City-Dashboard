@@ -19,7 +19,7 @@ export default function Footer() {
       <Container>
         <div className="items-top flex w-full flex-col justify-around pb-10 lg:flex-row lg:gap-20 xl:pb-20 2xl:gap-44">
           <div className="flex-1">
-            <Title as={'h4'***REMOVED*** className="py-10 md:py-20">
+            <Title as={'h4'} className="py-10 md:py-20">
               Ein Projekt von
             </Title>
             <div className="flex w-full grid-cols-2 flex-col gap-8 lg:gap-16 xl:grid">
@@ -29,7 +29,7 @@ export default function Footer() {
                     alt="Smart City Münster Logo"
                     className="object-contain"
                     fill
-                    src={SmartCityMSLogo***REMOVED***
+                    src={SmartCityMSLogo}
                   />
                 </Link>
               </div>
@@ -42,12 +42,12 @@ export default function Footer() {
                     alt="Unser Klima Logo"
                     className="object-contain"
                     fill
-                    src={MuensterKlima2030***REMOVED***
+                    src={MuensterKlima2030}
                   />
                 </Link>
               </div>
             </div>
-            <Title as={'h4'***REMOVED*** className="py-10 md:py-20">
+            <Title as={'h4'} className="py-10 md:py-20">
               Unterstützt durch
             </Title>
             <div className="flex w-full grid-cols-2 flex-col gap-8 lg:gap-16 xl:grid">
@@ -60,7 +60,7 @@ export default function Footer() {
                     alt="Stadtwerke Münster Logo"
                     className="object-contain"
                     fill
-                    src={StadtwerkeLogo***REMOVED***
+                    src={StadtwerkeLogo}
                   />
                 </Link>
               </div>
@@ -70,14 +70,14 @@ export default function Footer() {
                     alt="Wirtschaftsförderung Münster Logo"
                     className="object-contain"
                     fill
-                    src={WFMLogo***REMOVED***
+                    src={WFMLogo}
                   />
                 </Link>
               </div>
             </div>
           </div>
           <div className="flex-1">
-            <Title as={'h4'***REMOVED*** className="py-10 md:py-20">
+            <Title as={'h4'} className="py-10 md:py-20">
               Gefördert durch
             </Title>
             <div className="flex w-full grid-cols-2 flex-col gap-8 lg:gap-16 xl:grid">
@@ -86,7 +86,7 @@ export default function Footer() {
                   alt="BMWSB Logo"
                   className="object-contain"
                   fill
-                  src={BMWSBLogo***REMOVED***
+                  src={BMWSBLogo}
                 />
               </div>
               <div className="relative h-28 w-full md:h-36">
@@ -94,33 +94,33 @@ export default function Footer() {
                   alt="KfW  Logo"
                   className="object-contain"
                   fill
-                  src={KFW***REMOVED***
+                  src={KFW}
                 />
               </div>
             </div>
           </div>
           <div className="sm:hidden flex flex-1 flex-col 2xl:flex">
-            <Title as={'h4'***REMOVED*** className="py-10 opacity-0 md:py-20">
+            <Title as={'h4'} className="py-10 opacity-0 md:py-20">
               Impressum
             </Title>
             <div className="flex flex-1 flex-col justify-between gap-8">
               <Link href="/impressum">
-                <Title as="h5" className="underline" variant={'primary'***REMOVED***>
+                <Title as="h5" className="underline" variant={'primary'}>
                   Impressum
                 </Title>
               </Link>
               <Link href="/datenschutz">
-                <Title as="h5" className="underline" variant={'primary'***REMOVED***>
+                <Title as="h5" className="underline" variant={'primary'}>
                   Datenschutz
                 </Title>
               </Link>
               <Link href="/feedback#use-dashboard">
-                <Title as="h5" className="underline" variant={'primary'***REMOVED***>
+                <Title as="h5" className="underline" variant={'primary'}>
                   Dieses Dashboard adaptieren
                 </Title>
               </Link>
               <Link href="/feedback#feedback">
-                <Title as="h5" className="underline" variant={'primary'***REMOVED***>
+                <Title as="h5" className="underline" variant={'primary'}>
                   Feedback geben
                 </Title>
               </Link>
@@ -129,22 +129,22 @@ export default function Footer() {
         </div>
         <div className="sm:flex hidden justify-between 2xl:hidden">
           <Link href="/impressum">
-            <Title as="h5" className="underline" variant={'primary'***REMOVED***>
+            <Title as="h5" className="underline" variant={'primary'}>
               Impressum
             </Title>
           </Link>
           <Link href="/datenschutz">
-            <Title as="h5" className="underline" variant={'primary'***REMOVED***>
+            <Title as="h5" className="underline" variant={'primary'}>
               Datenschutz
             </Title>
           </Link>
           <Link href="/feedback#use-dashboard">
-            <Title as="h5" className="underline" variant={'primary'***REMOVED***>
+            <Title as="h5" className="underline" variant={'primary'}>
               Dieses Dashboard adaptieren
             </Title>
           </Link>
           <Link href="/feedback#feedback">
-            <Title as="h5" className="underline" variant={'primary'***REMOVED***>
+            <Title as="h5" className="underline" variant={'primary'}>
               Feedback geben
             </Title>
           </Link>
@@ -152,4 +152,4 @@ export default function Footer() {
       </Container>
     </StairStepBackground>
   )
-***REMOVED***
+}

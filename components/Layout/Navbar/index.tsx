@@ -1,14 +1,14 @@
 'use client'
 
-import { Button ***REMOVED*** from '../../Elements/Button'
+import { Button } from '../../Elements/Button'
 
 import Back from '@/components/Elements/Back'
 import Title from '@/components/Elements/Title'
-import { MsKlimadashboardIconsNaviInfoI ***REMOVED*** from '@/components/Icons/Misc/Navi'
-import { XMarkIcon ***REMOVED*** from '@heroicons/react/24/outline'
-import { AnimatePresence, motion ***REMOVED*** from 'framer-motion'
-import { usePathname ***REMOVED*** from 'next/navigation'
-import { useState ***REMOVED*** from 'react'
+import { MsKlimadashboardIconsNaviInfoI } from '@/components/Icons/Misc/Navi'
+import { XMarkIcon } from '@heroicons/react/24/outline'
+import { AnimatePresence, motion } from 'framer-motion'
+import { usePathname } from 'next/navigation'
+import { useState } from 'react'
 import SectionTitle from '../SectionTitle'
 import BaseNavbar from './BaseNavbar'
 
@@ -21,7 +21,7 @@ const routeToType: {
     | 'impressum'
     | 'datenschutz'
     | 'feedback'
-***REMOVED*** = {
+} = {
   klima: 'climate',
   mobilitaet: 'mobility',
   energie: 'energy',
@@ -29,22 +29,22 @@ const routeToType: {
   impressum: 'impressum',
   datenschutz: 'datenschutz',
   feedback: 'feedback',
-***REMOVED***
+}
 
 export default function Navbar({
   large,
   aboutButton,
-***REMOVED***: {
+}: {
   large?: boolean
-  aboutButton?: { title: string; text: string ***REMOVED***
-***REMOVED***) {
+  aboutButton?: { title: string; text: string }
+}) {
   const pathname = usePathname()
 
   const [showOverlay, setShowOverlay] = useState(false)
 
   if (!pathname) {
     return <BaseNavbar></BaseNavbar>
-***REMOVED***
+  }
 
   const isIndexPage = pathname === '/'
   const [_, route] = pathname?.split('/')
@@ -53,32 +53,32 @@ export default function Navbar({
     aboutButton?.text ? (
       <Button
         className="whitespace-nowrap"
-        onClick={() => setShowOverlay(true)***REMOVED***
-        size={'link'***REMOVED***
+        onClick={() => setShowOverlay(true)}
+        size={'link'}
         startIcon={
           <MsKlimadashboardIconsNaviInfoI className="h-[26px] md:h-[34px]" />
-      ***REMOVED***
-        variant={'secondary'***REMOVED***
+        }
+        variant={'secondary'}
       >
-  ***REMOVED***aboutButton.title***REMOVED***
+        {aboutButton.title}
       </Button>
-***REMOVED*** : (
+    ) : (
       <></>
-***REMOVED***
+    )
   ) : (
     <Back
       variant={
         ['impressum', 'datenschutz', 'feedback'].includes(route)
           ? 'inverse'
           : 'primary'
-    ***REMOVED***
+      }
     />
   )
 
   const InfoText = (
     <div className="lg:w-2/3 2xl:w-1/3">
-      <Title as={'h5'***REMOVED*** variant={'inverse'***REMOVED***>
-  ***REMOVED***aboutButton?.text***REMOVED***
+      <Title as={'h5'} variant={'inverse'}>
+        {aboutButton?.text}
       </Title>
     </div>
   )
@@ -88,43 +88,43 @@ export default function Navbar({
       actionComponent={
         <Button
           className="whitespace-nowrap"
-          onClick={() => setShowOverlay(false)***REMOVED***
-          size={'link'***REMOVED***
-          startIcon={<XMarkIcon className="h-[26px] text-white md:h-[34px]" />***REMOVED***
-          variant={'secondary'***REMOVED***
+          onClick={() => setShowOverlay(false)}
+          size={'link'}
+          startIcon={<XMarkIcon className="h-[26px] text-white md:h-[34px]" />}
+          variant={'secondary'}
         >
-          <Title as="h5" variant={'inverse'***REMOVED***>
+          <Title as="h5" variant={'inverse'}>
             Informationen ausblenden
           </Title>
         </Button>
-    ***REMOVED***
+      }
       variant="overlay"
     >
-***REMOVED***InfoText***REMOVED***
+      {InfoText}
     </BaseNavbar>
   )
 
   if (isIndexPage) {
     return (
       <div className="relative">
-        <BaseNavbar actionComponent={ActionComponent***REMOVED***>
-    ***REMOVED***large ? <div className="h-40" /> : <></>***REMOVED***
+        <BaseNavbar actionComponent={ActionComponent}>
+          {large ? <div className="h-40" /> : <></>}
         </BaseNavbar>
         <AnimatePresence>
-    ***REMOVED***showOverlay && (
+          {showOverlay && (
             <motion.div
-              animate={{ opacity: 1 ***REMOVED******REMOVED***
+              animate={{ opacity: 1 }}
               className="absolute left-0 top-0 z-10 h-full w-full"
-              exit={{ opacity: 0 ***REMOVED******REMOVED***
-              initial={{ opacity: 0 ***REMOVED******REMOVED***
+              exit={{ opacity: 0 }}
+              initial={{ opacity: 0 }}
             >
-        ***REMOVED***OverlayNavbar***REMOVED***
+              {OverlayNavbar}
             </motion.div>
-      ***REMOVED******REMOVED***
+          )}
         </AnimatePresence>
       </div>
-***REMOVED***
-***REMOVED***
+    )
+  }
 
   if (
     [
@@ -146,30 +146,30 @@ export default function Navbar({
         'Das Ziel einer funktionierenden, klimafreundlichen Mobilität stellt eine wachsende Stadt wie Münster vor eine große Herausforderung. Wenn die gesamte Stadtgesellschaft bereit ist, neue Wege zu gehen, kann diese Herausforderung gemeistert werden.',
       gebaeude:
         'Für das Ziel einer klimaneutralen und klimaangepassten Stadt kann die Rolle der Gebäude in Münster kaum hoch genug eingeschätzt werden. Nicht nur das Einsparpotential von CO₂ ist in diesem Bereich besonders hoch. Auch können Gebäudeeigentümer*innen durch gezielte Maßnahmen Energiekosten sparen und ihr Gebäude vor Extremwetter schützen.',
-  ***REMOVED***
+    }
 
     return (
       <BaseNavbar
-        actionComponent={ActionComponent***REMOVED***
+        actionComponent={ActionComponent}
         variant={
           ['impressum', 'datenschutz', 'feedback'].includes(route)
             ? 'overlay'
             : 'primary'
-      ***REMOVED***
+        }
       >
         <div className="flex flex-col gap-2 lg:flex-row lg:gap-0">
           <div className="flex-1">
             <Title as="h5" variant="primary">
-        ***REMOVED***sectionText[route]***REMOVED***
+              {sectionText[route]}
             </Title>
           </div>
           <div className="flex flex-1 justify-end">
-            <SectionTitle large variant={routeToType[route]***REMOVED*** />
+            <SectionTitle large variant={routeToType[route]} />
           </div>
         </div>
       </BaseNavbar>
-***REMOVED***
-***REMOVED***
+    )
+  }
 
-  return <BaseNavbar actionComponent={ActionComponent***REMOVED***></BaseNavbar>
-***REMOVED***
+  return <BaseNavbar actionComponent={ActionComponent}></BaseNavbar>
+}

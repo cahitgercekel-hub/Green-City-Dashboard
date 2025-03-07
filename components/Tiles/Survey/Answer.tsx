@@ -2,35 +2,35 @@
 
 import AnimatedNumber from '@/components/Elements/Animated/AnimatedNumber'
 import Title from '@/components/Elements/Title'
-import { animated, AnimatedProps ***REMOVED*** from '@react-spring/web'
-import { ComponentPropsWithRef ***REMOVED*** from 'react'
+import { animated, AnimatedProps } from '@react-spring/web'
+import { ComponentPropsWithRef } from 'react'
 
 export type SurveyAnswerProps = AnimatedProps<ComponentPropsWithRef<'div'>> & {
   percent: number
   text: string
-***REMOVED***
+}
 
 export default function SurveyAnswer({
   percent,
   text,
   ...props
-***REMOVED***: SurveyAnswerProps) {
+}: SurveyAnswerProps) {
   return (
     // @ts-ignore
-    <animated.div className="absolute left-0 top-0 w-full" style={{ ...props ***REMOVED******REMOVED***>
+    <animated.div className="absolute left-0 top-0 w-full" style={{ ...props }}>
       <div className="flex w-full flex-col gap-4 md:flex-row">
         <Title as="h1" className="flex-[2_2_0%] whitespace-nowrap">
-    ***REMOVED***typeof percent === 'number' ? (
-            <AnimatedNumber decimals={1***REMOVED***>{percent***REMOVED***</AnimatedNumber>
-      ***REMOVED*** : (
+          {typeof percent === 'number' ? (
+            <AnimatedNumber decimals={1}>{percent}</AnimatedNumber>
+          ) : (
             <span>--</span>
-      ***REMOVED******REMOVED***
+          )}
           <span className="font-normal">%</span>
         </Title>
         <Title as="h4" className="flex-[3_3_0%]">
-    ***REMOVED***text***REMOVED***
+          {text}
         </Title>
       </div>
     </animated.div>
   )
-***REMOVED***
+}

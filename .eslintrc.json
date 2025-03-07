@@ -18,10 +18,10 @@
     "quotes": [
       "error",
       "single",
-***REMOVED***
+      {
         "allowTemplateLiterals": false,
         "avoidEscape": true
-    ***REMOVED***
+      }
     ],
     // ES6
     "array-callback-return": "off",
@@ -30,10 +30,10 @@
     "import/prefer-default-export": "off",
     "sort-imports": [
       "error",
-***REMOVED***
+      {
         "ignoreCase": true,
         "ignoreDeclarationSort": true
-    ***REMOVED***
+      }
     ],
     "no-unused-expressions": "off",
     "no-prototype-builtins": "off",
@@ -45,19 +45,19 @@
     "react/no-deprecated": "error",
     "react/no-unsafe": [
       "error",
-***REMOVED***
+      {
         "checkAliases": true
-    ***REMOVED***
+      }
     ],
     "react/jsx-sort-props": [
       "error",
-***REMOVED***
+      {
         "ignoreCase": true
-    ***REMOVED***
+      }
     ],
     "react/function-component-definition": [
       2,
-***REMOVED*** "namedComponents": "function-declaration" ***REMOVED***
+      { "namedComponents": "function-declaration" }
     ],
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": 0,
@@ -65,12 +65,12 @@
     "unused-imports/no-unused-imports": "error",
     "unused-imports/no-unused-vars": [
       "warn",
-***REMOVED***
+      {
         "vars": "all",
         "varsIgnorePattern": "^_",
         "args": "after-used",
         "argsIgnorePattern": "^_"
-    ***REMOVED***
+      }
     ]
-***REMOVED***
-***REMOVED***
+  }
+}

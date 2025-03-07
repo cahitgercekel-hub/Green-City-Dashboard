@@ -4,4 +4,4 @@ export const revalidate = 10
 
 export default function Climate() {
   return <BuildingsView />
-***REMOVED***
+}

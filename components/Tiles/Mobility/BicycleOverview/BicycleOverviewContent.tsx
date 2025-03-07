@@ -4,36 +4,36 @@ import monatsmittelwerte from '@/assets/data/trafficload.json'
 import Title from '@/components/Elements/Title'
 import Slider from '@/components/Inputs/Slider'
 import ToggleGroup from '@/components/Inputs/ToggleGroup'
-import { useState ***REMOVED*** from 'react'
+import { useState } from 'react'
 import TotalDistance from './DistanceOverview'
 import TotalTime from './TimeConsume'
 import TotalBikes from './RigistredBikes'
 
-function Toggle({ onChange ***REMOVED***: { onChange: (_val: string) => void ***REMOVED***) {
+function Toggle({ onChange }: { onChange: (_val: string) => void }) {
   const minYear = 2020
   const maxYear = new Date().getFullYear() - 1
 
-  const years = Array.from({ length: maxYear - minYear + 1 ***REMOVED***, (_, i) => {
+  const years = Array.from({ length: maxYear - minYear + 1 }, (_, i) => {
     return {
       element: (
         <Title as="h6" className="2xl:w-max">
-    ***REMOVED***minYear + i***REMOVED***
+          {minYear + i}
         </Title>
-  ***REMOVED***,
+      ),
       value: (minYear + i).toString(),
-  ***REMOVED***
-***REMOVED***)
+    }
+  })
 
   return (
     <ToggleGroup
       defaultValue="2024"
-      items={years***REMOVED***
-      onChange={onChange***REMOVED***
+      items={years}
+      onChange={onChange}
       scrollX
-      variant={'mobility'***REMOVED***
+      variant={'mobility'}
     />
   )
-***REMOVED***
+}
 
 export default function BicycleOverviewContent() {
   const currentYear = new Date().getFullYear()
@@ -49,18 +49,18 @@ export default function BicycleOverviewContent() {
     <>
       <div className="relative flex h-[60rem] flex-1 flex-col rounded border bg-white px-6 pb-4 pt-8 md:h-[28rem]  xl:h-[32rem]">
         <div className="absolute -top-4 left-0 w-full md:-top-6 md:w-auto">
-          <Toggle onChange={val => setMode(val as typeof mode)***REMOVED*** />
+          <Toggle onChange={val => setMode(val as typeof mode)} />
         </div>
         <div className="flex h-full w-full flex-col gap-4 overflow-hidden py-2 md:flex-row">
-          <TotalBikes indexofmonth={monthIndex***REMOVED*** year={mode***REMOVED*** />
-          <TotalDistance indexofmonth={monthIndex***REMOVED*** year={mode***REMOVED*** />
-          <TotalTime indexofmonth={monthIndex***REMOVED*** year={mode***REMOVED*** />
+          <TotalBikes indexofmonth={monthIndex} year={mode} />
+          <TotalDistance indexofmonth={monthIndex} year={mode} />
+          <TotalTime indexofmonth={monthIndex} year={mode} />
         </div>
       </div>
 
       <Slider
-        defaultValue={[monthIndex - 1]***REMOVED***
-        firstValueMobile={monthIndex***REMOVED*** // MONAT MAI NUR FÜR DEMO
+        defaultValue={[monthIndex - 1]}
+        firstValueMobile={monthIndex} // MONAT MAI NUR FÜR DEMO
         labels={[
           'JAN',
           'FEB',
@@ -74,14 +74,14 @@ export default function BicycleOverviewContent() {
           'OKT',
           'NOV',
           'DEZ',
-        ]***REMOVED***
-        max={11***REMOVED***
-        min={0***REMOVED***
+        ]}
+        max={11}
+        min={0}
         onValueChange={([e]) => {
           setMonthIndex(e)
-      ***REMOVED******REMOVED***
-        variant={'mobility'***REMOVED***
+        }}
+        variant={'mobility'}
       />
     </>
   )
-***REMOVED***
+}

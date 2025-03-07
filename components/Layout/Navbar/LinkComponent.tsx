@@ -1,7 +1,7 @@
-import { Button ***REMOVED*** from '@/components/Elements/Button'
-import { cx ***REMOVED*** from 'class-variance-authority'
+import { Button } from '@/components/Elements/Button'
+import { cx } from 'class-variance-authority'
 import Link from 'next/link'
-import { JSX, SVGProps ***REMOVED*** from 'react'
+import { JSX, SVGProps } from 'react'
 
 export type LinkProps = {
   title: string
@@ -9,7 +9,7 @@ export type LinkProps = {
   link: string
   variant?: 'primary' | 'inverse'
   hover?: 'climate' | 'energy' | 'mobility' | 'buildings'
-***REMOVED***
+}
 
 export default function LinkComponent({
   title,
@@ -17,13 +17,13 @@ export default function LinkComponent({
   icon,
   variant = 'primary',
   hover,
-***REMOVED***: LinkProps) {
+}: LinkProps) {
   const Icon = icon
   return (
-    <Link href={link***REMOVED***>
+    <Link href={link}>
       <Button
-        hover={hover***REMOVED***
-        size={'link'***REMOVED***
+        hover={hover}
+        size={'link'}
         startIcon={
           <Icon
             className={cx(
@@ -33,13 +33,13 @@ export default function LinkComponent({
               hover === 'energy' && 'group-hover:text-energy',
               hover === 'mobility' && 'group-hover:text-mobility',
               hover === 'buildings' && 'group-hover:text-buildings',
-        ***REMOVED******REMOVED***
+            )}
           />
-      ***REMOVED***
-        variant={variant***REMOVED***
+        }
+        variant={variant}
       >
-  ***REMOVED***title***REMOVED***
+        {title}
       </Button>
     </Link>
   )
-***REMOVED***
+}

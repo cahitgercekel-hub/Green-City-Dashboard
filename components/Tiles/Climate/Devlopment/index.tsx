@@ -1,5 +1,5 @@
 import ClimateTile from '../ClimateTile'
-import RadarChart, { AvgTempData ***REMOVED*** from './RadarChart'
+import RadarChart, { AvgTempData } from './RadarChart'
 import climateHistoryData from '@/assets/data/climate_history.json'
 
 type ClimateHistoryRecord = {
@@ -9,7 +9,7 @@ type ClimateHistoryRecord = {
   timestamp: string
   monthly_temperature: number
   temperature_deviation: number
-***REMOVED***
+}
 
 const data = climateHistoryData as ClimateHistoryRecord[]
 
@@ -21,9 +21,9 @@ const climateYears = data.reduce((a: AvgTempData, o) => {
     [year]: {
       ...a[year],
       [month]: o.temperature_deviation,
-  ***REMOVED***,
-***REMOVED***
-***REMOVED***, {***REMOVED***)
+    },
+  }
+}, {})
 
 export default function ClimateDevelopmentTile() {
   return (
@@ -31,14 +31,14 @@ export default function ClimateDevelopmentTile() {
       dataSource="Deutscher Wetterdienst"
       embedId="climate-development"
       live
-      subtitle={'Temperaturabweichungen von den langjährigen Monatsmitteln vor 1900'***REMOVED***
-      title={'Klima'***REMOVED***
+      subtitle={'Temperaturabweichungen von den langjährigen Monatsmitteln vor 1900'}
+      title={'Klima'}
     >
       <div className="h-[316px] w-full md:h-[528px]">
         <div className="h-full w-full">
-          <RadarChart data={climateYears***REMOVED*** />
+          <RadarChart data={climateYears} />
         </div>
       </div>
     </ClimateTile>
   )
-***REMOVED***
+}

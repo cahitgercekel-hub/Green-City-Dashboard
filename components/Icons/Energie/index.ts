@@ -1,3 +1,3 @@
-export { default as MsKlimadashboardIconsEPvAnlagen ***REMOVED*** from './MsKlimadashboardIconsEPvAnlagen'
-export { default as MsKlimadashboardIconsEPvGebaeude ***REMOVED*** from './MsKlimadashboardIconsEPvGebaeude'
-export { default as MsKlimadashboardIconsEWindkraft ***REMOVED*** from './MsKlimadashboardIconsEWindkraft'
+export { default as MsKlimadashboardIconsEPvAnlagen } from './MsKlimadashboardIconsEPvAnlagen'
+export { default as MsKlimadashboardIconsEPvGebaeude } from './MsKlimadashboardIconsEPvGebaeude'
+export { default as MsKlimadashboardIconsEWindkraft } from './MsKlimadashboardIconsEWindkraft'

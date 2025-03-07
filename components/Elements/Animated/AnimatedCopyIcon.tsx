@@ -1,45 +1,45 @@
-import { CheckIcon, ClipboardDocumentIcon ***REMOVED*** from '@heroicons/react/24/outline'
-import { animated, useTransition ***REMOVED*** from '@react-spring/web'
-import { useEffect, useState ***REMOVED*** from 'react'
+import { CheckIcon, ClipboardDocumentIcon } from '@heroicons/react/24/outline'
+import { animated, useTransition } from '@react-spring/web'
+import { useEffect, useState } from 'react'
 
 type AnimatedCopyIconProps = {
   onClick: () => void
-***REMOVED***
+}
 
-export default function AnimatedCopyIcon({ onClick ***REMOVED***: AnimatedCopyIconProps) {
+export default function AnimatedCopyIcon({ onClick }: AnimatedCopyIconProps) {
   const [success, setSuccess] = useState(false)
 
   useEffect(() => {
     if (!success) {
       return
-  ***REMOVED***
+    }
 
     setTimeout(() => setSuccess(false), 2000)
-***REMOVED***, [success])
+  }, [success])
 
   const transitions = useTransition(success, {
-    from: { opacity: 0 ***REMOVED***,
-    enter: { opacity: 1 ***REMOVED***,
-    leave: { opacity: 0 ***REMOVED***,
-***REMOVED***)
+    from: { opacity: 0 },
+    enter: { opacity: 1 },
+    leave: { opacity: 0 },
+  })
 
   const handleOnClick = () => {
     onClick()
     setSuccess(true)
-***REMOVED***
+  }
 
   return transitions((styles, isSuccess) => (
     // @ts-ignore
     <animated.div
       className="absolute top-0 cursor-pointer rounded-lg bg-transparent p-2 hover:bg-zinc-100"
-      onClick={handleOnClick***REMOVED***
-      style={styles***REMOVED***
+      onClick={handleOnClick}
+      style={styles}
     >
-***REMOVED***isSuccess ? (
+      {isSuccess ? (
         <CheckIcon className="w-5 stroke-2 text-secondary" />
-  ***REMOVED*** : (
+      ) : (
         <ClipboardDocumentIcon className="w-5 stroke-2 text-primary" />
-  ***REMOVED******REMOVED***
+      )}
     </animated.div>
   ))
-***REMOVED***
+}

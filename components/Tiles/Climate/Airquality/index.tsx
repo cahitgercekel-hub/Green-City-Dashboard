@@ -11,9 +11,9 @@ export default async function AirqualityTile() {
       dataSource="Umweltbundesamt & Messstationen der Bundesländer"
       embedId="climate-airquality"
       live
-      title={'Luftqualität'***REMOVED***
+      title={'Luftqualität'}
     >
       <AirqualityChart />
     </ClimateTile>
   )
-***REMOVED***
+}

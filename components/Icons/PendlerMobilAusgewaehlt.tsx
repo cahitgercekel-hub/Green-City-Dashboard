@@ -1,10 +1,10 @@
 import * as React from 'react'
-import type { SVGProps ***REMOVED*** from 'react'
+import type { SVGProps } from 'react'
 function SvgPendlerMobilAusgewahlt(props: SVGProps<SVGSVGElement>) {
   return <svg
     viewBox="0 0 316.844 334.219"
     xmlns="http://www.w3.org/2000/svg"
-    {...props***REMOVED***
+    {...props}
   >
     <g data-name="Gruppe 976">
       <path
@@ -12,7 +12,7 @@ function SvgPendlerMobilAusgewahlt(props: SVGProps<SVGSVGElement>) {
         data-name="Stroke 1"
         fill="rgba(52,193,123,0.15)"
       />
-      <g data-name="Gruppe 947" fill="none" stroke="#fff" strokeWidth={2***REMOVED***>
+      <g data-name="Gruppe 947" fill="none" stroke="#fff" strokeWidth={2}>
         <path
           d="M26.646 44.596a161.678 161.678 0 0 1 17.669 24.3c8.38 14.168 27.244 32.772 35.805 34.543s14.246 3.475 25.79 5.026 14.866-1.888 24.372 8.278 25.339 26.5 25.339 26.5l5.072 1.643"
           data-name="Pfad 365"
@@ -39,36 +39,36 @@ function SvgPendlerMobilAusgewahlt(props: SVGProps<SVGSVGElement>) {
         data-name="Pfad 595"
         fill="none"
         stroke="#fff"
-        strokeWidth={2***REMOVED***
+        strokeWidth={2}
       />
       <path
         d="m16.727 162.913 39.25 5.946 27.938 19.307 39.2 30.552"
         data-name="Pfad 596"
         fill="none"
         stroke="#fff"
-        strokeWidth={2***REMOVED***
+        strokeWidth={2}
       />
       <path
         d="m152.75 172.087-5.8-4.9v-23.193l4.411-4.956"
         data-name="Pfad 597"
         fill="none"
         stroke="#fff"
-        strokeWidth={3***REMOVED***
+        strokeWidth={3}
       />
       <path
         d="M158.348 2.721v15.2l2.127 5.545v8.661l-2.127 13.778-1.968 58.232v39.124"
         data-name="Pfad 598"
         fill="none"
         stroke="#fff"
-        strokeWidth={2***REMOVED***
+        strokeWidth={2}
       />
       <g data-name="Gruppe 950" transform="translate(104.754 132.565)">
         <circle
-          cx={26.825***REMOVED***
-          cy={26.825***REMOVED***
+          cx={26.825}
+          cy={26.825}
           data-name="Ellipse 48"
           fill="rgba(52,193,123,0.15)"
-          r={26.825***REMOVED***
+          r={26.825}
         />
         <g
           data-name="Gruppe 399"
@@ -76,25 +76,25 @@ function SvgPendlerMobilAusgewahlt(props: SVGProps<SVGSVGElement>) {
           stroke="#34c17b"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth={1.5***REMOVED***
+          strokeWidth={1.5}
           transform="translate(13.04 13.99)"
         >
           <rect
             data-name="Rechteck 16"
-            height={10.458***REMOVED***
-            rx={4***REMOVED***
+            height={10.458}
+            rx={4}
             transform="translate(0 12.359)"
-            width={27.571***REMOVED***
+            width={27.571}
           />
           <path
             d="M7.13 22.817v1.9a.95.95 0 0 1-.951.951H3.802a.95.95 0 0 1-.95-.951v-1.9"
             data-name="Pfad 24"
           />
           <circle
-            cx={1.901***REMOVED***
-            cy={1.901***REMOVED***
+            cx={1.901}
+            cy={1.901}
             data-name="Ellipse 11"
-            r={1.901***REMOVED***
+            r={1.901}
             transform="translate(2.377 14.736)"
           />
           <path
@@ -102,10 +102,10 @@ function SvgPendlerMobilAusgewahlt(props: SVGProps<SVGSVGElement>) {
             data-name="Pfad 29"
           />
           <circle
-            cx={1.901***REMOVED***
-            cy={1.901***REMOVED***
+            cx={1.901}
+            cy={1.901}
             data-name="Ellipse 12"
-            r={1.901***REMOVED***
+            r={1.901}
             transform="translate(21.391 14.736)"
           />
           <path
@@ -120,11 +120,11 @@ function SvgPendlerMobilAusgewahlt(props: SVGProps<SVGSVGElement>) {
       </g>
       <g data-name="Gruppe 962" transform="translate(90.634 172.087)">
         <circle
-          cx={26.825***REMOVED***
-          cy={26.825***REMOVED***
+          cx={26.825}
+          cy={26.825}
           data-name="Ellipse 48"
           fill="rgba(52,193,123,0.15)"
-          r={26.825***REMOVED***
+          r={26.825}
         />
         <g
           data-name="Gruppe 399"
@@ -132,25 +132,25 @@ function SvgPendlerMobilAusgewahlt(props: SVGProps<SVGSVGElement>) {
           stroke="#34c17b"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth={1.5***REMOVED***
+          strokeWidth={1.5}
           transform="translate(13.04 13.99)"
         >
           <rect
             data-name="Rechteck 16"
-            height={10.458***REMOVED***
-            rx={4***REMOVED***
+            height={10.458}
+            rx={4}
             transform="translate(0 12.359)"
-            width={27.571***REMOVED***
+            width={27.571}
           />
           <path
             d="M7.13 22.817v1.9a.95.95 0 0 1-.951.951H3.802a.95.95 0 0 1-.95-.951v-1.9"
             data-name="Pfad 24"
           />
           <circle
-            cx={1.901***REMOVED***
-            cy={1.901***REMOVED***
+            cx={1.901}
+            cy={1.901}
             data-name="Ellipse 11"
-            r={1.901***REMOVED***
+            r={1.901}
             transform="translate(2.377 14.736)"
           />
           <path
@@ -158,10 +158,10 @@ function SvgPendlerMobilAusgewahlt(props: SVGProps<SVGSVGElement>) {
             data-name="Pfad 29"
           />
           <circle
-            cx={1.901***REMOVED***
-            cy={1.901***REMOVED***
+            cx={1.901}
+            cy={1.901}
             data-name="Ellipse 12"
-            r={1.901***REMOVED***
+            r={1.901}
             transform="translate(21.391 14.736)"
           />
           <path
@@ -176,11 +176,11 @@ function SvgPendlerMobilAusgewahlt(props: SVGProps<SVGSVGElement>) {
       </g>
       <g data-name="Gruppe 963" transform="translate(171.706 167.11)">
         <circle
-          cx={26.825***REMOVED***
-          cy={26.825***REMOVED***
+          cx={26.825}
+          cy={26.825}
           data-name="Ellipse 48"
           fill="rgba(52,193,123,0.15)"
-          r={26.825***REMOVED***
+          r={26.825}
         />
         <g
           data-name="Gruppe 399"
@@ -188,25 +188,25 @@ function SvgPendlerMobilAusgewahlt(props: SVGProps<SVGSVGElement>) {
           stroke="#34c17b"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth={1.5***REMOVED***
+          strokeWidth={1.5}
           transform="translate(13.04 13.99)"
         >
           <rect
             data-name="Rechteck 16"
-            height={10.458***REMOVED***
-            rx={4***REMOVED***
+            height={10.458}
+            rx={4}
             transform="translate(0 12.359)"
-            width={27.571***REMOVED***
+            width={27.571}
           />
           <path
             d="M7.13 22.817v1.9a.95.95 0 0 1-.951.951H3.802a.95.95 0 0 1-.95-.951v-1.9"
             data-name="Pfad 24"
           />
           <circle
-            cx={1.901***REMOVED***
-            cy={1.901***REMOVED***
+            cx={1.901}
+            cy={1.901}
             data-name="Ellipse 11"
-            r={1.901***REMOVED***
+            r={1.901}
             transform="translate(2.377 14.736)"
           />
           <path
@@ -214,10 +214,10 @@ function SvgPendlerMobilAusgewahlt(props: SVGProps<SVGSVGElement>) {
             data-name="Pfad 29"
           />
           <circle
-            cx={1.901***REMOVED***
-            cy={1.901***REMOVED***
+            cx={1.901}
+            cy={1.901}
             data-name="Ellipse 12"
-            r={1.901***REMOVED***
+            r={1.901}
             transform="translate(21.391 14.736)"
           />
           <path
@@ -237,14 +237,14 @@ function SvgPendlerMobilAusgewahlt(props: SVGProps<SVGSVGElement>) {
           fill="none"
           stroke="#005b79"
           strokeLinecap="round"
-          strokeWidth={1.5***REMOVED***
+          strokeWidth={1.5}
         />
         <circle
-          cx={5***REMOVED***
-          cy={5***REMOVED***
+          cx={5}
+          cy={5}
           data-name="Ellipse 130"
           fill="#005b79"
-          r={5***REMOVED***
+          r={5}
           transform="translate(-12098.309 -15660.6)"
         />
       </g>
@@ -255,14 +255,14 @@ function SvgPendlerMobilAusgewahlt(props: SVGProps<SVGSVGElement>) {
           fill="none"
           stroke="#005b79"
           strokeLinecap="round"
-          strokeWidth={1.5***REMOVED***
+          strokeWidth={1.5}
         />
         <circle
-          cx={5***REMOVED***
-          cy={5***REMOVED***
+          cx={5}
+          cy={5}
           data-name="Ellipse 131"
           fill="#005b79"
-          r={5***REMOVED***
+          r={5}
           transform="translate(-12156.148 -15613.479)"
         />
       </g>
@@ -273,24 +273,24 @@ function SvgPendlerMobilAusgewahlt(props: SVGProps<SVGSVGElement>) {
           fill="none"
           stroke="#005b79"
           strokeLinecap="round"
-          strokeWidth={1.5***REMOVED***
+          strokeWidth={1.5}
         />
         <circle
-          cx={5***REMOVED***
-          cy={5***REMOVED***
+          cx={5}
+          cy={5}
           data-name="Ellipse 132"
           fill="#005b79"
-          r={5***REMOVED***
+          r={5}
           transform="translate(-12127.936 -15672.67)"
         />
       </g>
       <g data-name="Gruppe 960" transform="translate(190.563 93.296)">
         <circle
-          cx={26.825***REMOVED***
-          cy={26.825***REMOVED***
+          cx={26.825}
+          cy={26.825}
           data-name="Ellipse 48"
           fill="rgba(52,193,123,0.15)"
-          r={26.825***REMOVED***
+          r={26.825}
         />
         <g
           data-name="Gruppe 399"
@@ -298,25 +298,25 @@ function SvgPendlerMobilAusgewahlt(props: SVGProps<SVGSVGElement>) {
           stroke="#34c17b"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth={1.5***REMOVED***
+          strokeWidth={1.5}
           transform="translate(13.04 13.99)"
         >
           <rect
             data-name="Rechteck 16"
-            height={10.458***REMOVED***
-            rx={4***REMOVED***
+            height={10.458}
+            rx={4}
             transform="translate(0 12.359)"
-            width={27.571***REMOVED***
+            width={27.571}
           />
           <path
             d="M7.13 22.817v1.9a.95.95 0 0 1-.951.951H3.802a.95.95 0 0 1-.95-.951v-1.9"
             data-name="Pfad 24"
           />
           <circle
-            cx={1.901***REMOVED***
-            cy={1.901***REMOVED***
+            cx={1.901}
+            cy={1.901}
             data-name="Ellipse 11"
-            r={1.901***REMOVED***
+            r={1.901}
             transform="translate(2.377 14.736)"
           />
           <path
@@ -324,10 +324,10 @@ function SvgPendlerMobilAusgewahlt(props: SVGProps<SVGSVGElement>) {
             data-name="Pfad 29"
           />
           <circle
-            cx={1.901***REMOVED***
-            cy={1.901***REMOVED***
+            cx={1.901}
+            cy={1.901}
             data-name="Ellipse 12"
-            r={1.901***REMOVED***
+            r={1.901}
             transform="translate(21.391 14.736)"
           />
           <path
@@ -342,11 +342,11 @@ function SvgPendlerMobilAusgewahlt(props: SVGProps<SVGSVGElement>) {
       </g>
       <g data-name="Gruppe 961" transform="translate(123.908 89.611)">
         <circle
-          cx={26.825***REMOVED***
-          cy={26.825***REMOVED***
+          cx={26.825}
+          cy={26.825}
           data-name="Ellipse 48"
           fill="rgba(52,193,123,0.15)"
-          r={26.825***REMOVED***
+          r={26.825}
         />
         <g
           data-name="Gruppe 399"
@@ -354,25 +354,25 @@ function SvgPendlerMobilAusgewahlt(props: SVGProps<SVGSVGElement>) {
           stroke="#34c17b"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth={1.5***REMOVED***
+          strokeWidth={1.5}
           transform="translate(13.04 13.99)"
         >
           <rect
             data-name="Rechteck 16"
-            height={10.458***REMOVED***
-            rx={4***REMOVED***
+            height={10.458}
+            rx={4}
             transform="translate(0 12.359)"
-            width={27.571***REMOVED***
+            width={27.571}
           />
           <path
             d="M7.13 22.817v1.9a.95.95 0 0 1-.951.951H3.802a.95.95 0 0 1-.95-.951v-1.9"
             data-name="Pfad 24"
           />
           <circle
-            cx={1.901***REMOVED***
-            cy={1.901***REMOVED***
+            cx={1.901}
+            cy={1.901}
             data-name="Ellipse 11"
-            r={1.901***REMOVED***
+            r={1.901}
             transform="translate(2.377 14.736)"
           />
           <path
@@ -380,10 +380,10 @@ function SvgPendlerMobilAusgewahlt(props: SVGProps<SVGSVGElement>) {
             data-name="Pfad 29"
           />
           <circle
-            cx={1.901***REMOVED***
-            cy={1.901***REMOVED***
+            cx={1.901}
+            cy={1.901}
             data-name="Ellipse 12"
-            r={1.901***REMOVED***
+            r={1.901}
             transform="translate(21.391 14.736)"
           />
           <path
@@ -403,7 +403,7 @@ function SvgPendlerMobilAusgewahlt(props: SVGProps<SVGSVGElement>) {
           fill="none"
           stroke="#005b79"
           strokeLinecap="round"
-          strokeWidth={1.5***REMOVED***
+          strokeWidth={1.5}
         />
         <path
           d="M156.729 134.692a5 5 0 1 1-5 5 5 5 0 0 1 5-5Z"
@@ -418,18 +418,18 @@ function SvgPendlerMobilAusgewahlt(props: SVGProps<SVGSVGElement>) {
           fill="none"
           stroke="#005b79"
           strokeLinecap="round"
-          strokeWidth={1.5***REMOVED***
+          strokeWidth={1.5}
         />
         <circle
-          cx={5***REMOVED***
-          cy={5***REMOVED***
+          cx={5}
+          cy={5}
           data-name="Ellipse 129"
           fill="#005b79"
-          r={5***REMOVED***
+          r={5}
           transform="translate(-12080.039 -15696.459)"
         />
       </g>
     </g>
   </svg>
-***REMOVED***
+}
 export default SvgPendlerMobilAusgewahlt
