@@ -10,7 +10,7 @@ import { ReactECharts } from '@/components/Charts/ReactECharts'
 import AnimatedNumber from '@/components/Elements/Animated/AnimatedNumber'
 import Carousel from '@/components/Elements/Carousel'
 import Title from '@/components/Elements/Title'
-import { MuensterBackground } from '@/components/Icons/'
+import { WiesbadenBackground } from '@/components/Icons/'
 import SvgMuensterDom from '@/components/Icons/MuensterDom'
 import Slider from '@/components/Inputs/Slider'
 import ToggleGroup from '@/components/Inputs/ToggleGroup'
@@ -174,7 +174,7 @@ export default function ModalSplitChart() {
         )}
 
         <div className="absolute left-0 top-0 flex h-full w-full">
-          <MuensterBackground className="h-full w-full flex-1" />
+          <WiesbadenBackground className="h-full w-full flex-1" />
           <div className="sm:w-14"></div>
         </div>
         <div className="w-full flex-1 pb-12">
