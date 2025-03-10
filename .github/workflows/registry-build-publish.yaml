@@ -51,22 +51,30 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v6
         with:
-          context: .
           push: true
           platforms: linux/amd64,linux/arm64
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
+          provenance: false
 
-      - name: Comment on pull request
+      - name: Find Comment
+        if: github.event_name == 'pull_request'
+        uses: peter-evans/find-comment@v3
+        id: fc
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          comment-author: 'github-actions[bot]'
+          body-includes: The Docker image was built successfully with the following
+  
+      - name: Create or update comment
         if: github.event_name == 'pull_request'
         uses: peter-evans/create-or-update-comment@v4
         with:
+          comment-id: ${{ steps.fc.outputs.comment-id }}
           issue-number: ${{ github.event.pull_request.number }}
           body: |
-            The Docker image was built successfully with the following name(s):
+            The Docker image was built successfully with the following name:
             ```
             ${{ steps.meta.outputs.tags }}
             ```
-          reactions: 'rocket'
+          edit-mode: replace
