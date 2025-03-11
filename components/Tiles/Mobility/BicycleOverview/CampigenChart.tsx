@@ -104,7 +104,7 @@ function Toggle({
         {
           element: (
             <Title as="h5" className="2xl:w-max">
-              AlltagsVergleich
+              Alltagsvergleich
             </Title>
           ),
           value: 'compare',
@@ -162,14 +162,12 @@ function ComparisonItem({ title, comparison }: ComparisonItemProps) {
 
   return (
     <div className="p-4">
-      <h3 className="text-xl font-extrabold text-mobility xs:text-2xl lg:text-6xl">
-        {title === 'Distanz'
-          ? comparison.value + ' km'
-          : comparison.value + ' h'}
+      <h3 className="text-lg font-normal text-mobility xs:text-2xl lg:text-6xl">
+        {title === 'Distanz' ? comparison.value + 'km' : comparison.value + 'h'}
       </h3>
       <div className="mt-3 flex gap-3">
         <div className="w-[70%]">
-          <p className="text-base font-bold leading-snug xs:text-xl lg:text-4xl">
+          <p className="text-base font-extrabold leading-snug xs:text-xl lg:text-4xl">
             {comparison.description}
           </p>
         </div>
@@ -256,8 +254,8 @@ export default function CampaignChart() {
               ) : null}
             </Title>
 
-            <div className="h-[235px] w-full md:h-[440px]">
-              {mode === 'digramm' ? (
+            {mode === 'digramm' ? (
+              <div className="h-[235px] w-full md:h-[440px]">
                 <ReactECharts
                   option={{
                     grid: {
@@ -312,23 +310,24 @@ export default function CampaignChart() {
                     notMerge: true,
                   }}
                 />
-              ) : (
-                <div className="flex flex-col gap-4">
-                  {seriesVisible.distanz && (
-                    <ComparisonItem
-                      comparison={getDistanceComparison(10)}
-                      title="Distanz"
-                    />
-                  )}
-                  {seriesVisible.stunden && (
-                    <ComparisonItem
-                      comparison={getTimeComparison(72)}
-                      title="Zeit"
-                    />
-                  )}
-                </div>
-              )}
-            </div>
+              </div>
+            ) : (
+              <div className="flex flex-col gap-4">
+                {seriesVisible.distanz && (
+                  <ComparisonItem
+                    comparison={getDistanceComparison(10)}
+                    title="Distanz"
+                  />
+                )}
+                {seriesVisible.stunden && (
+                  <ComparisonItem
+                    comparison={getTimeComparison(72)}
+                    title="Zeit"
+                  />
+                )}
+              </div>
+            )}
+
             <div className="flex items-center justify-center justify-items-center">
               {/* <div className="flex h-full flex-col justify-evenly gap-2 2xl:self-start 2xl:pl-4">
                 <CampaignIndicesToggle
@@ -401,7 +400,33 @@ export default function CampaignChart() {
                   </>
                 )}
               </div> */}
-              <div className="flex flex-col gap-2 2xl:pl-4">
+              {/* <div className="flex flex-col gap-2 2xl:pl-4">
+                {(['distanz', 'stunden', 'tracks', 'kcal'] as ValuesTypes[])
+                  .filter(
+                    type =>
+                      mode === 'digramm' ||
+                      type === 'distanz' ||
+                      type === 'stunden',
+                  )
+                  .map(type => (
+                    <CampaignIndicesToggle
+                      checked={seriesVisible[type]}
+                      key={type}
+                      onChange={() => handleToggle(type)}
+                      type={typeMap[type]}
+                    >
+                      {indices[type].title}
+                    </CampaignIndicesToggle>
+                  ))}
+              </div> */}
+
+              <div
+                className={`mt-4 grid 2xl:pl-4 ${
+                  mode === 'compare'
+                    ? 'auto-cols-max grid-flow-col gap-6' // "compare" mode: horizontal layout
+                    : 'grid-cols-1 gap-x-10 gap-y-4 lg:grid-cols-2' // "digramm" mode: single-column on mobile/tablet, two-column on lg screens
+                }`}
+              >
                 {(['distanz', 'stunden', 'tracks', 'kcal'] as ValuesTypes[])
                   .filter(
                     type =>
