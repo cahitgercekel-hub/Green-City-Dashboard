@@ -1,6 +1,6 @@
 import { format } from 'date-fns'
 import MobilityTile from '@/components/Tiles/Mobility/MobilityTile'
-import CampaignChart from './CampigenChart'
+import CampaignChart from './CampaignChart'
 export default async function BicycleOverview() {
   return (
     <MobilityTile
