@@ -29,7 +29,7 @@ RUN yarn postinstall
 # Uncomment the following line in case you want to disable telemetry during the build.
 ENV NEXT_TELEMETRY_DISABLED=1
 
-RUN NEXT_PUBLIC_DIRECTUS_URL=NEXT_PUBLIC_DIRECTUS_URL yarn build --experimental-build-mode compile
+RUN NEXT_PUBLIC_DIRECTUS_URL=NEXT_PUBLIC_DIRECTUS_URL ECOCOUNTER_API_TOKEN=ECOCOUNTER_API_TOKEN yarn build --experimental-build-mode compile
 
 # If using npm comment out above and use below instead
 # RUN npm run build
