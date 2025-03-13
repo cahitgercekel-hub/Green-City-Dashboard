@@ -55,7 +55,8 @@ jobs:
           platforms: linux/amd64,linux/arm64
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-          provenance: false
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
 
       - name: Find Comment
         if: github.event_name == 'pull_request'
@@ -64,17 +65,17 @@ jobs:
         with:
           issue-number: ${{ github.event.pull_request.number }}
           comment-author: 'github-actions[bot]'
-          body-includes: The Docker image was built successfully with the following
-  
-      - name: Create or update comment
+          body-includes: The Docker image was built successfully with the following name
+
+      - name: Comment on pull request
         if: github.event_name == 'pull_request'
         uses: peter-evans/create-or-update-comment@v4
         with:
           comment-id: ${{ steps.fc.outputs.comment-id }}
           issue-number: ${{ github.event.pull_request.number }}
+          edit-mode: replace
           body: |
             The Docker image was built successfully with the following name:
             ```
             ${{ steps.meta.outputs.tags }}
             ```
-          edit-mode: replace
