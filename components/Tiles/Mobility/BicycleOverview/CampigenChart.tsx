@@ -15,7 +15,6 @@ import resolveConfig from 'tailwindcss/resolveConfig'
 
 const { theme } = resolveConfig(tailwindConfig)
 type ValuesTypes = 'distanz' | 'tracks' | 'stunden' | 'kcal'
-
 type Campaign = {
   ZEIT: string
   Distanz: number
@@ -116,7 +115,6 @@ function Toggle({
     />
   )
 }
-
 function CampaignIndicesToggle({
   type,
   defaultChecked,
@@ -214,7 +212,7 @@ export default function CampaignChart() {
     })
   }
   const indices = getIndices()
-  const series: LineSeriesOption[] = Object.keys(indices) // this line will return the keys of the object : ['bip', 'beschaeftigte', 'co2Industrie', 'co2Gewerbe']
+  const series: LineSeriesOption[] = Object.keys(indices)
     .filter(e => seriesVisible[e as ValuesTypes])
     .map(e => ({
       ...indices[e as ValuesTypes].seriesOption,
@@ -261,7 +259,6 @@ export default function CampaignChart() {
                     grid: {
                       top: 20,
                       bottom: 40,
-                      // left: device === 'mobile' ? 60 : 60,
                       left: 60,
                       right: 30,
                     },
@@ -295,7 +292,6 @@ export default function CampaignChart() {
                     },
                     yAxis: {
                       type: 'value',
-
                       axisLabel: {
                         fontSize: device === 'mobile' ? 12 : 20,
                         formatter: (val: any) => {
@@ -329,102 +325,11 @@ export default function CampaignChart() {
             )}
 
             <div className="flex items-center justify-center justify-items-center">
-              {/* <div className="flex h-full flex-col justify-evenly gap-2 2xl:self-start 2xl:pl-4">
-                <CampaignIndicesToggle
-                  checked={seriesVisible.distanz}
-                  defaultChecked={seriesVisible.distanz}
-                  onChange={() =>
-                    setSeriesVisible(prevState => ({
-                      ...prevState,
-                      distanz: !prevState.distanz,
-                      stunden: false,
-                      tracks: false,
-                      kcal: false,
-                    }))
-                  }
-                  type="tropennaechte"
-                >
-                  Distanz
-                </CampaignIndicesToggle>
-
-                <CampaignIndicesToggle
-                  checked={seriesVisible.stunden}
-                  defaultChecked={seriesVisible.stunden}
-                  onChange={() =>
-                    setSeriesVisible(prevState => ({
-                      ...prevState,
-                      distanz: false,
-                      stunden: !prevState.stunden,
-                      tracks: false,
-                      kcal: false,
-                    }))
-                  }
-                  type="eistage"
-                >
-                  Stunden
-                </CampaignIndicesToggle>
-                {mode === 'digramm' && (
-                  <>
-                    <CampaignIndicesToggle
-                      checked={seriesVisible.tracks}
-                      defaultChecked={seriesVisible.tracks}
-                      onChange={() =>
-                        setSeriesVisible(prevState => ({
-                          ...prevState,
-                          distanz: false,
-                          stunden: false,
-                          tracks: !prevState.tracks,
-                          kcal: false,
-                        }))
-                      }
-                      type="heisse_tage"
-                    >
-                      Tracks
-                    </CampaignIndicesToggle>
-                    <CampaignIndicesToggle
-                      checked={seriesVisible.kcal}
-                      defaultChecked={seriesVisible.kcal}
-                      onChange={() =>
-                        setSeriesVisible(prevState => ({
-                          ...prevState,
-                          distanz: false,
-                          stunden: false,
-                          tracks: false,
-                          kcal: !prevState.kcal,
-                        }))
-                      }
-                      type="sommertage"
-                    >
-                      Kcal
-                    </CampaignIndicesToggle>
-                  </>
-                )}
-              </div> */}
-              {/* <div className="flex flex-col gap-2 2xl:pl-4">
-                {(['distanz', 'stunden', 'tracks', 'kcal'] as ValuesTypes[])
-                  .filter(
-                    type =>
-                      mode === 'digramm' ||
-                      type === 'distanz' ||
-                      type === 'stunden',
-                  )
-                  .map(type => (
-                    <CampaignIndicesToggle
-                      checked={seriesVisible[type]}
-                      key={type}
-                      onChange={() => handleToggle(type)}
-                      type={typeMap[type]}
-                    >
-                      {indices[type].title}
-                    </CampaignIndicesToggle>
-                  ))}
-              </div> */}
-
               <div
                 className={`mt-4 grid 2xl:pl-4 ${
                   mode === 'compare'
-                    ? 'auto-cols-max grid-flow-col gap-6' // "compare" mode: horizontal layout
-                    : 'grid-cols-1 gap-x-10 gap-y-4 lg:grid-cols-2' // "digramm" mode: single-column on mobile/tablet, two-column on lg screens
+                    ? 'auto-cols-max grid-flow-col gap-6'
+                    : 'grid-cols-1 gap-x-10 gap-y-4 lg:grid-cols-2'
                 }`}
               >
                 {(['distanz', 'stunden', 'tracks', 'kcal'] as ValuesTypes[])
