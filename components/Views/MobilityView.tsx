@@ -10,6 +10,7 @@ import TrafficloadTile from '../Tiles/Mobility/TrafficloadTile'
 import BicycleOverview from '../Tiles/Mobility/BicycleOverview'
 import BaseView from './BaseView'
 import OverTakingDistance from '../Tiles/Mobility/Bicycle/OverTakingDistance'
+import OvertakingManeuver from '../Tiles/Mobility/Bicycle/OvertakingManeuver'
 
 export default async function MobilityView() {
   return (
@@ -31,7 +32,7 @@ export default async function MobilityView() {
       </Columns>
       <OverTakingDistance />
       <ModalSplitTile />
-
+      <OvertakingManeuver />
       <TrafficloadTile />
       <BicycleOverview />
     </BaseView>
