@@ -115,7 +115,7 @@ export default async function IconTile({
       <>
         {!title && !subtitle && (
           <div className={cx('relative', iconTileTitleStyle({ variant }))}>
-            <Icon className=" absolute right-0 top-0 hidden h-[50px] w-auto opacity-40 2xl:block" />
+            <Icon className="absolute right-0 top-0 hidden h-[50px] w-auto opacity-40 2xl:block" />
           </div>
         )}
       </>
@@ -125,10 +125,10 @@ export default async function IconTile({
       <TileSplitView>
         <TileSplitView.Left>
           <div className="flex flex-wrap justify-between">
-            {/* <div className="space-x-2 text-xs ">
+            <div className="space-x-2 text-xs">
               <Title
                 as="h7"
-                className="inline"
+                className={`${dataRetrieval ? 'inline' : 'hidden'}`}
                 font="semibold"
                 variant={'primary'}
               >
@@ -142,7 +142,7 @@ export default async function IconTile({
               >
                 Quelle: {dataSource}
               </Title>
-            </div> */}
+            </div>
             <div>{rightAlignedExtra}</div>
           </div>
         </TileSplitView.Left>
