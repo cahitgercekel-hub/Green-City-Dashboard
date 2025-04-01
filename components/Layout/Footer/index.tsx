@@ -10,8 +10,8 @@ import BMWSBLogo from '@/assets/logos/BMWSB.png'
 import StadtwerkeLogo from '@/assets/logos/Stadtwerke_Muenster_Logo.png'
 import KFW from '@/assets/logos/kfw.png'
 import WFMLogo from '@/assets/logos/logo_wfm.png'
-import MuensterKlima2030 from '@/assets/logos/muenter_unser_klima_2030.png'
-import SmartCityMSLogo from '@/assets/logos/smart_city_ms.png'
+import DezernatSmartCity from '@/assets/logos/Wiesbaden_footer_logo.jpg'
+import WiesbadenLogo from '@/assets/logos/Wiesbaden_smart city_4c.png'
 
 export default function Footer() {
   return (
@@ -23,31 +23,34 @@ export default function Footer() {
               Ein Projekt von
             </Title>
             <div className="flex w-full grid-cols-2 flex-col gap-8 lg:gap-16 xl:grid">
-              <div className="relative h-28 w-full md:h-36">
-                <Link href="https://www.smartcity.ms" target="_blank">
-                  <Image
-                    alt="Smart City Münster Logo"
-                    className="object-contain"
-                    fill
-                    src={SmartCityMSLogo}
-                  />
-                </Link>
-              </div>
-              <div className="relative h-28 w-full md:h-36">
+              <div className="relative h-28 w-full rounded-md bg-white md:h-36">
                 <Link
-                  href="https://www.stadt-muenster.de/klima/"
+                  href="https://smart-city-findet-stadt.de/"
                   target="_blank"
                 >
                   <Image
-                    alt="Unser Klima Logo"
+                    alt="Smart City Wiesbaden Logo"
                     className="object-contain"
                     fill
-                    src={MuensterKlima2030}
+                    src={WiesbadenLogo}
+                  />
+                </Link>
+              </div>
+              <div className="relative h-28 w-full rounded-md bg-white md:h-36">
+                <Link
+                  href="https://www.wiesbaden.de/vv/oe/07/Dezernat-VII"
+                  target="_blank"
+                >
+                  <Image
+                    alt="Dezernat für Smart City, Europa und Ordnung"
+                    className="object-contain"
+                    fill
+                    src={DezernatSmartCity}
                   />
                 </Link>
               </div>
             </div>
-            <Title as={'h4'} className="py-10 md:py-20">
+            {/* <Title as={'h4'} className="py-10 md:py-20">
               Unterstützt durch
             </Title>
             <div className="flex w-full grid-cols-2 flex-col gap-8 lg:gap-16 xl:grid">
@@ -74,9 +77,9 @@ export default function Footer() {
                   />
                 </Link>
               </div>
-            </div>
+            </div> */}
           </div>
-          <div className="flex-1">
+          {/* <div className="flex-1">
             <Title as={'h4'} className="py-10 md:py-20">
               Gefördert durch
             </Title>
@@ -98,7 +101,7 @@ export default function Footer() {
                 />
               </div>
             </div>
-          </div>
+          </div> */}
           <div className="sm:hidden flex flex-1 flex-col 2xl:flex">
             <Title as={'h4'} className="py-10 opacity-0 md:py-20">
               Impressum
@@ -114,7 +117,7 @@ export default function Footer() {
                   Datenschutz
                 </Title>
               </Link>
-              <Link href="/feedback#use-dashboard">
+              {/* <Link href="/feedback#use-dashboard">
                 <Title as="h5" className="underline" variant={'primary'}>
                   Dieses Dashboard adaptieren
                 </Title>
@@ -123,7 +126,7 @@ export default function Footer() {
                 <Title as="h5" className="underline" variant={'primary'}>
                   Feedback geben
                 </Title>
-              </Link>
+              </Link> */}
             </div>
           </div>
         </div>
