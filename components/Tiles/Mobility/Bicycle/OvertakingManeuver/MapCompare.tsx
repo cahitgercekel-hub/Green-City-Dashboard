@@ -47,7 +47,7 @@ interface OvertakingFeatureCollection {
   features: OvertakingFeature[]
 }
 
-const MapComparison: React.FC = () => {
+function MapComparison() {
   const beforeMapContainer = useRef<HTMLDivElement>(null)
   const afterMapContainer = useRef<HTMLDivElement>(null)
   const comparisonContainer = useRef<HTMLDivElement>(null)
@@ -102,7 +102,6 @@ const MapComparison: React.FC = () => {
     )
       return
 
-    // Initialize both maps
     const beforeMap = new maplibregl.Map({
       container: beforeMapContainer.current,
       style: 'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json',
@@ -117,8 +116,28 @@ const MapComparison: React.FC = () => {
 
     const afterMap = new maplibregl.Map({
       container: afterMapContainer.current,
-
-      style: 'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json',
+      style: {
+        version: 8,
+        sources: {
+          'carto-light': {
+            type: 'raster',
+            tiles: [
+              'https://a.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png',
+              'https://b.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png',
+              'https://c.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png',
+              'https://d.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png',
+            ],
+            attribution: '', // Empty attribution
+          },
+        },
+        layers: [
+          {
+            id: 'carto-light-layer',
+            type: 'raster',
+            source: 'carto-light',
+          },
+        ],
+      },
       center: [7.6257, 51.9607],
       zoom: 12,
       attributionControl: false,
@@ -181,6 +200,12 @@ const MapComparison: React.FC = () => {
     })
 
     afterMap.on('load', () => {
+      afterMap.addControl(
+        new maplibregl.AttributionControl({
+          customAttribution:
+            '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, &copy; <a href="https://carto.com/attributions">CARTO</a> | <a href="https://unfallatlas.statistikportal.de/" target="_blank" rel="noopener noreferrer">Map Data © Unfallatlas</a> | <a href="https://www.govdata.de/dl-de/by-2-0" target="_blank" rel="noopener noreferrer">dl-de/by-2-0</a>',
+        }),
+      )
       afterMap.addSource('wms-right', {
         type: 'raster',
         tiles: [
@@ -255,7 +280,7 @@ const MapComparison: React.FC = () => {
       >
         <div className="pointer-events-none absolute inset-0">
           <div
-            className={`pointer-events-auto absolute ${device === 'mobile' ? 'bottom-0 left-0' : 'right-0 top-0'} z-20 rounded bg-white px-3 py-2`}
+            className={`pointer-events-auto absolute ${device === 'mobile' ? 'bottom-0 left-0' : 'right-0 top-0'} z-20 rounded-md bg-white px-3 py-2`}
           >
             <Switch
               defaultChecked={useunfallOrte}
@@ -265,22 +290,12 @@ const MapComparison: React.FC = () => {
             />
           </div>
           <div className="pointer-events-auto absolute bottom-3 right-3 z-10 flex flex-col items-end space-y-2">
-            <div className="rounded bg-white bg-opacity-80 p-1 shadow-md">
+            <div className="mb-3 rounded bg-white bg-opacity-80 p-1 shadow-md">
               <img
                 src={legendUrl}
                 alt="Map Legend"
                 className="h-auto max-w-[150px]"
               />
-            </div>
-
-            <div className="rounded bg-black bg-opacity-70 px-2 py-1 text-xs text-white">
-              <a
-                href="https://unfallatlas.statistikportal.de/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Map Data © Unfallatlas
-              </a>
             </div>
           </div>
         </div>
