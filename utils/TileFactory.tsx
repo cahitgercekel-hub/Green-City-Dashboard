@@ -16,8 +16,10 @@ import PhotovoltTile from '@/components/Tiles/Energy/PhotovoltTile'
 import WindEnergyTile from '@/components/Tiles/Energy/WindEnergyTile'
 import AWMTile from '@/components/Tiles/Mobility/AWM'
 import BicycleChartTile from '@/components/Tiles/Mobility/Bicycle/BicycleChartTile'
+import OvertakingManeuver from '@/components/Tiles/Mobility/Bicycle/OvertakingManeuver'
 
 import StadtradelnTile from '@/components/Tiles/Mobility/Bicycle/Stadtradeln'
+import BicycleOverview from '@/components/Tiles/Mobility/BicycleOverview'
 
 import BusTile from '@/components/Tiles/Mobility/Bus'
 import MasterplanTile from '@/components/Tiles/Mobility/MasterplanTile'
@@ -149,10 +151,10 @@ export default async function TileFactory({
       return <MasterplanTile />
     case 'mobility-passengers':
       return <PassengerTile />
-    // case 'mobility-bicycleOverview':
-    //   return <BicycleOverview />
-    // case 'mobility-bicycleOvertaking':
-    //   return <BicycleOvertaking />
+    case 'mobility-bicycleCampaign':
+      return <BicycleOverview />
+    case 'mobility-bicycleOvertaking':
+      return <OvertakingManeuver />
 
     default:
       return null
