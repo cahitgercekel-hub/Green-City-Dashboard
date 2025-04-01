@@ -149,7 +149,7 @@ export default async function TileFactory({
       return <MasterplanTile />
     case 'mobility-passengers':
       return <PassengerTile />
-    case 'mobility-bicycleOverview':
+    case 'mobility-bicycleCampaign':
       return <BicycleOverview />
     case 'mobility-bicycleOvertaking':
       return <BicycleOvertaking />
