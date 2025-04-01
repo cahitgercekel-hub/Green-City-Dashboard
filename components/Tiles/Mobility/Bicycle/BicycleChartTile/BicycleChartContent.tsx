@@ -1,11 +1,11 @@
 'use client'
 
 import Slider from '@/components/Inputs/Slider'
-import { useBicycleCount } from '@/hooks/useBicycleCount'
 import { format, subDays } from 'date-fns'
 import { useState } from 'react'
 import BicycleRow from './BicycleRow'
 import LoadingRow from './LoadingRow'
+import { useEcoCounter } from '@/hooks/useEcoCounterApi'
 
 export default function BicycleChartContent() {
   const lastDays = new Array(7)
@@ -15,7 +15,7 @@ export default function BicycleChartContent() {
 
   const [date, setDate] = useState<Date>(lastDays[lastDays.length - 1])
 
-  const { data, min, max, stationCount } = useBicycleCount(date)
+  const { data, min, max, stationCount } = useEcoCounter(date)
 
   const loading = !data
 
