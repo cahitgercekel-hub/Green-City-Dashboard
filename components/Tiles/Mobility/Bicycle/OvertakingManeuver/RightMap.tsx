@@ -8,7 +8,7 @@ export function RightMap() {
   const mapContainer = useRef<HTMLDivElement | null>(null)
 
   useEffect(() => {
-    if (!mapContainer.current) return
+    if (!mapContainer.current) {return}
 
     const center: [number, number] = [7.6257, 51.9607]
     const maxBounds: maplibregl.LngLatBoundsLike = [
@@ -32,7 +32,7 @@ export function RightMap() {
       map.addSource(wmsSourceId, {
         type: 'raster',
         tiles: [
-          `https://www.wms.nrw.de/wms/unfallatlas?service=WMS&request=GetMap&version=1.3.0&layers=Unfallorte&styles=&format=image/png&transparent=true&width=256&height=256&crs=EPSG:3857&bbox={bbox-epsg-3857}`,
+          'https://www.wms.nrw.de/wms/unfallatlas?service=WMS&request=GetMap&version=1.3.0&layers=Unfallorte&styles=&format=image/png&transparent=true&width=256&height=256&crs=EPSG:3857&bbox={bbox-epsg-3857}',
         ],
         tileSize: 256,
       })
@@ -67,7 +67,7 @@ export function DynamicZoomMap() {
   const mapContainer = useRef<HTMLDivElement | null>(null)
 
   useEffect(() => {
-    if (!mapContainer.current) return
+    if (!mapContainer.current) {return}
 
     const center: [number, number] = [7.6257, 51.9607]
     const maxBounds: maplibregl.LngLatBoundsLike = [
@@ -147,7 +147,7 @@ export function CombinedLayersMap() {
   const mapContainer = useRef<HTMLDivElement | null>(null)
 
   useEffect(() => {
-    if (!mapContainer.current) return
+    if (!mapContainer.current) {return}
 
     const center: [number, number] = [7.6257, 51.9607]
     const maxBounds: maplibregl.LngLatBoundsLike = [

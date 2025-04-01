@@ -100,7 +100,7 @@ function MapComparison() {
       !afterMapContainer.current ||
       !comparisonContainer.current
     )
-      return
+      {return}
 
     const beforeMap = new maplibregl.Map({
       container: beforeMapContainer.current,
@@ -241,8 +241,8 @@ function MapComparison() {
 
   return (
     <div
-      ref={comparisonContainer}
       className="relative rounded-md"
+      ref={comparisonContainer}
       style={{
         width: '100%',
         height: '500px',
@@ -285,16 +285,16 @@ function MapComparison() {
             <Switch
               defaultChecked={useunfallOrte}
               label="Unfallorte"
-              variant="mobility"
               onCheckedChange={toggleLayer}
+              variant="mobility"
             />
           </div>
           <div className="pointer-events-auto absolute bottom-3 right-3 z-10 flex flex-col items-end space-y-2">
             <div className="mb-3 rounded bg-white bg-opacity-80 p-1 shadow-md">
               <img
-                src={legendUrl}
                 alt="Map Legend"
                 className="h-auto max-w-[150px]"
+                src={legendUrl}
               />
             </div>
           </div>

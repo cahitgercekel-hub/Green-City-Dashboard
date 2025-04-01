@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef, useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import maplibregl from 'maplibre-gl'
 import 'maplibre-gl/dist/maplibre-gl.css'
 import GeoData from './overtaking.json'
@@ -65,7 +65,7 @@ function LeftMap() {
       })
 
       map.current.on('load', () => {
-        if (!map.current) return
+        if (!map.current) {return}
 
         // Add the GeoJSON source
         map.current.addSource('overtaking-data', {

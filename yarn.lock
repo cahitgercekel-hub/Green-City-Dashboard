@@ -612,6 +612,11 @@
   resolved "https://registry.yarnpkg.com/@mapbox/mapbox-gl-supported/-/mapbox-gl-supported-3.0.0.tgz#bebd3d5da3c1fd988011bb79718a39f63f5e16ac"
   integrity sha512-2XghOwu16ZwPJLOFVuIOaLbN0iKMn867evzXFyf0P22dqugezfJwLmdanAgU25ITvz1TvOfVP4jsDImlDJzcWg==
 
+"@mapbox/mapbox-gl-sync-move@^0.3.0":
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/@mapbox/mapbox-gl-sync-move/-/mapbox-gl-sync-move-0.3.1.tgz#0dc0376799c46f121ba3b883a11381d07bc0f1be"
+  integrity sha512-Y3PMyj0m/TBJa9OkQnO2TiVDu8sFUPmLF7q/THUHrD/g42qrURpMJJ4kufq4sR60YFMwZdCGBshrbgK5v2xXWw==
+
 "@mapbox/point-geometry@0.1.0", "@mapbox/point-geometry@^0.1.0", "@mapbox/point-geometry@~0.1.0":
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/@mapbox/point-geometry/-/point-geometry-0.1.0.tgz#8a83f9335c7860effa2eeeca254332aa0aeed8f2"
@@ -638,6 +643,13 @@
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/@mapbox/whoots-js/-/whoots-js-3.1.0.tgz#497c67a1cef50d1a2459ba60f315e448d2ad87fe"
   integrity sha512-Es6WcD0nO5l+2BOQS4uLfNPYQaNDfbot3X1XUoloz+x0mPDS3eeORZJl06HXjwBG1fOGwCRnzK88LMdxKRrd6Q==
+
+"@maplibre/maplibre-gl-compare@^0.5.0":
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/@maplibre/maplibre-gl-compare/-/maplibre-gl-compare-0.5.0.tgz#040cba6925f7bc1b301b10d47499c3b31ac30ade"
+  integrity sha512-tJ5MtbMXhVstu85NSArkvZFewV0i19qBOP4TyO6JSNFY0qV3zwGLXxmxalg1QGdi18cmKnmZT86BoLCSS0rEPg==
+  dependencies:
+    "@mapbox/mapbox-gl-sync-move" "^0.3.0"
 
 "@maplibre/maplibre-gl-style-spec@^19.2.1":
   version "19.3.3"

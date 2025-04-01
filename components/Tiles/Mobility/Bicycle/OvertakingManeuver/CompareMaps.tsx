@@ -164,7 +164,7 @@ import '@maplibre/maplibre-gl-compare/dist/maplibre-gl-compare.css'
 // @ts-ignore
 import MaplibreCompare from '@maplibre/maplibre-gl-compare'
 
-const MapComparison: React.FC = () => {
+function MapComparison() {
   const beforeMapContainer = useRef<HTMLDivElement>(null)
   const afterMapContainer = useRef<HTMLDivElement>(null)
   const comparisonContainer = useRef<HTMLDivElement>(null)
@@ -214,8 +214,9 @@ const MapComparison: React.FC = () => {
       !beforeMapContainer.current ||
       !afterMapContainer.current ||
       !comparisonContainer.current
-    )
+    ) {
       return
+    }
 
     // Initialize both maps
     const beforeMap = new maplibregl.Map({
@@ -297,8 +298,8 @@ const MapComparison: React.FC = () => {
 
   return (
     <div
-      ref={comparisonContainer}
       className="relative rounded-md"
+      ref={comparisonContainer}
       style={{
         width: '100%',
         height: '500px',
@@ -326,23 +327,23 @@ const MapComparison: React.FC = () => {
             <Switch
               defaultChecked={useunfallOrte}
               label="UnfallOrte"
-              variant="mobility"
               onCheckedChange={toggleLayer}
+              variant="mobility"
             />
           </div>
 
           <div className="pointer-events-auto absolute bottom-3 right-3 z-10 rounded bg-white bg-opacity-80 p-1 shadow-md">
             <img
-              src={legendUrl}
               alt="Map Legend"
               className="h-auto max-w-[150px]"
+              src={legendUrl}
             />
           </div>
           <div className="pointer-events-auto absolute bottom-3 right-[170px] z-10 rounded bg-black bg-opacity-70 px-2 py-1 text-xs text-white">
             <a
               href="https://unfallatlas.statistikportal.de/"
-              target="_blank"
               rel="noopener noreferrer"
+              target="_blank"
             >
               Map Data © Unfallatlas
             </a>
