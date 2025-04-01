@@ -128,7 +128,7 @@ export default async function IconTile({
             <div className="space-x-2 text-xs">
               <Title
                 as="h7"
-                className="inline"
+                className={`${dataRetrieval ? 'inline' : 'hidden'}`}
                 font="semibold"
                 variant={'primary'}
               >
