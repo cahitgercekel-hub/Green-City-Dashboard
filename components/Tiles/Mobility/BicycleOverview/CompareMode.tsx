@@ -22,6 +22,10 @@ import {
   Sunrise,
   Train,
   Year,
+  Week,
+  MiddlEast,
+  Australia,
+  Vienna,
 } from '@/components/Icons'
 
 type ComparisonEntry = {
@@ -106,7 +110,7 @@ const distanceComparisons: ComparisonEntry[] = [
         <span className="text-mobility">Wien</span>!
       </>
     ),
-    icon: Global,
+    icon: Vienna,
   },
   {
     value: 1000,
@@ -131,17 +135,26 @@ const distanceComparisons: ComparisonEntry[] = [
     icon: MidnightSun,
   },
   {
+    value: 5000,
+    description: (
+      <>
+        So weit ist es von <span className="text-mobility">Wiesbaden</span> bis
+        zum <span className="text-mobility">Nordafrika oder Nahen Osten</span>
+      </>
+    ),
+    icon: MiddlEast,
+  },
+
+  {
     value: 10000,
     description: (
       <>
-        Mehr als ein Viertel des Erdumfangs – eine komplette{' '}
-        <span className="text-mobility">
-          Rhein-Expedition von der Quelle bis zur Mündung
-        </span>{' '}
+        Mehr als ein Viertel des Erdumfangs – das wäre eine Reise von{' '}
+        <span className="text-mobility">Deutschland nach Australien</span>
         und zurück!
       </>
     ),
-    icon: Global,
+    icon: Australia,
   },
   {
     value: 40000,
@@ -269,11 +282,10 @@ const timeComparisons: ComparisonEntry[] = [
     value: 168,
     description: (
       <>
-        So lange, wie eine ganze{' '}
-        <span className="text-mobility">Woche ohne Schlaf</span>!
+        So lange, wie eine ganze <span className="text-mobility">Woche</span>!
       </>
     ),
-    icon: SleepyFace,
+    icon: Week,
   },
   {
     value: 720,
@@ -289,8 +301,8 @@ const timeComparisons: ComparisonEntry[] = [
     value: 8760,
     description: (
       <>
-        So lange, wie das <span className="text-mobility">Jahr 2024</span> in
-        reinen Stunden.
+        So lange, wie das <span className="text-mobility">Jahr</span> in reinen
+        Stunden.
       </>
     ),
     icon: Year,

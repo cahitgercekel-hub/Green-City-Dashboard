@@ -311,13 +311,13 @@ export default function CampaignChart() {
               <div className="flex flex-col gap-4">
                 {seriesVisible.distanz && (
                   <ComparisonItem
-                    comparison={getDistanceComparison(10)}
+                    comparison={getDistanceComparison(5050)}
                     title="Distanz"
                   />
                 )}
                 {seriesVisible.stunden && (
                   <ComparisonItem
-                    comparison={getTimeComparison(72)}
+                    comparison={getTimeComparison(169)}
                     title="Zeit"
                   />
                 )}
