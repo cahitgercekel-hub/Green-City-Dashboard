@@ -1,5 +1,6 @@
 import React from 'react'
 import {
+  Australia,
   BigBoat,
   Boat,
   Calendar,
@@ -10,6 +11,7 @@ import {
   Global,
   HikingBoot,
   Homeoffice,
+  MiddlEast,
   MidnightSun,
   Moon,
   NerobergTram,
@@ -17,15 +19,12 @@ import {
   Planet,
   RomanArchitecture,
   Running,
-  SleepyFace,
   SoccerBall,
   Sunrise,
   Train,
-  Year,
-  Week,
-  MiddlEast,
-  Australia,
   Vienna,
+  Week,
+  Year,
 } from '@/components/Icons'
 
 type ComparisonEntry = {
@@ -139,14 +138,14 @@ const distanceComparisons: ComparisonEntry[] = [
     description: (
       <>
         So weit ist es von <span className="text-mobility">Wiesbaden</span> bis
-        zum <span className="text-mobility">Nordafrika oder Nahen Osten</span>
+        zum <span className="text-mobility">Nahen Osten und zurück</span>
       </>
     ),
     icon: MiddlEast,
   },
 
   {
-    value: 10000,
+    value: 12000,
     description: (
       <>
         Mehr als ein Viertel des Erdumfangs – das wäre eine Reise von{' '}
