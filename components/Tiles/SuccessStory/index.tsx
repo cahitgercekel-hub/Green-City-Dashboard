@@ -1,6 +1,5 @@
 import { Spacer } from '@/components/Elements/Spacer'
 import Title from '@/components/Elements/Title'
-import Image from 'next/image'
 
 import directus, { directusImage } from '@/lib/directus'
 import { readSingleton } from '@directus/sdk'
@@ -110,10 +109,9 @@ export default async function SuccessStoryTile({
 
   const StoryImage = (
     <div className="relative min-h-[20rem] overflow-hidden md:min-h-[40rem] md:w-4/5">
-      <Image
+      <img
         alt={'Image'}
-        className="object-cover object-center transition-all group-hover:scale-105"
-        fill
+        className="w-full object-cover object-center transition-all group-hover:scale-105"
         src={directusImage(image)}
       />
     </div>
