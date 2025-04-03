@@ -14,6 +14,7 @@ import tailwindConfig from '@/tailwind.config'
 import resolveConfig from 'tailwindcss/resolveConfig'
 
 const { theme } = resolveConfig(tailwindConfig)
+const DEBUG_MODE = true
 type ValuesTypes = 'distanz' | 'tracks' | 'stunden' | 'kcal'
 type Campaign = {
   ZEIT: string
@@ -155,14 +156,16 @@ type ComparisonItemProps = {
   title: string
   comparison: ComparisonEntry
 }
+
 function ComparisonItem({ title, comparison }: ComparisonItemProps) {
   const Icon = comparison.icon
 
   return (
     <div className="p-4">
-      <h3 className="text-lg font-normal text-mobility xs:text-2xl lg:text-6xl">
+      <h3 className="text-base font-normal text-mobility xs:text-xl lg:text-4xl">
         {title === 'Distanz' ? comparison.value + 'km' : comparison.value + 'h'}
       </h3>
+
       <div className="mt-3 flex gap-3">
         <div className="w-[70%]">
           <p className="text-base font-extrabold leading-snug xs:text-xl lg:text-4xl">
@@ -170,8 +173,8 @@ function ComparisonItem({ title, comparison }: ComparisonItemProps) {
           </p>
         </div>
 
-        <div className="flex w-[30%] items-center justify-center">
-          <Icon className="h-14 w-14 fill-current text-mobility lg:h-20 lg:w-20" />
+        <div className="w-[30%]">
+          <Icon className="w-[60%] fill-current text-mobility" />
         </div>
       </div>
     </div>
@@ -181,6 +184,7 @@ function ComparisonItem({ title, comparison }: ComparisonItemProps) {
 export default function CampaignChart() {
   const device = useDevice()
   const [mode, setMode] = useState<'digramm' | 'compare'>('digramm')
+  const [debugValue, setDebugValue] = useState(0)
   const [seriesVisible, setSeriesVisible] = useState<
     Record<ValuesTypes, boolean>
   >({
@@ -309,15 +313,25 @@ export default function CampaignChart() {
               </div>
             ) : (
               <div className="flex flex-col gap-4">
+                {DEBUG_MODE && (
+                  <input
+                    className="mt-2 w-full accent-mobility"
+                    max={seriesVisible.distanz ? 50000 : 720}
+                    min="0"
+                    onChange={e => setDebugValue(Number(e.target.value))}
+                    type="range"
+                    value={debugValue}
+                  />
+                )}
                 {seriesVisible.distanz && (
                   <ComparisonItem
-                    comparison={getDistanceComparison(5050)}
+                    comparison={getDistanceComparison(debugValue)}
                     title="Distanz"
                   />
                 )}
                 {seriesVisible.stunden && (
                   <ComparisonItem
-                    comparison={getTimeComparison(169)}
+                    comparison={getTimeComparison(debugValue)}
                     title="Zeit"
                   />
                 )}
