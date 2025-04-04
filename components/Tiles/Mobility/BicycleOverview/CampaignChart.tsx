@@ -166,15 +166,15 @@ function ComparisonItem({ title, comparison }: ComparisonItemProps) {
         {title === 'Distanz' ? comparison.value + 'km' : comparison.value + 'h'}
       </h3>
 
-      <div className="mt-3 flex gap-3">
-        <div className="w-[70%]">
+      <div className="mt-3 flex gap-5">
+        <div className=" ">
           <p className="text-base font-extrabold leading-snug xs:text-xl lg:text-4xl">
             {comparison.description}
           </p>
         </div>
 
-        <div className="w-[30%]">
-          <Icon className="w-[60%] fill-current text-mobility" />
+        <div className="flex">
+          <Icon className="h-20 w-20 items-center justify-center fill-current text-mobility lg:h-24 lg:w-24" />
         </div>
       </div>
     </div>
