@@ -50,12 +50,10 @@ export type IconTileProps = VariantProps<typeof iconTileTitleStyle> &
  */
 export default async function IconTile({
   children,
-  live,
   title,
   subtitle,
   icon,
   variant,
-  dataRetrieval,
   dataSource,
   embedId,
   rightAlignedExtra,
@@ -126,14 +124,6 @@ export default async function IconTile({
         <TileSplitView.Left>
           <div className="flex flex-wrap justify-between">
             <div className="space-x-2 text-xs">
-              <Title
-                as="h7"
-                className={`${dataRetrieval ? 'inline' : 'hidden'}`}
-                font="semibold"
-                variant={'primary'}
-              >
-                Datenstand: {dataRetrieval ?? (live ? 'live' : 'undefined')}
-              </Title>
               <Title
                 as="h7"
                 className="inline"
