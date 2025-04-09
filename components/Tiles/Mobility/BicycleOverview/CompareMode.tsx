@@ -284,7 +284,7 @@ const timeComparisons: ComparisonEntry[] = [
         So lange, wie eine ganze <span className="text-mobility">Woche</span>!
       </>
     ),
-    icon: Week,
+    icon: Calendar,
   },
   {
     value: 720,
@@ -294,7 +294,7 @@ const timeComparisons: ComparisonEntry[] = [
         <span className="text-mobility">Monat von Neumond zu Neumond</span>.
       </>
     ),
-    icon: Calendar,
+    icon: Moon,
   },
   {
     value: 8760,
