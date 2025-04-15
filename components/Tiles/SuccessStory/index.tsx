@@ -111,7 +111,7 @@ export default async function SuccessStoryTile({
     <div className="relative min-h-[20rem] overflow-hidden md:min-h-[40rem] md:w-4/5">
       <img
         alt={'Image'}
-        className="w-full object-cover object-center transition-all group-hover:scale-105"
+        className="h-full w-full object-cover object-center transition-all group-hover:scale-105"
         src={directusImage(image)}
       />
     </div>
