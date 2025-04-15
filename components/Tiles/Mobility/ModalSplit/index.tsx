@@ -11,7 +11,7 @@ export default async function ModalSplitTile() {
 
   return (
     <MobilityTile
-      dataSource="SrV 2018, SrV 2013, KONTIV 2002, KONTIV 1990 (mit Vergleichszahlen von 1982 und 1976), Amt für Statistik und Stadtforschung"
+      dataSource="SrV 2023, SrV 2018, SrV 2013, KONTIV 2002, KONTIV 1990 (mit Vergleichszahlen von 1982 und 1976), Amt für Statistik und Stadtforschung"
       embedId="mobility-modalSplit"
       subtitle="Verkehrsmittelwahl der Wiesbadenerinnen und Wiesbadener"
       title={'Unterwegs'}

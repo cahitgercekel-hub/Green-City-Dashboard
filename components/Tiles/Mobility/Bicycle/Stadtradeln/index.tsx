@@ -12,7 +12,7 @@ export default async function StadtradelnTile() {
   return (
     <MobilityTile
       dataRetrieval={format(new Date(), '01.MM.yyyy')}
-      dataSource="Stadtradeln"
+      dataSource="Klima-Bündnis Services / Stadtradeln"
       embedId="mobility-stadtradeln"
       subtitle="auf der Überholspur"
       title="Stadtradeln"

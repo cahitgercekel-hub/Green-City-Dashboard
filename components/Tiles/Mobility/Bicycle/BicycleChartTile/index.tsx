@@ -10,7 +10,7 @@ export default async function BicycleChartTile() {
 
   return (
     <MobilityTile
-      dataSource="Eco-Counter"
+      dataSource="NeoSens"
       embedId="mobility-bicycle"
       live
       subtitle="im Stadtgebiet"
