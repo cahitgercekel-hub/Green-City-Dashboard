@@ -16326,5 +16326,21 @@
         "timestamp":"2025-01-01",
         "monthly_temperature":2.81,
         "temperature_deviation":1.8538297872
+    },
+    {
+        "observation_type":"historical",
+        "dwd_station_id":1766.0,
+        "wmo_station_id":null,
+        "timestamp":"2025-02-01",
+        "monthly_temperature":3.35,
+        "temperature_deviation":1.3970212766
+    },
+    {
+        "observation_type":"historical",
+        "dwd_station_id":1766.0,
+        "wmo_station_id":null,
+        "timestamp":"2025-03-01",
+        "monthly_temperature":6.88,
+        "temperature_deviation":2.7678723404
     }
 ]

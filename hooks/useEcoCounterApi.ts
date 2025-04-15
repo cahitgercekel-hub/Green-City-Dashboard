@@ -22,78 +22,126 @@ const stations = [
 
 const fetchBicycleData = async (stationId: string) => {
   const res = await fetch(`api/ecocounter?siteId=${stationId}`)
-
+  if (!res.ok) throw new Error(`Failed to fetch data for station ${stationId}`)
   return res.json()
 }
 
+const fetchNeosensData = async () => {
+  try {
+    const res = await fetch(
+      'https://api.neocount.de/traffic-counts/sensor-data?cuIds=%5B1836%2C%201837%5D',
+    )
+    if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`)
+    return res.json()
+  } catch (error) {
+    console.error('Error fetching counter API data:', error)
+    throw error
+  }
+}
+
+const processNeosensData = (apiData: any, timestamp: Date) => {
+  const date = new Date(timestamp)
+  const day = date.getDate()
+  const month = new Intl.DateTimeFormat('de-DE', { month: 'long' }).format(date)
+  const year = date.getFullYear()
+  const formattedDate = `${day}. ${month} ${year}`
+
+  const result = apiData.flatMap((item: any) => {
+    const labels = item.fullDataDaily.labels.slice(-8, -1)
+    const totalBikes = item.fullDataDaily.datasets.totalBikes.slice(-8, -1)
+
+    return labels.map((label: string, index: number) => ({
+      label,
+      cuId: item.cuId,
+      count: totalBikes[index],
+      name: item.cuId === 1836 ? 'Stresemann-Ring' : 'Bertramstraße',
+    }))
+  })
+
+  return result
+    .filter((item: any) => item.label === formattedDate)
+    .map((item: any) => ({
+      id: item.cuId.toString(),
+      name: item.name,
+      count: item.count,
+    }))
+}
+
 export function useEcoCounter(timestamp: Date) {
-  timestamp.setUTCHours(0)
-  timestamp.setUTCMinutes(0)
-  timestamp.setUTCSeconds(0)
-  timestamp.setUTCMilliseconds(0)
   const [data, setData] = useState<BicycleAPIResponse[]>([])
   const [filteredData, setFilteredData] = useState<BicycleStationData[]>([])
   const [totalMin, setTotalMin] = useState(0)
   const [totalMax, setTotalMax] = useState(0)
+  const [neosensData, setNeosensData] = useState<any>(null)
 
+  const normalizedTimestamp = new Date(timestamp)
+  normalizedTimestamp.setUTCHours(0, 0, 0, 0)
   useEffect(() => {
-    const fetchData = async () => {
-      const results = await Promise.all(
-        stations.map(async ({ name, id }) => ({
-          name,
-          id,
-          data: await fetchBicycleData(id),
-        })),
-      )
-      setData(results)
+    const fetchAllData = async () => {
+      try {
+        const bicycleResults = await Promise.all(
+          stations.map(async ({ name, id }) => ({
+            name,
+            id,
+            data: await fetchBicycleData(id),
+          })),
+        )
+        setData(bicycleResults)
+
+        const counterData = await fetchNeosensData()
+        setNeosensData(counterData)
+      } catch (error) {
+        console.error('Error fetching data:', error)
+      }
     }
 
-    fetchData()
+    fetchAllData()
   }, [])
 
   useEffect(() => {
-    if (!data.length) {
-      return
-    }
+    if (!data.length || !neosensData) return
+
     const normalizeDate = (d: Date) =>
       new Date(d.getFullYear(), d.getMonth(), d.getDate()).getTime()
-    const filtered = data.map(({ id, name, data }) => ({
-      id,
-      name,
-      count:
-        data.find(
-          ({ date }) =>
-            normalizeDate(new Date(date)) === normalizeDate(timestamp),
-        )?.counts || 0,
-    }))
 
-    setFilteredData(filtered)
-  }, [timestamp, data])
-  useEffect(() => {
-    if (!data) {
-      return
+    try {
+      // Process bicycle data
+      const bicycleData = data.map(({ id, name, data }) => ({
+        id,
+        name,
+        count:
+          data.find(
+            ({ date }) =>
+              normalizeDate(new Date(date)) ===
+              normalizeDate(normalizedTimestamp),
+          )?.counts || 0,
+      }))
+
+      const counterData = processNeosensData(neosensData, timestamp)
+
+      setFilteredData([...counterData, ...bicycleData])
+    } catch (error) {
+      console.error('Error processing data:', error)
     }
+  }, [data, timestamp])
 
-    const min = Math.min(
-      ...data.map(e =>
-        Math.min(...e.data.map(x => x.counts).filter(y => y !== null)),
-      ),
+  useEffect(() => {
+    if (!data.length) return
+
+    const counts = data.flatMap(e =>
+      e.data.map(x => x.counts).filter(y => y !== null),
     )
 
-    const max = Math.max(
-      ...data.map(e =>
-        Math.max(...e.data.map(x => x.counts).filter(y => y !== null)),
-      ),
-    )
-
-    setTotalMin(min)
-    setTotalMax(max)
+    if (counts.length > 0) {
+      setTotalMin(Math.min(...counts))
+      setTotalMax(Math.max(...counts))
+    }
   }, [data])
 
   return {
     min: totalMin,
     max: totalMax,
     data: filteredData,
-    stationCount: stations.length,
+    stationCount: 4,
   }
 }
