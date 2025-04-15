@@ -7,6 +7,8 @@ import { animated, useTransition } from '@react-spring/web'
 import { useState } from 'react'
 import { BaseTile } from '../Base/BaseTile'
 import SurveyAnswer, { SurveyAnswerProps } from './Answer'
+import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
 
 export type SurveyTileProps = {
   title: string
@@ -53,6 +55,7 @@ export default function SurveyTile({
           <span className="font-semibold">Befragungsergebnisse:</span> {title}
         </Title>
         <Spacer />
+
         <div className="relative h-fit">
           <div className="opacity-0">
             <Title as="h3" variant={'inverse'}>
@@ -77,14 +80,33 @@ export default function SurveyTile({
         </div>
       </div>
       <Spacer />
-      {/* <div className="flex space-x-2 text-xs">
-        <Title as="h7" font="semibold" variant={'inverse'}>
+      <div className="flex space-x-2 text-xs">
+        <ReactMarkdown
+          components={{
+            p: props => (
+              <Title as="h7" font="semibold" variant={'inverse'} {...props} />
+            ),
+
+            a: props => (
+              <a
+                className="underline"
+                {...props}
+                rel="noopener noreferrer"
+                target="_blank"
+              />
+            ),
+          }}
+          remarkPlugins={[remarkGfm]}
+        >
+          {dataSource}
+        </ReactMarkdown>
+        {/* <Title as="h7" font="semibold" variant={'inverse'}>
           Datenstand: {new Date(dataRetrieval).getFullYear()}
         </Title>
         <Title as="h7" font="normal" variant={'inverse'}>
           Quelle: {dataSource}
-        </Title>
-      </div> */}
+        </Title> */}
+      </div>
     </BaseTile>
   )
 }
