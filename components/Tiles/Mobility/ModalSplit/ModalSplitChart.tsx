@@ -114,7 +114,7 @@ const availableModes = (data: IModalSplitData[]) => {
 }
 
 export default function ModalSplitChart() {
-  const [yearIndex, setYearIndex] = useState<number>(1)
+  const [yearIndex, setYearIndex] = useState<number>(data.length - 1)
   const [mode, setMode] = useState<'wege' | 'verkehrsleistung'>(
     availableModes(data)[0],
   )
