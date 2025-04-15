@@ -26,11 +26,18 @@ const fetchBicycleData = async (stationId: string) => {
   return res.json()
 }
 
+const neosens = [
+  { name: 'Stresemann-Ring', id: 1836 },
+  { name: 'Bertramstraße', id: 1837 },
+]
+
 const fetchNeosensData = async () => {
   try {
-    const res = await fetch(
-      'https://api.neocount.de/traffic-counts/sensor-data?cuIds=%5B1836%2C%201837%5D',
-    )
+    const cuIds = neosens.map(sensor => sensor.id)
+    const cuIdsParam = encodeURIComponent(JSON.stringify(cuIds))
+    const url = `https://api.neocount.de/traffic-counts/sensor-data?cuIds=${cuIdsParam}`
+
+    const res = await fetch(url)
     if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`)
     return res.json()
   } catch (error) {
@@ -54,7 +61,7 @@ const processNeosensData = (apiData: any, timestamp: Date) => {
       label,
       cuId: item.cuId,
       count: totalBikes[index],
-      name: item.cuId === 1836 ? 'Stresemann-Ring' : 'Bertramstraße',
+      name: neosens.find(sensor => sensor.id === item.cuId)?.name || '',
     }))
   })
 
@@ -105,7 +112,6 @@ export function useEcoCounter(timestamp: Date) {
       new Date(d.getFullYear(), d.getMonth(), d.getDate()).getTime()
 
     try {
-      // Process bicycle data
       const bicycleData = data.map(({ id, name, data }) => ({
         id,
         name,
@@ -142,6 +148,6 @@ export function useEcoCounter(timestamp: Date) {
     min: totalMin,
     max: totalMax,
     data: filteredData,
-    stationCount: 4,
+    stationCount: stations.length + neosens.length,
   }
 }
