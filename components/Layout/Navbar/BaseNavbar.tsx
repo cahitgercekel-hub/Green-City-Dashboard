@@ -10,13 +10,11 @@ import {
 } from '@/components/Icons/Misc'
 import directus, { directusImage, Theme } from '@/lib/directus'
 import { readSingleton } from '@directus/sdk'
-import { Bars3Icon } from '@heroicons/react/24/outline'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
-import Collapsible from '../../Elements/Collapsible'
 import Container from '../Container'
 import StairStepBackground from '../StairStepBackground'
-import LinkComponent, { LinkProps } from './LinkComponent'
+import { LinkProps } from './LinkComponent'
 
 const links: LinkProps[] = [
   {
@@ -84,7 +82,7 @@ export default function BaseNavbar({
       </div>
       <StairStepBackground variant={variant}>
         <Container>
-          <div className="xl:hidden">
+          {/* <div className="xl:hidden">
             <Collapsible
               trigger={
                 <div className="w-fit rounded-lg border-2 border-primary p-2 md:p-4">
@@ -99,7 +97,7 @@ export default function BaseNavbar({
               </div>
             </Collapsible>
             <Spacer size={'sm'} />
-          </div>
+          </div> */}
           <div className="flex flex-col justify-between gap-4">
             <Link href={'/'}>
               <Title
