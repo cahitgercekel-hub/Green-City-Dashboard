@@ -22,7 +22,9 @@ const stations = [
 
 const fetchBicycleData = async (stationId: string) => {
   const res = await fetch(`api/ecocounter?siteId=${stationId}`)
-  if (!res.ok) throw new Error(`Failed to fetch data for station ${stationId}`)
+  if (!res.ok) {
+    throw new Error(`Failed to fetch data for station ${stationId}`)
+  }
   return res.json()
 }
 
@@ -38,7 +40,9 @@ const fetchNeosensData = async () => {
     const url = `https://api.neocount.de/traffic-counts/sensor-data?cuIds=${cuIdsParam}`
 
     const res = await fetch(url)
-    if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`)
+    if (!res.ok) {
+      throw new Error(`HTTP error! status: ${res.status}`)
+    }
     return res.json()
   } catch (error) {
     console.error('Error fetching counter API data:', error)
@@ -74,6 +78,9 @@ const processNeosensData = (apiData: any, timestamp: Date) => {
     }))
 }
 
+const normalizeDate = (d: Date) =>
+  new Date(d.getFullYear(), d.getMonth(), d.getDate()).getTime()
+
 export function useEcoCounter(timestamp: Date) {
   const [data, setData] = useState<BicycleAPIResponse[]>([])
   const [filteredData, setFilteredData] = useState<BicycleStationData[]>([])
@@ -83,6 +90,7 @@ export function useEcoCounter(timestamp: Date) {
 
   const normalizedTimestamp = new Date(timestamp)
   normalizedTimestamp.setUTCHours(0, 0, 0, 0)
+
   useEffect(() => {
     const fetchAllData = async () => {
       try {
@@ -93,10 +101,26 @@ export function useEcoCounter(timestamp: Date) {
             data: await fetchBicycleData(id),
           })),
         )
+
         setData(bicycleResults)
+
+        const bicycleData = bicycleResults.map(({ id, name, data }) => ({
+          id,
+          name,
+          count:
+            data.find(
+              // @ts-ignore
+              ({ date }) =>
+                normalizeDate(new Date(date)) ===
+                normalizeDate(normalizedTimestamp),
+            )?.counts || 0,
+        }))
 
         const counterData = await fetchNeosensData()
         setNeosensData(counterData)
+
+        const processedData = processNeosensData(counterData, timestamp)
+        setFilteredData([...processedData, ...bicycleData])
       } catch (error) {
         console.error('Error fetching data:', error)
       }
@@ -106,10 +130,9 @@ export function useEcoCounter(timestamp: Date) {
   }, [])
 
   useEffect(() => {
-    if (!data.length || !neosensData) return
-
-    const normalizeDate = (d: Date) =>
-      new Date(d.getFullYear(), d.getMonth(), d.getDate()).getTime()
+    if (!data.length || !neosensData) {
+      return
+    }
 
     try {
       const bicycleData = data.map(({ id, name, data }) => ({
@@ -132,7 +155,9 @@ export function useEcoCounter(timestamp: Date) {
   }, [data, timestamp])
 
   useEffect(() => {
-    if (!data.length) return
+    if (!data.length) {
+      return
+    }
 
     const counts = data.flatMap(e =>
       e.data.map(x => x.counts).filter(y => y !== null),
@@ -147,7 +172,7 @@ export function useEcoCounter(timestamp: Date) {
   return {
     min: totalMin,
     max: totalMax,
-    data: filteredData,
+    data: filteredData.length ? filteredData : null,
     stationCount: stations.length + neosens.length,
   }
 }
