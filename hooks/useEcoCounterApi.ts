@@ -1,6 +1,8 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
+import { format } from 'date-fns'
+import { de } from 'date-fns/locale'
 
-type BicycleAPIResponse = {
+type EcoCounterResponse = {
   id: string
   name: string
   data: {
@@ -9,18 +11,50 @@ type BicycleAPIResponse = {
   }[]
 }
 
-type BicycleStationData = {
-  count: number
+export interface NeoSenseResponse {
+  cuId: number
+  dailyTotalTraffic: number
+  yearlyTotalPedestrian: number
+  yearlyTotalBike: number
+  fullDataMonthly: FullData
+  fullDataDaily: FullData
+}
+
+interface FullData {
+  labels: string[]
+  datasets: {
+    totalPedestrians: number[]
+    totalBikes: number[]
+  }
+}
+
+interface Station {
   id: string
   name: string
 }
 
-const stations = [
+interface Result {
+  id: string
+  name: string
+  count: number
+}
+
+const stations: Station[] = [
   { name: 'MZ-Kastel, Rheinufer', id: '300023897' },
   { name: 'Erbenheim / Kalkhofen', id: '300022664' },
 ]
 
-const fetchBicycleData = async (stationId: string) => {
+const neosens: Station[] = [
+  { name: 'Stresemann-Ring', id: '1836' },
+  { name: 'Bertramstraße', id: '1837' },
+]
+
+const normalizeDate = (d: Date) =>
+  new Date(d.getFullYear(), d.getMonth(), d.getDate()).getTime()
+
+const fetchBicycleData = async (
+  stationId: string,
+): Promise<EcoCounterResponse['data']> => {
   const res = await fetch(`api/ecocounter?siteId=${stationId}`)
   if (!res.ok) {
     throw new Error(`Failed to fetch data for station ${stationId}`)
@@ -28,151 +62,95 @@ const fetchBicycleData = async (stationId: string) => {
   return res.json()
 }
 
-const neosens = [
-  { name: 'Stresemann-Ring', id: 1836 },
-  { name: 'Bertramstraße', id: 1837 },
-]
-
-const fetchNeosensData = async () => {
-  try {
-    const cuIds = neosens.map(sensor => sensor.id)
-    const cuIdsParam = encodeURIComponent(JSON.stringify(cuIds))
-    const url = `https://api.neocount.de/traffic-counts/sensor-data?cuIds=${cuIdsParam}`
-
-    const res = await fetch(url)
-    if (!res.ok) {
-      throw new Error(`HTTP error! status: ${res.status}`)
-    }
-    return res.json()
-  } catch (error) {
-    console.error('Error fetching counter API data:', error)
-    throw error
+const fetchNeosensData = async (): Promise<NeoSenseResponse[]> => {
+  const cuIdsParam = encodeURIComponent(
+    JSON.stringify(neosens.map(s => Number(s.id))),
+  )
+  const url = `https://api.neocount.de/traffic-counts/sensor-data?cuIds=${cuIdsParam}`
+  const res = await fetch(url)
+  if (!res.ok) {
+    throw new Error('Failed to fetch Neosens data')
   }
+  return res.json()
 }
 
-const processNeosensData = (apiData: any, timestamp: Date) => {
-  const date = new Date(timestamp)
-  const day = date.getDate()
-  const month = new Intl.DateTimeFormat('de-DE', { month: 'long' }).format(date)
-  const year = date.getFullYear()
-  const formattedDate = `${day}. ${month} ${year}`
+const processNeosensData = (
+  data: NeoSenseResponse[],
+  timestamp: Date,
+): Result[] => {
+  const formattedDate = format(timestamp, 'd. MMMM yyyy', { locale: de })
 
-  const result = apiData.flatMap((item: any) => {
-    const labels = item.fullDataDaily.labels.slice(-8, -1)
-    const totalBikes = item.fullDataDaily.datasets.totalBikes.slice(-8, -1)
-
-    return labels.map((label: string, index: number) => ({
-      label,
-      cuId: item.cuId,
-      count: totalBikes[index],
-      name: neosens.find(sensor => sensor.id === item.cuId)?.name || '',
-    }))
-  })
-
-  return result
-    .filter((item: any) => item.label === formattedDate)
-    .map((item: any) => ({
-      id: item.cuId.toString(),
-      name: item.name,
-      count: item.count,
-    }))
+  return data
+    .flatMap(sensor => {
+      const { labels, datasets } = sensor.fullDataDaily
+      return labels.map((label, index) => ({
+        label,
+        count: datasets.totalBikes[index],
+        id: sensor.cuId.toString(),
+        name: neosens.find(s => s.id === sensor.cuId.toString())?.name ?? '',
+      }))
+    })
+    .filter(d => d.label === formattedDate)
 }
-
-const normalizeDate = (d: Date) =>
-  new Date(d.getFullYear(), d.getMonth(), d.getDate()).getTime()
 
 export function useEcoCounter(timestamp: Date) {
-  const [data, setData] = useState<BicycleAPIResponse[]>([])
-  const [filteredData, setFilteredData] = useState<BicycleStationData[]>([])
-  const [totalMin, setTotalMin] = useState(0)
-  const [totalMax, setTotalMax] = useState(0)
-  const [neosensData, setNeosensData] = useState<any>(null)
-
-  const normalizedTimestamp = new Date(timestamp)
-  normalizedTimestamp.setUTCHours(0, 0, 0, 0)
+  const [bicycleData, setBicycleData] = useState<EcoCounterResponse[]>([])
+  const [neosensData, setNeosensData] = useState<NeoSenseResponse[]>([])
 
   useEffect(() => {
-    const fetchAllData = async () => {
+    const fetchAll = async () => {
       try {
-        const bicycleResults = await Promise.all(
-          stations.map(async ({ name, id }) => ({
-            name,
+        const bikes = await Promise.all(
+          stations.map(async ({ id, name }) => ({
             id,
+            name,
             data: await fetchBicycleData(id),
           })),
         )
+        setBicycleData(bikes)
 
-        setData(bicycleResults)
-
-        const bicycleData = bicycleResults.map(({ id, name, data }) => ({
-          id,
-          name,
-          count:
-            data.find(
-              // @ts-ignore
-              ({ date }) =>
-                normalizeDate(new Date(date)) ===
-                normalizeDate(normalizedTimestamp),
-            )?.counts || 0,
-        }))
-
-        const counterData = await fetchNeosensData()
-        setNeosensData(counterData)
-
-        const processedData = processNeosensData(counterData, timestamp)
-        setFilteredData([...processedData, ...bicycleData])
-      } catch (error) {
-        console.error('Error fetching data:', error)
+        const neosens = await fetchNeosensData()
+        setNeosensData(neosens)
+      } catch (err) {
+        console.error('Error fetching eco data:', err)
       }
     }
 
-    fetchAllData()
+    fetchAll()
   }, [])
 
-  useEffect(() => {
-    if (!data.length || !neosensData) {
-      return
+  const filteredData = useMemo(() => {
+    if (!bicycleData.length || !neosensData.length) {
+      return null
     }
 
-    try {
-      const bicycleData = data.map(({ id, name, data }) => ({
-        id,
-        name,
-        count:
-          data.find(
-            ({ date }) =>
-              normalizeDate(new Date(date)) ===
-              normalizeDate(normalizedTimestamp),
-          )?.counts || 0,
-      }))
+    const normalized = normalizeDate(timestamp)
 
-      const counterData = processNeosensData(neosensData, timestamp)
+    const bikes: Result[] = bicycleData.map(({ id, name, data }) => ({
+      id,
+      name,
+      count:
+        data.find(d => normalizeDate(new Date(d.date)) === normalized)
+          ?.counts || 0,
+    }))
 
-      setFilteredData([...counterData, ...bicycleData])
-    } catch (error) {
-      console.error('Error processing data:', error)
-    }
-  }, [data, timestamp])
+    const neosens: Result[] = processNeosensData(neosensData, timestamp)
 
-  useEffect(() => {
-    if (!data.length) {
-      return
-    }
+    return [...neosens, ...bikes]
+  }, [bicycleData, neosensData, timestamp])
 
-    const counts = data.flatMap(e =>
-      e.data.map(x => x.counts).filter(y => y !== null),
+  const [min, max] = useMemo(() => {
+    const counts = bicycleData.flatMap(({ data }) =>
+      data.map(d => d.counts).filter(Boolean),
     )
-
-    if (counts.length > 0) {
-      setTotalMin(Math.min(...counts))
-      setTotalMax(Math.max(...counts))
-    }
-  }, [data])
+    return counts.length ? [Math.min(...counts), Math.max(...counts)] : [0, 0]
+  }, [bicycleData])
 
   return {
-    min: totalMin,
-    max: totalMax,
-    data: filteredData.length ? filteredData : null,
+    loading: !filteredData,
+    min,
+    max,
+    data: filteredData,
     stationCount: stations.length + neosens.length,
   }
 }

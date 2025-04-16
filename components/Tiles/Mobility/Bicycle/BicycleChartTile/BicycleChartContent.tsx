@@ -15,9 +15,7 @@ export default function BicycleChartContent() {
 
   const [date, setDate] = useState<Date>(lastDays[lastDays.length - 1])
 
-  const { data, min, max, stationCount } = useEcoCounter(date)
-
-  const loading = !data
+  const { data, min, max, stationCount, loading } = useEcoCounter(date)
 
   return (
     <>
