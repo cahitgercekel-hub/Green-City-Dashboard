@@ -1,13 +1,13 @@
 import Title from '@/components/Elements/Title'
 import Markdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
+import directus from '@/lib/directus'
+import { readSingleton } from '@directus/sdk'
 
 import rehypeExternalLinks from 'rehype-external-links'
 
-// @ts-ignore
-import impressumText from './impressum.md'
-
-export default function Impressum() {
+export default async function Impressum() {
+  const impressum = await directus.request(readSingleton('impressum'))
   return (
     <main className="mx-auto max-w-[1136px]">
       <Markdown
@@ -39,7 +39,7 @@ export default function Impressum() {
         ]}
         remarkPlugins={[remarkGfm]}
       >
-        {impressumText}
+        {impressum.impressum}
       </Markdown>
     </main>
   )
