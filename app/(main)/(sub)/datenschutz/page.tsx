@@ -1,13 +1,13 @@
 import Title from '@/components/Elements/Title'
-import Script from 'next/script'
 import Markdown from 'react-markdown'
 import rehypeExternalLinks from 'rehype-external-links'
 import remarkGfm from 'remark-gfm'
+import { readSingleton } from '@directus/sdk'
+import directus from '@/lib/directus'
 
-// @ts-ignore
-import datenschutzText from './datenschutz.md'
+export default async function Datenschutz() {
+  const datenschutz = await directus.request(readSingleton('datenschutz'))
 
-export default function Datenschutz() {
   return (
     <main className="mx-auto max-w-[1136px]">
       <Markdown
@@ -44,14 +44,8 @@ export default function Datenschutz() {
         ]}
         remarkPlugins={[remarkGfm]}
       >
-        {datenschutzText}
+        {datenschutz.datenschutz}
       </Markdown>
-
-      <Title as={'h3'} className="mb-2" variant={'primary'}>
-        Matomo Opt Out
-      </Title>
-      <div id="matomo-opt-out"></div>
-      <Script src="https://internet-webanalyse.stadt-muenster.de/index.php?module=CoreAdminHome&action=optOutJS&divId=matomo-opt-out&language=auto&showIntro=1" />
     </main>
   )
 }
