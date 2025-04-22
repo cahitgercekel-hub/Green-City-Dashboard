@@ -1,5 +1,4 @@
 import Title from '@/components/Elements/Title'
-import Script from 'next/script'
 import Markdown from 'react-markdown'
 import rehypeExternalLinks from 'rehype-external-links'
 import remarkGfm from 'remark-gfm'
@@ -46,12 +45,6 @@ export default function Datenschutz() {
       >
         {datenschutzText}
       </Markdown>
-
-      <Title as={'h3'} className="mb-2" variant={'primary'}>
-        Matomo Opt Out
-      </Title>
-      <div id="matomo-opt-out"></div>
-      <Script src="https://internet-webanalyse.stadt-muenster.de/index.php?module=CoreAdminHome&action=optOutJS&divId=matomo-opt-out&language=auto&showIntro=1" />
     </main>
   )
 }

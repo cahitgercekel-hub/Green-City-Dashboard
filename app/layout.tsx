@@ -5,7 +5,6 @@ import { Viewport } from 'next'
 import { Inter, Lexend, Lora } from 'next/font/google'
 import Script from 'next/script'
 import Cookies from './Cookies'
-import Matomo from './Matomo'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 const lexend = Lexend({
@@ -96,7 +95,6 @@ export default async function RootLayout({
         {children}
         <Cookies />
       </body>
-      <Matomo />
       <Script
         async
         src="https://www.stadt-muenster.de/ms/js/iframeResizer.contentWindow.min.js"
