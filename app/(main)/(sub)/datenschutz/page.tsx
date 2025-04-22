@@ -49,3 +49,5 @@ export default async function Datenschutz() {
     </main>
   )
 }
+
+export const revalidate = 10
