@@ -44,3 +44,5 @@ export default async function Impressum() {
     </main>
   )
 }
+
+export const revalidate = 10
