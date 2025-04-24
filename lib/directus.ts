@@ -79,7 +79,7 @@ export type Survey = {
   status: DirectusStatus
   title: string
   question: string
-  answer_percent: number
+  answer_value: number
   answer_text: string
   category: string
   dataSource: string
