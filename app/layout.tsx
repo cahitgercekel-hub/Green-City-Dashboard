@@ -93,7 +93,7 @@ export default async function RootLayout({
       <head />
       <body style={style}>
         {children}
-        <Cookies />
+        {/* <Cookies /> */}
       </body>
       <Script
         async
