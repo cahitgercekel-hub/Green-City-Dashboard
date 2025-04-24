@@ -84,6 +84,7 @@ export type Survey = {
   category: string
   dataSource: string
   dataRetrieval: Date
+  answer_unit: string
 }
 
 export type Theme = {

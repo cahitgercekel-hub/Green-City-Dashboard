@@ -12,6 +12,7 @@ export const getSurveyData = async (surveyID: string) => {
       answer: {
         text: data?.answer_text ?? '',
         percent: data?.answer_percent ?? 0,
+        unit: data?.answer_unit ?? '%',
       },
       question: data?.question ?? '',
       dataSource: data?.dataSource ?? '',
