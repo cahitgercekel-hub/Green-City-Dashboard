@@ -2,11 +2,12 @@ import Title from '@/components/Elements/Title'
 import Markdown from 'react-markdown'
 import rehypeExternalLinks from 'rehype-external-links'
 import remarkGfm from 'remark-gfm'
+import { readSingleton } from '@directus/sdk'
+import directus from '@/lib/directus'
 
-// @ts-ignore
-import datenschutzText from './datenschutz.md'
+export default async function Datenschutz() {
+  const datenschutz = await directus.request(readSingleton('datenschutz'))
 
-export default function Datenschutz() {
   return (
     <main className="mx-auto max-w-[1136px]">
       <Markdown
@@ -43,8 +44,10 @@ export default function Datenschutz() {
         ]}
         remarkPlugins={[remarkGfm]}
       >
-        {datenschutzText}
+        {datenschutz.datenschutz}
       </Markdown>
     </main>
   )
 }
+
+export const revalidate = 10

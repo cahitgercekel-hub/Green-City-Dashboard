@@ -10,6 +10,7 @@ export const tileCollectionName = 'tiles'
 export const surveyCollectionName = 'survey'
 export const successStoriesCollectionName = 'successStory'
 export const themeCollectionName = 'theme'
+export const datenschutzCollectionName = 'datenschutz'
 
 export type DirectusStatus = 'draft' | 'archived' | 'published'
 
@@ -117,6 +118,11 @@ export type Theme = {
   success_stories_title: string
 }
 
+export type Datenschutz = {
+  id: string
+  datenschutz: string
+}
+
 export type Section = {
   title: string
   tiles: CollectionTile[]
@@ -130,6 +136,7 @@ interface DirectusSchema {
   survey: Survey[]
   successStory: SuccessStory[]
   sections: Section[]
+  datenschutz: Datenschutz
 }
 
 // const directus = new Directus<DirectusCollection>(directusUrl)
