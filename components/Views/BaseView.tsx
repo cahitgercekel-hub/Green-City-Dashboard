@@ -43,7 +43,7 @@ export default async function BaseView({
             <SurveyTile
               answer={{
                 text: survey.answer_text,
-                percent: survey.answer_percent,
+                percent: survey.answer_value,
               }}
               dataRetrieval={survey.dataRetrieval}
               dataSource={survey.dataSource}
