@@ -32,7 +32,7 @@ export default function EmbedOverlay({
       <div className="flex h-full w-full flex-1 flex-col">
         <div className="grid grid-flow-col grid-cols-3 grid-rows-2 gap-8">
           <div className="col-span-2 row-span-1">
-            <Title as="h3" variant={'secondary'}>
+            <Title as="h3" variant={'inverse'}>
               Diese Kachel auf Ihre Website einbetten
             </Title>
           </div>
