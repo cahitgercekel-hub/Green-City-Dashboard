@@ -58,13 +58,23 @@ export default function SurveyTile({
 
         <div className="relative h-fit">
           <div className="opacity-0">
-            <Title as="h3" variant={'inverse'}>
-              {question}
-            </Title>
+            {showAnswer ? (
+              <SurveyAnswer {...answer} />
+            ) : (
+              <Title as="h3" variant={'inverse'}>
+                {question}
+              </Title>
+            )}
           </div>
+
           {transitions((styles, renderAnswer) =>
             renderAnswer ? (
-              <SurveyAnswer {...answer} {...styles} />
+              <animated.div
+                className="absolute left-0 top-0 h-full w-full"
+                style={styles}
+              >
+                <SurveyAnswer {...answer} {...styles} />
+              </animated.div>
             ) : (
               // @ts-ignore
               <animated.div

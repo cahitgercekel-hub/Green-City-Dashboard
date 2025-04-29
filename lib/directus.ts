@@ -10,6 +10,8 @@ export const tileCollectionName = 'tiles'
 export const surveyCollectionName = 'survey'
 export const successStoriesCollectionName = 'successStory'
 export const themeCollectionName = 'theme'
+export const impressumCollectionName = 'impressum'
+export const datenschutzCollectionName = 'datenschutz'
 
 export type DirectusStatus = 'draft' | 'archived' | 'published'
 
@@ -79,11 +81,12 @@ export type Survey = {
   status: DirectusStatus
   title: string
   question: string
-  answer_percent: number
+  answer_value: number
   answer_text: string
   category: string
   dataSource: string
   dataRetrieval: Date
+  answer_unit: string
 }
 
 export type Theme = {
@@ -116,10 +119,20 @@ export type Theme = {
   success_stories_title: string
 }
 
+export type Datenschutz = {
+  id: string
+  datenschutz: string
+}
+
 export type Section = {
   title: string
   tiles: CollectionTile[]
   icon: string
+}
+
+export type Impressum = {
+  id: string
+  impressum: string
 }
 
 interface DirectusSchema {
@@ -129,6 +142,8 @@ interface DirectusSchema {
   survey: Survey[]
   successStory: SuccessStory[]
   sections: Section[]
+  impressum: Impressum
+  datenschutz: Datenschutz
 }
 
 // const directus = new Directus<DirectusCollection>(directusUrl)

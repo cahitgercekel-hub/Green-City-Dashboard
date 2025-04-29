@@ -8,29 +8,28 @@ import { ComponentPropsWithRef } from 'react'
 export type SurveyAnswerProps = AnimatedProps<ComponentPropsWithRef<'div'>> & {
   percent: number
   text: string
+  unit?: string
 }
 
 export default function SurveyAnswer({
   percent,
   text,
-  ...props
+  unit,
 }: SurveyAnswerProps) {
   return (
-    // @ts-ignore
-    <animated.div className="absolute left-0 top-0 w-full" style={{ ...props }}>
-      <div className="flex w-full flex-col gap-4 md:flex-row">
-        <Title as="h1" className="flex-[2_2_0%] whitespace-nowrap">
-          {typeof percent === 'number' ? (
-            <AnimatedNumber decimals={1}>{percent}</AnimatedNumber>
-          ) : (
-            <span>--</span>
-          )}
-          <span className="font-normal">%</span>
-        </Title>
-        <Title as="h4" className="flex-[3_3_0%]">
-          {text}
-        </Title>
-      </div>
-    </animated.div>
+    <div className="flex w-full flex-col gap-4">
+      <Title as="h1" className="flex-[2_2_0%] whitespace-nowrap">
+        {typeof percent === 'number' ? (
+          <AnimatedNumber decimals={1}>{percent}</AnimatedNumber>
+        ) : (
+          <span>--</span>
+        )}
+        <span className="font-normal">{' ' + unit}</span>
+      </Title>
+
+      <Title as="h4" className="flex-[3_3_0%]">
+        {text}
+      </Title>
+    </div>
   )
 }
