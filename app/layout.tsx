@@ -5,6 +5,7 @@ import { Viewport } from 'next'
 import { Inter, Lexend, Lora } from 'next/font/google'
 import Script from 'next/script'
 import Cookies from './Cookies'
+import { url } from 'inspector'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 const lexend = Lexend({
@@ -24,13 +25,13 @@ export async function generateMetadata() {
   if (!theme) {
     return {
       title: 'Klimadashboard',
-      icons: '/favicon.ico',
+      icons: '/favicon.svg',
     }
   }
 
   return {
     title: theme.title,
-    icons: '/favicon.ico',
+    icons: '/favicon.svg',
   }
 }
 
