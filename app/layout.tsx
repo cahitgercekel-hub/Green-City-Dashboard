@@ -1,11 +1,10 @@
-import directus from '@/lib/directus'
+import directus, { directusImage } from '@/lib/directus'
 import '@/styles/globals.css'
 import { readSingleton } from '@directus/sdk'
 import { Viewport } from 'next'
 import { Inter, Lexend, Lora } from 'next/font/google'
 import Script from 'next/script'
 import Cookies from './Cookies'
-import { url } from 'inspector'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 const lexend = Lexend({
@@ -21,17 +20,33 @@ const lora = Lora({
 
 export async function generateMetadata() {
   const theme = await directus.request(readSingleton('theme'))
+  const ogImage = theme?.open_graph_image
+    ? {
+        url: directusImage(theme.open_graph_image),
+      }
+    : {
+        url: '/opengraph-image.png',
+      }
+  const faviconUrl = theme?.fav_icon
+    ? directusImage(theme.fav_icon)
+    : '/favicon.svg'
 
   if (!theme) {
     return {
       title: 'Klimadashboard',
-      icons: '/favicon.svg',
+      icons: faviconUrl,
+      openGraph: {
+        images: [ogImage],
+      },
     }
   }
 
   return {
     title: theme.title,
-    icons: '/favicon.svg',
+    icons: faviconUrl,
+    openGraph: {
+      images: [ogImage],
+    },
   }
 }
 
