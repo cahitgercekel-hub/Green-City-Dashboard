@@ -55,7 +55,7 @@ const normalizeDate = (d: Date) =>
 const fetchBicycleData = async (
   stationId: string,
 ): Promise<EcoCounterResponse['data']> => {
-  const res = await fetch(`api/ecocounter?siteId=${stationId}`)
+  const res = await fetch(`/api/ecocounter?siteId=${stationId}`)
   if (!res.ok) {
     throw new Error(`Failed to fetch data for station ${stationId}`)
   }
