@@ -22,7 +22,7 @@ export default async function Embed({ params }: { params: Params }) {
   return (
     <div className="relative">
       <TileFactory type={id} />
-      <div className="sticky bottom-0 right-0 flex flex-col justify-end gap-4 bg-white py-2 md:flex-row md:items-center">
+      {/* <div className="sticky bottom-0 right-0 flex flex-col justify-end gap-4 bg-white py-2 md:flex-row md:items-center">
         <Image
           alt="Logo"
           className="h-10 w-fit"
@@ -41,7 +41,7 @@ export default async function Embed({ params }: { params: Params }) {
             klimadashboard.ms
           </Link>
         </Title>
-      </div>
+      </div> */}
     </div>
   )
 }
