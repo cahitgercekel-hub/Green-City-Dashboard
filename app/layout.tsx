@@ -1,4 +1,4 @@
-import directus from '@/lib/directus'
+import directus, { directusImage } from '@/lib/directus'
 import '@/styles/globals.css'
 import { readSingleton } from '@directus/sdk'
 import { Viewport } from 'next'
@@ -19,17 +19,33 @@ const lora = Lora({
 
 export async function generateMetadata() {
   const theme = await directus.request(readSingleton('theme'))
+  const ogImage = theme?.open_graph_image
+    ? {
+        url: directusImage(theme.open_graph_image),
+      }
+    : {
+        url: '/opengraph-image.png',
+      }
+  const faviconUrl = theme?.fav_icon
+    ? directusImage(theme.fav_icon)
+    : '/favicon.svg'
 
   if (!theme) {
     return {
       title: 'Klimadashboard',
-      icons: '/favicon.ico',
+      icons: faviconUrl,
+      openGraph: {
+        images: [ogImage],
+      },
     }
   }
 
   return {
     title: theme.title,
-    icons: '/favicon.ico',
+    icons: faviconUrl,
+    openGraph: {
+      images: [ogImage],
+    },
   }
 }
 

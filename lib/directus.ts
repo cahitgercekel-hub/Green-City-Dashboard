@@ -117,6 +117,10 @@ export type Theme = {
   font: string
   // success stories
   success_stories_title: string
+  // fav-icon
+  fav_icon: string
+  // open graph
+  open_graph_image: string
 }
 
 export type Datenschutz = {
