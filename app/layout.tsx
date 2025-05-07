@@ -4,7 +4,6 @@ import { readSingleton } from '@directus/sdk'
 import { Viewport } from 'next'
 import { Inter, Lexend, Lora } from 'next/font/google'
 import Script from 'next/script'
-import Cookies from './Cookies'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 const lexend = Lexend({
@@ -97,7 +96,7 @@ export default async function RootLayout({
       </body>
       <Script
         async
-        src="https://www.stadt-muenster.de/ms/js/iframeResizer.contentWindow.min.js"
+        src="https://www.wiesbaden.de/resources/iframeResizer.js/iframeResizer.contentWindow.min.js"
         type="text/javascript"
       />
     </html>
