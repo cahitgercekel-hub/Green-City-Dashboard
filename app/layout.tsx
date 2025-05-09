@@ -110,9 +110,10 @@ export default async function RootLayout({
         {children}
         {/* <Cookies /> */}
       </body>
+      {/* eslint-disable-next-line @next/next/no-before-interactive-script-outside-document */}
       <Script
-        async
         src="https://www.wiesbaden.de/resources/iframeResizer.js/iframeResizer.contentWindow.min.js"
+        strategy="beforeInteractive"
         type="text/javascript"
       />
     </html>
