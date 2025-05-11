@@ -31,6 +31,8 @@ type ComparisonEntry = {
   value: number
   description: JSX.Element
   icon: React.ComponentType<React.SVGProps<SVGSVGElement>>
+  inputHours?: number
+  inputDistance?: number
 }
 
 const distanceComparisons: ComparisonEntry[] = [
@@ -314,11 +316,15 @@ const timeComparisons: ComparisonEntry[] = [
  * @returns An object with the description (JSX.Element) and icon (React.ComponentType).
  */
 export function getDistanceComparison(distance: number): ComparisonEntry {
-  return distanceComparisons.reduce((prev, curr) =>
+  const clostestDistance = distanceComparisons.reduce((prev, curr) =>
     Math.abs(curr.value - distance) < Math.abs(prev.value - distance)
       ? curr
       : prev,
   )
+  return {
+    ...clostestDistance,
+    inputDistance: Math.round(distance),
+  }
 }
 
 /**
@@ -327,7 +333,12 @@ export function getDistanceComparison(distance: number): ComparisonEntry {
  * @returns An object with the description (JSX.Element) and icon (React.ComponentType).
  */
 export function getTimeComparison(hours: number): ComparisonEntry {
-  return timeComparisons.reduce((prev, curr) =>
+  const closestMatch = timeComparisons.reduce((prev, curr) =>
     Math.abs(curr.value - hours) < Math.abs(prev.value - hours) ? curr : prev,
   )
+
+  return {
+    ...closestMatch,
+    inputHours: Math.round(hours),
+  }
 }
