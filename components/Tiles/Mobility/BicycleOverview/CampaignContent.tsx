@@ -202,7 +202,8 @@ export default function CampaignChart() {
     kcal: false,
   })
 
-  const bikeData = useBikeStatistics()?.stats
+  const bikeStats = useBikeStatistics()
+  const bikeData = bikeStats?.stats || []
   const indices = getIndices(bikeData)
 
   const currentStats = bikeData?.find(e => e.ZEIT.toLowerCase() === 'aktuell')
@@ -279,7 +280,7 @@ export default function CampaignChart() {
                     grid: {
                       top: 20,
                       bottom: 40,
-                      left: 60,
+                      left: 80,
                       right: 30,
                     },
                     series: [...series],
@@ -314,6 +315,7 @@ export default function CampaignChart() {
                       axisLabel: {
                         fontSize: device === 'mobile' ? 12 : 20,
                         formatter: (val: any) => {
+                          console.log('val', val)
                           return Intl.NumberFormat('de-DE').format(val)
                         },
 
