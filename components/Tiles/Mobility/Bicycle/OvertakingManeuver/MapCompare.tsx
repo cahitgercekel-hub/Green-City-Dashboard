@@ -7,10 +7,9 @@ import Switch from '@/components/Inputs/Switch'
 import '@maplibre/maplibre-gl-compare/dist/maplibre-gl-compare.css'
 // @ts-ignore
 import MaplibreCompare from '@maplibre/maplibre-gl-compare'
-import GeoData from './overtaking.json'
 import DistanceBar from './DistanceBar'
 import useDevice from '@/hooks/useDevice'
-import useÜberholmanöver from '@/hooks/useOvertakingManeuver'
+import useOvertakingManoeuvres from '@/hooks/useOvertakingManeuver'
 
 interface Link {
   type?: string
@@ -71,7 +70,7 @@ function MapComparison() {
   const comparisonContainer = useRef<HTMLDivElement>(null)
   const compareInstance = useRef<MaplibreCompare | null>(null)
   const afterMapRef = useRef<maplibregl.Map | null>(null)
-  const { data: GeoData, min, max } = useÜberholmanöver()
+  const { data: GeoData, min, max } = useOvertakingManoeuvres()
   const geoJsonData = GeoData as OvertakingFeatureCollection
   const [legendUrl, setLegendUrl] = useState<string>(
     'https://www.wms.nrw.de/wms/unfallatlas?request=GetLegendGraphic&version=1.3.0&format=image/png&layer=Beteiligung_Fahrrad_250',
