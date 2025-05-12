@@ -1,11 +1,8 @@
 import { useEffect, useState } from 'react'
-
 interface BikeStatEntry {
   ZEIT: string
   Distanz: number
   Stunden: number
-  total_distance: number
-  total_time: number
   Kcal: number
   Tracks: number
   date?: Date
@@ -23,14 +20,11 @@ const formatDate = (date: Date): string => {
 }
 
 const transformToEntry = (label: string, raw: any): BikeStatEntry => {
-  const isCurrent = label === 'aktuell'
-  const date = isCurrent ? new Date() : new Date(label)
+  const date = new Date(label)
   return {
-    ZEIT: isCurrent ? 'aktuell' : formatDate(date),
-    Distanz: raw.average_distance_m / 1000,
-    Stunden: raw.average_duration_s / 3600,
-    total_distance: raw.total_distance_m / 1000,
-    total_time: raw.total_duration_s / 3600,
+    ZEIT: formatDate(date),
+    Distanz: raw.total_distance_m / 1000,
+    Stunden: raw.total_duration_s / 3600,
     Kcal: Math.round(raw.total_kcal),
     Tracks: raw.trip_count,
     date,
@@ -53,7 +47,6 @@ export function useBikeStatistics() {
         )
 
         const entries: BikeStatEntry[] = [
-          transformToEntry('aktuell', rawStats.latest_stats),
           ...rawStats.weekly_stats.map((week: any) =>
             transformToEntry(week.week, week),
           ),
@@ -62,8 +55,28 @@ export function useBikeStatistics() {
         entries.sort(
           (a, b) => (b.date?.getTime() ?? 0) - (a.date?.getTime() ?? 0),
         )
+        entries.reverse()
 
-        const stats = entries.map(({ date, ...rest }) => rest)
+        let cumulativeDistance = 0
+        let cumulativeTime = 0
+        let cumulativeKcal = 0
+        let cumulativeTracks = 0
+
+        const cumulativeEntries = entries.map(entry => {
+          cumulativeDistance += entry.Distanz
+          cumulativeTime += entry.Stunden
+          cumulativeKcal += entry.Kcal
+          cumulativeTracks += entry.Tracks
+
+          return {
+            ...entry,
+            Distanz: cumulativeDistance,
+            Stunden: cumulativeTime,
+            Kcal: cumulativeKcal,
+            Tracks: cumulativeTracks,
+          }
+        })
+        const stats = cumulativeEntries.map(({ date, ...rest }) => rest)
 
         setData({ stats })
       } catch (err) {
