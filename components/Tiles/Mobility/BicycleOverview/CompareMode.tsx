@@ -31,8 +31,6 @@ type ComparisonEntry = {
   value: number
   description: JSX.Element
   icon: React.ComponentType<React.SVGProps<SVGSVGElement>>
-  inputHours?: number
-  inputDistance?: number
 }
 
 const distanceComparisons: ComparisonEntry[] = [
@@ -311,34 +309,27 @@ const timeComparisons: ComparisonEntry[] = [
 ]
 
 /**
- * Returns the comparison description and icon for the closest matching distance.
- * @param distance The distance in kilometers.
- * @returns An object with the description (JSX.Element) and icon (React.ComponentType).
+ * Finds the closest matching distance comparison from predefined options.
+ * @param distance The distance in kilometers to compare.
+ * @returns The closest matching comparison entry with description and icon.
  */
 export function getDistanceComparison(distance: number): ComparisonEntry {
-  const clostestDistance = distanceComparisons.reduce((prev, curr) =>
+  const closestMatch = distanceComparisons.reduce((prev, curr) =>
     Math.abs(curr.value - distance) < Math.abs(prev.value - distance)
       ? curr
       : prev,
   )
-  return {
-    ...clostestDistance,
-    inputDistance: Math.round(distance),
-  }
+  return closestMatch
 }
 
 /**
- * Returns the comparison description and icon for the closest matching time.
- * @param hours The time in hours.
- * @returns An object with the description (JSX.Element) and icon (React.ComponentType).
+ * Finds the closest matching time comparison from predefined options.
+ * @param hours The time duration in hours to compare.
+ * @returns The closest matching comparison entry with description and icon.
  */
 export function getTimeComparison(hours: number): ComparisonEntry {
   const closestMatch = timeComparisons.reduce((prev, curr) =>
     Math.abs(curr.value - hours) < Math.abs(prev.value - hours) ? curr : prev,
   )
-
-  return {
-    ...closestMatch,
-    inputHours: Math.round(hours),
-  }
+  return closestMatch
 }
