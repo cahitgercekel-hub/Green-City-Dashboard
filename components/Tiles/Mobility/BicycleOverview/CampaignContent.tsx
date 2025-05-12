@@ -8,20 +8,20 @@ import useDevice from '@/hooks/useDevice'
 import { IndicesTypes } from '../../Climate/ClimateIndices/ClimateIndicesChart'
 import { useEffect, useState } from 'react'
 import { getDistanceComparison, getTimeComparison } from './CompareMode'
-//@ts-ignore
-import CampignData from '@/assets/data/Campaign.csv'
 import tailwindConfig from '@/tailwind.config'
 import resolveConfig from 'tailwindcss/resolveConfig'
+import { useBikeStatistics } from '@/hooks/useCampignApi'
 
 const { theme } = resolveConfig(tailwindConfig)
-const DEBUG_MODE = true
+const DEBUG_MODE = false
 type ValuesTypes = 'distanz' | 'tracks' | 'stunden' | 'kcal'
+
 type Campaign = {
   ZEIT: string
   Distanz: number
   Tracks: number
   Stunden: number
-  kcal: number
+  Kcal: number
 }
 
 const typeMap: Record<ValuesTypes, IndicesTypes> = {
@@ -30,21 +30,19 @@ const typeMap: Record<ValuesTypes, IndicesTypes> = {
   tracks: 'heisse_tage',
   kcal: 'sommertage',
 }
-export const getSeries = <T extends Campaign>(
+export const getSeries = <T extends { ZEIT: string; [key: string]: any }>(
   data: T[],
   property: keyof T,
 ): [string, number][] => {
-  return data.map(entry => [
-    entry.ZEIT.slice(0, 5), // Keep the date as "DD.MM.YYYY"
-    entry[property] as number,
-  ])
+  return data?.map(entry => {
+    const label = entry.ZEIT.slice(0, 5)
+    return [label, entry[property] as number]
+  })
 }
 
-// Function to get the indices and series data
-function getIndices(): Record<
-  ValuesTypes,
-  { title: string; seriesOption: LineSeriesOption }
-> {
+function getIndices(
+  CampignData: Campaign[],
+): Record<ValuesTypes, { title: string; seriesOption: LineSeriesOption }> {
   return {
     distanz: {
       title: 'Distanz',
@@ -77,7 +75,7 @@ function getIndices(): Record<
       title: 'Kcal',
       seriesOption: {
         name: 'Kcal',
-        data: getSeries<Campaign>(CampignData, 'kcal'),
+        data: getSeries<Campaign>(CampignData, 'Kcal'),
         // @ts-ignore
         color: theme?.colors?.mobility.DEFAULT || '#6060d6',
       },
@@ -86,9 +84,9 @@ function getIndices(): Record<
 }
 
 function Toggle({
-  onChange, // This extracts the "onChange" prop from the function parameters
+  onChange,
 }: {
-  onChange: (_val: 'digramm' | 'compare') => void // this defines the type of the onChange
+  onChange: (_val: 'digramm' | 'compare') => void
 }) {
   return (
     <ToggleGroup
@@ -150,6 +148,8 @@ type ComparisonEntry = {
   value: number
   description: JSX.Element
   icon: React.ComponentType<React.SVGProps<SVGSVGElement>>
+  inputHours?: number
+  inputDistance?: number
 }
 
 type ComparisonItemProps = {
@@ -160,15 +160,18 @@ type ComparisonItemProps = {
 function ComparisonItem({ title, comparison }: ComparisonItemProps) {
   const Icon = comparison.icon
 
+  console.log('comparison', comparison)
+
   return (
     <div className="p-4">
       <h3 className="text-base font-normal text-mobility xs:text-xl lg:text-4xl">
+        ca.{' '}
         {title === 'Distanz' ? comparison.value + 'km' : comparison.value + 'h'}
       </h3>
 
       <div className="mt-3 flex gap-5">
         <div className=" ">
-          <p className="text-base font-extrabold leading-snug xs:text-xl lg:text-4xl">
+          <p className="text-base font-bold leading-snug xs:text-xl lg:text-4xl">
             {comparison.description}
           </p>
         </div>
@@ -194,6 +197,12 @@ export default function CampaignChart() {
     kcal: false,
   })
 
+  const bikeStats = useBikeStatistics()
+  const bikeData = bikeStats?.stats || []
+  const indices = getIndices(bikeData)
+  const total_distance = bikeData[bikeData.length - 1]?.Distanz
+  const total_time = bikeData[bikeData.length - 1]?.Stunden
+
   useEffect(() => {
     setSeriesVisible({
       distanz: true,
@@ -211,11 +220,11 @@ export default function CampaignChart() {
         tracks: key === 'tracks' ? !prevState.tracks : false,
         kcal: key === 'kcal' ? !prevState.kcal : false,
       }
-
       return newState
     })
   }
-  const indices = getIndices()
+
+  console.log('indices', indices)
   const series: LineSeriesOption[] = Object.keys(indices)
     .filter(e => seriesVisible[e as ValuesTypes])
     .map(e => ({
@@ -247,11 +256,11 @@ export default function CampaignChart() {
                 </span>
               ) : seriesVisible.stunden && mode === 'digramm' ? (
                 <span className={device === 'mobile' ? 'pl-6' : 'pl-2 text-lg'}>
-                  Hours
+                  Stunden
                 </span>
               ) : seriesVisible.kcal && mode === 'digramm' ? (
                 <span className={device === 'mobile' ? 'pl-6' : 'pl-2 text-lg'}>
-                  Kcals
+                  Kcal
                 </span>
               ) : null}
             </Title>
@@ -263,7 +272,7 @@ export default function CampaignChart() {
                     grid: {
                       top: 20,
                       bottom: 40,
-                      left: 60,
+                      left: 80,
                       right: 30,
                     },
                     series: [...series],
@@ -285,11 +294,10 @@ export default function CampaignChart() {
                       valueFormatter: (val: any) => {
                         return Intl.NumberFormat('de-DE').format(val.toFixed(2))
                       },
-
                       axisPointer: {
                         label: {
                           formatter: (params: { value: any }) => {
-                            return String(params.value) // Ensure it returns a string
+                            return String(params.value)
                           },
                         },
                       },
@@ -301,6 +309,7 @@ export default function CampaignChart() {
                         formatter: (val: any) => {
                           return Intl.NumberFormat('de-DE').format(val)
                         },
+
                         margin: 20,
                       },
                     },
@@ -325,13 +334,13 @@ export default function CampaignChart() {
                 )}
                 {seriesVisible.distanz && (
                   <ComparisonItem
-                    comparison={getDistanceComparison(debugValue)}
+                    comparison={getDistanceComparison(total_distance)}
                     title="Distanz"
                   />
                 )}
                 {seriesVisible.stunden && (
                   <ComparisonItem
-                    comparison={getTimeComparison(debugValue)}
+                    comparison={getTimeComparison(total_time)}
                     title="Zeit"
                   />
                 )}
