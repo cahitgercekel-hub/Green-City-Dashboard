@@ -10,6 +10,7 @@ import MaplibreCompare from '@maplibre/maplibre-gl-compare'
 import GeoData from './overtaking.json'
 import DistanceBar from './DistanceBar'
 import useDevice from '@/hooks/useDevice'
+import useÜberholmanöver from '@/hooks/useOvertakingManeuver'
 
 interface Link {
   type?: string
@@ -19,11 +20,28 @@ interface Link {
 }
 
 interface OvertakingFeatureProperties {
-  'Average Normalized Overtaking Distance': number
-  'Average Overtaking Manoeuvre': number
-  'Average Overtaking Distance': number
-  'Number of Points': number
   'Average Distance to Road': number
+  access: any
+  'Number of Points': number
+  name?: string
+  service: any
+  osmid: string
+  highway: string
+  tunnel: any
+  'Average Overtaking Distance': number
+  reversed: string
+  area: any
+  'Average Overtaking Manoeuvre': number
+  length: number
+  junction: any
+  est_width: any
+  'Average Normalized Overtaking Distance': number
+  lanes?: string
+  bridge: any
+  maxspeed?: string
+  width?: string
+  oneway: boolean
+  ref: any
 }
 
 interface LineString {
@@ -53,6 +71,7 @@ function MapComparison() {
   const comparisonContainer = useRef<HTMLDivElement>(null)
   const compareInstance = useRef<MaplibreCompare | null>(null)
   const afterMapRef = useRef<maplibregl.Map | null>(null)
+  const { data: GeoData, min, max } = useÜberholmanöver()
   const geoJsonData = GeoData as OvertakingFeatureCollection
   const [legendUrl, setLegendUrl] = useState<string>(
     'https://www.wms.nrw.de/wms/unfallatlas?request=GetLegendGraphic&version=1.3.0&format=image/png&layer=Beteiligung_Fahrrad_250',
@@ -99,8 +118,9 @@ function MapComparison() {
       !beforeMapContainer.current ||
       !afterMapContainer.current ||
       !comparisonContainer.current
-    )
-      {return}
+    ) {
+      return
+    }
 
     const beforeMap = new maplibregl.Map({
       container: beforeMapContainer.current,
@@ -185,12 +205,12 @@ function MapComparison() {
               'interpolate',
               ['linear'],
               ['get', 'Number of Points'],
+              min,
+              0.6,
+              max / 2,
+              0.8,
+              max,
               1,
-              0.3,
-              10,
-              0.7,
-              100,
-              0.9,
             ],
             0.5,
           ],
@@ -237,7 +257,7 @@ function MapComparison() {
       afterMap.remove()
       afterMapRef.current = null
     }
-  }, [device])
+  }, [device, geoJsonData, min, max])
 
   return (
     <div
