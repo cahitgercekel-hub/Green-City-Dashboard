@@ -22,8 +22,6 @@ type Campaign = {
   Tracks: number
   Stunden: number
   Kcal: number
-  total_distance: number
-  total_time: number
 }
 
 const typeMap: Record<ValuesTypes, IndicesTypes> = {
@@ -37,13 +35,11 @@ export const getSeries = <T extends { ZEIT: string; [key: string]: any }>(
   property: keyof T,
 ): [string, number][] => {
   return data?.map(entry => {
-    // For 'aktuell', keep as is, otherwise take first 5 characters (DD.MM)
-    const label = entry.ZEIT === 'aktuell' ? 'aktuell' : entry.ZEIT.slice(0, 5)
+    const label = entry.ZEIT.slice(0, 5)
     return [label, entry[property] as number]
   })
 }
 
-// Function to get the indices and series data
 function getIndices(
   CampignData: Campaign[],
 ): Record<ValuesTypes, { title: string; seriesOption: LineSeriesOption }> {
@@ -88,9 +84,9 @@ function getIndices(
 }
 
 function Toggle({
-  onChange, // This extracts the "onChange" prop from the function parameters
+  onChange,
 }: {
-  onChange: (_val: 'digramm' | 'compare') => void // this defines the type of the onChange
+  onChange: (_val: 'digramm' | 'compare') => void
 }) {
   return (
     <ToggleGroup
@@ -169,14 +165,13 @@ function ComparisonItem({ title, comparison }: ComparisonItemProps) {
   return (
     <div className="p-4">
       <h3 className="text-base font-normal text-mobility xs:text-xl lg:text-4xl">
-        {title === 'Distanz'
-          ? comparison.value + 'km'
-          : comparison.inputHours + 'h'}
+        ca.{' '}
+        {title === 'Distanz' ? comparison.value + 'km' : comparison.value + 'h'}
       </h3>
 
       <div className="mt-3 flex gap-5">
         <div className=" ">
-          <p className="text-base font-extrabold leading-snug xs:text-xl lg:text-4xl">
+          <p className="text-base font-bold leading-snug xs:text-xl lg:text-4xl">
             {comparison.description}
           </p>
         </div>
@@ -205,11 +200,8 @@ export default function CampaignChart() {
   const bikeStats = useBikeStatistics()
   const bikeData = bikeStats?.stats || []
   const indices = getIndices(bikeData)
-
-  const currentStats = bikeData?.find(e => e.ZEIT.toLowerCase() === 'aktuell')
-
-  const total_distance = currentStats?.total_distance ?? 0
-  const total_time = currentStats?.total_time ?? 0
+  const total_distance = bikeData[bikeData.length - 1]?.Distanz
+  const total_time = bikeData[bikeData.length - 1]?.Stunden
 
   useEffect(() => {
     setSeriesVisible({
@@ -315,7 +307,6 @@ export default function CampaignChart() {
                       axisLabel: {
                         fontSize: device === 'mobile' ? 12 : 20,
                         formatter: (val: any) => {
-                          console.log('val', val)
                           return Intl.NumberFormat('de-DE').format(val)
                         },
 
