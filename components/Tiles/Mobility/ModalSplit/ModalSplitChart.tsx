@@ -204,6 +204,12 @@ export default function ModalSplitChart() {
                       ),
                       getSeries(
                         mode === 'verkehrsleistung'
+                          ? yearData['Modal Split V.leistung - Fahrrad']
+                          : yearData['Verkehrsmittelwahl Fahrrad'],
+                        'Fahrrad',
+                      ),
+                      getSeries(
+                        mode === 'verkehrsleistung'
                           ? yearData['Modal Split V.leistung - Kfz']
                           : yearData['Verkehrsmittelwahl Kfz'],
                         'KFZ',
@@ -214,22 +220,16 @@ export default function ModalSplitChart() {
                           : yearData['Verkehrsmittelwahl ÖV'],
                         'ÖPNV',
                       ),
-                      getSeries(
-                        mode === 'verkehrsleistung'
-                          ? yearData['Modal Split V.leistung - Fahrrad']
-                          : yearData['Verkehrsmittelwahl Fahrrad'],
-                        'Fahrrad',
-                      ),
                     ],
                     color: [
                       //@ts-ignore
                       theme?.colors?.buildings.DEFAULT || '#6060d6',
                       //@ts-ignore
+                      theme?.colors?.mobility.DEFAULT || '#34c17b',
+                      //@ts-ignore
                       theme?.colors?.energy.DEFAULT || '#f28443',
                       //@ts-ignore
                       theme?.colors?.climate.DEFAULT || '#14b3d9',
-                      //@ts-ignore
-                      theme?.colors?.mobility.DEFAULT || '#34c17b',
                     ],
                   },
                 ],

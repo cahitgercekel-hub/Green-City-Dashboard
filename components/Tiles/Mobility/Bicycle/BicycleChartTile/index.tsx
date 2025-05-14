@@ -14,7 +14,7 @@ export default async function BicycleChartTile() {
       embedId="mobility-bicycle"
       live
       subtitle="im Stadtgebiet"
-      title="Radler*innen"
+      title="Radelnde"
     >
       <>
         <BicycleChartContent />

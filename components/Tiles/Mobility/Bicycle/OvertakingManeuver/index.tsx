@@ -15,8 +15,8 @@ export default async function OvertakingManeuver() {
       dataRetrieval={format(new Date(), '01.MM.yyyy')}
       dataSource="ATRAI Bikes, Unfallatlas: lizensiert unter der Datenlizenz Deutschland- Namensnennung- Version 2.0 (www.govdata.de/dl-de/by-2-0)"
       embedId="mobility-bicycleOvertaking"
-      subtitle="Überholabstände und Unfallstatistiken im Blick"
-      title={'Überholmanöver'}
+      subtitle="im Blick"
+      title={'Überholabstände und Unfallstatistiken'}
     >
       <TileSplitView>
         <TileSplitView.Left>

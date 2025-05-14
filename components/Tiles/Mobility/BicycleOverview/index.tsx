@@ -8,7 +8,7 @@ export default async function BicycleOverview() {
       dataSource="openSenseMap"
       embedId="mobility-bicycleCampaign"
       subtitle="So viele Fahrraddaten wurden bisher gesammelt"
-      title={'Kampagne'}
+      title={'Kampagne "SensorBox"'}
     >
       <CampaignChart />
     </MobilityTile>

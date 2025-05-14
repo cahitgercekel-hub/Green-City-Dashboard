@@ -86,7 +86,7 @@ function getIndices(
 function Toggle({
   onChange,
 }: {
-  onChange: (_val: 'digramm' | 'compare') => void
+  onChange: (_val: 'chart' | 'compare') => void
 }) {
   return (
     <ToggleGroup
@@ -94,10 +94,10 @@ function Toggle({
         {
           element: (
             <Title as="h5" className="2xl:w-max">
-              Digramm
+              Diagramm
             </Title>
           ),
-          value: 'digramm',
+          value: 'chart',
         },
         {
           element: (
@@ -186,7 +186,7 @@ function ComparisonItem({ title, comparison }: ComparisonItemProps) {
 
 export default function CampaignChart() {
   const device = useDevice()
-  const [mode, setMode] = useState<'digramm' | 'compare'>('digramm')
+  const [mode, setMode] = useState<'chart' | 'compare'>('chart')
   const [debugValue, setDebugValue] = useState(0)
   const [seriesVisible, setSeriesVisible] = useState<
     Record<ValuesTypes, boolean>
@@ -246,26 +246,26 @@ export default function CampaignChart() {
         <div className="flex h-full w-full flex-col items-center gap-7 px-3 pb-5 pt-8 md:pt-10">
           <div className="h-full w-full flex-1">
             <Title as="h7" font="semibold" variant="primary">
-              {seriesVisible.distanz && mode === 'digramm' ? (
+              {seriesVisible.distanz && mode === 'chart' ? (
                 <span className={device === 'mobile' ? 'pl-6' : 'pl-2 text-lg'}>
                   Km
                 </span>
-              ) : seriesVisible.tracks && mode === 'digramm' ? (
+              ) : seriesVisible.tracks && mode === 'chart' ? (
                 <span className={device === 'mobile' ? 'pl-6' : 'pl-2 text-lg'}>
                   Tracks
                 </span>
-              ) : seriesVisible.stunden && mode === 'digramm' ? (
+              ) : seriesVisible.stunden && mode === 'chart' ? (
                 <span className={device === 'mobile' ? 'pl-6' : 'pl-2 text-lg'}>
                   Stunden
                 </span>
-              ) : seriesVisible.kcal && mode === 'digramm' ? (
+              ) : seriesVisible.kcal && mode === 'chart' ? (
                 <span className={device === 'mobile' ? 'pl-6' : 'pl-2 text-lg'}>
                   Kcal
                 </span>
               ) : null}
             </Title>
 
-            {mode === 'digramm' ? (
+            {mode === 'chart' ? (
               <div className="h-[235px] w-full md:h-[440px]">
                 <ReactECharts
                   option={{
@@ -358,7 +358,7 @@ export default function CampaignChart() {
                 {(['distanz', 'stunden', 'tracks', 'kcal'] as ValuesTypes[])
                   .filter(
                     type =>
-                      mode === 'digramm' ||
+                      mode === 'chart' ||
                       type === 'distanz' ||
                       type === 'stunden',
                   )
