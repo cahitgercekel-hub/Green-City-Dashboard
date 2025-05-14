@@ -124,12 +124,12 @@ function MapComparison() {
     const beforeMap = new maplibregl.Map({
       container: beforeMapContainer.current,
       style: 'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json',
-      center: [7.6257, 51.9607], // Münster coordinates
+      center: [8.2416, 50.08201], // Wiesbaden coordinates
       zoom: 12,
       attributionControl: false,
       maxBounds: [
-        [7.4, 51.8],
-        [7.9, 52.1],
+        [7.9, 49.8],
+        [8.5, 50.3],
       ],
     })
 
@@ -157,12 +157,12 @@ function MapComparison() {
           },
         ],
       },
-      center: [7.6257, 51.9607],
       zoom: 12,
       attributionControl: false,
+      center: [8.2416, 50.08201], // Wiesbaden coordinates
       maxBounds: [
-        [7.4, 51.8],
-        [7.9, 52.1],
+        [7.9, 49.8],
+        [8.5, 50.3],
       ],
     })
 
