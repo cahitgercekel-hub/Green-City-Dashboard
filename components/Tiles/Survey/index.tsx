@@ -52,7 +52,7 @@ export default function SurveyTile({
     >
       <div className="text-white">
         <Title as="h5" font={'normal'} variant={'inverse'}>
-          <span className="font-semibold">Befragungsergebnisse:</span> {title}
+          <span className="font-semibold">{title}</span>
         </Title>
         <Spacer />
 
