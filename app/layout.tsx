@@ -109,13 +109,12 @@ export default async function RootLayout({
       <body style={style}>
         {children}
         {/* <Cookies /> */}
+        {/* eslint-disable-next-line @next/next/no-before-interactive-script-outside-document */}
+        <Script
+          src="https://www.wiesbaden.de/resources/iframeResizer.js/iframeResizer.contentWindow.min.js"
+          type="text/javascript"
+        />
       </body>
-      {/* eslint-disable-next-line @next/next/no-before-interactive-script-outside-document */}
-      <Script
-        src="https://www.wiesbaden.de/resources/iframeResizer.js/iframeResizer.contentWindow.min.js"
-        strategy="beforeInteractive"
-        type="text/javascript"
-      />
     </html>
   )
 }
