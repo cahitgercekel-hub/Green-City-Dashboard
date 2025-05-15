@@ -14,7 +14,7 @@ export default async function StadtradelnTile() {
       dataRetrieval={format(new Date(), '01.MM.yyyy')}
       dataSource="Klima-Bündnis Services / Stadtradeln"
       embedId="mobility-stadtradeln"
-      subtitle="auf der Überholspur"
+      subtitle="im Jahresvergleich"
       title="Stadtradeln"
     >
       <ChartContainer city="wiesbaden" />
