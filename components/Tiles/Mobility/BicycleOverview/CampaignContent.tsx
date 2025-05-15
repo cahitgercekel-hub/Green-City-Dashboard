@@ -287,9 +287,7 @@ export default function CampaignChart() {
                       data: series[0]?.data?.map((d: any) => d[0]),
                     },
                     tooltip: {
-                      show: true,
-                      confine: true,
-                      showDelay: 0,
+                      show: false,
                       trigger: 'axis',
                       valueFormatter: (val: any) => {
                         return Intl.NumberFormat('de-DE').format(val.toFixed(2))
