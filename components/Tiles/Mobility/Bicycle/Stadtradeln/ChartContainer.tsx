@@ -13,9 +13,17 @@ import Chart from './Chart'
 export type StadtradelnData = {
   key: string
   name: string
-  year: number
+  year: number | string // year can be a string for the year 2025
   value: number
 }
+// this data is preliminary
+const Data2025 = {
+  key: 'wiesbaden',
+  name: 'Wiesbaden',
+  year: '2025 *',
+  value: 677_608,
+}
+const mergedStadtradelnData = [...stadtradelnData, Data2025]
 
 const COMPARE_INTERVAL = 5000
 
@@ -34,11 +42,11 @@ export default function ChartContainer({
   const [otherData, setOtherData] = useState<StadtradelnData[]>()
   const [otherIndex, setOtherIndex] = useState(0)
 
-  const cityData = (stadtradelnData as StadtradelnData[]).filter(
+  const cityData = (mergedStadtradelnData as StadtradelnData[]).filter(
     ({ key }) => key === city,
   )
 
-  const otherCities = (stadtradelnData as StadtradelnData[]).filter(
+  const otherCities = (mergedStadtradelnData as StadtradelnData[]).filter(
     ({ key }) => key !== city,
   )
 
@@ -97,11 +105,21 @@ export default function ChartContainer({
       <div className="flex h-[350px] w-full items-center justify-center md:h-[500px]">
         <Chart compare={compare} data={cityData} other={otherData} />
       </div>
-      <div className="flex items-center gap-2 p-4 md:gap-10 md:pl-8">
-        <div className="h-1 w-8 rounded bg-mobility md:w-[52px]" />
-        <Title as={'h5'} variant={'primary'}>
-          geradelte Kilometer
-        </Title>
+      <div className="flex justify-between">
+        <div className="flex items-center gap-2 p-4 md:gap-10 md:pl-8">
+          <div className="h-1 w-8 rounded bg-mobility md:w-[52px]" />
+          <Title as={'h5'} className="text-sm md:text-lg" variant={'primary'}>
+            geradelte Kilometer
+          </Title>
+        </div>
+
+        <div className="flex items-center p-4">
+          <p className="max-w-sm text-xs text-gray-500 md:max-w-md md:text-sm">
+            * vorläufiges Endergebnis, die im Aktionszeitraum (25. Mai bis 14.
+            Juni 2025) geradelten Kilometer können noch einige Tage danach
+            nachgetragen werden.
+          </p>
+        </div>
       </div>
       {enableCompare && (
         <div className="flex w-full flex-col justify-between gap-2 rounded border border-dashed border-primary p-2 md:flex-row md:items-center md:space-x-4 md:p-4 md:pl-8">
