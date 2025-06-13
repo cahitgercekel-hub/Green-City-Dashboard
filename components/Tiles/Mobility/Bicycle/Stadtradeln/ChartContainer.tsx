@@ -114,7 +114,11 @@ export default function ChartContainer({
         </div>
 
         <div className="flex items-center p-4">
-          <p>* vorläufiges Endergebnis</p>
+          <p>
+            * vorläufiges Endergebnis, die im Aktionszeitraum (25. Mai bis 14.
+            Juni 2025) geradelten Kilometer können noch einige Tage danach
+            nachgetragen werden.
+          </p>
         </div>
       </div>
       {enableCompare && (

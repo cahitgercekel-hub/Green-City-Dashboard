@@ -29,6 +29,12 @@ const colors = {
       require('@/assets/icons/Bicycle/BicycleIconPurple.svg').default.src
     }`,
   },
+  highlight: {
+    color: '#f97316',
+    symbol: `image://${
+      require('@/assets/icons/Bicycle/BicycleIconOrange.svg').default.src
+    }`,
+  },
 }
 
 type ChartProps = {
@@ -44,6 +50,10 @@ export default function Chart({ data, other }: ChartProps) {
 
   const getSeries = useCallback(
     (data: StadtradelnData[], color: string, symbol: string) => {
+      // Split data into regular and 2025
+      const regular = data.filter(({ year }) => year !== '2025 *')
+      const data2025 = data.filter(({ year }) => year === '2025 *')
+
       const lineSeries: LineSeriesOption = {
         data: data.map(({ year, value }) => [year, value]),
         type: 'line',
@@ -61,9 +71,13 @@ export default function Chart({ data, other }: ChartProps) {
         barWidth: 3,
         zlevel: 10,
         itemStyle: {
-          color: color,
+          color: (params: any) => {
+            const yearValue = params.data[0]
+            return yearValue === '2025 *' ? colors.highlight.color : color
+          },
           borderRadius: [2, 2, 0, 0],
         },
+
         barGap: 2,
         xAxisIndex: 1,
         label: {
@@ -72,8 +86,8 @@ export default function Chart({ data, other }: ChartProps) {
         },
       }
 
-      const barIcons: PictorialBarSeriesOption = {
-        data: data.map(({ year, value }) => [year, value]),
+      const regularIcons: PictorialBarSeriesOption = {
+        data: regular.map(({ year, value }) => [year, value]),
         type: 'pictorialBar',
         symbol: symbol,
         symbolSize: device === 'desktop' ? [61, 61] : [30, 30],
@@ -86,7 +100,28 @@ export default function Chart({ data, other }: ChartProps) {
         zlevel: 20,
       }
 
-      return [lineSeries, barSeries, barIcons]
+      const icons2025: PictorialBarSeriesOption | null = data2025.length
+        ? {
+            data: data2025.map(({ year, value }) => [year, value]),
+            type: 'pictorialBar',
+            symbol: colors.highlight.symbol,
+            symbolSize: device === 'desktop' ? [61, 61] : [30, 30],
+            symbolOffset: device === 'desktop' ? [0, -60] : [0, -30],
+            symbolRotate: 15,
+            barWidth: 3,
+            barGap: 2,
+            symbolPosition: 'end',
+            xAxisIndex: 1,
+            zlevel: 20,
+          }
+        : null
+
+      return [
+        lineSeries,
+        barSeries,
+        regularIcons,
+        ...(icons2025 ? [icons2025] : []),
+      ]
     },
     [],
   )
