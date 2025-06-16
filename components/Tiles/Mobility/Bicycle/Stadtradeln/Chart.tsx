@@ -65,16 +65,13 @@ export default function Chart({ data, other }: ChartProps) {
         smooth: 0.2,
       }
 
-      const barSeries: BarSeriesOption = {
-        data: data.map(({ year, value }) => [year, value]),
+      const barSeriesRegular: BarSeriesOption = {
+        data: regular.map(({ year, value }) => [year, value]),
         type: 'bar',
         barWidth: 3,
         zlevel: 10,
         itemStyle: {
-          color: (params: any) => {
-            const yearValue = params.data[0]
-            return yearValue === '2025 *' ? colors.highlight.color : color
-          },
+          color: color,
           borderRadius: [2, 2, 0, 0],
         },
 
@@ -85,6 +82,26 @@ export default function Chart({ data, other }: ChartProps) {
           position: 'top',
         },
       }
+
+      const barSeries2025: BarSeriesOption | null = data2025.length
+        ? {
+            type: 'bar',
+            data: data2025.map(item => ({
+              value: [item.year, item.value],
+              itemStyle: {
+                color: colors.highlight.color,
+                borderColor: colors.highlight.color,
+                borderType: 'dashed',
+                borderWidth: 4,
+                borderRadius: [2, 2, 0, 0],
+              },
+            })),
+            barWidth: 3,
+            xAxisIndex: 1,
+            zlevel: 10,
+            barGap: 2,
+          }
+        : null
 
       const regularIcons: PictorialBarSeriesOption = {
         data: regular.map(({ year, value }) => [year, value]),
@@ -118,7 +135,8 @@ export default function Chart({ data, other }: ChartProps) {
 
       return [
         lineSeries,
-        barSeries,
+        barSeriesRegular,
+        ...(barSeries2025 ? [barSeries2025] : []),
         regularIcons,
         ...(icons2025 ? [icons2025] : []),
       ]
