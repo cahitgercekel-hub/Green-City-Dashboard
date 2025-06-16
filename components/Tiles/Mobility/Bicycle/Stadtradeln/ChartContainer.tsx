@@ -19,14 +19,14 @@ export type StadtradelnData = {
   value: number
 }
 
-const preliminary_Data = (stadtradelnDataPermant as StadtradelnData[]).map(
-  ({ key, name, year, value }) => ({
-    key,
-    name,
-    year: year + '*',
-    value,
-  }),
-)
+const preliminary_Data: StadtradelnData[] = (
+  stadtradelnDataPermant as StadtradelnData[]
+).map(({ key, name, year, value }) => ({
+  key,
+  name,
+  year: `${year}*`,
+  value,
+}))
 
 const COMPARE_INTERVAL = 5000
 
