@@ -50,9 +50,11 @@ export default function Chart({ data, other }: ChartProps) {
 
   const getSeries = useCallback(
     (data: StadtradelnData[], color: string, symbol: string) => {
-      // Split data into regular and 2025
-      const regular = data.filter(({ year }) => year !== '2025 *')
-      const data2025 = data.filter(({ year }) => year === '2025 *')
+      // Split data into regular and preliminary data
+      const regular = data.filter(({ year }) => !String(year).includes('*'))
+      const preliminaryData = data.filter(({ year }) =>
+        String(year).includes('*'),
+      )
 
       const lineSeries: LineSeriesOption = {
         data: data.map(({ year, value }) => [year, value]),
@@ -83,25 +85,24 @@ export default function Chart({ data, other }: ChartProps) {
         },
       }
 
-      const barSeries2025: BarSeriesOption | null = data2025.length
-        ? {
-            type: 'bar',
-            data: data2025.map(item => ({
-              value: [item.year, item.value],
+      const preliminaryBarSeries: BarSeriesOption | null =
+        preliminaryData.length
+          ? {
+              type: 'bar',
+              data: preliminaryData.map(item => [item.year, item.value]), // Simplified format
               itemStyle: {
                 color: colors.highlight.color,
                 borderColor: colors.highlight.color,
                 borderType: 'dashed',
-                borderWidth: 4,
-                borderRadius: [2, 2, 0, 0],
+                borderWidth: 2,
+                borderDashOffset: 0,
               },
-            })),
-            barWidth: 3,
-            xAxisIndex: 1,
-            zlevel: 10,
-            barGap: 2,
-          }
-        : null
+              barWidth: 1,
+              xAxisIndex: 1,
+              zlevel: 20,
+              barGap: 2,
+            }
+          : null
 
       const regularIcons: PictorialBarSeriesOption = {
         data: regular.map(({ year, value }) => [year, value]),
@@ -117,9 +118,9 @@ export default function Chart({ data, other }: ChartProps) {
         zlevel: 20,
       }
 
-      const icons2025: PictorialBarSeriesOption | null = data2025.length
+      const icons2025: PictorialBarSeriesOption | null = preliminaryData.length
         ? {
-            data: data2025.map(({ year, value }) => [year, value]),
+            data: preliminaryData.map(({ year, value }) => [year, value]),
             type: 'pictorialBar',
             symbol: colors.highlight.symbol,
             symbolSize: device === 'desktop' ? [61, 61] : [30, 30],
@@ -136,7 +137,7 @@ export default function Chart({ data, other }: ChartProps) {
       return [
         lineSeries,
         barSeriesRegular,
-        ...(barSeries2025 ? [barSeries2025] : []),
+        ...(preliminaryBarSeries ? [preliminaryBarSeries] : []),
         regularIcons,
         ...(icons2025 ? [icons2025] : []),
       ]

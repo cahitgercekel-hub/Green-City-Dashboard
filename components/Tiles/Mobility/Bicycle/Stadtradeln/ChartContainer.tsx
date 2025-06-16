@@ -2,6 +2,8 @@
 
 // @ts-ignore
 import stadtradelnData from '@/assets/data/stadtradeln_data.csv'
+// @ts-ignore
+import stadtradelnDataPermant from '@/assets/data/stadtradeln_data_preliminary.csv'
 import { ProgressCircle } from '@/components/Charts/Progress/ProgressCircle'
 import AnimatedRollingElement from '@/components/Elements/Animated/AnimatedRollingElement'
 import Title from '@/components/Elements/Title'
@@ -16,14 +18,15 @@ export type StadtradelnData = {
   year: number | string // year can be a string for the year 2025
   value: number
 }
-// this data is preliminary
-const Data2025 = {
-  key: 'wiesbaden',
-  name: 'Wiesbaden',
-  year: '2025 *',
-  value: 677_608,
-}
-const mergedStadtradelnData = [...stadtradelnData, Data2025]
+
+const preliminary_Data = (stadtradelnDataPermant as StadtradelnData[]).map(
+  ({ key, name, year, value }) => ({
+    key,
+    name,
+    year: year + '*',
+    value,
+  }),
+)
 
 const COMPARE_INTERVAL = 5000
 
@@ -41,6 +44,11 @@ export default function ChartContainer({
   const [compare, setCompare] = useState(false)
   const [otherData, setOtherData] = useState<StadtradelnData[]>()
   const [otherIndex, setOtherIndex] = useState(0)
+  const preliminary_mode = true // Set to true to enable preliminary data mode
+
+  const mergedStadtradelnData = preliminary_mode
+    ? [...stadtradelnData, ...preliminary_Data]
+    : stadtradelnData
 
   const cityData = (mergedStadtradelnData as StadtradelnData[]).filter(
     ({ key }) => key === city,
