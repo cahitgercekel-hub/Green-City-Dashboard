@@ -2,8 +2,7 @@
 
 // @ts-ignore
 import stadtradelnData from '@/assets/data/stadtradeln_data.csv'
-// @ts-ignore
-import stadtradelnDataPermant from '@/assets/data/stadtradeln_data_preliminary.csv'
+
 import { ProgressCircle } from '@/components/Charts/Progress/ProgressCircle'
 import AnimatedRollingElement from '@/components/Elements/Animated/AnimatedRollingElement'
 import Title from '@/components/Elements/Title'
@@ -19,16 +18,9 @@ export type StadtradelnData = {
   value: number
 }
 
-const preliminary_Data: StadtradelnData[] = (
-  stadtradelnDataPermant as StadtradelnData[]
-).map(({ key, name, year, value }) => ({
-  key,
-  name,
-  year: `${year}*`,
-  value,
-}))
-
 const COMPARE_INTERVAL = 5000
+
+const preliminaryMode = true
 
 const AnimatedProgressCircle = animated(ProgressCircle)
 
@@ -44,17 +36,12 @@ export default function ChartContainer({
   const [compare, setCompare] = useState(false)
   const [otherData, setOtherData] = useState<StadtradelnData[]>()
   const [otherIndex, setOtherIndex] = useState(0)
-  const preliminary_mode = true // Set to true to enable preliminary data mode
 
-  const mergedStadtradelnData = preliminary_mode
-    ? [...stadtradelnData, ...preliminary_Data]
-    : stadtradelnData
-
-  const cityData = (mergedStadtradelnData as StadtradelnData[]).filter(
+  const cityData = (stadtradelnData as StadtradelnData[]).filter(
     ({ key }) => key === city,
   )
 
-  const otherCities = (mergedStadtradelnData as StadtradelnData[]).filter(
+  const otherCities = (stadtradelnData as StadtradelnData[]).filter(
     ({ key }) => key !== city,
   )
 
@@ -111,7 +98,12 @@ export default function ChartContainer({
   return (
     <div className="rounded bg-white p-2">
       <div className="flex h-[350px] w-full items-center justify-center md:h-[500px]">
-        <Chart compare={compare} data={cityData} other={otherData} />
+        <Chart
+          compare={compare}
+          data={cityData}
+          other={otherData}
+          preliminaryMode={preliminaryMode}
+        />
       </div>
       <div className="flex justify-between">
         <div className="flex items-center gap-2 p-4 md:gap-10 md:pl-8">
@@ -122,11 +114,13 @@ export default function ChartContainer({
         </div>
 
         <div className="flex items-center p-4">
-          <p className="max-w-sm text-xs text-gray-500 md:max-w-md md:text-sm">
-            * vorläufiges Endergebnis, die im Aktionszeitraum (25. Mai bis 14.
-            Juni 2025) geradelten Kilometer können noch einige Tage danach
-            nachgetragen werden.
-          </p>
+          {preliminaryMode && (
+            <p className="max-w-sm text-xs text-gray-500 md:max-w-md md:text-sm">
+              * vorläufiges Endergebnis, die im Aktionszeitraum (25. Mai bis 14.
+              Juni 2025) geradelten Kilometer können noch einige Tage danach
+              nachgetragen werden.
+            </p>
+          )}
         </div>
       </div>
       {enableCompare && (

@@ -41,9 +41,10 @@ type ChartProps = {
   compare: boolean
   data: StadtradelnData[]
   other?: StadtradelnData[]
+  preliminaryMode?: boolean
 }
 
-export default function Chart({ data, other }: ChartProps) {
+export default function Chart({ data, other, preliminaryMode }: ChartProps) {
   const [series, setSeries] = useState<SeriesOption[]>()
 
   const device = useDevice()
@@ -54,8 +55,17 @@ export default function Chart({ data, other }: ChartProps) {
       color: string,
       symbol: string,
     ): SeriesOption[] => {
-      const regularData = data.filter(({ year }) => !String(year).includes('*'))
-      const preliminaryData = data.filter(({ year }) =>
+      const processedData = preliminaryMode
+        ? data.map((item, index) =>
+            index === data.length - 1
+              ? { ...item, year: `${item.year}*` }
+              : item,
+          )
+        : data
+      const regularData = processedData.filter(
+        ({ year }) => !String(year).includes('*'),
+      )
+      const preliminaryData = processedData.filter(({ year }) =>
         String(year).includes('*'),
       )
 
