@@ -22,7 +22,7 @@ COPY . .
 
 # Run the postinstall script (and install curl for the script to work)
 RUN apk add --no-cache curl bash
-RUN yarn postinstall
+
 
 # Next.js collects completely anonymous telemetry data about general usage.
 # Learn more here: https://nextjs.org/telemetry

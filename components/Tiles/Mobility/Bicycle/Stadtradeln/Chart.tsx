@@ -29,66 +29,117 @@ const colors = {
       require('@/assets/icons/Bicycle/BicycleIconPurple.svg').default.src
     }`,
   },
+  highlight: {
+    color: '#f97316',
+    symbol: `image://${
+      require('@/assets/icons/Bicycle/BicycleIconOrange.svg').default.src
+    }`,
+  },
 }
 
 type ChartProps = {
   compare: boolean
   data: StadtradelnData[]
   other?: StadtradelnData[]
+  preliminaryMode?: boolean
 }
 
-export default function Chart({ data, other }: ChartProps) {
+export default function Chart({ data, other, preliminaryMode }: ChartProps) {
   const [series, setSeries] = useState<SeriesOption[]>()
 
   const device = useDevice()
 
   const getSeries = useCallback(
-    (data: StadtradelnData[], color: string, symbol: string) => {
-      const lineSeries: LineSeriesOption = {
-        data: data.map(({ year, value }) => [year, value]),
-        type: 'line',
-        lineStyle: {
-          opacity: 0,
-        },
-        symbol: 'none',
-        itemStyle: {},
-        smooth: 0.2,
-      }
+    (
+      data: StadtradelnData[],
+      color: string,
+      symbol: string,
+    ): SeriesOption[] => {
+      const processedData = preliminaryMode
+        ? data.map((item, index) =>
+            index === data.length - 1
+              ? { ...item, year: `${item.year}*` }
+              : item,
+          )
+        : data
+      const regularData = processedData.filter(
+        ({ year }) => !String(year).includes('*'),
+      )
+      const preliminaryData = processedData.filter(({ year }) =>
+        String(year).includes('*'),
+      )
 
-      const barSeries: BarSeriesOption = {
+      const createLineSeries = (): LineSeriesOption => ({
+        type: 'line',
         data: data.map(({ year, value }) => [year, value]),
+        lineStyle: { opacity: 0 },
+        symbol: 'none',
+        smooth: 0.2,
+      })
+
+      const createBarSeries = (
+        dataset: StadtradelnData[],
+        seriesColor: string,
+        dashed: boolean = false,
+      ): BarSeriesOption => ({
         type: 'bar',
-        barWidth: 3,
-        zlevel: 10,
-        itemStyle: {
-          color: color,
-          borderRadius: [2, 2, 0, 0],
-        },
+        data: dataset.map(({ year, value }) => [year, value]),
+        itemStyle: dashed
+          ? {
+              color: colors.highlight.color,
+              borderColor: colors.highlight.color,
+              borderType: 'dashed',
+              borderWidth: 2,
+              borderRadius: [2, 2, 0, 0],
+            }
+          : {
+              color: seriesColor,
+              borderRadius: [2, 2, 0, 0],
+            },
+        barWidth: dashed ? 1 : 3,
         barGap: 2,
         xAxisIndex: 1,
-        label: {
-          formatter: () => 'X',
-          position: 'top',
-        },
-      }
+        zlevel: dashed ? 20 : 10,
+        label: !dashed
+          ? {
+              formatter: () => 'X',
+              position: 'top',
+            }
+          : undefined,
+      })
 
-      const barIcons: PictorialBarSeriesOption = {
-        data: data.map(({ year, value }) => [year, value]),
+      const createIconSeries = (
+        dataset: StadtradelnData[],
+        iconSymbol: string,
+      ): PictorialBarSeriesOption => ({
         type: 'pictorialBar',
-        symbol: symbol,
+        data: dataset.map(({ year, value }) => [year, value]),
+        symbol: iconSymbol,
         symbolSize: device === 'desktop' ? [61, 61] : [30, 30],
         symbolOffset: device === 'desktop' ? [0, -60] : [0, -30],
         symbolRotate: 15,
+        symbolPosition: 'end',
         barWidth: 3,
         barGap: 2,
-        symbolPosition: 'end',
         xAxisIndex: 1,
         zlevel: 20,
-      }
+      })
 
-      return [lineSeries, barSeries, barIcons]
+      const series: SeriesOption[] = [
+        createLineSeries(),
+        createBarSeries(regularData, color),
+        ...(preliminaryData.length
+          ? [createBarSeries(preliminaryData, color, true)]
+          : []),
+        createIconSeries(regularData, symbol),
+        ...(preliminaryData.length
+          ? [createIconSeries(preliminaryData, colors.highlight.symbol)]
+          : []),
+      ]
+
+      return series
     },
-    [],
+    [device],
   )
 
   useEffect(() => {
