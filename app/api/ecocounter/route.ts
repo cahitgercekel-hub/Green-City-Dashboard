@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
 import TTLCache from '@isaacs/ttlcache'
-import { format, subDays } from 'date-fns'
+import { format, startOfYear, subDays } from 'date-fns'
 
 const apiKey = process.env.ECOCOUNTER_API_KEY
 
@@ -32,26 +32,50 @@ export const GET = async (req: Request) => {
   }
 
   try {
+    const today = new Date()
     const endDate = format(subDays(new Date(), 0), 'yyyy-MM-dd')
     const startDate = format(subDays(new Date(), 7), 'yyyy-MM-dd')
+    const yearStartDate = format(startOfYear(today), 'yyyy-MM-dd')
 
-    const response = await fetch(
+    const weekresponse = await fetch(
       `${BASE_URL}?siteId=${siteId}&startDate=${startDate}&endDate=${endDate}`,
       { headers: { 'X-API-KEY': apiKey } },
     )
 
-    if (!response.ok) {
-      throw new Error(`API request failed with status ${response.status}`)
+    if (!weekresponse.ok) {
+      throw new Error(`API request failed with status ${weekresponse.status}`)
     }
-    const responseData = await response.json()
+    const weekData = await weekresponse.json()
+    const formattedWeekData = weekData['0'].data.map((entry: any) => ({
+      counts: entry.traffic.counts,
+      date: entry.timestamp,
+    }))
+    const yearResponse = await fetch(
+      `${BASE_URL}?siteId=${siteId}&startDate=${yearStartDate}&endDate=${endDate}`,
+      { headers: { 'X-API-KEY': apiKey } },
+    )
+    if (!yearResponse.ok) {
+      throw new Error(
+        `Year API request failed with status ${yearResponse.status}`,
+      )
+    }
+    const yearData = await yearResponse.json()
+    const countsPerYear = yearData['0'].data.reduce(
+      (sum: number, entry: any) => sum + entry.traffic.counts,
+      0,
+    )
 
-    const formattedData = responseData['0'].data.map((entry: any) => {
-      return { counts: entry.traffic.counts, date: entry.timestamp }
-    })
+    const responseData = [
+      ...formattedWeekData,
+      {
+        countsPerYear,
+        year: new Date().getFullYear(),
+      },
+    ]
 
-    trafficCache.set(cacheKey, formattedData)
+    trafficCache.set(cacheKey, responseData)
 
-    return NextResponse.json(formattedData)
+    return NextResponse.json(responseData)
   } catch (error) {
     return NextResponse.json(
       {
