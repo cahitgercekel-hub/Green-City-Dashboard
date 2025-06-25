@@ -51,7 +51,7 @@ export const GET = async (req: Request) => {
       date: entry.timestamp,
     }))
     const yearResponse = await fetch(
-      `${BASE_URL}?siteId=${siteId}&startDate=${yearStartDate}&endDate=${endDate}`,
+      `${BASE_URL}?siteId=${siteId}&startDate=${yearStartDate}&endDate=${endDate}&granularity=P1Y`,
       { headers: { 'X-API-KEY': apiKey } },
     )
     if (!yearResponse.ok) {
