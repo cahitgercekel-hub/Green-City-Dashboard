@@ -1,6 +1,4 @@
 import { useEffect, useMemo, useState } from 'react'
-import { format } from 'date-fns'
-import { de } from 'date-fns/locale'
 
 type EcoCounterDailyData = {
   counts: number
@@ -17,17 +15,6 @@ interface EcoCounterStationData {
   name: string
   weeklyData: EcoCounterDailyData[]
   yearlyData: EcoCounterYearlyData[]
-}
-
-interface NeoSenseResponse {
-  cuId: number
-  yearlyTotalBike: number
-  fullDataDaily: {
-    labels: string[]
-    datasets: {
-      totalBikes: number[]
-    }
-  }
 }
 
 interface Station {
@@ -80,17 +67,43 @@ const fetchBicycleData = async (
   }
 }
 
-const fetchNeosensData = async (): Promise<NeoSenseResponse[]> => {
-  const cuIdsParam = encodeURIComponent(
-    JSON.stringify(NEO_SENSE_STATIONS.map(s => Number(s.id))),
-  )
-  const response = await fetch(
-    `https://api.neocount.de/traffic-counts/sensor-data?cuIds=${cuIdsParam}`,
-  )
+const fetchNeosensData = async (
+  cuIdsParam: string,
+): Promise<EcoCounterStationData> => {
+  const response = await fetch(`/api/neosens?cuId=${cuIdsParam}`)
   if (!response.ok) {
     throw new Error('Failed to fetch Neosens data')
   }
-  return response.json()
+  const data = await response.json()
+  return {
+    id: cuIdsParam,
+    name: NEO_SENSE_STATIONS.find(s => s.id === cuIdsParam)?.name || cuIdsParam,
+    weeklyData: data.filter((d: any) => 'counts' in d),
+    yearlyData: data.filter((d: any) => 'countsPerYear' in d),
+  }
+}
+
+const processStationData = (
+  stations: EcoCounterStationData[],
+  normalizedDate: number,
+  currentYear: number,
+): ProcessedStationData[] => {
+  return stations.map(station => {
+    const weeklyCount =
+      station.weeklyData.find(
+        d => normalizeDate(new Date(d.date)) === normalizedDate,
+      )?.counts || 0
+
+    const yearlyCount =
+      station.yearlyData.find(y => y.year === currentYear)?.countsPerYear || 0
+
+    return {
+      id: station.id,
+      name: station.name,
+      weeklyCount,
+      yearlyCount,
+    }
+  })
 }
 
 export function useEcoCounter(timestamp: Date): UseEcoCounterResult {
@@ -98,7 +111,7 @@ export function useEcoCounter(timestamp: Date): UseEcoCounterResult {
   const [ecoCounterData, setEcoCounterData] = useState<EcoCounterStationData[]>(
     [],
   )
-  const [neosensData, setNeosensData] = useState<NeoSenseResponse[]>([])
+  const [neosensData, setNeosensData] = useState<EcoCounterStationData[]>([])
 
   useEffect(() => {
     const fetchData = async () => {
@@ -108,7 +121,9 @@ export function useEcoCounter(timestamp: Date): UseEcoCounterResult {
           Promise.all(
             ECO_COUNTER_STATIONS.map(station => fetchBicycleData(station.id)),
           ),
-          fetchNeosensData(),
+          Promise.all(
+            NEO_SENSE_STATIONS.map(station => fetchNeosensData(station.id)),
+          ),
         ])
         setEcoCounterData(ecoData)
         setNeosensData(neoData)
@@ -132,53 +147,20 @@ export function useEcoCounter(timestamp: Date): UseEcoCounterResult {
     }
 
     const normalizedDate = normalizeDate(timestamp)
-    const formattedDate = format(timestamp, 'd. MMMM yyyy', { locale: de })
+    const currentYear = new Date().getFullYear()
+    const ecoStations = processStationData(
+      ecoCounterData,
+      normalizedDate,
+      currentYear,
+    )
+    const neoSensStations = processStationData(
+      neosensData,
+      normalizedDate,
+      currentYear,
+    )
 
-    // Process EcoCounter stations
-    const ecoStations = ecoCounterData.map(station => {
-      const weeklyCount =
-        station.weeklyData.find(
-          d => normalizeDate(new Date(d.date)) === normalizedDate,
-        )?.counts || 0
-
-      const yearlyCount = station.yearlyData[0]?.countsPerYear || 0
-
-      return {
-        id: station.id,
-        name: station.name,
-        weeklyCount,
-        yearlyCount,
-      }
-    })
-
-    // Process NeoSens stations
-    const neoSensStations = neosensData.flatMap(sensor => {
-      const station = NEO_SENSE_STATIONS.find(
-        s => s.id === sensor.cuId.toString(),
-      )
-      if (!station) {
-        return []
-      }
-
-      const dailyData = sensor.fullDataDaily.labels
-        .map((label, index) => ({
-          label,
-          count: sensor.fullDataDaily.datasets.totalBikes[index],
-        }))
-        .find(d => d.label === formattedDate)
-
-      return {
-        id: sensor.cuId.toString(),
-        name: station.name,
-        weeklyCount: dailyData?.count || 0,
-        yearlyCount: sensor.yearlyTotalBike,
-      }
-    })
-
-    // Combine all stations into single array
     const combinedData = [...ecoStations, ...neoSensStations]
 
-    // Calculate min/max from weekly counts
     const weeklyCounts = combinedData.map(d => d.weeklyCount || 0)
     const min = weeklyCounts.length ? Math.min(...weeklyCounts) : 0
     const max = weeklyCounts.length ? Math.max(...weeklyCounts) : 0
