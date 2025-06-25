@@ -7,6 +7,7 @@ import getTileData from '@/lib/api/getTileData'
 export default async function BicycleChartTile() {
   const data = await getTileData('mobility-bicycle')
   const infoText = data?.info ?? ''
+  const year = new Date().getFullYear()
 
   return (
     <MobilityTile
@@ -21,6 +22,11 @@ export default async function BicycleChartTile() {
         <Spacer size={'lg'} />
         <Title as="h5">{infoText}</Title>
       </>
+      <div className="relative w-full pt-3">
+        <p className="absolute right-0 text-base font-bold text-red-800">
+          * Total Count in {year}
+        </p>
+      </div>
     </MobilityTile>
   )
 }
