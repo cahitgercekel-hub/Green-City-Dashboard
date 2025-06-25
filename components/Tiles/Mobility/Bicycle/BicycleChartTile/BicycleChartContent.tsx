@@ -27,11 +27,12 @@ export default function BicycleChartContent() {
         {data &&
           data.map(e => (
             <BicycleRow
-              count={e.count}
+              count={e.weeklyCount}
               key={e.id}
               max={max}
               min={min}
               name={e.name}
+              yearlyCount={e.yearlyCount}
             />
           ))}
       </div>
