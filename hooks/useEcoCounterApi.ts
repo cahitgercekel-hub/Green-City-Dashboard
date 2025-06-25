@@ -2,29 +2,31 @@ import { useEffect, useMemo, useState } from 'react'
 import { format } from 'date-fns'
 import { de } from 'date-fns/locale'
 
-type EcoCounterResponse = {
+type EcoCounterDailyData = {
+  counts: number
+  date: string
+}
+
+type EcoCounterYearlyData = {
+  countsPerYear: number
+  year: number
+}
+
+interface EcoCounterStationData {
   id: string
   name: string
-  data: {
-    counts: number
-    date: string
-  }[]
+  weeklyData: EcoCounterDailyData[]
+  yearlyData: EcoCounterYearlyData[]
 }
 
-export interface NeoSenseResponse {
+interface NeoSenseResponse {
   cuId: number
-  dailyTotalTraffic: number
-  yearlyTotalPedestrian: number
   yearlyTotalBike: number
-  fullDataMonthly: FullData
-  fullDataDaily: FullData
-}
-
-interface FullData {
-  labels: string[]
-  datasets: {
-    totalPedestrians: number[]
-    totalBikes: number[]
+  fullDataDaily: {
+    labels: string[]
+    datasets: {
+      totalBikes: number[]
+    }
   }
 }
 
@@ -33,124 +35,166 @@ interface Station {
   name: string
 }
 
-interface Result {
+interface ProcessedStationData {
   id: string
   name: string
-  count: number
+  weeklyCount: number
+  yearlyCount: number
 }
 
-const stations: Station[] = [
+interface UseEcoCounterResult {
+  loading: boolean
+  data: ProcessedStationData[]
+  min: number
+  max: number
+  stationCount: number
+}
+
+const ECO_COUNTER_STATIONS: Station[] = [
   { name: 'MZ-Kastel, Rheinufer', id: '300023897' },
   { name: 'Erbenheim / Kalkhofen', id: '300022664' },
 ]
 
-const neosens: Station[] = [
+const NEO_SENSE_STATIONS: Station[] = [
   { name: 'Stresemann-Ring', id: '1836' },
   { name: 'Bertramstraße', id: '1837' },
 ]
 
-const normalizeDate = (d: Date) =>
-  new Date(d.getFullYear(), d.getMonth(), d.getDate()).getTime()
+const normalizeDate = (date: Date) =>
+  new Date(date.getFullYear(), date.getMonth(), date.getDate()).getTime()
 
 const fetchBicycleData = async (
   stationId: string,
-): Promise<EcoCounterResponse['data']> => {
-  const res = await fetch(`/api/ecocounter?siteId=${stationId}`)
-  if (!res.ok) {
+): Promise<EcoCounterStationData> => {
+  const response = await fetch(`/api/ecocounter?siteId=${stationId}`)
+  if (!response.ok) {
     throw new Error(`Failed to fetch data for station ${stationId}`)
   }
-  return res.json()
+  const data = await response.json()
+
+  return {
+    id: stationId,
+    name: ECO_COUNTER_STATIONS.find(s => s.id === stationId)?.name || stationId,
+    weeklyData: data.filter((d: any) => 'counts' in d),
+    yearlyData: data.filter((d: any) => 'countsPerYear' in d),
+  }
 }
 
 const fetchNeosensData = async (): Promise<NeoSenseResponse[]> => {
   const cuIdsParam = encodeURIComponent(
-    JSON.stringify(neosens.map(s => Number(s.id))),
+    JSON.stringify(NEO_SENSE_STATIONS.map(s => Number(s.id))),
   )
-  const url = `https://api.neocount.de/traffic-counts/sensor-data?cuIds=${cuIdsParam}`
-  const res = await fetch(url)
-  if (!res.ok) {
+  const response = await fetch(
+    `https://api.neocount.de/traffic-counts/sensor-data?cuIds=${cuIdsParam}`,
+  )
+  if (!response.ok) {
     throw new Error('Failed to fetch Neosens data')
   }
-  return res.json()
+  return response.json()
 }
 
-const processNeosensData = (
-  data: NeoSenseResponse[],
-  timestamp: Date,
-): Result[] => {
-  const formattedDate = format(timestamp, 'd. MMMM yyyy', { locale: de })
-
-  return data
-    .flatMap(sensor => {
-      const { labels, datasets } = sensor.fullDataDaily
-      return labels.map((label, index) => ({
-        label,
-        count: datasets.totalBikes[index],
-        id: sensor.cuId.toString(),
-        name: neosens.find(s => s.id === sensor.cuId.toString())?.name ?? '',
-      }))
-    })
-    .filter(d => d.label === formattedDate)
-}
-
-export function useEcoCounter(timestamp: Date) {
-  const [bicycleData, setBicycleData] = useState<EcoCounterResponse[]>([])
+export function useEcoCounter(timestamp: Date): UseEcoCounterResult {
+  const [loading, setLoading] = useState(true)
+  const [ecoCounterData, setEcoCounterData] = useState<EcoCounterStationData[]>(
+    [],
+  )
   const [neosensData, setNeosensData] = useState<NeoSenseResponse[]>([])
 
   useEffect(() => {
-    const fetchAll = async () => {
+    const fetchData = async () => {
+      setLoading(true)
       try {
-        const bikes = await Promise.all(
-          stations.map(async ({ id, name }) => ({
-            id,
-            name,
-            data: await fetchBicycleData(id),
-          })),
-        )
-        setBicycleData(bikes)
+        const [ecoData, neoData] = await Promise.all([
+          Promise.all(
+            ECO_COUNTER_STATIONS.map(station => fetchBicycleData(station.id)),
+          ),
+          fetchNeosensData(),
+        ])
+        setEcoCounterData(ecoData)
+        setNeosensData(neoData)
+      } catch (error) {
+        // eslint-disable-next-line no-console
+        console.error('Error fetching data:', error)
+      } finally {
+        setLoading(false)
+      }
+    }
+    fetchData()
+  }, [])
 
-        const neosens = await fetchNeosensData()
-        setNeosensData(neosens)
-      } catch (err) {
-        console.error('Error fetching eco data:', err)
+  const { data, min, max } = useMemo(() => {
+    if (loading) {
+      return {
+        data: [],
+        min: 0,
+        max: 0,
       }
     }
 
-    fetchAll()
-  }, [])
+    const normalizedDate = normalizeDate(timestamp)
+    const formattedDate = format(timestamp, 'd. MMMM yyyy', { locale: de })
 
-  const filteredData = useMemo(() => {
-    if (!bicycleData.length || !neosensData.length) {
-      return null
+    // Process EcoCounter stations
+    const ecoStations = ecoCounterData.map(station => {
+      const weeklyCount =
+        station.weeklyData.find(
+          d => normalizeDate(new Date(d.date)) === normalizedDate,
+        )?.counts || 0
+
+      const yearlyCount = station.yearlyData[0]?.countsPerYear || 0
+
+      return {
+        id: station.id,
+        name: station.name,
+        weeklyCount,
+        yearlyCount,
+      }
+    })
+
+    // Process NeoSens stations
+    const neoSensStations = neosensData.flatMap(sensor => {
+      const station = NEO_SENSE_STATIONS.find(
+        s => s.id === sensor.cuId.toString(),
+      )
+      if (!station) {
+        return []
+      }
+
+      const dailyData = sensor.fullDataDaily.labels
+        .map((label, index) => ({
+          label,
+          count: sensor.fullDataDaily.datasets.totalBikes[index],
+        }))
+        .find(d => d.label === formattedDate)
+
+      return {
+        id: sensor.cuId.toString(),
+        name: station.name,
+        weeklyCount: dailyData?.count || 0,
+        yearlyCount: sensor.yearlyTotalBike,
+      }
+    })
+
+    // Combine all stations into single array
+    const combinedData = [...ecoStations, ...neoSensStations]
+
+    // Calculate min/max from weekly counts
+    const weeklyCounts = combinedData.map(d => d.weeklyCount || 0)
+    const min = weeklyCounts.length ? Math.min(...weeklyCounts) : 0
+    const max = weeklyCounts.length ? Math.max(...weeklyCounts) : 0
+
+    return {
+      data: combinedData,
+      min,
+      max,
     }
-
-    const normalized = normalizeDate(timestamp)
-
-    const bikes: Result[] = bicycleData.map(({ id, name, data }) => ({
-      id,
-      name,
-      count:
-        data.find(d => normalizeDate(new Date(d.date)) === normalized)
-          ?.counts || 0,
-    }))
-
-    const neosens: Result[] = processNeosensData(neosensData, timestamp)
-
-    return [...neosens, ...bikes]
-  }, [bicycleData, neosensData, timestamp])
-
-  const [min, max] = useMemo(() => {
-    const counts = bicycleData.flatMap(({ data }) =>
-      data.map(d => d.counts).filter(Boolean),
-    )
-    return counts.length ? [Math.min(...counts), Math.max(...counts)] : [0, 0]
-  }, [bicycleData])
+  }, [loading, ecoCounterData, neosensData, timestamp])
 
   return {
-    loading: !filteredData,
+    loading,
+    data,
     min,
     max,
-    data: filteredData,
-    stationCount: stations.length + neosens.length,
+    stationCount: ECO_COUNTER_STATIONS.length + NEO_SENSE_STATIONS.length,
   }
 }
