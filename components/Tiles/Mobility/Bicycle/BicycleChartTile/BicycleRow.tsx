@@ -40,8 +40,14 @@ export default function BicycleRow({
         <Title as={'h3'} variant={'mobility'}>
           <AnimatedNumber>{count}</AnimatedNumber>
         </Title>
-        <Title as={'h4'} className="text-red-800" variant={'mobility'}>
-          <AnimatedNumber>{yearlyCount}</AnimatedNumber>*
+        <Title
+          as={'h4'}
+          className="flex items-start text-red-800"
+          variant={'mobility'}
+        >
+          <AnimatedNumber>{yearlyCount}</AnimatedNumber>
+          {/* hochgestellt */}
+          <span className="text-md"> * </span>
         </Title>
       </div>
       <div className="mb-2 flex-1 md:mb-0">

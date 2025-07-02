@@ -6,6 +6,7 @@ import { useState } from 'react'
 import BicycleRow from './BicycleRow'
 import LoadingRow from './LoadingRow'
 import { useEcoCounter } from '@/hooks/useEcoCounterApi'
+import Title from '@/components/Elements/Title'
 
 export default function BicycleChartContent() {
   const lastDays = new Array(7)
@@ -16,6 +17,8 @@ export default function BicycleChartContent() {
   const [date, setDate] = useState<Date>(lastDays[lastDays.length - 1])
 
   const { data, min, max, stationCount, loading } = useEcoCounter(date)
+
+  const year = new Date().getFullYear()
 
   return (
     <>
@@ -35,6 +38,11 @@ export default function BicycleChartContent() {
               yearlyCount={e.yearlyCount}
             />
           ))}
+        <div className="mt-8 flex w-full">
+          <Title as="h8" className="text-red-800">
+            * Total {year}
+          </Title>
+        </div>
       </div>
       {lastDays.length > 0 && (
         <Slider
