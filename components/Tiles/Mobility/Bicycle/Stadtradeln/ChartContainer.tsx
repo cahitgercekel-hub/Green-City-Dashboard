@@ -20,7 +20,7 @@ export type StadtradelnData = {
 
 const COMPARE_INTERVAL = 5000
 
-const preliminaryMode = true
+const preliminaryMode = false // Set to true if you want to enable preliminary mode for latest year data
 
 const AnimatedProgressCircle = animated(ProgressCircle)
 
