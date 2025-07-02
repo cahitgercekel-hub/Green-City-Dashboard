@@ -39,7 +39,7 @@ export default function BicycleChartContent() {
             />
           ))}
         <div className="mt-8 flex w-full">
-          <Title as="h8" className="text-red-800">
+          <Title as="h8" variant={'energy'}>
             * Total {year}
           </Title>
         </div>

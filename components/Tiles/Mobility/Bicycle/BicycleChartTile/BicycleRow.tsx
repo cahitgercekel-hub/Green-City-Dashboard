@@ -32,7 +32,7 @@ export default function BicycleRow({
   const progress = mapBetween(count, min * 0.9, max * 1.1)
 
   return (
-    <div className="my-2 flex w-full items-end">
+    <div className="my-4 flex w-full items-end">
       <div className="w-28 flex-none md:w-40">
         <Title as={'h5'} variant={'primary'}>
           {name}
@@ -40,17 +40,13 @@ export default function BicycleRow({
         <Title as={'h3'} variant={'mobility'}>
           <AnimatedNumber>{count}</AnimatedNumber>
         </Title>
-        <Title
-          as={'h4'}
-          className="flex items-start text-red-800"
-          variant={'mobility'}
-        >
+        <Title as={'h4'} className="flex items-start" variant={'energy'}>
           <AnimatedNumber>{yearlyCount}</AnimatedNumber>
           {/* hochgestellt */}
           <span className="text-md"> * </span>
         </Title>
       </div>
-      <div className="mb-2 flex-1 md:mb-0">
+      <div className="mb-2 flex-1 md:mb-4">
         <BicycleProgress progress={progress} />
       </div>
     </div>
