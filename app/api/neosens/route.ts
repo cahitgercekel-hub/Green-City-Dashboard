@@ -1,28 +1,14 @@
 import { NextResponse } from 'next/server'
 import TTLCache from '@isaacs/ttlcache'
-import { format, subDays } from 'date-fns'
+import { format, parse, subDays } from 'date-fns'
+import { de } from 'date-fns/locale'
 
 const CACHE_TTL = 60 * 60 * 1000 // 1 hour
 const neosensCache = new TTLCache<string, any>({ ttl: CACHE_TTL })
 
-const MONTH_MAP: Record<string, string> = {
-  Januar: '01',
-  Februar: '02',
-  März: '03',
-  April: '04',
-  Mai: '05',
-  Juni: '06',
-  Juli: '07',
-  August: '08',
-  September: '09',
-  Oktober: '10',
-  November: '11',
-  Dezember: '12',
-}
-
 interface DailyCount {
   counts: number
-  date: string
+  date: Date
 }
 
 interface YearlyCount {
@@ -42,16 +28,6 @@ interface ApiResponse {
       totalPedestrians: number[]
     }
   }
-}
-
-function formatDateGermanLabel(label: string): string | null {
-  const [day, month, year] = label.split(' ')
-  if (!day || !month || !year || !MONTH_MAP[month]) {
-    return null
-  }
-
-  const cleanDay = day.replace('.', '').padStart(2, '0')
-  return `${year}-${MONTH_MAP[month]}-${cleanDay}T00:00:00+02:00`
 }
 
 function getYesterdayString(): string {
@@ -102,7 +78,11 @@ export const GET = async (req: Request) => {
 
     const allDailyCounts: DailyCount[] = labels
       .map((label, index) => {
-        const formattedDate = formatDateGermanLabel(label)
+        const formattedDate = parse(label, 'd. MMMM yyyy', new Date(), {
+          locale: de,
+        })
+        formattedDate.setHours(12, 0, 0, 0) // Set to noon to avoid timezone issues
+
         const count = totalBikes[index]
 
         if (!formattedDate || count === 0) {
@@ -114,8 +94,8 @@ export const GET = async (req: Request) => {
 
     const yesterdayString = getYesterdayString()
 
-    const yesterdayIndex = allDailyCounts.findIndex(d =>
-      d.date.startsWith(yesterdayString),
+    const yesterdayIndex = allDailyCounts.findIndex(
+      d => format(d.date, 'yyyy-MM-dd') === yesterdayString,
     )
 
     const dailyCounts =
