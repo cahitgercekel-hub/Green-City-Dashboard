@@ -1,0 +1,198 @@
+// Prisma Schema for Klimadashboard
+// This schema defines all content models for the dashboard application
+
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// Enums
+enum Status {
+  DRAFT
+  PUBLISHED
+  ARCHIVED
+}
+
+enum ImagePosition {
+  LEFT
+  RIGHT
+}
+enum Role {
+  ADMIN
+  EDITOR
+  VIEWER
+}
+// Models
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  role      Role     @default(VIEWER)
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("users")
+}
+
+model Tile {
+  id          String   @id @default(cuid())
+  name        String
+  tileId      String   
+  fullWidth   Boolean  @default(false) 
+  details     String?  @db.Text
+  dataUrl     String?  
+  info        String?  @db.Text
+  status      Status   @default(PUBLISHED)
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  @@map("tiles")
+}
+
+model Survey {
+  id             String   @id @default(cuid())
+  title          String
+  question       String   @db.Text
+  answerText     String
+  answerValue    Float
+  answerUnit     String   @default("%")
+  category       String
+  dataSource     String
+  dataRetrieval  DateTime
+  status         Status   @default(PUBLISHED)
+  createdAt      DateTime @default(now()) @map("created_at")
+  updatedAt      DateTime @updatedAt @map("updated_at")
+
+  @@map("surveys")
+}
+
+model SuccessStory {
+  id            String        @id @default(cuid())
+  text          String        @db.Text
+  link          String
+  image         String?
+  imagePosition ImagePosition @default(LEFT)
+  category      String
+  details       String        @db.Text
+  status        Status        @default(PUBLISHED)
+  createdAt     DateTime      @default(now()) @map("created_at")
+  updatedAt     DateTime      @updatedAt @map("updated_at")
+
+  @@map("success_stories")
+}
+
+model Collection {
+  id          String   @id @default(cuid())
+  title       String
+  description String?  @db.Text
+  slug        String   @unique
+  image       String
+  status      Status   @default(PUBLISHED)
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  tiles CollectionTile[]
+
+  @@map("collections")
+}
+
+model CollectionTile {
+  id           String  @id @default(cuid())
+  collectionId String
+  itemId       String
+  itemType     String  @map("item_type") // 'tile', 'survey', 'successStory'
+  sort         Int     @default(0)
+
+  collection   Collection     @relation(fields: [collectionId], references: [id], onDelete: Cascade)
+
+  @@map("collection_tiles")
+}
+
+model Section {
+  id        String   @id @default(cuid())
+  title     String
+  icon      String
+  sort      Int      @default(0)
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  tiles SectionTile[]
+
+  @@map("sections")
+}
+
+model SectionTile {
+  id        String  @id @default(cuid())
+  sectionId String
+  itemId    String
+  itemType  String  @map("item_type") // 'tile', 'survey', 'successStory'
+  sort      Int     @default(0)
+
+  section      Section        @relation(fields: [sectionId], references: [id], onDelete: Cascade)
+
+  @@map("section_tiles")
+}
+
+model Theme {
+  id                   String   @id @default(cuid())
+  title                String
+  navbarImage          String
+  navbarImageLink      String? 
+  aboutButtonTitle     String
+  aboutButtonText      String   @db.Text @map("about_button_text")
+  primary              String
+  primaryLight         String
+  secondary            String
+  secondaryLight       String
+  climate              String
+  climateLight         String
+  buildings            String
+  buildingsLight       String
+  mobility             String
+  mobilityLight        String
+  energy               String
+  energyLight          String
+  borderRadius         Int
+  font                 String
+  successStoriesTitle  String
+  favIcon              String
+  openGraphImage       String
+  createdAt            DateTime @default(now()) @map("created_at")
+  updatedAt            DateTime @updatedAt @map("updated_at")
+
+  @@map("themes")
+}
+
+model Impressum {
+  id        String   @id @default(cuid())
+  content   String   @db.Text
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("impressum")
+}
+
+model Datenschutz {
+  id        String   @id @default(cuid())
+  content   String   @db.Text
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("datenschutz")
+}
+
+model Files {
+  id        String   @id @default(cuid())
+  s3Key     String   
+  mime      String   
+  bucket    String   
+  comment   String?   
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+}

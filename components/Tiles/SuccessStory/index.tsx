@@ -1,8 +1,7 @@
 import { Spacer } from '@/components/Elements/Spacer'
 import Title from '@/components/Elements/Title'
 
-import directus, { directusImage } from '@/lib/directus'
-import { readSingleton } from '@directus/sdk'
+import { getTheme } from '@/lib/api/prismaService'
 import Markdown from 'react-markdown'
 import rehypeExternalLinks from 'rehype-external-links'
 import remarkGfm from 'remark-gfm'
@@ -31,12 +30,12 @@ export default async function SuccessStoryTile({
   moreInfo,
   id,
 }: SuccessStoryTileProps) {
-  const theme = await directus.request(readSingleton('theme'))
+  const theme = await getTheme()
 
   const Content = (
     <div className="flex h-full flex-col justify-between">
       <Title as="h5" font={'semibold'} variant={'primary'}>
-        {theme.success_stories_title}
+        {theme?.successStoriesTitle || 'Erfolgsgeschichten'}
       </Title>
       <Spacer size="md" />
       <Markdown
@@ -112,7 +111,7 @@ export default async function SuccessStoryTile({
       <img
         alt={'Image'}
         className="h-full w-full object-cover object-left transition-all group-hover:scale-105"
-        src={directusImage(image)}
+        src={image}
       />
     </div>
   )

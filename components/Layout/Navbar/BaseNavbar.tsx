@@ -8,13 +8,12 @@ import {
   MsKlimadashboardIconsButtonAktivKlima,
   MsKlimadashboardIconsButtonAktivMobil,
 } from '@/components/Icons/Misc'
-import directus, { directusImage, Theme } from '@/lib/directus'
-import { readSingleton } from '@directus/sdk'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import Container from '../Container'
 import StairStepBackground from '../StairStepBackground'
 import { LinkProps } from './LinkComponent'
+import { Theme } from '@prisma/client'
 
 const links: LinkProps[] = [
   {
@@ -58,11 +57,12 @@ export default function BaseNavbar({
 
   useEffect(() => {
     const fetchTheme = async () => {
-      const theme = await directus.request(readSingleton('theme'))
-
-      setTheme(theme)
+      const response = await fetch('/api/theme')
+      if (response.ok) {
+        const theme = await response.json()
+        setTheme(theme)
+      }
     }
-
     fetchTheme()
   }, [])
 
@@ -72,11 +72,7 @@ export default function BaseNavbar({
         {theme && (
           <Link href={theme.navbar_image_link || '#'} target="_blank">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              alt="Logo"
-              className="h-12 w-auto"
-              src={directusImage(theme.navbar_image)}
-            />
+            <img alt="Logo" className="h-12 w-auto" src={theme.navbar_image} />
           </Link>
         )}
       </div>

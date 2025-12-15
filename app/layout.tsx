@@ -1,6 +1,5 @@
-import directus, { directusImage } from '@/lib/directus'
+import { getTheme } from '@/lib/api/prismaService'
 import '@/styles/globals.css'
-import { readSingleton } from '@directus/sdk'
 import { Viewport } from 'next'
 import { Inter, Lexend, Lora } from 'next/font/google'
 import Script from 'next/script'
@@ -18,17 +17,15 @@ const lora = Lora({
 })
 
 export async function generateMetadata() {
-  const theme = await directus.request(readSingleton('theme'))
-  const ogImage = theme?.open_graph_image
+  const theme = await getTheme()
+  const ogImage = theme?.openGraphImage
     ? {
-        url: directusImage(theme.open_graph_image),
+        url: theme.openGraphImage,
       }
     : {
         url: '/opengraph-image.png',
       }
-  const faviconUrl = theme?.fav_icon
-    ? directusImage(theme.fav_icon)
-    : '/favicon.svg'
+  const faviconUrl = theme?.favIcon ? theme.favIcon : '/favicon.svg'
 
   if (!theme) {
     return {
@@ -69,29 +66,29 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  const theme = await directus.request(readSingleton('theme'))
+  const theme = await getTheme()
 
   let style: React.CSSProperties = {}
 
   if (theme) {
     style = {
       '--color-primary': hexToRgb(theme.primary),
-      '--color-primary-light': hexToRgb(theme.primary_light),
+      '--color-primary-light': hexToRgb(theme.primaryLight),
       '--color-secondary': hexToRgb(theme.secondary),
-      '--color-secondary-light': hexToRgb(theme.secondary_light),
+      '--color-secondary-light': hexToRgb(theme.secondaryLight),
       '--color-climate': hexToRgb(theme.climate),
-      '--color-climate-light': hexToRgb(theme.climate_light),
+      '--color-climate-light': hexToRgb(theme.climateLight),
       '--color-mobility': hexToRgb(theme.mobility),
-      '--color-mobility-light': hexToRgb(theme.mobility_light),
+      '--color-mobility-light': hexToRgb(theme.mobilityLight),
       '--color-energy': hexToRgb(theme.energy),
-      '--color-energy-light': hexToRgb(theme.energy_light),
+      '--color-energy-light': hexToRgb(theme.energyLight),
       '--color-buildings': hexToRgb(theme.buildings),
-      '--color-buildings-light': hexToRgb(theme.buildings_light),
+      '--color-buildings-light': hexToRgb(theme.buildingsLight),
       '--border-radius-md': `${
-        theme.border_radius * 12 * (theme.border_radius / 3)
+        theme.borderRadius * 12 * (theme.borderRadius / 3)
       }px`,
       '--border-radius-lg': `${
-        theme.border_radius * 17.3 * (theme.border_radius / 3)
+        theme.borderRadius * 17.3 * (theme.borderRadius / 3)
       }px`,
     } as React.CSSProperties
   }

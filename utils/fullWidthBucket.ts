@@ -1,11 +1,13 @@
-import directus from '@/lib/directus'
-import { readItem } from '@directus/sdk'
+import { getTileData } from '@/lib/api/prismaService'
 
 // super complex and probably overkill function to seperate fill width from normal tiles
 export type BaseTile = {
   id: string
-  collections_id: string
+  collections_id?: string
   item: string
+  itemId?: string
+  tileId?: string
+  itemType?: string
   collection: string
   sort: number
 }
@@ -17,21 +19,22 @@ export type TilesBucket = {
 
 // check if a tile should be displayed full width
 const isFullWidth = async (tile: BaseTile) => {
-  if (tile.collection === 'successStory') {
+  // Handle new Prisma structure
+  const itemType = tile.itemType || tile.collection
+
+  if (itemType === 'successStory') {
     return true
   }
 
-  if (tile.collection === 'survey') {
+  if (itemType === 'survey') {
     return false
   }
 
-  const data = await directus.request(
-    readItem('tiles', tile.item, {
-      fields: ['full_width'],
-    }),
-  )
+  // For regular tiles, fetch the tile data to check full_width property
+  const itemId = tile.tileId || ''
+  const data = await getTileData(itemId)
 
-  return data?.full_width === true
+  return data?.fullWidth === true
 }
 
 /**

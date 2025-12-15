@@ -1,18 +1,16 @@
 import { SuccessStoryTileProps } from '@/components/Tiles/SuccessStory'
 import { SurveyTileProps } from '@/components/Tiles/Survey'
 import { TileLayout } from '@/components/Tiles/TileLayout'
-import { fetchCollection } from '@/lib/api/directusService'
+import {
+  getCollection,
+  getCollections,
+  getTileData,
+} from '@/lib/api/prismaService'
 import { getSuccessStoryData } from '@/lib/api/getSuccessStoryData'
 import { getSurveyData } from '@/lib/api/getSurveyData'
-import directus, {
-  collectionsName,
-  ENV_DIRECTUS_ITEM_STATUS,
-  tileCollectionName,
-} from '@/lib/directus'
 import getTilesBucket, { BaseTile } from '@/utils/fullWidthBucket'
 import TileFactory, { TileType } from '@/utils/TileFactory'
 import { sortTiles } from '@/utils/tileLayout'
-import { readItem, readItems } from '@directus/sdk'
 import { notFound } from 'next/navigation'
 
 export const revalidate = 10
@@ -23,50 +21,20 @@ export async function generateStaticParams() {
     return []
   }
 
-  const data = await directus.request(
-    readItems(collectionsName, {
-      fields: ['slug'],
-      status: {
-        _eq: ENV_DIRECTUS_ITEM_STATUS,
-      },
-    }),
-  )
+  const collections = await getCollections('PUBLISHED')
 
-  if (!data) {
+  if (!collections || collections.length === 0) {
     return [{ slug: undefined }]
   }
 
-  return data.map(({ slug }) => ({
+  return collections.map(({ slug }) => ({
     slug,
   }))
 }
 
-const getCollection = async (collectionSlug: string) => {
-  const data = await directus.request(
-    readItems(collectionsName, {
-      filter: {
-        slug: {
-          _eq: collectionSlug,
-        },
-        status: {
-          _eq: ENV_DIRECTUS_ITEM_STATUS,
-        },
-      },
-      fields: ['title', 'description', 'tiles.*'],
-    }),
-  )
-
-  return data
-}
-
 const getTileType = async (tileID: string) => {
-  const data = await directus.request(
-    readItem(tileCollectionName, tileID, {
-      fields: ['tile_id'],
-    }),
-  )
-
-  return data?.tile_id
+  const data = await getTileData(tileID)
+  return data?.tileId
 }
 
 const getTileComponent = async (tile: BaseTile) => {
@@ -74,20 +42,23 @@ const getTileComponent = async (tile: BaseTile) => {
     | { surveyData?: SurveyTileProps; successStoryData?: SuccessStoryTileProps }
     | undefined
   let type: TileType
-  if (tile.collection === 'survey') {
-    const surveyData = await getSurveyData(tile.item)
+
+  const itemType = tile.itemType || tile.collection
+  const itemId = tile.itemId || tile.item
+
+  if (itemType === 'survey') {
+    const surveyData = await getSurveyData(itemId)
     props = { surveyData }
     type = 'survey'
-  } else if (tile.collection === 'successStory') {
-    console.log(tile)
-    const successStoryData = await getSuccessStoryData(tile.item)
+  } else if (itemType === 'successStory') {
+    const successStoryData = await getSuccessStoryData(itemId)
     props = { successStoryData }
     type = 'successStory'
   } else {
-    type = (await getTileType(tile.item as string)) as TileType
+    type = (await getTileType(itemId as string)) as TileType
   }
 
-  return <TileFactory key={tile.item} type={type} {...props} />
+  return <TileFactory key={itemId} type={type} {...props} />
 }
 
 const getTileComponents = async (tiles: BaseTile[]) => {
@@ -106,16 +77,13 @@ export default async function Collection(props: {
     return notFound()
   }
 
-  const collection = await fetchCollection(
-    params.slug,
-    ENV_DIRECTUS_ITEM_STATUS,
-  )
-  if (!collection?.[0]) {
+  const collection = await getCollection(params.slug)
+
+  if (!collection) {
     return notFound()
   }
 
-  // @ts-ignore
-  const { tiles } = collection[0]
+  const { tiles } = collection
   const sortedTiles = sortTiles(tiles)
   const tileBuckets = await getTilesBucket(sortedTiles)
 

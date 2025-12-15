@@ -71,7 +71,7 @@ export default async function TileFactory({
   type,
   ...props
 }: TileFactoryProps) {
-  if (type.startsWith('survey')) {
+  if (type?.startsWith('survey')) {
     const [_, id] = type.split('survey-')
     if (props.surveyData) {
       return <SurveyTile {...props.surveyData} />
@@ -83,7 +83,7 @@ export default async function TileFactory({
     return <SurveyTile {...data} />
   }
 
-  if (type.startsWith('successStory')) {
+  if (type?.startsWith('successStory')) {
     const [_, id] = type.split('successStory-')
     if (props.successStoryData) {
       return <SuccessStoryTile {...props.successStoryData} />

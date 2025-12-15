@@ -3,47 +3,26 @@ import Container from '@/components/Layout/Container'
 import Footer from '@/components/Layout/Footer'
 import CollectionNavbar from '@/components/Layout/Navbar/CollectionNavbar'
 import Providers from '@/components/Layout/Providers'
-import directus, {
-  collectionsName,
-  ENV_DIRECTUS_ITEM_STATUS,
-} from '@/lib/directus'
-import { readItems } from '@directus/sdk'
+import { getCollection as getCollectionFromPrisma } from '@/lib/api/prismaService'
 import { notFound } from 'next/navigation'
 
 // revalidate each minute
 export const revalidate = 10
 
 const getCollection = async (collectionSlug: string) => {
-  const data = await directus.request(
-    readItems(collectionsName, {
-      filter: {
-        slug: {
-          _eq: collectionSlug,
-        },
-        status: {
-          _eq: ENV_DIRECTUS_ITEM_STATUS,
-        },
-      },
-      fields: ['title', 'description'],
-    }),
-  )
-
-  return data
+  const collection = await getCollectionFromPrisma(collectionSlug)
+  return collection
 }
 
 type Params = Promise<{ slug: string }>
 
-export default async function Layout(
-  props: {
-    children: React.ReactNode
-    params?: Promise<Params>
-  }
-) {
-  const params = await props.params;
+export default async function Layout(props: {
+  children: React.ReactNode
+  params?: Promise<Params>
+}) {
+  const params = await props.params
 
-  const {
-    children
-  } = props;
+  const { children } = props
 
   if (!params) {
     return notFound()
@@ -61,7 +40,7 @@ export default async function Layout(
     return notFound()
   }
 
-  const { title, description } = collection[0]
+  const { title, description } = collection
 
   return (
     <div className="flex h-screen flex-col">

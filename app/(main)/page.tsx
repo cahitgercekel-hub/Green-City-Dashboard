@@ -8,21 +8,16 @@ import AnimatedPage from '@/components/Layout/AnimatedPage'
 import Title from '@/components/Elements/Title'
 import SvgWiesbaden from '@/components/Icons/Wiesbaden'
 import { TileLayout } from '@/components/Tiles/TileLayout'
-import directus, { Section } from '@/lib/directus'
+import { getSections } from '@/lib/api/prismaService'
+import type { SectionWithTiles } from '@/lib/types'
 import getTilesBucket from '@/utils/fullWidthBucket'
 import { sortTiles } from '@/utils/tileLayout'
-import { readItems } from '@directus/sdk'
 import { cx } from 'class-variance-authority'
 
 export default async function Home() {
-  const data = await directus.request(
-    readItems('sections', {
-      // @ts-ignore
-      fields: ['*', { tiles: ['*'] }],
-    }),
-  )
+  const data = await getSections()
 
-  async function buildSections(data: Section[]) {
+  async function buildSections(data: SectionWithTiles[]) {
     const sections = await Promise.all(
       data.map(async section => {
         const { title, tiles, icon } = section
@@ -46,13 +41,11 @@ export default async function Home() {
                 </Title>
               </div>
             </div>
-
             <TileLayout tileBuckets={tileBuckets} />
           </div>
         )
       }),
     )
-
     return sections
   }
 
