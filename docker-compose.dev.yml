@@ -16,5 +16,15 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+  admin:
+    # image: ghcr.io/reedu-reengineering-education/insta-admin:pr-8
+    image: testme
+    restart: always
+    env_file:
+      - './.adminenv'
+    ports:
+      - '3001:3001'
+    networks:
+      - default
 volumes:
   postgres_data:
