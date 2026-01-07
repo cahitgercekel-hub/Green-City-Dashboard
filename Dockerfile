@@ -23,6 +23,7 @@ COPY . .
 # Run the postinstall script (and install curl for the script to work)
 RUN apk add --no-cache curl bash
 
+RUN npx prisma generate
 
 # Next.js collects completely anonymous telemetry data about general usage.
 # Learn more here: https://nextjs.org/telemetry
@@ -30,8 +31,6 @@ RUN apk add --no-cache curl bash
 ENV NEXT_TELEMETRY_DISABLED=1
 
 RUN NEXT_PUBLIC_DIRECTUS_URL=NEXT_PUBLIC_DIRECTUS_URL ECOCOUNTER_API_TOKEN=ECOCOUNTER_API_TOKEN yarn build --experimental-build-mode compile
-
-RUN npx prisma generate
 
 # If using npm comment out above and use below instead
 # RUN npm run build
