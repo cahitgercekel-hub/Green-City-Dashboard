@@ -6,9 +6,9 @@ services:
     ports:
       - '5432:5432'
     environment:
-      POSTGRES_USER: user
-      POSTGRES_PASSWORD: password
-      POSTGRES_DB: klimadashboard
+      POSTGRES_USER: ${DATABASE_USER}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+      POSTGRES_DB: ${DATABASE_NAME}
     volumes:
       - postgres_data:/var/lib/postgresql/data
     healthcheck:
@@ -17,11 +17,26 @@ services:
       timeout: 5s
       retries: 5
   admin:
-    # image: ghcr.io/reedu-reengineering-education/insta-admin:pr-8
-    image: testme
+    image: ghcr.io/reedu-reengineering-education/insta-admin:pr-8
     restart: always
-    env_file:
-      - './.adminenv'
+    environment:
+      DATABASE_DIALECT: ${DATABASE_DIALECT}
+      DATABASE_NAME: ${DATABASE_NAME}
+      DATABASE_HOST: ${DATABASE_HOST}
+      DATABASE_USER: ${DATABASE_USER}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
+      PORT: ${PORT}
+      DATABASE_URL: ${DATABASE_URL}
+      COOKIE_SECRET: ${COOKIE_SECRET}
+      COOKIE_PASSWORD: ${COOKIE_PASSWORD}
+      ADMIN_EMAIL: ${ADMIN_EMAIL}
+      ADMIN_PASSWORD_HASH: ${ADMIN_PASSWORD_HASH}
+      SESSION_SECRET: ${SESSION_SECRET}
+      HETZNER_ENDPOINT: ${HETZNER_ENDPOINT}
+      HETZNER_REGION: ${HETZNER_REGION}
+      HETZNER_ACCESS_KEY: ${HETZNER_ACCESS_KEY}
+      HETZNER_SECRET_KEY: ${HETZNER_SECRET_KEY}
+      HETZNER_BUCKET: ${HETZNER_BUCKET}
     ports:
       - '3001:3001'
     networks:
