@@ -7,7 +7,7 @@ import Carousel from '../Elements/Carousel'
 import { useWindowSize } from 'react-use'
 
 const pages = {
-  desktop: 3,
+  desktop: 4,
   tablet: 2,
   mobile: 1,
 }

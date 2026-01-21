@@ -7,7 +7,7 @@ export const getInsightsData = async () => {
   const collections = await getCollections('PUBLISHED')
 
   // Return only first 3 collections with required fields
-  return collections.slice(0, 3).map(collection => ({
+  return collections.map(collection => ({
     slug: collection.slug,
     title: collection.title,
     image: collection.image,
