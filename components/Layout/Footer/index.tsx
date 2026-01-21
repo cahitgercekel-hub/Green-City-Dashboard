@@ -6,10 +6,6 @@ import Link from 'next/link'
 import Container from '../Container'
 import StairStepBackground from '../StairStepBackground'
 
-import BMWSBLogo from '@/assets/logos/BMWSB.png'
-import StadtwerkeLogo from '@/assets/logos/Stadtwerke_Muenster_Logo.png'
-import KFW from '@/assets/logos/kfw.png'
-import WFMLogo from '@/assets/logos/logo_wfm.png'
 import DezernatSmartCity from '@/assets/logos/Wiesbaden_footer_logo.jpg'
 import WiesbadenLogo from '@/assets/logos/Wiesbaden_smart city_4c.png'
 

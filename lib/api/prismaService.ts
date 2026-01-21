@@ -7,6 +7,7 @@
  */
 
 import { prisma } from '@/lib/prisma'
+import { getActiveLocale } from '@/lib/i18n'
 import type {
   Collection,
   CollectionWithTiles,
@@ -31,6 +32,17 @@ import {
   validateOrThrow,
 } from '@/lib/validation/schemas'
 
+const resolveTranslation = <T extends { locale: string }>(
+  translations: T[] | undefined,
+  locale: string,
+) => {
+  if (!translations || translations.length === 0) {
+    return undefined
+  }
+
+  return translations.find(t => t.locale === locale) ?? translations[0]
+}
+
 /**
  * Tile Operations
  */
@@ -40,16 +52,35 @@ import {
  * @param tileId - The tile_id to search for (e.g., 'climate-weather')
  * @returns Tile data or null if not found
  */
-export async function getTileData(tileId: string): Promise<Tile | null> {
+export async function getTileData(
+  tileId: string,
+  locale?: string,
+): Promise<Tile | null> {
   try {
+    const activeLocale = locale ?? (await getActiveLocale())
     const tile = await prisma.tile.findFirst({
       where: {
         tileId: tileId,
       },
+      include: {
+        translations: true,
+      },
     })
-    return tile
-  } catch (error) {
-    console.error('Error fetching tile data:', error)
+
+    if (!tile) {
+      return null
+    }
+
+    const translation = resolveTranslation(tile.translations, activeLocale)
+    const { translations: _translations, ...base } = tile
+
+    return {
+      ...base,
+      name: translation?.name ?? base.name,
+      details: translation?.details ?? base.details,
+      info: translation?.info ?? base.info,
+    }
+  } catch {
     return null
   }
 }
@@ -59,19 +90,35 @@ export async function getTileData(tileId: string): Promise<Tile | null> {
  * @param status - The status to filter by (DRAFT, PUBLISHED, ARCHIVED)
  * @returns Array of tiles matching the status
  */
-export async function getTilesByStatus(status: Status): Promise<Tile[]> {
+export async function getTilesByStatus(
+  status: Status,
+  locale?: string,
+): Promise<Tile[]> {
   try {
+    const activeLocale = locale ?? (await getActiveLocale())
     const tiles = await prisma.tile.findMany({
       where: {
         status: status,
+      },
+      include: {
+        translations: true,
       },
       orderBy: {
         createdAt: 'desc',
       },
     })
-    return tiles
-  } catch (error) {
-    console.error('Error fetching tiles by status:', error)
+
+    return tiles.map(tile => {
+      const translation = resolveTranslation(tile.translations, activeLocale)
+      const { translations: _translations, ...base } = tile
+      return {
+        ...base,
+        name: translation?.name ?? base.name,
+        details: translation?.details ?? base.details,
+        info: translation?.info ?? base.info,
+      }
+    })
+  } catch {
     return []
   }
 }
@@ -85,16 +132,37 @@ export async function getTilesByStatus(status: Status): Promise<Tile[]> {
  * @param surveyId - The survey ID
  * @returns Survey data or null if not found
  */
-export async function getSurveyData(surveyId: string): Promise<Survey | null> {
+export async function getSurveyData(
+  surveyId: string,
+  locale?: string,
+): Promise<Survey | null> {
   try {
+    const activeLocale = locale ?? (await getActiveLocale())
     const survey = await prisma.survey.findUnique({
       where: {
         id: surveyId,
       },
+      include: {
+        translations: true,
+      },
     })
-    return survey
-  } catch (error) {
-    console.error('Error fetching survey data:', error)
+
+    if (!survey) {
+      return null
+    }
+
+    const translation = resolveTranslation(survey.translations, activeLocale)
+    const { translations: _translations, ...base } = survey
+
+    return {
+      ...base,
+      title: translation?.title ?? base.title,
+      question: translation?.question ?? base.question,
+      answerText: translation?.answerText ?? base.answerText,
+      answerValue: translation?.answerValue ?? base.answerValue,
+      answerUnit: translation?.answerUnit ?? base.answerUnit,
+    }
+  } catch {
     return null
   }
 }
@@ -106,20 +174,36 @@ export async function getSurveyData(surveyId: string): Promise<Survey | null> {
  */
 export async function getSurveysForCategory(
   category: string,
+  locale?: string,
 ): Promise<Survey[]> {
   try {
+    const activeLocale = locale ?? (await getActiveLocale())
     const surveys = await prisma.survey.findMany({
       where: {
         category: category,
         status: 'PUBLISHED',
       },
+      include: {
+        translations: true,
+      },
       orderBy: {
         createdAt: 'desc',
       },
     })
-    return surveys
-  } catch (error) {
-    console.error('Error fetching surveys for category:', error)
+
+    return surveys.map(survey => {
+      const translation = resolveTranslation(survey.translations, activeLocale)
+      const { translations: _translations, ...base } = survey
+      return {
+        ...base,
+        title: translation?.title ?? base.title,
+        question: translation?.question ?? base.question,
+        answerText: translation?.answerText ?? base.answerText,
+        answerValue: translation?.answerValue ?? base.answerValue,
+        answerUnit: translation?.answerUnit ?? base.answerUnit,
+      }
+    })
+  } catch {
     return []
   }
 }
@@ -135,16 +219,32 @@ export async function getSurveysForCategory(
  */
 export async function getSuccessStoryData(
   storyId: string,
+  locale?: string,
 ): Promise<SuccessStory | null> {
   try {
+    const activeLocale = locale ?? (await getActiveLocale())
     const story = await prisma.successStory.findUnique({
       where: {
         id: storyId,
       },
+      include: {
+        translations: true,
+      },
     })
-    return story
-  } catch (error) {
-    console.error('Error fetching success story data:', error)
+
+    if (!story) {
+      return null
+    }
+
+    const translation = resolveTranslation(story.translations, activeLocale)
+    const { translations: _translations, ...base } = story
+
+    return {
+      ...base,
+      text: translation?.text ?? base.text,
+      details: translation?.details ?? base.details,
+    }
+  } catch {
     return null
   }
 }
@@ -156,21 +256,34 @@ export async function getSuccessStoryData(
  */
 export async function getSuccessStoriesForCategory(
   category: string,
+  locale?: string,
 ): Promise<SuccessStory[]> {
   try {
+    const activeLocale = locale ?? (await getActiveLocale())
     const stories = await prisma.successStory.findMany({
       where: {
         category: category,
         status: 'PUBLISHED',
+      },
+      include: {
+        translations: true,
       },
       orderBy: {
         createdAt: 'desc',
       },
       take: 3,
     })
-    return stories
-  } catch (error) {
-    console.error('Error fetching success stories for category:', error)
+
+    return stories.map(story => {
+      const translation = resolveTranslation(story.translations, activeLocale)
+      const { translations: _translations, ...base } = story
+      return {
+        ...base,
+        text: translation?.text ?? base.text,
+        details: translation?.details ?? base.details,
+      }
+    })
+  } catch {
     return []
   }
 }
@@ -201,8 +314,7 @@ export async function getCollection(
       },
     })
     return collection
-  } catch (error) {
-    console.error('Error fetching collection:', error)
+  } catch {
     return null
   }
 }
@@ -223,8 +335,7 @@ export async function getCollections(status: Status): Promise<Collection[]> {
       },
     })
     return collections
-  } catch (error) {
-    console.error('Error fetching collections:', error)
+  } catch {
     return []
   }
 }
@@ -238,10 +349,14 @@ export async function getCollections(status: Status): Promise<Collection[]> {
  * Sections don't have a status field, so all sections are returned
  * @returns Array of sections with tiles
  */
-export async function getSections(): Promise<SectionWithTiles[]> {
+export async function getSections(
+  locale?: string,
+): Promise<SectionWithTiles[]> {
   try {
+    const activeLocale = locale ?? (await getActiveLocale())
     const sections = await prisma.section.findMany({
       include: {
+        translations: true,
         tiles: {
           orderBy: {
             sort: 'asc',
@@ -252,9 +367,16 @@ export async function getSections(): Promise<SectionWithTiles[]> {
         sort: 'asc',
       },
     })
-    return sections
-  } catch (error) {
-    console.error('Error fetching sections:', error)
+
+    return sections.map(section => {
+      const translation = resolveTranslation(section.translations, activeLocale)
+      const { translations: _translations, ...base } = section
+      return {
+        ...base,
+        title: translation?.title ?? base.title,
+      }
+    })
+  } catch {
     return []
   }
 }
@@ -276,8 +398,7 @@ export async function getTheme(): Promise<Theme | null> {
       },
     })
     return theme
-  } catch (error) {
-    console.error('Error fetching theme:', error)
+  } catch {
     return null
   }
 }
@@ -291,16 +412,30 @@ export async function getTheme(): Promise<Theme | null> {
  * There should only be one impressum record
  * @returns Impressum data or null if not found
  */
-export async function getImpressum(): Promise<Impressum | null> {
+export async function getImpressum(locale?: string): Promise<Impressum | null> {
   try {
+    const activeLocale = locale ?? (await getActiveLocale())
     const impressum = await prisma.impressum.findFirst({
       orderBy: {
         createdAt: 'desc',
       },
+      include: {
+        translations: true,
+      },
     })
-    return impressum
-  } catch (error) {
-    console.error('Error fetching impressum:', error)
+
+    if (!impressum) {
+      return null
+    }
+
+    const translation = resolveTranslation(impressum.translations, activeLocale)
+    const { translations: _translations, ...base } = impressum
+
+    return {
+      ...base,
+      content: translation?.content ?? base.content,
+    }
+  } catch {
     return null
   }
 }
@@ -310,16 +445,35 @@ export async function getImpressum(): Promise<Impressum | null> {
  * There should only be one datenschutz record
  * @returns Datenschutz data or null if not found
  */
-export async function getDatenschutz(): Promise<Datenschutz | null> {
+export async function getDatenschutz(
+  locale?: string,
+): Promise<Datenschutz | null> {
   try {
+    const activeLocale = locale ?? (await getActiveLocale())
     const datenschutz = await prisma.datenschutz.findFirst({
       orderBy: {
         createdAt: 'desc',
       },
+      include: {
+        translations: true,
+      },
     })
-    return datenschutz
-  } catch (error) {
-    console.error('Error fetching datenschutz:', error)
+
+    if (!datenschutz) {
+      return null
+    }
+
+    const translation = resolveTranslation(
+      datenschutz.translations,
+      activeLocale,
+    )
+    const { translations: _translations, ...base } = datenschutz
+
+    return {
+      ...base,
+      content: translation?.content ?? base.content,
+    }
+  } catch {
     return null
   }
 }
@@ -389,7 +543,12 @@ export async function fetchRelatedItemsForJunction(
  */
 export async function createTile(data: unknown): Promise<Tile> {
   const validated = validateOrThrow(TileSchema, data)
-  const { id, createdAt, updatedAt, ...createData } = validated
+  const {
+    id: _id,
+    createdAt: _createdAt,
+    updatedAt: _updatedAt,
+    ...createData
+  } = validated
 
   return await prisma.tile.create({
     data: createData,
@@ -405,7 +564,12 @@ export async function createTile(data: unknown): Promise<Tile> {
  */
 export async function updateTile(id: string, data: unknown): Promise<Tile> {
   const validated = validateOrThrow(TileSchema, data)
-  const { id: _, createdAt, updatedAt, ...updateData } = validated
+  const {
+    id: _id,
+    createdAt: _createdAt,
+    updatedAt: _updatedAt,
+    ...updateData
+  } = validated
 
   return await prisma.tile.update({
     where: { id },
@@ -421,10 +585,18 @@ export async function updateTile(id: string, data: unknown): Promise<Tile> {
  */
 export async function createSurvey(data: unknown): Promise<Survey> {
   const validated = validateOrThrow(SurveySchema, data)
-  const { id, createdAt, updatedAt, ...createData } = validated
+  const {
+    id: _id,
+    createdAt: _createdAt,
+    updatedAt: _updatedAt,
+    ...createData
+  } = validated
 
   return await prisma.survey.create({
-    data: createData,
+    data: {
+      ...createData,
+      dataSource: createData.dataSource ?? '',
+    },
   })
 }
 
@@ -437,11 +609,19 @@ export async function createSurvey(data: unknown): Promise<Survey> {
  */
 export async function updateSurvey(id: string, data: unknown): Promise<Survey> {
   const validated = validateOrThrow(SurveySchema, data)
-  const { id: _, createdAt, updatedAt, ...updateData } = validated
+  const {
+    id: _id,
+    createdAt: _createdAt,
+    updatedAt: _updatedAt,
+    ...updateData
+  } = validated
 
   return await prisma.survey.update({
     where: { id },
-    data: updateData,
+    data: {
+      ...updateData,
+      dataSource: updateData.dataSource ?? '',
+    },
   })
 }
 
@@ -453,10 +633,19 @@ export async function updateSurvey(id: string, data: unknown): Promise<Survey> {
  */
 export async function createSuccessStory(data: unknown): Promise<SuccessStory> {
   const validated = validateOrThrow(SuccessStorySchema, data)
-  const { id, createdAt, updatedAt, ...createData } = validated
+  const {
+    id: _id,
+    createdAt: _createdAt,
+    updatedAt: _updatedAt,
+    ...createData
+  } = validated
 
   return await prisma.successStory.create({
-    data: createData,
+    data: {
+      ...createData,
+      link: createData.link ?? '',
+      image: createData.image ?? null,
+    },
   })
 }
 
@@ -472,11 +661,20 @@ export async function updateSuccessStory(
   data: unknown,
 ): Promise<SuccessStory> {
   const validated = validateOrThrow(SuccessStorySchema, data)
-  const { id: _, createdAt, updatedAt, ...updateData } = validated
+  const {
+    id: _id,
+    createdAt: _createdAt,
+    updatedAt: _updatedAt,
+    ...updateData
+  } = validated
 
   return await prisma.successStory.update({
     where: { id },
-    data: updateData,
+    data: {
+      ...updateData,
+      link: updateData.link ?? '',
+      image: updateData.image ?? null,
+    },
   })
 }
 
@@ -488,7 +686,12 @@ export async function updateSuccessStory(
  */
 export async function createCollection(data: unknown): Promise<Collection> {
   const validated = validateOrThrow(CollectionSchema, data)
-  const { id, createdAt, updatedAt, ...createData } = validated
+  const {
+    id: _id,
+    createdAt: _createdAt,
+    updatedAt: _updatedAt,
+    ...createData
+  } = validated
 
   // Check for slug uniqueness
   const existing = await prisma.collection.findUnique({
@@ -516,7 +719,12 @@ export async function updateCollection(
   data: unknown,
 ): Promise<Collection> {
   const validated = validateOrThrow(CollectionSchema, data)
-  const { id: _, createdAt, updatedAt, ...updateData } = validated
+  const {
+    id: _id,
+    createdAt: _createdAt,
+    updatedAt: _updatedAt,
+    ...updateData
+  } = validated
 
   // Check for slug uniqueness (excluding current record)
   if (updateData.slug) {
@@ -548,7 +756,12 @@ export async function updateCollection(
  */
 export async function createSection(data: unknown) {
   const validated = validateOrThrow(SectionSchema, data)
-  const { id, createdAt, updatedAt, ...createData } = validated
+  const {
+    id: _id,
+    createdAt: _createdAt,
+    updatedAt: _updatedAt,
+    ...createData
+  } = validated
 
   return await prisma.section.create({
     data: createData,
@@ -564,7 +777,12 @@ export async function createSection(data: unknown) {
  */
 export async function updateSection(id: string, data: unknown) {
   const validated = validateOrThrow(SectionSchema, data)
-  const { id: _, createdAt, updatedAt, ...updateData } = validated
+  const {
+    id: _id,
+    createdAt: _createdAt,
+    updatedAt: _updatedAt,
+    ...updateData
+  } = validated
 
   return await prisma.section.update({
     where: { id },
@@ -580,7 +798,12 @@ export async function updateSection(id: string, data: unknown) {
  */
 export async function upsertTheme(data: unknown): Promise<Theme> {
   const validated = validateOrThrow(ThemeSchema, data)
-  const { id, createdAt, updatedAt, ...themeData } = validated
+  const {
+    id: _id,
+    createdAt: _createdAt,
+    updatedAt: _updatedAt,
+    ...themeData
+  } = validated
 
   // Check if a theme already exists
   const existingTheme = await prisma.theme.findFirst()
@@ -607,7 +830,12 @@ export async function upsertTheme(data: unknown): Promise<Theme> {
  */
 export async function upsertImpressum(data: unknown): Promise<Impressum> {
   const validated = validateOrThrow(ImpressumSchema, data)
-  const { id, createdAt, updatedAt, ...impressumData } = validated
+  const {
+    id: _id,
+    createdAt: _createdAt,
+    updatedAt: _updatedAt,
+    ...impressumData
+  } = validated
 
   // Check if an impressum already exists
   const existingImpressum = await prisma.impressum.findFirst()
@@ -634,7 +862,12 @@ export async function upsertImpressum(data: unknown): Promise<Impressum> {
  */
 export async function upsertDatenschutz(data: unknown): Promise<Datenschutz> {
   const validated = validateOrThrow(DatenschutzSchema, data)
-  const { id, createdAt, updatedAt, ...datenschutzData } = validated
+  const {
+    id: _id,
+    createdAt: _createdAt,
+    updatedAt: _updatedAt,
+    ...datenschutzData
+  } = validated
 
   // Check if a datenschutz already exists
   const existingDatenschutz = await prisma.datenschutz.findFirst()
@@ -701,13 +934,7 @@ export const fetchTileType = async (id: string) => {
     })
 
     return tile
-  } catch (error) {
-    // Sanitize error to avoid circular references
-    console.error(
-      'Error fetching tile:',
-      id,
-      error instanceof Error ? error.message : 'Unknown error',
-    )
+  } catch {
     throw new Error(`Failed to fetch tile: ${id}`)
   }
 }

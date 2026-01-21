@@ -1,9 +1,12 @@
 import { SuccessStoryTileProps } from '@/components/Tiles/SuccessStory'
 import { getSuccessStoryData as getSuccessStoryDataFromPrisma } from './prismaService'
 
-export const getSuccessStoryData = async (successStoryID: string) => {
+export const getSuccessStoryData = async (
+  successStoryID: string,
+  locale?: string,
+) => {
   try {
-    const data = await getSuccessStoryDataFromPrisma(successStoryID)
+    const data = await getSuccessStoryDataFromPrisma(successStoryID, locale)
 
     if (!data) {
       return undefined
@@ -14,7 +17,7 @@ export const getSuccessStoryData = async (successStoryID: string) => {
       link: data.link ?? '',
       text: data.text ?? '',
       image: data.image ?? '',
-      imagePosition: data.imagePosition,
+      imagePosition: data.imagePosition === 'RIGHT' ? 'right' : 'left',
       moreInfo: data.details ?? '',
     }
     return props

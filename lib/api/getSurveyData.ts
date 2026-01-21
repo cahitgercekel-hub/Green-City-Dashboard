@@ -1,9 +1,9 @@
 import { SurveyTileProps } from '@/components/Tiles/Survey'
 import { getSurveyData as getSurveyDataFromPrisma } from './prismaService'
 
-export const getSurveyData = async (surveyID: string) => {
+export const getSurveyData = async (surveyID: string, locale?: string) => {
   try {
-    const data = await getSurveyDataFromPrisma(surveyID)
+    const data = await getSurveyDataFromPrisma(surveyID, locale)
 
     if (!data) {
       return undefined
