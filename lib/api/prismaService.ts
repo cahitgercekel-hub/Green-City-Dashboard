@@ -330,9 +330,7 @@ export async function getCollections(status: Status): Promise<Collection[]> {
       where: {
         status: status,
       },
-      orderBy: {
-        createdAt: 'desc',
-      },
+      orderBy: [{ sort: 'asc' }, { createdAt: 'desc' }],
     })
     return collections
   } catch {
