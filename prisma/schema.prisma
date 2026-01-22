@@ -117,7 +117,7 @@ model Survey {
   answerValue   Float
   answerUnit    String   @default("%")
   category      String
-  dataSource    String
+  dataSource    String?
   dataRetrieval DateTime
   status        Status   @default(PUBLISHED)
   createdAt     DateTime @default(now()) @map("created_at")
