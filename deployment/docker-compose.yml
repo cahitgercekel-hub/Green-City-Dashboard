@@ -18,25 +18,3 @@ services:
       - db
     entrypoint: /bin/bash
     command: -c "PGPASSWORD=directus psql -h db -U directus -d directus -f /seed/seed.sql"
-
-  directus:
-    image: directus/directus:latest
-    ports:
-      - 8055:8055
-    depends_on:
-      - db
-    container_name: klimadashboard_directus
-    environment:
-      KEY: 'SECRET_KEY'
-      SECRET: 'SECRET_SECRET'
-      ADMIN_EMAIL: 'admin@example.com'
-      ADMIN_PASSWORD: 'password'
-      DB_CLIENT: pg
-      DB_HOST: db
-      DB_PORT: 5432
-      DB_DATABASE: directus
-      DB_USER: directus
-      DB_PASSWORD: directus
-      WEBSOCKETS_ENABLED: 'true'
-      CORS_ENABLED: 'true'
-      CORS_ORIGIN: 'http://localhost:3000'
