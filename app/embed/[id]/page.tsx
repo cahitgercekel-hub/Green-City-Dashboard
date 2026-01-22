@@ -1,9 +1,5 @@
-import Title from '@/components/Elements/Title'
-import directus, { directusImage } from '@/lib/directus'
+import { getTheme } from '@/lib/api/prismaService'
 import TileFactory, { TileType } from '@/utils/TileFactory'
-import { readSingleton } from '@directus/sdk'
-import Image from 'next/image'
-import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
 export const revalidate = 10
@@ -17,7 +13,7 @@ export default async function Embed({ params }: { params: Params }) {
     return notFound()
   }
 
-  const theme = await directus.request(readSingleton('theme'))
+  const theme = await getTheme()
 
   return (
     <div className="relative">
@@ -27,7 +23,7 @@ export default async function Embed({ params }: { params: Params }) {
           alt="Logo"
           className="h-10 w-fit"
           layout="fill"
-          src={directusImage(theme.navbar_image)}
+          src={formatImagePath(theme?.navbarImage)}
         />
         <Title as="h7" className="leading-normal" variant={'primary'}>
           Mehr Daten zum Klimaschutz und zur Klimaanpassung

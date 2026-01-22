@@ -1,23 +1,25 @@
 import { SurveyTileProps } from '@/components/Tiles/Survey'
-import { readItem } from '@directus/sdk'
-import directus, { surveyCollectionName } from '../directus'
+import { getSurveyData as getSurveyDataFromPrisma } from './prismaService'
 
-export const getSurveyData = async (surveyID: string) => {
+export const getSurveyData = async (surveyID: string, locale?: string) => {
   try {
-    const data = await directus.request(
-      readItem(surveyCollectionName, surveyID),
-    )
+    const data = await getSurveyDataFromPrisma(surveyID, locale)
+
+    if (!data) {
+      return undefined
+    }
+
     const props: SurveyTileProps = {
-      title: data?.title ?? '',
+      title: data.title ?? '',
       answer: {
-        text: data?.answer_text ?? '',
-        percent: data?.answer_value ?? 0,
-        unit: data?.answer_unit ?? '%',
+        text: data.answerText ?? '',
+        percent: data.answerValue ?? 0,
+        unit: data.answerUnit ?? '%',
       },
-      question: data?.question ?? '',
-      dataSource: data?.dataSource ?? '',
-      dataRetrieval: data?.dataRetrieval ?? new Date(),
-      id: data?.id ?? '',
+      question: data.question ?? '',
+      dataSource: data.dataSource ?? '',
+      dataRetrieval: data.dataRetrieval ?? new Date(),
+      id: data.id ?? '',
     }
     return props
   } catch (e) {

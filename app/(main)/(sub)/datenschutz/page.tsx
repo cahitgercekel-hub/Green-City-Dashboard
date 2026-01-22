@@ -2,11 +2,10 @@ import Title from '@/components/Elements/Title'
 import Markdown from 'react-markdown'
 import rehypeExternalLinks from 'rehype-external-links'
 import remarkGfm from 'remark-gfm'
-import { readSingleton } from '@directus/sdk'
-import directus from '@/lib/directus'
+import { getDatenschutz } from '@/lib/api/prismaService'
 
 export default async function Datenschutz() {
-  const datenschutz = await directus.request(readSingleton('datenschutz'))
+  const datenschutz = await getDatenschutz()
 
   return (
     <main className="mx-auto max-w-[1136px]">
@@ -44,7 +43,7 @@ export default async function Datenschutz() {
         ]}
         remarkPlugins={[remarkGfm]}
       >
-        {datenschutz.datenschutz}
+        {datenschutz?.content || ''}
       </Markdown>
     </main>
   )

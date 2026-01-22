@@ -2,7 +2,7 @@
 
 import AnimatedNumber from '@/components/Elements/Animated/AnimatedNumber'
 import Title from '@/components/Elements/Title'
-import { animated, AnimatedProps } from '@react-spring/web'
+import { AnimatedProps } from '@react-spring/web'
 import { ComponentPropsWithRef } from 'react'
 
 export type SurveyAnswerProps = AnimatedProps<ComponentPropsWithRef<'div'>> & {

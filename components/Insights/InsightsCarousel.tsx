@@ -1,13 +1,13 @@
 'use client'
 
 import InsightsTile from './InsightsTile'
-import { directusImage } from '@/lib/directus'
+// import { formatImagePath } from '@/lib/transformers/prismaToComponent'
 import useDevice from '@/hooks/useDevice'
 import Carousel from '../Elements/Carousel'
 import { useWindowSize } from 'react-use'
 
 const pages = {
-  desktop: 3,
+  desktop: 4,
   tablet: 2,
   mobile: 1,
 }
@@ -42,14 +42,14 @@ export default function InsightsCarousel({
           width < 1440 && width > 1024
             ? '2.5rem'
             : width >= 1920
-            ? '82px'
-            : padding[device],
+              ? '82px'
+              : padding[device],
         perPage: pages[device],
       }}
     >
       {insights?.map(({ slug, title, image }) => (
         <InsightsTile
-          image={directusImage(image)}
+          image={image}
           key={slug}
           link={`/sammlung/${slug}`}
           title={title}

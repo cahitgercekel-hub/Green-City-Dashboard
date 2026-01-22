@@ -23,6 +23,7 @@ COPY . .
 # Run the postinstall script (and install curl for the script to work)
 RUN apk add --no-cache curl bash
 
+RUN npx prisma generate
 
 # Next.js collects completely anonymous telemetry data about general usage.
 # Learn more here: https://nextjs.org/telemetry
@@ -52,6 +53,8 @@ COPY --from=builder /app/public ./public
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 COPY --from=builder --chown=nextjs:nodejs /app/.next/server ./.next/server
+COPY --from=builder --chown=nextjs:nodejs /app/prisma ./prisma
+
 COPY --from=builder /app/entrypoint.sh ./entrypoint.sh
 RUN ["chmod", "+x", "./entrypoint.sh"]
 

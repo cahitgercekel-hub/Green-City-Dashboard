@@ -27,6 +27,10 @@ const nextConfig = {
         protocol: 'http',
         hostname: 'localhost',
       },
+      {
+        protocol: 'https',
+        hostname: 'nbg1.your-objectstorage.com',
+      },
     ],
   },
 }

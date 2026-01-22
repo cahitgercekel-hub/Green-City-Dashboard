@@ -2,46 +2,12 @@
 
 import { Spacer } from '@/components/Elements/Spacer'
 import Title from '@/components/Elements/Title'
-import {
-  MsKlimadashboardIconsButtonAktivEnergieV1,
-  MsKlimadashboardIconsButtonAktivGebaeude,
-  MsKlimadashboardIconsButtonAktivKlima,
-  MsKlimadashboardIconsButtonAktivMobil,
-} from '@/components/Icons/Misc'
-import directus, { directusImage, Theme } from '@/lib/directus'
-import { readSingleton } from '@directus/sdk'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import Container from '../Container'
 import StairStepBackground from '../StairStepBackground'
-import { LinkProps } from './LinkComponent'
-
-const links: LinkProps[] = [
-  {
-    title: 'Klima in Münster',
-    icon: MsKlimadashboardIconsButtonAktivKlima,
-    link: '/klima',
-    hover: 'climate',
-  },
-  {
-    title: 'Energie',
-    icon: MsKlimadashboardIconsButtonAktivEnergieV1,
-    link: '/energie',
-    hover: 'energy',
-  },
-  {
-    title: 'Mobilität',
-    icon: MsKlimadashboardIconsButtonAktivMobil,
-    link: '/mobilitaet',
-    hover: 'mobility',
-  },
-  {
-    title: 'Gebäude',
-    icon: MsKlimadashboardIconsButtonAktivGebaeude,
-    link: '/gebaeude',
-    hover: 'buildings',
-  },
-]
+import LanguageSwitcher from './LanguageSwitcher'
+import { Theme } from '@prisma/client'
 
 type BaseNavbarProps = {
   actionComponent?: React.ReactElement
@@ -58,11 +24,12 @@ export default function BaseNavbar({
 
   useEffect(() => {
     const fetchTheme = async () => {
-      const theme = await directus.request(readSingleton('theme'))
-
-      setTheme(theme)
+      const response = await fetch('/api/theme')
+      if (response.ok) {
+        const theme = await response.json()
+        setTheme(theme)
+      }
     }
-
     fetchTheme()
   }, [])
 
@@ -70,13 +37,9 @@ export default function BaseNavbar({
     <div className="pt-8">
       <div className="container relative z-10 mx-auto flex max-w-[1920px] translate-y-1/2 flex-row justify-end px-2 xs:px-[16px] md:px-[32px] xl:px-[82px]">
         {theme && (
-          <Link href={theme.navbar_image_link || '#'} target="_blank">
+          <Link href={theme.navbarImageLink || '#'} target="_blank">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              alt="Logo"
-              className="h-12 w-auto"
-              src={directusImage(theme.navbar_image)}
-            />
+            <img alt="Logo" className="h-12 w-auto" src={theme.navbarImage} />
           </Link>
         )}
       </div>
@@ -108,16 +71,19 @@ export default function BaseNavbar({
               </Title>
             </Link>
             <div className="flex items-center justify-between">
-              {actionComponent}
+              <div className="flex items-center gap-4">{actionComponent}</div>
 
-              <div className="hidden h-fit flex-wrap justify-end gap-2 xl:flex">
-                {/* {links.map(l => (
+              <div className="flex items-center gap-4">
+                <LanguageSwitcher />
+                <div className="hidden h-fit flex-wrap justify-end gap-2 xl:flex">
+                  {/* {links.map(l => (
                   <LinkComponent
                     key={l.link}
                     variant={variant === 'overlay' ? 'inverse' : 'primary'}
                     {...l}
                   />
                 ))} */}
+                </div>
               </div>
             </div>
           </div>

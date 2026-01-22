@@ -23,7 +23,6 @@ import {
   Sunrise,
   Train,
   Vienna,
-  Week,
   Year,
 } from '@/components/Icons'
 

@@ -1,24 +1,17 @@
-import directus, {
-  collectionsName,
-  ENV_DIRECTUS_ITEM_STATUS,
-} from '@/lib/directus'
+import { getCollections } from '@/lib/api/prismaService'
 import withSuspense from '@/utils/withSuspense'
-import { readItems } from '@directus/sdk'
 import Container from '../Layout/Container'
 import InsightsCarousel from './InsightsCarousel'
 
 export const getInsightsData = async () => {
-  const data = await directus.request(
-    readItems(collectionsName, {
-      fields: ['slug', 'title', 'image'],
-      status: {
-        _eq: ENV_DIRECTUS_ITEM_STATUS,
-      },
-      limit: 3,
-    }),
-  )
+  const collections = await getCollections('PUBLISHED')
 
-  return data
+  // Return only first 3 collections with required fields
+  return collections.map(collection => ({
+    slug: collection.slug,
+    title: collection.title,
+    image: collection.image,
+  }))
 }
 
 async function InsightsContainer() {

@@ -1,7 +1,6 @@
 import Title from '@/components/Elements/Title'
 import MobilityTile from '@/components/Tiles/Mobility/MobilityTile'
 import getTileData from '@/lib/api/getTileData'
-import { format } from 'date-fns'
 import { TileSplitView } from '../../Base/TileSplitView'
 import ModalSplitChart from './ModalSplitChart'
 
