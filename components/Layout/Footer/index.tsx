@@ -6,8 +6,8 @@ import Link from 'next/link'
 import Container from '../Container'
 import StairStepBackground from '../StairStepBackground'
 
-import DezernatSmartCity from '@/assets/logos/Wiesbaden_footer_logo.jpg'
-import WiesbadenLogo from '@/assets/logos/Wiesbaden_smart city_4c.png'
+import reeduLogo from '@/assets/logos/reedu_Logo_horizontal_orange.jpg'
+import arkadiaLogo from '@/assets/logos/Wortmarke.svg'
 
 export default function Footer() {
   return (
@@ -20,28 +20,22 @@ export default function Footer() {
             </Title>
             <div className="flex w-full grid-cols-2 flex-col gap-8 lg:gap-16 xl:grid">
               <div className="relative h-28 w-full rounded-md bg-white md:h-36">
-                <Link
-                  href="https://smart-city-findet-stadt.de/"
-                  target="_blank"
-                >
+                <Link href="https://arkadia.hn/" target="_blank">
                   <Image
-                    alt="Smart City Wiesbaden Logo"
+                    alt="Arkadia Logo"
                     className="object-contain"
                     fill
-                    src={WiesbadenLogo}
+                    src={arkadiaLogo}
                   />
                 </Link>
               </div>
               <div className="relative h-28 w-full rounded-md bg-white md:h-36">
-                <Link
-                  href="https://www.wiesbaden.de/vv/oe/07/Dezernat-VII"
-                  target="_blank"
-                >
+                <Link href="https://reedu.de/" target="_blank">
                   <Image
-                    alt="Dezernat für Smart City, Europa und Ordnung"
+                    alt="Reedu Logo"
                     className="object-contain"
                     fill
-                    src={DezernatSmartCity}
+                    src={reeduLogo}
                   />
                 </Link>
               </div>
