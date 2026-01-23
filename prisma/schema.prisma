@@ -397,8 +397,24 @@ model Page {
 
   tiles    PageTile[]
   sections PageSection[]
+  translations PageTranslation[]
 
   @@map("pages")
+}
+
+model PageTranslation {
+  id          String   @id @default(cuid())
+  pageId      String   @map("page_id")
+  locale      String
+  title       String
+  description String?  @db.Text
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  page Page @relation(fields: [pageId], references: [id], onDelete: Cascade)
+
+  @@unique([pageId, locale])
+  @@map("page_translations")
 }
 
 model PageTile {

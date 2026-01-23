@@ -6,6 +6,7 @@ export type {
   Survey,
   SuccessStory,
   Collection,
+  Page,
   Section,
   Theme,
   Impressum,

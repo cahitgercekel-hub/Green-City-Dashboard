@@ -13,6 +13,7 @@ import type {
   CollectionWithTiles,
   Datenschutz,
   Impressum,
+  Page,
   SectionWithTiles,
   Status,
   SuccessStory,
@@ -460,6 +461,41 @@ export async function getTheme(locale?: string): Promise<Theme | null> {
 /**
  * Page Operations
  */
+
+/**
+ * Get all pages filtered by status
+ * @param status - The status to filter by (DRAFT, PUBLISHED, ARCHIVED)
+ * @returns Array of pages matching the status
+ */
+export async function getPages(
+  status: Status,
+  locale?: string,
+): Promise<Page[]> {
+  try {
+    const activeLocale = locale ?? (await getActiveLocale())
+    const pages = await prisma.page.findMany({
+      where: {
+        status: status,
+      },
+      include: {
+        translations: true,
+      },
+      orderBy: [{ sort: 'asc' }, { createdAt: 'desc' }],
+    })
+    console.log('PAGES', pages)
+    return pages.map(page => {
+      const translation = resolveTranslation(page.translations, activeLocale)
+      const { translations: _translations, ...base } = page
+      return {
+        ...base,
+        title: translation?.title ?? base.title,
+        description: translation?.description ?? base.description,
+      }
+    })
+  } catch {
+    return []
+  }
+}
 
 /**
  * Get the impressum page content

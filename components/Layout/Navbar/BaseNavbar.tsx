@@ -1,12 +1,16 @@
 'use client'
 
+import Collapsible from '@/components/Elements/Collapsible'
 import { Spacer } from '@/components/Elements/Spacer'
 import Title from '@/components/Elements/Title'
+import { MsKlimadashboardIconsNaviBookmark } from '@/components/Icons/Misc/Navi'
+import { Bars3Icon } from '@heroicons/react/24/outline'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import Container from '../Container'
 import StairStepBackground from '../StairStepBackground'
 import LanguageSwitcher from './LanguageSwitcher'
+import LinkComponent, { LinkProps } from './LinkComponent'
 import { Theme } from '@prisma/client'
 
 type BaseNavbarProps = {
@@ -21,6 +25,7 @@ export default function BaseNavbar({
   children,
 }: BaseNavbarProps) {
   const [theme, setTheme] = useState<Theme | null>(null)
+  const [links, setLinks] = useState<LinkProps[]>([])
 
   useEffect(() => {
     const fetchTheme = async () => {
@@ -31,6 +36,29 @@ export default function BaseNavbar({
       }
     }
     fetchTheme()
+  }, [])
+
+  useEffect(() => {
+    const fetchLinks = async () => {
+      const response = await fetch('/api/pages')
+      if (!response.ok) {
+        return
+      }
+
+      const data = await response.json()
+      console.log('DATA', data)
+      const pages: Array<{ slug: string; title: string }> = data?.pages ?? []
+
+      setLinks(
+        pages.map(page => ({
+          title: page.title,
+          link: `/${page.slug}`,
+          icon: MsKlimadashboardIconsNaviBookmark,
+        })),
+      )
+    }
+
+    fetchLinks()
   }, [])
 
   return (
@@ -45,7 +73,7 @@ export default function BaseNavbar({
       </div>
       <StairStepBackground variant={variant}>
         <Container>
-          {/* <div className="xl:hidden">
+          <div className="xl:hidden">
             <Collapsible
               trigger={
                 <div className="w-fit rounded-lg border-2 border-primary p-2 md:p-4">
@@ -54,13 +82,17 @@ export default function BaseNavbar({
               }
             >
               <div className="my-4 flex flex-col flex-wrap gap-2 md:flex-row">
-                {links.map(l => (
-                  <LinkComponent key={l.link} {...l} />
+                {links.map(link => (
+                  <LinkComponent
+                    key={link.link}
+                    variant={variant === 'overlay' ? 'inverse' : 'primary'}
+                    {...link}
+                  />
                 ))}
               </div>
             </Collapsible>
             <Spacer size={'sm'} />
-          </div> */}
+          </div>
           <div className="flex flex-col justify-between gap-4">
             <Link href={'/'}>
               <Title
@@ -74,16 +106,16 @@ export default function BaseNavbar({
               <div className="flex items-center gap-4">{actionComponent}</div>
 
               <div className="flex items-center gap-4">
-                <LanguageSwitcher />
                 <div className="hidden h-fit flex-wrap justify-end gap-2 xl:flex">
-                  {/* {links.map(l => (
-                  <LinkComponent
-                    key={l.link}
-                    variant={variant === 'overlay' ? 'inverse' : 'primary'}
-                    {...l}
-                  />
-                ))} */}
+                  {links.map(link => (
+                    <LinkComponent
+                      key={link.link}
+                      variant={variant === 'overlay' ? 'inverse' : 'primary'}
+                      {...link}
+                    />
+                  ))}
                 </div>
+                <LanguageSwitcher />
               </div>
             </div>
           </div>
