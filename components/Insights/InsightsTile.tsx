@@ -16,15 +16,15 @@ export default function InsightsTile({
   return (
     <div className="h-full overflow-hidden rounded-md bg-white lg:rounded-lg">
       <Link href={link}>
-        <div className="group flex h-full w-full flex-col  bg-secondary transition-all hover:bg-[#f6f7e6]">
+        <div className="group flex h-full w-full flex-col bg-secondary transition-all hover:bg-[#f6f7e6]">
           <div className="flex w-full flex-1 justify-between gap-2 py-[33px] pl-[52px] pr-12">
-            <Title
+            {/* <Title
               as="h6"
               className="mt-2 flex-[2_2_0%] underline group-hover:text-secondary"
               variant={'inverse'}
             >
               Kacheln filtern
-            </Title>
+            </Title> */}
             <Title
               as={'h4'}
               className="flex-[3_3_0%] group-hover:text-secondary"

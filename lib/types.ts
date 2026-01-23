@@ -6,6 +6,7 @@ export type {
   Survey,
   SuccessStory,
   Collection,
+  Page,
   Section,
   Theme,
   Impressum,
@@ -20,6 +21,15 @@ export type {
 export type CollectionWithTiles = Prisma.CollectionGetPayload<{
   include: {
     tiles: true
+    translations: true
+  }
+}>
+
+export type PageWithTiles = Prisma.PageGetPayload<{
+  include: {
+    tiles: true
+    sections: true
+    translations: true
   }
 }>
 
@@ -32,3 +42,5 @@ export type SectionWithTiles = Prisma.SectionGetPayload<{
 // Junction table item type
 export type CollectionTileItem = Prisma.CollectionTileGetPayload<{}>
 export type SectionTileItem = Prisma.SectionTileGetPayload<{}>
+export type PageTileItem = Prisma.PageTileGetPayload<{}>
+export type PageSectionItem = Prisma.PageSectionGetPayload<{}>

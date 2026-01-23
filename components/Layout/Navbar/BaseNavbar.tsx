@@ -1,26 +1,36 @@
 'use client'
 
+import Collapsible from '@/components/Elements/Collapsible'
 import { Spacer } from '@/components/Elements/Spacer'
 import Title from '@/components/Elements/Title'
+import { MsKlimadashboardIconsNaviBookmark } from '@/components/Icons/Misc/Navi'
+import { Bars3Icon } from '@heroicons/react/24/outline'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import Container from '../Container'
 import StairStepBackground from '../StairStepBackground'
 import LanguageSwitcher from './LanguageSwitcher'
+import LinkComponent, { LinkProps } from './LinkComponent'
 import { Theme } from '@prisma/client'
 
 type BaseNavbarProps = {
   actionComponent?: React.ReactElement
   variant?: 'primary' | 'secondary' | 'overlay'
+  headerTitle?: string
+  headerDescription?: string
   children?: React.ReactElement | React.ReactElement[]
 }
 
 export default function BaseNavbar({
   actionComponent,
   variant = 'primary',
+  headerTitle,
+  headerDescription,
   children,
 }: BaseNavbarProps) {
   const [theme, setTheme] = useState<Theme | null>(null)
+  const [links, setLinks] = useState<LinkProps[]>([])
+  const hasHeader = Boolean(headerTitle || headerDescription)
 
   useEffect(() => {
     const fetchTheme = async () => {
@@ -31,6 +41,28 @@ export default function BaseNavbar({
       }
     }
     fetchTheme()
+  }, [])
+
+  useEffect(() => {
+    const fetchLinks = async () => {
+      const response = await fetch('/api/pages')
+      if (!response.ok) {
+        return
+      }
+
+      const data = await response.json()
+      const pages: Array<{ slug: string; title: string }> = data?.pages ?? []
+
+      setLinks(
+        pages.map(page => ({
+          title: page.title,
+          link: `/pages/${page.slug}`,
+          icon: MsKlimadashboardIconsNaviBookmark,
+        })),
+      )
+    }
+
+    fetchLinks()
   }, [])
 
   return (
@@ -45,7 +77,7 @@ export default function BaseNavbar({
       </div>
       <StairStepBackground variant={variant}>
         <Container>
-          {/* <div className="xl:hidden">
+          <div className="xl:hidden">
             <Collapsible
               trigger={
                 <div className="w-fit rounded-lg border-2 border-primary p-2 md:p-4">
@@ -54,13 +86,17 @@ export default function BaseNavbar({
               }
             >
               <div className="my-4 flex flex-col flex-wrap gap-2 md:flex-row">
-                {links.map(l => (
-                  <LinkComponent key={l.link} {...l} />
+                {links.map(link => (
+                  <LinkComponent
+                    key={link.link}
+                    variant={variant === 'overlay' ? 'inverse' : 'primary'}
+                    {...link}
+                  />
                 ))}
               </div>
             </Collapsible>
             <Spacer size={'sm'} />
-          </div> */}
+          </div>
           <div className="flex flex-col justify-between gap-4">
             <Link href={'/'}>
               <Title
@@ -74,19 +110,41 @@ export default function BaseNavbar({
               <div className="flex items-center gap-4">{actionComponent}</div>
 
               <div className="flex items-center gap-4">
-                <LanguageSwitcher />
                 <div className="hidden h-fit flex-wrap justify-end gap-2 xl:flex">
-                  {/* {links.map(l => (
-                  <LinkComponent
-                    key={l.link}
-                    variant={variant === 'overlay' ? 'inverse' : 'primary'}
-                    {...l}
-                  />
-                ))} */}
+                  {links.map(link => (
+                    <LinkComponent
+                      key={link.link}
+                      variant={variant === 'overlay' ? 'inverse' : 'primary'}
+                      {...link}
+                    />
+                  ))}
                 </div>
+                <LanguageSwitcher />
               </div>
             </div>
           </div>
+          {hasHeader && (
+            <>
+              <Spacer size={'xl'} />
+              <div className="flex w-full flex-col-reverse gap-2 md:flex-row">
+                {headerDescription ? (
+                  <Title as={'h5'} className="flex-[2_2_0%]" variant="primary">
+                    {headerDescription}
+                  </Title>
+                ) : (
+                  <div className="flex-[2_2_0%]" />
+                )}
+                <div className="hidden flex-1 md:block" />
+                {headerTitle ? (
+                  <Title as={'h2'} className="flex-1" variant="secondary">
+                    {headerTitle}
+                  </Title>
+                ) : (
+                  <div className="flex-1" />
+                )}
+              </div>
+            </>
+          )}
           {children && (
             <>
               <Spacer size={'xl'} />

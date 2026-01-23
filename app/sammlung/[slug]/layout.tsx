@@ -1,8 +1,9 @@
 import AnimatedPage from '@/components/Layout/AnimatedPage'
 import Container from '@/components/Layout/Container'
 import Footer from '@/components/Layout/Footer'
-import CollectionNavbar from '@/components/Layout/Navbar/CollectionNavbar'
+import BaseNavbar from '@/components/Layout/Navbar/BaseNavbar'
 import Providers from '@/components/Layout/Providers'
+import Back from '@/components/Elements/Back'
 import { getCollection as getCollectionFromPrisma } from '@/lib/api/prismaService'
 import { notFound } from 'next/navigation'
 
@@ -44,7 +45,12 @@ export default async function Layout(props: {
 
   return (
     <div className="flex h-screen flex-col">
-      <CollectionNavbar description={description || ''} title={title} />
+      <BaseNavbar
+        actionComponent={<Back />}
+        headerDescription={description || ''}
+        headerTitle={title}
+        variant="secondary"
+      />
       <Container className="flex-1">
         <Providers>
           <AnimatedPage>{children}</AnimatedPage>

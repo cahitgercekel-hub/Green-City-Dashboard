@@ -17,7 +17,7 @@ export default async function StadtradelnTile() {
       subtitle="im Jahresvergleich"
       title="Stadtradeln"
     >
-      <ChartContainer city="wiesbaden" />
+      <ChartContainer city="heilbronn" />
       <Spacer />
       <Title as="h5">{infoText}</Title>
     </MobilityTile>

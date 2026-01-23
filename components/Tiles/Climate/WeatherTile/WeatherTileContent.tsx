@@ -33,7 +33,7 @@ export default function WeatherTileContent() {
             <div className="flex flex-1 items-center gap-6 md:gap-2">
               <Icon className="h-20 text-primary md:mr-12 md:h-36" />
               <Title as={'h4'} className="my-4 w-3/4 md:w-1/2">
-                In Münster ist es gerade{' '}
+                In Heilbronn ist es gerade{' '}
                 <span className="text-climate">
                   {conditionMapping[weather?.condition]}
                 </span>

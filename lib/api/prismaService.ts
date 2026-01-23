@@ -13,9 +13,13 @@ import type {
   CollectionWithTiles,
   Datenschutz,
   Impressum,
+  Page,
+  PageWithTiles,
   SectionWithTiles,
   Status,
   SuccessStory,
+  // Removed debug logging
+  // console.log('PAGES', pages)
   Survey,
   Theme,
   Tile,
@@ -299,13 +303,16 @@ export async function getSuccessStoriesForCategory(
  */
 export async function getCollection(
   slug: string,
+  locale?: string,
 ): Promise<CollectionWithTiles | null> {
   try {
+    const activeLocale = locale ?? (await getActiveLocale())
     const collection = await prisma.collection.findUnique({
       where: {
         slug: slug,
       },
       include: {
+        translations: true,
         tiles: {
           orderBy: {
             sort: 'asc',
@@ -313,7 +320,22 @@ export async function getCollection(
         },
       },
     })
-    return collection
+
+    if (!collection) {
+      return null
+    }
+
+    const translation = resolveTranslation(
+      collection.translations,
+      activeLocale,
+    )
+    const { translations: _translations, ...base } = collection
+
+    return {
+      ...base,
+      title: translation?.title ?? base.title,
+      description: translation?.description ?? base.description,
+    }
   } catch {
     return null
   }
@@ -324,15 +346,34 @@ export async function getCollection(
  * @param status - The status to filter by (DRAFT, PUBLISHED, ARCHIVED)
  * @returns Array of collections matching the status
  */
-export async function getCollections(status: Status): Promise<Collection[]> {
+export async function getCollections(
+  status: Status,
+  locale?: string,
+): Promise<Collection[]> {
   try {
+    const activeLocale = locale ?? (await getActiveLocale())
     const collections = await prisma.collection.findMany({
       where: {
         status: status,
       },
+      include: {
+        translations: true,
+      },
       orderBy: [{ sort: 'asc' }, { createdAt: 'desc' }],
     })
-    return collections
+
+    return collections.map(collection => {
+      const translation = resolveTranslation(
+        collection.translations,
+        activeLocale,
+      )
+      const { translations: _translations, ...base } = collection
+      return {
+        ...base,
+        title: translation?.title ?? base.title,
+        description: translation?.description ?? base.description,
+      }
+    })
   } catch {
     return []
   }
@@ -388,14 +429,33 @@ export async function getSections(
  * There should only be one theme record
  * @returns Theme data or null if not found
  */
-export async function getTheme(): Promise<Theme | null> {
+export async function getTheme(locale?: string): Promise<Theme | null> {
   try {
+    const activeLocale = locale ?? (await getActiveLocale())
     const theme = await prisma.theme.findFirst({
       orderBy: {
         createdAt: 'desc',
       },
+      include: {
+        translations: true,
+      },
     })
-    return theme
+
+    if (!theme) {
+      return null
+    }
+
+    const translation = resolveTranslation(theme.translations, activeLocale)
+    const { translations: _translations, ...base } = theme
+
+    return {
+      ...base,
+      title: translation?.title ?? base.title,
+      aboutButtonTitle: translation?.aboutButtonTitle ?? base.aboutButtonTitle,
+      aboutButtonText: translation?.aboutButtonText ?? base.aboutButtonText,
+      successStoriesTitle:
+        translation?.successStoriesTitle ?? base.successStoriesTitle,
+    }
   } catch {
     return null
   }
@@ -404,6 +464,87 @@ export async function getTheme(): Promise<Theme | null> {
 /**
  * Page Operations
  */
+
+/**
+ * Get all pages filtered by status
+ * @param status - The status to filter by (DRAFT, PUBLISHED, ARCHIVED)
+ * @returns Array of pages matching the status
+ */
+export async function getPages(
+  status: Status,
+  locale?: string,
+): Promise<Page[]> {
+  try {
+    const activeLocale = locale ?? (await getActiveLocale())
+    const pages = await prisma.page.findMany({
+      where: {
+        status: status,
+      },
+      include: {
+        translations: true,
+      },
+      orderBy: [{ sort: 'asc' }, { createdAt: 'desc' }],
+    })
+    return pages.map(page => {
+      const translation = resolveTranslation(page.translations, activeLocale)
+      const { translations: _translations, ...base } = page
+      return {
+        ...base,
+        title: translation?.title ?? base.title,
+        description: translation?.description ?? base.description,
+      }
+    })
+  } catch {
+    return []
+  }
+}
+
+/**
+ * Get a single page by slug with all associated tiles
+ * @param slug - The page slug
+ * @returns Page data or null if not found
+ */
+export async function getPage(
+  slug: string,
+  locale?: string,
+): Promise<PageWithTiles | null> {
+  try {
+    const activeLocale = locale ?? (await getActiveLocale())
+    const page = await prisma.page.findUnique({
+      where: {
+        slug: slug,
+      },
+      include: {
+        translations: true,
+        tiles: {
+          orderBy: {
+            sort: 'asc',
+          },
+        },
+        sections: {
+          orderBy: {
+            sort: 'asc',
+          },
+        },
+      },
+    })
+
+    if (!page) {
+      return null
+    }
+
+    const translation = resolveTranslation(page.translations, activeLocale)
+    const { translations: _translations, ...base } = page
+
+    return {
+      ...base,
+      title: translation?.title ?? base.title,
+      description: translation?.description ?? base.description,
+    }
+  } catch {
+    return null
+  }
+}
 
 /**
  * Get the impressum page content
