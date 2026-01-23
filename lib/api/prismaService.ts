@@ -14,9 +14,12 @@ import type {
   Datenschutz,
   Impressum,
   Page,
+  PageWithTiles,
   SectionWithTiles,
   Status,
   SuccessStory,
+  // Removed debug logging
+  // console.log('PAGES', pages)
   Survey,
   Theme,
   Tile,
@@ -482,7 +485,6 @@ export async function getPages(
       },
       orderBy: [{ sort: 'asc' }, { createdAt: 'desc' }],
     })
-    console.log('PAGES', pages)
     return pages.map(page => {
       const translation = resolveTranslation(page.translations, activeLocale)
       const { translations: _translations, ...base } = page
@@ -494,6 +496,53 @@ export async function getPages(
     })
   } catch {
     return []
+  }
+}
+
+/**
+ * Get a single page by slug with all associated tiles
+ * @param slug - The page slug
+ * @returns Page data or null if not found
+ */
+export async function getPage(
+  slug: string,
+  locale?: string,
+): Promise<PageWithTiles | null> {
+  try {
+    const activeLocale = locale ?? (await getActiveLocale())
+    const page = await prisma.page.findUnique({
+      where: {
+        slug: slug,
+      },
+      include: {
+        translations: true,
+        tiles: {
+          orderBy: {
+            sort: 'asc',
+          },
+        },
+        sections: {
+          orderBy: {
+            sort: 'asc',
+          },
+        },
+      },
+    })
+
+    if (!page) {
+      return null
+    }
+
+    const translation = resolveTranslation(page.translations, activeLocale)
+    const { translations: _translations, ...base } = page
+
+    return {
+      ...base,
+      title: translation?.title ?? base.title,
+      description: translation?.description ?? base.description,
+    }
+  } catch {
+    return null
   }
 }
 

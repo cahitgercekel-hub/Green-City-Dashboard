@@ -25,6 +25,14 @@ export type CollectionWithTiles = Prisma.CollectionGetPayload<{
   }
 }>
 
+export type PageWithTiles = Prisma.PageGetPayload<{
+  include: {
+    tiles: true
+    sections: true
+    translations: true
+  }
+}>
+
 export type SectionWithTiles = Prisma.SectionGetPayload<{
   include: {
     tiles: true
@@ -34,3 +42,5 @@ export type SectionWithTiles = Prisma.SectionGetPayload<{
 // Junction table item type
 export type CollectionTileItem = Prisma.CollectionTileGetPayload<{}>
 export type SectionTileItem = Prisma.SectionTileGetPayload<{}>
+export type PageTileItem = Prisma.PageTileGetPayload<{}>
+export type PageSectionItem = Prisma.PageSectionGetPayload<{}>
