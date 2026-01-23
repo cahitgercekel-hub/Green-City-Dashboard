@@ -12,7 +12,7 @@ jobs:
       - name: clean packages
         uses: vlaurin/action-ghcr-prune@v0.6.0
         with:
-          token: ${{ secrets.GHCR_TOKEN}}
+          token: ${{ secrets.GITHUB_TOKEN}}
           organization: ${{ github.repository_owner}}
           container: ${{ github.event.repository.name }}
           untagged: true
