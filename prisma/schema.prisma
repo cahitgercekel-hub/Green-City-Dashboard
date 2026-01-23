@@ -117,7 +117,7 @@ model Survey {
   answerValue   Float
   answerUnit    String   @default("%")
   category      String
-  dataSource    String?
+  dataSource    String
   dataRetrieval DateTime
   status        Status   @default(PUBLISHED)
   createdAt     DateTime @default(now()) @map("created_at")
@@ -298,7 +298,26 @@ model Theme {
   createdAt           DateTime @default(now()) @map("created_at")
   updatedAt           DateTime @updatedAt @map("updated_at")
 
+  translations ThemeTranslation[]
+
   @@map("themes")
+}
+
+model ThemeTranslation {
+  id                String   @id @default(cuid())
+  themeId           String   @map("theme_id")
+  locale            String
+  title             String
+  aboutButtonTitle  String   @map("about_button_title")
+  aboutButtonText   String   @map("about_button_text") @db.Text
+  successStoriesTitle String @map("success_stories_title")
+  createdAt         DateTime @default(now()) @map("created_at")
+  updatedAt         DateTime @updatedAt @map("updated_at")
+
+  theme Theme @relation(fields: [themeId], references: [id], onDelete: Cascade)
+
+  @@unique([themeId, locale])
+  @@map("theme_translations")
 }
 
 model Impressum {

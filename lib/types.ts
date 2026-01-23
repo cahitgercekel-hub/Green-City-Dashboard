@@ -20,6 +20,7 @@ export type {
 export type CollectionWithTiles = Prisma.CollectionGetPayload<{
   include: {
     tiles: true
+    translations: true
   }
 }>
 
