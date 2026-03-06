@@ -263,12 +263,11 @@ model SectionTile {
 }
 
 model AppOptions {
-  id             String   @id @default(cuid())
-  languages      String[]
-  showDatesOn    String?  @map("show_dates_on")
-  showMaterialOn String?  @map("show_material_on")
-  createdAt      DateTime @default(now()) @map("created_at")
-  updatedAt      DateTime @updatedAt @map("updated_at")
+  id           String   @id @default(cuid())
+  languages    String[]
+  showDatesOn  String?  @map("show_dates_on")
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @updatedAt @map("updated_at")
 
   @@map("options")
 }
