@@ -263,10 +263,12 @@ model SectionTile {
 }
 
 model AppOptions {
-  id        String   @id @default(cuid())
-  languages String[]
-  createdAt DateTime @default(now()) @map("created_at")
-  updatedAt DateTime @updatedAt @map("updated_at")
+  id             String   @id @default(cuid())
+  languages      String[]
+  showDatesOn    String?  @map("show_dates_on")
+  showMaterialOn String?  @map("show_material_on")
+  createdAt      DateTime @default(now()) @map("created_at")
+  updatedAt      DateTime @updatedAt @map("updated_at")
 
   @@map("options")
 }
@@ -439,4 +441,66 @@ model PageSection {
   page Page @relation(fields: [pageId], references: [id], onDelete: Cascade)
 
   @@map("page_sections")
+}
+
+model Dates {
+  id          String   @id @default(cuid())
+  title       String
+  description String?  @db.Text
+  startDate   DateTime? @map("start_date")
+  endDate     DateTime? @map("end_date")
+  image       String?
+  link        String?
+  status      Status   @default(DRAFT)
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  translations DateTranslation[]
+
+  @@map("dates")
+}
+
+model DateTranslation {
+  id          String   @id @default(cuid())
+  dateId      String   @map("date_id")
+  locale      String
+  title       String
+  description String?  @db.Text
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  date Dates @relation(fields: [dateId], references: [id], onDelete: Cascade)
+
+  @@unique([dateId, locale])
+  @@map("date_translations")
+}
+
+model Material {
+  id          String   @id @default(cuid())
+  name        String
+  description String?  @db.Text
+  image       String?
+  fileUrl     String   @map("file_url")
+  status      Status   @default(PUBLISHED)
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  translations MaterialTranslation[]
+
+  @@map("materials")
+}
+
+model MaterialTranslation {
+  id           String   @id @default(cuid())
+  materialId   String   @map("material_id")
+  locale       String
+  name         String
+  description  String?  @db.Text
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @updatedAt @map("updated_at")
+
+  material Material @relation(fields: [materialId], references: [id], onDelete: Cascade)
+
+  @@unique([materialId, locale])
+  @@map("material_translations")
 }

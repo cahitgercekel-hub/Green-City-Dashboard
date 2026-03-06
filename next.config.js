@@ -31,6 +31,10 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'nbg1.your-objectstorage.com',
       },
+      {
+        protocol: 'https',
+        hostname: 'wiediversistmeingarten.org',
+      },
     ],
   },
 }

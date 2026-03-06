@@ -103,7 +103,7 @@ export default function BaseNavbar({
                 as="h2"
                 variant={variant === 'overlay' ? 'inverse' : 'primary'}
               >
-                {theme?.title || 'Klimadashboard'}
+                {theme?.title || 'Green City Heilbronn'}
               </Title>
             </Link>
             <div className="flex items-center justify-between">

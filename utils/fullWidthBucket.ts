@@ -1,4 +1,4 @@
-import { getTileData } from '@/lib/api/prismaService'
+import { fetchTileType, getTileData } from '@/lib/api/prismaService'
 
 // super complex and probably overkill function to seperate fill width from normal tiles
 export type BaseTile = {
@@ -30,11 +30,32 @@ const isFullWidth = async (tile: BaseTile) => {
     return false
   }
 
-  // For regular tiles, fetch the tile data to check full_width property
-  const itemId = tile.tileId || ''
-  const data = await getTileData(itemId)
+  if (itemType === 'dates-upcoming' || itemType === 'dates-previous') {
+    return true
+  }
 
-  return data?.fullWidth === true
+  if (itemType === 'material') {
+    return true
+  }
+
+  // For regular tiles, check fullWidth property
+  // First try by tileId string (e.g. 'climate-material')
+  if (tile.tileId) {
+    const data = await getTileData(tile.tileId)
+    return data?.fullWidth === true
+  }
+
+  // Then try by item UUID (e.g. from PageTile.itemId)
+  if (tile.itemId) {
+    try {
+      const data = await fetchTileType(tile.itemId)
+      return data?.fullWidth === true
+    } catch {
+      return false
+    }
+  }
+
+  return false
 }
 
 /**

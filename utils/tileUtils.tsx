@@ -19,6 +19,18 @@ export const getTilePropsAndType = async (tile: BaseTile) => {
     return { type: 'successStory' as TileType, props: { successStoryData } }
   }
 
+  if (itemType === 'dates-upcoming') {
+    return { type: 'dates-upcoming' as TileType, props: {} }
+  }
+
+  if (itemType === 'dates-previous') {
+    return { type: 'dates-previous' as TileType, props: {} }
+  }
+
+  if (itemType === 'material') {
+    return { type: 'material' as TileType, props: {} }
+  }
+
   let type = undefined
   if (itemId) {
     const tileData = await fetchTileType(itemId)

@@ -6,7 +6,7 @@ import Link from 'next/link'
 import Container from '../Container'
 import StairStepBackground from '../StairStepBackground'
 
-import reeduLogo from '@/assets/logos/reedu_Logo_horizontal_orange.jpg'
+import reeduLogo from '@/assets/logos/reedu_Logo_horizontal_orange.png'
 import arkadiaLogo from '@/assets/logos/Wortmarke.svg'
 
 export default function Footer() {
@@ -19,7 +19,7 @@ export default function Footer() {
               Ein Projekt von
             </Title>
             <div className="flex w-full grid-cols-2 flex-col gap-8 lg:gap-16 xl:grid">
-              <div className="relative h-28 w-full rounded-md bg-white md:h-36">
+              <div className="relative h-28 w-full rounded-md md:h-36">
                 <Link href="https://arkadia.hn/" target="_blank">
                   <Image
                     alt="Arkadia Logo"
@@ -29,7 +29,7 @@ export default function Footer() {
                   />
                 </Link>
               </div>
-              <div className="relative h-28 w-full rounded-md bg-white md:h-36">
+              <div className="relative h-28 w-full rounded-md md:h-36">
                 <Link href="https://reedu.de/" target="_blank">
                   <Image
                     alt="Reedu Logo"

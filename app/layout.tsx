@@ -29,7 +29,7 @@ export async function generateMetadata() {
 
   if (!theme) {
     return {
-      title: 'Klimadashboard',
+      title: 'Green City Heilbronn',
       icons: faviconUrl,
       openGraph: {
         images: [ogImage],

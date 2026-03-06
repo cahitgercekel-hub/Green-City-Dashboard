@@ -618,6 +618,107 @@ export async function getDatenschutz(
 }
 
 /**
+ * Dates Operations
+ */
+
+/**
+ * Get published dates that should be shown on a selected page
+ * @param locale - Optional locale override
+ * @returns Array of published dates sorted by date descending
+ */
+export async function getDates(locale?: string): Promise<any[]> {
+  try {
+    const activeLocale = locale ?? (await getActiveLocale())
+
+    // Fetch published dates
+    const dates = await (prisma as any).dates.findMany({
+      where: {
+        status: 'PUBLISHED',
+      },
+      include: {
+        translations: true,
+      },
+      orderBy: {
+        startDate: 'desc',
+      },
+    })
+
+    return dates.map((dateItem: any) => {
+      const translation = resolveTranslation(dateItem.translations, activeLocale)
+      const { translations: _translations, ...base } = dateItem
+      return {
+        ...base,
+        title: translation?.title ?? base.title,
+        description: translation?.description ?? base.description,
+      }
+    })
+  } catch {
+    return []
+  }
+}
+
+/**
+ * Get dates configuration (which page to show on)
+ * @returns Page slug where dates should be displayed, or null
+ */
+export async function getDatesPageConfig(): Promise<string | null> {
+  try {
+    const options = await prisma.appOptions.findFirst()
+    return ((options as any)?.showDatesOn || null) as string | null
+  } catch {
+    return null
+  }
+}
+
+/**
+ * Get all published materials with i18n support
+ * @param locale - Optional locale override
+ * @returns Array of material items
+ */
+export async function getMaterials(locale?: string): Promise<any[]> {
+  try {
+    const activeLocale = locale ?? (await getActiveLocale())
+
+    const materials = await (prisma as any).material.findMany({
+      where: {
+        status: 'PUBLISHED',
+      },
+      include: {
+        translations: true,
+      },
+      orderBy: {
+        createdAt: 'desc',
+      },
+    })
+
+    return materials.map((item: any) => {
+      const translation = resolveTranslation(item.translations, activeLocale)
+      const { translations: _translations, ...base } = item
+      return {
+        ...base,
+        name: translation?.name ?? base.name,
+        description: translation?.description ?? base.description,
+      }
+    })
+  } catch {
+    return []
+  }
+}
+
+/**
+ * Get material configuration (which page to show on)
+ * @returns Page slug where materials should be displayed, or null
+ */
+export async function getMaterialPageConfig(): Promise<string | null> {
+  try {
+    const options = await prisma.appOptions.findFirst()
+    return ((options as any)?.showMaterialOn || null) as string | null
+  } catch {
+    return null
+  }
+}
+
+/**
  * Helper function to fetch related items for collection/section tiles
  * @param junctionItems - Array of junction table items
  * @returns Object with maps of related items by ID
@@ -1069,6 +1170,7 @@ export const fetchTileType = async (id: string) => {
       },
       select: {
         tileId: true,
+        fullWidth: true,
       },
     })
 
