@@ -8,6 +8,7 @@ import ClimateIndicesTile from '@/components/Tiles/Climate/ClimateIndices'
 import ClimateDevelopmentTile from '@/components/Tiles/Climate/Devlopment'
 import GarbageTile from '@/components/Tiles/Climate/Garbage'
 import OpenSenseMapTile from '@/components/Tiles/Climate/OpenSenseMap'
+import PMTile from '@/components/Tiles/Climate/PM'
 import WachstumTile from '@/components/Tiles/Climate/Wachstum'
 import WeatherTile from '@/components/Tiles/Climate/WeatherTile'
 import DataCountTile from '@/components/Tiles/Data/DataCountTile'
@@ -58,6 +59,7 @@ type DatesTileType = 'dates-upcoming' | 'dates-previous'
 type MaterialTileType = 'material' | 'climate-material'
 type BirdTileType = 'climate-bird'
 type OpenSenseMapTileType = 'climate-opensensemap'
+type PMTileType = 'climate-pm'
 
 export type TileType =
   | SuccessStoryTileType
@@ -66,6 +68,7 @@ export type TileType =
   | MaterialTileType
   | BirdTileType
   | OpenSenseMapTileType
+  | PMTileType
   | `${TileTypePrefix}-${TileTypeSuffix}`
 
 interface TileFactoryProps {
@@ -130,6 +133,8 @@ export default async function TileFactory({
       return <BirdTile />
     case 'climate-opensensemap':
       return <OpenSenseMapTile />
+    case 'climate-pm':
+      return <PMTile />
 
     // ---- DATES ----
     case 'dates-upcoming':

@@ -67,14 +67,6 @@ export default function BaseNavbar({
 
   return (
     <div className="pt-8">
-      <div className="container relative z-10 mx-auto flex max-w-[1920px] translate-y-1/2 flex-row justify-end px-2 xs:px-[16px] md:px-[32px] xl:px-[82px]">
-        {theme && (
-          <Link href={theme.navbarImageLink || '#'} target="_blank">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img alt="Logo" className="h-12 w-auto" src={theme.navbarImage} />
-          </Link>
-        )}
-      </div>
       <StairStepBackground variant={variant}>
         <Container>
           <div className="xl:hidden">

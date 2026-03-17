@@ -1,6 +1,6 @@
 import { Spacer } from '@/components/Elements/Spacer'
 import Title from '@/components/Elements/Title'
-import SvgWiesbaden from '@/components/Icons/Wiesbaden'
+import SvgHeilbronn from '@/components/Icons/Heilbronn'
 import { getDates } from '@/lib/api/prismaService'
 import { BaseTile } from '../Base/BaseTile'
 import DateCard from './DateCard'
@@ -36,7 +36,7 @@ export default async function UpcomingDatesTile() {
     <BaseTile variant="climate">
       <div className="w-full px-2.5">
         <div className="absolute right-16 top-16 hidden lg:block">
-          <SvgWiesbaden className="h-[29px] w-auto flex-shrink-0 text-climate opacity-40 md:h-[50px]" />
+          <SvgHeilbronn className="h-[29px] w-auto flex-shrink-0 text-climate opacity-40 md:h-[50px]" />
         </div>
         <div className="flex flex-wrap items-center justify-start gap-x-4 lg:max-w-[87%]">
           <Title as="h1" className="min-w-fit text-climate" font="normal">

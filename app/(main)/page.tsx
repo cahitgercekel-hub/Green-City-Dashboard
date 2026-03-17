@@ -6,7 +6,7 @@ import Container from '@/components/Layout/Container'
 import AnimatedPage from '@/components/Layout/AnimatedPage'
 
 import Title from '@/components/Elements/Title'
-import SvgWiesbaden from '@/components/Icons/Wiesbaden'
+import SvgHeilbronn from '@/components/Icons/Heilbronn'
 import { TileLayout } from '@/components/Tiles/TileLayout'
 import { getSections } from '@/lib/api/prismaService'
 import type { SectionWithTiles } from '@/lib/types'
@@ -34,7 +34,7 @@ export default async function Home() {
             <div className="my-4 flex w-full items-center justify-between">
               <div className="flex items-center space-x-4">
                 <div className="h-14 w-20 rounded-lg border-2 border-primary p-2">
-                  <SvgWiesbaden className="mx-auto h-full fill-primary stroke-primary" />
+                  <SvgHeilbronn className="mx-auto h-full fill-primary stroke-primary" />
                 </div>
                 <Title as={'h4'} variant={'primary'}>
                   {title}

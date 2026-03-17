@@ -1,4 +1,4 @@
-import SvgWiesbaden from '@/components/Icons/Wiesbaden'
+import SvgHeilbronn from '@/components/Icons/Heilbronn'
 import IconTile, { IconTileProps } from '../Base/IconTile'
 
 export type ClimateTileProps = Omit<IconTileProps, 'variant' | 'icon'>
@@ -10,7 +10,7 @@ export type ClimateTileProps = Omit<IconTileProps, 'variant' | 'icon'>
  */
 export default function ClimateTile({ children, ...props }: ClimateTileProps) {
   return (
-    <IconTile {...props} icon={SvgWiesbaden} variant="climate">
+    <IconTile {...props} icon={SvgHeilbronn} variant="climate">
       <>{children}</>
     </IconTile>
   )
