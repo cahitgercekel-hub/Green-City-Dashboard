@@ -24,6 +24,10 @@ const nextConfig = {
         hostname: '**.reedu.de',
       },
       {
+        protocol: 'https',
+        hostname: '**.greencity.hn',
+      },
+      {
         protocol: 'http',
         hostname: 'localhost',
       },
