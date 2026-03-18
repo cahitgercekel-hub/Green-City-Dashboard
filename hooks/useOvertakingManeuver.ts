@@ -70,7 +70,7 @@ function useOvertakingManoeuvres(): OvertakingData {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          'https://data.wiesbaden.reedu.de/collections/distances_flowmap/items?f=json&limit=1000000',
+          'https://api.atrai.bike/collections/overtaking_distance_heilbronn/items?f=json&limit=100000',
         )
         const jsonData: Root = await response.json()
 

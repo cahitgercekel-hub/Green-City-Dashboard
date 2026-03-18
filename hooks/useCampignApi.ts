@@ -38,7 +38,7 @@ export function useBikeStatistics() {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          'https://data.wiesbaden.reedu.de/collections/statistics_flowmap/items/wiesbaden?f=json',
+          'https://api.atrai.bike/collections/statistics_flowmap/items/heilbronn?f=json',
         )
         const feature = await response.json()
 

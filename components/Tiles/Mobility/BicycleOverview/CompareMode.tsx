@@ -14,7 +14,6 @@ import {
   MiddlEast,
   MidnightSun,
   Moon,
-  NerobergTram,
   ParisTower,
   Planet,
   RomanArchitecture,
@@ -37,20 +36,20 @@ const distanceComparisons: ComparisonEntry[] = [
     value: 10,
     description: (
       <>
-        Das entspricht etwa der Strecke von{' '}
-        <span className="text-mobility">Wiesbaden-Biebrich</span> zum{' '}
-        <span className="text-mobility">Neroberg</span> und zurück.
+        Das entspricht etwa der Strecke vom{' '}
+        <span className="text-mobility">Heilbronner Marktplatz</span> zum{' '}
+        <span className="text-mobility">Wartberg</span> und zurück.
       </>
     ),
-    icon: NerobergTram,
+    icon: Running,
   },
   {
     value: 42,
     description: (
       <>
         Schon fast ein Marathon – das reicht von{' '}
-        <span className="text-mobility">Wiesbaden</span> bis nach{' '}
-        <span className="text-mobility">Mainz</span> und wieder zurück!
+        <span className="text-mobility">Heilbronn</span> bis nach{' '}
+        <span className="text-mobility">Ludwigsburg</span> und wieder zurück!
       </>
     ),
     icon: Running,
@@ -59,9 +58,9 @@ const distanceComparisons: ComparisonEntry[] = [
     value: 70,
     description: (
       <>
-        Von <span className="text-mobility">Wiesbaden</span> bis nach{' '}
-        <span className="text-mobility">Koblenz</span> – entlang des{' '}
-        <span className="text-mobility">Rheins im Mittelrheintal</span>.
+        Von <span className="text-mobility">Heilbronn</span> bis nach{' '}
+        <span className="text-mobility">Stuttgart</span> – entlang des{' '}
+        <span className="text-mobility">Neckars</span>.
       </>
     ),
     icon: Boat,
@@ -70,9 +69,9 @@ const distanceComparisons: ComparisonEntry[] = [
     value: 100,
     description: (
       <>
-        Von <span className="text-mobility">Wiesbaden</span> bis nach{' '}
-        <span className="text-mobility">Koblenz</span> – eine echte{' '}
-        <span className="text-mobility">Rheintour</span>.
+        Von <span className="text-mobility">Heilbronn</span> bis nach{' '}
+        <span className="text-mobility">Heidelberg</span> – eine echte{' '}
+        <span className="text-mobility">Neckartour</span>.
       </>
     ),
     icon: BigBoat,
@@ -81,9 +80,9 @@ const distanceComparisons: ComparisonEntry[] = [
     value: 200,
     description: (
       <>
-        So weit ist es von <span className="text-mobility">Wiesbaden</span> bis
-        nach <span className="text-mobility">Straßburg</span> – eine Tour
-        entlang des <span className="text-mobility">Rheins</span>.
+        So weit ist es von <span className="text-mobility">Heilbronn</span> bis
+        nach <span className="text-mobility">Straßburg</span> – quer durch den{' '}
+        <span className="text-mobility">Schwarzwald</span>.
       </>
     ),
     icon: Cathedral,
@@ -93,7 +92,7 @@ const distanceComparisons: ComparisonEntry[] = [
     description: (
       <>
         Das entspricht in etwa der Strecke von{' '}
-        <span className="text-mobility">Wiesbaden</span> bis nach{' '}
+        <span className="text-mobility">Heilbronn</span> bis nach{' '}
         <span className="text-mobility">Paris</span> (Luftlinie).
       </>
     ),
@@ -104,7 +103,7 @@ const distanceComparisons: ComparisonEntry[] = [
     description: (
       <>
         Fast die komplette Strecke von{' '}
-        <span className="text-mobility">Wiesbaden</span> bis nach{' '}
+        <span className="text-mobility">Heilbronn</span> bis nach{' '}
         <span className="text-mobility">Wien</span>!
       </>
     ),
@@ -114,7 +113,7 @@ const distanceComparisons: ComparisonEntry[] = [
     value: 1000,
     description: (
       <>
-        Von <span className="text-mobility">Wiesbaden</span> bis nach{' '}
+        Von <span className="text-mobility">Heilbronn</span> bis nach{' '}
         <span className="text-mobility">Rom</span> – eine Tour durch{' '}
         <span className="text-mobility">Europa</span>!
       </>
@@ -125,7 +124,7 @@ const distanceComparisons: ComparisonEntry[] = [
     value: 3500,
     description: (
       <>
-        So weit ist es von <span className="text-mobility">Wiesbaden</span> bis
+        So weit ist es von <span className="text-mobility">Heilbronn</span> bis
         zum <span className="text-mobility">Nordkap</span> – eine Fahrt durch
         ganz <span className="text-mobility">Europa</span>!
       </>
@@ -136,7 +135,7 @@ const distanceComparisons: ComparisonEntry[] = [
     value: 5000,
     description: (
       <>
-        So weit ist es von <span className="text-mobility">Wiesbaden</span> bis
+        So weit ist es von <span className="text-mobility">Heilbronn</span> bis
         zum <span className="text-mobility">Nahen Osten und zurück</span>
       </>
     ),
@@ -216,7 +215,7 @@ const timeComparisons: ComparisonEntry[] = [
     description: (
       <>
         Fast eine komplette Zugfahrt von{' '}
-        <span className="text-mobility">Wiesbaden</span> nach{' '}
+        <span className="text-mobility">Heilbronn</span> nach{' '}
         <span className="text-mobility">München</span>.
       </>
     ),
@@ -259,7 +258,7 @@ const timeComparisons: ComparisonEntry[] = [
       <>
         Drei volle Tage – so lange wie eine{' '}
         <span className="text-mobility">
-          Wanderung von Wiesbaden bis zum Bodensee
+          Wanderung von Heilbronn bis zum Bodensee
         </span>
         .
       </>
