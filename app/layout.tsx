@@ -25,7 +25,7 @@ export async function generateMetadata() {
     : {
         url: '/opengraph-image.png',
       }
-  const faviconUrl = theme?.favIcon ? theme.favIcon : '/favicon.svg'
+  const faviconUrl = '/favicon.svg'
 
   if (!theme) {
     return {
