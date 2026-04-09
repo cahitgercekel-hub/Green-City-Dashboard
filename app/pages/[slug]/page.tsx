@@ -1,5 +1,10 @@
 import { TileLayout } from '@/components/Tiles/TileLayout'
-import { getPage, getPages } from '@/lib/api/prismaService'
+import {
+  getDatesPageConfig,
+  getMaterialPageConfig,
+  getPage,
+  getPages,
+} from '@/lib/api/prismaService'
 import getTilesBucket, { BaseTile } from '@/utils/fullWidthBucket'
 import { sortTiles } from '@/utils/tileLayout'
 import { notFound } from 'next/navigation'
@@ -37,7 +42,9 @@ const toBaseTile = (tile: {
   collection: 'page',
 })
 
-export default async function Page(props: { params?: Promise<{ slug: string }> }) {
+export default async function Page(props: {
+  params?: Promise<{ slug: string }>
+}) {
   const params = await props.params
   if (!params?.slug) {
     return notFound()
@@ -50,7 +57,47 @@ export default async function Page(props: { params?: Promise<{ slug: string }> }
   }
 
   const tiles = page.tiles ?? []
-  const sortedTiles = sortTiles(tiles.map(toBaseTile))
+
+  // Check if dates should be shown on this page
+  const datesPageSlug = await getDatesPageConfig()
+  const baseTiles = tiles.map(toBaseTile)
+
+  if (datesPageSlug === params.slug) {
+    const lastSort = baseTiles.length
+    baseTiles.push(
+      {
+        id: 'dates-upcoming-injected',
+        itemId: 'dates-upcoming',
+        itemType: 'dates-upcoming',
+        sort: lastSort,
+        item: 'dates-upcoming',
+        collection: 'page',
+      },
+      {
+        id: 'dates-previous-injected',
+        itemId: 'dates-previous',
+        itemType: 'dates-previous',
+        sort: lastSort + 1,
+        item: 'dates-previous',
+        collection: 'page',
+      },
+    )
+  }
+
+  // Check if materials should be shown on this page
+  const materialPageSlug = await getMaterialPageConfig()
+  if (materialPageSlug === params.slug) {
+    baseTiles.push({
+      id: 'material-injected',
+      itemId: 'material',
+      itemType: 'material',
+      sort: baseTiles.length,
+      item: 'material',
+      collection: 'page',
+    })
+  }
+
+  const sortedTiles = sortTiles(baseTiles)
   const tileBuckets = await getTilesBucket(sortedTiles)
 
   return <TileLayout tileBuckets={tileBuckets} />

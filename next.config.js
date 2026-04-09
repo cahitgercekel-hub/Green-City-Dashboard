@@ -24,12 +24,20 @@ const nextConfig = {
         hostname: '**.reedu.de',
       },
       {
+        protocol: 'https',
+        hostname: '**.greencity.hn',
+      },
+      {
         protocol: 'http',
         hostname: 'localhost',
       },
       {
         protocol: 'https',
         hostname: 'nbg1.your-objectstorage.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'wiediversistmeingarten.org',
       },
     ],
   },

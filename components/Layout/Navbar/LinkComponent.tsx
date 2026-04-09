@@ -1,5 +1,4 @@
 import { Button } from '@/components/Elements/Button'
-import { cx } from 'class-variance-authority'
 import Link from 'next/link'
 import { JSX, SVGProps } from 'react'
 
@@ -24,18 +23,18 @@ export default function LinkComponent({
       <Button
         hover={hover}
         size={'link'}
-        startIcon={
-          <Icon
-            className={cx(
-              'h-[26px] transition-colors md:h-[34px]',
-              variant === 'primary' ? 'text-primary' : 'text-white',
-              hover === 'climate' && 'group-hover:text-climate',
-              hover === 'energy' && 'group-hover:text-energy',
-              hover === 'mobility' && 'group-hover:text-mobility',
-              hover === 'buildings' && 'group-hover:text-buildings',
-            )}
-          />
-        }
+        // startIcon={
+        //   <Icon
+        //     className={cx(
+        //       'h-[26px] transition-colors md:h-[34px]',
+        //       variant === 'primary' ? 'text-primary' : 'text-white',
+        //       hover === 'climate' && 'group-hover:text-climate',
+        //       hover === 'energy' && 'group-hover:text-energy',
+        //       hover === 'mobility' && 'group-hover:text-mobility',
+        //       hover === 'buildings' && 'group-hover:text-buildings',
+        //     )}
+        //   />
+        // }
         variant={variant}
       >
         {title}

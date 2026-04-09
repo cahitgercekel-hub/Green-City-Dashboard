@@ -14,7 +14,7 @@ export async function TileLayout({
         tileBuckets.map(async ({ tiles, isFullWidth }, i) => {
           const components = await renderTileComponents(tiles)
           return isFullWidth ? (
-            <div key={i}>{components}</div>
+            <div className="w-full" key={i}>{components}</div>
           ) : (
             <Columns key={i}>{components}</Columns>
           )

@@ -2,13 +2,19 @@ import EcoProfitTile from '@/components/Tiles/Buildings/EcoProfit'
 import EnergyComsumptionTile from '@/components/Tiles/Buildings/EnergyConsumption'
 import RenovationTile from '@/components/Tiles/Buildings/Renovation'
 import AirqualityTile from '@/components/Tiles/Climate/Airquality'
+import BirdTile from '@/components/Tiles/Climate/Bird'
 import CO2EmissionsTile from '@/components/Tiles/Climate/CO2EmissionsTile'
 import ClimateIndicesTile from '@/components/Tiles/Climate/ClimateIndices'
 import ClimateDevelopmentTile from '@/components/Tiles/Climate/Devlopment'
 import GarbageTile from '@/components/Tiles/Climate/Garbage'
+import OpenSenseMapTile from '@/components/Tiles/Climate/OpenSenseMap'
+import PMTile from '@/components/Tiles/Climate/PM'
 import WachstumTile from '@/components/Tiles/Climate/Wachstum'
 import WeatherTile from '@/components/Tiles/Climate/WeatherTile'
 import DataCountTile from '@/components/Tiles/Data/DataCountTile'
+import PreviousDatesTile from '@/components/Tiles/Dates/PreviousDatesTile'
+import UpcomingDatesTile from '@/components/Tiles/Dates/UpcomingDatesTile'
+import MaterialTile from '@/components/Tiles/Material/MaterialTile'
 import EnergietraegerTile from '@/components/Tiles/Energy/EnergietraegerTile'
 import LanternsTile from '@/components/Tiles/Energy/LanternsTile'
 import PVAnlagenTile from '@/components/Tiles/Energy/PVAnlagenTile'
@@ -49,10 +55,20 @@ type TileTypeSuffix =
 
 type SuccessStoryTileType = 'successStory'
 type SurveyTileType = 'survey'
+type DatesTileType = 'dates-upcoming' | 'dates-previous'
+type MaterialTileType = 'material' | 'climate-material'
+type BirdTileType = 'climate-bird'
+type OpenSenseMapTileType = 'climate-opensensemap'
+type PMTileType = 'climate-pm'
 
 export type TileType =
   | SuccessStoryTileType
   | SurveyTileType
+  | DatesTileType
+  | MaterialTileType
+  | BirdTileType
+  | OpenSenseMapTileType
+  | PMTileType
   | `${TileTypePrefix}-${TileTypeSuffix}`
 
 interface TileFactoryProps {
@@ -113,6 +129,23 @@ export default async function TileFactory({
       return <WachstumTile />
     case 'climate-airquality':
       return <AirqualityTile />
+    case 'climate-bird':
+      return <BirdTile />
+    case 'climate-opensensemap':
+      return <OpenSenseMapTile />
+    case 'climate-pm':
+      return <PMTile />
+
+    // ---- DATES ----
+    case 'dates-upcoming':
+      return <UpcomingDatesTile />
+    case 'dates-previous':
+      return <PreviousDatesTile />
+
+    // ---- MATERIAL ----
+    case 'material':
+    case 'climate-material':
+      return <MaterialTile />
 
     // ---- BUILDINGS ----
     case 'building-ecoProfit':

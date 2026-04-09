@@ -124,12 +124,12 @@ function MapComparison() {
     const beforeMap = new maplibregl.Map({
       container: beforeMapContainer.current,
       style: 'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json',
-      center: [8.2416, 50.08201], // Wiesbaden coordinates
+      center: [9.218, 49.1399], // Heilbronn coordinates
       zoom: 12,
       attributionControl: false,
       maxBounds: [
-        [7.9, 49.8],
-        [8.5, 50.3],
+        [8.9, 48.9],
+        [9.5, 49.4],
       ],
     })
 
@@ -159,10 +159,10 @@ function MapComparison() {
       },
       zoom: 12,
       attributionControl: false,
-      center: [8.2416, 50.08201], // Wiesbaden coordinates
+      center: [9.218, 49.1399], // Heilbronn coordinates
       maxBounds: [
-        [7.9, 49.8],
-        [8.5, 50.3],
+        [8.9, 48.9],
+        [9.5, 49.4],
       ],
     })
 
