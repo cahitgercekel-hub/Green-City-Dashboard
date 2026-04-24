@@ -32,7 +32,7 @@ export default async function MaterialTile() {
         <Spacer />
         <div className="text-xs">
           <Title as="h7" className="inline" font="normal" variant="primary">
-            Quelle: Stadt Heilbronn
+            Quelle: Green City Heilbronn
           </Title>
         </div>
       </div>
