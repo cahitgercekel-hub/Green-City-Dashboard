@@ -1,7 +1,7 @@
 import ClimateTile from '../ClimateTile'
 import BirdTileContent from './BirdTileContent'
 
-const DEFAULT_STATION_ID = 'fc81902e-17e8-487a-bfb2-f63d818e0940'
+const DEFAULT_STATION_ID = '699b7f2c-3855-4273-af7f-ed61a54541f9'
 
 export default function BirdTile() {
   return (
