@@ -5,6 +5,7 @@ import useBirdiary, { BirdDayCount } from '@/hooks/useBirdiary'
 import { format } from 'date-fns'
 import { de } from 'date-fns/locale'
 import { useMemo } from 'react'
+import { isEuropeanBird } from './europeanBirdFilter'
 
 interface BirdTileContentProps {
   stationId: string
@@ -33,10 +34,13 @@ export default function BirdTileContent({ stationId }: BirdTileContentProps) {
     }
 
     const entries = Object.entries(data.count) as [string, BirdDayCount][]
-    return entries
-      .sort(([a], [b]) => b.localeCompare(a))
-      .slice(0, 7)
+    return entries.sort(([a], [b]) => b.localeCompare(a)).slice(0, 7)
   }, [data])
+
+  const filteredDaySum = (day: BirdDayCount): number =>
+    day.birds
+      .filter(b => isEuropeanBird(b.latinName))
+      .reduce((s, b) => s + b.amount, 0)
 
   const totalBirdsLast7Days = useMemo(() => {
     return recentDays.reduce((sum, [, day]) => sum + day.sum, 0)
@@ -47,10 +51,16 @@ export default function BirdTileContent({ stationId }: BirdTileContentProps) {
       return []
     }
 
-    const speciesMap = new Map<string, { german: string; latin: string; count: number }>()
+    const speciesMap = new Map<
+      string,
+      { german: string; latin: string; count: number }
+    >()
 
     for (const [, day] of Object.entries(data.count)) {
       for (const bird of (day as BirdDayCount).birds) {
+        if (!isEuropeanBird(bird.latinName)) {
+          continue
+        }
         const key = bird.latinName
         const existing = speciesMap.get(key)
         const displayName = bird.germanName || bird.latinName
@@ -80,11 +90,7 @@ export default function BirdTileContent({ stationId }: BirdTileContentProps) {
   }
 
   if (!data) {
-    return (
-      <p className="text-sm text-gray-500">
-        Keine Vogeldaten verfügbar.
-      </p>
-    )
+    return <p className="text-sm text-gray-500">Keine Vogeldaten verfügbar.</p>
   }
 
   const latestDetectionName =
@@ -124,15 +130,21 @@ export default function BirdTileContent({ stationId }: BirdTileContentProps) {
         )}
 
         {/* Stats + Top Species next to video */}
-        <div className={`flex flex-col gap-3 ${latestVideo?.video ? 'lg:w-1/2' : 'w-full'}`}>
+        <div
+          className={`flex flex-col gap-3 ${latestVideo?.video ? 'lg:w-1/2' : 'w-full'}`}
+        >
           {/* Stats Overview */}
           <div className="grid grid-cols-2 gap-3">
             <div className="rounded-lg bg-white/60 p-3 text-center">
-              <p className="text-2xl font-bold text-climate">{totalBirdsLast7Days}</p>
+              <p className="text-2xl font-bold text-climate">
+                {totalBirdsLast7Days}
+              </p>
               <p className="text-xs text-gray-600">Vögel (letzte 7 Tage)</p>
             </div>
             <div className="rounded-lg bg-white/60 p-3 text-center">
-              <p className="text-2xl font-bold text-climate">{topSpecies.length}</p>
+              <p className="text-2xl font-bold text-climate">
+                {topSpecies.length}
+              </p>
               <p className="text-xs text-gray-600">Arten erkannt</p>
             </div>
           </div>
@@ -150,7 +162,9 @@ export default function BirdTileContent({ stationId }: BirdTileContentProps) {
                     key={species.latin}
                   >
                     <div>
-                      <span className="text-sm font-medium">{species.german}</span>
+                      <span className="text-sm font-medium">
+                        {species.german}
+                      </span>
                       <span className="ml-2 text-xs italic text-gray-400">
                         {species.latin}
                       </span>
@@ -177,12 +191,12 @@ export default function BirdTileContent({ stationId }: BirdTileContentProps) {
           <div className="space-y-1.5">
             {recentDays.map(([date, day]) => {
               const d = new Date(date + 'T00:00:00')
-              const isToday =
-                format(new Date(), 'yyyy-MM-dd') === date
+              const isToday = format(new Date(), 'yyyy-MM-dd') === date
               const label = isToday
                 ? 'Heute'
                 : format(d, 'EEEE, dd. MMM', { locale: de })
 
+              // const filteredSum = filteredDaySum(day)
               const maxCount = Math.max(
                 ...recentDays.map(([, rd]) => rd.sum),
                 1,
@@ -209,7 +223,6 @@ export default function BirdTileContent({ stationId }: BirdTileContentProps) {
           </div>
         </div>
       )}
-
     </div>
   )
 }
