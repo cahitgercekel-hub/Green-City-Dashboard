@@ -1,3 +1,5 @@
+'use client'
+
 import {
   MsKlimadashboardIconsButtonAktivEnergieV1,
   MsKlimadashboardIconsButtonAktivGebaeude,
@@ -6,6 +8,7 @@ import {
 } from '@/components/Icons/Misc'
 import { cva, cx, VariantProps } from 'class-variance-authority'
 import Title from '../Elements/Title'
+import { useTranslation } from 'react-i18next'
 
 import { JSX, SVGProps } from 'react'
 
@@ -29,37 +32,38 @@ export default function SectionTitle({
 }: VariantProps<typeof sectionHeaderStyle> & {
   large?: boolean
 }) {
-  let title: string | React.ReactNode = 'Münster'
+  const { t } = useTranslation()
+  let title: string | React.ReactNode = t('sectionTitle.default')
   let Icon: ((_: SVGProps<SVGSVGElement>) => JSX.Element) | undefined =
     MsKlimadashboardIconsButtonAktivKlima
 
   if (variant === 'climate') {
-    title = 'Klima in Münster'
+    title = t('sectionTitle.climate')
   }
   if (variant === 'mobility') {
-    title = 'Mobilität'
+    title = t('sectionTitle.mobility')
     Icon = MsKlimadashboardIconsButtonAktivMobil
   }
   if (variant === 'building') {
-    title = 'Gebäude'
+    title = t('sectionTitle.building')
     Icon = MsKlimadashboardIconsButtonAktivGebaeude
   }
   if (variant === 'energy') {
-    title = 'Energie'
+    title = t('sectionTitle.energy')
     Icon = MsKlimadashboardIconsButtonAktivEnergieV1
   }
   if (variant === 'impressum') {
-    title = 'Impressum'
+    title = t('sectionTitle.impressum')
     Icon = undefined
   }
   if (variant === 'datenschutz') {
-    title = 'Datenschutz'
+    title = t('sectionTitle.datenschutz')
     Icon = undefined
   }
   if (variant === 'feedback') {
     title = (
       <span>
-        Mit Ihren Daten - <br /> für Ihre Kommune
+        {t('sectionTitle.feedback')}
       </span>
     )
     Icon = undefined

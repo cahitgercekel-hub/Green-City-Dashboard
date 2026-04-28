@@ -9,6 +9,7 @@ import { XMarkIcon } from '@heroicons/react/24/outline'
 import { AnimatePresence, motion } from 'framer-motion'
 import { usePathname } from 'next/navigation'
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import SectionTitle from '../SectionTitle'
 import BaseNavbar from './BaseNavbar'
 
@@ -39,7 +40,7 @@ export default function Navbar({
   aboutButton?: { title: string; text: string }
 }) {
   const pathname = usePathname()
-
+  const { t } = useTranslation()
   const [showOverlay, setShowOverlay] = useState(false)
 
   if (!pathname) {
@@ -94,7 +95,7 @@ export default function Navbar({
           variant={'secondary'}
         >
           <Title as="h5" variant={'inverse'}>
-            Informationen ausblenden
+            {t('navbar.hideInfo')}
           </Title>
         </Button>
       }
@@ -138,14 +139,10 @@ export default function Navbar({
     ].includes(route)
   ) {
     const sectionText: Record<string, string> = {
-      klima:
-        'Die Auswirkungen des Klimawandels in Münster sind spür- und messbar. Münster will klimaneutral und klimaangepasst und so der Verantwortung für ein „gutes Morgen“ gerecht werden. Dafür braucht es die gesamte Stadtgesellschaft!',
-      energie:
-        'Egal ob Zuhause, im Unternehmen oder als Kommune, diese Grundsätze sind die Bausteine einer erfolgreichen Energiewende: Die Vermeidung von Energieverbrauch hat oberste Priorität. Der nicht-vermeidbare Energiebedarf muss mit effizienter Technik verringert werden. Der dann noch verbleibende Energiebedarf muss mittelfristig komplett durch erneuerbare Energieträger gedeckt werden.',
-      mobilitaet:
-        'Das Ziel einer funktionierenden, klimafreundlichen Mobilität stellt eine wachsende Stadt wie Münster vor eine große Herausforderung. Wenn die gesamte Stadtgesellschaft bereit ist, neue Wege zu gehen, kann diese Herausforderung gemeistert werden.',
-      gebaeude:
-        'Für das Ziel einer klimaneutralen und klimaangepassten Stadt kann die Rolle der Gebäude in Münster kaum hoch genug eingeschätzt werden. Nicht nur das Einsparpotential von CO₂ ist in diesem Bereich besonders hoch. Auch können Gebäudeeigentümer*innen durch gezielte Maßnahmen Energiekosten sparen und ihr Gebäude vor Extremwetter schützen.',
+      klima: t('navbar.sectionText.klima'),
+      energie: t('navbar.sectionText.energie'),
+      mobilitaet: t('navbar.sectionText.mobilitaet'),
+      gebaeude: t('navbar.sectionText.gebaeude'),
     }
 
     return (

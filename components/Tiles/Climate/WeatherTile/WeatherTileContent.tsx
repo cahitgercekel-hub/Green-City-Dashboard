@@ -7,11 +7,13 @@ import useWeather from '@/hooks/useWeather'
 import { conditionMapping, conditionMappingIcon } from '@/lib/brightsky'
 import { addHours, format } from 'date-fns'
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import LongTermAverageDiff from './LongTermAverageDiff'
 import Phenomenon from './Phenomenon'
 
 export default function WeatherTileContent() {
   const [timestamp, setTimestamp] = useState(new Date())
+  const { t } = useTranslation()
 
   const weather = useWeather({ lat: 52, lng: 7.6 }, timestamp)
 
@@ -33,7 +35,7 @@ export default function WeatherTileContent() {
             <div className="flex flex-1 items-center gap-6 md:gap-2">
               <Icon className="h-20 text-primary md:mr-12 md:h-36" />
               <Title as={'h4'} className="my-4 w-3/4 md:w-1/2">
-                In Heilbronn ist es gerade{' '}
+                {t('weatherTile.currentCondition')}{' '}
                 <span className="text-climate">
                   {conditionMapping[weather?.condition]}
                 </span>
@@ -72,7 +74,7 @@ export default function WeatherTileContent() {
           defaultValue={[0]}
           labels={(() => {
             const labels = nextHours.map(d => format(d, 'kk:mm'))
-            labels[0] = 'jetzt'
+            labels[0] = t('weatherTile.now')
             return labels
           })()}
           max={nextHours.length - 1}
@@ -88,5 +90,5 @@ export default function WeatherTileContent() {
     )
   }
 
-  return <p>Loading...</p>
+  return <p>{t('common.loading')}</p>
 }

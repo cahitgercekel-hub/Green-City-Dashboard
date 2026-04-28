@@ -10,11 +10,12 @@ import {
 import useDevice from '@/hooks/useDevice'
 import { cx } from 'class-variance-authority'
 import { ForwardRefExoticComponent, JSX, SVGProps } from 'react'
+import { useTranslation } from 'react-i18next'
 
 type PhenomenaType = {
   [key: string]: {
-    title: string
-    shortTitle?: string
+    titleKey: string
+    shortTitleKey?: string
     unit: string
     icon:
       | ForwardRefExoticComponent<SVGProps<SVGSVGElement>>
@@ -31,52 +32,52 @@ type PhenomenaType = {
 
 const phenomena: PhenomenaType = {
   temperature: {
-    title: 'Temperatur',
-    unit: '°C',
+    titleKey: 'weatherTile.temperature',
+    unit: '\u00b0C',
     icon: MsKlimadashboardIconsWetterTemperatur,
     decimals: 0,
   },
   precipitation: {
-    title: 'Niederschlag',
+    titleKey: 'weatherTile.precipitation',
     unit: 'mm',
     icon: MsKlimadashboardIconsWetterNiederschlag,
   },
   cloudcover: {
-    title: 'Wolken&shy;bedeckung',
-    shortTitle: 'Wolkenbed.',
+    titleKey: 'weatherTile.cloudcover',
+    shortTitleKey: 'weatherTile.cloudcoverShort',
     unit: '%',
     icon: MsKlimadashboardIconsWetterWolkendichte,
   },
   windspeed: {
-    title: 'Wind&shy;geschwindigkeit',
-    shortTitle: 'Windgeschw.',
+    titleKey: 'weatherTile.windspeed',
+    shortTitleKey: 'weatherTile.windspeedShort',
     unit: 'km/h',
     icon: MsKlimadashboardIconsWetterWindgeschw,
     decimals: 1,
   },
   sunhours: {
-    title: 'Sonnenstunden',
+    titleKey: 'weatherTile.sunhours',
     unit: 'h',
     icon: MsKlimadashboardIconsWetterSonnig,
   },
   no2: {
-    title: 'Stickstoffdioxid (NO<sub>2</sub>)',
-    unit: 'μg/m³',
+    titleKey: 'weatherTile.no2',
+    unit: '\u03bcg/m\u00b3',
     icon: MsKlimadashboardIconsWetterSonnig,
   },
   pm10: {
-    title: 'Feinstaub (PM<sub>10</sub>)',
-    unit: 'μg/m³',
+    titleKey: 'weatherTile.pm10',
+    unit: '\u03bcg/m\u00b3',
     icon: MsKlimadashboardIconsWetterSonnig,
   },
   o3: {
-    title: 'Ozon (O<sub>3</sub>)',
-    unit: 'μg/m³',
+    titleKey: 'weatherTile.o3',
+    unit: '\u03bcg/m\u00b3',
     icon: MsKlimadashboardIconsWetterSonnig,
   },
   pm25: {
-    title: 'Feinstaub (PM<sub>2.5</sub>)',
-    unit: 'μg/m³',
+    titleKey: 'weatherTile.pm25',
+    unit: '\u03bcg/m\u00b3',
     icon: MsKlimadashboardIconsWetterSonnig,
   },
 }
@@ -96,13 +97,17 @@ export default function Phenomenon({
   icon,
   size = 'md',
 }: PhenomenonProps) {
+  const { t } = useTranslation()
   const {
-    title,
+    titleKey,
     unit,
     icon: phenomIcon,
     decimals,
-    shortTitle,
+    shortTitleKey,
   } = phenomena[phenomenon]
+
+  const title = t(titleKey)
+  const shortTitle = shortTitleKey ? t(shortTitleKey) : undefined
 
   const valueSize: 'h1' | 'h4' = size === 'xl' ? 'h1' : 'h4'
 

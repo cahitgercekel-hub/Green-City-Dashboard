@@ -8,6 +8,7 @@ import BaseOverlay from './BaseOverlay'
 import { TileType } from '@/utils/TileFactory'
 import { Button } from '@/components/Elements/Button'
 import { ClipboardDocumentIcon } from '@heroicons/react/24/outline'
+import { useTranslation } from 'react-i18next'
 
 type ShareOverlayProps = AnimatedProps<ComponentPropsWithRef<'div'>> & {
   onClose?: () => void
@@ -19,6 +20,7 @@ export default function ShareOverlay({
   embedId,
   ...props
 }: ShareOverlayProps) {
+  const { t } = useTranslation()
   const link = `${window.location.origin}/share/${embedId}`
 
   const copyToClipboard = async () => {
@@ -31,7 +33,7 @@ export default function ShareOverlay({
         <div className="grid grid-flow-col grid-cols-3 grid-rows-2 gap-8">
           <div className="col-span-2 row-span-1">
             <Title as="h3" variant={'secondary'}>
-              Diese Kachel teilen
+              {t('shareOverlay.title')}
             </Title>
           </div>
           <div className="col-span-2 row-span-1">
@@ -46,8 +48,7 @@ export default function ShareOverlay({
           </div>
           <div className="col-span-1 row-span-2">
             <p className="text-white">
-              Sie möchten diese Kachel mit anderen teilen? Nutzen Sie diesen
-              Link um direkt zu dieser Kachel zu verlinken.
+              {t('shareOverlay.description')}
             </p>
           </div>
         </div>
@@ -59,7 +60,7 @@ export default function ShareOverlay({
             }
             variant={'overlay'}
           >
-            Link kopieren
+            {t('shareOverlay.copyLink')}
           </Button>
         </div>
       </div>

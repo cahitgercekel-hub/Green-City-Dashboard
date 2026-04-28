@@ -4,8 +4,9 @@ import Title from '@/components/Elements/Title'
 import { TileSplitView } from '../../Base/TileSplitView'
 import getTileData from '@/lib/api/getTileData'
 import TrafficloadContent from './TrafficloadContent'
+import { getT } from '@/lib/i18n/server'
 export default async function TrafficloadTile() {
-  const data = await getTileData('mobility-trafficload')
+  const [data, t] = await Promise.all([getTileData('mobility-trafficload'), getT()])
   const infoText = data?.info ?? ''
 
   const endIndex = infoText.indexOf('nehmen.')
@@ -17,8 +18,8 @@ export default async function TrafficloadTile() {
       dataRetrieval={format(new Date(), '01.MM.yyyy')}
       dataSource="Stadt Münster - Amt für Mobilität und Tiefbau"
       embedId="mobility-trafficload"
-      subtitle="Anzahl gezählter Fahrzeuge an Werktagen"
-      title={'Kfz-Verkehrsbelastung'}
+      subtitle={t('tiles.mobility.trafficload.subtitle')}
+      title={t('tiles.mobility.trafficload.title')}
     >
       <TileSplitView>
         <TileSplitView.Left>

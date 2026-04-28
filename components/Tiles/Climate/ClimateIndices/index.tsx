@@ -4,9 +4,10 @@ import ClimateIndicesChart from './ClimateIndicesChart'
 import { TileSplitView } from '../../Base/TileSplitView'
 import getTileData from '@/lib/api/getTileData'
 import Title from '@/components/Elements/Title'
+import { getT } from '@/lib/i18n/server'
 
 export default async function ClimateIndicesTile() {
-  const data = await getTileData('climate-indices')
+  const [data, t] = await Promise.all([getTileData('climate-indices'), getT()])
   const infoText = data?.info ?? ''
 
   return (
@@ -15,10 +16,8 @@ export default async function ClimateIndicesTile() {
       dataSource="Deutscher Wetterdienst"
       embedId="climate-indices"
       live
-      subtitle={
-        'Häufigkeit von Temperaturkenntagen in Münster'
-      }
-      title="Klimakenntage"
+      subtitle={t('tiles.climate.climateIndices.subtitle')}
+      title={t('tiles.climate.climateIndices.title')}
     >
       <TileSplitView>
         <TileSplitView.Left>

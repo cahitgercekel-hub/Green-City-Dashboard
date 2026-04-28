@@ -1,6 +1,7 @@
 import ClimateTile from '../ClimateTile'
 import RadarChart, { AvgTempData } from './RadarChart'
 import climateHistoryData from '@/assets/data/climate_history.json'
+import { getT } from '@/lib/i18n/server'
 
 type ClimateHistoryRecord = {
   observation_type: string
@@ -25,14 +26,15 @@ const climateYears = data.reduce((a: AvgTempData, o) => {
   }
 }, {})
 
-export default function ClimateDevelopmentTile() {
+export default async function ClimateDevelopmentTile() {
+  const t = await getT()
   return (
     <ClimateTile
       dataSource="Deutscher Wetterdienst"
       embedId="climate-development"
       live
-      subtitle={'Temperaturabweichungen von den langjährigen Monatsmitteln vor 1900'}
-      title={'Klima'}
+      subtitle={t('tiles.climate.development.subtitle')}
+      title={t('tiles.climate.development.title')}
     >
       <div className="h-[316px] w-full md:h-[528px]">
         <div className="h-full w-full">

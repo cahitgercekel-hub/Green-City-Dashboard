@@ -1,0 +1,191 @@
+{
+  "common": {
+    "back": "Back",
+    "moreDetails": "More Details",
+    "lessDetails": "Less Details",
+    "noData": "No data",
+    "loading": "Loading..."
+  },
+  "navbar": {
+    "hideInfo": "Hide information",
+    "aboutButtonFallback": "About the Dashboard",
+    "sectionText": {
+      "klima": "The effects of climate change in Heilbronn are perceptible and measurable. Heilbronn aims to become climate-neutral and climate-adapted, living up to its responsibility for a \"better tomorrow\". This requires the entire city community!",
+      "energie": "Whether at home, in business, or as a municipality, these principles are the building blocks of a successful energy transition: Avoiding energy consumption is the top priority. Unavoidable energy needs must be reduced using efficient technology. The remaining energy demand must be fully covered by renewable energy sources in the medium term.",
+      "mobilitaet": "The goal of functional, climate-friendly mobility poses a major challenge for a growing city like Heilbronn. If the entire city community is willing to take new paths, this challenge can be mastered.",
+      "gebaeude": "For the goal of a climate-neutral and climate-adapted city, the role of buildings in Heilbronn can hardly be overestimated. Not only is the CO₂ savings potential particularly high in this area. Building owners can also save energy costs and protect their building from extreme weather through targeted measures."
+    }
+  },
+  "sectionTitle": {
+    "default": "Heilbronn",
+    "climate": "Climate",
+    "mobility": "Mobility",
+    "building": "Buildings",
+    "energy": "Energy",
+    "impressum": "Imprint",
+    "datenschutz": "Privacy Policy",
+    "feedback": "With your data – for your municipality"
+  },
+  "footer": {
+    "projectOf": "A project by",
+    "impressum": "Imprint",
+    "datenschutz": "Privacy Policy",
+    "adaptDashboard": "Adapt this Dashboard",
+    "giveFeedback": "Give feedback"
+  },
+  "shareOverlay": {
+    "title": "Share this tile",
+    "description": "Would you like to share this tile with others? Use this link to link directly to this tile.",
+    "copyLink": "Copy link"
+  },
+  "embedOverlay": {
+    "title": "Embed this tile on your website",
+    "description": "Would you like to display this tile on your website too? Use the iframe code and embed it on your website easily.",
+    "copyCode": "Copy HTML code"
+  },
+  "cookies": {
+    "message": "Consent to cookies (Analytics, Tracking)",
+    "accept": "Accept",
+    "decline": "Decline"
+  },
+  "goToButton": {
+    "climate": "to climate data",
+    "mobility": "to mobility data",
+    "energy": "to energy data",
+    "building": "to building data",
+    "default": "to the data"
+  },
+  "survey": {
+    "showAnswer": "Reveal answer",
+    "hideAnswer": "back to question"
+  },
+  "birdTile": {
+    "noData": "No bird data available.",
+    "birdsLast7Days": "Birds (last 7 days)",
+    "speciesDetected": "Species detected",
+    "mostFrequentSpecies": "Most frequent species",
+    "lastDetected": "Last detected",
+    "confidence": "Confidence",
+    "sightingsPerDay": "Sightings per day",
+    "today": "Today"
+  },
+  "weatherTile": {
+    "degreeWarmer": "degrees warmer",
+    "degreeColder": "degrees colder",
+    "isThe": "is",
+    "comparisonSuffix": "so far compared to the long-term average (1961-1990).",
+    "currentCondition": "In Heilbronn it is currently",
+    "now": "now",
+    "temperature": "Temperature",
+    "precipitation": "Precipitation",
+    "cloudcover": "Cloud\u00adcover",
+    "cloudcoverShort": "Cloud cov.",
+    "windspeed": "Wind\u00adspeed",
+    "windspeedShort": "Wind spd.",
+    "sunhours": "Sunshine hours",
+    "no2": "Nitrogen dioxide (NO<sub>2</sub>)",
+    "pm10": "Particulate matter (PM<sub>10</sub>)",
+    "o3": "Ozone (O<sub>3</sub>)",
+    "pm25": "Particulate matter (PM<sub>2.5</sub>)"
+  },
+  "qualityBar": {
+    "lowPollution": "Low Pollution",
+    "highPollution": "Heavy Pollution"
+  },
+  "openSenseMap": {
+    "noStations": "No measurement stations available.",
+    "stations_one": "measuring station",
+    "stations_other": "measuring stations",
+    "liveData": "Live data",
+    "historicData": "Historic data",
+    "updated": "updated",
+    "sensor": "sensor",
+    "sensors": "sensors"
+  },
+  "buildings": {
+    "monthlyConsumption": "Monthly consumption",
+    "yearlyConsumption": "Annual consumption",
+    "yearlyConsumptionSoFar": "Annual consumption so far",
+    "missingData": "missing data"
+  },
+  "tiles": {
+    "dates": {
+      "upcoming": "Upcoming Events",
+      "previous": "Past Events"
+    },
+    "insights": {
+      "ourCampaigns": "Our Campaigns"
+    },
+    "climate": {
+      "climateIndices": {
+        "title": "Climate Key Days",
+        "subtitle": "Frequency of temperature key days in M\u00fcnster"
+      },
+      "pm": { "title": "Particulate Matter" },
+      "openSenseMap": { "title": "Our Measuring Stations" },
+      "co2": { "subtitle": "This is how much is emitted in M\u00fcnster" },
+      "bird": { "title": "Bird Observation" },
+      "development": {
+        "title": "Climate",
+        "subtitle": "Temperature deviations from the long-term monthly averages before 1900"
+      },
+      "airquality": { "title": "Air Quality" },
+      "garbage": {
+        "title": "Waste per Capita",
+        "subtitle": "Average kg of waste recorded per M\u00fcnster resident by awm"
+      },
+      "weather": { "title": "Current Weather" },
+      "wachstum": { "title": "Economic Development" }
+    },
+    "mobility": {
+      "awm": {
+        "title": "E-Mobility awm",
+        "subtitle": "Number of electrically powered utility vehicles compared to fossil-fuel vehicles"
+      },
+      "bicycle": {
+        "title": "Cyclists",
+        "subtitle": "in the city area"
+      },
+      "overtaking": {
+        "title": "Overtaking Distances and Accident Statistics",
+        "subtitle": "in focus"
+      },
+      "bicycleCampaign": {
+        "title": "senseBox:bike - Bicycle Campaign",
+        "subtitle": "This much bicycle data has been collected so far"
+      },
+      "stadtradeln": {
+        "title": "Stadtradeln",
+        "subtitle": "year-on-year comparison"
+      },
+      "bus": {
+        "title": "E-Buses",
+        "subtitle": "Number compared to buses with fossil fuel drive"
+      },
+      "modalSplit": {
+        "title": "Getting Around",
+        "subtitle": "Modal split of residents of Wiesbaden"
+      },
+      "trafficload": {
+        "title": "Motor Vehicle Traffic Load",
+        "subtitle": "Number of vehicles counted on weekdays"
+      },
+      "passenger": {
+        "title": "Public Transport",
+        "subtitle": "Development of passenger numbers on Stadtwerke buses"
+      }
+    },
+    "buildings": {
+      "energyConsumption": {
+        "title": "Energy Consumption",
+        "subtitle": "How the consumption of heat and electricity in selected municipal buildings develops over the course of the year"
+      }
+    },
+    "energy": {
+      "energietraeger": {
+        "title": "Power Generation",
+        "subtitle": "Shares of different energy sources"
+      }
+    }
+  }
+}

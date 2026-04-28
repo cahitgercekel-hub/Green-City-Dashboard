@@ -5,6 +5,7 @@ import useBirdiary, { BirdDayCount } from '@/hooks/useBirdiary'
 import { format } from 'date-fns'
 import { de } from 'date-fns/locale'
 import { useMemo } from 'react'
+import { useTranslation } from 'react-i18next'
 import { isEuropeanBird } from './europeanBirdFilter'
 
 interface BirdTileContentProps {
@@ -13,6 +14,7 @@ interface BirdTileContentProps {
 
 export default function BirdTileContent({ stationId }: BirdTileContentProps) {
   const { data, isLoading } = useBirdiary(stationId)
+  const { t } = useTranslation()
 
   const latestVideo = useMemo(() => {
     if (!data) {
@@ -90,7 +92,7 @@ export default function BirdTileContent({ stationId }: BirdTileContentProps) {
   }
 
   if (!data) {
-    return <p className="text-sm text-gray-500">Keine Vogeldaten verfügbar.</p>
+    return <p className="text-sm text-gray-500">{t('birdTile.noData')}</p>
   }
 
   const latestDetectionName =
@@ -117,11 +119,11 @@ export default function BirdTileContent({ stationId }: BirdTileContentProps) {
             </video>
             {latestDetectionName && (
               <p className="mt-2 text-sm font-semibold text-climate">
-                🐦 Zuletzt erkannt: {latestDetectionName}
+                🐦 {t('birdTile.lastDetected')}: {latestDetectionName}
                 {latestVideo.detections[0]?.score && (
                   <span className="ml-1 font-normal text-gray-500">
                     ({Math.round(latestVideo.detections[0].score * 100)}%
-                    Sicherheit)
+                    {' '}{t('birdTile.confidence')})
                   </span>
                 )}
               </p>
@@ -139,13 +141,13 @@ export default function BirdTileContent({ stationId }: BirdTileContentProps) {
               <p className="text-2xl font-bold text-climate">
                 {totalBirdsLast7Days}
               </p>
-              <p className="text-xs text-gray-600">Vögel (letzte 7 Tage)</p>
+              <p className="text-xs text-gray-600">{t('birdTile.birdsLast7Days')}</p>
             </div>
             <div className="rounded-lg bg-white/60 p-3 text-center">
               <p className="text-2xl font-bold text-climate">
                 {topSpecies.length}
               </p>
-              <p className="text-xs text-gray-600">Arten erkannt</p>
+              <p className="text-xs text-gray-600">{t('birdTile.speciesDetected')}</p>
             </div>
           </div>
 
@@ -153,7 +155,7 @@ export default function BirdTileContent({ stationId }: BirdTileContentProps) {
           {topSpecies.length > 0 && (
             <div>
               <p className="mb-2 text-sm font-semibold text-climate">
-                Häufigste Arten
+                {t('birdTile.mostFrequentSpecies')}
               </p>
               <div className="space-y-1">
                 {topSpecies.map(species => (
@@ -186,14 +188,14 @@ export default function BirdTileContent({ stationId }: BirdTileContentProps) {
       {recentDays.length > 0 && (
         <div>
           <p className="mb-2 text-sm font-semibold text-climate">
-            Sichtungen pro Tag
+            {t('birdTile.sightingsPerDay')}
           </p>
           <div className="space-y-1.5">
             {recentDays.map(([date, day]) => {
               const d = new Date(date + 'T00:00:00')
               const isToday = format(new Date(), 'yyyy-MM-dd') === date
               const label = isToday
-                ? 'Heute'
+                ? t('birdTile.today')
                 : format(d, 'EEEE, dd. MMM', { locale: de })
 
               // const filteredSum = filteredDaySum(day)

@@ -11,6 +11,7 @@ import {
   MsKlimadashboardIconsGStadtweinhaus,
 } from '@/components/Icons/Gebaeude'
 import { JSX, SVGProps } from 'react'
+import { useTranslation } from 'react-i18next'
 import EnergyConsumptionChart from './EnergyConsumptionChart'
 import LabelSeperator from './LabelSeperator'
 
@@ -85,6 +86,7 @@ interface MobileViewProps {
 }
 
 export default function MobileView({ mode, yearIndex }: MobileViewProps) {
+  const { t } = useTranslation()
   return (
     <Carousel
       arrows
@@ -110,7 +112,7 @@ export default function MobileView({ mode, yearIndex }: MobileViewProps) {
                 {getBuildingIcon(building as keyof Building)}
               </div>
             </div>
-            <LabelSeperator>Monatlicher Verbrauch</LabelSeperator>
+            <LabelSeperator>{t('buildings.monthlyConsumption')}</LabelSeperator>
             <div className="h-40 w-full">
               <EnergyConsumptionChart
                 data={getData(
@@ -122,13 +124,13 @@ export default function MobileView({ mode, yearIndex }: MobileViewProps) {
             </div>
             <LabelSeperator>
               {years[yearIndex] === new Date().getFullYear()
-                ? 'Jahresverbrauch bisher'
-                : 'Jahresverbrauch'}
+                ? t('buildings.yearlyConsumptionSoFar')
+                : t('buildings.yearlyConsumption')}
             </LabelSeperator>
             <div className="flex w-full gap-1 p-2">
               {sum === 0 ? (
                 <Title as="h4" variant="building">
-                  fehlende Daten
+                  {t('buildings.missingData')}
                 </Title>
               ) : (
                 <>

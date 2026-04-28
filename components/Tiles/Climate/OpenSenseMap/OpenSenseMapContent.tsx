@@ -3,7 +3,10 @@
 import useOpenSenseMap from '@/hooks/useOpenSenseMap'
 import { formatDistanceToNow } from 'date-fns'
 import { de } from 'date-fns/locale'
+import { useTranslation } from 'react-i18next'
 import OpenSenseMapMap from './OpenSenseMapMap'
+
+const LIVE_THRESHOLD_MS = 60 * 60 * 1000
 
 interface OpenSenseMapContentProps {
   grouptag: string
@@ -13,6 +16,7 @@ export default function OpenSenseMapContent({
   grouptag,
 }: OpenSenseMapContentProps) {
   const { data: boxes, isLoading } = useOpenSenseMap(grouptag)
+  const { t } = useTranslation()
 
   if (isLoading) {
     return (
@@ -24,7 +28,7 @@ export default function OpenSenseMapContent({
 
   if (!boxes || boxes.length === 0) {
     return (
-      <p className="text-sm text-gray-500">Keine Messstationen verfügbar.</p>
+      <p className="text-sm text-gray-500">{t('openSenseMap.noStations')}</p>
     )
   }
 
@@ -42,7 +46,7 @@ export default function OpenSenseMapContent({
           <div className="rounded-lg bg-white/60 p-3 text-center">
             <p className="text-2xl font-bold text-climate">{boxes.length}</p>
             <p className="text-xs text-gray-600">
-              Messstation{boxes.length !== 1 ? 'en' : ''}
+              {t('openSenseMap.stations', { count: boxes.length })}
             </p>
           </div>
 
@@ -66,11 +70,11 @@ export default function OpenSenseMapContent({
                   <div className="min-w-0 flex-1">
                     <p className="truncate text-sm font-medium">{box.name}</p>
                     <p className="text-xs text-gray-500">
-                      {box.sensors.length} Sensor
-                      {box.sensors.length !== 1 ? 'en' : ''}
+                      {box.sensors.length}{' '}
+                      {box.sensors.length !== 1 ? t('openSenseMap.sensors') : t('openSenseMap.sensor')}
                       {lastUpdate && (
                         <span className="ml-1">
-                          · aktualisiert {lastUpdate}
+                          · {t('openSenseMap.updated')} {lastUpdate}
                         </span>
                       )}
                     </p>
@@ -80,7 +84,7 @@ export default function OpenSenseMapContent({
                       className={`inline-block h-2.5 w-2.5 rounded-full ${
                         box.updatedAt &&
                         Date.now() - new Date(box.updatedAt).getTime() <
-                          60 * 60 * 1000
+                          LIVE_THRESHOLD_MS
                           ? 'bg-green-400'
                           : 'bg-gray-300'
                       }`}

@@ -6,9 +6,10 @@ import { format } from 'date-fns'
 import { TileSplitView } from '../../Base/TileSplitView'
 import ClimateTile from '../ClimateTile'
 import CO2EmissionsContent from './CO2EmissionsContent'
+import { getT } from '@/lib/i18n/server'
 
 export default async function CO2EmissionsTile() {
-  const data = await getTileData('climate-co2')
+  const [data, t] = await Promise.all([getTileData('climate-co2'), getT()])
   const infoText = data?.info ?? ''
 
   return (
@@ -16,7 +17,7 @@ export default async function CO2EmissionsTile() {
       dataRetrieval={format(new Date(), '01.MM.yyyy')}
       dataSource="Stadt Münster - Stabsstelle Klima"
       embedId="climate-co2"
-      subtitle="So viel wird in Münster ausgestoßen"
+      subtitle={t('tiles.climate.co2.subtitle')}
       title={
         <>
           CO<sub>2</sub>

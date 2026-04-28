@@ -1,4 +1,7 @@
+'use client'
+
 import Link from 'next/link'
+import { useTranslation } from 'react-i18next'
 
 import { Button } from './Button'
 
@@ -7,11 +10,12 @@ interface ButtonProps {
 }
 
 export function GoToButton({ type }: ButtonProps) {
+  const { t } = useTranslation()
   if (type === 'climate') {
     return (
       <Link href="/klima">
         <Button size={'link'} variant={'goToClimate'}>
-          zu den Klimadaten
+          {t('goToButton.climate')}
         </Button>
       </Link>
     )
@@ -20,7 +24,7 @@ export function GoToButton({ type }: ButtonProps) {
     return (
       <Link href={'/mobilitaet'}>
         <Button size={'link'} variant={'goToMobility'}>
-          zu den Mobilitätsdaten
+          {t('goToButton.mobility')}
         </Button>
       </Link>
     )
@@ -29,7 +33,7 @@ export function GoToButton({ type }: ButtonProps) {
     return (
       <Link href={'/energie'}>
         <Button size={'link'} variant={'goToEnergy'}>
-          zu den Energiedaten
+          {t('goToButton.energy')}
         </Button>
       </Link>
     )
@@ -38,12 +42,12 @@ export function GoToButton({ type }: ButtonProps) {
     return (
       <Link href={'/gebaeude'}>
         <Button size={'link'} variant={'goToBuildings'}>
-          zu den Gebäudedaten
+          {t('goToButton.building')}
         </Button>
       </Link>
     )
   }
 
   // this should never be reached
-  return <Button>zu den Daten</Button>
+  return <Button>{t('goToButton.default')}</Button>
 }

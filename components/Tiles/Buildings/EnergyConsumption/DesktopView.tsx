@@ -11,6 +11,7 @@ import {
   MsKlimadashboardIconsGStadtweinhaus,
 } from '@/components/Icons/Gebaeude'
 import { JSX, SVGProps } from 'react'
+import { useTranslation } from 'react-i18next'
 import EnergyConsumptionChart from './EnergyConsumptionChart'
 import LabelSeperator from './LabelSeperator'
 
@@ -85,6 +86,7 @@ interface DesktopViewProps {
 }
 
 export default function DesktopView({ mode, yearIndex }: DesktopViewProps) {
+  const { t } = useTranslation()
   return (
     <>
       <div className="flex h-full w-full justify-between gap-8">
@@ -103,7 +105,7 @@ export default function DesktopView({ mode, yearIndex }: DesktopViewProps) {
           </div>
         ))}
       </div>
-      <LabelSeperator>Monatlicher Verbrauch</LabelSeperator>
+      <LabelSeperator>{t('buildings.monthlyConsumption')}</LabelSeperator>
       <div className="flex h-full w-full justify-between gap-8">
         {Object.keys(buildings).map(building => (
           <div className="h-72 w-full md:pb-2" key={building}>
@@ -115,8 +117,8 @@ export default function DesktopView({ mode, yearIndex }: DesktopViewProps) {
       </div>
       <LabelSeperator>
         {years[yearIndex] === new Date().getFullYear()
-          ? 'Jahresverbrauch bisher'
-          : 'Jahresverbrauch'}
+          ? t('buildings.yearlyConsumptionSoFar')
+          : t('buildings.yearlyConsumption')}
       </LabelSeperator>
       <Spacer size={'sm'}></Spacer>
       <div className="flex h-full w-full justify-between gap-8">
@@ -134,7 +136,7 @@ export default function DesktopView({ mode, yearIndex }: DesktopViewProps) {
             >
               {sum === 0 ? (
                 <Title as="h4" variant="building">
-                  fehlende Daten
+                  {t('buildings.missingData')}
                 </Title>
               ) : (
                 <>

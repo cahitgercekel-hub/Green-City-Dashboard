@@ -8,6 +8,7 @@ import { ClipboardDocumentIcon } from '@heroicons/react/24/outline'
 import { AnimatedProps } from '@react-spring/web'
 import { ComponentPropsWithRef } from 'react'
 import BaseOverlay from './BaseOverlay'
+import { useTranslation } from 'react-i18next'
 
 type EmbedOverlayProps = AnimatedProps<ComponentPropsWithRef<'div'>> & {
   onClose?: () => void
@@ -19,6 +20,7 @@ export default function EmbedOverlay({
   embedId,
   ...props
 }: EmbedOverlayProps) {
+  const { t } = useTranslation()
   const link = `${window.location.origin}/embed/${embedId}`
 
   const iframeSrc = `<iframe src="${link}" style="border:none; width:100%; height:100%" title="Dashboard"></iframe>`
@@ -33,7 +35,7 @@ export default function EmbedOverlay({
         <div className="grid grid-flow-col grid-cols-3 grid-rows-2 gap-8">
           <div className="col-span-2 row-span-1">
             <Title as="h3" variant={'inverse'}>
-              Diese Kachel auf Ihre Website einbetten
+              {t('embedOverlay.title')}
             </Title>
           </div>
           <div className="col-span-2 row-span-1">
@@ -48,9 +50,7 @@ export default function EmbedOverlay({
           </div>
           <div className="col-span-1 row-span-2">
             <p className="text-white">
-              Sie möchten diese Kachel auch auf ihrer Website darstellen? Nutzen
-              Sie den iframe Code und betten Sie diesen in ihrer Website ganz
-              einfach ein.
+              {t('embedOverlay.description')}
             </p>
           </div>
         </div>
@@ -62,7 +62,7 @@ export default function EmbedOverlay({
             }
             variant={'overlay'}
           >
-            HTML Code kopieren
+            {t('embedOverlay.copyCode')}
           </Button>
         </div>
       </div>

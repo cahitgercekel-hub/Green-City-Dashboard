@@ -1,6 +1,7 @@
 'use client'
 
 import { cva, VariantProps } from 'class-variance-authority'
+import { useTranslation } from 'react-i18next'
 
 const QualityBarStyle = cva('flex h-full rounded-lg duration-300 ease-in-out', {
   variants: {
@@ -22,6 +23,7 @@ type QualityBarProps = VariantProps<typeof QualityBarStyle> & {
 }
 
 function QualityBar({ progress }: QualityBarProps) {
+  const { t } = useTranslation()
   return (
     <div className="pt-4">
       <div className="relative rounded-lg border-2 border-primary p-[.25rem]">
@@ -48,8 +50,8 @@ function QualityBar({ progress }: QualityBarProps) {
         </div>
       </div>
       <div className="flex justify-between pt-1 text-primary">
-        <span>Geringe Belastung</span>
-        <span className="text-right">Starke Belastung</span>
+        <span>{t('qualityBar.lowPollution')}</span>
+        <span className="text-right">{t('qualityBar.highPollution')}</span>
       </div>
     </div>
   )

@@ -3,9 +3,10 @@ import Title from '@/components/Elements/Title'
 import MobilityTile from '@/components/Tiles/Mobility/MobilityTile'
 import BicycleChartContent from './BicycleChartContent'
 import getTileData from '@/lib/api/getTileData'
+import { getT } from '@/lib/i18n/server'
 
 export default async function BicycleChartTile() {
-  const data = await getTileData('mobility-bicycle')
+  const [data, t] = await Promise.all([getTileData('mobility-bicycle'), getT()])
   const infoText = data?.info ?? ''
 
   return (
@@ -13,8 +14,8 @@ export default async function BicycleChartTile() {
       dataSource="Eco-Counter, NeoSens"
       embedId="mobility-bicycle"
       live
-      subtitle="im Stadtgebiet"
-      title="Radelnde"
+      subtitle={t('tiles.mobility.bicycle.subtitle')}
+      title={t('tiles.mobility.bicycle.title')}
     >
       <>
         <BicycleChartContent />

@@ -4,9 +4,10 @@ import getTileData from '@/lib/api/getTileData'
 import { format } from 'date-fns'
 import EnergyTile from '../EnergyTile'
 import EnergietraegerChart from './EnergietraegerChart'
+import { getT } from '@/lib/i18n/server'
 
 export default async function EnergietraegerTile() {
-  const data = await getTileData('energy-energietraeger')
+  const [data, t] = await Promise.all([getTileData('energy-energietraeger'), getT()])
   const infoText = data?.info ?? ''
 
   return (
@@ -14,8 +15,8 @@ export default async function EnergietraegerTile() {
       dataRetrieval={format(new Date(), '01.MM.yyyy')}
       dataSource="Stadt Münster &ndash; Stabsstelle Klima"
       embedId="energy-energietraeger"
-      subtitle={'Anteile verschiedener Energieträger'}
-      title={'Stromerzeugung'}
+      subtitle={t('tiles.energy.energietraeger.subtitle')}
+      title={t('tiles.energy.energietraeger.title')}
     >
       <div className="h-[350px] md:h-[600px]">
         <EnergietraegerChart />
