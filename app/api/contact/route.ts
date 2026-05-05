@@ -117,16 +117,13 @@ export async function POST(request: NextRequest) {
       from: process.env.CONTACT_SMTP_FROM ?? process.env.CONTACT_SMTP_USER,
       to: recipients.join(', '),
       replyTo: email,
-      subject: `[Dashboard Kontakt] ${reasonLabel} – ${name}`,
+      subject: `[Green City Heilbronn Kontakt] ${reasonLabel} – ${name}`,
       text: textBody,
       html: htmlBody,
     })
   } catch (err) {
     console.error('[contact] Failed to send email:', err)
-    return NextResponse.json(
-      { error: 'Failed to send email' },
-      { status: 500 },
-    )
+    return NextResponse.json({ error: 'Failed to send email' }, { status: 500 })
   }
 
   return NextResponse.json({ ok: true })
