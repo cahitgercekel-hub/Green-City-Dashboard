@@ -4,7 +4,6 @@ import { getActiveLocale } from '@/lib/i18n'
 import '@/styles/globals.css'
 import { Viewport } from 'next'
 import { Inter, Lexend, Lora } from 'next/font/google'
-import Script from 'next/script'
 import de from '@/messages/de.json'
 import en from '@/messages/en.json'
 
@@ -116,10 +115,6 @@ export default async function RootLayout({
         </TranslationsProvider>
         {/* <Cookies /> */}
         {/* eslint-disable-next-line @next/next/no-before-interactive-script-outside-document */}
-        <Script
-          src="https://www.wiesbaden.de/resources/iframeResizer.js/iframeResizer.contentWindow.min.js"
-          type="text/javascript"
-        />
       </body>
     </html>
   )

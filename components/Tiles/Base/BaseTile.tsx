@@ -54,6 +54,7 @@ export type BaseTileProps = VariantProps<typeof baseTileStyle> &
     children: React.ReactElement | React.ReactElement[]
     className?: string
     footerCenterElement?: React.ReactElement
+    hideFooter?: boolean
     moreInfo?: React.ReactNode
     source?: string
     isFullWidth?: boolean
@@ -77,6 +78,7 @@ export function BaseTile({
   startImage,
   endImage,
   footerCenterElement,
+  hideFooter,
   embedId,
   moreInfo,
   source,
@@ -141,16 +143,18 @@ export function BaseTile({
           </TileHeader>
 
           <>{children}</>
-          <TileFooter
-            dataURL={source}
-            hasMoreDetails={!!moreInfo}
-            onEmbedClick={() => setShowEmbedOverlay(true)}
-            onMoreInfoClick={() => setShowMoreInfo(true)}
-            onShareClick={openShareDialog}
-            variant={variant === 'secondary' ? 'inverse' : 'primary'}
-          >
-            {footerCenterElement}
-          </TileFooter>
+          {!hideFooter && (
+            <TileFooter
+              dataURL={source}
+              hasMoreDetails={!!moreInfo}
+              onEmbedClick={() => setShowEmbedOverlay(true)}
+              onMoreInfoClick={() => setShowMoreInfo(true)}
+              onShareClick={openShareDialog}
+              variant={variant === 'secondary' ? 'inverse' : 'primary'}
+            >
+              {footerCenterElement}
+            </TileFooter>
+          )}
         </div>
         {endImage}
         {embedId &&

@@ -2,7 +2,6 @@ import { getCollections } from '@/lib/api/prismaService'
 import withSuspense from '@/utils/withSuspense'
 import Container from '../Layout/Container'
 import InsightsCarousel from './InsightsCarousel'
-import { getT } from '@/lib/i18n/server'
 
 export const getInsightsData = async () => {
   const collections = await getCollections('PUBLISHED')
@@ -16,7 +15,7 @@ export const getInsightsData = async () => {
 }
 
 async function InsightsContainer() {
-  const [insights, t] = await Promise.all([getInsightsData(), getT()])
+  const insights = await getInsightsData()
 
   if (insights.length === 0) {
     return <></>
@@ -26,7 +25,7 @@ async function InsightsContainer() {
     <div className="w-full">
       <Container className="sm:px-0 px-0 md:px-0 lg:px-0 xl:px-0 2xl:px-0">
         <h1 className="block pb-4 text-center font-lexend text-[30px] font-medium text-primary lg:text-[50px] lg:tracking-tight">
-          {t('tiles.insights.ourCampaigns')}
+          Unsere Kampagnen
         </h1>
         {insights && <InsightsCarousel insights={insights} />}
       </Container>

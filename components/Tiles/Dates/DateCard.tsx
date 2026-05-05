@@ -61,9 +61,7 @@ export default function DateCard({ event }: { event: DateEvent }) {
         <div className="text-sm font-semibold uppercase tracking-wide text-climate">
           {formatDateRange(event.startDate, event.endDate)}
         </div>
-        <h4 className="mt-1 text-lg font-bold text-primary">
-          {event.title}
-        </h4>
+        <h4 className="mt-1 text-lg font-bold text-primary">{event.title}</h4>
         {event.description && (
           <p className="mt-2 line-clamp-2 text-base leading-relaxed text-gray-700">
             {event.description}
@@ -76,7 +74,7 @@ export default function DateCard({ event }: { event: DateEvent }) {
             rel="noopener noreferrer"
             target="_blank"
           >
-            Mehr erfahren
+            Mehr erfahren und Anmeldung
             <span className="ml-1">→</span>
           </a>
         )}

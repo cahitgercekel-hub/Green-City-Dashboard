@@ -9,11 +9,13 @@ import { useTranslation } from 'react-i18next'
 
 import reeduLogo from '@/assets/logos/reedu_Logo_horizontal_orange.png'
 import arkadiaLogo from '@/assets/logos/Wortmarke.svg'
+import ContactFormTile from '@/components/Tiles/Contact/ContactFormTile'
 
 export default function Footer() {
   const { t } = useTranslation()
   return (
     <StairStepBackground>
+      <ContactFormTile />
       <Container>
         <div className="items-top flex w-full flex-col justify-around pb-10 lg:flex-row lg:gap-20 xl:pb-20 2xl:gap-44">
           <div className="flex-1">
@@ -42,58 +44,8 @@ export default function Footer() {
                 </Link>
               </div>
             </div>
-            {/* <Title as={'h4'} className="py-10 md:py-20">
-              Unterstützt durch
-            </Title>
-            <div className="flex w-full grid-cols-2 flex-col gap-8 lg:gap-16 xl:grid">
-              <div className="relative h-28 w-full md:h-36">
-                <Link
-                  href="https://www.stadtwerke-muenster.de/"
-                  target="_blank"
-                >
-                  <Image
-                    alt="Stadtwerke Münster Logo"
-                    className="object-contain"
-                    fill
-                    src={StadtwerkeLogo}
-                  />
-                </Link>
-              </div>
-              <div className="relative h-28 w-full md:h-36">
-                <Link href="https://www.wfm-muenster.de/" target="_blank">
-                  <Image
-                    alt="Wirtschaftsförderung Münster Logo"
-                    className="object-contain"
-                    fill
-                    src={WFMLogo}
-                  />
-                </Link>
-              </div>
-            </div> */}
           </div>
-          {/* <div className="flex-1">
-            <Title as={'h4'} className="py-10 md:py-20">
-              Gefördert durch
-            </Title>
-            <div className="flex w-full grid-cols-2 flex-col gap-8 lg:gap-16 xl:grid">
-              <div className="relative h-28 w-full md:h-36">
-                <Image
-                  alt="BMWSB Logo"
-                  className="object-contain"
-                  fill
-                  src={BMWSBLogo}
-                />
-              </div>
-              <div className="relative h-28 w-full md:h-36">
-                <Image
-                  alt="KfW  Logo"
-                  className="object-contain"
-                  fill
-                  src={KFW}
-                />
-              </div>
-            </div>
-          </div> */}
+
           <div className="sm:hidden flex flex-1 flex-col 2xl:flex">
             <Title as={'h4'} className="py-10 opacity-0 md:py-20">
               {t('footer.impressum')}
