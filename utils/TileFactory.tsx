@@ -3,6 +3,7 @@ import EnergyComsumptionTile from '@/components/Tiles/Buildings/EnergyConsumptio
 import RenovationTile from '@/components/Tiles/Buildings/Renovation'
 import AirqualityTile from '@/components/Tiles/Climate/Airquality'
 import BirdTile from '@/components/Tiles/Climate/Bird'
+import BirdiaryValidationTile from '@/components/Tiles/Climate/BirdiaryValidation'
 import CO2EmissionsTile from '@/components/Tiles/Climate/CO2EmissionsTile'
 import ClimateIndicesTile from '@/components/Tiles/Climate/ClimateIndices'
 import ClimateDevelopmentTile from '@/components/Tiles/Climate/Devlopment'
@@ -58,6 +59,7 @@ type SurveyTileType = 'survey'
 type DatesTileType = 'dates-upcoming' | 'dates-previous'
 type MaterialTileType = 'material' | 'climate-material'
 type BirdTileType = 'climate-bird'
+type BirdiaryValidationTileType = 'climate-bird-validation'
 type OpenSenseMapTileType = 'climate-opensensemap'
 type PMTileType = 'climate-pm'
 
@@ -67,6 +69,7 @@ export type TileType =
   | DatesTileType
   | MaterialTileType
   | BirdTileType
+  | BirdiaryValidationTileType
   | OpenSenseMapTileType
   | PMTileType
   | `${TileTypePrefix}-${TileTypeSuffix}`
@@ -131,6 +134,8 @@ export default async function TileFactory({
       return <AirqualityTile />
     case 'climate-bird':
       return <BirdTile />
+    case 'climate-bird-validation':
+      return <BirdiaryValidationTile />
     case 'climate-opensensemap':
       return <OpenSenseMapTile />
     case 'climate-pm':

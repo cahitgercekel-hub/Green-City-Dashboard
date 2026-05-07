@@ -86,6 +86,22 @@
     "errorMessage": "The request could not be sent. Please try again later.",
     "required": "Required field"
   },
+  "birdiaryValidation": {
+    "title": "Validate Bird Videos",
+    "description": "Can you spot a bird in the video? Help us improve the AI detection!",
+    "date": "Date",
+    "weight": "Weight",
+    "aiDetection": "AI suggestion",
+    "birdInVideo": "Bird in video",
+    "noBird": "No bird",
+    "dontKnow": "I don't know",
+    "submitting": "Saving…",
+    "loadError": "Could not load video.",
+    "retry": "Try again",
+    "speciesSearch": "Search for a different species…",
+    "speciesSearchPlaceholder": "Enter name (e.g. Robin)",
+    "speciesNoResults": "No results"
+  },
   "birdTile": {
     "noData": "No bird data available.",
     "birdsLast7Days": "Birds (last 7 days)",

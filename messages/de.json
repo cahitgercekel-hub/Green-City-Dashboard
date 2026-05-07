@@ -86,6 +86,22 @@
     "errorMessage": "Die Anfrage konnte nicht gesendet werden. Bitte versuche es später erneut.",
     "required": "Pflichtfeld"
   },
+  "birdiaryValidation": {
+    "title": "Vogelvideos bestätigen",
+    "description": "Siehst du einen Vogel im Video? Hilf uns, die KI-Erkennung zu verbessern!",
+    "date": "Datum",
+    "weight": "Gewicht",
+    "aiDetection": "KI-Vorschlag",
+    "birdInVideo": "Vogel im Video",
+    "noBird": "Kein Vogel",
+    "dontKnow": "Weiß nicht",
+    "submitting": "Wird gespeichert…",
+    "loadError": "Video konnte nicht geladen werden.",
+    "retry": "Erneut versuchen",
+    "speciesSearch": "Andere Art suchen…",
+    "speciesSearchPlaceholder": "Name eingeben (z. B. Amsel)",
+    "speciesNoResults": "Keine Ergebnisse"
+  },
   "birdTile": {
     "noData": "Keine Vogeldaten verfügbar.",
     "birdsLast7Days": "Vögel (letzte 7 Tage)",
