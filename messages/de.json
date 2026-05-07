@@ -1,0 +1,234 @@
+{
+  "common": {
+    "back": "Zurück",
+    "moreDetails": "Mehr Details",
+    "lessDetails": "Weniger Details",
+    "noData": "Keine Daten",
+    "loading": "Laden..."
+  },
+  "navbar": {
+    "hideInfo": "Informationen ausblenden",
+    "aboutButtonFallback": "Über das Dashboard",
+    "sectionText": {
+      "klima": "Die Auswirkungen des Klimawandels in Heilbronn sind spür- und messbar. Heilbronn will klimaneutral und klimaangepasst werden und so der Verantwortung für ein \u201egutes Morgen\u201c gerecht werden. Dafür braucht es die gesamte Stadtgesellschaft!",
+      "energie": "Egal ob Zuhause, im Unternehmen oder als Kommune, diese Grundsätze sind die Bausteine einer erfolgreichen Energiewende: Die Vermeidung von Energieverbrauch hat oberste Priorität. Der nicht-vermeidbare Energiebedarf muss mit effizienter Technik verringert werden. Der dann noch verbleibende Energiebedarf muss mittelfristig komplett durch erneuerbare Energieträger gedeckt werden.",
+      "mobilitaet": "Das Ziel einer funktionierenden, klimafreundlichen Mobilität stellt eine wachsende Stadt wie Heilbronn vor eine große Herausforderung. Wenn die gesamte Stadtgesellschaft bereit ist, neue Wege zu gehen, kann diese Herausforderung gemeistert werden.",
+      "gebaeude": "Für das Ziel einer klimaneutralen und klimaangepassten Stadt kann die Rolle der Gebäude in Heilbronn kaum hoch genug eingeschätzt werden. Nicht nur das Einsparpotential von CO₂ ist in diesem Bereich besonders hoch. Auch können Gebäudeeigentümer*innen durch gezielte Maßnahmen Energiekosten sparen und ihr Gebäude vor Extremwetter schützen."
+    }
+  },
+  "sectionTitle": {
+    "default": "Heilbronn",
+    "climate": "Klima",
+    "mobility": "Mobilität",
+    "building": "Gebäude",
+    "energy": "Energie",
+    "impressum": "Impressum",
+    "datenschutz": "Datenschutz",
+    "feedback": "Mit Ihren Daten – für Ihre Kommune"
+  },
+  "footer": {
+    "projectOf": "Ein Projekt von",
+    "impressum": "Impressum",
+    "datenschutz": "Datenschutz",
+    "adaptDashboard": "Dieses Dashboard adaptieren",
+    "giveFeedback": "Feedback geben"
+  },
+  "shareOverlay": {
+    "title": "Diese Kachel teilen",
+    "description": "Sie möchten diese Kachel mit anderen teilen? Nutzen Sie diesen Link um direkt zu dieser Kachel zu verlinken.",
+    "copyLink": "Link kopieren"
+  },
+  "embedOverlay": {
+    "title": "Diese Kachel auf Ihre Website einbetten",
+    "description": "Sie möchten diese Kachel auch auf ihrer Website darstellen? Nutzen Sie den iframe Code und betten Sie diesen in ihrer Website ganz einfach ein.",
+    "copyCode": "HTML Code kopieren"
+  },
+  "cookies": {
+    "message": "Einwilligung zu Cookies (Analytics, Tracking)",
+    "accept": "Akzeptieren",
+    "decline": "Ablehnen"
+  },
+  "goToButton": {
+    "climate": "zu den Klimadaten",
+    "mobility": "zu den Mobilitätsdaten",
+    "energy": "zu den Energiedaten",
+    "building": "zu den Gebäudedaten",
+    "default": "zu den Daten"
+  },
+  "survey": {
+    "showAnswer": "Antwort aufdecken",
+    "hideAnswer": "zurück zur Frage"
+  },
+  "contactForm": {
+    "title": "Kontakt",
+    "description": "Hast du Interesse daran, Hardware für eine der Kampagnen auszuleihen, oder hast du Fragen zu einer der Kampagnen? Hinterlasse uns gerne eine Nachricht. Zur Anmeldung für kommende Veranstaltungen schau bitte unter <strong>'Termine'</strong> nach.",
+    "name": "Name",
+    "namePlaceholder": "Dein Name",
+    "email": "E-Mail-Adresse",
+    "emailPlaceholder": "deine@email.de",
+    "institution": "Institution / Organisation",
+    "institutionPlaceholder": "z. B. Schule, Verein, Unternehmen",
+    "reason": "Grund der Anfrage",
+    "reasonPlaceholder": "Bitte wählen",
+    "reasonCampaign": "Interesse an einer Kampagne",
+    "reasonSenseboxBike": "senseBox:bike ausleihen",
+    "reasonTemperatureLogger": "Temperatur Logger ausleihen",
+    "reasonSenseboxEdu": "senseBox:edu ausleihen",
+    "period": "Zeitraum (falls bekannt)",
+    "periodPlaceholder": "z. B. Juni 2025, Schuljahr 2025/26",
+    "message": "Weitere Informationen",
+    "messagePlaceholder": "Beschreibe dein Anliegen…",
+    "submit": "Anfrage senden",
+    "submitting": "Wird gesendet…",
+    "successTitle": "Vielen Dank!",
+    "successMessage": "Deine Anfrage wurde erfolgreich übermittelt. Wir melden uns in Kürze bei dir.",
+    "errorTitle": "Fehler beim Senden",
+    "errorMessage": "Die Anfrage konnte nicht gesendet werden. Bitte versuche es später erneut.",
+    "required": "Pflichtfeld"
+  },
+  "birdiaryValidation": {
+    "title": "Vogelvideos bestätigen",
+    "description": "Siehst du einen Vogel im Video? Hilf uns, die KI-Erkennung zu verbessern!",
+    "date": "Datum",
+    "weight": "Gewicht",
+    "aiDetection": "KI-Vorschlag",
+    "birdInVideo": "Vogel im Video",
+    "noBird": "Kein Vogel",
+    "dontKnow": "Weiß nicht",
+    "submitting": "Wird gespeichert…",
+    "loadError": "Video konnte nicht geladen werden.",
+    "retry": "Erneut versuchen",
+    "speciesSearch": "Andere Art suchen…",
+    "speciesSearchPlaceholder": "Name eingeben (z. B. Amsel)",
+    "speciesNoResults": "Keine Ergebnisse"
+  },
+  "birdTile": {
+    "noData": "Keine Vogeldaten verfügbar.",
+    "birdsLast7Days": "Vögel (letzte 7 Tage)",
+    "speciesDetected": "Arten erkannt",
+    "mostFrequentSpecies": "Häufigste Arten",
+    "lastDetected": "Zuletzt erkannt",
+    "confidence": "Sicherheit",
+    "sightingsPerDay": "Sichtungen pro Tag",
+    "today": "Heute"
+  },
+  "weatherTile": {
+    "degreeWarmer": "Grad wärmer",
+    "degreeColder": "Grad kälter",
+    "isThe": "ist der",
+    "comparisonSuffix": "bisher im Vergleich zum langjährigen Mittel (1961-1990).",
+    "currentCondition": "In Heilbronn ist es gerade",
+    "now": "jetzt",
+    "temperature": "Temperatur",
+    "precipitation": "Niederschlag",
+    "cloudcover": "Wolken\u00adbedeckung",
+    "cloudcoverShort": "Wolkenbed.",
+    "windspeed": "Wind\u00adgeschwindigkeit",
+    "windspeedShort": "Windgeschw.",
+    "sunhours": "Sonnenstunden",
+    "no2": "Stickstoffdioxid (NO<sub>2</sub>)",
+    "pm10": "Feinstaub (PM<sub>10</sub>)",
+    "o3": "Ozon (O<sub>3</sub>)",
+    "pm25": "Feinstaub (PM<sub>2.5</sub>)"
+  },
+  "qualityBar": {
+    "lowPollution": "Geringe Belastung",
+    "highPollution": "Starke Belastung"
+  },
+  "openSenseMap": {
+    "noStations": "Keine Messstationen verfügbar.",
+    "stations_one": "Messstation",
+    "stations_other": "Messstationen",
+    "liveData": "Live-Daten",
+    "historicData": "Historische Daten",
+    "updated": "aktualisiert",
+    "sensor": "Sensor",
+    "sensors": "Sensoren"
+  },
+  "buildings": {
+    "monthlyConsumption": "Monatlicher Verbrauch",
+    "yearlyConsumption": "Jahresverbrauch",
+    "yearlyConsumptionSoFar": "Jahresverbrauch bisher",
+    "missingData": "fehlende Daten"
+  },
+  "tiles": {
+    "dates": {
+      "upcoming": "Kommende Termine",
+      "previous": "Vergangene Termine"
+    },
+    "insights": {
+      "ourCampaigns": "Unsere Kampagnen"
+    },
+    "climate": {
+      "climateIndices": {
+        "title": "Klimakenntage",
+        "subtitle": "H\u00e4ufigkeit von Temperaturkenntagen in M\u00fcnster"
+      },
+      "pm": { "title": "Feinstaub" },
+      "openSenseMap": { "title": "Unsere Messstationen" },
+      "co2": { "subtitle": "So viel wird in M\u00fcnster ausgestossen" },
+      "bird": { "title": "Vogelbeobachtung" },
+      "development": {
+        "title": "Klima",
+        "subtitle": "Temperaturabweichungen von den langj\u00e4hrigen Monatsmitteln vor 1900"
+      },
+      "airquality": { "title": "Luftqualit\u00e4t" },
+      "garbage": {
+        "title": "Abfall pro Kopf",
+        "subtitle": "So viele kg Abfall wurden durchschnittlich pro M\u00fcnsteraner*in durch die awm erfasst"
+      },
+      "weather": { "title": "Wetter aktuell" },
+      "wachstum": { "title": "Entwicklung der Wirtschaft" }
+    },
+    "mobility": {
+      "awm": {
+        "title": "E-Mobilit\u00e4t awm",
+        "subtitle": "Anzahl der elektrisch angetriebenen Nutzfahrzeuge im Vergleich zu Fahrzeugen mit fossilem Antrieb"
+      },
+      "bicycle": {
+        "title": "Radelnde",
+        "subtitle": "im Stadtgebiet"
+      },
+      "overtaking": {
+        "title": "\u00dcberholabst\u00e4nde und Unfallstatistiken",
+        "subtitle": "im Blick"
+      },
+      "bicycleCampaign": {
+        "title": "senseBox:bike - Fahrradkampagne",
+        "subtitle": "So viele Fahrraddaten wurden bisher gesammelt"
+      },
+      "stadtradeln": {
+        "title": "Stadtradeln",
+        "subtitle": "im Jahresvergleich"
+      },
+      "bus": {
+        "title": "E-Busse",
+        "subtitle": "Anzahl im Vergleich zu Bussen mit fossilem Antrieb"
+      },
+      "modalSplit": {
+        "title": "Unterwegs",
+        "subtitle": "Verkehrsmittelwahl der Wiesbadenerinnen und Wiesbadener"
+      },
+      "trafficload": {
+        "title": "Kfz-Verkehrsbelastung",
+        "subtitle": "Anzahl gez\u00e4hlter Fahrzeuge an Werktagen"
+      },
+      "passenger": {
+        "title": "\u00d6PNV",
+        "subtitle": "Entwicklung der Fahrgastzahlen in den Bussen der Stadtwerke"
+      }
+    },
+    "buildings": {
+      "energyConsumption": {
+        "title": "Energieverbrauch",
+        "subtitle": "So entwickelt sich \u00fcber das Jahr verteilt der Verbrauch von W\u00e4rme und Strom in ausgew\u00e4hlten st\u00e4dtischen Geb\u00e4uden"
+      }
+    },
+    "energy": {
+      "energietraeger": {
+        "title": "Stromerzeugung",
+        "subtitle": "Anteile verschiedener Energietr\u00e4ger"
+      }
+    }
+  }
+}

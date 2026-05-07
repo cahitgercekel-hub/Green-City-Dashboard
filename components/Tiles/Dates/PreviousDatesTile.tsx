@@ -4,9 +4,10 @@ import SvgHeilbronn from '@/components/Icons/Heilbronn'
 import { getDates } from '@/lib/api/prismaService'
 import { BaseTile } from '../Base/BaseTile'
 import DateCard from './DateCard'
+import { getT } from '@/lib/i18n/server'
 
 export default async function PreviousDatesTile() {
-  const dates = await getDates()
+  const [dates, t] = await Promise.all([getDates(), getT()])
 
   const now = new Date()
   const previousDates = dates
@@ -40,7 +41,7 @@ export default async function PreviousDatesTile() {
         </div>
         <div className="flex flex-wrap items-center justify-start gap-x-4 lg:max-w-[87%]">
           <Title as="h1" className="min-w-fit text-climate" font="normal">
-            Vergangene Termine
+            {t('tiles.dates.previous')}
           </Title>
         </div>
         <Spacer />

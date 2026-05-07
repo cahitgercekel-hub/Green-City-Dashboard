@@ -66,13 +66,13 @@ export default function LanguageSwitcher() {
   return (
     <div className="flex items-center gap-2">
       <label
-        className="text-xs font-semibold uppercase tracking-wide text-muted-foreground"
+        className="text-muted-foreground text-xs font-semibold uppercase tracking-wide"
         htmlFor="language-switcher"
       >
-        Language
+        lang
       </label>
       <select
-        className="rounded-md border border-muted bg-background px-2 py-1 text-sm text-foreground shadow-sm"
+        className="border-muted bg-background text-foreground rounded-md border px-2 py-1 text-sm shadow-sm"
         id="language-switcher"
         onChange={event => {
           const value = event.target.value

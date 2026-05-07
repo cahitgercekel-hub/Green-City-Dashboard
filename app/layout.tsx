@@ -1,8 +1,13 @@
 import { getTheme } from '@/lib/api/prismaService'
+import TranslationsProvider from '@/components/TranslationsProvider'
+import { getActiveLocale } from '@/lib/i18n'
 import '@/styles/globals.css'
 import { Viewport } from 'next'
 import { Inter, Lexend, Lora } from 'next/font/google'
-import Script from 'next/script'
+import de from '@/messages/de.json'
+import en from '@/messages/en.json'
+
+const messagesMap = { de, en } as const
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 const lexend = Lexend({
@@ -66,7 +71,8 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  const theme = await getTheme()
+  const [theme, locale] = await Promise.all([getTheme(), getActiveLocale()])
+  const messages = messagesMap[locale as keyof typeof messagesMap] ?? de
 
   let style: React.CSSProperties = {}
 
@@ -96,7 +102,7 @@ export default async function RootLayout({
   return (
     <html
       className={`${inter.variable} ${lexend.variable} ${lora.variable}`}
-      lang="de"
+      lang={locale}
     >
       {/*
         <head /> will contain the components returned by the nearest parent
@@ -104,13 +110,11 @@ export default async function RootLayout({
       */}
       <head />
       <body style={style}>
-        {children}
+        <TranslationsProvider locale={locale} messages={messages}>
+          {children}
+        </TranslationsProvider>
         {/* <Cookies /> */}
         {/* eslint-disable-next-line @next/next/no-before-interactive-script-outside-document */}
-        <Script
-          src="https://www.wiesbaden.de/resources/iframeResizer.js/iframeResizer.contentWindow.min.js"
-          type="text/javascript"
-        />
       </body>
     </html>
   )

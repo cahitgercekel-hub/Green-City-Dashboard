@@ -1,8 +1,10 @@
 'use client'
 
 import CookieConsent from 'react-cookie-consent'
+import { useTranslation } from 'react-i18next'
 
 export default function Cookies() {
+  const { t } = useTranslation()
   return (
     <CookieConsent
       buttonStyle={{
@@ -10,17 +12,17 @@ export default function Cookies() {
         color: '#fff',
         borderRadius: '4px',
       }}
-      buttonText="Akzeptieren"
+      buttonText={t('cookies.accept')}
       declineButtonStyle={{
         borderRadius: '4px',
       }}
-      declineButtonText="Ablehnen"
+      declineButtonText={t('cookies.decline')}
       enableDeclineButton
       style={{
         background: '#005b79',
       }}
     >
-      Einwilligung zu Cookies (Analytics, Tracking)
+      {t('cookies.message')}
     </CookieConsent>
   )
 }

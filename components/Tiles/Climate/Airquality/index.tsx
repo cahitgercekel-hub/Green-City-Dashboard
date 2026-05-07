@@ -1,9 +1,10 @@
 import getTileData from '@/lib/api/getTileData'
 import ClimateTile from '../ClimateTile'
 import AirqualityChart from './AirqualityChart'
+import { getT } from '@/lib/i18n/server'
 
 export default async function AirqualityTile() {
-  const data = await getTileData('climate-airquality')
+  const [data, t] = await Promise.all([getTileData('climate-airquality'), getT()])
   const infoText = data?.info ?? ''
 
   return (
@@ -11,7 +12,7 @@ export default async function AirqualityTile() {
       dataSource="Umweltbundesamt & Messstationen der Bundesländer"
       embedId="climate-airquality"
       live
-      title={'Luftqualität'}
+      title={t('tiles.climate.airquality.title')}
     >
       <AirqualityChart />
     </ClimateTile>

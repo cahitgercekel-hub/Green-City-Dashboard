@@ -5,6 +5,7 @@ import { Spacer } from '@/components/Elements/Spacer'
 import Title from '@/components/Elements/Title'
 import { animated, useTransition } from '@react-spring/web'
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { BaseTile } from '../Base/BaseTile'
 import SurveyAnswer, { SurveyAnswerProps } from './Answer'
 import ReactMarkdown from 'react-markdown'
@@ -27,6 +28,7 @@ export default function SurveyTile({
   title,
 }: SurveyTileProps) {
   const [showAnswer, setShowAnswer] = useState(false)
+  const { t } = useTranslation()
 
   const transitions = useTransition(showAnswer, {
     from: { opacity: 0, y: 80 },
@@ -41,7 +43,7 @@ export default function SurveyTile({
       onClick={() => setShowAnswer(!showAnswer)}
       variant={'inverse'}
     >
-      {showAnswer ? 'zurück zur Frage' : 'Antwort aufdecken'}
+      {showAnswer ? t('survey.hideAnswer') : t('survey.showAnswer')}
     </Button>
   )
   return (

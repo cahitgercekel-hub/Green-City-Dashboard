@@ -5,9 +5,10 @@ import { TileSplitView } from '../../Base/TileSplitView'
 import getTileData from '@/lib/api/getTileData'
 import Title from '@/components/Elements/Title'
 import EnergyConsumptionContent from './EnergyConsumptionContent'
+import { getT } from '@/lib/i18n/server'
 
 export default async function EnergyComsumptionTile() {
-  const data = await getTileData('building-energyConsumption')
+  const [data, t] = await Promise.all([getTileData('building-energyConsumption'), getT()])
   const infoText = data?.info ?? ''
 
   return (
@@ -16,10 +17,8 @@ export default async function EnergyComsumptionTile() {
       dataSource="Stadt Münster &ndash; Amt für Immobilienmanagement"
       embedId={'building-energyConsumption'}
       live
-      subtitle={
-        'So entwickelt sich über das Jahr verteilt der Verbrauch von Wärme und Strom in ausgewählten städtischen Gebäuden'
-      }
-      title={'Energieverbrauch'}
+      subtitle={t('tiles.buildings.energyConsumption.subtitle')}
+      title={t('tiles.buildings.energyConsumption.title')}
     >
       <TileSplitView>
         <TileSplitView.Left>

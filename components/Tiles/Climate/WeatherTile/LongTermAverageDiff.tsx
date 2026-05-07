@@ -3,9 +3,11 @@ import Title from '@/components/Elements/Title'
 import { format } from 'date-fns'
 import { de } from 'date-fns/locale'
 import { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 export default function LongTermAverageDiff() {
   const [difference, setDifference] = useState<number>()
+  const { t } = useTranslation()
 
   async function getData() {
     try {
@@ -32,13 +34,13 @@ export default function LongTermAverageDiff() {
     <Title as={'h4'}>
       <span className="text-climate">
         <AnimatedNumber decimals={2}>{Math.abs(difference)}</AnimatedNumber>{' '}
-        Grad {difference > 0 ? 'wärmer' : 'kälter'}
+        {t(difference > 0 ? 'weatherTile.degreeWarmer' : 'weatherTile.degreeColder')}
       </span>{' '}
-      ist der{' '}
+      {t('weatherTile.isThe')}{' '}
       <span className="text-climate">
         {format(new Date(), 'LLLL', { locale: de })}
       </span>{' '}
-      bisher im Vergleich zum langjährigen Mittel (1961-1990).
+      {t('weatherTile.comparisonSuffix')}
     </Title>
   )
 }

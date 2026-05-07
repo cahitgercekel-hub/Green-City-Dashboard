@@ -4,9 +4,10 @@ import { format } from 'date-fns'
 import { TileSplitView } from '../../Base/TileSplitView'
 import ClimateTile from '../ClimateTile'
 import WachstumChart from './WachstumChart'
+import { getT } from '@/lib/i18n/server'
 
 export default async function WachstumTile() {
-  const data = await getTileData('climate-wachstum')
+  const [data, t] = await Promise.all([getTileData('climate-wachstum'), getT()])
   const infoText = data?.info ?? ''
 
   return (
@@ -20,7 +21,7 @@ export default async function WachstumTile() {
           Bruttoinlandsprodukt
         </Title>
       }
-      title={'Entwicklung der Wirtschaft'}
+      title={t('tiles.climate.wachstum.title')}
     >
       <TileSplitView>
         <TileSplitView.Left className="rounded bg-white p-5">

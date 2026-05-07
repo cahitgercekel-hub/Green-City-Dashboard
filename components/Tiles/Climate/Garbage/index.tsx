@@ -4,9 +4,10 @@ import { format } from 'date-fns'
 import { TileSplitView } from '../../Base/TileSplitView'
 import ClimateTile from '../ClimateTile'
 import GarbageChart from './GarbageChart'
+import { getT } from '@/lib/i18n/server'
 
 export default async function GarbageTile() {
-  const data = await getTileData('climate-garbage')
+  const [data, t] = await Promise.all([getTileData('climate-garbage'), getT()])
   const infoText = data?.info ?? ''
 
   return (
@@ -14,10 +15,8 @@ export default async function GarbageTile() {
       dataRetrieval={format(new Date(), '01.MM.yyyy')}
       dataSource="Abfallwirtschaftsbetriebe Münster (awm)"
       embedId="climate-garbage"
-      subtitle={
-        'So viele kg Abfall wurden durchschnittlich pro Münsteraner*in durch die awm erfasst'
-      }
-      title={'Abfall pro Kopf'}
+      subtitle={t('tiles.climate.garbage.subtitle')}
+      title={t('tiles.climate.garbage.title')}
     >
       <TileSplitView>
         <TileSplitView.Left className="rounded bg-white p-5">
