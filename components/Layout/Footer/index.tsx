@@ -9,6 +9,7 @@ import { useTranslation } from 'react-i18next'
 
 import reeduLogo from '@/assets/logos/reedu_Logo_horizontal_orange.png'
 import arkadiaLogo from '@/assets/logos/Wortmarke.svg'
+import aimLogo from '@/assets/logos/aim_logo.png'
 import ContactFormTile from '@/components/Tiles/Contact/ContactFormTile'
 
 export default function Footer() {
@@ -23,7 +24,7 @@ export default function Footer() {
               {t('footer.projectOf')}
             </Title>
             <div className="flex w-full grid-cols-2 flex-col gap-8 lg:gap-16 xl:grid">
-              <div className="relative h-28 w-full rounded-md md:h-36">
+              <div className="relative h-28 w-full max-w-[400px] rounded-md md:h-36">
                 <Link href="https://arkadia.hn/" target="_blank">
                   <Image
                     alt="Arkadia Logo"
@@ -33,13 +34,23 @@ export default function Footer() {
                   />
                 </Link>
               </div>
-              <div className="relative h-28 w-full rounded-md md:h-36">
+              <div className="relative h-28 w-full max-w-[400px] rounded-md md:h-36">
                 <Link href="https://reedu.de/" target="_blank">
                   <Image
                     alt="Reedu Logo"
                     className="object-contain"
                     fill
                     src={reeduLogo}
+                  />
+                </Link>
+              </div>
+              <div className="relative h-28 w-full max-w-[400px] rounded-md md:h-36">
+                <Link href="https://www.aim-akademie.org/" target="_blank">
+                  <Image
+                    alt="AIM Logo"
+                    className="object-contain"
+                    fill
+                    src={aimLogo}
                   />
                 </Link>
               </div>
