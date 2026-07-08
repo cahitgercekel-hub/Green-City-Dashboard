@@ -61,7 +61,7 @@ export default async function BaseView({
             <SuccessStoryTile
               id={success.id}
               image={success.image}
-              imagePosition={success.image_position}
+              imagePosition={success.imagePosition?.toLowerCase()}
               key={success.id}
               link={success.link}
               moreInfo={success.details}
