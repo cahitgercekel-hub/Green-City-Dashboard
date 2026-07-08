@@ -1,4 +1,7 @@
+'use client'
+
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
 import { cva, cx, VariantProps } from 'class-variance-authority'
 
@@ -63,6 +66,8 @@ export default function TileHeader({
   dataURL,
   icon,
 }: TileHeaderProps) {
+  const pathname = usePathname()
+  const isEmbed = pathname?.startsWith('/embed')
   function IconButtons() {
     const Icon = icon
     return (
@@ -91,7 +96,7 @@ export default function TileHeader({
             <MsKlimadashboardIconsNaviDownload className="h-6 stroke-2" />
           </Link>
         )}
-        {Icon && (
+        {Icon && !isEmbed && (
           <div className="flex w-full justify-end lg:hidden">
             <Icon
               className={cx(
