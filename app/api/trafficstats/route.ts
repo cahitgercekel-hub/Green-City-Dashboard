@@ -1,8 +1,7 @@
 import { NextResponse } from 'next/server'
 import TTLCache from '@isaacs/ttlcache'
 
-const STATS_URL =
-  'https://api.atrai.bike/collections/statistics_flowmap/items/heilbronn?f=json'
+const STATS_URL = 'https://api.atrai.bike/collections/statistics/items'
 
 const ttl = 15 * 60 * 1000
 const cache = new TTLCache<string, unknown>({ ttl })
@@ -38,14 +37,18 @@ export type TrafficStatsPayload = {
  * Handles: single-quoted strings, True/False/None → true/false/null.
  */
 function pythonDictToJson(raw: string): string {
-  return raw
-    // Replace single-quoted string values/keys with double-quoted ones.
-    // This handles the majority of cases in this payload.
-    .replace(/'/g, '"')
-    // Python booleans / None
-    .replace(/\bTrue\b/g, 'true')
-    .replace(/\bFalse\b/g, 'false')
-    .replace(/\bNone\b/g, 'null')
+  return (
+    raw
+      // Unwrap numpy scalar wrappers, e.g. np.float64(123.4) -> 123.4
+      .replace(/np\.(?:float64|float32|int64|int32)\(([^()]+)\)/g, '$1')
+      // Replace single-quoted string values/keys with double-quoted ones.
+      // This handles the majority of cases in this payload.
+      .replace(/'/g, '"')
+      // Python booleans / None
+      .replace(/\bTrue\b/g, 'true')
+      .replace(/\bFalse\b/g, 'false')
+      .replace(/\bNone\b/g, 'null')
+  )
 }
 
 export const GET = async () => {
@@ -62,14 +65,31 @@ export const GET = async () => {
       throw new Error(`API error ${response.status}`)
     }
 
-    const feature = await response.json()
-    const rawStats: string = feature?.properties?.statistics
+    const collection = await response.json()
+    const feature = Array.isArray(collection?.features)
+      ? collection.features.find(
+          (item: { properties?: { tag?: string; statistics?: unknown } }) =>
+            item?.properties?.tag === 'heilbronn' &&
+            !!item?.properties?.statistics,
+        ) ??
+        collection.features.find(
+          (item: { properties?: { statistics?: unknown } }) =>
+            !!item?.properties?.statistics,
+        )
+      : undefined
+
+    const rawStats = feature?.properties?.statistics
 
     if (!rawStats) {
-      return NextResponse.json({ error: 'No statistics field in response' }, { status: 502 })
+      return NextResponse.json(
+        { error: 'No statistics field in response' },
+        { status: 502 },
+      )
     }
 
-    const parsed = JSON.parse(pythonDictToJson(rawStats)) as Record<string, unknown> & {
+    const parsed = (
+      typeof rawStats === 'string' ? JSON.parse(pythonDictToJson(rawStats)) : rawStats
+    ) as Record<string, unknown> & {
       latest_stats: LatestStats
       weekly_stats?: WeeklyStatEntry[]
       periodic_stats?: WeeklyStatEntry[]
@@ -83,6 +103,9 @@ export const GET = async () => {
     cache.set(cacheKey, payload)
     return NextResponse.json(payload)
   } catch {
-    return NextResponse.json({ error: 'Failed to fetch traffic stats' }, { status: 500 })
+    return NextResponse.json(
+      { error: 'Failed to fetch traffic stats' },
+      { status: 500 },
+    )
   }
 }

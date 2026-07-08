@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server'
 import TTLCache from '@isaacs/ttlcache'
 
 const TRAFFIC_FLOW_URL =
-  'https://api.atrai.bike/collections/traffic_flow_heilbronn/items?f=json&limit=10000000000'
+  'https://api.atrai.bike/collections/speed_map_heilbronn/items?limit=0'
 
 const ttl = 15 * 60 * 1000 // 15 minutes
 const cache = new TTLCache<string, unknown>({ ttl })
@@ -23,7 +23,11 @@ export const GET = async () => {
 
     const data = await response.json()
 
-    if (!data || data.type !== 'FeatureCollection' || !Array.isArray(data.features)) {
+    if (
+      !data ||
+      data.type !== 'FeatureCollection' ||
+      !Array.isArray(data.features)
+    ) {
       return NextResponse.json(
         { error: 'Invalid traffic flow response format' },
         { status: 502 },
