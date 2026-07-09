@@ -122,13 +122,14 @@ export default async function SuccessStoryTile({
   }
 
   const StoryImage = (
-    <div className="relative h-[20rem] w-full overflow-hidden md:h-[40rem] md:w-4/5">
+    <div className="relative min-h-[20rem] w-full overflow-hidden md:min-h-0 md:w-4/5">
       <Image
         alt="Image"
-        className="object-contain object-center"
-        fill
-        sizes="(min-width: 1024px) 80vw, 100vw"
+        className="h-full w-full object-cover object-left"
+        height={1200}
+        sizes="(min-width: 768px) 40vw, 100vw"
         src={image}
+        width={1600}
       />
     </div>
   )
