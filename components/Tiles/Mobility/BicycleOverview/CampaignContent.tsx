@@ -236,6 +236,14 @@ export default function CampaignChart() {
       data: indices[e as ValuesTypes].seriesOption.data,
     }))
 
+  const xAxisData =
+    (series[0]?.data as [string, number][] | undefined)?.map(d => d[0]) ?? []
+  const targetLabelCount = device === 'mobile' ? 5 : 10
+  const xAxisInterval = Math.max(
+    Math.ceil(xAxisData.length / targetLabelCount) - 1,
+    0,
+  )
+
   return (
     <>
       <div className="h-10"></div>
@@ -282,9 +290,10 @@ export default function CampaignChart() {
                       axisLabel: {
                         fontSize: device === 'mobile' ? 12 : 20,
                         margin: 8,
-                        interval: 0,
+                        interval: xAxisInterval,
+                        hideOverlap: true,
                       },
-                      data: series[0]?.data?.map((d: any) => d[0]),
+                      data: xAxisData,
                     },
                     tooltip: {
                       show: false,

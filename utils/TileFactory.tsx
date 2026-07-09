@@ -32,6 +32,8 @@ import BusTile from '@/components/Tiles/Mobility/Bus'
 import MasterplanTile from '@/components/Tiles/Mobility/MasterplanTile'
 import ModalSplitTile from '@/components/Tiles/Mobility/ModalSplit'
 import PassengerTile from '@/components/Tiles/Mobility/PassengerTile'
+import TrafficFlowTile from '@/components/Tiles/Mobility/TrafficFlowTile'
+import TrafficStatsTile from '@/components/Tiles/Mobility/TrafficStatsTile'
 import TrafficloadTile from '@/components/Tiles/Mobility/TrafficloadTile'
 import SuccessStoryTile, {
   SuccessStoryTileProps,
@@ -183,6 +185,10 @@ export default async function TileFactory({
       return <ModalSplitTile />
     case 'mobility-trafficload':
       return <TrafficloadTile />
+    case 'mobility-trafficflow':
+      return <TrafficFlowTile />
+    case 'mobility-trafficstats':
+      return <TrafficStatsTile />
     case 'mobility-awm':
       return <AWMTile />
     case 'mobility-masterplan':

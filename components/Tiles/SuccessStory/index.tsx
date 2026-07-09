@@ -2,6 +2,7 @@ import { Spacer } from '@/components/Elements/Spacer'
 import Title from '@/components/Elements/Title'
 
 import { getTheme } from '@/lib/api/prismaService'
+import Image from 'next/image'
 import Markdown from 'react-markdown'
 import rehypeExternalLinks from 'rehype-external-links'
 import remarkGfm from 'remark-gfm'
@@ -11,9 +12,22 @@ export type SuccessStoryTileProps = {
   text: string
   link: string
   image?: string
-  imagePosition?: 'left' | 'right'
+  imagePosition?: 'left' | 'right' | 'bottom'
   moreInfo?: string
   id: string
+}
+
+const normalizeImagePosition = (
+  imagePosition?: string,
+): SuccessStoryTileProps['imagePosition'] => {
+  switch (imagePosition?.toLowerCase()) {
+    case 'right':
+      return 'right'
+    case 'bottom':
+      return 'bottom'
+    default:
+      return 'left'
+  }
 }
 
 /**
@@ -31,6 +45,7 @@ export default async function SuccessStoryTile({
   id,
 }: SuccessStoryTileProps) {
   const theme = await getTheme()
+  const normalizedImagePosition = normalizeImagePosition(imagePosition)
 
   const Content = (
     <div className="flex h-full flex-col justify-between">
@@ -107,20 +122,46 @@ export default async function SuccessStoryTile({
   }
 
   const StoryImage = (
-    <div className="relative min-h-[20rem] overflow-hidden md:min-h-[40rem] md:w-4/5">
-      <img
-        alt={'Image'}
-        className="h-full w-full object-cover object-left transition-all group-hover:scale-105"
+    <div className="relative h-[20rem] w-full overflow-hidden md:h-[40rem] md:w-4/5">
+      <Image
+        alt="Image"
+        className="object-contain object-center"
+        fill
+        sizes="(min-width: 1024px) 80vw, 100vw"
         src={image}
       />
     </div>
   )
 
-  if (imagePosition === 'right') {
+  if (normalizedImagePosition === 'right') {
     return (
       <BaseTile
         embedId={`successStory-${id}`}
         endImage={StoryImage}
+        moreInfo={moreInfo}
+        variant="successStory"
+      >
+        {Content}
+      </BaseTile>
+    )
+  }
+
+  if (normalizedImagePosition === 'bottom') {
+    const BottomImage = (
+      <div className="relative h-[18rem] w-full overflow-hidden md:h-[28rem]">
+        <Image
+          alt="Image"
+          className="object-contain object-center"
+          fill
+          sizes="100vw"
+          src={image}
+        />
+      </div>
+    )
+    return (
+      <BaseTile
+        bottomImage={BottomImage}
+        embedId={`successStory-${id}`}
         moreInfo={moreInfo}
         variant="successStory"
       >

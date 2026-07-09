@@ -213,7 +213,12 @@
         "title": "Kfz-Verkehrsbelastung",
         "subtitle": "Anzahl gez\u00e4hlter Fahrzeuge an Werktagen"
       },
-      "passenger": {
+      "trafficFlow": {
+        "title": "Wo haben wir schon Daten gesammelt?",
+        "subtitle": "Stra\u00dfensegmente in Heilbronn, eingef\u00e4rbt nach Anzahl der Messpunkte auf der Strecke."
+      },      "trafficStats": {
+        "title": "Fahrradstatistiken"
+      },      "passenger": {
         "title": "\u00d6PNV",
         "subtitle": "Entwicklung der Fahrgastzahlen in den Bussen der Stadtwerke"
       }

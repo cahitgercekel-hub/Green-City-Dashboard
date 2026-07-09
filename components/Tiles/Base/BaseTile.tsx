@@ -21,7 +21,7 @@ import {
 } from '@/components/Icons/Misc'
 
 const baseTileStyle = cva(
-  'relative flex flex-col md:flex-row h-fit overflow-hidden rounded-md lg:rounded-lg',
+  'relative flex flex-col h-fit overflow-hidden rounded-md lg:rounded-lg',
   {
     variants: {
       variant: {
@@ -42,9 +42,10 @@ const baseTileStyle = cva(
 )
 
 export type ImageProps =
-  | { startImage: React.ReactElement; endImage?: never }
-  | { endImage: React.ReactElement; startImage?: never }
-  | { endImage?: undefined; startImage?: undefined }
+  | { startImage: React.ReactElement; endImage?: never; bottomImage?: never }
+  | { endImage: React.ReactElement; startImage?: never; bottomImage?: never }
+  | { bottomImage: React.ReactElement; startImage?: never; endImage?: never }
+  | { endImage?: undefined; startImage?: undefined; bottomImage?: undefined }
 
 export type EmbedTileProps = { embedId?: TileType }
 
@@ -77,6 +78,7 @@ export function BaseTile({
   className = '',
   startImage,
   endImage,
+  bottomImage,
   footerCenterElement,
   hideFooter,
   embedId,
@@ -128,7 +130,13 @@ export function BaseTile({
 
   return (
     <div className="pb-5">
-      <div className={cx(baseTileStyle({ variant }), className)}>
+      <div
+        className={cx(
+          baseTileStyle({ variant }),
+          className,
+          !bottomImage && 'md:flex-row',
+        )}
+      >
         {startImage}
         <div className="flex w-full flex-col justify-between px-4 py-8 lg:p-16">
           <TileHeader
@@ -143,6 +151,7 @@ export function BaseTile({
           </TileHeader>
 
           <>{children}</>
+          {bottomImage}
           {!hideFooter && (
             <TileFooter
               dataURL={source}

@@ -11,7 +11,7 @@ import { z } from 'zod'
 
 export const StatusSchema = z.enum(['DRAFT', 'PUBLISHED', 'ARCHIVED'])
 
-export const ImagePositionSchema = z.enum(['LEFT', 'RIGHT'])
+export const ImagePositionSchema = z.enum(['LEFT', 'RIGHT', 'BOTTOM'])
 
 // ============================================================================
 // Tile Type Validation

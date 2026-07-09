@@ -213,6 +213,13 @@
         "title": "Motor Vehicle Traffic Load",
         "subtitle": "Number of vehicles counted on weekdays"
       },
+      "trafficFlow": {
+        "title": "Where did we collect data?",
+        "subtitle": "Street segments in Heilbronn, colored by the number of measurement points on the segment."
+      },
+      "trafficStats": {
+        "title": "Bicycle Statistics"
+      },
       "passenger": {
         "title": "Public Transport",
         "subtitle": "Development of passenger numbers on Stadtwerke buses"
