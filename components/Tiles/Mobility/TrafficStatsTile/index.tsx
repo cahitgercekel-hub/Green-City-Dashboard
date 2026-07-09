@@ -7,7 +7,7 @@ export default async function TrafficStatsTile() {
 
   return (
     <MobilityTile
-      dataSource="ATRAI Bikes Data platform"
+      dataSource="ATRAI Bikes Data Platform"
       embedId="mobility-trafficstats"
       title={t('tiles.mobility.trafficStats.title')}
     >
