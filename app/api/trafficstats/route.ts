@@ -2,9 +2,14 @@ import { NextResponse } from 'next/server'
 import TTLCache from '@isaacs/ttlcache'
 
 const STATS_URL = 'https://api.atrai.bike/collections/statistics/items'
+const RESPONSE_HEADERS = {
+  'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0',
+} as const
 
 const ttl = 15 * 60 * 1000
 const cache = new TTLCache<string, unknown>({ ttl })
+
+export const dynamic = 'force-dynamic'
 
 export type WeeklyStatEntry = {
   week: string
@@ -51,15 +56,25 @@ function pythonDictToJson(raw: string): string {
   )
 }
 
+function jsonResponse(data: unknown, init?: ResponseInit) {
+  return NextResponse.json(data, {
+    ...init,
+    headers: {
+      ...RESPONSE_HEADERS,
+      ...init?.headers,
+    },
+  })
+}
+
 export const GET = async () => {
   const cacheKey = 'traffic-stats-heilbronn'
 
   if (cache.has(cacheKey)) {
-    return NextResponse.json(cache.get(cacheKey))
+    return jsonResponse(cache.get(cacheKey))
   }
 
   try {
-    const response = await fetch(STATS_URL)
+    const response = await fetch(STATS_URL, { cache: 'no-store' })
 
     if (!response.ok) {
       throw new Error(`API error ${response.status}`)
@@ -81,7 +96,7 @@ export const GET = async () => {
     const rawStats = feature?.properties?.statistics
 
     if (!rawStats) {
-      return NextResponse.json(
+      return jsonResponse(
         { error: 'No statistics field in response' },
         { status: 502 },
       )
@@ -101,9 +116,9 @@ export const GET = async () => {
     }
 
     cache.set(cacheKey, payload)
-    return NextResponse.json(payload)
+    return jsonResponse(payload)
   } catch {
-    return NextResponse.json(
+    return jsonResponse(
       { error: 'Failed to fetch traffic stats' },
       { status: 500 },
     )
