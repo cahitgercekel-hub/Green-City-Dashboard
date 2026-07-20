@@ -37,7 +37,7 @@ export default function useTrafficStats() {
       setError(null)
 
       try {
-        const response = await fetch('/api/trafficstats')
+        const response = await fetch('/api/trafficstats', { cache: 'no-store' })
 
         if (!response.ok) {
           throw new Error('Failed to fetch traffic statistics')

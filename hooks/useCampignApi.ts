@@ -13,17 +13,16 @@ interface BikeStatisticsResponse {
   stats: Omit<BikeStatEntry, 'date'>[]
 }
 
+type TrafficStatsResponse = {
+  weekly_stats: WeeklyStat[]
+}
+
 type WeeklyStat = {
   week: string
   total_distance_m: number
   total_duration_s: number
   total_kcal: number
   trip_count: number
-}
-
-type ParsedStats = {
-  weekly_stats?: WeeklyStat[]
-  periodic_stats?: WeeklyStat[]
 }
 
 const formatDate = (date: Date): string => {
@@ -45,50 +44,21 @@ const transformToEntry = (label: string, raw: any): BikeStatEntry => {
   }
 }
 
-const pythonDictToJson = (raw: string): string => {
-  return raw
-    .replace(/np\.(?:float64|float32|int64|int32)\(([^()]+)\)/g, '$1')
-    .replace(/'/g, '"')
-    .replace(/\bTrue\b/g, 'true')
-    .replace(/\bFalse\b/g, 'false')
-    .replace(/\bNone\b/g, 'null')
-}
-
 export function useBikeStatistics() {
   const [data, setData] = useState<BikeStatisticsResponse | null>(null)
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(
-          'https://api.atrai.bike/collections/statistics/items',
-        )
-        const collection = await response.json()
+        const response = await fetch('/api/trafficstats', { cache: 'no-store' })
 
-        const feature = Array.isArray(collection?.features)
-          ? collection.features.find(
-              (item: { properties?: { tag?: string; statistics?: unknown } }) =>
-                item?.properties?.tag === 'heilbronn' &&
-                !!item?.properties?.statistics,
-            ) ??
-            collection.features.find(
-              (item: { properties?: { statistics?: unknown } }) =>
-                !!item?.properties?.statistics,
-            )
-          : undefined
-
-        const statistics = feature?.properties?.statistics
-
-        if (!statistics) {
+        if (!response.ok) {
           setData(null)
           return
         }
 
-        const rawStats = (typeof statistics === 'string'
-          ? JSON.parse(pythonDictToJson(statistics))
-          : statistics) as ParsedStats
-
-        const weeklyStats = rawStats.weekly_stats ?? rawStats.periodic_stats ?? []
+        const payload = (await response.json()) as TrafficStatsResponse
+        const weeklyStats = payload.weekly_stats ?? []
 
         const entries: BikeStatEntry[] = [
           ...weeklyStats.map((week: WeeklyStat) =>
