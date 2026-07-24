@@ -89,6 +89,12 @@
   "birdiaryValidation": {
     "title": "Vogelvideos bestätigen",
     "description": "Siehst du einen Vogel im Video? Hilf uns, die KI-Erkennung zu verbessern!",
+    "noStations": "Keine Stationen verfügbar.",
+    "stations_one": "Station",
+    "stations_other": "Stationen",
+    "newestVideo": "Neuestes Video",
+    "openNewestVideo": "Neuestes Video öffnen",
+    "noVideo": "Kein Video",
     "date": "Datum",
     "weight": "Gewicht",
     "aiDetection": "KI-Vorschlag",
@@ -166,6 +172,7 @@
       },
       "pm": { "title": "Feinstaub" },
       "openSenseMap": { "title": "Unsere Messstationen" },
+      "birdStations": { "title": "Unsere Vogelstationen" },
       "co2": { "subtitle": "So viel wird in M\u00fcnster ausgestossen" },
       "bird": { "title": "Vogelbeobachtung" },
       "development": {

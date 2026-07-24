@@ -89,6 +89,12 @@
   "birdiaryValidation": {
     "title": "Validate Bird Videos",
     "description": "Can you spot a bird in the video? Help us improve the AI detection!",
+    "noStations": "No stations available.",
+    "stations_one": "station",
+    "stations_other": "stations",
+    "newestVideo": "Newest video",
+    "openNewestVideo": "Open newest video",
+    "noVideo": "No video",
     "date": "Date",
     "weight": "Weight",
     "aiDetection": "AI suggestion",
@@ -166,6 +172,7 @@
       },
       "pm": { "title": "Particulate Matter" },
       "openSenseMap": { "title": "Our Measuring Stations" },
+      "birdStations": { "title": "Our Bird Stations" },
       "co2": { "subtitle": "This is how much is emitted in M\u00fcnster" },
       "bird": { "title": "Bird Observation" },
       "development": {
