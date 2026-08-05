@@ -9,6 +9,7 @@ const STATION_IDS_FOR_MAP = [
   'aec5edea-0a4f-4ab7-b0b1-77eb98552a0d',
   'f5ad4530-e3b0-43cf-8b00-c6a9d5e4e4e2',
   '1292a46b-b8ce-449e-b50b-112f0c864e50',
+  '785d6318-433f-42bc-9328-8dd02d347fb8',
 ]
 
 export default async function BirdiaryStationsTile() {
