@@ -15,7 +15,7 @@ export default function WeatherTileContent() {
   const [timestamp, setTimestamp] = useState(new Date())
   const { t } = useTranslation()
 
-  const weather = useWeather({ lat: 52, lng: 7.6 }, timestamp)
+  const weather = useWeather({ lat: 49.142, lng: 9.219 }, timestamp)
 
   const nextHours = new Array(6).fill(undefined).map((e, i) => {
     const date = new Date()

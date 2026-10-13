@@ -32,7 +32,7 @@ import {
 import type { DirectusStatus } from '../lib/directus'
 
 type Status = 'DRAFT' | 'PUBLISHED' | 'ARCHIVED'
-type ImagePosition = 'LEFT' | 'RIGHT'
+type ImagePosition = 'LEFT' | 'RIGHT' | 'BOTTOM'
 
 // ============================================================================
 // Types and Interfaces
@@ -97,7 +97,7 @@ function convertStatus(status: DirectusStatus | undefined): Status {
  * Convert Directus image position to Prisma ImagePosition enum
  */
 function convertImagePosition(
-  position: 'left' | 'right' | undefined,
+  position: 'left' | 'right' | 'bottom' | undefined,
 ): ImagePosition {
   if (!position) {
     return 'LEFT'

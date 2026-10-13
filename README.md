@@ -1,6 +1,6 @@
-# Klimadashboard Münster
+# Green City Dashboard Heilbronn
 
-This is the Klimadashboard Münster. It provides real time information about the climate footprint for the city of [Münster](https://en.wikipedia.org/wiki/M%C3%BCnster). The application displays the data using different charts and a tile-based layout with separate pages for each category. The data is sourced from various providers, including the Open Data Portal of the City of Münster, the German Weather Service (DWD), BrightSky, and other data providers.
+This is the Green City Dashboard Heilbronn. It provides real time information about climate, environment and mobility for the city of [Heilbronn](https://en.wikipedia.org/wiki/Heilbronn). The application displays the data using different charts and a tile-based layout. The data is sourced from various providers, including openSenseMap, Birdiary, the German Weather Service (DWD), BrightSky, and other data providers.
 
 ## Getting Started
 
@@ -31,15 +31,15 @@ You should now be able to access the application at `http://localhost:3000`.
 
 The Klimadashboard web application provides the following features:
 
-- **Data visualization:** The application visualizes open smart city data for the city of Münster using different charts, including bar charts, line charts, and scatter plots. The charts are interactive and allow users to filter the data by different criteria.
+- **Data visualization:** The application visualizes open smart city data for the city of Heilbronn using different charts, including bar charts, line charts, and scatter plots. The charts are interactive and allow users to filter the data by different criteria.
 
-- **Tile-based layout:** The application uses a tile-based layout with separate pages for each category of data. The tiles display key indicators for each category and provide a quick overview of the data.
+- **Tile-based layout:** The application uses a tile-based layout grouped into sections. The tiles display key indicators for each section and provide a quick overview of the data.
 
-- **Real-time data:** The data in the Klimadashboard application is updated in real-time, providing users with the latest information on climate and environmental indicators in the city of Münster.
+- **Real-time data:** The data in the Klimadashboard application is updated in real-time, providing users with the latest information on climate and environmental indicators in the city of Heilbronn.
 
 - **Responsive design:** The application is designed to be responsive, adapting to different screen sizes and devices.
 
-- **Data sources:** The data in the Klimadashboard application is sourced from various providers, including the Open Data Portal of the City of Münster, the German Weather Service (DWD), BrightSky, and other data providers.
+- **Data sources:** The data in the Klimadashboard application is sourced from various providers, including openSenseMap, Birdiary, the German Weather Service (DWD), BrightSky, and other data providers.
 
 - **Built with Next.js:** Klimadashboard is built using Next.js 13 with an app directory.
 
@@ -53,7 +53,11 @@ The Klimadashboard web application provides the following features:
 
 The data in the Klimadashboard application is sourced from various providers, including:
 
-- **Open Data Portal of the City of Münster:** The City of Münster provides open data on climate and environmental indicators in the city.
+- **openSenseMap:** senseBox measuring stations in Heilbronn provide temperature, particulate matter and other environmental data.
+
+- **Birdiary:** Birdiary stations provide bird observations.
+
+- **atrai.bike / Eco-Counter:** Bicycle traffic, overtaking distances and traffic flow data.
 
 - **German Weather Service (DWD):** The DWD provides weather data for Germany, including temperature, precipitation, and wind.
 

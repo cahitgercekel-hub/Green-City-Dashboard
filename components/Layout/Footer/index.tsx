@@ -72,12 +72,7 @@ export default function Footer() {
                   {t('footer.datenschutz')}
                 </Title>
               </Link>
-              {/* <Link href="/feedback#use-dashboard">
-                <Title as="h5" className="underline" variant={'primary'}>
-                  {t('footer.adaptDashboard')}
-                </Title>
-              </Link>
-              <Link href="/feedback#feedback">
+              {/* <Link href="/feedback#feedback">
                 <Title as="h5" className="underline" variant={'primary'}>
                   {t('footer.giveFeedback')}
                 </Title>
@@ -94,11 +89,6 @@ export default function Footer() {
           <Link href="/datenschutz">
             <Title as="h5" className="underline" variant={'primary'}>
               {t('footer.datenschutz')}
-            </Title>
-          </Link>
-          <Link href="/feedback#use-dashboard">
-            <Title as="h5" className="underline" variant={'primary'}>
-              {t('footer.adaptDashboard')}
             </Title>
           </Link>
           <Link href="/feedback#feedback">

@@ -14,19 +14,8 @@ import SectionTitle from '../SectionTitle'
 import BaseNavbar from './BaseNavbar'
 
 const routeToType: {
-  [key: string]:
-    | 'climate'
-    | 'mobility'
-    | 'energy'
-    | 'building'
-    | 'impressum'
-    | 'datenschutz'
-    | 'feedback'
+  [key: string]: 'impressum' | 'datenschutz' | 'feedback'
 } = {
-  klima: 'climate',
-  mobilitaet: 'mobility',
-  energie: 'energy',
-  gebaeude: 'building',
   impressum: 'impressum',
   datenschutz: 'datenschutz',
   feedback: 'feedback',
@@ -67,13 +56,7 @@ export default function Navbar({
       <></>
     )
   ) : (
-    <Back
-      variant={
-        ['impressum', 'datenschutz', 'feedback'].includes(route)
-          ? 'inverse'
-          : 'primary'
-      }
-    />
+    <Back variant={route in routeToType ? 'inverse' : 'primary'} />
   )
 
   const InfoText = (
@@ -127,39 +110,11 @@ export default function Navbar({
     )
   }
 
-  if (
-    [
-      'klima',
-      'energie',
-      'mobilitaet',
-      'gebaeude',
-      'impressum',
-      'datenschutz',
-      'feedback',
-    ].includes(route)
-  ) {
-    const sectionText: Record<string, string> = {
-      klima: t('navbar.sectionText.klima'),
-      energie: t('navbar.sectionText.energie'),
-      mobilitaet: t('navbar.sectionText.mobilitaet'),
-      gebaeude: t('navbar.sectionText.gebaeude'),
-    }
-
+  if (route in routeToType) {
     return (
-      <BaseNavbar
-        actionComponent={ActionComponent}
-        variant={
-          ['impressum', 'datenschutz', 'feedback'].includes(route)
-            ? 'overlay'
-            : 'primary'
-        }
-      >
+      <BaseNavbar actionComponent={ActionComponent} variant="overlay">
         <div className="flex flex-col gap-2 lg:flex-row lg:gap-0">
-          <div className="flex-1">
-            <Title as="h5" variant="primary">
-              {sectionText[route]}
-            </Title>
-          </div>
+          <div className="flex-1" />
           <div className="flex flex-1 justify-end">
             <SectionTitle large variant={routeToType[route]} />
           </div>

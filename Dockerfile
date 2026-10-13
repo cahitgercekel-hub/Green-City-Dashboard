@@ -20,7 +20,7 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
-# Run the postinstall script (and install curl for the script to work)
+# Install curl and bash
 RUN apk add --no-cache curl bash
 
 RUN npx prisma generate

@@ -41,7 +41,7 @@ type ConditionMappingIcon = {
   [_key in Condition]: (_props: SVGProps<SVGSVGElement>) => React.JSX.Element
 }
 
-// In Münster ist es gerade ...
+// In Heilbronn ist es gerade ...
 export const conditionMapping: ConditionMapping = {
   dry: 'trocken',
   fog: 'nebelig',
@@ -52,7 +52,7 @@ export const conditionMapping: ConditionMapping = {
   thunderstorm: 'am Gewittern',
 }
 
-// In Münster ist es gerade ...
+// In Heilbronn ist es gerade ...
 export const conditionMappingIcon: ConditionMappingIcon = {
   dry: MsKlimadashboardIconsWetterSonnig,
   fog: MsKlimadashboardIconsWetterNeblig,
