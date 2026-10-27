@@ -71,7 +71,7 @@ and [`docs/schema/laerm-kampagne.schema.json`](https://github.com/itsmehmettaski
   "type": "FeatureCollection",
   "meta": {
     "schema_version": 1,
-    "title": "LärmLupe Heilbronn – Messkampagne",
+    "title": "LärmLupe Heilbronn – Noise measurement campaign",
     "generated_at": "2026-10-28T16:02:11Z",
     "period": { "from": "…", "to": "…" },
     "slots": [{ "key": "morning", "from_hour": 6, "to_hour": 10 }, "…"],
