@@ -1,0 +1,873 @@
+{
+ "type": "FeatureCollection",
+ "meta": {
+  "schema_version": 1,
+  "title": "LärmLupe Heilbronn – Noise measurement campaign – route minutes",
+  "generated_at": "2026-10-27T17:51:49Z",
+  "license": "CC BY 4.0",
+  "description": "One point per minute of the walks with a GPS position (mean position of the minute). Minutes near a listed point carry its point_id; the others are the noise trace between points."
+ },
+ "features": [
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     9.220509,
+     49.143518
+    ]
+   },
+   "properties": {
+    "t": "2026-10-28T06:38:00Z",
+    "slot": "morning",
+    "laeq": 58.4,
+    "lamax": 66.2,
+    "la90": 54.4,
+    "device_id": "laermbox-2",
+    "session_id": "B000",
+    "phase": "route",
+    "point_id": ""
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     9.219913,
+     49.144065
+    ]
+   },
+   "properties": {
+    "t": "2026-10-28T06:40:00Z",
+    "slot": "morning",
+    "laeq": 61.8,
+    "lamax": 74.4,
+    "la90": 54.2,
+    "device_id": "laermbox-2",
+    "session_id": "B000",
+    "phase": "route",
+    "point_id": ""
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     9.218416,
+     49.143279
+    ]
+   },
+   "properties": {
+    "t": "2026-10-28T06:43:00Z",
+    "slot": "morning",
+    "laeq": 57.3,
+    "lamax": 64.8,
+    "la90": 53.6,
+    "device_id": "laermbox-2",
+    "session_id": "B000",
+    "phase": "route",
+    "point_id": ""
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     9.219013,
+     49.140571
+    ]
+   },
+   "properties": {
+    "t": "2026-10-28T06:48:00Z",
+    "slot": "morning",
+    "laeq": 60.0,
+    "lamax": 69.2,
+    "la90": 52.4,
+    "device_id": "laermbox-2",
+    "session_id": "B000",
+    "phase": "route",
+    "point_id": ""
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     9.219477,
+     49.143076
+    ]
+   },
+   "properties": {
+    "t": "2026-10-28T06:36:00Z",
+    "slot": "morning",
+    "laeq": 67.1,
+    "lamax": 77.0,
+    "la90": 56.6,
+    "device_id": "laermbox-2",
+    "session_id": "B000",
+    "phase": "measure",
+    "point_id": "P01"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     9.219562,
+     49.143122
+    ]
+   },
+   "properties": {
+    "t": "2026-10-28T06:37:00Z",
+    "slot": "morning",
+    "laeq": 68.7,
+    "lamax": 77.2,
+    "la90": 55.8,
+    "device_id": "laermbox-2",
+    "session_id": "B000",
+    "phase": "measure",
+    "point_id": "P01"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     9.221199,
+     49.1438
+    ]
+   },
+   "properties": {
+    "t": "2026-10-28T06:39:00Z",
+    "slot": "morning",
+    "laeq": 69.1,
+    "lamax": 81.0,
+    "la90": 60.4,
+    "device_id": "laermbox-2",
+    "session_id": "B000",
+    "phase": "measure",
+    "point_id": "P02"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     9.217825,
+     49.144492
+    ]
+   },
+   "properties": {
+    "t": "2026-10-28T06:41:00Z",
+    "slot": "morning",
+    "laeq": 58.6,
+    "lamax": 67.4,
+    "la90": 53.6,
+    "device_id": "laermbox-2",
+    "session_id": "B000",
+    "phase": "measure",
+    "point_id": "P03"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     9.217811,
+     49.144482
+    ]
+   },
+   "properties": {
+    "t": "2026-10-28T06:42:00Z",
+    "slot": "morning",
+    "laeq": 63.9,
+    "lamax": 76.6,
+    "la90": 54.1,
+    "device_id": "laermbox-2",
+    "session_id": "B000",
+    "phase": "measure",
+    "point_id": "P03"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     9.218797,
+     49.142502
+    ]
+   },
+   "properties": {
+    "t": "2026-10-28T06:44:00Z",
+    "slot": "morning",
+    "laeq": 61.2,
+    "lamax": 76.0,
+    "la90": 52.6,
+    "device_id": "laermbox-2",
+    "session_id": "B000",
+    "phase": "measure",
+    "point_id": "P04"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     9.216529,
+     49.141224
+    ]
+   },
+   "properties": {
+    "t": "2026-10-28T06:46:00Z",
+    "slot": "morning",
+    "laeq": 55.4,
+    "lamax": 64.6,
+    "la90": 48.6,
+    "device_id": "laermbox-2",
+    "session_id": "B000",
+    "phase": "measure",
+    "point_id": "P05"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     9.21653,
+     49.141193
+    ]
+   },
+   "properties": {
+    "t": "2026-10-28T06:47:00Z",
+    "slot": "morning",
+    "laeq": 54.2,
+    "lamax": 65.6,
+    "la90": 48.3,
+    "device_id": "laermbox-2",
+    "session_id": "B000",
+    "phase": "measure",
+    "point_id": "P05"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     9.220504,
+     49.1402
+    ]
+   },
+   "properties": {
+    "t": "2026-10-28T06:49:00Z",
+    "slot": "morning",
+    "laeq": 49.5,
+    "lamax": 57.0,
+    "la90": 44.3,
+    "device_id": "laermbox-2",
+    "session_id": "B000",
+    "phase": "measure",
+    "point_id": "P06"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     9.220485,
+     49.143512
+    ]
+   },
+   "properties": {
+    "t": "2026-10-27T18:08:00Z",
+    "slot": "evening",
+    "laeq": 57.3,
+    "lamax": 65.0,
+    "la90": 53.3,
+    "device_id": "laermbox-2",
+    "session_id": "S20261027_180500",
+    "phase": "route",
+    "point_id": ""
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     9.219855,
+     49.144079
+    ]
+   },
+   "properties": {
+    "t": "2026-10-27T18:10:00Z",
+    "slot": "evening",
+    "laeq": 65.5,
+    "lamax": 82.0,
+    "la90": 55.1,
+    "device_id": "laermbox-2",
+    "session_id": "S20261027_180500",
+    "phase": "route",
+    "point_id": ""
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     9.21842,
+     49.14327
+    ]
+   },
+   "properties": {
+    "t": "2026-10-27T18:13:00Z",
+    "slot": "evening",
+    "laeq": 59.2,
+    "lamax": 70.8,
+    "la90": 53.8,
+    "device_id": "laermbox-2",
+    "session_id": "S20261027_180500",
+    "phase": "route",
+    "point_id": ""
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     9.21785,
+     49.141964
+    ]
+   },
+   "properties": {
+    "t": "2026-10-27T18:15:00Z",
+    "slot": "evening",
+    "laeq": 58.5,
+    "lamax": 65.8,
+    "la90": 54.4,
+    "device_id": "laermbox-2",
+    "session_id": "S20261027_180500",
+    "phase": "route",
+    "point_id": ""
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     9.21901,
+     49.140575
+    ]
+   },
+   "properties": {
+    "t": "2026-10-27T18:18:00Z",
+    "slot": "evening",
+    "laeq": 63.1,
+    "lamax": 74.6,
+    "la90": 54.5,
+    "device_id": "laermbox-2",
+    "session_id": "S20261027_180500",
+    "phase": "route",
+    "point_id": ""
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     9.219479,
+     49.143078
+    ]
+   },
+   "properties": {
+    "t": "2026-10-27T18:06:00Z",
+    "slot": "evening",
+    "laeq": 63.5,
+    "lamax": 73.8,
+    "la90": 56.6,
+    "device_id": "laermbox-2",
+    "session_id": "S20261027_180500",
+    "phase": "measure",
+    "point_id": "P01"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     9.219555,
+     49.143122
+    ]
+   },
+   "properties": {
+    "t": "2026-10-27T18:07:00Z",
+    "slot": "evening",
+    "laeq": 65.8,
+    "lamax": 74.6,
+    "la90": 56.7,
+    "device_id": "laermbox-2",
+    "session_id": "S20261027_180500",
+    "phase": "measure",
+    "point_id": "P01"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     9.221196,
+     49.1438
+    ]
+   },
+   "properties": {
+    "t": "2026-10-27T18:09:00Z",
+    "slot": "evening",
+    "laeq": 65.4,
+    "lamax": 75.8,
+    "la90": 58.1,
+    "device_id": "laermbox-2",
+    "session_id": "S20261027_180500",
+    "phase": "measure",
+    "point_id": "P02"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     9.217836,
+     49.144494
+    ]
+   },
+   "properties": {
+    "t": "2026-10-27T18:11:00Z",
+    "slot": "evening",
+    "laeq": 56.9,
+    "lamax": 65.2,
+    "la90": 51.8,
+    "device_id": "laermbox-2",
+    "session_id": "S20261027_180500",
+    "phase": "measure",
+    "point_id": "P03"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     9.217809,
+     49.144475
+    ]
+   },
+   "properties": {
+    "t": "2026-10-27T18:12:00Z",
+    "slot": "evening",
+    "laeq": 62.2,
+    "lamax": 76.2,
+    "la90": 51.9,
+    "device_id": "laermbox-2",
+    "session_id": "S20261027_180500",
+    "phase": "measure",
+    "point_id": "P03"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     9.218797,
+     49.142507
+    ]
+   },
+   "properties": {
+    "t": "2026-10-27T18:14:00Z",
+    "slot": "evening",
+    "laeq": 66.2,
+    "lamax": 75.6,
+    "la90": 59.5,
+    "device_id": "laermbox-2",
+    "session_id": "S20261027_180500",
+    "phase": "measure",
+    "point_id": "P04"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     9.216541,
+     49.141225
+    ]
+   },
+   "properties": {
+    "t": "2026-10-27T18:16:00Z",
+    "slot": "evening",
+    "laeq": 56.8,
+    "lamax": 65.2,
+    "la90": 48.2,
+    "device_id": "laermbox-2",
+    "session_id": "S20261027_180500",
+    "phase": "measure",
+    "point_id": "P05"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     9.216529,
+     49.141191
+    ]
+   },
+   "properties": {
+    "t": "2026-10-27T18:17:00Z",
+    "slot": "evening",
+    "laeq": 52.9,
+    "lamax": 62.2,
+    "la90": 47.1,
+    "device_id": "laermbox-2",
+    "session_id": "S20261027_180500",
+    "phase": "measure",
+    "point_id": "P05"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     9.220495,
+     49.140203
+    ]
+   },
+   "properties": {
+    "t": "2026-10-27T18:19:00Z",
+    "slot": "evening",
+    "laeq": 50.7,
+    "lamax": 62.8,
+    "la90": 42.5,
+    "device_id": "laermbox-2",
+    "session_id": "S20261027_180500",
+    "phase": "measure",
+    "point_id": "P06"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     9.220495,
+     49.143511
+    ]
+   },
+   "properties": {
+    "t": "2026-10-28T12:43:00Z",
+    "slot": "day",
+    "laeq": 58.9,
+    "lamax": 68.4,
+    "la90": 53.2,
+    "device_id": "laermbox-2",
+    "session_id": "S20261028_124000",
+    "phase": "route",
+    "point_id": ""
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     9.219892,
+     49.144068
+    ]
+   },
+   "properties": {
+    "t": "2026-10-28T12:45:00Z",
+    "slot": "day",
+    "laeq": 57.9,
+    "lamax": 63.4,
+    "la90": 54.0,
+    "device_id": "laermbox-2",
+    "session_id": "S20261028_124000",
+    "phase": "route",
+    "point_id": ""
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     9.218424,
+     49.143254
+    ]
+   },
+   "properties": {
+    "t": "2026-10-28T12:48:00Z",
+    "slot": "day",
+    "laeq": 66.1,
+    "lamax": 83.4,
+    "la90": 54.4,
+    "device_id": "laermbox-2",
+    "session_id": "S20261028_124000",
+    "phase": "route",
+    "point_id": ""
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     9.217898,
+     49.141988
+    ]
+   },
+   "properties": {
+    "t": "2026-10-28T12:50:00Z",
+    "slot": "day",
+    "laeq": 58.2,
+    "lamax": 69.4,
+    "la90": 53.4,
+    "device_id": "laermbox-2",
+    "session_id": "S20261028_124000",
+    "phase": "route",
+    "point_id": ""
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     9.21903,
+     49.140569
+    ]
+   },
+   "properties": {
+    "t": "2026-10-28T12:53:00Z",
+    "slot": "day",
+    "laeq": 62.7,
+    "lamax": 75.6,
+    "la90": 53.7,
+    "device_id": "laermbox-2",
+    "session_id": "S20261028_124000",
+    "phase": "route",
+    "point_id": ""
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     9.219469,
+     49.143076
+    ]
+   },
+   "properties": {
+    "t": "2026-10-28T12:41:00Z",
+    "slot": "day",
+    "laeq": 70.9,
+    "lamax": 84.4,
+    "la90": 55.1,
+    "device_id": "laermbox-2",
+    "session_id": "S20261028_124000",
+    "phase": "measure",
+    "point_id": "P01"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     9.219548,
+     49.143118
+    ]
+   },
+   "properties": {
+    "t": "2026-10-28T12:42:00Z",
+    "slot": "day",
+    "laeq": 69.3,
+    "lamax": 79.0,
+    "la90": 56.8,
+    "device_id": "laermbox-2",
+    "session_id": "S20261028_124000",
+    "phase": "measure",
+    "point_id": "P01"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     9.221196,
+     49.143797
+    ]
+   },
+   "properties": {
+    "t": "2026-10-28T12:44:00Z",
+    "slot": "day",
+    "laeq": 63.0,
+    "lamax": 70.4,
+    "la90": 59.2,
+    "device_id": "laermbox-2",
+    "session_id": "S20261028_124000",
+    "phase": "measure",
+    "point_id": "P02"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     9.217826,
+     49.144497
+    ]
+   },
+   "properties": {
+    "t": "2026-10-28T12:46:00Z",
+    "slot": "day",
+    "laeq": 61.6,
+    "lamax": 73.6,
+    "la90": 53.5,
+    "device_id": "laermbox-2",
+    "session_id": "S20261028_124000",
+    "phase": "measure",
+    "point_id": "P03"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     9.217811,
+     49.144474
+    ]
+   },
+   "properties": {
+    "t": "2026-10-28T12:47:00Z",
+    "slot": "day",
+    "laeq": 57.7,
+    "lamax": 63.0,
+    "la90": 53.8,
+    "device_id": "laermbox-2",
+    "session_id": "S20261028_124000",
+    "phase": "measure",
+    "point_id": "P03"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     9.218803,
+     49.142501
+    ]
+   },
+   "properties": {
+    "t": "2026-10-28T12:49:00Z",
+    "slot": "day",
+    "laeq": 60.1,
+    "lamax": 69.4,
+    "la90": 53.3,
+    "device_id": "laermbox-2",
+    "session_id": "S20261028_124000",
+    "phase": "measure",
+    "point_id": "P04"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     9.216536,
+     49.141215
+    ]
+   },
+   "properties": {
+    "t": "2026-10-28T12:51:00Z",
+    "slot": "day",
+    "laeq": 53.5,
+    "lamax": 61.4,
+    "la90": 47.8,
+    "device_id": "laermbox-2",
+    "session_id": "S20261028_124000",
+    "phase": "measure",
+    "point_id": "P05"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     9.216533,
+     49.141191
+    ]
+   },
+   "properties": {
+    "t": "2026-10-28T12:52:00Z",
+    "slot": "day",
+    "laeq": 54.7,
+    "lamax": 65.2,
+    "la90": 46.1,
+    "device_id": "laermbox-2",
+    "session_id": "S20261028_124000",
+    "phase": "measure",
+    "point_id": "P05"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     9.220503,
+     49.140198
+    ]
+   },
+   "properties": {
+    "t": "2026-10-28T12:54:00Z",
+    "slot": "day",
+    "laeq": 53.2,
+    "lamax": 63.8,
+    "la90": 45.1,
+    "device_id": "laermbox-2",
+    "session_id": "S20261028_124000",
+    "phase": "measure",
+    "point_id": "P06"
+   }
+  }
+ ]
+}

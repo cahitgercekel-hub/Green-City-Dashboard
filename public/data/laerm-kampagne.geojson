@@ -3,10 +3,10 @@
  "meta": {
   "schema_version": 1,
   "title": "LärmLupe Heilbronn – Noise measurement campaign",
-  "generated_at": "2026-10-27T17:34:58Z",
+  "generated_at": "2026-10-27T17:51:49Z",
   "period": {
-   "from": "2026-10-27T14:00:00Z",
-   "to": "2026-10-28T16:58:29Z"
+   "from": "2026-10-27T14:00:10Z",
+   "to": "2026-10-28T15:59:59Z"
   },
   "slots": [
    {
@@ -35,12 +35,14 @@
    "night": 45.0
   },
   "excluded": {
-   "transit_seconds": 2762,
-   "event_seconds": 100,
+   "route_seconds": 1104,
+   "nogps_seconds": 890,
+   "settle_seconds": 60,
+   "event_seconds": 0,
    "clip_seconds": 0,
    "wind_seconds": 0,
    "rain_seconds": 0,
-   "used_seconds": 99078
+   "used_seconds": 96346
   },
   "calibration": [
    {
@@ -60,7 +62,7 @@
     "window": "2026-10-27T16:00:10Z/2026-10-27T16:04:49Z"
    }
   ],
-  "method": "SEN0232 sensor, 8 samples/s; LAeq = energy average; LA90 = 10th percentile of 1-s LAeq. Walks: 3 min per point after a 10 s settle. Indicative sample, not an official measurement.",
+  "method": "SEN0232 sensor, 8 samples/s; LAeq = energy average; LA90 = 10th percentile of 1-s LAeq. Walks are recorded continuously and matched to a phone GPS track; a second counts for a point when it is within 25 m of it. Indicative sample, not an official measurement.",
   "license": "CC BY 4.0",
   "static_series": [
    {
@@ -69,7 +71,7 @@
     "hours": [
      {
       "t": "2026-10-27T15:00:00+01:00",
-      "laeq": 64.8
+      "laeq": 64.7
      },
      {
       "t": "2026-10-27T16:00:00+01:00",
@@ -179,7 +181,7 @@
     "hours": [
      {
       "t": "2026-10-28T15:00:00+01:00",
-      "laeq": 51.9
+      "laeq": 51.2
      }
     ]
    }
@@ -205,32 +207,32 @@
     "maxspeed": "",
     "tram": false,
     "laeq_all": 64.5,
-    "minutes_all": 1560.0,
+    "minutes_all": 1561.0,
     "slots": {
      "morning": {
       "laeq": 66.9,
       "lamax": 93.1,
       "la90": 58.3,
-      "minutes": 240.0,
-      "visits": 1,
+      "minutes": 240.4,
+      "visits": 2,
       "who_ref_db": 53.0,
       "above_who_ref": true
      },
      "day": {
-      "laeq": 64.8,
+      "laeq": 64.7,
       "lamax": 91.9,
       "la90": 56.3,
-      "minutes": 420.0,
-      "visits": 2,
+      "minutes": 420.2,
+      "visits": 3,
       "who_ref_db": 53.0,
       "above_who_ref": true
      },
      "evening": {
       "laeq": 66.6,
       "lamax": 98.8,
-      "la90": 57.4,
-      "minutes": 420.0,
-      "visits": 2,
+      "la90": 57.3,
+      "minutes": 420.3,
+      "visits": 3,
       "who_ref_db": 53.0,
       "above_who_ref": true
      },
@@ -264,33 +266,33 @@
     "road_name": "",
     "maxspeed": "",
     "tram": false,
-    "laeq_all": 70.9,
-    "minutes_all": 12.3,
+    "laeq_all": 68.2,
+    "minutes_all": 4.4,
     "slots": {
      "morning": {
-      "laeq": 74.1,
-      "lamax": 91.7,
-      "la90": 64.6,
-      "minutes": 3.0,
+      "laeq": 68.0,
+      "lamax": 77.2,
+      "la90": 56.2,
+      "minutes": 1.5,
       "visits": 1,
       "who_ref_db": 53.0,
       "above_who_ref": true
      },
      "day": {
-      "laeq": 71.4,
-      "lamax": 87.0,
-      "la90": 61.8,
-      "minutes": 3.0,
+      "laeq": 70.2,
+      "lamax": 84.5,
+      "la90": 55.9,
+      "minutes": 1.5,
       "visits": 1,
       "who_ref_db": 53.0,
       "above_who_ref": true
      },
      "evening": {
-      "laeq": 66.9,
-      "lamax": 82.2,
-      "la90": 61.0,
-      "minutes": 6.3,
-      "visits": 2,
+      "laeq": 64.9,
+      "lamax": 74.5,
+      "la90": 56.5,
+      "minutes": 1.5,
+      "visits": 1,
       "who_ref_db": 53.0,
       "above_who_ref": true
      }
@@ -315,33 +317,33 @@
     "road_name": "",
     "maxspeed": "",
     "tram": false,
-    "laeq_all": 66.2,
-    "minutes_all": 11.9,
+    "laeq_all": 65.7,
+    "minutes_all": 4.2,
     "slots": {
      "morning": {
-      "laeq": 66.5,
-      "lamax": 80.2,
-      "la90": 60.3,
-      "minutes": 3.0,
+      "laeq": 68.0,
+      "lamax": 81.0,
+      "la90": 56.6,
+      "minutes": 1.3,
       "visits": 1,
       "who_ref_db": 53.0,
       "above_who_ref": true
      },
      "day": {
-      "laeq": 67.1,
-      "lamax": 85.7,
-      "la90": 58.0,
-      "minutes": 2.7,
+      "laeq": 63.7,
+      "lamax": 75.5,
+      "la90": 54.9,
+      "minutes": 1.4,
       "visits": 1,
       "who_ref_db": 53.0,
       "above_who_ref": true
      },
      "evening": {
-      "laeq": 65.5,
-      "lamax": 82.7,
-      "la90": 58.8,
-      "minutes": 6.2,
-      "visits": 2,
+      "laeq": 64.1,
+      "lamax": 75.8,
+      "la90": 55.0,
+      "minutes": 1.4,
+      "visits": 1,
       "who_ref_db": 53.0,
       "above_who_ref": true
      }
@@ -366,33 +368,33 @@
     "road_name": "",
     "maxspeed": "",
     "tram": false,
-    "laeq_all": 59.5,
-    "minutes_all": 11.8,
+    "laeq_all": 60.9,
+    "minutes_all": 3.9,
     "slots": {
      "morning": {
-      "laeq": 60.7,
-      "lamax": 73.2,
+      "laeq": 62.0,
+      "lamax": 76.5,
       "la90": 53.6,
-      "minutes": 3.0,
+      "minutes": 1.3,
       "visits": 1,
       "who_ref_db": 53.0,
       "above_who_ref": true
      },
      "day": {
-      "laeq": 59.5,
-      "lamax": 74.2,
-      "la90": 52.4,
-      "minutes": 3.0,
+      "laeq": 60.1,
+      "lamax": 73.5,
+      "la90": 53.4,
+      "minutes": 1.3,
       "visits": 1,
       "who_ref_db": 53.0,
       "above_who_ref": true
      },
      "evening": {
-      "laeq": 58.7,
-      "lamax": 73.7,
-      "la90": 52.8,
-      "minutes": 5.8,
-      "visits": 2,
+      "laeq": 60.3,
+      "lamax": 76.2,
+      "la90": 51.8,
+      "minutes": 1.3,
+      "visits": 1,
       "who_ref_db": 53.0,
       "above_who_ref": true
      }
@@ -417,33 +419,33 @@
     "road_name": "",
     "maxspeed": "",
     "tram": false,
-    "laeq_all": 65.4,
-    "minutes_all": 12.2,
+    "laeq_all": 62.0,
+    "minutes_all": 5.2,
     "slots": {
      "morning": {
-      "laeq": 59.1,
-      "lamax": 72.3,
-      "la90": 51.8,
-      "minutes": 3.0,
+      "laeq": 59.8,
+      "lamax": 76.0,
+      "la90": 52.7,
+      "minutes": 1.8,
       "visits": 1,
       "who_ref_db": 53.0,
       "above_who_ref": true
      },
      "day": {
-      "laeq": 59.1,
-      "lamax": 73.5,
-      "la90": 53.5,
-      "minutes": 3.0,
+      "laeq": 60.5,
+      "lamax": 74.2,
+      "la90": 53.8,
+      "minutes": 1.7,
       "visits": 1,
       "who_ref_db": 53.0,
       "above_who_ref": true
      },
      "evening": {
-      "laeq": 67.8,
-      "lamax": 87.0,
-      "la90": 60.2,
-      "minutes": 6.2,
-      "visits": 2,
+      "laeq": 64.2,
+      "lamax": 75.5,
+      "la90": 55.0,
+      "minutes": 1.8,
+      "visits": 1,
       "who_ref_db": 53.0,
       "above_who_ref": true
      }
@@ -468,33 +470,33 @@
     "road_name": "",
     "maxspeed": "",
     "tram": false,
-    "laeq_all": 54.9,
-    "minutes_all": 11.5,
+    "laeq_all": 54.8,
+    "minutes_all": 3.9,
     "slots": {
      "morning": {
-      "laeq": 53.8,
-      "lamax": 69.0,
-      "la90": 48.3,
-      "minutes": 3.0,
+      "laeq": 54.9,
+      "lamax": 65.7,
+      "la90": 48.5,
+      "minutes": 1.3,
       "visits": 1,
       "who_ref_db": 53.0,
       "above_who_ref": true
      },
      "day": {
-      "laeq": 51.6,
-      "lamax": 63.0,
-      "la90": 46.5,
-      "minutes": 2.7,
+      "laeq": 54.1,
+      "lamax": 65.2,
+      "la90": 46.9,
+      "minutes": 1.3,
       "visits": 1,
       "who_ref_db": 53.0,
-      "above_who_ref": false
+      "above_who_ref": true
      },
      "evening": {
-      "laeq": 56.2,
-      "lamax": 71.7,
+      "laeq": 55.4,
+      "lamax": 65.2,
       "la90": 47.1,
-      "minutes": 5.8,
-      "visits": 2,
+      "minutes": 1.3,
+      "visits": 1,
       "who_ref_db": 53.0,
       "above_who_ref": true
      }
@@ -519,33 +521,33 @@
     "road_name": "",
     "maxspeed": "",
     "tram": false,
-    "laeq_all": 51.6,
-    "minutes_all": 31.6,
+    "laeq_all": 52.1,
+    "minutes_all": 23.2,
     "slots": {
      "morning": {
-      "laeq": 51.5,
-      "lamax": 66.2,
-      "la90": 44.1,
-      "minutes": 2.7,
+      "laeq": 52.5,
+      "lamax": 65.2,
+      "la90": 44.4,
+      "minutes": 1.1,
       "visits": 1,
       "who_ref_db": 53.0,
       "above_who_ref": false
      },
      "day": {
-      "laeq": 51.7,
-      "lamax": 73.3,
+      "laeq": 52.1,
+      "lamax": 75.8,
       "la90": 43.5,
-      "minutes": 22.8,
+      "minutes": 20.9,
       "visits": 2,
       "who_ref_db": 53.0,
       "above_who_ref": false
      },
      "evening": {
-      "laeq": 51.1,
-      "lamax": 67.5,
+      "laeq": 52.3,
+      "lamax": 65.0,
       "la90": 42.5,
-      "minutes": 6.1,
-      "visits": 2,
+      "minutes": 1.1,
+      "visits": 1,
       "who_ref_db": 53.0,
       "above_who_ref": false
      }

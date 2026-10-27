@@ -60,6 +60,49 @@ export interface NoiseCampaign {
   features: NoisePointFeature[]
 }
 
+// Route minutes of the walks (laerm-route.geojson): one point per minute with a GPS position.
+// Lives next to the campaign file; same env override with the file name replaced.
+export const NOISE_ROUTE_URL = NOISE_CAMPAIGN_URL.replace(
+  /laerm-kampagne\.geojson$/,
+  'laerm-route.geojson',
+)
+
+export interface NoiseRouteProperties {
+  t: string
+  slot: NoiseSlotKey
+  laeq: number | null
+  lamax: number | null
+  la90: number | null
+  device_id: string
+  session_id: string
+  phase: 'route' | 'measure'
+  point_id: string
+}
+
+export interface NoiseRouteFeature {
+  type: 'Feature'
+  geometry: { type: 'Point'; coordinates: [number, number] }
+  properties: NoiseRouteProperties
+}
+
+export interface NoiseRoute {
+  type: 'FeatureCollection'
+  features: NoiseRouteFeature[]
+}
+
+export function useNoiseRoute(url: string = NOISE_ROUTE_URL) {
+  const [data, setData] = useState<NoiseRoute | null>(null)
+
+  useEffect(() => {
+    fetch(url)
+      .then(r => (r.ok ? r.json() : null))
+      .then(d => setData(d && Array.isArray(d.features) ? (d as NoiseRoute) : null))
+      .catch(() => setData(null))
+  }, [url])
+
+  return data
+}
+
 export default function useNoiseCampaign(url: string = NOISE_CAMPAIGN_URL) {
   const [data, setData] = useState<NoiseCampaign | null>(null)
   const [isLoading, setIsLoading] = useState(true)

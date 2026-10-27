@@ -2,16 +2,18 @@
 
 import type {
   NoisePointFeature,
+  NoiseRoute,
   NoiseSlotKey,
 } from '@/hooks/useNoiseCampaign'
 import maplibregl from 'maplibre-gl'
 import 'maplibre-gl/dist/maplibre-gl.css'
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { formatDb, NOISE_STEPS, noiseColor } from './noiseScale'
 
 interface NoiseMapProps {
   features: NoisePointFeature[]
+  route: NoiseRoute | null
   slot: NoiseSlotKey
   selectedId: string | null
   onSelect: (_pointId: string) => void
@@ -19,6 +21,7 @@ interface NoiseMapProps {
 
 export default function NoiseMap({
   features,
+  route,
   slot,
   selectedId,
   onSelect,
@@ -26,6 +29,7 @@ export default function NoiseMap({
   const mapContainer = useRef<HTMLDivElement>(null)
   const mapRef = useRef<maplibregl.Map | null>(null)
   const markersRef = useRef<maplibregl.Marker[]>([])
+  const [styleReady, setStyleReady] = useState(false)
   const { t } = useTranslation()
 
   // Create the map once and fit it to all measuring points
@@ -41,6 +45,7 @@ export default function NoiseMap({
       attributionControl: false,
     })
     map.addControl(new maplibregl.NavigationControl(), 'top-right')
+    map.on('load', () => setStyleReady(true))
     if (features.length > 1) {
       const bounds = new maplibregl.LngLatBounds()
       for (const f of features) {
@@ -53,8 +58,46 @@ export default function NoiseMap({
     return () => {
       map.remove()
       mapRef.current = null
+      setStyleReady(false)
     }
   }, [features])
+
+  // Noise trace of the walks: one small dot per minute, coloured by LAeq, filtered by time slot
+  useEffect(() => {
+    const map = mapRef.current
+    if (!map || !styleReady) {
+      return
+    }
+    const minutes = (route?.features ?? []).filter(
+      f => f.properties.slot === slot && typeof f.properties.laeq === 'number',
+    )
+    const data = { type: 'FeatureCollection' as const, features: minutes }
+    const source = map.getSource('noise-route') as
+      | maplibregl.GeoJSONSource
+      | undefined
+    if (source) {
+      source.setData(data)
+      return
+    }
+    map.addSource('noise-route', { type: 'geojson', data })
+    map.addLayer({
+      id: 'noise-route',
+      type: 'circle',
+      source: 'noise-route',
+      paint: {
+        'circle-radius': 5,
+        'circle-opacity': 0.85,
+        'circle-stroke-color': '#ffffff',
+        'circle-stroke-width': 1,
+        'circle-color': [
+          'step',
+          ['get', 'laeq'],
+          NOISE_STEPS[0].color,
+          ...NOISE_STEPS.slice(1).flatMap(s => [s.min, s.color]),
+        ],
+      },
+    })
+  }, [route, slot, styleReady])
 
   // Redraw the markers whenever the time slot or the selection changes
   useEffect(() => {

@@ -4,6 +4,7 @@ import ToggleGroup from '@/components/Inputs/ToggleGroup'
 import useNoiseCampaign, {
   NOISE_SLOTS,
   type NoiseSlotKey,
+  useNoiseRoute,
 } from '@/hooks/useNoiseCampaign'
 import useOpenSenseMap from '@/hooks/useOpenSenseMap'
 import { formatDistanceToNow } from 'date-fns'
@@ -23,6 +24,7 @@ export default function NoiseContent() {
   const { t } = useTranslation()
   const { data: campaign, isLoading } = useNoiseCampaign()
   const { data: boxes } = useOpenSenseMap(NOISE_GROUPTAG)
+  const route = useNoiseRoute()
   const [slot, setSlot] = useState<NoiseSlotKey>('evening')
   const [selectedId, setSelectedId] = useState<string | null>(null)
   const [liveSeries, setLiveSeries] = useState<{ t: string; value: number }[]>(
@@ -126,6 +128,7 @@ export default function NoiseContent() {
           <NoiseMap
             features={features}
             onSelect={setSelectedId}
+            route={route}
             selectedId={activeId}
             slot={slot}
           />
