@@ -137,6 +137,45 @@
     "sensor": "Sensor",
     "sensors": "Sensoren"
   },
+  "noise": {
+    "slots": {
+      "morning": "Morgen 6–10",
+      "day": "Tag 10–16",
+      "evening": "Abend 16–22",
+      "night": "Nacht 22–6"
+    },
+    "slotsShort": {
+      "morning": "Morgen",
+      "day": "Tag",
+      "evening": "Abend",
+      "night": "Nacht"
+    },
+    "categories": {
+      "main_road": "Hauptstraße",
+      "tram": "Stadtbahn",
+      "tempo30": "Tempo 30",
+      "nightlife": "Ausgehviertel",
+      "side_street": "Nebenstraße",
+      "park": "Park",
+      "quiet_asphalt": "Flüsterasphalt",
+      "static": "Feste Messstation"
+    },
+    "liveNow": "Live",
+    "updated": "aktualisiert",
+    "noData": "Noch keine Lärmdaten vorhanden.",
+    "noSlotData": "In diesem Zeitfenster hier nicht gemessen.",
+    "selectPoint": "Wähle einen Messpunkt auf der Karte.",
+    "average": "Mittel (LAeq)",
+    "background": "Hintergrund (LA90)",
+    "peak": "Spitze (LAmax)",
+    "whoRef": "WHO-Referenz",
+    "whoDay": "WHO Tag 53 dB",
+    "whoNight": "WHO Nacht 45 dB",
+    "dayCurve": "Tag und Nacht an der festen Messstation",
+    "legendQuiet": "leise",
+    "legendLoud": "laut",
+    "disclaimer": "Bürger:innen-Messung mit selbstgebauten senseBox-LärmBoxen ({{minutes}} Messminuten) – indikativ, keine amtliche Lärmmessung. WHO-Werte dienen als Referenzlinie."
+  },
   "tiles": {
     "dates": {
       "upcoming": "Kommende Termine",
@@ -158,7 +197,11 @@
         "title": "Klima",
         "subtitle": "Temperaturabweichungen von den langj\u00e4hrigen Monatsmitteln vor 1900"
       },
-      "weather": { "title": "Wetter aktuell" }
+      "weather": { "title": "Wetter aktuell" },
+      "noise": {
+        "title": "Lärm in Heilbronn",
+        "subtitle": "Wo und wann ist es laut? Gemessen mit LärmBoxen"
+      }
     },
     "mobility": {
       "bicycle": {

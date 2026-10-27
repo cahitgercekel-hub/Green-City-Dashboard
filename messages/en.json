@@ -137,6 +137,45 @@
     "sensor": "sensor",
     "sensors": "sensors"
   },
+  "noise": {
+    "slots": {
+      "morning": "Morning 6–10",
+      "day": "Day 10–16",
+      "evening": "Evening 16–22",
+      "night": "Night 22–6"
+    },
+    "slotsShort": {
+      "morning": "Morning",
+      "day": "Day",
+      "evening": "Evening",
+      "night": "Night"
+    },
+    "categories": {
+      "main_road": "Main road",
+      "tram": "Tram line",
+      "tempo30": "30 km/h zone",
+      "nightlife": "Nightlife area",
+      "side_street": "Side street",
+      "park": "Park",
+      "quiet_asphalt": "Low-noise asphalt",
+      "static": "Fixed station"
+    },
+    "liveNow": "Live",
+    "updated": "updated",
+    "noData": "No noise data yet.",
+    "noSlotData": "Not measured here in this time window.",
+    "selectPoint": "Pick a measuring point on the map.",
+    "average": "Average (LAeq)",
+    "background": "Background (LA90)",
+    "peak": "Peak (LAmax)",
+    "whoRef": "WHO reference",
+    "whoDay": "WHO day 53 dB",
+    "whoNight": "WHO night 45 dB",
+    "dayCurve": "Day and night at the fixed station",
+    "legendQuiet": "quiet",
+    "legendLoud": "loud",
+    "disclaimer": "Citizen measurement with self-built senseBox noise boxes ({{minutes}} minutes measured) – indicative, not an official noise measurement. WHO values are shown as a reference line."
+  },
   "tiles": {
     "dates": {
       "upcoming": "Upcoming Events",
@@ -158,7 +197,11 @@
         "title": "Climate",
         "subtitle": "Temperature deviations from the long-term monthly averages before 1900"
       },
-      "weather": { "title": "Current Weather" }
+      "weather": { "title": "Current Weather" },
+      "noise": {
+        "title": "Noise in Heilbronn",
+        "subtitle": "Where and when is it loud? Measured with noise boxes"
+      }
     },
     "mobility": {
       "bicycle": {

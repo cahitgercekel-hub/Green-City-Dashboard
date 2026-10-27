@@ -1,0 +1,546 @@
+{
+ "type": "FeatureCollection",
+ "meta": {
+  "schema_version": 1,
+  "title": "LärmLupe Heilbronn – Noise measurement campaign",
+  "generated_at": "2026-10-27T16:28:15Z",
+  "period": {
+   "from": "2026-10-27T14:00:00Z",
+   "to": "2026-10-28T15:59:59Z"
+  },
+  "slots": [
+   {
+    "key": "morning",
+    "from_hour": 6,
+    "to_hour": 10
+   },
+   {
+    "key": "day",
+    "from_hour": 10,
+    "to_hour": 16
+   },
+   {
+    "key": "evening",
+    "from_hour": 16,
+    "to_hour": 22
+   },
+   {
+    "key": "night",
+    "from_hour": 22,
+    "to_hour": 6
+   }
+  ],
+  "who_ref_db": {
+   "day": 53.0,
+   "night": 45.0
+  },
+  "excluded": {
+   "transit_seconds": 2160,
+   "event_seconds": 100,
+   "clip_seconds": 0,
+   "wind_seconds": 0,
+   "rain_seconds": 0,
+   "used_seconds": 96740
+  },
+  "calibration": [
+   {
+    "device_id": "laermbox-1",
+    "measured_laeq": 58.24,
+    "offset_db": 0.0,
+    "applied_in_firmware": false,
+    "method": "reference_device:laermbox-1",
+    "window": "2026-10-27T16:00:10Z/2026-10-27T16:04:49Z"
+   },
+   {
+    "device_id": "laermbox-2",
+    "measured_laeq": 60.49,
+    "offset_db": -2.25,
+    "applied_in_firmware": false,
+    "method": "reference_device:laermbox-1",
+    "window": "2026-10-27T16:00:10Z/2026-10-27T16:04:49Z"
+   }
+  ],
+  "method": "SEN0232 sensor, 8 samples/s; LAeq = energy average; LA90 = 10th percentile of 1-s LAeq. Walks: 3 min per point after a 10 s settle. Indicative sample, not an official measurement.",
+  "license": "CC BY 4.0",
+  "static_series": [
+   {
+    "device_id": "laermbox-1",
+    "point_id": "P00",
+    "hours": [
+     {
+      "t": "2026-10-27T15:00:00+01:00",
+      "laeq": 64.8
+     },
+     {
+      "t": "2026-10-27T16:00:00+01:00",
+      "laeq": 67.4
+     },
+     {
+      "t": "2026-10-27T17:00:00+01:00",
+      "laeq": 68.2
+     },
+     {
+      "t": "2026-10-27T18:00:00+01:00",
+      "laeq": 65.8
+     },
+     {
+      "t": "2026-10-27T19:00:00+01:00",
+      "laeq": 65.1
+     },
+     {
+      "t": "2026-10-27T20:00:00+01:00",
+      "laeq": 65.4
+     },
+     {
+      "t": "2026-10-27T21:00:00+01:00",
+      "laeq": 67.4
+     },
+     {
+      "t": "2026-10-27T22:00:00+01:00",
+      "laeq": 50.5
+     },
+     {
+      "t": "2026-10-27T23:00:00+01:00",
+      "laeq": 51.6
+     },
+     {
+      "t": "2026-10-28T00:00:00+01:00",
+      "laeq": 51.9
+     },
+     {
+      "t": "2026-10-28T01:00:00+01:00",
+      "laeq": 50.6
+     },
+     {
+      "t": "2026-10-28T02:00:00+01:00",
+      "laeq": 51.9
+     },
+     {
+      "t": "2026-10-28T03:00:00+01:00",
+      "laeq": 51.7
+     },
+     {
+      "t": "2026-10-28T04:00:00+01:00",
+      "laeq": 51.3
+     },
+     {
+      "t": "2026-10-28T05:00:00+01:00",
+      "laeq": 50.8
+     },
+     {
+      "t": "2026-10-28T06:00:00+01:00",
+      "laeq": 67.1
+     },
+     {
+      "t": "2026-10-28T07:00:00+01:00",
+      "laeq": 67.1
+     },
+     {
+      "t": "2026-10-28T08:00:00+01:00",
+      "laeq": 66.3
+     },
+     {
+      "t": "2026-10-28T09:00:00+01:00",
+      "laeq": 67.2
+     },
+     {
+      "t": "2026-10-28T10:00:00+01:00",
+      "laeq": 64.4
+     },
+     {
+      "t": "2026-10-28T11:00:00+01:00",
+      "laeq": 65.3
+     },
+     {
+      "t": "2026-10-28T12:00:00+01:00",
+      "laeq": 64.8
+     },
+     {
+      "t": "2026-10-28T13:00:00+01:00",
+      "laeq": 64.3
+     },
+     {
+      "t": "2026-10-28T14:00:00+01:00",
+      "laeq": 64.8
+     },
+     {
+      "t": "2026-10-28T15:00:00+01:00",
+      "laeq": 64.7
+     },
+     {
+      "t": "2026-10-28T16:00:00+01:00",
+      "laeq": 66.0
+     }
+    ]
+   }
+  ]
+ },
+ "features": [
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     9.218,
+     49.142
+    ]
+   },
+   "properties": {
+    "point_id": "P00",
+    "name": "Example: Open Space window",
+    "category": "static",
+    "is_static": true,
+    "road_type": "",
+    "road_name": "",
+    "maxspeed": "",
+    "tram": false,
+    "laeq_all": 64.5,
+    "minutes_all": 1560.0,
+    "slots": {
+     "morning": {
+      "laeq": 66.9,
+      "lamax": 93.1,
+      "la90": 58.3,
+      "minutes": 240.0,
+      "visits": 1,
+      "who_ref_db": 53.0,
+      "above_who_ref": true
+     },
+     "day": {
+      "laeq": 64.8,
+      "lamax": 91.9,
+      "la90": 56.3,
+      "minutes": 420.0,
+      "visits": 2,
+      "who_ref_db": 53.0,
+      "above_who_ref": true
+     },
+     "evening": {
+      "laeq": 66.6,
+      "lamax": 98.8,
+      "la90": 57.4,
+      "minutes": 420.0,
+      "visits": 2,
+      "who_ref_db": 53.0,
+      "above_who_ref": true
+     },
+     "night": {
+      "laeq": 51.3,
+      "lamax": 81.6,
+      "la90": 42.3,
+      "minutes": 480.0,
+      "visits": 2,
+      "who_ref_db": 45.0,
+      "above_who_ref": true
+     }
+    }
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     9.2195,
+     49.1431
+    ]
+   },
+   "properties": {
+    "point_id": "P01",
+    "name": "Example: Main road",
+    "category": "main_road",
+    "is_static": false,
+    "road_type": "",
+    "road_name": "",
+    "maxspeed": "",
+    "tram": false,
+    "laeq_all": 71.8,
+    "minutes_all": 9.0,
+    "slots": {
+     "morning": {
+      "laeq": 74.1,
+      "lamax": 91.7,
+      "la90": 64.6,
+      "minutes": 3.0,
+      "visits": 1,
+      "who_ref_db": 53.0,
+      "above_who_ref": true
+     },
+     "day": {
+      "laeq": 71.4,
+      "lamax": 87.0,
+      "la90": 61.8,
+      "minutes": 3.0,
+      "visits": 1,
+      "who_ref_db": 53.0,
+      "above_who_ref": true
+     },
+     "evening": {
+      "laeq": 67.3,
+      "lamax": 82.2,
+      "la90": 61.8,
+      "minutes": 3.0,
+      "visits": 1,
+      "who_ref_db": 53.0,
+      "above_who_ref": true
+     }
+    }
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     9.2212,
+     49.1438
+    ]
+   },
+   "properties": {
+    "point_id": "P02",
+    "name": "Example: Light rail (Stadtbahn) line",
+    "category": "tram",
+    "is_static": false,
+    "road_type": "",
+    "road_name": "",
+    "maxspeed": "",
+    "tram": false,
+    "laeq_all": 66.6,
+    "minutes_all": 8.7,
+    "slots": {
+     "morning": {
+      "laeq": 66.5,
+      "lamax": 80.2,
+      "la90": 60.3,
+      "minutes": 3.0,
+      "visits": 1,
+      "who_ref_db": 53.0,
+      "above_who_ref": true
+     },
+     "day": {
+      "laeq": 67.1,
+      "lamax": 85.7,
+      "la90": 58.0,
+      "minutes": 2.7,
+      "visits": 1,
+      "who_ref_db": 53.0,
+      "above_who_ref": true
+     },
+     "evening": {
+      "laeq": 66.2,
+      "lamax": 82.7,
+      "la90": 59.2,
+      "minutes": 3.0,
+      "visits": 1,
+      "who_ref_db": 53.0,
+      "above_who_ref": true
+     }
+    }
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     9.2178,
+     49.1445
+    ]
+   },
+   "properties": {
+    "point_id": "P03",
+    "name": "Example: Tempo 30 street",
+    "category": "tempo30",
+    "is_static": false,
+    "road_type": "",
+    "road_name": "",
+    "maxspeed": "",
+    "tram": false,
+    "laeq_all": 59.5,
+    "minutes_all": 8.7,
+    "slots": {
+     "morning": {
+      "laeq": 60.7,
+      "lamax": 73.2,
+      "la90": 53.6,
+      "minutes": 3.0,
+      "visits": 1,
+      "who_ref_db": 53.0,
+      "above_who_ref": true
+     },
+     "day": {
+      "laeq": 59.5,
+      "lamax": 74.2,
+      "la90": 52.4,
+      "minutes": 3.0,
+      "visits": 1,
+      "who_ref_db": 53.0,
+      "above_who_ref": true
+     },
+     "evening": {
+      "laeq": 57.8,
+      "lamax": 71.3,
+      "la90": 52.6,
+      "minutes": 2.7,
+      "visits": 1,
+      "who_ref_db": 53.0,
+      "above_who_ref": true
+     }
+    }
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     9.2188,
+     49.1425
+    ]
+   },
+   "properties": {
+    "point_id": "P04",
+    "name": "Example: Old town square",
+    "category": "nightlife",
+    "is_static": false,
+    "road_type": "",
+    "road_name": "",
+    "maxspeed": "",
+    "tram": false,
+    "laeq_all": 62.3,
+    "minutes_all": 9.0,
+    "slots": {
+     "morning": {
+      "laeq": 59.1,
+      "lamax": 72.3,
+      "la90": 51.8,
+      "minutes": 3.0,
+      "visits": 1,
+      "who_ref_db": 53.0,
+      "above_who_ref": true
+     },
+     "day": {
+      "laeq": 59.1,
+      "lamax": 73.5,
+      "la90": 53.5,
+      "minutes": 3.0,
+      "visits": 1,
+      "who_ref_db": 53.0,
+      "above_who_ref": true
+     },
+     "evening": {
+      "laeq": 65.4,
+      "lamax": 77.2,
+      "la90": 60.5,
+      "minutes": 3.0,
+      "visits": 1,
+      "who_ref_db": 53.0,
+      "above_who_ref": true
+     }
+    }
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     9.2165,
+     49.1412
+    ]
+   },
+   "properties": {
+    "point_id": "P05",
+    "name": "Example: Quiet side street",
+    "category": "side_street",
+    "is_static": false,
+    "road_type": "",
+    "road_name": "",
+    "maxspeed": "",
+    "tram": false,
+    "laeq_all": 54.3,
+    "minutes_all": 8.3,
+    "slots": {
+     "morning": {
+      "laeq": 53.8,
+      "lamax": 69.0,
+      "la90": 48.3,
+      "minutes": 3.0,
+      "visits": 1,
+      "who_ref_db": 53.0,
+      "above_who_ref": true
+     },
+     "day": {
+      "laeq": 51.6,
+      "lamax": 63.0,
+      "la90": 46.5,
+      "minutes": 2.7,
+      "visits": 1,
+      "who_ref_db": 53.0,
+      "above_who_ref": false
+     },
+     "evening": {
+      "laeq": 56.2,
+      "lamax": 71.0,
+      "la90": 47.5,
+      "minutes": 2.7,
+      "visits": 1,
+      "who_ref_db": 53.0,
+      "above_who_ref": true
+     }
+    }
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     9.2205,
+     49.1402
+    ]
+   },
+   "properties": {
+    "point_id": "P06",
+    "name": "Example: Park (reference)",
+    "category": "park",
+    "is_static": false,
+    "road_type": "",
+    "road_name": "",
+    "maxspeed": "",
+    "tram": false,
+    "laeq_all": 51.3,
+    "minutes_all": 8.7,
+    "slots": {
+     "morning": {
+      "laeq": 51.5,
+      "lamax": 66.2,
+      "la90": 44.1,
+      "minutes": 2.7,
+      "visits": 1,
+      "who_ref_db": 53.0,
+      "above_who_ref": false
+     },
+     "day": {
+      "laeq": 50.8,
+      "lamax": 63.2,
+      "la90": 43.6,
+      "minutes": 3.0,
+      "visits": 1,
+      "who_ref_db": 53.0,
+      "above_who_ref": false
+     },
+     "evening": {
+      "laeq": 51.6,
+      "lamax": 67.5,
+      "la90": 42.7,
+      "minutes": 3.0,
+      "visits": 1,
+      "who_ref_db": 53.0,
+      "above_who_ref": false
+     }
+    }
+   }
+  }
+ ]
+}

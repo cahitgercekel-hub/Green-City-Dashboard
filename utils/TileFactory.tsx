@@ -3,6 +3,7 @@ import BirdiaryStationsTile from '@/components/Tiles/Climate/BirdiaryStations'
 import BirdiaryValidationTile from '@/components/Tiles/Climate/BirdiaryValidation'
 import ClimateIndicesTile from '@/components/Tiles/Climate/ClimateIndices'
 import ClimateDevelopmentTile from '@/components/Tiles/Climate/Devlopment'
+import NoiseTile from '@/components/Tiles/Climate/Noise'
 import OpenSenseMapTile from '@/components/Tiles/Climate/OpenSenseMap'
 import PMTile from '@/components/Tiles/Climate/PM'
 import WeatherTile from '@/components/Tiles/Climate/WeatherTile'
@@ -44,6 +45,7 @@ type BirdiaryStationsTileType = 'climate-bird-stations'
 type BirdiaryValidationTileType = 'climate-bird-validation'
 type OpenSenseMapTileType = 'climate-opensensemap'
 type PMTileType = 'climate-pm'
+type NoiseTileType = 'climate-noise'
 
 export type TileType =
   | SuccessStoryTileType
@@ -55,6 +57,7 @@ export type TileType =
   | BirdiaryValidationTileType
   | OpenSenseMapTileType
   | PMTileType
+  | NoiseTileType
   | `${TileTypePrefix}-${TileTypeSuffix}`
 
 interface TileFactoryProps {
@@ -115,6 +118,8 @@ export default async function TileFactory({
       return <OpenSenseMapTile />
     case 'climate-pm':
       return <PMTile />
+    case 'climate-noise':
+      return <NoiseTile />
 
     // ---- DATES ----
     case 'dates-upcoming':
