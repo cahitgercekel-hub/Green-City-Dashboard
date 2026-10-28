@@ -2,7 +2,8 @@
  "type": "FeatureCollection",
  "meta": {
   "schema_version": 1,
-  "title": "LärmLupe Heilbronn – Noise measurement campaign",
+  "demo": true,
+  "title": "DEMO DATA (generated) – LärmLupe Heilbronn – Noise measurement campaign",
   "generated_at": "2026-10-27T17:51:49Z",
   "period": {
    "from": "2026-10-27T14:00:10Z",

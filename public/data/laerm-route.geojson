@@ -2,7 +2,8 @@
  "type": "FeatureCollection",
  "meta": {
   "schema_version": 1,
-  "title": "LärmLupe Heilbronn – Noise measurement campaign – route minutes",
+  "demo": true,
+  "title": "DEMO DATA (generated) – LärmLupe Heilbronn – Noise measurement campaign – route minutes",
   "generated_at": "2026-10-27T17:51:49Z",
   "license": "CC BY 4.0",
   "description": "One point per minute of the walks with a GPS position (mean position of the minute). Minutes near a listed point carry its point_id; the others are the noise trace between points."
