@@ -6,7 +6,7 @@ import useNoiseCampaign, {
   type NoiseSlotKey,
   useNoiseRoute,
 } from '@/hooks/useNoiseCampaign'
-import useOpenSenseMap from '@/hooks/useOpenSenseMap'
+import type { SenseBox } from '@/hooks/useOpenSenseMap'
 import { formatDistanceToNow } from 'date-fns'
 import { de } from 'date-fns/locale'
 import { useEffect, useMemo, useState } from 'react'
@@ -19,11 +19,36 @@ import { formatDb, noiseColor } from './noiseScale'
 // openSenseMap grouptag of the LärmBoxes. Sensor titles must be exactly "LAeq", "LAmax", "LA90".
 export const NOISE_GROUPTAG = 'LaermLupe'
 const LIVE_THRESHOLD_MS = 15 * 60 * 1000
+const LIVE_POLL_MS = 60 * 1000
+
+// Boxes of the grouptag, refreshed every minute (the route caches openSenseMap for 60 s),
+// so the live card updates without a page reload.
+function useLiveBoxes(grouptag: string) {
+  const [boxes, setBoxes] = useState<SenseBox[]>([])
+  const [tick, setTick] = useState(0)
+  useEffect(() => {
+    let active = true
+    fetch(`/api/noise?grouptag=${encodeURIComponent(grouptag)}`)
+      .then(r => (r.ok ? r.json() : []))
+      .then(d => {
+        if (active && Array.isArray(d)) {
+          setBoxes(d as SenseBox[])
+        }
+      })
+      .catch(() => undefined)
+    const timer = setTimeout(() => setTick(t => t + 1), LIVE_POLL_MS)
+    return () => {
+      active = false
+      clearTimeout(timer)
+    }
+  }, [grouptag, tick])
+  return { boxes, tick }
+}
 
 export default function NoiseContent() {
   const { t } = useTranslation()
   const { data: campaign, isLoading } = useNoiseCampaign()
-  const { data: boxes } = useOpenSenseMap(NOISE_GROUPTAG)
+  const { boxes, tick } = useLiveBoxes(NOISE_GROUPTAG)
   const route = useNoiseRoute()
   const [slot, setSlot] = useState<NoiseSlotKey>('evening')
   const [selectedId, setSelectedId] = useState<string | null>(null)
@@ -83,7 +108,7 @@ export default function NoiseContent() {
       .then(r => (r.ok ? r.json() : []))
       .then(d => setLiveSeries(Array.isArray(d) ? d : []))
       .catch(() => setLiveSeries([]))
-  }, [live?.box._id, live?.sensor._id])
+  }, [live?.box._id, live?.sensor._id, tick])
 
   // Day/night curve: live series if available, otherwise the hourly values of the fixed station from the campaign
   const curve = useMemo(() => {
